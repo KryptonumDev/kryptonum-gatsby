@@ -2,27 +2,20 @@ require("dotenv").config({
   path: `.env`,
 });
 
-const strapiConfig = {
-  apiURL: process.env.STRAPI_API_URL,
-  accessToken: process.env.STRAPI_TOKEN,
-  collectionTypes: ["homepage"],
-  singleTypes: [],
-};
-
 module.exports = {
   siteMetadata: {
     title: `Kryptonum`,
     siteUrl: `https://kryptonum.eu`
   },
   plugins: [
-    "gatsby-plugin-styled-components",
-    "gatsby-plugin-sitemap",
-    `gatsby-transformer-remark`,
-    "gatsby-transformer-sharp",
-    "gatsby-plugin-image",
     {
       resolve: `gatsby-source-strapi`,
-      options: strapiConfig,
+      options: {
+        apiURL: process.env.STRAPI_API_URL,
+        accessToken: process.env.STRAPI_TOKEN,
+        collectionTypes: [`page`],
+        singleTypes: [`homepage`],
+      }
     },
     {
       resolve: `gatsby-plugin-sharp`,
@@ -39,6 +32,11 @@ module.exports = {
         "path": "./src/resources/images/"
       },
       __key: "images"
-    }
+    },
+    `gatsby-plugin-styled-components`,
+    `gatsby-plugin-sitemap`,
+    `gatsby-transformer-remark`,
+    `gatsby-transformer-sharp`,
+    `gatsby-plugin-image`,
   ]
 };
