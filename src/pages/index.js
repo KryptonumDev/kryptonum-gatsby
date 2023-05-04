@@ -1,10 +1,42 @@
 import * as React from "react"
+import { graphql } from "gatsby"
+import Hero from "../components/sections/Homepage/Hero";
 
-const IndexPage = () => {
+const IndexPage = ({data:
+  {
+    homepage
+  }
+}) => {
   return (
-    <h1>Kryptonum</h1>
+    <Hero homepage={homepage} />
   )
 }
+
+export const query = graphql`
+  query {
+    homepage: strapiHomepage {
+      heroHeading
+      heroSubheading {
+        text
+      }
+      heroCta {
+        theme
+        text
+        href
+        target
+        isExternal
+      }
+      heroImg {
+        alternativeText
+        localFile {
+          childImageSharp {
+            gatsbyImageData
+          }
+        }
+      }
+    }
+  }
+`
 
 export default IndexPage
 

@@ -1,6 +1,6 @@
 require("dotenv").config({
   path: `.env`,
-});
+})
 
 module.exports = {
   siteMetadata: {
@@ -13,8 +13,13 @@ module.exports = {
       options: {
         apiURL: process.env.STRAPI_API_URL,
         accessToken: process.env.STRAPI_TOKEN,
-        collectionTypes: [`page`],
         singleTypes: [`homepage`],
+        collectionTypes: [
+          'case-study',
+          'team',
+          'blog-category',
+          'blog-entry'
+        ],
       }
     },
     {
@@ -24,14 +29,6 @@ module.exports = {
           placeholder: `dominantColor`,
         },
       },
-    },
-    {
-      resolve: 'gatsby-source-filesystem',
-      options: {
-        "name": "images",
-        "path": "./src/resources/images/"
-      },
-      __key: "images"
     },
     `gatsby-plugin-styled-components`,
     `gatsby-plugin-sitemap`,

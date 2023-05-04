@@ -1,6 +1,6 @@
 import React from 'react';
 import Layout from "./src/components/Layout"
-import PoppinsRegular from "./src/resources/fonts/Poppins-Regular.woff2"
+import PoppinsRegular from "./src/resources/fonts/Poppins-Light.woff2"
 
 export const onRenderBody = ({ setHtmlAttributes, setHeadComponents }) => {
   setHtmlAttributes({ lang: "pl" })
