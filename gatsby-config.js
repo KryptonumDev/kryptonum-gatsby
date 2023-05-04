@@ -18,7 +18,9 @@ module.exports = {
           'case-study',
           'team',
           'blog-category',
-          'blog-entry'
+          'blog-entry',
+          'curiosity',
+          'technology'
         ],
       }
     },
