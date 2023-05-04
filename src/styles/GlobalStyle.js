@@ -17,7 +17,7 @@ const GlobalStyle = createGlobalStyle`
     --neutral-600: #9699A2;
     --neutral-700: #5B5F67;
     --neutral-800: #38383B;
-    --neutral-900: #0D0F10;
+    --neutral-900: #0F0F10;
     --neutral-950: #040606;
     --primary-400: #2DD282;
   }

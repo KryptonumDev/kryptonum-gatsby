@@ -5,11 +5,12 @@ import { ArrowDown, ArrowTopRight, KryptonumLogo } from '../atoms/Icons';
 import { GatsbyImage } from "gatsby-plugin-image";
 
 const Nav = () => {
-  const {caseStudies, team, blogEntries, blogCategories} = useStaticQuery(graphql`
+  const {caseStudies, team, blogEntries, blogCategories, curiosities, technologies} = useStaticQuery(graphql`
     query {
       caseStudies: allStrapiCaseStudy(limit: 4) {
         nodes {
           name
+          slug
           thumbnail {
             alternativeText
             localFile {
@@ -23,6 +24,7 @@ const Nav = () => {
       team: allStrapiTeam {
         nodes {
           name
+          slug
           img {
             alternativeText
             localFile {
@@ -39,6 +41,7 @@ const Nav = () => {
           slug
           author {
             name
+            slug
             img {
               alternativeText
               localFile {
@@ -65,6 +68,34 @@ const Nav = () => {
           slug
         }
       }
+      curiosities: allStrapiCuriosity(limit: 2) {
+        nodes {
+          title
+          slug
+          img {
+            alternativeText
+            localFile {
+              childImageSharp {
+                gatsbyImageData
+              }
+            }
+          }
+        }
+      }
+      technologies: allStrapiTechnology(limit: 2) {
+        nodes {
+          name
+          slug
+          thumbnail {
+            alternativeText
+            localFile {
+              childImageSharp {
+                gatsbyImageData(width: 160, height: 160)
+              }
+            }
+          }
+        }
+      }
     }
   `);
 
@@ -84,22 +115,24 @@ const Nav = () => {
                 <ArrowDown />
               </Link>
               <ul className="nav-list2 services">
-                <li><Link to="/web-development">Web Development</Link>
-                  <ul className="nav-list3">
-                    <li><Link to="/strony-internetowe">Strony internetowe</Link></li>
-                    <li><Link to="/aplikacje-internetowe">Aplikacje internetowe</Link></li>
-                    <li><Link to="/sklepy-internetowe">Sklepy internetowe</Link></li>
-                  </ul>
-                </li>
-                <li><Link to="/grafika-design-kreacja">Grafika & design & kreacja</Link>
-                  <ul className="nav-list3">
-                    <li><Link to="/strony-internetowe">Logo</Link></li>
-                    <li><Link to="/aplikacje-internetowe">Audyty</Link></li>
-                    <li><Link to="/sklepy-internetowe">Identyfikacja wizualna i branding</Link></li>
-                  </ul>
-                </li>
-                <li><Link to="/opieka-agencyjna">Opieka agencyjna</Link></li>
-                <li><Link to="/warsztat-strategiczny">Warsztat strategiczny</Link></li>
+                <div className="max-width">
+                  <li><Link to="/web-development"><h3>Web Development</h3></Link>
+                    <ul className="nav-list3">
+                      <li><Link to="/strony-internetowe">Strony internetowe</Link></li>
+                      <li><Link to="/aplikacje-internetowe">Aplikacje internetowe</Link></li>
+                      <li><Link to="/sklepy-internetowe">Sklepy internetowe</Link></li>
+                    </ul>
+                  </li>
+                  <li><Link to="/grafika-design-kreacja"><h3>Grafika & design & kreacja</h3></Link>
+                    <ul className="nav-list3">
+                      <li><Link to="/strony-internetowe">Logo</Link></li>
+                      <li><Link to="/aplikacje-internetowe">Audyty</Link></li>
+                      <li><Link to="/sklepy-internetowe">Identyfikacja wizualna i branding</Link></li>
+                    </ul>
+                  </li>
+                  <li><Link to="/opieka-agencyjna"><h3>Opieka agencyjna</h3></Link></li>
+                  <li><Link to="/warsztat-strategiczny"><h3>Warsztat strategiczny</h3></Link></li>
+                </div>
               </ul>
             </li>
             <li>
@@ -108,12 +141,14 @@ const Nav = () => {
                 <ArrowDown />
               </Link>
               <ul className="nav-list2 caseStudies">
-                {caseStudies.nodes.map((caseStudy, i) => (
-                  <div key={i}>
-                    <GatsbyImage image={caseStudy.thumbnail.localFile.childImageSharp.gatsbyImageData} alt={caseStudy.alternativeText} />
-                    <h3>{caseStudy.name}</h3>
-                  </div>
-                ))}
+                <div className="max-width">
+                  {caseStudies.nodes.map((caseStudy, i) => (
+                    <Link to={`/projekty/${caseStudy.slug}`} key={i}>
+                      <GatsbyImage image={caseStudy.thumbnail.localFile.childImageSharp.gatsbyImageData} alt={caseStudy.alternativeText} />
+                      <p>{caseStudy.name}</p>
+                    </Link>
+                  ))}
+                </div>
               </ul>
             </li>
             <li>
@@ -122,11 +157,11 @@ const Nav = () => {
                 <ArrowDown />
               </Link>
               <ul className="nav-list2 team">
-                <div>
+                <div className="max-width">
                   {team.nodes.map((person, i) => (
-                    <Link to="#" key={i}>
+                    <Link to={`/zespol/${person.slug}`} key={i}>
                       <GatsbyImage image={person.img.localFile.childImageSharp.gatsbyImageData} alt={person.alternativeText} />
-                      <h3>{person.name}</h3>
+                      <p>{person.name}</p>
                     </Link>
                   ))}
                 </div>
@@ -138,29 +173,91 @@ const Nav = () => {
                 <ArrowDown />
               </Link>
               <ul className="nav-list2 blog">
-                <div>
-                  <h3><Link>Zobacz bloga</Link></h3>
-                  {blogEntries.nodes.map((entry, i) => (
-                    <Link to="#" key={i}>
-                      <GatsbyImage image={entry.img.localFile.childImageSharp.gatsbyImageData} alt={entry.alternativeText} />
-                      <h3>{entry.title}</h3>
-                    </Link>
-                  ))}
-                </div>
-                <div>
-                  <h3>Kategorie:</h3>
-                  {blogCategories.nodes.map((category, i) => (
-                    <Link to={`/blog/kategoria/${category.slug}`} key={i}>
-                      <h3>{category.name}</h3>
-                    </Link>
-                  ))}
-                </div>
-                <div>
-                  <h3>Twórcy:</h3>
+                <div className="max-width">
+                  <div className="entries">
+                    <h3><Link to="/blog">Zobacz bloga</Link></h3>
+                    {blogEntries.nodes.map((entry, i) => (
+                      <div className="entry" key={i}>
+                        <Link to={`/blog/${entry.slug}`} className="link"></Link>
+                        <GatsbyImage image={entry.img.localFile.childImageSharp.gatsbyImageData} alt={entry.alternativeText} className="thumbnail" />
+                        <div className="copy">
+                          <div className="copy-top">
+                            <Link to={`/blog/autor/${entry.author[0].slug}`}>
+                              <GatsbyImage image={entry.author[0].img.localFile.childImageSharp.gatsbyImageData} alt={entry.author[0].img.alternativeText || ''} />
+                              <span>{entry.author[0].name}</span>
+                            </Link>
+                            <span>{entry.publishedAt}</span>
+                          </div>
+                          <h3>{entry.title}</h3>
+                        </div>
+                      </div>
+                    ))}
+                  </div>
+                  <div className="categories">
+                    <h3>Kategorie:</h3>
+                    <div className="wrapper">
+                      {blogCategories.nodes.map((category, i) => (
+                        <Link to={`/blog/kategoria/${category.slug}`} key={i}>
+                          {category.name}
+                        </Link>
+                      ))}
+                    </div>
+                  </div>
+                  <div className="authors">
+                    <h3>Twórcy:</h3>
+                    <div className="wrapper">
+                      {team.nodes.map((person, i) => (
+                        <Link to={`/blog/autor/${person.slug}`} key={i}>
+                          <GatsbyImage image={person.img.localFile.childImageSharp.gatsbyImageData} alt={person.alternativeText} />
+                          <p>{person.name}</p>
+                        </Link>
+                      ))}
+                    </div>
+                  </div>
                 </div>
               </ul>
             </li>
-            <li><Link to="/akademia">Akademia</Link></li>
+            <li>
+              <Link to="/akademia">
+                <span>Akademia</span>
+                <ArrowDown />
+              </Link>
+              <ul className="nav-list2 academy">
+                <div className="max-width">
+                  <div className="curiosities">
+                    <h3><Link to="/ciekawostki">Ciekawostki</Link></h3>
+                    {curiosities.nodes.map((curiosity, i) => (
+                      <Link to={`/akademia/ciekawostki/${curiosity.slug}`} key={i} className="link">
+                        <GatsbyImage image={curiosity.img.localFile.childImageSharp.gatsbyImageData} alt={curiosity.alternativeText} className="thumbnail" />
+                        <h3>{curiosity.title}</h3>
+                      </Link>
+                    ))}
+                  </div>
+                  <div className="technologies">
+                    <h3><Link to="/technologie">Technologie</Link></h3>
+                    <div className="wrapper">
+                      {technologies.nodes.map((technology, i) => (
+                        <Link to={`/akademia/technologie/${technology.slug}`} key={i}>
+                          <GatsbyImage image={technology.thumbnail.localFile.childImageSharp.gatsbyImageData} alt={technology.alternativeText} />
+                          <p>{technology.name}</p>
+                        </Link>
+                      ))}
+                    </div>
+                  </div>
+                  <div className="authors">
+                    <h3>Twórcy:</h3>
+                    <div className="wrapper">
+                      {team.nodes.map((person, i) => (
+                        <Link to={`/blog/autor/${person.slug}`} key={i}>
+                          <GatsbyImage image={person.img.localFile.childImageSharp.gatsbyImageData} alt={person.alternativeText} />
+                          <p>{person.name}</p>
+                        </Link>
+                      ))}
+                    </div>
+                  </div>
+                </div>
+              </ul>
+            </li>
           </ul>
         </div>
         <Link to="/kontakt" className="nav-cta cta secondary" data-text="Kontakt">
@@ -252,21 +349,25 @@ const StyledNav = styled.nav`
     max-height: calc(100dvh - var(--nav-height));
     overflow-y: auto;
     border-bottom: 1px solid var(--neutral-800);
-    background-color: rgba(0,0,0,.7);
-    backdrop-filter: blur(16px);
-    padding: 48px 16px 96px;
+    background-color: var(--neutral-950);
+    > .max-width {
+      height: 100%;
+      padding: 48px 0 96px;
+    }
+    h3 {
+      font-size: ${28/16}rem;
+      margin-bottom: ${20/16}rem;
+    }
     &.services {
-      display: grid;
-      grid-template:"one two three" "one two four";
-      > li {
+      .max-width {
+        display: grid;
+        grid-template:"one two three" "one two four";
+      }
+      li {
         a {
           display: inline-block;
           font-size: ${20/16}rem;
           margin-bottom: 1rem;
-        }
-        > a {
-          font-size: ${28/16}rem;
-          margin-bottom: ${20/16}rem;
         }
         &:nth-child(1) {
           grid-area: one;
@@ -283,11 +384,21 @@ const StyledNav = styled.nav`
       }
     }
     &.caseStudies {
-      display: grid;
-      grid-template-columns: repeat(4, 1fr);
+      .max-width {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 32px;
+      }
+      a {
+        text-align: center;
+        font-size: ${22/16}rem;
+        p {
+          margin-top: ${24/16}rem;
+        }
+      }
     }
     &.team {
-      > div {
+      .max-width {
         margin: 0 auto;
         max-width: calc(5 * (96px + 48px));
         text-align: center;
@@ -297,6 +408,143 @@ const StyledNav = styled.nav`
         gap: 24px 48px;
         .gatsby-image-wrapper {
           border-radius: 50%;
+        }
+        p {
+          font-size: ${22/16}rem;
+          margin-top: ${8/16}rem;
+        }
+      }
+    }
+    &.blog {
+      .max-width {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        align-items: flex-start;
+        gap: 42px;
+      }
+      .entries {
+        .entry {
+          &:not(:last-child){
+            margin-bottom: ${30/16}rem;
+          }
+          position: relative;
+          .link {
+            position: absolute;
+            inset: 0;
+            z-index: 1;
+          }
+          display: flex;
+          gap: 22px;
+          .copy {
+            .copy-top {
+              display: flex;
+              justify-content: space-between;
+              align-items: center;
+              a {
+                display: flex;
+                align-items: center;
+                gap: 4px;
+                z-index: 2;
+                img {
+                  width: 32px;
+                  height: 32px;
+                }
+              }
+            }
+            h3 {
+              margin-top: 1rem;
+              font-size: 1rem;
+            }
+          }
+        }
+        .thumbnail {
+          width: 127px;
+          height: 127px;
+          flex-shrink: 0;
+        }
+      }
+      .categories {
+        .wrapper {
+          display: grid;
+          grid-template-columns: 1fr 1fr;
+          gap: 20px;
+          a {
+            background-color: var(--neutral-900);
+            padding: 4px 16px;
+            border-radius: 2px;
+          }
+        }
+      }
+      .authors {
+        .wrapper {
+          display: grid;
+          grid-template-columns: 1fr 1fr;
+          gap: 20px 32px;
+          a {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+          }
+          img {
+            width: 48px;
+            height: 48px;
+          }
+          p {
+            font-size: ${20/16}rem;
+          }
+        }
+      }
+    }
+    &.academy {
+      .max-width {
+        display: grid;
+        align-items: flex-start;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 42px;
+      }
+      .curiosities {
+        .link {
+          &:not(:last-child) {
+            margin-bottom: ${24/16}rem;
+          }
+          display: flex;
+          gap: 12px;
+          .thumbnail {
+            width: 188px;
+            flex-shrink: 0;
+          }
+          h3 {
+            font-size: ${22/16}rem;
+          }
+        }
+      }
+      .technologies {
+        .wrapper {
+          display: grid;
+          grid-template-columns: 1fr 1fr;
+          p {
+            font-size: ${22/16}rem;
+            margin-top: 1rem;
+          }
+        }
+      }
+      .authors {
+        .wrapper {
+          display: grid;
+          grid-template-columns: 1fr 1fr;
+          gap: 20px 32px;
+          a {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+          }
+          img {
+            width: 48px;
+            height: 48px;
+          }
+          p {
+            font-size: ${20/16}rem;
+          }
         }
       }
     }
