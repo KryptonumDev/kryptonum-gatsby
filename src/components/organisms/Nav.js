@@ -129,7 +129,7 @@ const Nav = () => {
   }, [])
 
   const handleNav = (e, item) => {
-    if (window.matchMedia('(pointer: coarse) or (max-width: 1049px)').matches) {
+    if (window.matchMedia('(pointer: coarse), (max-width: 1049px)').matches) {
       e.preventDefault();
       const nav = document.querySelector('.nav');
       item
@@ -189,7 +189,7 @@ const Nav = () => {
                   </button>
                   <h3 className="mobileElement"><Link to="/projekty">Wszystkie projekty</Link></h3>
                   {caseStudies.nodes.map((caseStudy, i) => (
-                    <Link to={`/projekty/${caseStudy.slug}`} key={i}>
+                    <Link to={`/projekty/${caseStudy.slug}`} key={i} className="item">
                       <GatsbyImage image={caseStudy.thumbnail.localFile.childImageSharp.gatsbyImageData} alt={caseStudy.alternativeText || ''} />
                       <p>{caseStudy.name}</p>
                     </Link>
@@ -208,13 +208,15 @@ const Nav = () => {
                     <ArrowLeft />
                     <span>Wróć</span>
                   </button>
-                  <h3 className="mobileElement"><Link to="/zespol">Zespół</Link></h3>
-                  {team.nodes.map((person, i) => (
-                    <Link to={`/zespol/${person.slug}`} key={i}>
-                      <GatsbyImage image={person.img.localFile.childImageSharp.gatsbyImageData} alt={person.alternativeText || ''} />
-                      <p>{person.name}</p>
-                    </Link>
-                  ))}
+                  <h3 className="mobileElement"><Link to="/zespol">Zobacz nasz zespół</Link></h3>
+                  <div className="wrapper">
+                    {team.nodes.map((person, i) => (
+                      <Link to={`/zespol/${person.slug}`} key={i} className="item">
+                        <GatsbyImage image={person.img.localFile.childImageSharp.gatsbyImageData} alt={person.alternativeText || ''} className="item-img" />
+                        <p>{person.name}</p>
+                      </Link>
+                    ))}
+                  </div>
                 </div>
               </ul>
             </li>
@@ -361,7 +363,7 @@ const StyledNav = styled.nav`
     0% {transform: translateY(-100%)}
     100% {transform: translateY(0)}
   }
-  .max-width {
+  > .max-width {
     height: var(--nav-height);
     display: flex;
     align-items: center;
@@ -448,10 +450,12 @@ const StyledNav = styled.nav`
         gap:32px;
       }
       li {
+        &:not(:last-child){
+          margin-bottom: 1rem;
+        }
         a {
           display: inline-block;
           font-size: ${20/16}rem;
-          margin-bottom: 1rem;
         }
         &:nth-of-type(1) {
           grid-area: one;
@@ -473,7 +477,7 @@ const StyledNav = styled.nav`
         grid-template-columns: repeat(4, 1fr);
         gap: 32px;
       }
-      a {
+      .item {
         text-align: center;
         font-size: ${22/16}rem;
         p {
@@ -482,7 +486,7 @@ const StyledNav = styled.nav`
       }
     }
     &.team {
-      .max-width {
+      .wrapper {
         margin: 0 auto;
         max-width: calc(5 * (96px + 48px));
         text-align: center;
@@ -490,9 +494,6 @@ const StyledNav = styled.nav`
         flex-wrap: wrap;
         justify-content: center;
         gap: 24px 48px;
-        .gatsby-image-wrapper {
-          border-radius: 50%;
-        }
         p {
           font-size: ${22/16}rem;
           margin-top: ${8/16}rem;
@@ -542,8 +543,8 @@ const StyledNav = styled.nav`
           }
         }
         .thumbnail {
-          width: 127px;
-          height: 127px;
+          width: 128px;
+          height: 128px;
           flex-shrink: 0;
         }
       }
@@ -665,12 +666,16 @@ const StyledNav = styled.nav`
     display: flex;
     align-items: center;
     font-size: ${32/16}rem;
-    gap:4px;
+    gap: 4px;
+    margin-bottom: ${32/16}rem;
+  }
+  .backBtn + h3 {
+    margin-bottom: ${32/16}rem;
   }
   .mobileElement {
     display: none;
   }
-  @media (pointer: coarse) or (max-width: 1049px){
+  @media (max-width: 1049px), (pointer: coarse){
     #nav-toggle {
       display: block;
     }
@@ -722,95 +727,85 @@ const StyledNav = styled.nav`
       border-bottom: none;
       z-index: 1;
       > .max-width {
-        height: 100%;
+        height: auto;
         padding: 48px 0 96px;
-      }
-      h3 {
-        font-size: ${28/16}rem;
-        margin-bottom: ${20/16}rem;
       }
       &.services {
         .max-width {
           display: block;
-          grid-template:"one" "two" "three" "four";
-        }
-        li {
-          a {
-            display: inline-block;
-            font-size: ${20/16}rem;
-            margin-bottom: 1rem;
+          > li:not(:last-child) {
+            margin-bottom: 2rem;
           }
-          &:nth-of-type(1) {
-            grid-area: one;
+          > li:nth-of-type(3),
+          > li:nth-of-type(4) {
+            h3 {
+              margin-bottom: 0;
+            }
           }
-          &:nth-of-type(2) {
-            grid-area: two;
-          }
-          &:nth-of-type(3) {
-            grid-area: three;
-          }
-          &:nth-of-type(4) {
-            grid-area: four;
+          .nav-list3 > li:not(:last-child) {
+            margin-bottom: .5rem;
           }
         }
       }
       &.caseStudies {
         .max-width {
           display: grid;
-          grid-template-columns: repeat(4, 1fr);
-          gap: 32px;
+          grid-template-columns: 1fr;
+          gap: 1rem;
         }
-        a {
-          text-align: center;
-          font-size: ${22/16}rem;
+        .item {
+          display: grid;
+          grid-template-columns: 1fr 1fr;
+          gap: 1rem;
+          text-align: left;
+          font-size: ${20/16}rem;
           p {
-            margin-top: ${24/16}rem;
+            margin-top: 0;
           }
         }
       }
       &.team {
-        .max-width {
-          margin: 0 auto;
-          max-width: calc(5 * (96px + 48px));
-          text-align: center;
-          display: flex;
-          flex-wrap: wrap;
-          justify-content: center;
-          gap: 24px 48px;
-          .gatsby-image-wrapper {
-            border-radius: 50%;
-          }
-          p {
-            font-size: ${22/16}rem;
-            margin-top: ${8/16}rem;
+        .wrapper {
+          max-width: unset;
+          text-align: left;
+          display: grid;
+          grid-template-columns: 1fr 1fr;
+          gap: 2rem 1rem;
+          .item {
+            display: flex;
+            align-items: center;
+            gap: .5rem;
+            .item-img {
+              width: 48px;
+              height: 48px;
+            }
+            p {
+              font-size: ${20/16}rem;
+              margin-top: 0;
+            }
           }
         }
       }
       &.blog {
+        .backBtn {
+          margin-bottom: 0;
+        }
         .max-width {
-          display: grid;
-          grid-template-columns: repeat(3, 1fr);
-          align-items: flex-start;
-          gap: 42px;
+          grid-template-columns: 1fr;
+          gap: 32px;
         }
         .entries {
           .entry {
             &:not(:last-child){
               margin-bottom: ${30/16}rem;
             }
-            position: relative;
-            .link {
-              position: absolute;
-              inset: 0;
-              z-index: 1;
-            }
             display: flex;
             gap: 22px;
             .copy {
               .copy-top {
-                display: flex;
-                justify-content: space-between;
-                align-items: center;
+                > span {
+                  display: none;
+                }
                 a {
                   display: flex;
                   align-items: center;
@@ -823,99 +818,82 @@ const StyledNav = styled.nav`
                 }
               }
               h3 {
-                margin-top: 1rem;
-                font-size: 1rem;
+                margin-top: 4px;
               }
             }
-          }
-          .thumbnail {
-            width: 127px;
-            height: 127px;
-            flex-shrink: 0;
           }
         }
         .categories {
           .wrapper {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 20px;
+            gap: 1rem;
             a {
-              background-color: var(--neutral-900);
-              padding: 4px 16px;
-              border-radius: 2px;
+              overflow: hidden;
+              text-overflow: ellipsis;
             }
           }
         }
         .authors {
           .wrapper {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 20px 32px;
+            gap: 1rem;
             a {
-              display: flex;
-              align-items: center;
-              gap: 8px;
+              flex-direction: column;
             }
             img {
-              width: 48px;
-              height: 48px;
+              width: 96px;
+              height: 96px;
             }
             p {
-              font-size: ${20/16}rem;
+              font-size: 1rem;
             }
           }
         }
       }
       &.academy {
+        .backBtn {
+          margin-bottom: 0;
+        }
         .max-width {
-          display: grid;
-          align-items: flex-start;
-          grid-template-columns: repeat(3, 1fr);
-          gap: 42px;
+          grid-template-columns: 1fr;
+          gap: 32px;
+          > h3 {
+            margin-bottom: 0;
+          }
         }
         .curiosities {
           .link {
             &:not(:last-child) {
-              margin-bottom: ${24/16}rem;
+              margin-bottom: 1rem;
             }
-            display: flex;
-            gap: 12px;
+            flex-direction: column;
+            gap: 4px;
             .thumbnail {
-              width: 188px;
-              flex-shrink: 0;
+              width: 100%;
             }
             h3 {
-              font-size: ${22/16}rem;
+              font-size: ${20/16}rem;
             }
           }
         }
         .technologies {
           .wrapper {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 24px;
+            gap: 1fr;
             p {
-              font-size: ${22/16}rem;
-              margin-top: 1rem;
+              font-size: ${20/16}rem;
             }
           }
         }
         .authors {
           .wrapper {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 20px 32px;
+            gap: 1rem;
             a {
-              display: flex;
-              align-items: center;
-              gap: 8px;
+              flex-direction: column;
             }
             img {
-              width: 48px;
-              height: 48px;
+              width: 96px;
+              height: 96px;
             }
             p {
-              font-size: ${20/16}rem;
+              font-size: 1rem;
             }
           }
         }
