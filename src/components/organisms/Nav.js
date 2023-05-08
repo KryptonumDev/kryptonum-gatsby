@@ -703,6 +703,11 @@ const StyledNav = styled.nav`
         > li {
           margin: 0 16px;
           > a svg {
+            width: 40px;
+            height: 40px;
+            path {
+              stroke-width: 1;
+            }
             transform: rotate(-90deg);
           }
         }
@@ -772,16 +777,13 @@ const StyledNav = styled.nav`
           grid-template-columns: 1fr 1fr;
           gap: 2rem 1rem;
           .item {
-            display: flex;
-            align-items: center;
-            gap: .5rem;
+            text-align: center;
             .item-img {
-              width: 48px;
-              height: 48px;
+              width: 96px;
+              height: 96px;
             }
             p {
-              font-size: ${20/16}rem;
-              margin-top: 0;
+              font-size: 1rem;
             }
           }
         }
