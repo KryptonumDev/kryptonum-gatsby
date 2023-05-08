@@ -31,6 +31,18 @@ const GlobalStyle = createGlobalStyle`
     overflow-x: hidden;
     -webkit-tap-highlight-color: transparent;
   }
+  ::-webkit-scrollbar {
+    width: 16px;
+    height: 16px;
+  }
+  ::-webkit-scrollbar-track {
+    border-left: 14px solid var(--neutral-950);
+    background-color: var(--neutral-800);
+  }
+  ::-webkit-scrollbar-thumb {
+    border-left: 14px solid var(--neutral-950);
+    background-image: linear-gradient(266deg, var(--primary-400), #90F4E8 100%);
+  }
   :focus {
     outline: none;
   }
