@@ -35,11 +35,9 @@ const Hero = ({homepage}) => {
           ))}
         </div>
       </header>
-      <div className="hero-img">
-        {heroImg.map((img, i) => (
-          <GatsbyImage key={i} image={img.localFile.childImageSharp.gatsbyImageData} alt={img.alternativeText || ''} />
-        ))}
-      </div>
+      {heroImg.map((img, i) => (
+        <GatsbyImage key={i} image={img.localFile.childImageSharp.gatsbyImageData} alt={img.alternativeText || ''} className="hero-img" />
+      ))}
     </StyledHero>
   );
 }
@@ -80,12 +78,12 @@ const StyledHero = styled.section`
         }
       }
     }
+    margin-bottom: 89px;
   }
   .hero-img {
-    margin-top: 89px;
-    img {
-      width: 100%;
-    }
+    position: sticky;
+    top: 0;
+    
   }
 `
  

@@ -28,6 +28,7 @@ const GlobalStyle = createGlobalStyle`
     font-size: 16px;
     font-family: 'Poppins', sans-serif;
     font-feature-settings: 'pnum' on, 'onum' on, 'ss01' on, 'ss03' on, 'ss04' on;
+    overflow-x: hidden;
   }
   :focus {
     outline: none;
