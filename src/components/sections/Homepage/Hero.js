@@ -45,8 +45,8 @@ const Hero = ({homepage}) => {
 const StyledHero = styled.section`
   header {
     display: grid;
-    grid-template-columns: 1fr auto;
     align-items: flex-end;
+    grid-template-columns: 1fr auto;
     .copy {
       max-width: ${739/16}rem;
       h1 {
@@ -78,12 +78,31 @@ const StyledHero = styled.section`
         }
       }
     }
+    .cta-wrapper {
+      align-items: flex-end;
+    }
     margin-bottom: 89px;
   }
   .hero-img {
     position: sticky;
     top: 0;
-    
+  }
+  @media (max-width: 1129px){
+    header {
+      grid-template-columns: 1fr;
+      .copy {
+        max-width: ${739/16}rem;
+        h1 {
+          margin: ${128/16}rem 0 ${40/16}rem;
+        }
+      }
+      margin-bottom: 89px;
+      .cta-wrapper {
+        margin-top: 96px;
+        align-items: flex-start;
+        flex-direction: column-reverse;
+      }
+    }
   }
 `
  

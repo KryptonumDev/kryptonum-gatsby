@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { graphql, Link, useStaticQuery } from "gatsby";
 import { GatsbyImage } from "gatsby-plugin-image";
 import styled from "styled-components";
-import { ArrowDown, ArrowTopRight, KryptonumLogo } from '../atoms/Icons';
+import { ArrowDown, ArrowLeft, ArrowTopRight, KryptonumLogo } from '../atoms/Icons';
 import { scrollLock } from "../../utils/functions";
 import { useEffect } from "react";
 
@@ -115,7 +115,6 @@ const Nav = () => {
         nav.classList.add('fixed');
         scrollDistance = 0;
       } else if(nav.classList.contains('fixed')) {
-        console.log(scrollDistance * -1, navHeight)
         scrollDistance += prevScrollPos - currentScrollPos;
         if (scrollDistance * -1 >= navHeight) {
           nav.classList.remove('fixed');
@@ -129,6 +128,15 @@ const Nav = () => {
 
   }, [])
 
+  const handleNav = (e, item) => {
+    if (window.matchMedia('(pointer: coarse) or (max-width: 1049px)').matches) {
+      e.preventDefault();
+      const nav = document.querySelector('.nav');
+      item
+      ? nav.setAttribute('data-expand', item)
+      : nav.removeAttribute('data-expand');
+    }      
+  }
   return (
     <StyledNav className="nav" aria-expanded={navOpened}>
       <div className="max-width">
@@ -138,12 +146,17 @@ const Nav = () => {
         <div className="nav-list">
           <ul>
             <li>
-              <Link to="/uslugi">
+              <Link to="/uslugi" onClick={(e) => handleNav(e, 'services')}>
                 <span>Usługi</span>
                 <ArrowDown />
               </Link>
               <ul className="nav-list2 services">
                 <div className="max-width">
+                  <button className="mobileElement backBtn" onClick={(e) => handleNav(e)}>
+                    <ArrowLeft />
+                    <span>Wróć</span>
+                  </button>
+                  <h3 className="mobileElement"><Link to="/projekty">Wszystkie usługi</Link></h3>
                   <li><Link to="/web-development"><h3>Web Development</h3></Link>
                     <ul className="nav-list3">
                       <li><Link to="/strony-internetowe">Strony internetowe</Link></li>
@@ -151,7 +164,7 @@ const Nav = () => {
                       <li><Link to="/sklepy-internetowe">Sklepy internetowe</Link></li>
                     </ul>
                   </li>
-                  <li><Link to="/grafika-design-kreacja"><h3>Grafika & design & kreacja</h3></Link>
+                  <li><Link to="/grafika-design-kreacja"><h3>Grafika & design</h3></Link>
                     <ul className="nav-list3">
                       <li><Link to="/strony-internetowe">Logo</Link></li>
                       <li><Link to="/aplikacje-internetowe">Audyty</Link></li>
@@ -164,13 +177,17 @@ const Nav = () => {
               </ul>
             </li>
             <li>
-              <Link to="/projekty">
+              <Link to="/projekty" onClick={(e) => handleNav(e, 'caseStudies')}>
                 <span>Projekty</span>
                 <ArrowDown />
               </Link>
               <ul className="nav-list2 caseStudies">
                 <div className="max-width">
-                  <h3 className="mobileLink"><Link to="/projekty">Wszystkie projekty</Link></h3>
+                  <button className="mobileElement backBtn" onClick={(e) => handleNav(e)}>
+                    <ArrowLeft />
+                    <span>Wróć</span>
+                  </button>
+                  <h3 className="mobileElement"><Link to="/projekty">Wszystkie projekty</Link></h3>
                   {caseStudies.nodes.map((caseStudy, i) => (
                     <Link to={`/projekty/${caseStudy.slug}`} key={i}>
                       <GatsbyImage image={caseStudy.thumbnail.localFile.childImageSharp.gatsbyImageData} alt={caseStudy.alternativeText || ''} />
@@ -181,13 +198,17 @@ const Nav = () => {
               </ul>
             </li>
             <li>
-              <Link to="/zespol">
+              <Link to="/zespol" onClick={(e) => handleNav(e, 'team')}>
                 <span>Zespół</span>
                 <ArrowDown />
               </Link>
               <ul className="nav-list2 team">
                 <div className="max-width">
-                  <h3 className="mobileLink"><Link to="/zespol">Zespół</Link></h3>
+                  <button className="mobileElement backBtn" onClick={(e) => handleNav(e)}>
+                    <ArrowLeft />
+                    <span>Wróć</span>
+                  </button>
+                  <h3 className="mobileElement"><Link to="/zespol">Zespół</Link></h3>
                   {team.nodes.map((person, i) => (
                     <Link to={`/zespol/${person.slug}`} key={i}>
                       <GatsbyImage image={person.img.localFile.childImageSharp.gatsbyImageData} alt={person.alternativeText || ''} />
@@ -198,12 +219,16 @@ const Nav = () => {
               </ul>
             </li>
             <li>
-              <Link to="/blog">
+              <Link to="/blog" onClick={(e) => handleNav(e, 'blog')}>
                 <span>Blog</span>
                 <ArrowDown />
               </Link>
               <ul className="nav-list2 blog">
                 <div className="max-width">
+                  <button className="mobileElement backBtn" onClick={(e) => handleNav(e)}>
+                    <ArrowLeft />
+                    <span>Wróć</span>
+                  </button>
                   <div className="entries">
                     <h3><Link to="/blog">Zobacz bloga</Link></h3>
                     {blogEntries.nodes.map((entry, i) => (
@@ -248,13 +273,17 @@ const Nav = () => {
               </ul>
             </li>
             <li>
-              <Link to="/akademia">
+              <Link to="/akademia" onClick={(e) => handleNav(e, 'academy')}>
                 <span>Akademia</span>
                 <ArrowDown />
               </Link>
               <ul className="nav-list2 academy">
                 <div className="max-width">
-                  <h3 className="mobileLink"><Link to="/akademia">Akademia</Link></h3>
+                  <button className="mobileElement backBtn" onClick={(e) => handleNav(e)}>
+                    <ArrowLeft />
+                    <span>Wróć</span>
+                  </button>
+                  <h3 className="mobileElement"><Link to="/akademia">Akademia</Link></h3>
                   <div className="curiosities">
                     <h3><Link to="/ciekawostki">Ciekawostki</Link></h3>
                     {curiosities.nodes.map((curiosity, i) => (
@@ -308,6 +337,7 @@ const Nav = () => {
       </div>
       <div
         className="overlay"
+        aria-hidden="true"
         onClick={() => {
           setNavOpened(false)
           scrollLock(false)
@@ -367,20 +397,22 @@ const StyledNav = styled.nav`
             transition: transform .3s;
           }
         }
-        &:hover,
-        &:focus-within {
-          > a {
-            &::before {
-              transform: scaleY(1);
+        @media (pointer: fine) and (min-width: 1050px){
+          &:hover,
+          &:focus-within {
+            > a {
+              &::before {
+                transform: scaleY(1);
+              }
+              svg {
+                transform: rotateX(180deg);
+              }
             }
-            svg {
-              transform: rotateX(180deg);
+            .nav-list2 {
+              opacity: 1;
+              transform: translateY(0);
+              pointer-events: auto;
             }
-          }
-          .nav-list2 {
-            opacity: 1;
-            transform: translateY(0);
-            pointer-events: auto;
           }
         }
       }
@@ -412,6 +444,8 @@ const StyledNav = styled.nav`
       .max-width {
         display: grid;
         grid-template: "one two three" "one two four";
+        grid-template-columns: repeat(3, 1fr);
+        gap:32px;
       }
       li {
         a {
@@ -607,7 +641,7 @@ const StyledNav = styled.nav`
     display: none;
     span {
       display: block;
-      width: 30px;
+      width: 34px;
       height: 2px;
       background-color: var(--neutral-200);
       margin: 11px 0;
@@ -627,32 +661,46 @@ const StyledNav = styled.nav`
       }
     }
   }
-  .mobileLink {
+  .backBtn {
+    display: flex;
+    align-items: center;
+    font-size: ${32/16}rem;
+    gap:4px;
+  }
+  .mobileElement {
     display: none;
   }
-  @media (pointer: coarse) or (max-width: 999px){
+  @media (pointer: coarse) or (max-width: 1049px){
     #nav-toggle {
       display: block;
     }
     .nav-list {
       width: 100%;
-      max-width: 550px;
       position: absolute;
       right: 0;
       top: var(--nav-height);
       height: calc(100vh - var(--nav-height));
       height: calc(100dvh - var(--nav-height));
       background-color: var(--neutral-950);
-      transition: transform .4s;
-      transform: translateX(100%);
+      transition: transform .4s, opacity .4s;
+      pointer-events: none;
+      opacity: 0;
+      transform: translateY(-8px);
+      overflow-x: hidden;
       ul {
         display: block;
         > li > a {
           font-size: ${32/16}rem;
         }
       }
-      & > ul > li > a svg {
-        transform: rotate(-90deg);
+      & > ul {
+        margin: ${40/16}rem 0 0 0;
+        > li {
+          margin: 0 16px;
+          > a svg {
+            transform: rotate(-90deg);
+          }
+        }
       }
     }
     .overlay {
@@ -666,9 +714,7 @@ const StyledNav = styled.nav`
       transition: opacity .5s;
     }
     .nav-list2 {
-      transform: translateY(-8px);
-      opacity: 0;
-      pointer-events: none;
+      transform: translateX(-8px);
       transition: transform .5s cubic-bezier(0.23,1,0.32,1);
       top: 0;
       height: calc(100vh - var(--nav-height));
@@ -685,7 +731,7 @@ const StyledNav = styled.nav`
       }
       &.services {
         .max-width {
-          display: grid;
+          display: block;
           grid-template:"one" "two" "three" "four";
         }
         li {
@@ -694,16 +740,16 @@ const StyledNav = styled.nav`
             font-size: ${20/16}rem;
             margin-bottom: 1rem;
           }
-          &:nth-child(1) {
+          &:nth-of-type(1) {
             grid-area: one;
           }
-          &:nth-child(2) {
+          &:nth-of-type(2) {
             grid-area: two;
           }
-          &:nth-child(3) {
+          &:nth-of-type(3) {
             grid-area: three;
           }
-          &:nth-child(4) {
+          &:nth-of-type(4) {
             grid-area: four;
           }
         }
@@ -875,17 +921,33 @@ const StyledNav = styled.nav`
         }
       }
     }
-    .mobileLink {
-      display: block;
+    &[data-expand="services"] .nav-list2.services,
+    &[data-expand="caseStudies"] .nav-list2.caseStudies,
+    &[data-expand="team"] .nav-list2.team,
+    &[data-expand="blog"] .nav-list2.blog,
+    &[data-expand="academy"] .nav-list2.academy {
+      opacity: 1;
+      transform: translateX(0);
+      pointer-events: auto;
+    }
+    .mobileElement {
+      display: flex;
     }
     &[aria-expanded="true"] {
       .nav-list {
-        transform: translateX(0);
+        transform: translateY(0);
+        opacity: 1;
+        pointer-events: auto;
       }
       .overlay {
         opacity: 1;
         pointer-events: auto;
       }
+    }
+  }
+  @media (max-width: 499px){
+    .nav-cta {
+      display: none;
     }
   }
 `
