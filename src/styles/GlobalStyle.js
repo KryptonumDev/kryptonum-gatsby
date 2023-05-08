@@ -21,6 +21,10 @@ const GlobalStyle = createGlobalStyle`
     --neutral-950: #040606;
     --primary-400: #2DD282;
   }
+  body.scrollLock {
+    overflow: hidden;
+    touch-action: none;
+  } 
   body {
     min-width: 320px;
     background-color: var(--neutral-950);

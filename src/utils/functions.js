@@ -3,13 +3,13 @@ export const transformBToStrong = (text) => {
 }
 
 export const scrollLock = (boolean) => {
-  const html = (typeof document !== `undefined`) ? document.documentElement : null;
+  const body = (typeof document !== `undefined`) ? document.body : null;
   switch (boolean) {
     case true:
-      html.style.overflow = 'hidden';
+      body.classList.add('scrollLock');
       break;
     case false:
-      html.style.overflow = null;
+      body.classList.remove('scrollLock');
       break;
     default: 
       break
