@@ -11,5 +11,7 @@ export const scrollLock = (boolean) => {
     case false:
       html.style.overflow = null;
       break;
+    default: 
+      break
   }
 }

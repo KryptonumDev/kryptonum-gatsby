@@ -72,31 +72,6 @@ export const KryptonumLogo = () => (
   </svg>
 )
 
-export const NewTab = () => (
-  <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" fill="none">
-    <path
-      stroke="url(#a)"
-      strokeLinecap="round"
-      strokeLinejoin="round"
-      strokeWidth="2"
-      d="M1 11L11 1m0 0H1m10 0v10"
-    ></path>
-    <defs>
-      <linearGradient
-        id="a"
-        x1="10.813"
-        x2="0.405"
-        y1="1"
-        y2="1.663"
-        gradientUnits="userSpaceOnUse"
-      >
-        <stop stopColor="#2DD282"></stop>
-        <stop offset="1" stopColor="#90F4E8"></stop>
-      </linearGradient>
-    </defs>
-  </svg>
-)
-
 export const HeadingDecoration = () => (
   <svg xmlns='http://www.w3.org/2000/svg' width='48' height='48' viewBox='0 0 48 42' fill='none'>
     <path
@@ -106,10 +81,10 @@ export const HeadingDecoration = () => (
   </svg>
 )
 
-export const ArrowTopRight = () => (
+export const ArrowTopRight = ({ id=`arrow_${Math.random().toString(36).substring(2, 7)}` }) => (
   <svg xmlns='http://www.w3.org/2000/svg' width='24' height='24' fill='none'>
     <path
-      stroke='url(#ArrowTopRight)'
+      stroke={`url(#${id})`}
       strokeLinecap='round'
       strokeLinejoin='round'
       strokeWidth='2'
@@ -117,7 +92,7 @@ export const ArrowTopRight = () => (
     ></path>
     <defs>
       <linearGradient
-        id='ArrowTopRight'
+        id={id}
         x1='17.738'
         x2='7.331'
         y1='7'
@@ -129,7 +104,7 @@ export const ArrowTopRight = () => (
       </linearGradient>
     </defs>
   </svg>
-)
+);
 
 export const ArrowDown = () => (
   <svg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 16 16' fill='none'>
@@ -139,6 +114,18 @@ export const ArrowDown = () => (
       strokeLinejoin='round'
       strokeWidth='2'
       d='M4.664 6l4 4 4-4'
+    ></path>
+  </svg>
+)
+
+export const ArrowLeft = () => (
+  <svg xmlns='http://www.w3.org/2000/svg' width='40' height='40' fill='none'>
+    <path
+      stroke='#EFF0F3'
+      strokeLinecap='round'
+      strokeLinejoin='round'
+      strokeWidth='2'
+      d='M25 30L15 20l10-10'
     ></path>
   </svg>
 )

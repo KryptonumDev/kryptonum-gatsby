@@ -29,6 +29,7 @@ const GlobalStyle = createGlobalStyle`
     font-family: 'Poppins', sans-serif;
     font-feature-settings: 'pnum' on, 'onum' on, 'ss01' on, 'ss03' on, 'ss04' on;
     overflow-x: hidden;
+    -webkit-tap-highlight-color: transparent;
   }
   :focus {
     outline: none;
@@ -39,7 +40,10 @@ const GlobalStyle = createGlobalStyle`
   }
   main, .max-width {
     max-width: 1920px;
-    width: calc(100% - 32px);
+    width: calc(100% - 80px);
+    @media (max-width: 767px){
+      width: calc(100% - 32px);
+    }
     margin: 0 auto;
   }
   svg {
@@ -52,6 +56,11 @@ const GlobalStyle = createGlobalStyle`
   button {
     border: none;
     background-color: transparent;
+    cursor: pointer;
+  }
+  input, textarea, button, select {
+    font: inherit;
+    color: inherit;
   }
   h1, h2, h3, h4, h5, h6 {
     letter-spacing: -0.005em;
@@ -66,8 +75,8 @@ const GlobalStyle = createGlobalStyle`
     font-size: clamp(${28/16}rem, ${50/7.68}vw, ${56/16}rem);
   }
   .cta-wrapper {
-    display: grid;
-    justify-items: flex-end;
+    display: inline-flex;
+    flex-direction: column;
     gap: 24px;
   }
   .cta {
