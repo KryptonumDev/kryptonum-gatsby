@@ -24,7 +24,7 @@ const GlobalStyle = createGlobalStyle`
   body.scrollLock {
     overflow: hidden;
     touch-action: none;
-  } 
+  }
   body {
     min-width: 320px;
     background-color: var(--neutral-950);
@@ -55,11 +55,12 @@ const GlobalStyle = createGlobalStyle`
     outline-offset: 5px;
   }
   main, .max-width {
-    max-width: 1920px;
-    width: calc(100% - 80px);
+    --pageMargin: 40px;
     @media (max-width: 767px){
-      width: calc(100% - 32px);
+     --pageMargin: 16px;
     }
+    max-width: 1920px;
+    width: calc(100% - var(--pageMargin)*2);
     margin: 0 auto;
   }
   svg {
@@ -97,17 +98,21 @@ const GlobalStyle = createGlobalStyle`
   }
   .cta {
     font-size: clamp(1rem, ${22/7.68}vw, ${22/16}rem);
-    display: flex;
+    display: inline-flex;
     align-items: center;
+    justify-content: center;
     white-space: nowrap;
+    position: relative;
+    gap: 12px;
     svg {
       flex-shrink: 0;
-      margin-left: 12px;
     }
     &.primary {
-      position: relative;
       border-radius: 2px;
       padding: ${12/16}rem ${42/16}rem;
+      @media (max-width: 369px){
+        padding: ${12/16}rem ${24/16}rem;
+      }
       background: linear-gradient(var(--neutral-950), var(--neutral-950)) padding-box,
                   linear-gradient(90deg, #90F4E8, #2DD282) border-box;
       border: 2px solid transparent;
@@ -144,23 +149,27 @@ const GlobalStyle = createGlobalStyle`
     }
     &.secondary {
       text-decoration: underline;
-      &::before, &::after {
-        content: attr(data-text);
-        position: absolute;
-        opacity: 0;
-        transition: opacity .3s;
+      span {
+        position: relative;
+        &::before, &::after {
+          content: attr(data-text);
+          position: absolute;
+          left: 0;
+          opacity: 0;
+          transition: opacity .3s;
+        }
+        &::before {
+          filter: drop-shadow(0px 0px 2px #E1FFFA) drop-shadow(0px 0px 5px #6DF1DD) drop-shadow(0px 0px 15px rgba(55, 193, 131, 0.5));
+        }
+        &::after {
+          filter: drop-shadow(0px 0px 2px #FFFFFF) drop-shadow(0px 0px 6px #E1FFFA) drop-shadow(0px 0px 25px #6DF1DD) drop-shadow(0px 0px 35px rgba(55, 193, 131, 0.75));
+        }
       }
-      &::before {
-        filter: drop-shadow(0px 0px 2px #E1FFFA) drop-shadow(0px 0px 5px #6DF1DD) drop-shadow(0px 0px 15px rgba(55, 193, 131, 0.5));
-      }
-      &::after {
-        filter: drop-shadow(0px 0px 2px #FFFFFF) drop-shadow(0px 0px 6px #E1FFFA) drop-shadow(0px 0px 25px #6DF1DD) drop-shadow(0px 0px 35px rgba(55, 193, 131, 0.75));
-      }
-      &:hover::before,
-      &:active::after {
+      &:hover span::before,
+      &:active span:after {
         opacity: 1;
       }
-      &:active::before {
+      &:active span::before {
         opacity: 0;
       }
     }

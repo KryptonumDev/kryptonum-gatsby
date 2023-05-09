@@ -26,14 +26,19 @@ export const query = graphql`
         target
         isExternal
       }
-      heroImg {
-        alternativeText
-        localFile {
-          childImageSharp {
-            gatsbyImageData
+      heroCaseStudies {
+        name
+        slug
+        thumbnail {
+          alternativeText
+          localFile {
+            childImageSharp {
+              gatsbyImageData
+            }
           }
         }
       }
+      heroCaseStudiesLink
     }
   }
 `

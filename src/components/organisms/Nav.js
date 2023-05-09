@@ -1,10 +1,11 @@
-import React, { useState } from "react";
+import React, { useRef, useState } from "react";
 import { graphql, Link, useStaticQuery } from "gatsby";
 import { GatsbyImage } from "gatsby-plugin-image";
 import styled from "styled-components";
 import { ArrowDown, ArrowLeft, ArrowTopRight, KryptonumLogo } from '../atoms/Icons';
 import { scrollLock } from "../../utils/functions";
 import { useEffect } from "react";
+import Button from "../atoms/Button";
 
 const Nav = () => {
   const {caseStudies, team, blogEntries, blogCategories, curiosities, technologies} = useStaticQuery(graphql`
@@ -102,9 +103,10 @@ const Nav = () => {
   `);
 
   const [navOpened, setNavOpened] = useState(false);
+  const nav = useRef(null);
+
   useEffect(() => {
-    const nav = document.querySelector('.nav');
-    const navHeight = nav.offsetHeight;
+    const navHeight = nav.current.offsetHeight;
     let prevScrollPos = window.pageYOffset;
     let currentScrollPos = prevScrollPos;
     let scrollDistance = 0;
@@ -112,23 +114,29 @@ const Nav = () => {
       prevScrollPos = currentScrollPos;
       currentScrollPos = window.pageYOffset;
       if (currentScrollPos < prevScrollPos && currentScrollPos > navHeight) {
-        nav.classList.add('fixed');
+        nav.current.classList.add('fixed');
         scrollDistance = 0;
-      } else if(nav.classList.contains('fixed')) {
+      } else if(nav.current.classList.contains('fixed')) {
         scrollDistance += prevScrollPos - currentScrollPos;
         if (scrollDistance * -1 >= navHeight) {
-          nav.classList.remove('fixed');
+          nav.current.classList.remove('fixed');
           scrollDistance = 0;
         }
       }
       if (currentScrollPos === 0) {
-        nav.classList.remove('fixed');
+        nav.current.classList.remove('fixed');
       }
     });
 
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape') {
+        setNavOpened(false)
+        scrollLock(false)
+      }
+    })
   }, [])
 
-  const handleNav = (e, item) => {
+  const handleNavLinks = (e, item) => {
     if (window.matchMedia('(pointer: coarse), (max-width: 1049px)').matches) {
       e.preventDefault();
       const nav = document.querySelector('.nav');
@@ -137,8 +145,18 @@ const Nav = () => {
       : nav.removeAttribute('data-expand');
     }      
   }
+
+  const handleNavToggle = () => {
+    if(!nav.current.classList.contains('fixed')){
+      window.scrollTo({top: 0});
+    }
+    setNavOpened(!navOpened)
+    scrollLock(!navOpened)
+  }
+
+
   return (
-    <StyledNav className="nav" aria-expanded={navOpened}>
+    <StyledNav className="nav" aria-expanded={navOpened} ref={nav}>
       <div className="max-width">
         <Link to="/">
           <KryptonumLogo />
@@ -146,13 +164,13 @@ const Nav = () => {
         <div className="nav-list">
           <ul>
             <li>
-              <Link to="/uslugi" onClick={(e) => handleNav(e, 'services')}>
+              <Link to="/uslugi" onClick={(e) => handleNavLinks(e, 'services')}>
                 <span>Usługi</span>
                 <ArrowDown />
               </Link>
               <ul className="nav-list2 services">
                 <div className="max-width">
-                  <button className="mobileElement backBtn" onClick={(e) => handleNav(e)}>
+                  <button className="mobileElement backBtn" onClick={(e) => handleNavLinks(e)}>
                     <ArrowLeft />
                     <span>Wróć</span>
                   </button>
@@ -177,13 +195,13 @@ const Nav = () => {
               </ul>
             </li>
             <li>
-              <Link to="/projekty" onClick={(e) => handleNav(e, 'caseStudies')}>
+              <Link to="/projekty" onClick={(e) => handleNavLinks(e, 'caseStudies')}>
                 <span>Projekty</span>
                 <ArrowDown />
               </Link>
               <ul className="nav-list2 caseStudies">
                 <div className="max-width">
-                  <button className="mobileElement backBtn" onClick={(e) => handleNav(e)}>
+                  <button className="mobileElement backBtn" onClick={(e) => handleNavLinks(e)}>
                     <ArrowLeft />
                     <span>Wróć</span>
                   </button>
@@ -198,13 +216,13 @@ const Nav = () => {
               </ul>
             </li>
             <li>
-              <Link to="/zespol" onClick={(e) => handleNav(e, 'team')}>
+              <Link to="/zespol" onClick={(e) => handleNavLinks(e, 'team')}>
                 <span>Zespół</span>
                 <ArrowDown />
               </Link>
               <ul className="nav-list2 team">
                 <div className="max-width">
-                  <button className="mobileElement backBtn" onClick={(e) => handleNav(e)}>
+                  <button className="mobileElement backBtn" onClick={(e) => handleNavLinks(e)}>
                     <ArrowLeft />
                     <span>Wróć</span>
                   </button>
@@ -221,13 +239,13 @@ const Nav = () => {
               </ul>
             </li>
             <li>
-              <Link to="/blog" onClick={(e) => handleNav(e, 'blog')}>
+              <Link to="/blog" onClick={(e) => handleNavLinks(e, 'blog')}>
                 <span>Blog</span>
                 <ArrowDown />
               </Link>
               <ul className="nav-list2 blog">
                 <div className="max-width">
-                  <button className="mobileElement backBtn" onClick={(e) => handleNav(e)}>
+                  <button className="mobileElement backBtn" onClick={(e) => handleNavLinks(e)}>
                     <ArrowLeft />
                     <span>Wróć</span>
                   </button>
@@ -275,13 +293,13 @@ const Nav = () => {
               </ul>
             </li>
             <li>
-              <Link to="/akademia" onClick={(e) => handleNav(e, 'academy')}>
+              <Link to="/akademia" onClick={(e) => handleNavLinks(e, 'academy')}>
                 <span>Akademia</span>
                 <ArrowDown />
               </Link>
               <ul className="nav-list2 academy">
                 <div className="max-width">
-                  <button className="mobileElement backBtn" onClick={(e) => handleNav(e)}>
+                  <button className="mobileElement backBtn" onClick={(e) => handleNavLinks(e)}>
                     <ArrowLeft />
                     <span>Wróć</span>
                   </button>
@@ -322,16 +340,14 @@ const Nav = () => {
             </li>
           </ul>
         </div>
-        <Link to="/kontakt" className="nav-cta cta secondary" data-text="Kontakt">
-          <span>Kontakt</span>
-          <ArrowTopRight />
-        </Link>
+        <Button
+          text='Kontakt'
+          to='/kontakt'
+          className='nav-cta'
+        />
         <button
           id="nav-toggle"
-          onClick={() => {
-            setNavOpened(!navOpened)
-            scrollLock(!navOpened)
-          }}
+          onClick={() => handleNavToggle()}
         >
           <span></span>
           <span></span>
@@ -411,9 +427,8 @@ const StyledNav = styled.nav`
               }
             }
             .nav-list2 {
-              opacity: 1;
               transform: translateY(0);
-              pointer-events: auto;
+              visibility: visible;
             }
           }
         }
@@ -422,8 +437,7 @@ const StyledNav = styled.nav`
   }
   .nav-list2 {
     transform: translateY(-8px);
-    opacity: 0;
-    pointer-events: none;
+    visibility: hidden;
     transition: transform .5s cubic-bezier(0.23,1,0.32,1);
     position: absolute;
     left: 0;
@@ -687,9 +701,8 @@ const StyledNav = styled.nav`
       height: calc(100vh - var(--nav-height));
       height: calc(100dvh - var(--nav-height));
       background-color: var(--neutral-950);
-      transition: transform .4s, opacity .4s;
-      pointer-events: none;
-      opacity: 0;
+      transition: transform .5s cubic-bezier(0.23,1,0.32,1);
+      visibility: hidden;
       transform: translateY(-8px);
       overflow-x: hidden;
       ul {
@@ -701,7 +714,10 @@ const StyledNav = styled.nav`
       & > ul {
         margin: ${40/16}rem 0 0 0;
         > li {
-          margin: 0 16px;
+          margin: 0 40px;
+          @media (max-width: 767px){
+            margin: 0 16px;
+          }
           > a svg {
             width: 40px;
             height: 40px;
@@ -901,15 +917,6 @@ const StyledNav = styled.nav`
         }
       }
     }
-    &[data-expand="services"] .nav-list2.services,
-    &[data-expand="caseStudies"] .nav-list2.caseStudies,
-    &[data-expand="team"] .nav-list2.team,
-    &[data-expand="blog"] .nav-list2.blog,
-    &[data-expand="academy"] .nav-list2.academy {
-      opacity: 1;
-      transform: translateX(0);
-      pointer-events: auto;
-    }
     .mobileElement {
       display: flex;
     }
@@ -917,13 +924,21 @@ const StyledNav = styled.nav`
       .nav-list {
         transform: translateY(0);
         opacity: 1;
-        pointer-events: auto;
+        visibility: visible;
       }
       .overlay {
         opacity: 1;
         pointer-events: auto;
       }
     }
+  }
+  &[data-expand="services"] .nav-list2.services,
+  &[data-expand="caseStudies"] .nav-list2.caseStudies,
+  &[data-expand="team"] .nav-list2.team,
+  &[data-expand="blog"] .nav-list2.blog,
+  &[data-expand="academy"] .nav-list2.academy {
+    transform: translateX(0);
+    visibility: visible;
   }
   @media (max-width: 499px){
     .nav-cta {
