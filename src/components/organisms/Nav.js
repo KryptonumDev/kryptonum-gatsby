@@ -2,7 +2,7 @@ import React, { useRef, useState } from "react";
 import { graphql, Link, useStaticQuery } from "gatsby";
 import { GatsbyImage } from "gatsby-plugin-image";
 import styled from "styled-components";
-import { ArrowDown, ArrowLeft, ArrowTopRight, KryptonumLogo } from '../atoms/Icons';
+import { ArrowDown, ArrowLeft, KryptonumLogo } from '../atoms/Icons';
 import { scrollLock } from "../../utils/functions";
 import { useEffect } from "react";
 import Button from "../atoms/Button";

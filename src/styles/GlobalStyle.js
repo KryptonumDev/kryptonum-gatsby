@@ -63,6 +63,11 @@ const GlobalStyle = createGlobalStyle`
     width: calc(100% - var(--pageMargin)*2);
     margin: 0 auto;
   }
+  main {
+    display: grid;
+    grid-template-columns: 1fr;
+    row-gap: clamp(${96/16}rem, ${144/7.68}vw, ${172/16}rem);
+  }
   svg {
     vertical-align: top;
   }
@@ -85,11 +90,33 @@ const GlobalStyle = createGlobalStyle`
       color: var(--primary-400);
       background-image: linear-gradient(90deg, #90F4E8, #2DD282);
       -webkit-background-clip: text;
+      background-clip: text;
       -webkit-text-fill-color: transparent;
     }
   }
   h1 {
     font-size: clamp(${28/16}rem, ${50/7.68}vw, ${56/16}rem);
+  }
+  h2 {
+    font-size: clamp(${28/16}rem, ${50/7.68}vw, ${48/16}rem);
+  }
+  p {
+    strong {
+      &::before,
+      &::after {
+        color: var(--primary-400);
+        background-image: linear-gradient(90deg, #90F4E8, #2DD282);
+        -webkit-background-clip: text;
+        background-clip: text;
+        -webkit-text-fill-color: transparent;
+      }
+      &::before {
+        content: '[ ';
+      }
+      &::after {
+        content: ' ]';
+      }
+    }
   }
   .cta-wrapper {
     display: inline-flex;
@@ -120,6 +147,7 @@ const GlobalStyle = createGlobalStyle`
         color: var(--primary-400);
         background-image: linear-gradient(90deg, #90F4E8, #2DD282);
         -webkit-background-clip: text;
+        background-clip: text;
         -webkit-text-fill-color: transparent;
       }
       &::before, &::after {

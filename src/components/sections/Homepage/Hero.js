@@ -1,29 +1,24 @@
 import React from "react";
-import { Link } from "gatsby";
 import { GatsbyImage } from "gatsby-plugin-image";
 import styled from "styled-components";
-import { transformBToStrong } from "../../../utils/functions";
-import { HeadingDecoration, ArrowTopRight } from "../../atoms/Icons";
 import Button from '../../atoms/Button';
+import DecorativeHeading from "../../atoms/DecorativeHeading";
 
-const Hero = ({homepage}) => {
-  const {heroHeading, heroSubheading, heroCta, heroCaseStudies, heroCaseStudiesLink} = homepage;
+const Hero = ({data}) => {
+  const {hero_Heading, hero_Subheading, hero_Cta, hero_CaseStudies, hero_CaseStudiesLink} = data;
   return (
-    <StyledHero>
+    <Wrapper>
       <header>
         <div className="copy">
-          <h1>
-            <HeadingDecoration />
-            <span dangerouslySetInnerHTML={{__html: transformBToStrong(heroHeading)}}></span>
-          </h1>
+          <DecorativeHeading type="h1" text={hero_Heading} />
           <ol>
-            {heroSubheading.map((subheading, i) => (
+            {hero_Subheading.map((subheading, i) => (
               <li key={i}>{subheading.text}</li>
             ))}
           </ol>
         </div>
         <div className="cta-wrapper">
-          {heroCta.map((cta, i) => (
+          {hero_Cta.map((cta, i) => (
             <Button
               text={cta.text}
               to={cta.href}
@@ -33,21 +28,21 @@ const Hero = ({homepage}) => {
           ))}
         </div>
       </header>
-      {heroCaseStudies.map((caseStudy, i) => (
+      {hero_CaseStudies.map((caseStudy, i) => (
         <div className="caseStudy">
           <GatsbyImage key={i} image={caseStudy.thumbnail.localFile.childImageSharp.gatsbyImageData} alt={caseStudy.thumbnail.alternativeText || ''} className="img" />
           <Button
-            text={heroCaseStudiesLink}
+            text={hero_CaseStudiesLink}
             to={`projekty/${caseStudy.slug}`}
             aria-label={caseStudy.name}
           />
         </div>
       ))}
-    </StyledHero>
+    </Wrapper>
   );
 }
 
-const StyledHero = styled.section`
+const Wrapper = styled.section`
   header {
     display: grid;
     align-items: flex-end;
@@ -57,14 +52,6 @@ const StyledHero = styled.section`
       max-width: ${739/16}rem;
       h1 {
         margin-bottom: clamp(${28/16}rem, ${40/7.68}vw, ${72/16}rem);
-        display: grid;
-        grid-template-columns: auto auto;
-        gap: 8px;
-        svg {
-          width: 0.86em;
-          height: 0.86em;
-          margin-top: 0.35em;
-        }
       }
       ol {
         margin-left: calc(clamp(24px, ${40/7.68}vw, 48px) + 8px);

@@ -1,32 +1,37 @@
 import * as React from "react"
 import { graphql } from "gatsby"
 import Hero from "../components/sections/Homepage/Hero";
+import Conquest from "../components/sections/Homepage/Conquest";
 
 const IndexPage = ({data:
   {
-    homepage
+    homepage,
   }
 }) => {
   return (
-    <Hero homepage={homepage} />
+    <>
+      <Hero data={homepage} />
+      <Conquest data={homepage} />
+    </>
   )
 }
 
 export const query = graphql`
   query {
     homepage: strapiHomepage {
-      heroHeading
-      heroSubheading {
+      # Hero
+      hero_Heading
+      hero_Subheading {
         text
       }
-      heroCta {
+      hero_Cta {
         theme
         text
         href
         target
         isExternal
       }
-      heroCaseStudies {
+      hero_CaseStudies {
         name
         slug
         thumbnail {
@@ -38,7 +43,23 @@ export const query = graphql`
           }
         }
       }
-      heroCaseStudiesLink
+      hero_CaseStudiesLink
+      # Conquest
+      conquest_Heading
+      conquest_Claim
+      conquest_Paragraph
+      conquest_SecondClaim {
+        data {
+          childMarkdownRemark {
+            html
+          }
+        }
+      }
+      conquest_Cta {
+        theme
+        text
+        href
+      }
     }
   }
 `

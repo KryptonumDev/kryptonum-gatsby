@@ -2,8 +2,7 @@ import React from "react";
 import { Link } from "gatsby";
 import { ArrowTopRight } from "./Icons";
 
-const Button = ({text, to, theme, className, ...props}) => {
-  !theme && (theme = 'secondary');
+const Button = ({theme = 'secondary', text, to, className, ...props}) => {
   return (
     <Link
       className={`${className} cta ${theme}`}
