@@ -2,6 +2,7 @@ import * as React from "react"
 import { graphql } from "gatsby"
 import Hero from "../components/sections/Homepage/Hero";
 import Conquest from "../components/sections/Homepage/Conquest";
+import Challange from "../components/sections/Homepage/Challange";
 
 const IndexPage = ({data:
   {
@@ -12,6 +13,7 @@ const IndexPage = ({data:
     <>
       <Hero data={homepage} />
       <Conquest data={homepage} />
+      <Challange data={homepage} />
     </>
   )
 }
@@ -51,7 +53,7 @@ export const query = graphql`
       conquest_SecondClaim {
         data {
           childMarkdownRemark {
-            html
+            rawMarkdownBody
           }
         }
       }
@@ -60,6 +62,8 @@ export const query = graphql`
         text
         href
       }
+      # Challange
+      challange_Heading
     }
   }
 `

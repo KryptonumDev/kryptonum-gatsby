@@ -85,7 +85,9 @@ const GlobalStyle = createGlobalStyle`
     color: inherit;
   }
   h1, h2, h3, h4, h5, h6 {
+    font-weight: 400;
     letter-spacing: -0.005em;
+    line-height: 1.38;
     strong {
       color: var(--primary-400);
       background-image: linear-gradient(90deg, #90F4E8, #2DD282);

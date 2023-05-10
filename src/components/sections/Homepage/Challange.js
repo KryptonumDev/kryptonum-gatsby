@@ -4,11 +4,11 @@ import styled from "styled-components";
 import Button from "../../atoms/Button";
 import DecorativeHeading from "../../atoms/DecorativeHeading";
 
-const Conquest = ({data}) => {
-  const {conquest_Heading, conquest_Claim, conquest_Paragraph, conquest_SecondClaim, conquest_Cta} = data;
+const Challange = ({data}) => {
+  const {challange_Heading, conquest_Claim, conquest_Paragraph, conquest_SecondClaim, conquest_Cta} = data;
   return (
     <Wrapper>
-      <DecorativeHeading type="h2" text={conquest_Heading} />
+      <DecorativeHeading type="h2" text={challange_Heading} />
       <ReactMarkdown
         children={conquest_Claim}
       />
@@ -47,7 +47,7 @@ const Wrapper = styled.section`
       font-size: .8em;
     }
     em {
-      color: var(--neutral-600);
+      color: var(--neutral-700);
       font-style: normal;
     }
     .cta {
@@ -56,4 +56,4 @@ const Wrapper = styled.section`
   }
 `
  
-export default Conquest;
+export default Challange;

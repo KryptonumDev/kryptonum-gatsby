@@ -29,10 +29,10 @@ const Hero = ({data}) => {
         </div>
       </header>
       {hero_CaseStudies.map((caseStudy, i) => (
-        <div className="caseStudy">
+        <div className="caseStudy" key={i}>
           <GatsbyImage key={i} image={caseStudy.thumbnail.localFile.childImageSharp.gatsbyImageData} alt={caseStudy.thumbnail.alternativeText || ''} className="img" />
           <Button
-            text={hero_CaseStudiesLink}
+            text={`${hero_CaseStudiesLink} ${caseStudy.name}`}
             to={`projekty/${caseStudy.slug}`}
             aria-label={caseStudy.name}
           />
