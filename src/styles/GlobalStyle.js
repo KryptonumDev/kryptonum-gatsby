@@ -111,6 +111,7 @@ const GlobalStyle = createGlobalStyle`
         -webkit-background-clip: text;
         background-clip: text;
         -webkit-text-fill-color: transparent;
+        white-space: pre;
       }
       &::before {
         content: '[ ';
@@ -139,7 +140,8 @@ const GlobalStyle = createGlobalStyle`
     &.primary {
       border-radius: 2px;
       padding: ${12/16}rem ${42/16}rem;
-      @media (max-width: 369px){
+      @media (max-width: 499px){
+        width: 100%;
         padding: ${12/16}rem ${24/16}rem;
       }
       background: linear-gradient(var(--neutral-950), var(--neutral-950)) padding-box,

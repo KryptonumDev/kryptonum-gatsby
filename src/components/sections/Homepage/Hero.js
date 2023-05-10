@@ -127,9 +127,6 @@ const Wrapper = styled.section`
         margin-left: 0;
         flex-direction: column;
         align-items: center;
-        .primary {
-          width: 100%;
-        }
       }
     }
   }

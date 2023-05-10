@@ -5,22 +5,22 @@ import Button from "../../atoms/Button";
 import DecorativeHeading from "../../atoms/DecorativeHeading";
 
 const Challange = ({data}) => {
-  const {challange_Heading, conquest_Claim, conquest_Paragraph, conquest_SecondClaim, conquest_Cta} = data;
+  const {challenge_Heading, challenge_Claim, challenge_Paragraph, challenge_SecondClaim, challenge_Cta} = data;
   return (
     <Wrapper>
-      <DecorativeHeading type="h2" text={challange_Heading} />
+      <DecorativeHeading type="h2" text={challenge_Heading} />
       <ReactMarkdown
-        children={conquest_Claim}
+        children={challenge_Claim}
       />
-      <p>{conquest_Paragraph}</p>
+      <p>{challenge_Paragraph}</p>
       <div>
         <ReactMarkdown
-          children={conquest_SecondClaim.data.childMarkdownRemark.rawMarkdownBody}
+          children={challenge_SecondClaim.data.childMarkdownRemark.rawMarkdownBody}
         />
         <Button
-          theme={conquest_Cta.theme}
-          text={conquest_Cta.text}
-          to={conquest_Cta.href}
+          theme={challenge_Cta.theme}
+          text={challenge_Cta.text}
+          to={challenge_Cta.href}
         />
       </div>
     </Wrapper>
@@ -44,7 +44,6 @@ const Wrapper = styled.section`
     font-size: clamp(1rem, ${22/7.68}vw, ${22/16}rem);
     p:last-of-type {
       margin-top: ${12/16}rem;
-      font-size: .8em;
     }
     em {
       color: var(--neutral-700);
@@ -52,6 +51,26 @@ const Wrapper = styled.section`
     }
     .cta {
       margin-top: ${48/16}rem;
+    }
+  }
+  @media (max-width: 1149px){
+    grid-template-columns: 1fr;
+    gap: 0;
+    h2 {
+      margin-bottom: ${32/16}rem;
+    }
+    > p {
+      &:nth-of-type(1) {
+        margin-bottom: ${24/16}rem;
+      }
+      &:nth-of-type(2) {
+        margin-bottom: 1rem;
+      }
+    }
+    div {
+      .cta {
+        margin-top: ${32/16}rem;
+      }
     }
   }
 `

@@ -2,7 +2,7 @@ import * as React from "react"
 import { graphql } from "gatsby"
 import Hero from "../components/sections/Homepage/Hero";
 import Conquest from "../components/sections/Homepage/Conquest";
-import Challange from "../components/sections/Homepage/Challange";
+import Challange from "../components/sections/Homepage/Challenge";
 
 const IndexPage = ({data:
   {
@@ -63,7 +63,21 @@ export const query = graphql`
         href
       }
       # Challange
-      challange_Heading
+      challenge_Heading
+      challenge_Claim
+      challenge_Paragraph
+      challenge_SecondClaim {
+        data {
+          childMarkdownRemark {
+            rawMarkdownBody
+          }
+        }
+      }
+      challenge_Cta {
+        theme
+        text
+        href
+      }
     }
   }
 `

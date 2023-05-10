@@ -44,7 +44,7 @@ const Wrapper = styled.section`
     font-size: clamp(1rem, ${22/7.68}vw, ${22/16}rem);
     p:last-of-type {
       margin-top: ${12/16}rem;
-      font-size: .8em;
+      font-size: ${14/16}em;
     }
     em {
       color: var(--neutral-600);
@@ -52,6 +52,26 @@ const Wrapper = styled.section`
     }
     .cta {
       margin-top: ${48/16}rem;
+    }
+  }
+  @media (max-width: 1149px){
+    grid-template-columns: 1fr;
+    gap: 0;
+    h2 {
+      margin-bottom: ${32/16}rem;
+    }
+    > p {
+      &:nth-of-type(1) {
+        margin-bottom: ${24/16}rem;
+      }
+      &:nth-of-type(2) {
+        margin-bottom: 1rem;
+      }
+    }
+    div {
+      .cta {
+        margin-top: ${32/16}rem;
+      }
     }
   }
 `

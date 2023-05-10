@@ -5,7 +5,7 @@ import { ArrowTopRight } from "./Icons";
 const Button = ({theme = 'secondary', text, to, className, ...props}) => {
   return (
     <Link
-      className={`${className} cta ${theme}`}
+      className={`cta ${theme}${className ? ` ${className}` : ''}`}
       to={to}
       {...props}
     >
