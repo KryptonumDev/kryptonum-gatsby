@@ -102,23 +102,22 @@ const GlobalStyle = createGlobalStyle`
   h2 {
     font-size: clamp(${28/16}rem, ${50/7.68}vw, ${48/16}rem);
   }
-  p {
-    strong {
-      &::before,
-      &::after {
-        color: var(--primary-400);
-        background-image: linear-gradient(90deg, #90F4E8, #2DD282);
-        -webkit-background-clip: text;
-        background-clip: text;
-        -webkit-text-fill-color: transparent;
-        white-space: pre;
-      }
-      &::before {
-        content: '[ ';
-      }
-      &::after {
-        content: ' ]';
-      }
+  p strong,
+  .strong {
+    &::before,
+    &::after {
+      color: var(--primary-400);
+      background-image: linear-gradient(90deg, #90F4E8, #2DD282);
+      -webkit-background-clip: text;
+      background-clip: text;
+      -webkit-text-fill-color: transparent;
+      white-space: pre;
+    }
+    &::before {
+      content: '[ ';
+    }
+    &::after {
+      content: ' ]';
     }
   }
   .cta-wrapper {

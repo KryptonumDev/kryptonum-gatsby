@@ -158,7 +158,7 @@ const Nav = () => {
   return (
     <StyledNav className="nav" aria-expanded={navOpened} ref={nav}>
       <div className="max-width">
-        <Link to="/">
+        <Link to="/" aria-label="Strona główna">
           <KryptonumLogo />
         </Link>
         <div className="nav-list">
@@ -348,6 +348,7 @@ const Nav = () => {
         <button
           id="nav-toggle"
           onClick={() => handleNavToggle()}
+          aria-label="Nawigacja"
         >
           <span></span>
           <span></span>
@@ -704,6 +705,7 @@ const StyledNav = styled.nav`
       transition: transform .5s cubic-bezier(0.23,1,0.32,1);
       visibility: hidden;
       transform: translateY(-8px);
+      opacity: 0;
       overflow-x: hidden;
       ul {
         display: block;

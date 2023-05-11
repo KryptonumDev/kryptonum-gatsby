@@ -11,3 +11,7 @@ export const scrollLock = (boolean) => {
       break
   }
 }
+
+export const Clamp = (minRem, vw, maxRem) => {
+  return `clamp(${minRem / 16}rem, ${vw/7.68}vw, ${maxRem / 16}rem)`;
+};

@@ -18,7 +18,7 @@ const DecorativeHeading = ({type="h1", text}) => {
 }
 
 const Wrapper = styled.h1`
-  display: inline-grid;
+  display: grid;
   grid-template-columns: auto auto;
   gap: 8px;
   width: fit-content;
