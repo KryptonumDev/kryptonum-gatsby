@@ -3,6 +3,7 @@ import { GatsbyImage } from "gatsby-plugin-image";
 import styled from "styled-components";
 import Button from '../../atoms/Button';
 import DecorativeHeading from "../../atoms/DecorativeHeading";
+import { Clamp } from '../../../utils/functions';
 
 const Hero = ({data}) => {
   const {hero_Heading, hero_Subheading, hero_Cta, hero_CaseStudies, hero_CaseStudiesLink} = data;
@@ -10,7 +11,7 @@ const Hero = ({data}) => {
     <Wrapper>
       <header>
         <div className="copy">
-          <DecorativeHeading type="h1" text={hero_Heading} />
+          <DecorativeHeading type="h1">{hero_Heading}</DecorativeHeading>
           <ol>
             {hero_Subheading.map((subheading, i) => (
               <li key={i}>{subheading.text}</li>
@@ -51,24 +52,24 @@ const Wrapper = styled.section`
     .copy {
       max-width: ${739/16}rem;
       h1 {
-        margin-bottom: clamp(${28/16}rem, ${40/7.68}vw, ${72/16}rem);
+        margin-bottom: ${Clamp(28, 40, 72)};
       }
       ol {
-        margin-left: calc(clamp(24px, ${40/7.68}vw, 48px) + 8px);
-        counter-reset: ol;
+        margin-left: calc(${Clamp(24, 40, 48)} + 8px);
+        counter-reset: counter;
         li {
-          counter-increment: ol;
+          counter-increment: counter;
           list-style-type: none;
-          font-size: clamp(${20/16}rem, ${32/7.68}vw, ${28/16}rem);
+          font-size: ${Clamp(20, 32, 28)};
           display: grid;
           grid-template-columns: 32px auto;
-          column-gap: clamp(${12/16}rem, ${16/7.68}vw, ${32/16}rem);
+          column-gap: ${Clamp(12, 16, 32)};
           align-items: baseline;
           &:not(:last-child){
             margin-bottom: .5rem;
           }
           &::before {
-            content: "/0" counter(ol);
+            content: "/0" counter(counter);
             display: inline-block;
             font-size: 1rem;
           }
@@ -103,11 +104,11 @@ const Wrapper = styled.section`
   }
   @media (max-width: 1189px){
     header {
-      margin: clamp(${48/16}rem, ${128/7.68}vw, ${128/16}rem) 0 clamp(${96/16}rem, ${144/7.68}vw, ${144/16}rem);
+      margin: ${Clamp(48, 128, 128)} 0 ${Clamp(96, 144, 144)};
       grid-template-columns: 1fr;
       .cta-wrapper {
-        margin-top: clamp(${64/16}rem, ${96/7.68}vw, ${96/16}rem);
-        margin-left: calc(clamp(24px, ${40/7.68}vw, 48px) + 8px);
+        margin-top: ${Clamp(64, 96, 96)};
+        margin-left: calc(${Clamp(24, 40, 48)} + 8px);
         align-items: flex-start;
         flex-direction: column-reverse;
       }

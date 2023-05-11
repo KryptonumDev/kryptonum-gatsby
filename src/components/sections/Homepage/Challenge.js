@@ -3,12 +3,13 @@ import ReactMarkdown from 'react-markdown'
 import styled from "styled-components";
 import Button from "../../atoms/Button";
 import DecorativeHeading from "../../atoms/DecorativeHeading";
+import { Clamp } from '../../../utils/functions';
 
 const Challange = ({data}) => {
   const {challenge_Heading, challenge_Claim, challenge_Paragraph, challenge_SecondClaim, challenge_Cta} = data;
   return (
     <Wrapper>
-      <DecorativeHeading type="h2" text={challenge_Heading} />
+      <DecorativeHeading type="h2">{challenge_Heading}</DecorativeHeading>
       <ReactMarkdown
         children={challenge_Claim}
       />
@@ -34,14 +35,14 @@ const Wrapper = styled.section`
   gap: 80px 32px;
   > p {
     &:nth-of-type(1) {
-      font-size: clamp(${20/16}rem, ${32/7.68}vw, ${32/16}rem);
+      font-size: ${Clamp(20, 32, 32)};
     }
     &:nth-of-type(2) {
-      font-size: clamp(${20/16}rem, ${22/7.68}vw, ${30/16}rem);
+      font-size: ${Clamp(20, 22, 30)};
     }
   }
   div {
-    font-size: clamp(1rem, ${22/7.68}vw, ${22/16}rem);
+    font-size: ${Clamp(16, 22, 22)};
     p:last-of-type {
       margin-top: ${12/16}rem;
     }

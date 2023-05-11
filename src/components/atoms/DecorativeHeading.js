@@ -3,12 +3,12 @@ import ReactMarkdown from "react-markdown";
 import { HeadingDecoration } from "./Icons";
 import styled from "styled-components";
 
-const DecorativeHeading = ({type="h1", text}) => {
+const DecorativeHeading = ({type="h1", children}) => {
   return (
     <Wrapper as={type}>
       <HeadingDecoration />
       <ReactMarkdown
-        children={text}
+        children={children}
         components={{
           p: 'span',
         }}

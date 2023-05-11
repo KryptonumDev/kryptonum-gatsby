@@ -3,6 +3,8 @@ import { graphql } from "gatsby"
 import Hero from "../components/sections/Homepage/Hero";
 import Conquest from "../components/sections/Homepage/Conquest";
 import Challange from "../components/sections/Homepage/Challenge";
+import Services from "../components/sections/Homepage/Services";
+import Creativity from "../components/sections/Homepage/Creativity";
 
 const IndexPage = ({data:
   {
@@ -14,6 +16,8 @@ const IndexPage = ({data:
       <Hero data={homepage} />
       <Conquest data={homepage} />
       <Challange data={homepage} />
+      <Services data={homepage} />
+      <Creativity data={homepage} />
     </>
   )
 }
@@ -77,6 +81,20 @@ export const query = graphql`
         theme
         text
         href
+      }
+      #services
+      services_Heading
+      services_List {
+        title
+        description
+      }
+      #creativity
+      creativity {
+        data {
+          childMarkdownRemark {
+            rawMarkdownBody
+          }
+        }
       }
     }
   }
