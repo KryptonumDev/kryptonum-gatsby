@@ -230,7 +230,7 @@ const Nav = () => {
                   <div className="wrapper">
                     {team.nodes.map((person, i) => (
                       <Link to={`/zespol/${person.slug}`} key={i} className="item">
-                        <GatsbyImage image={person.img.localFile.childImageSharp.gatsbyImageData} alt={person.alternativeText || ''} className="item-img" />
+                        <GatsbyImage image={person.img.localFile.childImageSharp.gatsbyImageData} alt={person.alternativeText || ''} className="img person-border" />
                         <p>{person.name}</p>
                       </Link>
                     ))}
@@ -258,7 +258,7 @@ const Nav = () => {
                         <div className="copy">
                           <div className="copy-top">
                             <Link to={`/blog/autor/${entry.author[0].slug}`}>
-                              <GatsbyImage image={entry.author[0].img.localFile.childImageSharp.gatsbyImageData} alt={entry.author[0].img.alternativeText || ''} />
+                              <GatsbyImage image={entry.author[0].img.localFile.childImageSharp.gatsbyImageData} alt={entry.author[0].img.alternativeText || ''} className="person-border" />
                               <span>{entry.author[0].name}</span>
                             </Link>
                             <span>{entry.publishedAt}</span>
@@ -283,7 +283,7 @@ const Nav = () => {
                     <div className="wrapper">
                       {team.nodes.map((person, i) => (
                         <Link to={`/blog/autor/${person.slug}`} key={i}>
-                          <GatsbyImage image={person.img.localFile.childImageSharp.gatsbyImageData} alt={person.alternativeText || ''} />
+                          <GatsbyImage image={person.img.localFile.childImageSharp.gatsbyImageData} alt={person.alternativeText || ''} className="person-border" />
                           <p>{person.name}</p>
                         </Link>
                       ))}
@@ -329,7 +329,7 @@ const Nav = () => {
                     <div className="wrapper">
                       {team.nodes.map((person, i) => (
                         <Link to={`/blog/autor/${person.slug}`} key={i}>
-                          <GatsbyImage image={person.img.localFile.childImageSharp.gatsbyImageData} alt={person.alternativeText || ''} />
+                          <GatsbyImage image={person.img.localFile.childImageSharp.gatsbyImageData} alt={person.alternativeText || ''} className="person-border" />
                           <p>{person.name}</p>
                         </Link>
                       ))}
@@ -512,6 +512,10 @@ const StyledNav = styled.nav`
         p {
           font-size: ${22/16}rem;
           margin-top: ${8/16}rem;
+        }
+        .img {
+          width: 96px;
+          height: 96px;
         }
       }
     }
