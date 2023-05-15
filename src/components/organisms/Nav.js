@@ -18,7 +18,7 @@ const Nav = () => {
             alternativeText
             localFile {
               childImageSharp {
-                gatsbyImageData
+                gatsbyImageData(width: 456)
               }
             }
           }
@@ -32,7 +32,7 @@ const Nav = () => {
             alternativeText
             localFile {
               childImageSharp {
-                gatsbyImageData(placeholder: DOMINANT_COLOR)
+                gatsbyImageData(placeholder: DOMINANT_COLOR, width: 94)
               }
             }
           }
@@ -49,7 +49,7 @@ const Nav = () => {
               alternativeText
               localFile {
                 childImageSharp {
-                  gatsbyImageData
+                  gatsbyImageData(width: 32)
                 }
               }
             }
@@ -541,13 +541,19 @@ const StyledNav = styled.nav`
               justify-content: space-between;
               align-items: center;
               a {
-                display: flex;
+                display: grid;
+                grid-template-columns: auto auto;
                 align-items: center;
                 gap: 4px;
                 z-index: 2;
-                img {
+                .person-border {
                   width: 32px;
                   height: 32px;
+                }
+                @media (max-width: 1329px){
+                  & + span {
+                    display: none;
+                  }
                 }
               }
             }
@@ -585,7 +591,7 @@ const StyledNav = styled.nav`
             align-items: center;
             gap: 8px;
           }
-          img {
+          .person-border {
             width: 48px;
             height: 48px;
           }
@@ -639,7 +645,7 @@ const StyledNav = styled.nav`
             align-items: center;
             gap: 8px;
           }
-          img {
+          .person-border {
             width: 48px;
             height: 48px;
           }
@@ -796,7 +802,7 @@ const StyledNav = styled.nav`
           gap: 2rem 1rem;
           .item {
             text-align: center;
-            .item-img {
+            .person-border {
               width: 96px;
               height: 96px;
             }
@@ -823,15 +829,12 @@ const StyledNav = styled.nav`
             gap: 22px;
             .copy {
               .copy-top {
-                > span {
-                  display: none;
-                }
                 a {
                   display: flex;
                   align-items: center;
                   gap: 4px;
                   z-index: 2;
-                  img {
+                  .person-border {
                     width: 32px;
                     height: 32px;
                   }
@@ -858,7 +861,7 @@ const StyledNav = styled.nav`
             a {
               flex-direction: column;
             }
-            img {
+            .person-border {
               width: 96px;
               height: 96px;
             }
@@ -908,7 +911,7 @@ const StyledNav = styled.nav`
             a {
               flex-direction: column;
             }
-            img {
+            .person-border {
               width: 96px;
               height: 96px;
             }

@@ -78,6 +78,7 @@ const Wrapper = styled.section`
   }
   .wrapper {
     width: calc(100vw - 16px);
+    max-width: 1920px;
     pointer-events: none;
     ::-webkit-scrollbar {
       display: none;
