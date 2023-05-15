@@ -7,6 +7,7 @@ import Services from "../components/sections/Homepage/Services";
 import Creativity from "../components/sections/Homepage/Creativity";
 import Roadmap from "../components/sections/Homepage/Roadmap";
 import Team from "../components/sections/Homepage/Team";
+import Testimonials from "../components/sections/Testimonials";
 
 const IndexPage = ({data:
   {
@@ -22,6 +23,7 @@ const IndexPage = ({data:
       <Creativity data={homepage} />
       <Roadmap data={homepage} />
       <Team data={homepage} />
+      <Testimonials />
     </>
   )
 }
@@ -39,7 +41,6 @@ export const query = graphql`
         text
         href
         target
-        isExternal
       }
       hero_CaseStudies {
         name

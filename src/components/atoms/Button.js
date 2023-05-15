@@ -11,6 +11,8 @@ const Button = ({theme = 'secondary', children, to, className, ...props}) => {
           <a
             className={`cta ${theme}${className ? ` ${className}` : ''}`}
             href={to}
+            target="_blank"
+            rel="noreferrer"
             {...props}
           >
             <span data-text={theme === 'secondary' ? children : undefined}>{children}</span>

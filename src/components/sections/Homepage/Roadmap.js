@@ -115,11 +115,11 @@ const Wrapper = styled.section`
         }
         &::after {
           background: linear-gradient(90deg, #90F4E8, #2DD282);
-          opacity: 0;
-          transition: opacity .3s;
+          transform: scale(0);
+          transition: transform .3s cubic-bezier(0.23,1,0.32,1);
         }
         &.active::after {
-          opacity: 1;
+          transform: scale(1);
         }
       }
       &:last-child {

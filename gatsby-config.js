@@ -22,7 +22,8 @@ module.exports = {
           'blog-category',
           'blog-entry',
           'curiosity',
-          'technology'
+          'technology',
+          'testimonial'
         ],
       }
     },

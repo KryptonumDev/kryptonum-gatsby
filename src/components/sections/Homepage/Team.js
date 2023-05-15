@@ -32,7 +32,7 @@ const Team = ({data}) => {
       <DecorativeHeading type="h2">{team_Heading}</DecorativeHeading>
       <div className="wrapper">
         {team.nodes.map((person, i) => (
-          <Link to={`/zespol/${person.slug}`} key={i}>
+          <Link to={`/zespol/${person.slug}`} key={i} aria-label={person.name}>
             <GatsbyImage image={person.img.localFile.childImageSharp.gatsbyImageData} alt={person.img.alternativeText || ''}  className="img person-border" />
           </Link>
         ))}
