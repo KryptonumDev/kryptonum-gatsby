@@ -160,7 +160,7 @@ const Wrapper = styled.section`
       width: 100vw;
       .item {
         width: 100%;
-        &:not(:last-child){
+        &:not(:nth-last-of-type(2)){
           margin-right: 1rem;
         }
         &:last-child {
