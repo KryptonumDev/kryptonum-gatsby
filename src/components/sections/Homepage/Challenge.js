@@ -18,11 +18,7 @@ const Challange = ({data}) => {
         <ReactMarkdown
           children={challenge_SecondClaim.data.childMarkdownRemark.rawMarkdownBody}
         />
-        <Button
-          theme={challenge_Cta.theme}
-          text={challenge_Cta.text}
-          to={challenge_Cta.href}
-        />
+        <Button theme={challenge_Cta.theme} to={challenge_Cta.href}>{challenge_Cta.text}</Button>
       </div>
     </Wrapper>
   );

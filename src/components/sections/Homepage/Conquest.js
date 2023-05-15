@@ -18,11 +18,7 @@ const Conquest = ({data}) => {
         <ReactMarkdown
           children={conquest_SecondClaim.data.childMarkdownRemark.rawMarkdownBody}
         />
-        <Button
-          theme={conquest_Cta.theme}
-          text={conquest_Cta.text}
-          to={conquest_Cta.href}
-        />
+        <Button theme={conquest_Cta.theme} to={conquest_Cta.href}>{conquest_Cta.text}</Button>
       </div>
     </Wrapper>
   );

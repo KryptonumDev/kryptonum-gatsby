@@ -340,11 +340,7 @@ const Nav = () => {
             </li>
           </ul>
         </div>
-        <Button
-          text='Kontakt'
-          to='/kontakt'
-          className='nav-cta'
-        />
+        <Button to='/kontakt' className='nav-cta'>Kontakt</Button>
         <button
           id="nav-toggle"
           onClick={() => handleNavToggle()}

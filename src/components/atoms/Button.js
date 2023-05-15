@@ -2,7 +2,7 @@ import React from "react";
 import { Link } from "gatsby";
 import { ArrowTopRight } from "./Icons";
 
-const Button = ({theme = 'secondary', text, to, className, ...props}) => {
+const Button = ({theme = 'secondary', children, to, className, ...props}) => {
   return (
     <Link
       className={`cta ${theme}${className ? ` ${className}` : ''}`}
@@ -10,8 +10,8 @@ const Button = ({theme = 'secondary', text, to, className, ...props}) => {
       {...props}
     >
       <span
-        data-text={theme === "secondary" ? text : undefined}
-      >{text}</span>
+        data-text={theme === "secondary" ? children : undefined}
+      >{children}</span>
       <ArrowTopRight />
     </Link>
   )

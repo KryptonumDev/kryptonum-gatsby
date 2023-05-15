@@ -1,19 +1,24 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useMemo } from "react";
 import GlobalStyle from "../styles/GlobalStyle";
 import Nav from "../components/organisms/Nav"
 
 const Layout = ({children}) => {
-  const orphans = ['a', 'i', 'o', 'u', 'w', 'z', 'np.'];
-  const orphansRegex = new RegExp(` (${orphans.join('|')}) `, 'gi');
-  const locationPath = typeof window !== "undefined" ? window.location.pathname : '';
+  const locationPath = typeof window !== 'undefined' ? window.location.pathname : '';
+  const orphansRegex = useMemo(() => {
+    const orphans = ['a', 'i', 'o', 'u', 'w', 'z', 'np.'];
+    return new RegExp(` (${orphans.join('|')}) `, 'gi');
+  }, []);
+
   useEffect(() => {
     const paragraphs = Array.from(document.querySelectorAll('h1, h2, h3, h4, h5, h6, p, li, a, button, span'));
-    paragraphs.forEach(paragraph =>
-      paragraph.childNodes.forEach(node =>
-        node?.nodeType === Node.TEXT_NODE && (node.textContent = node.textContent.replace(orphansRegex, ` $1\u00A0`))
-      )
-    );
-  }, [locationPath]);
+    paragraphs.forEach((paragraph) => {
+      Array.from(paragraph.childNodes).forEach((node) => {
+        if (node.nodeType === Node.TEXT_NODE) {
+          node.textContent = node.textContent.replaceAll(orphansRegex, ` $1\u00A0`);
+        }
+      });
+    });
+  }, [locationPath, orphansRegex]);
   
   return (
     <>

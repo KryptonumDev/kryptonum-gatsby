@@ -3,7 +3,6 @@ import ReactMarkdown from "react-markdown";
 import styled from "styled-components";
 import DecorativeHeading from "../../atoms/DecorativeHeading";
 import { Clamp } from "../../../utils/functions";
-import { HeadingDecoration } from "../../atoms/Icons";
 
 const Creativity = ({data}) => {
   const {creativity} = data;

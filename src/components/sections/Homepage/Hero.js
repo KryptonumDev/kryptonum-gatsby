@@ -20,23 +20,14 @@ const Hero = ({data}) => {
         </div>
         <div className="cta-wrapper">
           {hero_Cta.map((cta, i) => (
-            <Button
-              text={cta.text}
-              to={cta.href}
-              theme={cta.theme}
-              key={i}
-            />
+            <Button to={cta.href} theme={cta.theme} key={i}>{cta.text}</Button>
           ))}
         </div>
       </header>
       {hero_CaseStudies.map((caseStudy, i) => (
         <div className="caseStudy" key={i}>
           <GatsbyImage key={i} image={caseStudy.thumbnail.localFile.childImageSharp.gatsbyImageData} alt={caseStudy.thumbnail.alternativeText || ''} className="img" />
-          <Button
-            text={`${hero_CaseStudiesLink} ${caseStudy.name}`}
-            to={`projekty/${caseStudy.slug}`}
-            aria-label={caseStudy.name}
-          />
+          <Button to={`projekty/${caseStudy.slug}`} aria-label={caseStudy.name}>{`${hero_CaseStudiesLink} ${caseStudy.name}`}</Button>
         </div>
       ))}
     </Wrapper>
