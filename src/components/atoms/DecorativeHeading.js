@@ -24,7 +24,7 @@ const Wrapper = styled.h1`
   svg {
     width: 0.86em;
     height: 0.86em;
-    margin-top: 0.28em;
+    margin-top: 0.25em;
   }
 `
 

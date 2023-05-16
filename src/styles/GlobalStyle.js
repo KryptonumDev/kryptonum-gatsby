@@ -96,7 +96,7 @@ const GlobalStyle = createGlobalStyle`
   h1, h2, h3, h4, h5, h6 {
     font-weight: 400;
     letter-spacing: -0.005em;
-    line-height: 1.38;
+    line-height: 1.3;
     strong {
       font-weight: 400;
       color: var(--primary-400);
