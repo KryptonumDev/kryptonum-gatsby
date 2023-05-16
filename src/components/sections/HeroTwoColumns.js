@@ -33,7 +33,6 @@ const Wrapper = styled.section`
     max-width: ${683/16}rem;
   }
   h1 {
-    font-size: ${Clamp(28, 50, 60)};
     margin-bottom: ${Clamp(28, 32, 32)};
   }
   p {

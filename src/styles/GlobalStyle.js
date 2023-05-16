@@ -1,4 +1,5 @@
 import { createGlobalStyle } from "styled-components";
+import { Clamp } from "../utils/functions";
 import './fonts.css';
 
 const GlobalStyle = createGlobalStyle`
@@ -75,7 +76,7 @@ const GlobalStyle = createGlobalStyle`
   main {
     display: grid;
     grid-template-columns: 1fr;
-    row-gap: clamp(${96/16}rem, ${144/7.68}vw, ${172/16}rem);
+    row-gap: ${Clamp(96, 144, 172)};
   }
   svg {
     vertical-align: top;
@@ -107,10 +108,10 @@ const GlobalStyle = createGlobalStyle`
     }
   }
   h1 {
-    font-size: clamp(${28/16}rem, ${50/7.68}vw, ${56/16}rem);
+    font-size: ${Clamp(28, 50, 60)};
   }
   h2 {
-    font-size: clamp(${28/16}rem, ${50/7.68}vw, ${48/16}rem);
+    font-size: ${Clamp(28, 50, 48)};
   }
   p strong,
   .strong {
@@ -145,7 +146,7 @@ const GlobalStyle = createGlobalStyle`
     gap: 24px;
   }
   .cta {
-    font-size: clamp(1rem, ${22/7.68}vw, ${22/16}rem);
+    font-size: ${Clamp(16, 22, 22)};
     display: inline-flex;
     align-items: center;
     justify-content: center;
