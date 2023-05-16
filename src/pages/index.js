@@ -40,7 +40,6 @@ export const query = graphql`
         theme
         text
         href
-        target
       }
       hero_CaseStudies {
         name

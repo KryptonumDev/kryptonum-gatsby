@@ -1,5 +1,5 @@
 import React, { useRef, useState } from "react";
-import { graphql, Link, useStaticQuery } from "gatsby";
+import { Link } from "gatsby";
 import { GatsbyImage } from "gatsby-plugin-image";
 import styled from "styled-components";
 import { ArrowDown, ArrowLeft, KryptonumLogo } from '../atoms/Icons';
@@ -7,101 +7,7 @@ import { scrollLock } from "../../utils/functions";
 import { useEffect } from "react";
 import Button from "../atoms/Button";
 
-const Nav = () => {
-  const {caseStudies, team, blogEntries, blogCategories, curiosities, technologies} = useStaticQuery(graphql`
-    query {
-      caseStudies: allStrapiCaseStudy(limit: 4) {
-        nodes {
-          name
-          slug
-          thumbnail {
-            alternativeText
-            localFile {
-              childImageSharp {
-                gatsbyImageData(width: 456)
-              }
-            }
-          }
-        }
-      }
-      team: allStrapiTeam {
-        nodes {
-          name
-          slug
-          img {
-            alternativeText
-            localFile {
-              childImageSharp {
-                gatsbyImageData(placeholder: DOMINANT_COLOR, width: 94)
-              }
-            }
-          }
-        }
-      }
-      blogEntries: allStrapiBlogEntry(limit: 2) {
-        nodes {
-          title
-          slug
-          author {
-            name
-            slug
-            img {
-              alternativeText
-              localFile {
-                childImageSharp {
-                  gatsbyImageData(width: 32)
-                }
-              }
-            }
-          }
-          img {
-            alternativeText
-            localFile {
-              childImageSharp {
-                gatsbyImageData
-              }
-            }
-          }
-          publishedAt(formatString: "D MMMM Y", locale: "pl")
-        }
-      }
-      blogCategories: allStrapiBlogCategory {
-        nodes {
-          name
-          slug
-        }
-      }
-      curiosities: allStrapiCuriosity(limit: 2) {
-        nodes {
-          title
-          slug
-          img {
-            alternativeText
-            localFile {
-              childImageSharp {
-                gatsbyImageData
-              }
-            }
-          }
-        }
-      }
-      technologies: allStrapiTechnology(limit: 2) {
-        nodes {
-          name
-          slug
-          thumbnail {
-            alternativeText
-            localFile {
-              childImageSharp {
-                gatsbyImageData(width: 160, height: 160)
-              }
-            }
-          }
-        }
-      }
-    }
-  `);
-
+const Nav = ({data: {caseStudies, team, blogEntries, blogCategories, curiosities, technologies}}) => {
   const [navOpened, setNavOpened] = useState(false);
   const nav = useRef(null);
 

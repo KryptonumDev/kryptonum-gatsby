@@ -8,11 +8,10 @@ const DecorativeHeading = ({type="h1", children}) => {
     <Wrapper as={type}>
       <HeadingDecoration />
       <ReactMarkdown
-        children={children}
         components={{
           p: 'span',
         }}
-      />
+      >{children}</ReactMarkdown>
     </Wrapper>
   );
 }

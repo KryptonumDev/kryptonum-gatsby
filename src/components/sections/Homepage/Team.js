@@ -38,7 +38,7 @@ const Team = ({data}) => {
         ))}
       </div>
       <div className="copy">
-        <ReactMarkdown children={team_Text} />
+        <ReactMarkdown>{team_Text}</ReactMarkdown>
         <Button to={team_Cta.href} theme={team_Cta.theme}>{team_Cta.text}</Button>
       </div>
     </Wrapper>

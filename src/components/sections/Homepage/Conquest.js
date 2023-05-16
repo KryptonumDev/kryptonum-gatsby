@@ -10,14 +10,10 @@ const Conquest = ({data}) => {
   return (
     <Wrapper>
       <DecorativeHeading type="h2">{conquest_Heading}</DecorativeHeading>
-      <ReactMarkdown
-        children={conquest_Claim}
-      />
+      <ReactMarkdown>{conquest_Claim}</ReactMarkdown>
       <p>{conquest_Paragraph}</p>
       <div>
-        <ReactMarkdown
-          children={conquest_SecondClaim.data.childMarkdownRemark.rawMarkdownBody}
-        />
+        <ReactMarkdown>{conquest_SecondClaim.data.childMarkdownRemark.rawMarkdownBody}</ReactMarkdown>
         <Button theme={conquest_Cta.theme} to={conquest_Cta.href}>{conquest_Cta.text}</Button>
       </div>
     </Wrapper>

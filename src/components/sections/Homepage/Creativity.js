@@ -10,7 +10,6 @@ const Creativity = ({data}) => {
   return (
     <Wrapper>
       <ReactMarkdown
-        children={creativity.data.childMarkdownRemark.rawMarkdownBody}
         components={{
           h2: ({node: {children}}) => {
             const markdownText = children.map(item => item.value || `**${item.children[0].value}**`).join('');
@@ -19,7 +18,9 @@ const Creativity = ({data}) => {
             )
           }
         }}
-      />
+      >
+        {creativity.data.childMarkdownRemark.rawMarkdownBody}
+      </ReactMarkdown>
     </Wrapper>
   );
 }

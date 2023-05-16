@@ -16,7 +16,7 @@ const GlobalStyle = createGlobalStyle`
     --neutral-500: #A4A8B5;
     --neutral-600: #9699A2;
     --neutral-700: #5B5F67;
-    --neutral-800: #38383B;
+    --neutral-800: #212123;
     --neutral-900: #0F0F10;
     --neutral-950: #040606;
     --primary-400: #2DD282;
@@ -98,6 +98,7 @@ const GlobalStyle = createGlobalStyle`
     letter-spacing: -0.005em;
     line-height: 1.38;
     strong {
+      font-weight: 400;
       color: var(--primary-400);
       background-image: linear-gradient(90deg, #90F4E8, #2DD282);
       -webkit-background-clip: text;
@@ -113,6 +114,7 @@ const GlobalStyle = createGlobalStyle`
   }
   p strong,
   .strong {
+    font-weight: 400;
     &::before,
     &::after {
       color: var(--primary-400);
@@ -130,10 +132,12 @@ const GlobalStyle = createGlobalStyle`
     }
   }
   .person-border {
-    border-radius: 50%;
     background: linear-gradient(var(--neutral-950), var(--neutral-950)) padding-box,
-                linear-gradient(90deg, #90F4E8, #2DD282) border-box;
+    linear-gradient(90deg, #90F4E8, #2DD282) border-box;
     border: 1px solid transparent;
+    &, img {
+      border-radius: 50%;
+    }
   }
   .cta-wrapper {
     display: inline-flex;

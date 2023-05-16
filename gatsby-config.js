@@ -14,7 +14,8 @@ module.exports = {
         apiURL: process.env.STRAPI_API_URL,
         accessToken: process.env.STRAPI_TOKEN,
         singleTypes: [
-          `homepage`
+          `homepage`,
+          'footer'
         ],
         collectionTypes: [
           'case-study',

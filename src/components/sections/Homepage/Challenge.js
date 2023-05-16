@@ -10,14 +10,10 @@ const Challange = ({data}) => {
   return (
     <Wrapper>
       <DecorativeHeading type="h2">{challenge_Heading}</DecorativeHeading>
-      <ReactMarkdown
-        children={challenge_Claim}
-      />
+      <ReactMarkdown>{challenge_Claim}</ReactMarkdown>
       <p>{challenge_Paragraph}</p>
       <div>
-        <ReactMarkdown
-          children={challenge_SecondClaim.data.childMarkdownRemark.rawMarkdownBody}
-        />
+        <ReactMarkdown>{challenge_SecondClaim.data.childMarkdownRemark.rawMarkdownBody}</ReactMarkdown>
         <Button theme={challenge_Cta.theme} to={challenge_Cta.href}>{challenge_Cta.text}</Button>
       </div>
     </Wrapper>
