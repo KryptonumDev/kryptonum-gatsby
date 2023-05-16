@@ -15,7 +15,8 @@ module.exports = {
         accessToken: process.env.STRAPI_TOKEN,
         singleTypes: [
           `homepage`,
-          'footer'
+          'footer',
+          'not-found'
         ],
         collectionTypes: [
           'case-study',
