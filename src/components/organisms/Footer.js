@@ -12,11 +12,11 @@ const Footer = ({data: {caseStudies, team, blogEntries, footer}}) => {
 
   return (
     <Wrapper className="max-width">
-      <Link to='/' aria-label="Strona główna" className="footer-logo">
-        <KryptonumLogoSimple />
-      </Link>
       <ul className="footer-wrapper">
         <li className="info">
+          <Link to='/' aria-label="Strona główna" className="footer-logo">
+            <KryptonumLogoSimple />
+          </Link>
           <h3><Link to='/kontakt'>Kontakt</Link></h3>
           <div>
             <h3>{footer.officeCity}</h3>
@@ -72,7 +72,7 @@ const Footer = ({data: {caseStudies, team, blogEntries, footer}}) => {
           <h3><Link to="/blog">Blog</Link></h3>
           {blogEntries.nodes.map((entry, i) => (
             <div className="entry" key={i}>
-              <Link to={`/blog/${entry.slug}`} className="link"></Link>
+              <Link to={`/blog/${entry.slug}`} className="link" aria-label={entry.title}></Link>
               <GatsbyImage image={entry.img.localFile.childImageSharp.gatsbyImageData} alt={entry.img.alternativeText || ''} className="thumbnail" />
               <div className="copy">
                 <Link to={`/zespol/${entry.author[0].slug}`} className="author">
@@ -136,6 +136,7 @@ const Wrapper = styled.footer`
   .footer-logo {
     display: inline-block;
     margin-bottom: ${34/16}rem;
+    grid-column: 4/1;
   }
   .footer-wrapper {
     list-style-type: none;
@@ -273,7 +274,7 @@ const Wrapper = styled.footer`
           display: grid;
           grid-column: 4/1;
           grid-template-columns: repeat(3, 1fr);
-          gap: ${22/16}rem;
+          column-gap: ${22/16}rem;
         }
         &.blog {
           grid-column: 4/1;
