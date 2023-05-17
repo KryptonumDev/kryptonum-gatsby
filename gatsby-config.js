@@ -33,15 +33,15 @@ module.exports = {
       resolve: `gatsby-plugin-sharp`,
       options: {
         defaults: {
-          placeholder: `dominantColor`,
+          placeholder: `none`,
         },
       },
     },
+    `gatsby-plugin-image`,
     `gatsby-plugin-styled-components`,
     `gatsby-plugin-sitemap`,
     `gatsby-transformer-remark`,
-    `gatsby-transformer-sharp`,
-    `gatsby-plugin-image`,
+    `gatsby-transformer-sharp`
   ],
   trailingSlash: "ignore"
 };
