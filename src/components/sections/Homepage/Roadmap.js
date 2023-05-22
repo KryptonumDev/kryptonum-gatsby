@@ -74,7 +74,7 @@ const Wrapper = styled.section`
   }
   h2 {
     margin-bottom: ${Clamp(28, 64, 42, "px")};
-    max-width: ${734/16}rem;
+    max-width: 734px;
   }
   .wrapper {
     width: calc(100vw - 16px);

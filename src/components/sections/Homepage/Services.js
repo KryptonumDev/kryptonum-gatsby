@@ -28,7 +28,7 @@ const Wrapper = styled.section`
     display: grid;
     grid-template-columns: 1fr 1fr;
     gap: ${Clamp(32, 54, 64, "px")} 32px;
-    max-width: ${1066/16}rem;
+    max-width: 1066px;
     margin: 0 auto;
     counter-reset: counter;
     .item {

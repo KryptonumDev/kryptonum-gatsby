@@ -158,10 +158,10 @@ const GlobalStyle = createGlobalStyle`
     }
     &.primary {
       border-radius: 2px;
-      padding: ${12/16}rem ${42/16}rem;
+      padding: 12px 42px;
       @media (max-width: 499px){
         width: 100%;
-        padding: ${12/16}rem ${24/16}rem;
+        padding: 12px 24px;
       }
       background: linear-gradient(var(--neutral-950), var(--neutral-950)) padding-box,
                   linear-gradient(90deg, #90F4E8, #2DD282) border-box;

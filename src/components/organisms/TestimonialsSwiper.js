@@ -38,10 +38,10 @@ const Wrapper = styled.div`
     display: grid;
     grid-template-columns: 240px 2fr 1.2fr;
     align-items: center;
-    padding: ${72/16}rem ${32/16}rem ${64/16}rem;
-    gap: ${48/16}rem;
+    padding: 72px 32px 64px;
+    gap: 48px;
     .img {
-      margin-bottom: -${64/16}rem;
+      margin-bottom: -64px;
     }
     .content {
       svg {
@@ -55,7 +55,7 @@ const Wrapper = styled.div`
     .info {
       h3 {
         font-size: ${Clamp(20, 32, 30)};
-        margin-bottom: ${24/16}rem;
+        margin-bottom: 24px;
         span {
           display: block;
           font-size: ${22/30}em;
@@ -69,7 +69,7 @@ const Wrapper = styled.div`
         width: 2px;
         height: 100%;
         position: absolute;
-        left: -${33/16}rem;
+        left: -33px;
         bottom: 0;
         background-color: var(--neutral-800);
       }
@@ -78,11 +78,11 @@ const Wrapper = styled.div`
   @media (max-width: 1189px){
     .item {
       grid-template-columns: 1fr 2fr;
-      padding: ${32/16}rem;
+      padding: 32px;
       align-items: flex-end;
-      gap: ${24/16}rem;
+      gap: 24px;
       .img {
-        margin-bottom: -${32/16}rem;
+        margin-bottom: -32px;
       }
       .info {
         order: -1;
@@ -98,14 +98,14 @@ const Wrapper = styled.div`
           }
         }
         margin-left: 0;
-        margin-bottom: ${40/16}rem;
+        margin-bottom: 40px;
         padding: 0;
         &::before {
           content: '';
           width: 100%;
           height: 1px;
           left: 0;
-          bottom: -${32/16}rem;
+          bottom: -32px;
         }
       }
     }
@@ -113,13 +113,13 @@ const Wrapper = styled.div`
   @media (max-width: 599px){
     .item {
       grid-template-columns: 1fr;
-      padding: ${24/16}rem;
-      gap: ${34/16}rem;
+      padding: 24px;
+      gap: 34px;
       .img {
         width: 100%;
         height: 200px;
         order: 2;
-        margin-bottom: -${24/16}rem;
+        margin-bottom: -24px;
       }
       .content {
         text-align: center;
@@ -134,12 +134,12 @@ const Wrapper = styled.div`
         h3 {
           margin-bottom: 1rem;
           span {
-            margin-top: ${4/16}rem;
+            margin-top: 4px;
           }
         }
-        margin-bottom: ${32/16}rem;
+        margin-bottom: 32px;
         &::before {
-          bottom: -${32/16}rem;
+          bottom: -32px;
         }
       }
     }

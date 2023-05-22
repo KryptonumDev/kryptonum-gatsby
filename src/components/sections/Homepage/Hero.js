@@ -39,9 +39,9 @@ const Wrapper = styled.section`
     display: grid;
     align-items: flex-end;
     grid-template-columns: 1fr auto;
-    margin: ${40/16}rem 0 ${172/16}rem;
+    margin: 40px 0 172px;
     .copy {
-      max-width: ${739/16}rem;
+      max-width: 740px;
       h1 {
         margin-bottom: ${Clamp(28, 40, 72, "px")};
       }
@@ -125,10 +125,10 @@ const Wrapper = styled.section`
   .caseStudy {
     text-align: center;
     &:not(:last-child){
-      margin-bottom: ${48/16}rem;
+      margin-bottom: 48px;
     }
     .cta {
-      margin-top: ${24/16}rem;
+      margin-top: 24px;
     }
   }
 `

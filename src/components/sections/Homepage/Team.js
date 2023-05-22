@@ -59,7 +59,7 @@ const Wrapper = styled.section`
   }
   .copy {
     text-align: center;
-    max-width: ${858/16}rem;
+    max-width: 858px;
     margin: 0 auto;
     margin-top: 2rem;
     p {

@@ -121,7 +121,7 @@ const Footer = ({data: {caseStudies, team, blogEntries, footer}}) => {
 }
 
 const Wrapper = styled.footer`
-  padding: ${32/16}rem 0;
+  padding: 32px 0;
   position: relative;
   margin-top: ${Clamp(96, 144, 172, "px")};
   &::before {
@@ -135,21 +135,21 @@ const Wrapper = styled.footer`
   }
   .footer-logo {
     display: inline-block;
-    margin-bottom: ${34/16}rem;
+    margin-bottom: 34px;
     grid-column: 4/1;
   }
   .footer-wrapper {
     list-style-type: none;
     display: grid;
     grid-template-columns: 1fr 1fr 1fr 1fr 1.8fr;
-    gap: ${32/16}rem;
+    gap: 32px;
     li {
       & > h3 {
-        margin-bottom: ${24/16}rem;
+        margin-bottom: 24px;
       }
       a {
         & + a {
-          margin-top: ${8/16}rem;
+          margin-top: 8px;
         }
         display: block;
         font-size: ${Clamp(16, 20, 20)};
@@ -173,10 +173,10 @@ const Wrapper = styled.footer`
         }
         > div {
           &:not(:last-child){
-            margin-bottom: ${24/16}rem;
+            margin-bottom: 24px;
           }
           h3 {
-            margin-bottom: ${4/16}rem;
+            margin-bottom: 4px;
           }
         }
       }
@@ -185,7 +185,7 @@ const Wrapper = styled.footer`
           display: grid;
           grid-template-columns: 32px auto;
           align-items: center;
-          gap: ${8/16}rem;
+          gap: 8px;
           margin-bottom: 1rem;
         }
       }
@@ -195,9 +195,9 @@ const Wrapper = styled.footer`
           grid-template-columns: 128px auto;
           position: relative;
           align-items: flex-start;
-          gap: ${22/16}rem;
+          gap: 22px;
           &:not(:last-child) {
-            margin-bottom: ${34/16}rem;
+            margin-bottom: 34px;
           }
           .thumbnail {
             max-width: 156px;
@@ -243,7 +243,7 @@ const Wrapper = styled.footer`
     .social {
       display: flex;
       justify-content: center;
-      gap: ${24/16}rem;
+      gap: 24px;
     }
     .legal {
       margin-left: auto;
@@ -253,8 +253,8 @@ const Wrapper = styled.footer`
       gap: .5rem 2rem;
     }
     position: relative;
-    margin-top: ${32/16}rem;
-    padding-top: ${32/16}rem;
+    margin-top: 32px;
+    padding-top: 32px;
     &::before {
       content: '';
       position: absolute;
@@ -268,13 +268,13 @@ const Wrapper = styled.footer`
   @media (max-width: 1419px){
     .footer-wrapper {
       grid-template-columns: 1fr 1fr 1fr;
-      gap: ${24/16}rem;
+      gap: 24px;
       li {
         &.info {
           display: grid;
           grid-column: 4/1;
           grid-template-columns: repeat(3, 1fr);
-          column-gap: ${22/16}rem;
+          column-gap: 22px;
         }
         &.blog {
           grid-column: 4/1;
@@ -310,7 +310,7 @@ const Wrapper = styled.footer`
       grid-template-columns: 1fr;
       li {
         & > h3 {
-          margin-bottom: ${12/16}rem;
+          margin-bottom: 12px;
         }
         &.info {
           display: block;

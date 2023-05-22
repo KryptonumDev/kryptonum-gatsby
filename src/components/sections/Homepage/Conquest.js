@@ -36,7 +36,7 @@ const Wrapper = styled.section`
   div {
     font-size: ${Clamp(16, 22, 22)};
     p:last-of-type {
-      margin-top: ${12/16}rem;
+      margin-top: 12px;
       font-size: ${14/16}em;
     }
     em {
@@ -44,18 +44,18 @@ const Wrapper = styled.section`
       font-style: normal;
     }
     .cta {
-      margin-top: ${48/16}rem;
+      margin-top: 48px;
     }
   }
   @media (max-width: 1149px){
     grid-template-columns: 1fr;
     gap: 0;
     h2 {
-      margin-bottom: ${32/16}rem;
+      margin-bottom: 32px;
     }
     > p {
       &:nth-of-type(1) {
-        margin-bottom: ${24/16}rem;
+        margin-bottom: 24px;
       }
       &:nth-of-type(2) {
         margin-bottom: 1rem;
@@ -63,7 +63,7 @@ const Wrapper = styled.section`
     }
     div {
       .cta {
-        margin-top: ${32/16}rem;
+        margin-top: 32px;
       }
     }
   }

@@ -25,12 +25,12 @@ const HeroTwoColumns = ({heading, subheading, cta, img}) => {
 }
 
 const Wrapper = styled.section`
-  margin-top: ${40/16}rem;
+  margin-top: 40px;
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: ${32/16}rem;
+  gap: 32px;
   header {
-    max-width: ${683/16}rem;
+    max-width: 684px;
   }
   h1 {
     margin-bottom: ${Clamp(28, 32, 32, "px")};

@@ -357,7 +357,7 @@ const StyledNav = styled.nav`
     }
     h3 {
       font-size: ${28/16}rem;
-      margin-bottom: ${20/16}rem;
+      margin-bottom: 20px;
     }
     &.services {
       .max-width {
@@ -398,7 +398,7 @@ const StyledNav = styled.nav`
         text-align: center;
         font-size: ${22/16}rem;
         p {
-          margin-top: ${24/16}rem;
+          margin-top: 24px;
         }
       }
     }
@@ -413,7 +413,7 @@ const StyledNav = styled.nav`
         gap: 24px 48px;
         p {
           font-size: ${22/16}rem;
-          margin-top: ${8/16}rem;
+          margin-top: 8px;
         }
         .img {
           width: 96px;
@@ -431,7 +431,7 @@ const StyledNav = styled.nav`
       .entries {
         .entry {
           &:not(:last-child){
-            margin-bottom: ${30/16}rem;
+            margin-bottom: 30px;
           }
           position: relative;
           .link {
@@ -517,7 +517,7 @@ const StyledNav = styled.nav`
       .curiosities {
         .link {
           &:not(:last-child) {
-            margin-bottom: ${24/16}rem;
+            margin-bottom: 24px;
           }
           display: flex;
           gap: 12px;
@@ -594,10 +594,10 @@ const StyledNav = styled.nav`
     align-items: center;
     font-size: ${32/16}rem;
     gap: 4px;
-    margin-bottom: ${32/16}rem;
+    margin-bottom: 32px;
   }
   .backBtn + h3 {
-    margin-bottom: ${32/16}rem;
+    margin-bottom: 32px;
   }
   .mobileElement {
     display: none;
@@ -626,7 +626,7 @@ const StyledNav = styled.nav`
         }
       }
       & > ul {
-        margin: ${40/16}rem 0 0 0;
+        margin: 40px 0 0 0;
         > li {
           margin: 0 40px;
           @media (max-width: 767px){
@@ -729,7 +729,7 @@ const StyledNav = styled.nav`
         .entries {
           .entry {
             &:not(:last-child){
-              margin-bottom: ${30/16}rem;
+              margin-bottom: 30px;
             }
             display: flex;
             gap: 22px;
