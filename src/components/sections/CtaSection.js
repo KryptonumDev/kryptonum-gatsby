@@ -28,11 +28,11 @@ const Wrapper = styled.section`
   display: grid;
   align-items: center;
   grid-template-columns: 1fr 1fr;
-  gap: ${32/16}rem;
-  padding: ${Clamp(24, 48, 72)} ${Clamp(16, 32, 72)};
+  gap: 32px;
+  padding: ${Clamp(24, 48, 72, "px")} ${Clamp(16, 32, 72, "px")};
   h2 {
     font-size: ${Clamp(28, 40, 48)};
-    margin-bottom: ${Clamp(40, 40, 48)};
+    margin-bottom: ${Clamp(40, 40, 48, "px")};
   }
   position: relative;
   .img {

@@ -12,6 +12,8 @@ export const scrollLock = (boolean) => {
   }
 }
 
-export const Clamp = (minRem, vw, maxRem) => {
-  return `clamp(${minRem / 16}rem, ${vw/7.68}vw, ${maxRem / 16}rem)`;
+export const Clamp = (minSize, vw, maxSize, unit="rem") => {
+  return unit === "rem"
+  ? `clamp(${minSize / 16}rem, ${vw/7.68}vw, ${maxSize / 16}rem)`
+  : `clamp(${minSize}px, ${vw/7.68}vw, ${maxSize}px)`;
 };

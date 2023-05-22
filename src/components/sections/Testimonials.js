@@ -41,7 +41,7 @@ const Testimonials = () => {
 
 const Wrapper = styled.section`
   h2 {
-    margin-bottom: ${Clamp(28, 64, 64)};
+    margin-bottom: ${Clamp(28, 64, 64, "px")};
   }
 `
  

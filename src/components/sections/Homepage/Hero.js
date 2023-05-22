@@ -43,10 +43,10 @@ const Wrapper = styled.section`
     .copy {
       max-width: ${739/16}rem;
       h1 {
-        margin-bottom: ${Clamp(28, 40, 72)};
+        margin-bottom: ${Clamp(28, 40, 72, "px")};
       }
       ol {
-        margin-left: calc(${Clamp(24, 40, 48)} + 8px);
+        margin-left: calc(${Clamp(24, 40, 48, "px")} + 8px);
         counter-reset: counter;
         li {
           counter-increment: counter;
@@ -54,7 +54,7 @@ const Wrapper = styled.section`
           font-size: ${Clamp(20, 32, 28)};
           display: grid;
           grid-template-columns: 32px auto;
-          column-gap: ${Clamp(12, 16, 32)};
+          column-gap: ${Clamp(12, 16, 32, "px")};
           align-items: baseline;
           &:not(:last-child){
             margin-bottom: .5rem;
@@ -95,11 +95,11 @@ const Wrapper = styled.section`
   }
   @media (max-width: 1189px){
     header {
-      margin: ${Clamp(48, 128, 128)} 0 ${Clamp(96, 144, 144)};
+      margin: ${Clamp(48, 128, 128, "px")} 0 ${Clamp(96, 144, 144, "px")};
       grid-template-columns: 1fr;
       .cta-wrapper {
-        margin-top: ${Clamp(64, 96, 96)};
-        margin-left: calc(${Clamp(24, 40, 48)} + 8px);
+        margin-top: ${Clamp(64, 96, 96, "px")};
+        margin-left: calc(${Clamp(24, 40, 48, "px")} + 8px);
         align-items: flex-start;
         flex-direction: column-reverse;
       }

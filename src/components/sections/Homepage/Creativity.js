@@ -31,7 +31,7 @@ const Wrapper = styled.section`
   column-gap: 32px;
   h2 {
     grid-column: 1 / 3;
-    margin-bottom: ${Clamp(28, 48, 48)}
+    margin-bottom: ${Clamp(28, 48, 48, "px")}
   }
   p {
     font-size: ${Clamp(20, 22, 30)};

@@ -47,7 +47,7 @@ const Team = ({data}) => {
 
 const Wrapper = styled.section`
   h2 {
-    margin: 0 auto ${Clamp(32, 32, 48)};
+    margin: 0 auto ${Clamp(32, 32, 48, "px")};
   }
   .wrapper {
     text-align: center;
@@ -65,7 +65,7 @@ const Wrapper = styled.section`
     p {
       font-size: ${Clamp(20, 32, 30)};
       &:not(:last-of-type){
-        margin-bottom: ${Clamp(16,32,32)};
+        margin-bottom: ${Clamp(16,32,32, "px")};
       }
     }
     a {

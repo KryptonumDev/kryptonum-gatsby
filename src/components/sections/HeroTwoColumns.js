@@ -33,7 +33,7 @@ const Wrapper = styled.section`
     max-width: ${683/16}rem;
   }
   h1 {
-    margin-bottom: ${Clamp(28, 32, 32)};
+    margin-bottom: ${Clamp(28, 32, 32, "px")};
   }
   p {
     font-size: ${Clamp(20, 32, 30)};
@@ -42,7 +42,7 @@ const Wrapper = styled.section`
     }
   }
   .cta {
-    margin-top: ${Clamp(24, 48, 48)};
+    margin-top: ${Clamp(24, 48, 48, "px")};
   }
   .img {
     max-width: 700px;
@@ -58,7 +58,7 @@ const Wrapper = styled.section`
     }
   }
   @media (max-width: 1189px){
-    margin-top: ${Clamp(48, 128, 128)};
+    margin-top: ${Clamp(48, 128, 128, "px")};
   }
 `
  

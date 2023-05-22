@@ -73,7 +73,7 @@ const Wrapper = styled.section`
     }
   }
   h2 {
-    margin-bottom: ${Clamp(28, 64, 42)};
+    margin-bottom: ${Clamp(28, 64, 42, "px")};
     max-width: ${734/16}rem;
   }
   .wrapper {
@@ -127,13 +127,13 @@ const Wrapper = styled.section`
       }
       h3 {
         font-size: ${Clamp(20, 32, 30)};
-        margin-bottom: ${Clamp(8, 16, 16)};
+        margin-bottom: ${Clamp(8, 16, 16, "px")};
         &::before {
           content: "/0" counter(counter);
           display: inline-block;
           width: 2rem;
           font-size: 1rem;
-          margin-right: ${Clamp(8, 16, 16)};
+          margin-right: ${Clamp(8, 16, 16, "px")};
         }
       }
       p {
