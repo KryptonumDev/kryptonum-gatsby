@@ -30,5 +30,5 @@ module.exports = {
     `gatsby-plugin-sitemap`,
     `gatsby-transformer-sharp`
   ],
-  trailingSlash: "ignore"
+  trailingSlash: "never"
 };
