@@ -8,6 +8,7 @@ import Creativity from "../components/sections/Homepage/Creativity";
 import Roadmap from "../components/sections/Homepage/Roadmap";
 import Team from "../components/sections/Homepage/Team";
 import Testimonials from "../components/sections/Testimonials";
+import { SEO } from "../components/global/Seo";
 
 const IndexPage = ({
   data: {
@@ -109,4 +110,8 @@ export const query = graphql`
 
 export default IndexPage
 
-export const Head = () => <title>Kryptonum</title>
+export const Head = () => (
+  <SEO
+    title="Agencja interaktywna dla tych, którym zależy"
+  />
+)

@@ -6,7 +6,6 @@ import DecorativeHeading from "../../atoms/DecorativeHeading";
 import { Clamp } from '../../../utils/functions';
 
 const Hero = ({data}) => {
-  console.log(data);
   const {hero_Heading, hero_Subheading, hero_Cta, hero_CaseStudies, hero_CaseStudiesLink} = data;
   return (
     <Wrapper>

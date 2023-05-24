@@ -2,6 +2,7 @@ import * as React from "react"
 import { graphql } from "gatsby"
 import HeroTwoColumns from "../components/sections/HeroTwoColumns"
 import CtaSection from "../components/sections/CtaSection";
+import { SEO } from "../components/global/Seo";
 
 const NotFoundPage = ({data}) => {
   const { notFound: {
@@ -68,4 +69,8 @@ export const query = graphql`
 
 export default NotFoundPage
 
-export const Head = () => <title>Not found</title>
+export const Head = () => (
+  <SEO
+    title="Wystrzeliło Cię w kosmos!"
+  />
+)

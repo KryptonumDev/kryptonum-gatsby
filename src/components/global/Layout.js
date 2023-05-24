@@ -1,8 +1,8 @@
 import React, { useEffect, useMemo } from "react";
 import { graphql, useStaticQuery } from "gatsby";
-import GlobalStyle from "../styles/GlobalStyle";
-import Nav from "../components/organisms/Nav"
-import Footer from "./organisms/Footer";
+import GlobalStyle from "../../styles/GlobalStyle";
+import Nav from "../organisms/Nav"
+import Footer from "../organisms/Footer";
 
 const Layout = ({children}) => {
   const data = useStaticQuery(graphql`

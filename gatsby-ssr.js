@@ -1,5 +1,5 @@
 import React from 'react';
-import Layout from "./src/components/Layout"
+import Layout from "./src/components/global/Layout"
 import PoppinsRegular from "./src/resources/fonts/Poppins-Light.woff2"
 
 export const onRenderBody = ({ setHtmlAttributes, setHeadComponents }) => {
