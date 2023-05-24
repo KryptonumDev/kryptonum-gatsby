@@ -6,6 +6,7 @@ import DecorativeHeading from "../../atoms/DecorativeHeading";
 import { Clamp } from '../../../utils/functions';
 
 const Hero = ({data}) => {
+  console.log(data);
   const {hero_Heading, hero_Subheading, hero_Cta, hero_CaseStudies, hero_CaseStudiesLink} = data;
   return (
     <Wrapper>
@@ -14,20 +15,18 @@ const Hero = ({data}) => {
           <DecorativeHeading type="h1">{hero_Heading}</DecorativeHeading>
           <ol>
             {hero_Subheading.map((subheading, i) => (
-              <li key={i}>{subheading.text}</li>
+              <li key={i}>{subheading}</li>
             ))}
           </ol>
         </div>
         <div className="cta-wrapper">
-          {hero_Cta.map((cta, i) => (
-            <Button to={cta.href} theme={cta.theme} key={i}>{cta.text}</Button>
-          ))}
+          <Button to={hero_Cta.href} theme={hero_Cta.theme}>{hero_Cta.text}</Button>
         </div>
       </header>
       {hero_CaseStudies.map((caseStudy, i) => (
         <div className="caseStudy" key={i}>
-          <GatsbyImage key={i} image={caseStudy.thumbnail.localFile.childImageSharp.gatsbyImageData} alt={caseStudy.thumbnail.alternativeText || ''} className="img" />
-          <Button to={`projekty/${caseStudy.slug}`} aria-label={caseStudy.name}>{`${hero_CaseStudiesLink} ${caseStudy.name}`}</Button>
+          <GatsbyImage key={i} image={caseStudy.thumbnail.source.asset.gatsbyImageData} alt={caseStudy.thumbnail.alt || ''} className="img" />
+          <Button to={`projekty/${caseStudy.slug.current}`} aria-label={caseStudy.name}>{`${hero_CaseStudiesLink} ${caseStudy.name}`}</Button>
         </div>
       ))}
     </Wrapper>

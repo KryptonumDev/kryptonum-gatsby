@@ -13,12 +13,11 @@ const NotFoundPage = ({data}) => {
     ctaSection_Cta,
     ctaSection_Img
   } } = data;
-  console.log(data);
   return (
     <>
       <HeroTwoColumns
         heading={hero_Heading}
-        subheading={hero_Subheading.data.childMarkdownRemark.rawMarkdownBody}
+        subheading={hero_Subheading}
         cta={hero_Cta}
         img={hero_Img}
       />
@@ -33,25 +32,19 @@ const NotFoundPage = ({data}) => {
 
 export const query = graphql`
   query {
-    notFound: strapiNotFound {
+    notFound: sanityNotFound {
       hero_Heading
-      hero_Subheading {
-        data {
-          childMarkdownRemark {
-            rawMarkdownBody
-          }
-        }
-      }
+      hero_Subheading
       hero_Cta {
         theme
         text
         href
       }
       hero_Img {
-        alternativeText
-        localFile {
-          childImageSharp {
-            gatsbyImageData(width: 700)
+        alt
+        source {
+          asset {
+            gatsbyImageData(placeholder: BLURRED, width: 700)
           }
         }
       }
@@ -62,10 +55,10 @@ export const query = graphql`
         href
       }
       ctaSection_Img {
-        alternativeText
-        localFile {
-          childImageSharp {
-            gatsbyImageData(width: 700)
+        alt
+        source {
+          asset {
+            gatsbyImageData(placeholder: BLURRED, width: 700)
           }
         }
       }

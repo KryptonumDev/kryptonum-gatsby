@@ -11,14 +11,16 @@ const Team = ({data}) => {
   const {team_Heading, team_Text, team_Cta} = data;
   const { team } = useStaticQuery(graphql`
     query {
-      team: allStrapiTeam {
+      team: allSanityTeam {
         nodes {
           name
-          slug
+          slug {
+            current
+          }
           img {
-            alternativeText
-            localFile {
-              childImageSharp {
+            alt
+            source {
+              asset {
                 gatsbyImageData(placeholder: DOMINANT_COLOR, width: 268)
               }
             }
@@ -32,8 +34,8 @@ const Team = ({data}) => {
       <DecorativeHeading type="h2">{team_Heading}</DecorativeHeading>
       <div className="wrapper">
         {team.nodes.map((person, i) => (
-          <Link to={`/zespol/${person.slug}`} key={i} aria-label={person.name}>
-            <GatsbyImage image={person.img.localFile.childImageSharp.gatsbyImageData} alt={person.img.alternativeText || ''}  className="img person-border" />
+          <Link to={`/zespol/${person.slug.current}`} key={i} aria-label={person.name}>
+            <GatsbyImage image={person.img.source.asset.gatsbyImageData} alt={person.img.alt || ''}  className="img person-border" />
           </Link>
         ))}
       </div>

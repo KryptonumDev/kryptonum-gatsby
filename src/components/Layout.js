@@ -7,113 +7,126 @@ import Footer from "./organisms/Footer";
 const Layout = ({children}) => {
   const data = useStaticQuery(graphql`
     query {
-      caseStudies: allStrapiCaseStudy(limit: 4) {
+      caseStudies: allSanityCaseStudies(limit: 4) {
         nodes {
           name
-          slug
+          slug {
+            current
+          }
           thumbnail {
-            alternativeText
-            localFile {
-              childImageSharp {
-                gatsbyImageData(width: 456)
+            alt
+            source {
+              asset {
+                gatsbyImageData(placeholder: BLURRED, width: 456)
               }
             }
           }
         }
       }
-      team: allStrapiTeam {
+      team: allSanityTeam {
         nodes {
           name
-          slug
+          slug {
+            current
+          }
           img {
-            alternativeText
-            localFile {
-              childImageSharp {
-                gatsbyImageData(placeholder: DOMINANT_COLOR, width: 94)
+            alt
+            source {
+              asset {
+                gatsbyImageData(placeholder: BLURRED)
               }
             }
           }
         }
       }
-      blogEntries: allStrapiBlogEntry(limit: 2) {
+      blogEntries: allSanityBlogEntries(limit: 2) {
         nodes {
           title
-          slug
+          slug {
+            current
+          }
           author {
             name
-            slug
+            slug {
+              current
+            }
             img {
-              alternativeText
-              localFile {
-                childImageSharp {
-                  gatsbyImageData(width: 32)
+              alt
+              source {
+                asset {
+                  gatsbyImageData(placeholder: BLURRED, width: 32, height: 32)
                 }
               }
             }
           }
-          img {
-            alternativeText
-            localFile {
-              childImageSharp {
-                gatsbyImageData(width: 128, height: 128)
+          thumbnail {
+            alt
+            source {
+              asset {
+                gatsbyImageData(placeholder: BLURRED, width: 128, height: 128)
               }
             }
           }
-          publishedAt(formatString: "D MMMM Y", locale: "pl")
+          _createdAt(formatString: "D MMMM Y", locale: "pl")
         }
       }
-      blogCategories: allStrapiBlogCategory {
+      blogCategories: allSanityBlogCategories(limit: 8) {
         nodes {
           name
-          slug
+          slug {
+            current
+          }
         }
       }
-      curiosities: allStrapiCuriosity(limit: 2) {
+      curiosities: allSanityCuriosities(limit: 2) {
         nodes {
           title
-          slug
-          img {
-            alternativeText
-            localFile {
-              childImageSharp {
-                gatsbyImageData
+          slug {
+            current
+          }
+          thumbnail {
+            alt
+            source {
+              asset {
+                gatsbyImageData(placeholder: BLURRED)
               }
             }
           }
         }
       }
-      technologies: allStrapiTechnology(limit: 2) {
+      technologies: allSanityTechnologies(limit: 2) {
         nodes {
           name
-          slug
+          slug {
+            current
+          }
           thumbnail {
-            alternativeText
-            localFile {
-              childImageSharp {
-                gatsbyImageData(width: 160, height: 160)
+            alt
+            source {
+              asset {
+                gatsbyImageData(placeholder: BLURRED, width: 160, height: 160)
               }
             }
           }
         }
       }
-      footer: strapiFooter {
+      footer: sanityFooter {
         contactName
         contactEmail
         contactTel
         officeCity
         officeStreet
-        socials {
+        legalLinks {
           text
           href
         }
-        legalLinks {
+        socials {
           text
           href
         }
       }
     }
   `);
-
 
   const locationPath = typeof window !== 'undefined' ? window.location.pathname : '';
   const orphansRegex = useMemo(() => {

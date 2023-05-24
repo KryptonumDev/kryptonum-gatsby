@@ -13,7 +13,7 @@ const Challange = ({data}) => {
       <ReactMarkdown>{challenge_Claim}</ReactMarkdown>
       <p>{challenge_Paragraph}</p>
       <div>
-        <ReactMarkdown>{challenge_SecondClaim.data.childMarkdownRemark.rawMarkdownBody}</ReactMarkdown>
+        <ReactMarkdown>{challenge_SecondClaim}</ReactMarkdown>
         <Button theme={challenge_Cta.theme} to={challenge_Cta.href}>{challenge_Cta.text}</Button>
       </div>
     </Wrapper>

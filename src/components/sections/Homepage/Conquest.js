@@ -13,7 +13,7 @@ const Conquest = ({data}) => {
       <ReactMarkdown>{conquest_Claim}</ReactMarkdown>
       <p>{conquest_Paragraph}</p>
       <div>
-        <ReactMarkdown>{conquest_SecondClaim.data.childMarkdownRemark.rawMarkdownBody}</ReactMarkdown>
+        <ReactMarkdown>{conquest_SecondClaim}</ReactMarkdown>
         <Button theme={conquest_Cta.theme} to={conquest_Cta.href}>{conquest_Cta.text}</Button>
       </div>
     </Wrapper>

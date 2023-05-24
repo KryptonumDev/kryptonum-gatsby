@@ -11,10 +11,10 @@ const TestimonialsSwiper = ({testimonials}) => {
     <Wrapper>
       {testimonials.nodes.map((testimonial, i) => (
         <div className="item" key={i}>
-          <GatsbyImage image={testimonial.img.localFile.childImageSharp.gatsbyImageData} alt={testimonial.img.alternativeText || ''} className="img" objectFit="contain" />
+          <GatsbyImage image={testimonial.img.source.asset.gatsbyImageData} alt={testimonial.img.alt || ''} className="img" objectFit="contain" />
           <div className="content">
             <Quote />
-            <ReactMarkdown children={testimonial.text} />
+            <ReactMarkdown>{testimonial.text}</ReactMarkdown>
           </div>
           <div className="info">
             <h3>

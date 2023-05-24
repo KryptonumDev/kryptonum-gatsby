@@ -8,7 +8,7 @@ import TestimonialsSwiper from "../organisms/TestimonialsSwiper";
 const Testimonials = () => {
   const { testimonials } = useStaticQuery(graphql`
     query {
-      testimonials: allStrapiTestimonial(limit: 3) {
+      testimonials: allSanityTestimonials(limit: 3) {
         nodes {
           name
           project
@@ -19,10 +19,10 @@ const Testimonials = () => {
             href
           }
           img {
-            alternativeText
-            localFile {
-              childImageSharp {
-                gatsbyImageData(placeholder: DOMINANT_COLOR, width: 268)
+            alt
+            source {
+              asset {
+                gatsbyImageData(placeholder: BLURRED, width: 268)
               }
             }
           }

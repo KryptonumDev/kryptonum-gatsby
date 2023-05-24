@@ -9,8 +9,8 @@ import Roadmap from "../components/sections/Homepage/Roadmap";
 import Team from "../components/sections/Homepage/Team";
 import Testimonials from "../components/sections/Testimonials";
 
-const IndexPage = ({data:
-  {
+const IndexPage = ({
+  data: {
     homepage
   }
 }) => {
@@ -30,12 +30,10 @@ const IndexPage = ({data:
 
 export const query = graphql`
   query {
-    homepage: strapiHomepage {
+    homepage: sanityHomepage {
       # Hero
       hero_Heading
-      hero_Subheading {
-        text
-      }
+      hero_Subheading
       hero_Cta {
         theme
         text
@@ -43,12 +41,14 @@ export const query = graphql`
       }
       hero_CaseStudies {
         name
-        slug
+        slug {
+          current
+        }
         thumbnail {
-          alternativeText
-          localFile {
-            childImageSharp {
-              gatsbyImageData
+          alt
+          source {
+            asset {
+              gatsbyImageData(placeholder: BLURRED)
             }
           }
         }
@@ -58,13 +58,7 @@ export const query = graphql`
       conquest_Heading
       conquest_Claim
       conquest_Paragraph
-      conquest_SecondClaim {
-        data {
-          childMarkdownRemark {
-            rawMarkdownBody
-          }
-        }
-      }
+      conquest_SecondClaim
       conquest_Cta {
         theme
         text
@@ -74,13 +68,7 @@ export const query = graphql`
       challenge_Heading
       challenge_Claim
       challenge_Paragraph
-      challenge_SecondClaim {
-        data {
-          childMarkdownRemark {
-            rawMarkdownBody
-          }
-        }
-      }
+      challenge_SecondClaim
       challenge_Cta {
         theme
         text
@@ -93,13 +81,9 @@ export const query = graphql`
         description
       }
       # Creativity
-      creativity {
-        data {
-          childMarkdownRemark {
-            rawMarkdownBody
-          }
-        }
-      }
+      creativity_Heading
+      creativity_Paragraph
+      creativity_SecondParagraph
       # Roadmap
       roadmap_Heading
       roadmap_Process {

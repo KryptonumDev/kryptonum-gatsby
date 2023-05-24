@@ -44,19 +44,19 @@ const Footer = ({data: {caseStudies, team, blogEntries, footer}}) => {
         <li>
           <h3><Link to="/case-study">Case study</Link></h3>
           {caseStudies.nodes.map((caseStudy, i) => (
-            <Link to={`/projekty/${caseStudy.slug}`} key={i}>{caseStudy.name}</Link>
+            <Link to={`/projekty/${caseStudy.slug.current}`} key={i}>{caseStudy.name}</Link>
           ))}
         </li>
         <li className="team">
           <h3><Link to="/zespol">Zespół</Link></h3>
           {team.nodes.map((person, i) => (
             <Link
-              to={`/zespol/${person.slug}`}
+              to={`/zespol/${person.slug.current}`}
               className="person"
               key={i}
               style={{display: !showMore && i+1 > maxPeople ? 'none' : ''}}
             >
-              <GatsbyImage image={person.img.localFile.childImageSharp.gatsbyImageData} alt={person.img.alternativeText || ''} className="person-border" />
+              <GatsbyImage image={person.img.source.asset.gatsbyImageData} alt={person.img.alt || ''} className="person-border" />
               <span>{person.name}</span>
             </Link>
           ))}
@@ -72,11 +72,11 @@ const Footer = ({data: {caseStudies, team, blogEntries, footer}}) => {
           <h3><Link to="/blog">Blog</Link></h3>
           {blogEntries.nodes.map((entry, i) => (
             <div className="entry" key={i}>
-              <Link to={`/blog/${entry.slug}`} className="link" aria-label={entry.title}></Link>
-              <GatsbyImage image={entry.img.localFile.childImageSharp.gatsbyImageData} alt={entry.img.alternativeText || ''} className="thumbnail" />
+              <Link to={`/blog/${entry.slug.current}`} className="link" aria-label={entry.title}></Link>
+              <GatsbyImage image={entry.thumbnail.source.asset.gatsbyImageData} alt={entry.thumbnail.alt || ''} className="thumbnail" />
               <div className="copy">
-                <Link to={`/zespol/${entry.author[0].slug}`} className="author">
-                  <GatsbyImage image={entry.author[0].img.localFile.childImageSharp.gatsbyImageData} alt={entry.author[0].img.alternativeText || ''} className="person-border" />
+                <Link to={`/zespol/${entry.author[0].slug.current}`} className="author">
+                  <GatsbyImage image={entry.author[0].img.source.asset.gatsbyImageData} alt={entry.author[0].img.alt || ''} className="person-border" />
                   <span>{entry.author[0].name}</span>
                 </Link>
                 <span>{entry.publishedAt}</span>

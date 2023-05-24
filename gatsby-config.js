@@ -9,38 +9,25 @@ module.exports = {
   },
   plugins: [
     {
-      resolve: `gatsby-source-strapi`,
+      resolve: `gatsby-source-sanity`,
       options: {
-        apiURL: process.env.STRAPI_API_URL,
-        accessToken: process.env.STRAPI_TOKEN,
-        singleTypes: [
-          `homepage`,
-          'footer',
-          'not-found'
-        ],
-        collectionTypes: [
-          'case-study',
-          'team',
-          'blog-category',
-          'blog-entry',
-          'curiosity',
-          'technology',
-          'testimonial'
-        ],
-      }
-    },
-    {
-      resolve: `gatsby-plugin-sharp`,
-      options: {
-        defaults: {
-          placeholder: `none`,
-        },
+        projectId: process.env.SANITY_PROJECT_ID,
+        dataset: process.env.SANITY_DATASET,
+        token: process.env.SANITY_TOKEN,
+        graphqlTag: 'default',
+        watchMode: true,
+        overlayDrafts: true,
       },
     },
-    `gatsby-plugin-image`,
+    {
+      resolve: "gatsby-plugin-image",
+      options: {
+        placeholder: `none`,
+      },
+    },
+    `gatsby-plugin-sharp`,
     `gatsby-plugin-styled-components`,
     `gatsby-plugin-sitemap`,
-    `gatsby-transformer-remark`,
     `gatsby-transformer-sharp`
   ],
   trailingSlash: "ignore"

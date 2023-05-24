@@ -3,13 +3,24 @@ import { Link } from "gatsby";
 import { GatsbyImage } from "gatsby-plugin-image";
 import styled from "styled-components";
 import { ArrowDown, ArrowLeft, KryptonumLogo } from '../atoms/Icons';
-import { scrollLock } from "../../utils/functions";
+import { Clamp, scrollLock } from "../../utils/functions";
 import { useEffect } from "react";
 import Button from "../atoms/Button";
 
-const Nav = ({data: {caseStudies, team, blogEntries, blogCategories, curiosities, technologies}}) => {
+const Nav = ({
+  data: {
+    caseStudies,
+    team,
+    blogEntries,
+    blogCategories,
+    curiosities,
+    technologies
+  }
+}) => {
   const [navOpened, setNavOpened] = useState(false);
   const nav = useRef(null);
+
+  const locationPath = typeof window !== 'undefined' ? window.location.pathname : '';
 
   useEffect(() => {
     const navHeight = nav.current.offsetHeight;
@@ -20,17 +31,17 @@ const Nav = ({data: {caseStudies, team, blogEntries, blogCategories, curiosities
       prevScrollPos = currentScrollPos;
       currentScrollPos = window.pageYOffset;
       if (currentScrollPos < prevScrollPos && currentScrollPos > navHeight) {
-        nav.current.classList.add('fixed');
+        nav.current?.classList.add('fixed');
         scrollDistance = 0;
-      } else if(nav.current.classList.contains('fixed')) {
+      } else if(nav.current?.classList.contains('fixed')) {
         scrollDistance += prevScrollPos - currentScrollPos;
         if (scrollDistance * -1 >= navHeight) {
-          nav.current.classList.remove('fixed');
+          nav.current?.classList.remove('fixed');
           scrollDistance = 0;
         }
       }
       if (currentScrollPos === 0) {
-        nav.current.classList.remove('fixed');
+        nav.current?.classList.remove('fixed');
       }
     });
 
@@ -40,7 +51,7 @@ const Nav = ({data: {caseStudies, team, blogEntries, blogCategories, curiosities
         scrollLock(false)
       }
     })
-  }, [])
+  }, [locationPath])
 
   const handleNavLinks = (e, item) => {
     if (window.matchMedia('(pointer: coarse), (max-width: 1049px)').matches) {
@@ -113,8 +124,8 @@ const Nav = ({data: {caseStudies, team, blogEntries, blogCategories, curiosities
                   </button>
                   <h3 className="mobileElement"><Link to="/projekty">Wszystkie projekty</Link></h3>
                   {caseStudies.nodes.map((caseStudy, i) => (
-                    <Link to={`/projekty/${caseStudy.slug}`} key={i} className="item">
-                      <GatsbyImage image={caseStudy.thumbnail.localFile.childImageSharp.gatsbyImageData} alt={caseStudy.alternativeText || ''} />
+                    <Link to={`/projekty/${caseStudy.slug.current}`} key={i} className="item">
+                      <GatsbyImage image={caseStudy.thumbnail.source.asset.gatsbyImageData} alt={caseStudy.thumbnail.alt || ''} />
                       <p>{caseStudy.name}</p>
                     </Link>
                   ))}
@@ -135,8 +146,8 @@ const Nav = ({data: {caseStudies, team, blogEntries, blogCategories, curiosities
                   <h3 className="mobileElement"><Link to="/zespol">Zobacz nasz zespół</Link></h3>
                   <div className="wrapper">
                     {team.nodes.map((person, i) => (
-                      <Link to={`/zespol/${person.slug}`} key={i} className="item">
-                        <GatsbyImage image={person.img.localFile.childImageSharp.gatsbyImageData} alt={person.alternativeText || ''} className="img person-border" />
+                      <Link to={`/zespol/${person.slug.current}`} key={i} className="item">
+                        <GatsbyImage image={person.img.source.asset.gatsbyImageData} alt={person.img.alt || ''} className="img person-border" />
                         <p>{person.name}</p>
                       </Link>
                     ))}
@@ -159,12 +170,12 @@ const Nav = ({data: {caseStudies, team, blogEntries, blogCategories, curiosities
                     <h3><Link to="/blog">Zobacz bloga</Link></h3>
                     {blogEntries.nodes.map((entry, i) => (
                       <div className="entry" key={i}>
-                        <Link to={`/blog/${entry.slug}`} className="link"></Link>
-                        <GatsbyImage image={entry.img.localFile.childImageSharp.gatsbyImageData} alt={entry.alternativeText || ''} className="thumbnail" />
+                        <Link to={`/blog/${entry.slug.current}`} className="link"></Link>
+                        <GatsbyImage image={entry.thumbnail.source.asset.gatsbyImageData} alt={entry.thumbnail.alt || ''} className="thumbnail" />
                         <div className="copy">
                           <div className="copy-top">
-                            <Link to={`/blog/autor/${entry.author[0].slug}`}>
-                              <GatsbyImage image={entry.author[0].img.localFile.childImageSharp.gatsbyImageData} alt={entry.author[0].img.alternativeText || ''} className="person-border" />
+                            <Link to={`/blog/autor/${entry.author[0].slug.current}`}>
+                              <GatsbyImage image={entry.author[0].img.source.asset.gatsbyImageData} alt={entry.author[0].img.alt || ''} className="person-border" />
                               <span>{entry.author[0].name}</span>
                             </Link>
                             <span>{entry.publishedAt}</span>
@@ -178,7 +189,7 @@ const Nav = ({data: {caseStudies, team, blogEntries, blogCategories, curiosities
                     <h3>Kategorie:</h3>
                     <div className="wrapper">
                       {blogCategories.nodes.map((category, i) => (
-                        <Link to={`/blog/kategoria/${category.slug}`} key={i}>
+                        <Link to={`/blog/kategoria/${category.slug.current}`} key={i}>
                           {category.name}
                         </Link>
                       ))}
@@ -188,8 +199,8 @@ const Nav = ({data: {caseStudies, team, blogEntries, blogCategories, curiosities
                     <h3>Twórcy:</h3>
                     <div className="wrapper">
                       {team.nodes.map((person, i) => (
-                        <Link to={`/blog/autor/${person.slug}`} key={i}>
-                          <GatsbyImage image={person.img.localFile.childImageSharp.gatsbyImageData} alt={person.alternativeText || ''} className="person-border" />
+                        <Link to={`/blog/autor/${person.slug.current}`} key={i}>
+                          <GatsbyImage image={person.img.source.asset.gatsbyImageData} alt={person.img.alt || ''} className="person-border" />
                           <p>{person.name}</p>
                         </Link>
                       ))}
@@ -213,8 +224,8 @@ const Nav = ({data: {caseStudies, team, blogEntries, blogCategories, curiosities
                   <div className="curiosities">
                     <h3><Link to="/ciekawostki">Ciekawostki</Link></h3>
                     {curiosities.nodes.map((curiosity, i) => (
-                      <Link to={`/akademia/ciekawostki/${curiosity.slug}`} key={i} className="link">
-                        <GatsbyImage image={curiosity.img.localFile.childImageSharp.gatsbyImageData} alt={curiosity.alternativeText || ''} className="thumbnail" />
+                      <Link to={`/akademia/ciekawostki/${curiosity.slug.current}`} key={i} className="link">
+                        <GatsbyImage image={curiosity.thumbnail.source.asset.gatsbyImageData} alt={curiosity.thumbnail.alt || ''} className="thumbnail" />
                         <h3>{curiosity.title}</h3>
                       </Link>
                     ))}
@@ -223,8 +234,8 @@ const Nav = ({data: {caseStudies, team, blogEntries, blogCategories, curiosities
                     <h3><Link to="/technologie">Technologie</Link></h3>
                     <div className="wrapper">
                       {technologies.nodes.map((technology, i) => (
-                        <Link to={`/akademia/technologie/${technology.slug}`} key={i}>
-                          <GatsbyImage image={technology.thumbnail.localFile.childImageSharp.gatsbyImageData} alt={technology.alternativeText || ''} />
+                        <Link to={`/akademia/technologie/${technology.slug.current}`} key={i}>
+                          <GatsbyImage image={technology.thumbnail.source.asset.gatsbyImageData} alt={technology.thumbnail.alt || ''} />
                           <p>{technology.name}</p>
                         </Link>
                       ))}
@@ -234,8 +245,8 @@ const Nav = ({data: {caseStudies, team, blogEntries, blogCategories, curiosities
                     <h3>Twórcy:</h3>
                     <div className="wrapper">
                       {team.nodes.map((person, i) => (
-                        <Link to={`/blog/autor/${person.slug}`} key={i}>
-                          <GatsbyImage image={person.img.localFile.childImageSharp.gatsbyImageData} alt={person.alternativeText || ''} className="person-border" />
+                        <Link to={`/blog/autor/${person.slug.current}`} key={i}>
+                          <GatsbyImage image={person.img.source.asset.gatsbyImageData} alt={person.img.alt || ''} className="person-border" />
                           <p>{person.name}</p>
                         </Link>
                       ))}
@@ -246,7 +257,7 @@ const Nav = ({data: {caseStudies, team, blogEntries, blogCategories, curiosities
             </li>
           </ul>
         </div>
-        <Button to='/kontakt' className='nav-cta'>Kontakt</Button>
+        <Button to='/kontakt' className='nav-cta'>Darmowa konsultacja</Button>
         <button
           id="nav-toggle"
           onClick={() => handleNavToggle()}
@@ -287,6 +298,9 @@ const StyledNav = styled.nav`
     display: flex;
     align-items: center;
     justify-content: space-between;
+  }
+  .nav-cta {
+    font-size: ${Clamp(16, 20, 18)};
   }
   ul {
     list-style-type: none;

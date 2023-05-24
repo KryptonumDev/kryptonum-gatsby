@@ -14,8 +14,8 @@ const CtaSection = ({heading, cta, img}) => {
         <Button theme={cta.theme} to={cta.href}>{cta.text}</Button>
       </header>
       <GatsbyImage
-        image={img.localFile.childImageSharp.gatsbyImageData}
-        alt={img.alternativeText || ''}
+        image={img.source.asset.gatsbyImageData}
+        alt={img.alt || ''}
         className="img"
         objectFit="contain"
       />

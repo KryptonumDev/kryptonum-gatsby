@@ -5,22 +5,13 @@ import DecorativeHeading from "../../atoms/DecorativeHeading";
 import { Clamp } from "../../../utils/functions";
 
 const Creativity = ({data}) => {
-  const {creativity} = data;
+  const {creativity_Heading, creativity_Paragraph, creativity_SecondParagraph} = data;
 
   return (
     <Wrapper>
-      <ReactMarkdown
-        components={{
-          h2: ({node: {children}}) => {
-            const markdownText = children.map(item => item.value || `**${item.children[0].value}**`).join('');
-            return (
-              <DecorativeHeading type="h2">{markdownText}</DecorativeHeading>
-            )
-          }
-        }}
-      >
-        {creativity.data.childMarkdownRemark.rawMarkdownBody}
-      </ReactMarkdown>
+      <DecorativeHeading type="h2">{creativity_Heading}</DecorativeHeading>
+      <p>{creativity_Paragraph}</p>
+      <ReactMarkdown>{creativity_SecondParagraph}</ReactMarkdown>
     </Wrapper>
   );
 }
