@@ -17,3 +17,7 @@ export const Clamp = (minSize, vw, maxSize, unit="rem") => {
   ? `clamp(${minSize / 16}rem, ${vw/7.68}vw, ${maxSize / 16}rem)`
   : `clamp(${minSize}px, ${vw/7.68}vw, ${maxSize}px)`;
 };
+
+export const removeMarkdown = (markdown) => {
+  return markdown?.replace(/\*\*(.*?)\*\*/g, '$1');
+}

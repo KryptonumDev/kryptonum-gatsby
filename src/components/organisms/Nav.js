@@ -3,7 +3,7 @@ import { Link } from "gatsby";
 import { GatsbyImage } from "gatsby-plugin-image";
 import styled from "styled-components";
 import { ArrowDown, ArrowLeft, KryptonumLogo } from '../atoms/Icons';
-import { Clamp, scrollLock } from "../../utils/functions";
+import { Clamp, removeMarkdown, scrollLock } from "../../utils/functions";
 import { useEffect } from "react";
 import Button from "../atoms/Button";
 
@@ -171,16 +171,16 @@ const Nav = ({
                     {blogEntries.nodes.map((entry, i) => (
                       <div className="entry" key={i}>
                         <Link to={`/blog/${entry.slug.current}`} className="link"></Link>
-                        <GatsbyImage image={entry.thumbnail.source.asset.gatsbyImageData} alt={entry.thumbnail.alt || ''} className="thumbnail" />
+                        <GatsbyImage image={entry.cover.source.asset.gatsbyImageData} alt={entry.cover.alt || ''} className="thumbnail" />
                         <div className="copy">
                           <div className="copy-top">
                             <Link to={`/blog/autor/${entry.author[0].slug.current}`}>
                               <GatsbyImage image={entry.author[0].img.source.asset.gatsbyImageData} alt={entry.author[0].img.alt || ''} className="person-border" />
                               <span>{entry.author[0].name}</span>
                             </Link>
-                            <span>{entry.publishedAt}</span>
+                            <span>{entry._createdAt}</span>
                           </div>
-                          <h3>{entry.title}</h3>
+                          <h3>{removeMarkdown(entry.title)}</h3>
                         </div>
                       </div>
                     ))}

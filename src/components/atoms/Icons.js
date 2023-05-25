@@ -268,3 +268,21 @@ export const Mail = () => (
     </g>
   </svg>
 )
+
+export const Clock = () => (
+  <svg
+    xmlns='http://www.w3.org/2000/svg'
+    width='25'
+    height='25'
+    fill='none'
+    viewBox='0 0 25 25'
+  >
+    <path
+      stroke='#EFF0F3'
+      strokeLinecap='round'
+      strokeLinejoin='round'
+      strokeWidth='2'
+      d='M12.426 6.205v6l4 2m6-2c0 5.523-4.477 10-10 10s-10-4.477-10-10 4.477-10 10-10 10 4.477 10 10z'
+    ></path>
+  </svg>
+)

@@ -9,6 +9,7 @@ import Roadmap from "../components/sections/Homepage/Roadmap";
 import Team from "../components/sections/Homepage/Team";
 import Testimonials from "../components/sections/Testimonials";
 import { SEO } from "../components/global/Seo";
+import BlogEntries from "../components/sections/BlogEntries";
 
 const IndexPage = ({
   data: {
@@ -25,6 +26,7 @@ const IndexPage = ({
       <Roadmap data={homepage} />
       <Team data={homepage} />
       <Testimonials />
+      <BlogEntries />
     </>
   )
 }
@@ -112,6 +114,6 @@ export default IndexPage
 
 export const Head = () => (
   <SEO
-    title="Agencja interaktywna dla tych, którym zależy"
+    title="Agencja interaktywna Kryptonum - partner biznesu online"
   />
 )

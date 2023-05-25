@@ -39,7 +39,7 @@ const Layout = ({children}) => {
           }
         }
       }
-      blogEntries: allSanityBlogEntries(limit: 2) {
+      blogEntries: allSanityBlogEntries(limit: 2, sort: {_createdAt: DESC}) {
         nodes {
           title
           slug {
@@ -59,7 +59,7 @@ const Layout = ({children}) => {
               }
             }
           }
-          thumbnail {
+          cover {
             alt
             source {
               asset {

@@ -3,7 +3,7 @@ import { Link } from "gatsby";
 import { GatsbyImage } from "gatsby-plugin-image";
 import styled from "styled-components";
 import { Facebook, Instagram, KryptonumLogoSimple, Mail, Tel, Tiktok, Whatsapp, Youtube } from "../atoms/Icons";
-import { Clamp } from "../../utils/functions";
+import { Clamp, removeMarkdown } from "../../utils/functions";
 
 const Footer = ({data: {caseStudies, team, blogEntries, footer}}) => {
   const [showMore, setShowMore] = useState(0);
@@ -73,14 +73,14 @@ const Footer = ({data: {caseStudies, team, blogEntries, footer}}) => {
           {blogEntries.nodes.map((entry, i) => (
             <div className="entry" key={i}>
               <Link to={`/blog/${entry.slug.current}`} className="link" aria-label={entry.title}></Link>
-              <GatsbyImage image={entry.thumbnail.source.asset.gatsbyImageData} alt={entry.thumbnail.alt || ''} className="thumbnail" />
+              <GatsbyImage image={entry.cover.source.asset.gatsbyImageData} alt={entry.cover.alt || ''} className="thumbnail" />
               <div className="copy">
                 <Link to={`/zespol/${entry.author[0].slug.current}`} className="author">
                   <GatsbyImage image={entry.author[0].img.source.asset.gatsbyImageData} alt={entry.author[0].img.alt || ''} className="person-border" />
                   <span>{entry.author[0].name}</span>
                 </Link>
-                <span>{entry.publishedAt}</span>
-                <h3>{entry.title}</h3>
+                <span>{entry._createdAt}</span>
+                <h3>{removeMarkdown(entry.title)}</h3>
               </div>
             </div>
           ))}
@@ -221,7 +221,7 @@ const Wrapper = styled.footer`
           }
           .copy {
             display: grid;
-            grid-template-columns: auto auto;
+            grid-template-columns: 1fr 1fr;
             align-items: center;
             > span {
               margin-left: auto;
