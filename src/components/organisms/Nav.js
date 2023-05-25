@@ -73,7 +73,7 @@ const Nav = ({
 
 
   return (
-    <StyledNav className="nav" aria-expanded={navOpened} ref={nav}>
+    <Wrapper className="nav" aria-expanded={navOpened} ref={nav}>
       <div className="max-width">
         <Link to="/" aria-label="Strona główna">
           <KryptonumLogo />
@@ -275,11 +275,11 @@ const Nav = ({
           scrollLock(false)
         }}
       ></div>
-    </StyledNav>
+    </Wrapper>
   );
 }
 
-const StyledNav = styled.nav`
+const Wrapper = styled.nav`
   --nav-height: 94px;
   background-color: var(--neutral-950);
   position: relative;
@@ -616,7 +616,7 @@ const StyledNav = styled.nav`
   .mobileElement {
     display: none;
   }
-  @media (max-width: 1049px), (pointer: coarse){
+  @media (max-width: 1149px), (pointer: coarse){
     #nav-toggle {
       display: block;
     }

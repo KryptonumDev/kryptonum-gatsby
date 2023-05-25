@@ -123,7 +123,9 @@ const Footer = ({data: {caseStudies, team, blogEntries, footer}}) => {
 const Wrapper = styled.footer`
   padding: 32px 0;
   position: relative;
-  margin-top: ${Clamp(96, 144, 172, "px")};
+  &.max-width {
+    margin-top: ${Clamp(96, 144, 172, "px")};
+  }
   &::before {
     content: '';
     position: absolute;

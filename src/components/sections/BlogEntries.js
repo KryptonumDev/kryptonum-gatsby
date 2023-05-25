@@ -5,6 +5,7 @@ import styled from "styled-components";
 import DecorativeHeading from "../atoms/DecorativeHeading";
 import { Clamp, removeMarkdown } from '../../utils/functions'
 import { Clock } from "../atoms/Icons";
+import Button from '../atoms/Button';
 
 const BlogEntries = () => {
   const { entries } = useStaticQuery(graphql`
@@ -85,6 +86,7 @@ const BlogEntries = () => {
           </div>
         ))}
       </div>
+      <Button theme="secondary" to='/blog' className='cta'>Przejdź do bloga</Button>
     </Wrapper>
   );
 }
@@ -181,6 +183,11 @@ const Wrapper = styled.section`
       grid-area: f;
       justify-self: flex-end;
     }
+  }
+  .cta {
+    display: flex;
+    width: fit-content;
+    margin: 32px auto 0;
   }
   @media (max-width: 849px){
     .entry {

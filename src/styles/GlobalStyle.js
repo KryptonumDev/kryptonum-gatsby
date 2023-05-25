@@ -77,6 +77,10 @@ const GlobalStyle = createGlobalStyle`
     display: grid;
     grid-template-columns: 1fr;
     row-gap: ${Clamp(96, 144, 172, "px")};
+    padding-top: 40px;
+    @media (max-width: 999px){
+      padding-top: ${Clamp(48, 128, 128, "px")};
+    }
   }
   svg {
     vertical-align: top;

@@ -25,7 +25,6 @@ const HeroTwoColumns = ({heading, subheading, cta, img}) => {
 }
 
 const Wrapper = styled.section`
-  margin-top: 40px;
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 32px;
@@ -56,9 +55,6 @@ const Wrapper = styled.section`
     .img {
       margin-left: 0;
     }
-  }
-  @media (max-width: 1189px){
-    margin-top: ${Clamp(48, 128, 128, "px")};
   }
 `
  

@@ -1,14 +1,16 @@
 import React from "react"
 
-export const SEO = ({ title, children }) => {
+export const SEO = ({ title, description, children }) => {
   const seo = {
     title: title + ' | Kryptonum' || 'Kryptonum',
+    description: description || '',
   }
 
   return (
     <>
       <meta name="robots" content="noindex" />
       <title>{seo.title}</title>
+      <meta name="description" content={seo.description} />
       {children}
     </>
   )

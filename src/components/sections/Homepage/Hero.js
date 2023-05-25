@@ -36,10 +36,10 @@ const Wrapper = styled.section`
   header {
     display: grid;
     align-items: flex-end;
-    grid-template-columns: 1fr auto;
-    margin: 40px 0 172px;
+    grid-template-columns: ${740/16}rem auto;
+    margin-bottom: 172px;
     .copy {
-      max-width: 740px;
+      max-width: ${740/16}rem;
       h1 {
         margin-bottom: ${Clamp(28, 40, 72, "px")};
       }
@@ -93,7 +93,7 @@ const Wrapper = styled.section`
   }
   @media (max-width: 1189px){
     header {
-      margin: ${Clamp(48, 128, 128, "px")} 0 ${Clamp(96, 144, 144, "px")};
+      margin-bottom: ${Clamp(96, 144, 144, "px")};
       grid-template-columns: 1fr;
       .cta-wrapper {
         margin-top: ${Clamp(64, 96, 96, "px")};
