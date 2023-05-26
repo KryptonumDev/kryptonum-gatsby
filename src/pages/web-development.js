@@ -2,17 +2,24 @@ import { graphql } from "gatsby";
 import * as React from "react"
 import { SEO } from "../components/global/Seo";
 import HeroServices from "../components/sections/HeroServices";
+import Advantages from "../components/sections/WebDevelopment/Advantages";
 
 const WebDevelopmentPage = ({ data: { webDevelopment } }) => {
   return (
-    <HeroServices
-      title={webDevelopment.hero_Heading}
-      img={webDevelopment.hero_Img}
-      claim={webDevelopment.hero_Claim}
-      paragraph={webDevelopment.hero_Paragraph}
-      secondParagraph={webDevelopment.hero_SecondParagraph}
-      nav={webDevelopment.hero_Nav}
-    />
+    <>
+      <HeroServices
+        title={webDevelopment.hero_Heading}
+        img={webDevelopment.hero_Img}
+        claim={webDevelopment.hero_Claim}
+        paragraph={webDevelopment.hero_Paragraph}
+        secondParagraph={webDevelopment.hero_SecondParagraph}
+        nav={webDevelopment.hero_Nav}
+      />
+      <Advantages
+        heading={webDevelopment.advantages_Heading}
+        advantages={webDevelopment.advantages_Array}
+      />
+    </>
   );
 }
 
@@ -36,6 +43,20 @@ export const query = graphql`
         title
         description
         href
+      }
+      # Advantages
+      advantages_Heading
+      advantages_Array {
+        title
+        description
+        img {
+          alt
+          source {
+            asset {
+              gatsbyImageData(placeholder: BLURRED)
+            }
+          }
+        }
       }
     }
   }
