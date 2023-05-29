@@ -4,13 +4,14 @@ import ReactMarkdown from "react-markdown";
 import styled from "styled-components";
 import { Clamp } from "../../../utils/functions";
 import DecorativeHeading from "../../atoms/DecorativeHeading";
+import Button from '../../atoms/Button';
 
-const Advantages = ({ heading, advantages }) => {
+const Advantages = ({ heading, advantages, ctaHeading, cta }) => {
   const [scales, setScales] = useState({ scale1: 0, scale2: 0, scale3: 0, scale4: 0 });
   useEffect(() => {
     const advantages = document.querySelectorAll('.advantages-item');
-    const offset = (window.innerHeight / 2) * -1;
     const handleScroll = () => {
+      const offset = (window.innerHeight / 2) * -1;
       const newScales = { ...scales };
       advantages.forEach((advantage, i) => {
         const { top, height } = advantage.getBoundingClientRect();
@@ -26,6 +27,7 @@ const Advantages = ({ heading, advantages }) => {
     }
     handleScroll();
     window.addEventListener('scroll', handleScroll);
+    window.addEventListener('resize', handleScroll);
   }, [])
 
   return (
@@ -48,6 +50,10 @@ const Advantages = ({ heading, advantages }) => {
           </AdvantageItem>
         ))}
       </div>
+      <div className="callToAction">
+        <DecorativeHeading type="h2" decoration={false}>{ctaHeading}</DecorativeHeading>
+        <Button theme={cta.theme} to={cta.href}>{cta.text}</Button>
+      </div>
     </Wrapper>
   );
 }
@@ -61,20 +67,13 @@ const Wrapper = styled.section`
   }
   .advantages-item {
     display: grid;
-    grid-template-columns: 1fr;
+    grid-template-columns: 1fr 1fr;
+    align-items: center;
     grid-template-rows: 1fr 2fr;
     &:not(:last-child){
       margin-bottom: ${Clamp(48, 64, 64, "px")};
     }
-    position: relative;
     .copy {
-      position: absolute;
-      width: 50%;
-      height: 50%;
-      left: 0;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
       z-index: 3;
       h3 {
         font-size: ${Clamp(20, 32, 30)};
@@ -88,6 +87,7 @@ const Wrapper = styled.section`
       }
     }
     .img {
+      margin-left: -100%;
       position: sticky;
       top: 0;
       &::before {
@@ -104,11 +104,10 @@ const Wrapper = styled.section`
       }
     }
     &:nth-child(2n) {
-      .copy {
-        right: 0;
-        left: unset;
-      }
       .img {
+        order: -1;
+        margin-right: -100%;
+        margin-left: 0;
         &::before {
           left: unset;
           right: 0;
@@ -116,6 +115,15 @@ const Wrapper = styled.section`
         }
       }
     }
+  }
+  .callToAction {
+    margin-top: ${Clamp(80, 144, 80, "px")};
+    h2 {
+      max-width: ${1200/16}rem;
+      margin: 0 auto ${Clamp(32, 40, 48, "px")};
+    }
+    text-align: center;
+    justify-content: center;
   }
 `
 

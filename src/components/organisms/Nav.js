@@ -65,11 +65,11 @@ const Nav = ({
   }
 
   const handleHideNav = () => {
-    nav.style.pointerEvents = 'none';
+    nav?.style?.setProperty('pointer-events', 'none');
     setTimeout(() => {
-      nav.style = null;
-    }, );
-  }
+      nav?.removeAttribute('style');
+    }, 1000);
+  };
 
   const handleNavToggle = () => {
     if(!nav.classList.contains('fixed')){

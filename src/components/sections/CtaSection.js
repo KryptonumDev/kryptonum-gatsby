@@ -6,7 +6,6 @@ import DecorativeHeading from "../atoms/DecorativeHeading";
 import { Clamp } from '../../utils/functions';
 
 const CtaSection = ({heading, cta, img}) => {
-  console.log(cta);
   return (
     <Wrapper>
       <header>
@@ -39,18 +38,19 @@ const Wrapper = styled.section`
     position: absolute;
     right: 0;
     bottom: 0;
-    width: 55%;
+    max-height: 120%;
+    width: 50%;
   }
   @media (max-width: 1289px){
     grid-template-columns: 1fr;
-    margin-top: min(80%, 500px);
+    margin-top: min(80%, 300px);
     .img {
       right: 50%;
       top: 0px;
       transform: translate(50%, -100%);
       bottom: unset;
       width: 80%;
-      max-width: 500px;
+      max-width: 300px;
     }
   }
   @media (max-width: 767px){
