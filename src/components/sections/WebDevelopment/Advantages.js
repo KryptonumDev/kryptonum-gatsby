@@ -9,11 +9,11 @@ const Advantages = ({ heading, advantages }) => {
   const [scales, setScales] = useState({ scale1: 0, scale2: 0, scale3: 0, scale4: 0 });
   useEffect(() => {
     const advantages = document.querySelectorAll('.advantages-item');
+    const offset = (window.innerHeight / 2) * -1;
     const handleScroll = () => {
       const newScales = { ...scales };
       advantages.forEach((advantage, i) => {
         const { top, height } = advantage.getBoundingClientRect();
-        const offset = -100;
         let scaleX = 0.6 - (Math.abs(top - offset) / ((height / 2) + offset * 1.5)) * 0.6;
         if(top - offset >= 0){
           scaleX = .6;
@@ -27,8 +27,6 @@ const Advantages = ({ heading, advantages }) => {
     handleScroll();
     window.addEventListener('scroll', handleScroll);
   }, [])
-
-  console.log(scales);
 
   return (
     <Wrapper>
@@ -64,7 +62,7 @@ const Wrapper = styled.section`
   .advantages-item {
     display: grid;
     grid-template-columns: 1fr;
-    grid-template-rows: 1fr 1fr;
+    grid-template-rows: 1fr 2fr;
     &:not(:last-child){
       margin-bottom: ${Clamp(48, 64, 64, "px")};
     }

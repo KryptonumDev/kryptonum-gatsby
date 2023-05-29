@@ -18,12 +18,13 @@ const Nav = ({
   }
 }) => {
   const [navOpened, setNavOpened] = useState(false);
-  const nav = useRef(null);
+  const navRef = useRef(null);
+  const nav = navRef.current;
 
   const locationPath = typeof window !== 'undefined' ? window.location.pathname : '';
 
   useEffect(() => {
-    const navHeight = nav.current.offsetHeight;
+    const navHeight = nav?.offsetHeight;
     let prevScrollPos = window.pageYOffset;
     let currentScrollPos = prevScrollPos;
     let scrollDistance = 0;
@@ -31,17 +32,17 @@ const Nav = ({
       prevScrollPos = currentScrollPos;
       currentScrollPos = window.pageYOffset;
       if (currentScrollPos < prevScrollPos && currentScrollPos > navHeight) {
-        nav.current?.classList.add('fixed');
+        nav?.classList.add('fixed');
         scrollDistance = 0;
-      } else if(nav.current?.classList.contains('fixed')) {
+      } else if(nav?.classList.contains('fixed')) {
         scrollDistance += prevScrollPos - currentScrollPos;
         if (scrollDistance * -1 >= navHeight) {
-          nav.current?.classList.remove('fixed');
+          nav?.classList.remove('fixed');
           scrollDistance = 0;
         }
       }
       if (currentScrollPos === 0) {
-        nav.current?.classList.remove('fixed');
+        nav?.classList.remove('fixed');
       }
     });
 
@@ -51,10 +52,10 @@ const Nav = ({
         scrollLock(false)
       }
     })
-  }, [locationPath])
+  }, [locationPath, nav])
 
   const handleNavLinks = (e, item) => {
-    if (window.matchMedia('(pointer: coarse), (max-width: 1049px)').matches) {
+    if (window.matchMedia('(pointer: coarse), (max-width: 1149px)').matches) {
       e.preventDefault();
       const nav = document.querySelector('.nav');
       item
@@ -63,17 +64,23 @@ const Nav = ({
     }      
   }
 
+  const handleHideNav = () => {
+    nav.style.pointerEvents = 'none';
+    setTimeout(() => {
+      nav.style = null;
+    }, );
+  }
+
   const handleNavToggle = () => {
-    if(!nav.current.classList.contains('fixed')){
+    if(!nav.classList.contains('fixed')){
       window.scrollTo({top: 0});
     }
     setNavOpened(!navOpened)
     scrollLock(!navOpened)
   }
 
-
   return (
-    <Wrapper className="nav" aria-expanded={navOpened} ref={nav}>
+    <Wrapper className="nav" aria-expanded={navOpened} ref={navRef}>
       <div className="max-width">
         <Link to="/" aria-label="Strona główna">
           <KryptonumLogo />
@@ -91,23 +98,23 @@ const Nav = ({
                     <ArrowLeft />
                     <span>Wróć</span>
                   </button>
-                  <h3 className="mobileElement"><Link to="/projekty">Wszystkie usługi</Link></h3>
-                  <li><Link to="/web-development"><h3>Web Development</h3></Link>
+                  <h3 className="mobileElement"><Link to="/projekty" onClick={e => handleHideNav(e)}>Wszystkie usługi</Link></h3>
+                  <li><Link to="/web-development" onClick={e => handleHideNav(e)}><h3>Web Development</h3></Link>
                     <ul className="nav-list3">
-                      <li><Link to="/strony-internetowe">Strony internetowe</Link></li>
-                      <li><Link to="/aplikacje-internetowe">Aplikacje internetowe</Link></li>
-                      <li><Link to="/sklepy-internetowe">Sklepy internetowe</Link></li>
+                      <li><Link to="/strony-internetowe" onClick={e => handleHideNav(e)}>Strony internetowe</Link></li>
+                      <li><Link to="/aplikacje-internetowe" onClick={e => handleHideNav(e)}>Aplikacje internetowe</Link></li>
+                      <li><Link to="/sklepy-internetowe" onClick={e => handleHideNav(e)}>Sklepy internetowe</Link></li>
                     </ul>
                   </li>
-                  <li><Link to="/grafika-design-kreacja"><h3>Grafika & design</h3></Link>
+                  <li><Link to="/grafika-design-kreacja" onClick={e => handleHideNav(e)}><h3>Grafika & design</h3></Link>
                     <ul className="nav-list3">
-                      <li><Link to="/strony-internetowe">Logo</Link></li>
-                      <li><Link to="/aplikacje-internetowe">Audyty</Link></li>
-                      <li><Link to="/sklepy-internetowe">Identyfikacja wizualna i branding</Link></li>
+                      <li><Link to="/strony-internetowe" onClick={e => handleHideNav(e)}>Logo</Link></li>
+                      <li><Link to="/aplikacje-internetowe" onClick={e => handleHideNav(e)}>Audyty</Link></li>
+                      <li><Link to="/sklepy-internetowe" onClick={e => handleHideNav(e)}>Identyfikacja wizualna i branding</Link></li>
                     </ul>
                   </li>
-                  <li><Link to="/opieka-agencyjna"><h3>Opieka agencyjna</h3></Link></li>
-                  <li><Link to="/warsztat-strategiczny"><h3>Warsztat strategiczny</h3></Link></li>
+                  <li><Link to="/opieka-agencyjna" onClick={e => handleHideNav(e)}><h3>Opieka agencyjna</h3></Link></li>
+                  <li><Link to="/warsztat-strategiczny" onClick={e => handleHideNav(e)}><h3>Warsztat strategiczny</h3></Link></li>
                 </div>
               </ul>
             </li>
@@ -122,9 +129,9 @@ const Nav = ({
                     <ArrowLeft />
                     <span>Wróć</span>
                   </button>
-                  <h3 className="mobileElement"><Link to="/projekty">Wszystkie projekty</Link></h3>
+                  <h3 className="mobileElement"><Link to="/projekty" onClick={e => handleHideNav(e)}>Wszystkie projekty</Link></h3>
                   {caseStudies.nodes.map((caseStudy, i) => (
-                    <Link to={`/projekty/${caseStudy.slug.current}`} key={i} className="item">
+                    <Link to={`/projekty/${caseStudy.slug.current}`} key={i} className="item" onClick={e => handleHideNav(e)}>
                       <GatsbyImage image={caseStudy.thumbnail.source.asset.gatsbyImageData} alt={caseStudy.thumbnail.alt || ''} />
                       <p>{caseStudy.name}</p>
                     </Link>
@@ -143,10 +150,10 @@ const Nav = ({
                     <ArrowLeft />
                     <span>Wróć</span>
                   </button>
-                  <h3 className="mobileElement"><Link to="/zespol">Zobacz nasz zespół</Link></h3>
+                  <h3 className="mobileElement"><Link to="/zespol" onClick={e => handleHideNav(e)}>Zobacz nasz zespół</Link></h3>
                   <div className="wrapper">
                     {team.nodes.map((person, i) => (
-                      <Link to={`/zespol/${person.slug.current}`} key={i} className="item">
+                      <Link to={`/zespol/${person.slug.current}`} key={i} className="item" onClick={e => handleHideNav(e)}>
                         <GatsbyImage image={person.img.source.asset.gatsbyImageData} alt={person.img.alt || ''} className="img person-border" />
                         <p>{person.name}</p>
                       </Link>
@@ -170,11 +177,11 @@ const Nav = ({
                     <h3><Link to="/blog">Zobacz bloga</Link></h3>
                     {blogEntries.nodes.map((entry, i) => (
                       <div className="entry" key={i}>
-                        <Link to={`/blog/${entry.slug.current}`} className="link"></Link>
+                        <Link to={`/blog/${entry.slug.current}`} className="link" aria-label={removeMarkdown(entry.title)} onClick={e => handleHideNav(e)}></Link>
                         <GatsbyImage image={entry.cover.source.asset.gatsbyImageData} alt={entry.cover.alt || ''} className="thumbnail" />
                         <div className="copy">
                           <div className="copy-top">
-                            <Link to={`/blog/autor/${entry.author[0].slug.current}`}>
+                            <Link to={`/blog/autor/${entry.author[0].slug.current}`} onClick={e => handleHideNav(e)}>
                               <GatsbyImage image={entry.author[0].img.source.asset.gatsbyImageData} alt={entry.author[0].img.alt || ''} className="person-border" />
                               <span>{entry.author[0].name}</span>
                             </Link>
@@ -189,7 +196,7 @@ const Nav = ({
                     <h3>Kategorie:</h3>
                     <div className="wrapper">
                       {blogCategories.nodes.map((category, i) => (
-                        <Link to={`/blog/kategoria/${category.slug.current}`} key={i}>
+                        <Link to={`/blog/kategoria/${category.slug.current}`} key={i} onClick={e => handleHideNav(e)}>
                           {category.name}
                         </Link>
                       ))}
@@ -199,7 +206,7 @@ const Nav = ({
                     <h3>Twórcy:</h3>
                     <div className="wrapper">
                       {team.nodes.map((person, i) => (
-                        <Link to={`/blog/autor/${person.slug.current}`} key={i}>
+                        <Link to={`/blog/autor/${person.slug.current}`} key={i} onClick={e => handleHideNav(e)}>
                           <GatsbyImage image={person.img.source.asset.gatsbyImageData} alt={person.img.alt || ''} className="person-border" />
                           <p>{person.name}</p>
                         </Link>
@@ -220,21 +227,21 @@ const Nav = ({
                     <ArrowLeft />
                     <span>Wróć</span>
                   </button>
-                  <h3 className="mobileElement"><Link to="/akademia">Akademia</Link></h3>
+                  <h3 className="mobileElement"><Link to="/akademia" onClick={e => handleHideNav(e)}>Akademia</Link></h3>
                   <div className="curiosities">
-                    <h3><Link to="/ciekawostki">Ciekawostki</Link></h3>
+                    <h3><Link to="/ciekawostki" onClick={e => handleHideNav(e)}>Ciekawostki</Link></h3>
                     {curiosities.nodes.map((curiosity, i) => (
-                      <Link to={`/akademia/ciekawostki/${curiosity.slug.current}`} key={i} className="link">
+                      <Link to={`/akademia/ciekawostki/${curiosity.slug.current}`} key={i} className="link" onClick={e => handleHideNav(e)}>
                         <GatsbyImage image={curiosity.thumbnail.source.asset.gatsbyImageData} alt={curiosity.thumbnail.alt || ''} className="thumbnail" />
                         <h3>{curiosity.title}</h3>
                       </Link>
                     ))}
                   </div>
                   <div className="technologies">
-                    <h3><Link to="/technologie">Technologie</Link></h3>
+                    <h3><Link to="/technologie" onClick={e => handleHideNav(e)}>Technologie</Link></h3>
                     <div className="wrapper">
                       {technologies.nodes.map((technology, i) => (
-                        <Link to={`/akademia/technologie/${technology.slug.current}`} key={i}>
+                        <Link to={`/akademia/technologie/${technology.slug.current}`} key={i} onClick={e => handleHideNav(e)}>
                           <GatsbyImage image={technology.thumbnail.source.asset.gatsbyImageData} alt={technology.thumbnail.alt || ''} />
                           <p>{technology.name}</p>
                         </Link>
@@ -245,7 +252,7 @@ const Nav = ({
                     <h3>Twórcy:</h3>
                     <div className="wrapper">
                       {team.nodes.map((person, i) => (
-                        <Link to={`/blog/autor/${person.slug.current}`} key={i}>
+                        <Link to={`/blog/autor/${person.slug.current}`} key={i} onClick={e => handleHideNav(e)}>
                           <GatsbyImage image={person.img.source.asset.gatsbyImageData} alt={person.img.alt || ''} className="person-border" />
                           <p>{person.name}</p>
                         </Link>
@@ -257,7 +264,7 @@ const Nav = ({
             </li>
           </ul>
         </div>
-        <Button to='/kontakt' className='nav-cta'>Darmowa konsultacja</Button>
+        <Button to='/kontakt' className='nav-cta' onClick={e => handleHideNav(e)}>Darmowa konsultacja</Button>
         <button
           id="nav-toggle"
           onClick={() => handleNavToggle()}
@@ -332,7 +339,7 @@ const Wrapper = styled.nav`
             transition: transform .3s;
           }
         }
-        @media (pointer: fine) and (min-width: 1050px){
+        @media (pointer: fine) and (min-width: 1150px){
           &:hover,
           &:focus-within {
             > a {
