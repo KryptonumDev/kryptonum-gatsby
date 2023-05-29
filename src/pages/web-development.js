@@ -1,6 +1,7 @@
 import { graphql } from "gatsby";
 import * as React from "react"
 import { SEO } from "../components/global/Seo";
+import CaseStudies from "../components/sections/CaseStudies";
 import CtaSection from "../components/sections/CtaSection";
 import HeroServices from "../components/sections/HeroServices";
 import Testimonials from "../components/sections/Testimonials";
@@ -24,6 +25,7 @@ const WebDevelopmentPage = ({ data }) => {
     flexibility_Paragraph,
     flexibility_SecondParagraph,
     flexibility_Cta,
+    caseStudies_Heading,
     ctaSection_Heading,
     ctaSection_Cta,
     ctaSection_Img
@@ -52,6 +54,9 @@ const WebDevelopmentPage = ({ data }) => {
         flexibility_Cta
       }}/>
       <Testimonials />
+      <CaseStudies
+        heading={caseStudies_Heading}
+      />
       <CtaSection
         heading={ctaSection_Heading}
         cta={ctaSection_Cta}
@@ -112,6 +117,8 @@ export const query = graphql`
         text
         href
       }
+      # Case Studies
+      caseStudies_Heading
       # Call To Action
       ctaSection_Heading
       ctaSection_Cta {

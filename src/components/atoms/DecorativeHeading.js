@@ -43,12 +43,12 @@ const DecorativeHeading = ({type="h1", children, decoration=true}) => {
 const Wrapper = styled.h1`
   display: grid;
   grid-template-columns: auto auto;
-  gap: 8px;
   width: fit-content;
   > svg {
     width: 0.86em;
     height: 0.86em;
     margin-top: 0.25em;
+    margin-right: 8px;
   }
   span > svg {
     vertical-align: middle;

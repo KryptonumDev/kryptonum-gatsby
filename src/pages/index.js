@@ -42,21 +42,6 @@ export const query = graphql`
         text
         href
       }
-      hero_CaseStudies {
-        name
-        slug {
-          current
-        }
-        thumbnail {
-          alt
-          source {
-            asset {
-              gatsbyImageData(placeholder: BLURRED)
-            }
-          }
-        }
-      }
-      hero_CaseStudiesLink
       # Conquest
       conquest_Heading
       conquest_Claim

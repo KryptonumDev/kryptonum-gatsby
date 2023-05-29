@@ -1,12 +1,12 @@
 import React from "react";
-import { GatsbyImage } from "gatsby-plugin-image";
 import styled from "styled-components";
 import Button from '../../atoms/Button';
 import DecorativeHeading from "../../atoms/DecorativeHeading";
 import { Clamp } from '../../../utils/functions';
+import CaseStudies from "../CaseStudies";
 
 const Hero = ({data}) => {
-  const {hero_Heading, hero_Subheading, hero_Cta, hero_CaseStudies, hero_CaseStudiesLink} = data;
+  const {hero_Heading, hero_Subheading, hero_Cta} = data;
   return (
     <Wrapper>
       <header>
@@ -22,12 +22,7 @@ const Hero = ({data}) => {
           <Button to={hero_Cta.href} theme={hero_Cta.theme}>{hero_Cta.text}</Button>
         </div>
       </header>
-      {hero_CaseStudies.map((caseStudy, i) => (
-        <div className="caseStudy" key={i}>
-          <GatsbyImage key={i} image={caseStudy.thumbnail.source.asset.gatsbyImageData} alt={caseStudy.thumbnail.alt || ''} className="img" />
-          <Button to={`projekty/${caseStudy.slug.current}`} aria-label={caseStudy.name}>{`${hero_CaseStudiesLink} ${caseStudy.name}`}</Button>
-        </div>
-      ))}
+      <CaseStudies />
     </Wrapper>
   );
 }
@@ -69,28 +64,6 @@ const Wrapper = styled.section`
       align-items: flex-end;
     }
   }
-  @media (min-width: 500px){
-    .caseStudy {
-      overflow: hidden;
-      position: sticky;
-      top: 0;
-      height: 100vh;
-      height: 100dvh;
-      .img {
-        width: 100%;
-        height: 100%;
-      }
-      .cta {
-        position: absolute;
-        left: 50%;
-        top: 50%;
-        transform: translate(-50%,-50%);
-        background-image: linear-gradient(rgba(0,0,0,0), rgba(0,0,0,.6), rgba(0,0,0,0));
-        width: 100%;
-        padding: 50% 0;
-      }
-    }
-  }
   @media (max-width: 1189px){
     header {
       margin-bottom: ${Clamp(96, 144, 144, "px")};
@@ -101,9 +74,6 @@ const Wrapper = styled.section`
         align-items: flex-start;
         flex-direction: column-reverse;
       }
-    }
-    .caseStudy {
-      margin: 0 calc(var(--pageMargin) * -1);
     }
   }
   @media (max-width: 499px){
@@ -118,15 +88,6 @@ const Wrapper = styled.section`
         flex-direction: column;
         align-items: center;
       }
-    }
-  }
-  .caseStudy {
-    text-align: center;
-    &:not(:last-child){
-      margin-bottom: 48px;
-    }
-    .cta {
-      margin-top: 24px;
     }
   }
 `
