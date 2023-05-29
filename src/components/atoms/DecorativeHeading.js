@@ -50,6 +50,12 @@ const Wrapper = styled.h1`
     margin-top: 0.25em;
     margin-right: 8px;
   }
+  span:nth-of-type(2){
+    grid-column: 3/-1;
+    transform: translateY(50%);
+    margin-bottom: ${Clamp(28, 50, 48)};
+    text-align: right;
+  }
   span > svg {
     vertical-align: middle;
     width: ${Clamp(100, 216, 216)};

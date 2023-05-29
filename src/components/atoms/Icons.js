@@ -160,7 +160,7 @@ export const ArrowTopRight = ({ id=`arrow_${Math.random().toString(36).substring
   </svg>
 );
 
-export const ArrowDown = () => (
+export const ChevronDown = () => (
   <svg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 16 16' fill='none'>
     <path
       stroke='#EFF0F3'
@@ -172,7 +172,7 @@ export const ArrowDown = () => (
   </svg>
 )
 
-export const ArrowLeft = () => (
+export const ChevronLeft = () => (
   <svg xmlns='http://www.w3.org/2000/svg' width='40' height='40' fill='none'>
     <path
       stroke='#EFF0F3'
@@ -312,5 +312,40 @@ export const Clock = () => (
       strokeWidth='2'
       d='M12.426 6.205v6l4 2m6-2c0 5.523-4.477 10-10 10s-10-4.477-10-10 4.477-10 10-10 10 4.477 10 10z'
     ></path>
+  </svg>
+)
+
+export const ArrowDown = () => (
+  <svg
+    xmlns='http://www.w3.org/2000/svg'
+    width='32'
+    height='33'
+    fill='none'
+    viewBox='0 0 32 33'
+  >
+    <path
+      stroke='#EFF0F3'
+      strokeLinecap='round'
+      strokeLinejoin='round'
+      strokeWidth='2'
+      d='M16 7.662V26.33m0 0l9.333-9.334m-9.334 9.334l-9.333-9.334'
+    ></path>
+  </svg>
+)
+
+export const ScrollDown = () => (
+  <svg
+    xmlns='http://www.w3.org/2000/svg'
+    width='40'
+    height='41'
+    fill='none'
+    viewBox='0 0 40 41'
+  >
+  <path
+    stroke='#EFF0F3'
+    strokeLinecap='round'
+    strokeWidth='2'
+    d='M20 23.015v5M6.98 14.805c0-6.75 5.97-12.223 13.333-12.223 7.364 0 13.333 5.472 13.333 12.222v12.222c0 6.75-5.97 12.223-13.333 12.223-7.364 0-13.333-5.472-13.333-12.223V14.804z'
+  ></path>
   </svg>
 )

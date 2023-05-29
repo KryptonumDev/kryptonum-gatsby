@@ -2,7 +2,7 @@ import React, { useRef, useState } from "react";
 import { Link } from "gatsby";
 import { GatsbyImage } from "gatsby-plugin-image";
 import styled from "styled-components";
-import { ArrowDown, ArrowLeft, KryptonumLogo } from '../atoms/Icons';
+import { ChevronDown, ChevronLeft, KryptonumLogo } from '../atoms/Icons';
 import { Clamp, removeMarkdown, scrollLock } from "../../utils/functions";
 import { useEffect } from "react";
 import Button from "../atoms/Button";
@@ -90,12 +90,12 @@ const Nav = ({
             <li>
               <Link to="/uslugi" onClick={(e) => handleNavLinks(e, 'services')}>
                 <span>Usługi</span>
-                <ArrowDown />
+                <ChevronDown />
               </Link>
               <ul className="nav-list2 services">
                 <div className="max-width">
                   <button className="mobileElement backBtn" onClick={(e) => handleNavLinks(e)}>
-                    <ArrowLeft />
+                    <ChevronLeft />
                     <span>Wróć</span>
                   </button>
                   <h3 className="mobileElement"><Link to="/projekty" onClick={e => handleHideNav(e)}>Wszystkie usługi</Link></h3>
@@ -121,12 +121,12 @@ const Nav = ({
             <li>
               <Link to="/projekty" onClick={(e) => handleNavLinks(e, 'caseStudies')}>
                 <span>Projekty</span>
-                <ArrowDown />
+                <ChevronDown />
               </Link>
               <ul className="nav-list2 caseStudies">
                 <div className="max-width">
                   <button className="mobileElement backBtn" onClick={(e) => handleNavLinks(e)}>
-                    <ArrowLeft />
+                    <ChevronLeft />
                     <span>Wróć</span>
                   </button>
                   <h3 className="mobileElement"><Link to="/projekty" onClick={e => handleHideNav(e)}>Wszystkie projekty</Link></h3>
@@ -142,12 +142,12 @@ const Nav = ({
             <li>
               <Link to="/zespol" onClick={(e) => handleNavLinks(e, 'team')}>
                 <span>Zespół</span>
-                <ArrowDown />
+                <ChevronDown />
               </Link>
               <ul className="nav-list2 team">
                 <div className="max-width">
                   <button className="mobileElement backBtn" onClick={(e) => handleNavLinks(e)}>
-                    <ArrowLeft />
+                    <ChevronLeft />
                     <span>Wróć</span>
                   </button>
                   <h3 className="mobileElement"><Link to="/zespol" onClick={e => handleHideNav(e)}>Zobacz nasz zespół</Link></h3>
@@ -165,12 +165,12 @@ const Nav = ({
             <li>
               <Link to="/blog" onClick={(e) => handleNavLinks(e, 'blog')}>
                 <span>Blog</span>
-                <ArrowDown />
+                <ChevronDown />
               </Link>
               <ul className="nav-list2 blog">
                 <div className="max-width">
                   <button className="mobileElement backBtn" onClick={(e) => handleNavLinks(e)}>
-                    <ArrowLeft />
+                    <ChevronLeft />
                     <span>Wróć</span>
                   </button>
                   <div className="entries">
@@ -219,12 +219,12 @@ const Nav = ({
             <li>
               <Link to="/akademia" onClick={(e) => handleNavLinks(e, 'academy')}>
                 <span>Akademia</span>
-                <ArrowDown />
+                <ChevronDown />
               </Link>
               <ul className="nav-list2 academy">
                 <div className="max-width">
                   <button className="mobileElement backBtn" onClick={(e) => handleNavLinks(e)}>
-                    <ArrowLeft />
+                    <ChevronLeft />
                     <span>Wróć</span>
                   </button>
                   <h3 className="mobileElement"><Link to="/akademia" onClick={e => handleHideNav(e)}>Akademia</Link></h3>

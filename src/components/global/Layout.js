@@ -3,8 +3,9 @@ import { graphql, useStaticQuery } from "gatsby";
 import GlobalStyle from "../../styles/GlobalStyle";
 import Nav from "../organisms/Nav"
 import Footer from "../organisms/Footer";
+import ScrollToNext from "../sections/ScrollToNext";
 
-const Layout = ({children}) => {
+const Layout = ({data: { page }, children}) => {
   const data = useStaticQuery(graphql`
     query {
       caseStudies: allSanityCaseStudies(limit: 4) {
@@ -153,6 +154,9 @@ const Layout = ({children}) => {
         {children}
       </main>
       <Footer data={data} />
+      {page?.scrollToNext && (
+        <ScrollToNext data={page.scrollToNext} />
+      )}
     </>
   );
 }

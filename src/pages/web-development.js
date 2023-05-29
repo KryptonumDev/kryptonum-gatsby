@@ -10,7 +10,7 @@ import Flexibility from "../components/sections/WebDevelopment/Flexibility";
 import Process from "../components/sections/WebDevelopment/Process";
 
 const WebDevelopmentPage = ({ data }) => {
-  const { webDevelopment: {
+  const { page: {
     hero_Heading,
     hero_Img,
     hero_Claim,
@@ -33,7 +33,7 @@ const WebDevelopmentPage = ({ data }) => {
     caseStudies_Heading,
     ctaSection_Heading,
     ctaSection_Cta,
-    ctaSection_Img
+    ctaSection_Img,
   } } = data;
   return (
     <>
@@ -79,7 +79,7 @@ const WebDevelopmentPage = ({ data }) => {
 
 export const query = graphql`
   query {
-    webDevelopment: sanityWebDevelopment {
+    page: sanityWebDevelopment {
       # Hero
       hero_Heading
       hero_Claim
@@ -151,6 +151,16 @@ export const query = graphql`
           asset {
             gatsbyImageData(placeholder: BLURRED, width: 700)
           }
+        }
+      }
+      # Scroll To Next
+      scrollToNext {
+        heading
+        paragraph
+        title
+        link {
+          text
+          href
         }
       }
     }
