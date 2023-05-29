@@ -7,6 +7,7 @@ import HeroServices from "../components/sections/HeroServices";
 import Testimonials from "../components/sections/Testimonials";
 import Advantages from "../components/sections/WebDevelopment/Advantages";
 import Flexibility from "../components/sections/WebDevelopment/Flexibility";
+import Process from "../components/sections/WebDevelopment/Process";
 
 const WebDevelopmentPage = ({ data }) => {
   const { webDevelopment: {
@@ -25,6 +26,10 @@ const WebDevelopmentPage = ({ data }) => {
     flexibility_Paragraph,
     flexibility_SecondParagraph,
     flexibility_Cta,
+    process_Heading,
+    process_Claim,
+    process_Paragraph,
+    process_List,
     caseStudies_Heading,
     ctaSection_Heading,
     ctaSection_Cta,
@@ -46,13 +51,19 @@ const WebDevelopmentPage = ({ data }) => {
         ctaHeading={advantages_CtaHeading}
         cta={advantages_Cta}
       />
+      <Process data={{
+        process_Heading,
+        process_Claim,
+        process_Paragraph,
+        process_List,
+      }} />
       <Flexibility data={{
         flexibility_Heading,
         flexibility_Claim,
         flexibility_Paragraph,
         flexibility_SecondParagraph,
         flexibility_Cta
-      }}/>
+      }} />
       <Testimonials />
       <CaseStudies
         heading={caseStudies_Heading}
@@ -116,6 +127,14 @@ export const query = graphql`
         theme
         text
         href
+      }
+      # Process
+      process_Heading
+      process_Claim
+      process_Paragraph
+      process_List {
+        title
+        description
       }
       # Case Studies
       caseStudies_Heading
