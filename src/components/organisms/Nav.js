@@ -66,13 +66,15 @@ const Nav = ({
 
   const handleHideNav = () => {
     nav?.style?.setProperty('pointer-events', 'none');
+    setNavOpened(!navOpened)
+    scrollLock(!navOpened)
     setTimeout(() => {
       nav?.removeAttribute('style');
     }, 1000);
   };
 
   const handleNavToggle = () => {
-    if(!nav.classList.contains('fixed')){
+    if(!nav?.classList.contains('fixed')){
       window.scrollTo({top: 0});
     }
     setNavOpened(!navOpened)
