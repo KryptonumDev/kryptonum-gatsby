@@ -66,8 +66,8 @@ const Nav = ({
 
   const handleHideNav = () => {
     nav?.style?.setProperty('pointer-events', 'none');
-    setNavOpened(!navOpened)
-    scrollLock(!navOpened)
+    setNavOpened(false)
+    scrollLock(false)
     setTimeout(() => {
       nav?.removeAttribute('style');
     }, 1000);
@@ -103,20 +103,20 @@ const Nav = ({
                   <h3 className="mobileElement"><Link to="/projekty" onClick={e => handleHideNav(e)}>Wszystkie usługi</Link></h3>
                   <li><Link to="/web-development" onClick={e => handleHideNav(e)}><h3>Web Development</h3></Link>
                     <ul className="nav-list3">
-                      <li><Link to="/strony-internetowe" onClick={e => handleHideNav(e)}>Strony internetowe</Link></li>
-                      <li><Link to="/aplikacje-internetowe" onClick={e => handleHideNav(e)}>Aplikacje internetowe</Link></li>
-                      <li><Link to="/sklepy-internetowe" onClick={e => handleHideNav(e)}>Sklepy internetowe</Link></li>
+                      <li><Link to="/web-development-strony-internetowe" onClick={e => handleHideNav(e)}>Strony internetowe</Link></li>
+                      <li><Link to="/web-development-aplikacje-internetowe" onClick={e => handleHideNav(e)}>Aplikacje internetowe</Link></li>
+                      <li><Link to="/web-development-sklepy-internetowe" onClick={e => handleHideNav(e)}>Sklepy internetowe</Link></li>
                     </ul>
                   </li>
-                  <li><Link to="/grafika-design-kreacja" onClick={e => handleHideNav(e)}><h3>Grafika & design</h3></Link>
+                  <li><Link to="/grafika-design" onClick={e => handleHideNav(e)}><h3>Grafika & design</h3></Link>
                     <ul className="nav-list3">
-                      <li><Link to="/strony-internetowe" onClick={e => handleHideNav(e)}>Logo</Link></li>
-                      <li><Link to="/aplikacje-internetowe" onClick={e => handleHideNav(e)}>Audyty</Link></li>
-                      <li><Link to="/sklepy-internetowe" onClick={e => handleHideNav(e)}>Identyfikacja wizualna i branding</Link></li>
+                      <li><Link to="/grafika-design-projektowanie-logo" onClick={e => handleHideNav(e)}>Logo</Link></li>
+                      <li><Link to="/grafika-design-audyt-ux-ui" onClick={e => handleHideNav(e)}>Audyty</Link></li>
+                      <li><Link to="/grafika-design-identyfikacja-wizualna-marki" onClick={e => handleHideNav(e)}>Identyfikacja wizualna i branding</Link></li>
                     </ul>
                   </li>
-                  <li><Link to="/opieka-agencyjna" onClick={e => handleHideNav(e)}><h3>Opieka agencyjna</h3></Link></li>
-                  <li><Link to="/warsztat-strategiczny" onClick={e => handleHideNav(e)}><h3>Warsztat strategiczny</h3></Link></li>
+                  <li><Link to="/opieka-agencyjna-www-serwis-utrzymanie-zabezpieczenie" onClick={e => handleHideNav(e)}><h3>Opieka agencyjna</h3></Link></li>
+                  <li><Link to="/warsztaty-discovery" onClick={e => handleHideNav(e)}><h3>Warsztat strategiczny</h3></Link></li>
                 </div>
               </ul>
             </li>

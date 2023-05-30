@@ -70,7 +70,7 @@ const Wrapper = styled.section`
     padding-bottom: 64px;
   }
   .paragraph {
-    max-width: ${300/16}rem;
+    max-width: ${Clamp(210, 290, 300)};
     font-size: ${Clamp(16, 22, 22)};
     margin: ${Clamp(64, 64, 72)} auto ${Clamp(24, 32, 40)};
     text-align: center;

@@ -36,10 +36,10 @@ const Footer = ({data: {caseStudies, team, blogEntries, footer}}) => {
         </li>
         <li>
           <h3><Link to="/uslugi">Usługi</Link></h3>
-          <Link to="">Web Development</Link>
-          <Link to="">Warsztat strategiczny</Link>
-          <Link to="">Opieka agencyjna</Link>
-          <Link to="">Grafika & design</Link>
+          <Link to="/web-development">Web Development</Link>
+          <Link to="/warsztaty-discovery">Warsztat strategiczny</Link>
+          <Link to="/opieka-agencyjna-www-serwis-utrzymanie-zabezpieczenie">Opieka agencyjna</Link>
+          <Link to="/grafika-design">Grafika & design</Link>
         </li>
         <li>
           <h3><Link to="/case-study">Case study</Link></h3>
