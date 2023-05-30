@@ -5,7 +5,7 @@ import Nav from "../organisms/Nav"
 import Footer from "../organisms/Footer";
 import ScrollToNext from "../sections/ScrollToNext";
 
-const Layout = ({data: { page }, children}) => {
+const Layout = ({ data: { page }, children }) => {
   const data = useStaticQuery(graphql`
     query {
       caseStudies: allSanityCaseStudies(limit: 4) {

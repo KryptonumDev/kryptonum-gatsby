@@ -5,6 +5,7 @@ import { GatsbyImage } from "gatsby-plugin-image";
 import styled from "styled-components";
 import DecorativeHeading from '../atoms/DecorativeHeading';
 import { Clamp } from '../../utils/functions';
+import SimpleCtaSection from "./SimpleCtaSection";
 
 const HeroServices = ({
   data: {
@@ -13,7 +14,9 @@ const HeroServices = ({
     hero_Paragraph,
     hero_SecondParagraph,
     hero_Img,
-    hero_Nav
+    hero_Nav,
+    talk_Heading,
+    talk_Cta,
   }
 }) => {
   return (
@@ -51,6 +54,9 @@ const HeroServices = ({
             </Link>
           ))}
         </nav>
+      )}
+      {(talk_Heading && talk_Cta) && (
+        <SimpleCtaSection heading={talk_Heading} cta={talk_Cta} />
       )}
     </Wrapper>
   );

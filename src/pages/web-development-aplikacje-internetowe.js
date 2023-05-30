@@ -1,5 +1,5 @@
-import { graphql } from "gatsby";
 import * as React from "react"
+import { graphql } from "gatsby";
 import { SEO } from "../components/global/Seo";
 import HeroServices from "../components/sections/HeroServices";
 import CtaSection from "../components/sections/CtaSection";
@@ -13,6 +13,8 @@ const WebDevelopmentPWAsPage = ({ data }) => {
     hero_Paragraph,
     hero_SecondParagraph,
     hero_Img,
+    talk_Heading,
+    talk_Cta,
     ctaSection,
     caseStudies_Heading,
     blogEntries_Heading,
@@ -25,6 +27,9 @@ const WebDevelopmentPWAsPage = ({ data }) => {
         hero_Paragraph,
         hero_SecondParagraph,
         hero_Img,
+        
+        talk_Heading,
+        talk_Cta
       }} />
       <CtaSection data={ctaSection} />
       <CaseStudies heading={caseStudies_Heading} />
@@ -46,6 +51,13 @@ export const query = graphql`
           altText
           gatsbyImageData(placeholder: BLURRED)
         }
+      }
+      # Talk section
+      talk_Heading
+      talk_Cta {
+        theme
+        text
+        href
       }
       # Call To Action
       ctaSection {

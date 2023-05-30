@@ -4,7 +4,7 @@ import ReactMarkdown from "react-markdown";
 import styled from "styled-components";
 import { Clamp } from "../../../utils/functions";
 import DecorativeHeading from "../../atoms/DecorativeHeading";
-import Button from '../../atoms/Button';
+import SimpleCtaSection from "../SimpleCtaSection";
 
 const Advantages = ({ heading, advantages, ctaHeading, cta }) => {
   const [scales, setScales] = useState({ scale1: 0, scale2: 0, scale3: 0, scale4: 0 });
@@ -50,10 +50,7 @@ const Advantages = ({ heading, advantages, ctaHeading, cta }) => {
           </AdvantageItem>
         ))}
       </div>
-      <div className="callToAction">
-        <DecorativeHeading type="h2" decoration={false}>{ctaHeading}</DecorativeHeading>
-        <Button theme={cta.theme} to={cta.href}>{cta.text}</Button>
-      </div>
+      <SimpleCtaSection heading={ctaHeading} cta={cta} />
     </Wrapper>
   );
 }
@@ -115,15 +112,6 @@ const Wrapper = styled.section`
         }
       }
     }
-  }
-  .callToAction {
-    margin-top: ${Clamp(80, 144, 80, "px")};
-    h2 {
-      max-width: ${1200/16}rem;
-      margin: 0 auto ${Clamp(32, 40, 48, "px")};
-    }
-    text-align: center;
-    justify-content: center;
   }
 `
 
