@@ -4,7 +4,7 @@ import styled from "styled-components";
 import { Clamp } from "../../utils/functions";
 import { HeadingDecoration, HeadingLineFlexibility } from "./Icons";
 
-const DecorativeHeading = ({type="h1", children, decoration=true}) => {
+const DecorativeHeading = ({type="h1", children, decoration=true, components}) => {
   const renderParagraph = ({ children }) => {
     const renderedChildren = [];
     children.forEach(child => {
@@ -23,7 +23,6 @@ const DecorativeHeading = ({type="h1", children, decoration=true}) => {
         renderedChildren.push(child);
       }
     });
-
     return <span>{renderedChildren}</span>;
   };
   
@@ -33,9 +32,13 @@ const DecorativeHeading = ({type="h1", children, decoration=true}) => {
       {decoration && (
         <HeadingDecoration />
       )}
-      <ReactMarkdown components={{ p: renderParagraph }}>
-        {children}
-      </ReactMarkdown>
+      <ReactMarkdown
+        components={{
+          p: renderParagraph,
+          ...components
+        }}
+        
+      >{children}</ReactMarkdown>
     </Wrapper>
   );
 }

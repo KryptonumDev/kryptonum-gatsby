@@ -94,6 +94,10 @@ const GlobalStyle = createGlobalStyle`
     background-color: transparent;
     cursor: pointer;
   }
+  sup {
+    font-size: .6em;
+    vertical-align: top;
+  }
   input, textarea, button, select {
     font: inherit;
     color: inherit;

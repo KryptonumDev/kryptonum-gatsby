@@ -12,10 +12,10 @@ import Process from "../components/sections/WebDevelopment/Process";
 const WebDevelopmentPage = ({ data }) => {
   const { page: {
     hero_Heading,
-    hero_Img,
-    hero_Claim,
+    hero_Annotation,
     hero_Paragraph,
     hero_SecondParagraph,
+    hero_Img,
     hero_Nav,
     advantages_Heading,
     advantages_Array,
@@ -37,14 +37,14 @@ const WebDevelopmentPage = ({ data }) => {
   } } = data;
   return (
     <>
-      <HeroServices
-        title={hero_Heading}
-        img={hero_Img}
-        claim={hero_Claim}
-        paragraph={hero_Paragraph}
-        secondParagraph={hero_SecondParagraph}
-        nav={hero_Nav}
-      />
+      <HeroServices data={{
+        hero_Heading,
+        hero_Annotation,
+        hero_Paragraph,
+        hero_SecondParagraph,
+        hero_Img,
+        hero_Nav
+      }} />
       <Advantages
         heading={advantages_Heading}
         advantages={advantages_Array}
@@ -82,7 +82,7 @@ export const query = graphql`
     page: sanityWebDevelopment {
       # Hero
       hero_Heading
-      hero_Claim
+      hero_Annotation
       hero_Paragraph
       hero_SecondParagraph
       hero_Img {

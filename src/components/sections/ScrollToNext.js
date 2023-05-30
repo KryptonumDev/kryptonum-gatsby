@@ -9,7 +9,7 @@ import { ArrowDown, ScrollDown } from "../atoms/Icons";
 const easeOut = (t) => {
   return 1 - Math.pow(1 - t, 3);
 };
-const scrollHeight = 500;
+const scrollHeight = 800;
 
 const ScrollToNext = ({ data: { heading, paragraph, title, link }}) => {
   const scrollToNext = useRef(null);
@@ -100,7 +100,7 @@ const Wrapper = styled.section`
           width: 100%;
           height: 100%;
           background: linear-gradient(266deg, #2DD282, #90F4E8 100%);
-          transform-origin: top;
+          transform-origin: bottom;
         }
       }
     }
@@ -110,7 +110,7 @@ const Wrapper = styled.section`
       span {
         max-width: ${625/16}rem;
       }
-      span:last-of-type{
+      span:nth-of-type(2) {
         justify-self: flex-end;
         transform: none;
         margin: 32px 0 0 0;
