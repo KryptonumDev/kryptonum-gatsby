@@ -2,6 +2,9 @@ import { graphql } from "gatsby";
 import * as React from "react"
 import { SEO } from "../components/global/Seo";
 import HeroServices from "../components/sections/HeroServices";
+import CtaSection from "../components/sections/CtaSection";
+import CaseStudies from "../components/sections/CaseStudies";
+import BlogEntries from '../components/sections/BlogEntries';
 
 const WebDevelopmentPWAsPage = ({ data }) => {
   const { page: {
@@ -10,6 +13,9 @@ const WebDevelopmentPWAsPage = ({ data }) => {
     hero_Paragraph,
     hero_SecondParagraph,
     hero_Img,
+    ctaSection,
+    caseStudies_Heading,
+    blogEntries_Heading,
   } } = data;
   return (
     <>
@@ -20,6 +26,9 @@ const WebDevelopmentPWAsPage = ({ data }) => {
         hero_SecondParagraph,
         hero_Img,
       }} />
+      <CtaSection data={ctaSection} />
+      <CaseStudies heading={caseStudies_Heading} />
+      <BlogEntries heading={blogEntries_Heading} />
     </>
   );
 }
@@ -38,6 +47,25 @@ export const query = graphql`
           gatsbyImageData(placeholder: BLURRED)
         }
       }
+      # Call To Action
+      ctaSection {
+        heading
+        cta {
+          theme
+          text
+          href
+        }
+        img {
+          asset {
+            altText
+            gatsbyImageData(placeholder: BLURRED, width: 700)
+          }
+        }
+      }
+      # Case Studies
+      caseStudies_Heading
+      # Blog Entries
+      blogEntries_Heading
       # Scroll To Next
       scrollToNext {
         heading

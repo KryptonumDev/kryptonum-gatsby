@@ -31,9 +31,7 @@ const WebDevelopmentPage = ({ data }) => {
     process_Paragraph,
     process_List,
     caseStudies_Heading,
-    ctaSection_Heading,
-    ctaSection_Cta,
-    ctaSection_Img,
+    ctaSection,
   } } = data;
   return (
     <>
@@ -68,11 +66,7 @@ const WebDevelopmentPage = ({ data }) => {
       <CaseStudies
         heading={caseStudies_Heading}
       />
-      <CtaSection
-        heading={ctaSection_Heading}
-        cta={ctaSection_Cta}
-        img={ctaSection_Img}
-      />
+      <CtaSection data={ctaSection} />
     </>
   );
 }
@@ -135,16 +129,18 @@ export const query = graphql`
       # Case Studies
       caseStudies_Heading
       # Call To Action
-      ctaSection_Heading
-      ctaSection_Cta {
-        theme
-        text
-        href
-      }
-      ctaSection_Img {
-        asset {
-          altText
-          gatsbyImageData(placeholder: BLURRED, width: 700)
+      ctaSection {
+        heading
+        cta {
+          theme
+          text
+          href
+        }
+        img {
+          asset {
+            altText
+            gatsbyImageData(placeholder: BLURRED, width: 700)
+          }
         }
       }
       # Scroll To Next

@@ -7,7 +7,7 @@ import { Clamp, removeMarkdown } from '../../utils/functions'
 import { Clock } from "../atoms/Icons";
 import Button from '../atoms/Button';
 
-const BlogEntries = () => {
+const BlogEntries = ({heading}) => {
   const { entries } = useStaticQuery(graphql`
     query {
        entries: allSanityBlogEntries(limit: 3, sort: {_createdAt: DESC}) {
@@ -49,7 +49,7 @@ const BlogEntries = () => {
 
   return (
     <Wrapper>
-      <DecorativeHeading type="h2">Zobacz nasze najnowsze **posty** na blogu</DecorativeHeading>
+      <DecorativeHeading type="h2">{heading || 'Zobacz nasze najnowsze **posty** na blogu'}</DecorativeHeading>
       <div className="wrapper">
         {entries.nodes.map((entry, i) => (
           <div className="entry" key={i}>

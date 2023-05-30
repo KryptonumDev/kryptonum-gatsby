@@ -5,7 +5,13 @@ import Button from "../atoms/Button";
 import DecorativeHeading from "../atoms/DecorativeHeading";
 import { Clamp } from '../../utils/functions';
 
-const CtaSection = ({heading, cta, img}) => {
+const CtaSection = ({
+  data: {
+    heading,
+    cta,
+    img
+  }
+}) => {
   return (
     <Wrapper>
       <header>
@@ -49,8 +55,9 @@ const Wrapper = styled.section`
       top: 0px;
       transform: translate(50%, -100%);
       bottom: unset;
-      width: 80%;
-      max-width: 300px;
+      max-width: 80%;
+      width: auto;
+      max-height: 300px;
     }
   }
   @media (max-width: 767px){

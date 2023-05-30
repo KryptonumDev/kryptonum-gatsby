@@ -10,9 +10,7 @@ const NotFoundPage = ({data}) => {
     hero_Subheading,
     hero_Cta,
     hero_Img,
-    ctaSection_Heading,
-    ctaSection_Cta,
-    ctaSection_Img
+    ctaSection,
   } } = data;
   return (
     <>
@@ -22,11 +20,7 @@ const NotFoundPage = ({data}) => {
         cta={hero_Cta}
         img={hero_Img}
       />
-      <CtaSection
-        heading={ctaSection_Heading}
-        cta={ctaSection_Cta}
-        img={ctaSection_Img}
-      />
+      <CtaSection data={ctaSection} />
     </>
   )
 }
@@ -47,16 +41,18 @@ export const query = graphql`
           gatsbyImageData(placeholder: BLURRED, width: 700)
         }
       }
-      ctaSection_Heading
-      ctaSection_Cta {
-        theme
-        text
-        href
-      }
-      ctaSection_Img {
-        asset {
-          altText
-          gatsbyImageData(placeholder: BLURRED, width: 700)
+      ctaSection {
+        heading
+        cta {
+          theme
+          text
+          href
+        }
+        img {
+          asset {
+            altText
+            gatsbyImageData(placeholder: BLURRED, width: 700)
+          }
         }
       }
     }
