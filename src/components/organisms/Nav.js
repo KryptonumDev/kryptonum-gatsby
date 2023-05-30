@@ -118,7 +118,7 @@ const Nav = ({
                 </div>
               </ul>
             </li>
-            {/* <li>
+            <li>
               <Link to="/projekty" onClick={(e) => handleNavLinks(e, 'caseStudies')}>
                 <span>Projekty</span>
                 <ChevronDown />
@@ -138,7 +138,7 @@ const Nav = ({
                   ))}
                 </div>
               </ul>
-            </li> */}
+            </li>
             <li>
               <Link to="/zespol" onClick={(e) => handleNavLinks(e, 'team')}>
                 <span>Zespół</span>
