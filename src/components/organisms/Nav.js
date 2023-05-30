@@ -18,13 +18,12 @@ const Nav = ({
   }
 }) => {
   const [navOpened, setNavOpened] = useState(false);
-  const navRef = useRef(null);
-  const nav = navRef.current;
+  const nav = useRef(null);
 
   const locationPath = typeof window !== 'undefined' ? window.location.pathname : '';
 
   useEffect(() => {
-    const navHeight = nav?.offsetHeight;
+    const navHeight = nav.current?.offsetHeight;
     let prevScrollPos = window.pageYOffset;
     let currentScrollPos = prevScrollPos;
     let scrollDistance = 0;
@@ -32,17 +31,17 @@ const Nav = ({
       prevScrollPos = currentScrollPos;
       currentScrollPos = window.pageYOffset;
       if (currentScrollPos < prevScrollPos && currentScrollPos > navHeight) {
-        nav?.classList.add('fixed');
+        nav.current?.classList.add('fixed');
         scrollDistance = 0;
-      } else if(nav?.classList.contains('fixed')) {
+      } else if(nav.current?.classList.contains('fixed')) {
         scrollDistance += prevScrollPos - currentScrollPos;
         if (scrollDistance * -1 >= navHeight) {
-          nav?.classList.remove('fixed');
+          nav.current?.classList.remove('fixed');
           scrollDistance = 0;
         }
       }
       if (currentScrollPos === 0) {
-        nav?.classList.remove('fixed');
+        nav.current?.classList.remove('fixed');
       }
     });
 
@@ -52,29 +51,28 @@ const Nav = ({
         scrollLock(false)
       }
     })
-  }, [locationPath, nav])
+  }, [locationPath])
 
   const handleNavLinks = (e, item) => {
     if (window.matchMedia('(pointer: coarse), (max-width: 1149px)').matches) {
       e.preventDefault();
-      const nav = document.querySelector('.nav');
       item
-      ? nav.setAttribute('data-expand', item)
-      : nav.removeAttribute('data-expand');
+      ? nav.current.setAttribute('data-expand', item)
+      : nav.current.removeAttribute('data-expand');
     }      
   }
 
   const handleHideNav = () => {
-    nav?.style?.setProperty('pointer-events', 'none');
+    nav.current?.style?.setProperty('pointer-events', 'none');
     setNavOpened(false)
     scrollLock(false)
     setTimeout(() => {
-      nav?.removeAttribute('style');
+      nav.current?.removeAttribute('style');
     }, 1000);
   };
 
   const handleNavToggle = () => {
-    if(!nav?.classList.contains('fixed')){
+    if(!nav.current?.classList.contains('fixed')){
       window.scrollTo({top: 0});
     }
     setNavOpened(!navOpened)
@@ -82,7 +80,7 @@ const Nav = ({
   }
 
   return (
-    <Wrapper className="nav" aria-expanded={navOpened} ref={navRef}>
+    <Wrapper className="nav" aria-expanded={navOpened} ref={nav}>
       <div className="max-width">
         <Link to="/" aria-label="Strona główna">
           <KryptonumLogo />
