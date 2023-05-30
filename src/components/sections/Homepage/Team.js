@@ -18,11 +18,9 @@ const Team = ({data}) => {
             current
           }
           img {
-            alt
-            source {
-              asset {
-                gatsbyImageData(placeholder: DOMINANT_COLOR, width: 268)
-              }
+            asset {
+              altText
+              gatsbyImageData(placeholder: BLURRED, width: 268)
             }
           }
         }
@@ -35,7 +33,7 @@ const Team = ({data}) => {
       <div className="wrapper">
         {team.nodes.map((person, i) => (
           <Link to={`/zespol/${person.slug.current}`} key={i} aria-label={person.name}>
-            <GatsbyImage image={person.img.source.asset.gatsbyImageData} alt={person.img.alt || ''}  className="img person-border" />
+            <GatsbyImage image={person.img.asset.gatsbyImageData} alt={person.img.asset.altText || ''}  className="img person-border" />
           </Link>
         ))}
       </div>

@@ -19,11 +19,9 @@ const Testimonials = () => {
             href
           }
           img {
-            alt
-            source {
-              asset {
-                gatsbyImageData(placeholder: BLURRED, width: 268)
-              }
+            asset {
+              altText
+              gatsbyImageData(placeholder: BLURRED, width: 268)
             }
           }
         }

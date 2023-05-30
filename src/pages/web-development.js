@@ -86,11 +86,9 @@ export const query = graphql`
       hero_Paragraph
       hero_SecondParagraph
       hero_Img {
-        alt
-        source {
-          asset {
-            gatsbyImageData(placeholder: BLURRED)
-          }
+        asset {
+          altText
+          gatsbyImageData(placeholder: BLURRED)
         }
       }
       hero_Nav {
@@ -104,11 +102,9 @@ export const query = graphql`
         title
         description
         img {
-          alt
-          source {
-            asset {
-              gatsbyImageData(placeholder: BLURRED)
-            }
+          asset {
+            altText
+            gatsbyImageData(placeholder: BLURRED)
           }
         }
       }
@@ -146,11 +142,9 @@ export const query = graphql`
         href
       }
       ctaSection_Img {
-        alt
-        source {
-          asset {
-            gatsbyImageData(placeholder: BLURRED, width: 700)
-          }
+        asset {
+          altText
+          gatsbyImageData(placeholder: BLURRED, width: 700)
         }
       }
       # Scroll To Next

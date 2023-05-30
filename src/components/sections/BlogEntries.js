@@ -23,11 +23,9 @@ const BlogEntries = () => {
               current
             }
             img {
-              alt
-              source {
-                asset {
-                  gatsbyImageData(placeholder: BLURRED, width: 48, height: 48)
-                }
+              asset {
+                altText
+                gatsbyImageData(placeholder: BLURRED, width: 48, height: 48)
               }
             }
           }
@@ -38,11 +36,9 @@ const BlogEntries = () => {
             }
           }
           cover {
-            alt
-            source {
-              asset {
-                gatsbyImageData(placeholder: BLURRED, width: 230, height: 230)
-              }
+            asset {
+              altText
+              gatsbyImageData(placeholder: BLURRED, width: 230, height: 230)
             }
           }
           _createdAt(formatString: "D MMMM Y", locale: "pl")
@@ -58,8 +54,8 @@ const BlogEntries = () => {
         {entries.nodes.map((entry, i) => (
           <div className="entry" key={i}>
             <GatsbyImage
-              image={entry.cover.source.asset.gatsbyImageData}
-              alt={entry.cover.alt || ''}
+              image={entry.cover.asset.gatsbyImageData}
+              alt={entry.cover.asset.altText || ''}
               className={`cover${i % 2 === 0 ? ' even' : ''}`}
             />
             <Link to={entry.slug.current} className="link" aria-label={removeMarkdown(entry.title)}></Link>
@@ -67,8 +63,8 @@ const BlogEntries = () => {
             <p className="subtitle">{removeMarkdown(entry.subtitle)}</p>
             <Link to={entry.author[0].slug.current} className="author">
               <GatsbyImage
-                image={entry.author[0].img.source.asset.gatsbyImageData}
-                alt={entry.author[0].alt || ''}
+                image={entry.author[0].img.asset.gatsbyImageData}
+                alt={entry.author[0].img.asset.altText || ''}
                 className="person-border"
               />
               <span>{entry.author[0].name}</span>

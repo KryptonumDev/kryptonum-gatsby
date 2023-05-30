@@ -15,8 +15,8 @@ const HeroTwoColumns = ({heading, subheading, cta, img}) => {
         <Button theme={cta.theme} to={cta.href}>{cta.text}</Button>
       </header>
       <GatsbyImage
-        image={img.source.asset.gatsbyImageData}
-        alt={img.alt || ''}
+        image={img.asset.gatsbyImageData}
+        alt={img.asset.altText || ''}
         objectFit="contain"
         className="img"
       />

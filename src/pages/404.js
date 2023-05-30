@@ -42,11 +42,9 @@ export const query = graphql`
         href
       }
       hero_Img {
-        alt
-        source {
-          asset {
-            gatsbyImageData(placeholder: BLURRED, width: 700)
-          }
+        asset {
+          altText
+          gatsbyImageData(placeholder: BLURRED, width: 700)
         }
       }
       ctaSection_Heading
@@ -56,11 +54,9 @@ export const query = graphql`
         href
       }
       ctaSection_Img {
-        alt
-        source {
-          asset {
-            gatsbyImageData(placeholder: BLURRED, width: 700)
-          }
+        asset {
+          altText
+          gatsbyImageData(placeholder: BLURRED, width: 700)
         }
       }
     }

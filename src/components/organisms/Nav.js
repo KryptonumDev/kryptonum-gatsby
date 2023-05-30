@@ -134,7 +134,7 @@ const Nav = ({
                   <h3 className="mobileElement"><Link to="/projekty" onClick={e => handleHideNav(e)}>Wszystkie projekty</Link></h3>
                   {caseStudies.nodes.map((caseStudy, i) => (
                     <Link to={`/projekty/${caseStudy.slug.current}`} key={i} className="item" onClick={e => handleHideNav(e)}>
-                      <GatsbyImage image={caseStudy.thumbnail.source.asset.gatsbyImageData} alt={caseStudy.thumbnail.alt || ''} />
+                      <GatsbyImage image={caseStudy.thumbnail.asset.gatsbyImageData} alt={caseStudy.thumbnail.asset.altText || ''} />
                       <p>{caseStudy.name}</p>
                     </Link>
                   ))}
@@ -156,7 +156,7 @@ const Nav = ({
                   <div className="wrapper">
                     {team.nodes.map((person, i) => (
                       <Link to={`/zespol/${person.slug.current}`} key={i} className="item" onClick={e => handleHideNav(e)}>
-                        <GatsbyImage image={person.img.source.asset.gatsbyImageData} alt={person.img.alt || ''} className="img person-border" />
+                        <GatsbyImage image={person.img.asset.gatsbyImageData} alt={person.img.asset.altText || ''} className="img person-border" />
                         <p>{person.name}</p>
                       </Link>
                     ))}
@@ -180,11 +180,11 @@ const Nav = ({
                     {blogEntries.nodes.map((entry, i) => (
                       <div className="entry" key={i}>
                         <Link to={`/blog/${entry.slug.current}`} className="link" aria-label={removeMarkdown(entry.title)} onClick={e => handleHideNav(e)}></Link>
-                        <GatsbyImage image={entry.cover.source.asset.gatsbyImageData} alt={entry.cover.alt || ''} className="thumbnail" />
+                        <GatsbyImage image={entry.cover.asset.gatsbyImageData} alt={entry.cover.asset.altText || ''} className="thumbnail" />
                         <div className="copy">
                           <div className="copy-top">
                             <Link to={`/blog/autor/${entry.author[0].slug.current}`} onClick={e => handleHideNav(e)}>
-                              <GatsbyImage image={entry.author[0].img.source.asset.gatsbyImageData} alt={entry.author[0].img.alt || ''} className="person-border" />
+                              <GatsbyImage image={entry.author[0].img.asset.gatsbyImageData} alt={entry.author[0].img.asset.altText || ''} className="person-border" />
                               <span>{entry.author[0].name}</span>
                             </Link>
                             <span>{entry._createdAt}</span>
@@ -209,7 +209,7 @@ const Nav = ({
                     <div className="wrapper">
                       {team.nodes.map((person, i) => (
                         <Link to={`/blog/autor/${person.slug.current}`} key={i} onClick={e => handleHideNav(e)}>
-                          <GatsbyImage image={person.img.source.asset.gatsbyImageData} alt={person.img.alt || ''} className="person-border" />
+                          <GatsbyImage image={person.img.asset.gatsbyImageData} alt={person.img.asset.altText || ''} className="person-border" />
                           <p>{person.name}</p>
                         </Link>
                       ))}
@@ -234,7 +234,7 @@ const Nav = ({
                     <h3><Link to="/ciekawostki" onClick={e => handleHideNav(e)}>Ciekawostki</Link></h3>
                     {curiosities.nodes.map((curiosity, i) => (
                       <Link to={`/akademia/ciekawostki/${curiosity.slug.current}`} key={i} className="link" onClick={e => handleHideNav(e)}>
-                        <GatsbyImage image={curiosity.thumbnail.source.asset.gatsbyImageData} alt={curiosity.thumbnail.alt || ''} className="thumbnail" />
+                        <GatsbyImage image={curiosity.thumbnail.asset.gatsbyImageData} alt={curiosity.thumbnail.asset.altText || ''} className="thumbnail" />
                         <h3>{curiosity.title}</h3>
                       </Link>
                     ))}
@@ -244,7 +244,7 @@ const Nav = ({
                     <div className="wrapper">
                       {technologies.nodes.map((technology, i) => (
                         <Link to={`/akademia/technologie/${technology.slug.current}`} key={i} onClick={e => handleHideNav(e)}>
-                          <GatsbyImage image={technology.thumbnail.source.asset.gatsbyImageData} alt={technology.thumbnail.alt || ''} />
+                          <GatsbyImage image={technology.thumbnail.asset.gatsbyImageData} alt={technology.thumbnail.asset.altText || ''} />
                           <p>{technology.name}</p>
                         </Link>
                       ))}
@@ -255,7 +255,7 @@ const Nav = ({
                     <div className="wrapper">
                       {team.nodes.map((person, i) => (
                         <Link to={`/blog/autor/${person.slug.current}`} key={i} onClick={e => handleHideNav(e)}>
-                          <GatsbyImage image={person.img.source.asset.gatsbyImageData} alt={person.img.alt || ''} className="person-border" />
+                          <GatsbyImage image={person.img.asset.gatsbyImageData} alt={person.img.asset.altText || ''} className="person-border" />
                           <p>{person.name}</p>
                         </Link>
                       ))}

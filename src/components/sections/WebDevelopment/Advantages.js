@@ -43,8 +43,8 @@ const Advantages = ({ heading, advantages, ctaHeading, cta }) => {
               <ReactMarkdown>{advantage.description}</ReactMarkdown>
             </div>
             <GatsbyImage
-              image={advantage.img.source.asset.gatsbyImageData}
-              alt={advantage.img.alt || ''}
+              image={advantage.img.asset.gatsbyImageData}
+              alt={advantage.img.asset.altText || ''}
               className="img"
             />
           </AdvantageItem>

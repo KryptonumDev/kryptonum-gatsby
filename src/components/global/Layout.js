@@ -15,11 +15,9 @@ const Layout = ({data: { page }, children}) => {
             current
           }
           thumbnail {
-            alt
-            source {
-              asset {
-                gatsbyImageData(placeholder: BLURRED, width: 456)
-              }
+            asset {
+              altText
+              gatsbyImageData(placeholder: BLURRED, width: 456)
             }
           }
         }
@@ -31,11 +29,9 @@ const Layout = ({data: { page }, children}) => {
             current
           }
           img {
-            alt
-            source {
-              asset {
-                gatsbyImageData(placeholder: BLURRED)
-              }
+            asset {
+              altText
+              gatsbyImageData(placeholder: BLURRED)
             }
           }
         }
@@ -52,20 +48,16 @@ const Layout = ({data: { page }, children}) => {
               current
             }
             img {
-              alt
-              source {
-                asset {
-                  gatsbyImageData(placeholder: BLURRED, width: 32, height: 32)
-                }
+              asset {
+                altText
+                gatsbyImageData(placeholder: BLURRED, width: 32, height: 32)
               }
             }
           }
           cover {
-            alt
-            source {
-              asset {
-                gatsbyImageData(placeholder: BLURRED, width: 128, height: 128)
-              }
+            asset {
+              altText
+              gatsbyImageData(placeholder: BLURRED, width: 128, height: 128)
             }
           }
           _createdAt(formatString: "D MMMM Y", locale: "pl")
@@ -86,11 +78,9 @@ const Layout = ({data: { page }, children}) => {
             current
           }
           thumbnail {
-            alt
-            source {
-              asset {
-                gatsbyImageData(placeholder: BLURRED)
-              }
+            asset {
+              altText
+              gatsbyImageData(placeholder: BLURRED)
             }
           }
         }
@@ -102,11 +92,9 @@ const Layout = ({data: { page }, children}) => {
             current
           }
           thumbnail {
-            alt
-            source {
-              asset {
-                gatsbyImageData(placeholder: BLURRED, width: 160, height: 160)
-              }
+            asset {
+              altText
+              gatsbyImageData(placeholder: BLURRED, width: 160, height: 160)
             }
           }
         }

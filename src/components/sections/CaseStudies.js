@@ -16,11 +16,9 @@ const CaseStudies = ({heading}) => {
             current
           }
           thumbnail {
-            alt
-            source {
-              asset {
-                gatsbyImageData(placeholder: BLURRED, width: 456)
-              }
+            asset {
+              altText
+              gatsbyImageData(placeholder: BLURRED, width: 456)
             }
           }
         }
@@ -35,7 +33,7 @@ const CaseStudies = ({heading}) => {
       <div className="wrapper">
         {caseStudies.nodes.map((caseStudy, i) => (
           <div className="caseStudy" key={i}>
-            <GatsbyImage key={i} image={caseStudy.thumbnail.source.asset.gatsbyImageData} alt={caseStudy.thumbnail.alt || ''} className="img" />
+            <GatsbyImage key={i} image={caseStudy.thumbnail.asset.gatsbyImageData} alt={caseStudy.thumbnail.asset.altText || ''} className="img" />
             <Button to={`projekty/${caseStudy.slug.current}`} aria-label={`Sprawdź projekt ${caseStudy.name}`}>Sprawdź projekt</Button>
           </div>
         ))}

@@ -56,7 +56,7 @@ const Footer = ({data: {caseStudies, team, blogEntries, footer}}) => {
               key={i}
               style={{display: !showMore && i+1 > maxPeople ? 'none' : ''}}
             >
-              <GatsbyImage image={person.img.source.asset.gatsbyImageData} alt={person.img.alt || ''} className="person-border" />
+              <GatsbyImage image={person.img.asset.gatsbyImageData} alt={person.img.asset.altText || ''} className="person-border" />
               <span>{person.name}</span>
             </Link>
           ))}
@@ -73,10 +73,10 @@ const Footer = ({data: {caseStudies, team, blogEntries, footer}}) => {
           {blogEntries.nodes.map((entry, i) => (
             <div className="entry" key={i}>
               <Link to={`/blog/${entry.slug.current}`} className="link" aria-label={entry.title}></Link>
-              <GatsbyImage image={entry.cover.source.asset.gatsbyImageData} alt={entry.cover.alt || ''} className="thumbnail" />
+              <GatsbyImage image={entry.cover.asset.gatsbyImageData} alt={entry.cover.asset.altText || ''} className="thumbnail" />
               <div className="copy">
                 <Link to={`/zespol/${entry.author[0].slug.current}`} className="author">
-                  <GatsbyImage image={entry.author[0].img.source.asset.gatsbyImageData} alt={entry.author[0].img.alt || ''} className="person-border" />
+                  <GatsbyImage image={entry.author[0].img.asset.gatsbyImageData} alt={entry.author[0].img.asset.altText || ''} className="person-border" />
                   <span>{entry.author[0].name}</span>
                 </Link>
                 <span>{entry._createdAt}</span>

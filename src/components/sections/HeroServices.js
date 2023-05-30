@@ -11,8 +11,8 @@ const HeroServices = ({ title, img, claim, paragraph, secondParagraph, nav }) =>
     <Wrapper>
       <DecorativeHeading>{title}</DecorativeHeading>
       <GatsbyImage
-        image={img.source.asset.gatsbyImageData}
-        alt={img.alt || ''}
+        image={img.asset.gatsbyImageData}
+        alt={img.asset.altText || ''}
         className="img"
       />
       <div className="copy">
