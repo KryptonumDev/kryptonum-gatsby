@@ -6,22 +6,27 @@ import { Clamp } from "../../utils/functions";
 import DecorativeHeading from "../atoms/DecorativeHeading";
 import { ArrowDown, ScrollDown } from "../atoms/Icons";
 
+const easeOut = (t) => {
+  return 1 - Math.pow(1 - t, 3);
+};
+const scrollHeight = 500;
+
 const ScrollToNext = ({ data: { heading, paragraph, title, link }}) => {
   const scrollToNext = useRef(null);
   const [scaleY, setScaleY] = useState(0);
-  const scrollHeight = 300;
- useEffect(() => {
+  useEffect(() => {
     const handleScroll = () => {
       const scrollPosition = window.scrollY;
       const windowHeight = window.innerHeight;
       const documentHeight = document.documentElement.scrollHeight;
       const maxScroll = documentHeight - windowHeight;
       const remainingScroll = maxScroll - scrollPosition;
-      const progress = Math.max(0, Math.min(1, 1 - remainingScroll / scrollHeight));
+      let progress = Math.max(0, Math.min(1, 1 - remainingScroll / scrollHeight));
+      progress = easeOut(progress);
       setScaleY(progress);
       if(remainingScroll <= 0){
         window.scrollTo({top: scrollPosition - scrollHeight});
-        navigate('/', { replace: false });
+        navigate(link.href, { replace: false });
       }
     };
     handleScroll();
@@ -67,7 +72,7 @@ const Wrapper = styled.section`
   .paragraph {
     max-width: ${300/16}rem;
     font-size: ${Clamp(16, 22, 22)};
-    margin: ${Clamp(64, 64, 72)} auto;
+    margin: ${Clamp(64, 64, 72)} auto ${Clamp(24, 32, 40)};
     text-align: center;
     p {
       margin-bottom: 8px;
@@ -97,6 +102,27 @@ const Wrapper = styled.section`
           background: linear-gradient(266deg, #2DD282, #90F4E8 100%);
           transform-origin: top;
         }
+      }
+    }
+  }
+  @media (max-width: 1189px){
+    h2 {
+      span {
+        max-width: ${625/16}rem;
+      }
+      span:last-of-type{
+        justify-self: flex-end;
+        transform: none;
+        margin: 32px 0 0 0;
+        grid-column: 2/-1;
+      }
+    }
+    .grid {
+      grid-template-columns: 1fr;
+      text-align: center;
+      gap: ${Clamp(16, 48, 64)};
+      svg {
+        display: none;
       }
     }
   }
