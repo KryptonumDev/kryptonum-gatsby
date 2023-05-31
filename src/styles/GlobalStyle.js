@@ -106,6 +106,7 @@ const GlobalStyle = createGlobalStyle`
     font-weight: 400;
     letter-spacing: -0.005em;
     line-height: 1.3;
+    font-size: inherit;
     strong {
       font-weight: 400;
       color: var(--primary-400);

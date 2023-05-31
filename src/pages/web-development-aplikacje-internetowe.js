@@ -2,6 +2,7 @@ import * as React from "react"
 import { graphql } from "gatsby";
 import { SEO } from "../components/global/Seo";
 import HeroServices from "../components/sections/HeroServices";
+import Process from "../components/sections/WebDevelopment_Pwa/Process";
 import CtaSection from "../components/sections/CtaSection";
 import CaseStudies from "../components/sections/CaseStudies";
 import BlogEntries from '../components/sections/BlogEntries';
@@ -15,6 +16,10 @@ const WebDevelopmentPWAsPage = ({ data }) => {
     hero_Img,
     talk_Heading,
     talk_Cta,
+    process_Heading,
+    process_Paragraph,
+    process_SecondParagraph,
+    process_List,
     ctaSection,
     caseStudies_Heading,
     blogEntries_Heading,
@@ -30,6 +35,12 @@ const WebDevelopmentPWAsPage = ({ data }) => {
         
         talk_Heading,
         talk_Cta
+      }} />
+      <Process data={{
+        process_Heading,
+        process_Paragraph,
+        process_SecondParagraph,
+        process_List
       }} />
       <CtaSection data={ctaSection} />
       <CaseStudies heading={caseStudies_Heading} />
@@ -58,6 +69,22 @@ export const query = graphql`
         theme
         text
         href
+      }
+      # Process
+      process_Heading
+      process_Paragraph
+      process_SecondParagraph
+      process_List {
+        heading
+        subheading
+        paragraph
+        secondParagraph
+        img {
+          asset {
+            altText
+            gatsbyImageData
+          }
+        }
       }
       # Call To Action
       ctaSection {
