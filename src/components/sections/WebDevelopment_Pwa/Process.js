@@ -23,7 +23,7 @@ const Process = ({
       <div className="wrapper">
         {process_List.map((item, i) => (
           <div className="item" key={i}>
-            <GatsbyImage image={item.img.asset.gatsbyImageData} alt={item.img.asset.altText} className="img" />
+            <GatsbyImage image={item.img.asset.gatsbyImageData} alt={item.img.asset.altText || ''} className="img" />
             <ReactMarkdown className="heading" components={{ p: 'h3' }}>{item.heading}</ReactMarkdown>
             <ReactMarkdown className="subheading">{item.subheading}</ReactMarkdown>
             <ReactMarkdown className="paragraph">{item.paragraph}</ReactMarkdown>

@@ -6,6 +6,7 @@ import Process from "../components/sections/WebDevelopment_Pwa/Process";
 import CtaSection from "../components/sections/CtaSection";
 import CaseStudies from "../components/sections/CaseStudies";
 import BlogEntries from '../components/sections/BlogEntries';
+import QuickForm from "../components/sections/QuickForm";
 
 const WebDevelopmentPWAsPage = ({ data }) => {
   const { page: {
@@ -20,6 +21,9 @@ const WebDevelopmentPWAsPage = ({ data }) => {
     process_Paragraph,
     process_SecondParagraph,
     process_List,
+    form_Heading,
+    form_Subheading,
+    form_Cta,
     ctaSection,
     caseStudies_Heading,
     blogEntries_Heading,
@@ -42,6 +46,11 @@ const WebDevelopmentPWAsPage = ({ data }) => {
         process_SecondParagraph,
         process_List
       }} />
+      <QuickForm
+        heading={form_Heading}
+        subheading={form_Subheading}
+        cta={form_Cta}
+      />
       <CtaSection data={ctaSection} />
       <CaseStudies heading={caseStudies_Heading} />
       <BlogEntries heading={blogEntries_Heading} />
@@ -86,6 +95,10 @@ export const query = graphql`
           }
         }
       }
+      # Quick Form
+      form_Heading
+      form_Subheading
+      form_Cta
       # Call To Action
       ctaSection {
         heading

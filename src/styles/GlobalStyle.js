@@ -101,6 +101,7 @@ const GlobalStyle = createGlobalStyle`
   input, textarea, button, select {
     font: inherit;
     color: inherit;
+    appearance: none;
   }
   h1, h2, h3, h4, h5, h6 {
     font-weight: 400;
@@ -171,6 +172,9 @@ const GlobalStyle = createGlobalStyle`
       @media (max-width: 499px){
         width: 100%;
         padding: 12px 24px;
+      }
+      @media (max-width: 349px){
+        padding: 12px 12px;
       }
       background: linear-gradient(var(--neutral-950), var(--neutral-950)) padding-box,
                   linear-gradient(90deg, #90F4E8, #2DD282) border-box;

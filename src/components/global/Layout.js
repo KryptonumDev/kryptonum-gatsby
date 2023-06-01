@@ -31,7 +31,7 @@ const Layout = ({ data: { page }, children }) => {
           img {
             asset {
               altText
-              gatsbyImageData(placeholder: BLURRED)
+              gatsbyImageData(placeholder: BLURRED, width: 96, height: 96)
             }
           }
         }
