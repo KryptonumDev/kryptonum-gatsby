@@ -7,6 +7,7 @@ import CaseStudies from "../components/sections/CaseStudies";
 import BlogEntries from "../components/sections/BlogEntries";
 import CtaSection from "../components/sections/CtaSection";
 import Process from "../components/sections/WebDevelopment_Ecom/Process";
+import Develop from "../components/sections/WebDevelopment_Ecom/Develop";
 
 const WebDevelopmentPWAsPage = ({ data }) => {
   const { page: {
@@ -24,6 +25,10 @@ const WebDevelopmentPWAsPage = ({ data }) => {
     form_Subheading,
     form_Cta,
     caseStudies_Heading,
+    develop_Paragraph1,
+    develop_Paragraph2,
+    develop_Paragraph3,
+    develop_Paragraph4,
     ctaSection,
     blogEntries_Heading,
   } } = data;
@@ -49,6 +54,12 @@ const WebDevelopmentPWAsPage = ({ data }) => {
         cta={form_Cta}
       />
       <CaseStudies heading={caseStudies_Heading} />
+      <Develop data={{
+        develop_Paragraph1,
+        develop_Paragraph2,
+        develop_Paragraph3,
+        develop_Paragraph4,
+      }} />
       <CtaSection data={ctaSection} />
       <BlogEntries heading={blogEntries_Heading} />
     </>
@@ -96,6 +107,11 @@ export const query = graphql`
       form_Cta
       # Case Studies
       caseStudies_Heading
+      # Develop
+      develop_Paragraph1
+      develop_Paragraph2
+      develop_Paragraph3
+      develop_Paragraph4
       # Call To Action
       ctaSection {
         heading
