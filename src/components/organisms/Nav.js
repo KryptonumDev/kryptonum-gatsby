@@ -637,7 +637,7 @@ const Wrapper = styled.nav`
       background-color: var(--neutral-950);
       transition: transform .5s cubic-bezier(0.23,1,0.32,1);
       visibility: hidden;
-      transform: translateY(-8px);
+      transform: translateY(-13px);
       opacity: 0;
       overflow-x: hidden;
       ul {

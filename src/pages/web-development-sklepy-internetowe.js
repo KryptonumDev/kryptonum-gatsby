@@ -2,11 +2,11 @@ import * as React from "react"
 import { graphql } from "gatsby";
 import { SEO } from "../components/global/Seo";
 import HeroServices from "../components/sections/HeroServices";
-import Process from "../components/sections/WebDevelopment_Pwa/Process";
-import CtaSection from "../components/sections/CtaSection";
-import CaseStudies from "../components/sections/CaseStudies";
-import BlogEntries from '../components/sections/BlogEntries';
 import QuickForm from "../components/sections/QuickForm";
+import CaseStudies from "../components/sections/CaseStudies";
+import BlogEntries from "../components/sections/BlogEntries";
+import CtaSection from "../components/sections/CtaSection";
+import Process from "../components/sections/WebDevelopment_Ecom/Process";
 
 const WebDevelopmentPWAsPage = ({ data }) => {
   const { page: {
@@ -18,14 +18,13 @@ const WebDevelopmentPWAsPage = ({ data }) => {
     hero_CtaHeading,
     hero_Cta,
     process_Heading,
-    process_Paragraph,
-    process_SecondParagraph,
+    process_Claim,
     process_List,
     form_Heading,
     form_Subheading,
     form_Cta,
-    ctaSection,
     caseStudies_Heading,
+    ctaSection,
     blogEntries_Heading,
   } } = data;
   return (
@@ -41,17 +40,16 @@ const WebDevelopmentPWAsPage = ({ data }) => {
       }} />
       <Process data={{
         process_Heading,
-        process_Paragraph,
-        process_SecondParagraph,
-        process_List
+        process_Claim,
+        process_List,
       }} />
       <QuickForm
         heading={form_Heading}
         subheading={form_Subheading}
         cta={form_Cta}
       />
-      <CtaSection data={ctaSection} />
       <CaseStudies heading={caseStudies_Heading} />
+      <CtaSection data={ctaSection} />
       <BlogEntries heading={blogEntries_Heading} />
     </>
   );
@@ -59,7 +57,7 @@ const WebDevelopmentPWAsPage = ({ data }) => {
 
 export const query = graphql`
   query {
-    page: sanityWebDevelopmentPwa {
+    page: sanityWebDevelopmentEcom {
       # Hero
       hero_Heading
       hero_Annotation
@@ -79,24 +77,25 @@ export const query = graphql`
       }
       # Process
       process_Heading
-      process_Paragraph
-      process_SecondParagraph
+      process_Claim
       process_List {
         heading
         subheading
         paragraph
         secondParagraph
-        img {
-          asset {
-            altText
-            gatsbyImageData
-          }
+        secondHeading
+        cta {
+          theme
+          text
+          href
         }
       }
       # Quick Form
       form_Heading
       form_Subheading
       form_Cta
+      # Case Studies
+      caseStudies_Heading
       # Call To Action
       ctaSection {
         heading
@@ -112,8 +111,6 @@ export const query = graphql`
           }
         }
       }
-      # Case Studies
-      caseStudies_Heading
       # Blog Entries
       blogEntries_Heading
       # Scroll To Next
@@ -134,7 +131,7 @@ export default WebDevelopmentPWAsPage;
 
 export const Head = () => (
   <SEO
-    title="Web development, e-commerce, usługi internetowe | Oferta Kryptonum"
-    description="Usługi internetowe szyte na miarę: od strategii web i identyfikacji wizualnej, przez chwytliwe treści www, do zaawansowanych stron i sklepów online."
+    title="Profesjonalne sklepy internetowe na zamówienie | Kryptonum"
+    description="W Kryptonum tworzymy profesjonalne sklepy internetowe z kluczowymi funkcjonalnościami: szybkie płatności, dostawy, opinie. Indywidualny e-commerce!"
   />
 )
