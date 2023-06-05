@@ -7,7 +7,7 @@ import Button from '../atoms/Button';
 import ReactMarkdown from "react-markdown";
 import { Clamp } from "../../utils/functions";
 
-const QuickForm = ({ heading, subheading, cta }) => {
+const QuickForm = ( { data: { heading, subheading, cta } } ) => {
   const {
     global : {
       quickForm_Paragraph,

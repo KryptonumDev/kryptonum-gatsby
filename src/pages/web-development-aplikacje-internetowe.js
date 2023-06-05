@@ -7,6 +7,7 @@ import CtaSection from "../components/sections/CtaSection";
 import CaseStudies from "../components/sections/CaseStudies";
 import BlogEntries from '../components/sections/BlogEntries';
 import QuickForm from "../components/sections/QuickForm";
+import Customer from "../components/sections/WebDevelopment_Pwa/Customer";
 
 const WebDevelopmentPWAsPage = ({ data }) => {
   const { page: {
@@ -21,9 +22,15 @@ const WebDevelopmentPWAsPage = ({ data }) => {
     process_Paragraph,
     process_SecondParagraph,
     process_List,
-    form_Heading,
-    form_Subheading,
-    form_Cta,
+    quickForm,
+    customer_Heading,
+    customer_WhatHeading,
+    customer_WhatList,
+    customer_WhatParagraph,
+    customer_WhatSecondParagraph,
+    customer_WhoHeading,
+    customer_WhoList,
+    customer_WhoAnnotation,
     ctaSection,
     caseStudies_Heading,
     blogEntries_Heading,
@@ -45,11 +52,17 @@ const WebDevelopmentPWAsPage = ({ data }) => {
         process_SecondParagraph,
         process_List
       }} />
-      <QuickForm
-        heading={form_Heading}
-        subheading={form_Subheading}
-        cta={form_Cta}
-      />
+      <QuickForm data={quickForm} />
+      <Customer data={{
+        customer_Heading,
+        customer_WhatHeading,
+        customer_WhatList,
+        customer_WhatParagraph,
+        customer_WhatSecondParagraph,
+        customer_WhoHeading,
+        customer_WhoList,
+        customer_WhoAnnotation,
+      }} />
       <CtaSection data={ctaSection} />
       <CaseStudies heading={caseStudies_Heading} />
       <BlogEntries heading={blogEntries_Heading} />
@@ -94,9 +107,24 @@ export const query = graphql`
         }
       }
       # Quick Form
-      form_Heading
-      form_Subheading
-      form_Cta
+      quickForm {
+        heading
+        subheading
+        cta
+      }
+      # Customer
+      customer_Heading
+      customer_WhatHeading
+      customer_WhatList {
+        title
+      }
+      customer_WhatParagraph
+      customer_WhatSecondParagraph
+      customer_WhoHeading
+      customer_WhoList {
+        title
+      }
+      customer_WhoAnnotation
       # Call To Action
       ctaSection {
         heading

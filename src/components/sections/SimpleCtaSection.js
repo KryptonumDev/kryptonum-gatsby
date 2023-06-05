@@ -16,8 +16,9 @@ const SimpleCtaSection = ({ heading, cta }) => {
 const Wrapper = styled.section`
   margin-top: ${Clamp(80, 144, 144, "px")};
   h2 {
-    max-width: ${1150/16}rem;
+    max-width: ${1280/16}rem;
     margin: 0 auto ${Clamp(32, 40, 48, "px")};
+    font-size: ${Clamp(28, 46, 60)};
   }
   text-align: center;
   justify-content: center;

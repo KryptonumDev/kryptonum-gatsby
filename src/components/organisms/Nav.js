@@ -291,6 +291,7 @@ const Wrapper = styled.nav`
   background-color: var(--neutral-950);
   position: relative;
   z-index: 9;
+  border-bottom: 1px solid var(--neutral-800);
   &.fixed {
     position: sticky;
     top: 0%;
