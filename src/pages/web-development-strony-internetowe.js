@@ -7,6 +7,7 @@ import CaseStudies from "../components/sections/CaseStudies";
 import BlogEntries from "../components/sections/BlogEntries";
 import CtaSection from "../components/sections/CtaSection";
 import SimpleCtaSection from "../components/sections/SimpleCtaSection";
+import Pricing from "../components/sections/WebDevelopment_Site/Pricing";
 
 const WebDevelopmentWebsitesPage = ({ data }) => {
   const { page: {
@@ -17,6 +18,8 @@ const WebDevelopmentWebsitesPage = ({ data }) => {
     hero_Img,
     hero_CtaHeading,
     hero_Cta,
+    pricing_Heading,
+    pricing_Plans,
     quickForm,
     caseStudies_Heading,
     ctaSection,
@@ -34,6 +37,10 @@ const WebDevelopmentWebsitesPage = ({ data }) => {
         hero_Img,
         hero_CtaHeading,
         hero_Cta
+      }} />
+      <Pricing data={{
+        pricing_Heading,
+        pricing_Plans
       }} />
       <CtaSection data={ctaSection} />
       <QuickForm data={quickForm} />
@@ -63,6 +70,25 @@ export const query = graphql`
         theme
         text
         href
+      }
+      # Pricing
+      pricing_Heading
+      pricing_Plans {
+        title
+        description
+        subpages
+        price
+        cta {
+          theme
+          text
+          href
+        }
+        benefits {
+          name
+          highlighted
+        }
+        hint
+        mostPopular
       }
       # Quick Form
       quickForm {

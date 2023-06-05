@@ -124,7 +124,7 @@ const Wrapper = styled.section`
       input {
         width: 100%;
         background: linear-gradient(var(--neutral-900), var(--neutral-900)) padding-box,
-          linear-gradient(90deg, #90F4E8, #2DD282) border-box;
+          var(--gradient) border-box;
         border: 2px solid var(--neutral-700);
         border-radius: 2px;
         height: 58px;
@@ -157,7 +157,7 @@ const Wrapper = styled.section`
           padding: 0;
           background-color: transparent;
           &:checked {
-            background: linear-gradient(90deg, #90F4E8, #2DD282);
+            background: var(--gradient);
             border: none;
           }
         }

@@ -28,7 +28,7 @@ const DecorativeHeading = ({type="h1", children, decoration=true, components}) =
   
 
   return (
-    <Wrapper as={type}>
+    <Wrapper as={type} has2spans={children.includes('\n\n')}>
       {decoration && (
         <HeadingDecoration />
       )}
@@ -53,11 +53,28 @@ const Wrapper = styled.h1`
     margin-top: 0.25em;
     margin-right: 8px;
   }
-  span:nth-of-type(2){
-    grid-column: 3/-1;
-    transform: translateY(50%);
-    margin-bottom: ${Clamp(28, 50, 48)};
-    text-align: right;
+  ${({ has2spans }) => has2spans && `
+    grid-template-columns: auto auto 1fr;
+    width: 100%;
+    span:nth-of-type(1){
+      max-width: ${640/16}rem;
+    }
+    span:nth-of-type(2){
+      grid-column: 3/-1;
+      align-self: flex-end;
+      text-align: right;
+      font-size: ${Clamp(20, 22, 22)};
+      margin: 0 0 .8em 0;
+    }
+  `}
+  @media (max-width: 1199px){
+    grid-template-columns: auto 1fr;
+    width: fit-content;
+    span:nth-of-type(2) {
+      grid-column: 3/1;
+      text-align: left;
+      margin: 28px 0 0 0;
+    }
   }
   span > svg {
     vertical-align: middle;

@@ -65,19 +65,11 @@ const HeroServices = ({
 const Wrapper = styled.section`
   h1 {
     margin-bottom: 32px;
-    grid-template-columns: auto auto 1fr;
-    width: 100%;
-    span:nth-of-type(2) {
-      font-size: ${Clamp(20, 32, 22)};
-      align-self: flex-end;
-      transform: none;
-      margin: 0 0 .8em 0;
-    }
   }
   h1, .annotation {
     sup {
       color: var(--primary-400);
-      background-image: linear-gradient(90deg, #90F4E8, #2DD282);
+      background-image: var(--gradient);
       -webkit-background-clip: text;
       background-clip: text;
       -webkit-text-fill-color: transparent;
@@ -126,7 +118,7 @@ const Wrapper = styled.section`
     }
     .item:first-child {
       background: linear-gradient(var(--neutral-950), var(--neutral-950)) padding-box,
-      linear-gradient(90deg, #90F4E8, #2DD282) border-box;
+      var(--gradient) border-box;
       border: 1px solid transparent;
       grid-row: 3/1;
     }
@@ -158,13 +150,6 @@ const Wrapper = styled.section`
     flex-direction: column;
     h1 {
       margin-bottom: 16px;
-      grid-template-columns: auto 1fr;
-      width: fit-content;
-      span:nth-of-type(2) {
-        grid-column: 3/1;
-        text-align: left;
-        margin: 32px 0 0 0;
-      }
     }
     .img {
       order: -1;

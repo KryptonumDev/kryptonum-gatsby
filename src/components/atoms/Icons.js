@@ -349,3 +349,70 @@ export const ScrollDown = () => (
   ></path>
   </svg>
 )
+
+export const Star = () => (
+  <svg
+    xmlns='http://www.w3.org/2000/svg'
+    width='24'
+    height='24'
+    fill='none'
+    viewBox='0 0 25 25'
+  >
+    <path
+      stroke='#010104'
+      strokeLinecap='round'
+      strokeLinejoin='round'
+      strokeWidth='2'
+      d='M12.375 2.995l3.09 6.26 6.91 1.01-5 4.87 1.18 6.88-6.18-3.25-6.18 3.25 1.18-6.88-5-4.87 6.91-1.01 3.09-6.26z'
+    ></path>
+  </svg>
+)
+
+export const Desktop = () => (
+  <svg
+    xmlns='http://www.w3.org/2000/svg'
+    width='32'
+    height='32'
+    fill='none'
+    viewBox='0 0 33 33'
+  >
+    <path
+      stroke='#EFF0F3'
+      strokeLinecap='round'
+      strokeLinejoin='round'
+      strokeWidth='2'
+      d='M20.376 28.995h-8M5.71 23.662a2.667 2.667 0 01-2.667-2.667V7.662A2.667 2.667 0 015.71 4.995h21.333a2.667 2.667 0 012.667 2.667v13.333a2.667 2.667 0 01-2.667 2.667H5.71z'
+    ></path>
+  </svg>
+)
+
+export const Tick = () => (
+  <svg
+    xmlns='http://www.w3.org/2000/svg'
+    width='16'
+    height='16'
+    fill='none'
+    viewBox='0 0 17 17'
+    stroke='currentColor'
+  >
+    <path
+      strokeLinecap='round'
+      strokeLinejoin='round'
+      strokeWidth='2'
+      d='M13.71 4.995L6.376 12.33 3.043 8.995'
+    ></path>
+    <defs>
+      <linearGradient
+        id='tick'
+        x1='13.51'
+        x2='2.458'
+        y1='4.995'
+        y2='6.019'
+        gradientUnits='userSpaceOnUse'
+      >
+        <stop stopColor='#2DD282'></stop>
+        <stop offset='1' stopColor='#90F4E8'></stop>
+      </linearGradient>
+    </defs>
+  </svg>
+)

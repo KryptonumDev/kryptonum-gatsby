@@ -21,6 +21,7 @@ const GlobalStyle = createGlobalStyle`
     --neutral-900: #0F0F10;
     --neutral-950: #040606;
     --primary-400: #2DD282;
+    --gradient: linear-gradient(90deg, #90F4E8, #2DD282);
   }
   body.scrollLock {
     overflow: hidden;
@@ -111,7 +112,7 @@ const GlobalStyle = createGlobalStyle`
     strong {
       font-weight: 400;
       color: var(--primary-400);
-      background-image: linear-gradient(90deg, #90F4E8, #2DD282);
+      background-image: var(--gradient);
       -webkit-background-clip: text;
       background-clip: text;
       -webkit-text-fill-color: transparent;
@@ -129,7 +130,7 @@ const GlobalStyle = createGlobalStyle`
     &::before,
     &::after {
       color: var(--primary-400);
-      background-image: linear-gradient(90deg, #90F4E8, #2DD282);
+      background-image: var(--gradient);
       -webkit-background-clip: text;
       background-clip: text;
       -webkit-text-fill-color: transparent;
@@ -144,7 +145,7 @@ const GlobalStyle = createGlobalStyle`
   }
   .person-border {
     background: linear-gradient(var(--neutral-950), var(--neutral-950)) padding-box,
-    linear-gradient(90deg, #90F4E8, #2DD282) border-box;
+    var(--gradient) border-box;
     border: 1px solid transparent;
     &, img {
       border-radius: 50%;
@@ -177,11 +178,11 @@ const GlobalStyle = createGlobalStyle`
         padding: 12px 12px;
       }
       background: linear-gradient(var(--neutral-950), var(--neutral-950)) padding-box,
-                  linear-gradient(90deg, #90F4E8, #2DD282) border-box;
+                  var(--gradient) border-box;
       border: 2px solid transparent;
       span {
         color: var(--primary-400);
-        background-image: linear-gradient(90deg, #90F4E8, #2DD282);
+        background-image: var(--gradient);
         -webkit-background-clip: text;
         background-clip: text;
         -webkit-text-fill-color: transparent;

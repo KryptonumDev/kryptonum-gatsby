@@ -83,7 +83,7 @@ const Wrapper = styled.section`
         top: 0;
         transform: translate(-50%,-50%);
         background: linear-gradient(var(--neutral-950), var(--neutral-950)) padding-box,
-        linear-gradient(90deg, #90F4E8, #2DD282) border-box;
+        var(--gradient) border-box;
         border: 1px solid transparent;
         border-radius: 50%;
         width: ${Clamp(40, 64, 64, "px")};

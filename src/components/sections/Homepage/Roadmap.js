@@ -110,11 +110,11 @@ const Wrapper = styled.section`
         }
         &::before {
           background: linear-gradient(var(--neutral-950), var(--neutral-950)) padding-box,
-                      linear-gradient(90deg, #90F4E8, #2DD282) border-box;
+                      var(--gradient) border-box;
           border: 1px solid transparent;
         }
         &::after {
-          background: linear-gradient(90deg, #90F4E8, #2DD282);
+          background: var(--gradient);
           transform: scale(0);
           transition: transform .3s cubic-bezier(0.23,1,0.32,1);
         }

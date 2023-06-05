@@ -64,6 +64,17 @@ const Wrapper = styled.section`
   &.max-width {
     margin-top: ${Clamp(64, 128, 172, "px")};
   }
+  h2 {
+    grid-template-columns: auto auto;
+    span:nth-of-type(1){
+      max-width: unset;
+    }
+    span:nth-of-type(2){
+      transform: translateY(50%);
+      margin-bottom: ${Clamp(28, 50, 48)};
+      font-size: unset;
+    }
+  }
   .sticky {
     position: sticky;
     bottom: 0;
