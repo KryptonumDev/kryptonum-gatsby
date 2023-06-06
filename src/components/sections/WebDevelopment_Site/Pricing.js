@@ -169,9 +169,6 @@ const Wrapper = styled.section`
       }
       .cta {
         grid-area: cta;
-        font-size: ${Clamp(16, 18, 20)};
-        padding-left: 24px;
-        padding-right: 24px;
       }
       .benefits {
         grid-area: benefits;

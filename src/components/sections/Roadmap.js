@@ -1,10 +1,10 @@
 import React, { useState, useEffect, useRef } from "react";
 import styled from "styled-components";
-import DecorativeHeading from "../../atoms/DecorativeHeading";
-import { Clamp } from "../../../utils/functions";
-import Button from '../../atoms/Button';
+import DecorativeHeading from "../atoms/DecorativeHeading";
+import { Clamp } from "../../utils/functions";
+import Button from '../atoms/Button';
 
-const Roadmap = ({data: {roadmap_Heading, roadmap_Process, roadmap_Cta}}) => {
+const Roadmap = ({heading, list, cta}) => {
   const wrapper = useRef();
   const [scrollable, setScrollable] = useState(0);
   useEffect(() => {
@@ -36,21 +36,21 @@ const Roadmap = ({data: {roadmap_Heading, roadmap_Process, roadmap_Cta}}) => {
   return (
     <Wrapper data-height={scrollable} className="roadmap">
       <div className="sticky">
-        <DecorativeHeading type="h2">{roadmap_Heading}</DecorativeHeading>
+        <DecorativeHeading type="h2">{heading}</DecorativeHeading>
         <div className="line"></div>
-        <div className="wrapper" ref={wrapper}>
-          {roadmap_Process.map((item, i) => (
-            <div className="item" key={i}>
+        <div className="roadmap" ref={wrapper}>
+          {list.map((item, i) => (
+            <div className="roadmap-item" key={i}>
               <h3>{item.title}</h3>
               <p>{item.description}</p>
-              {i+1 === roadmap_Process.length && (
-                <Button to={roadmap_Cta.href} theme={roadmap_Cta.theme}>
-                  {roadmap_Cta.text}
+              {(i+1 === list.length && cta?.text) && (
+                <Button to={cta.href} theme={cta.theme}>
+                  {cta.text}
                 </Button>
               )}
             </div>
           ))}
-          <div className="item"></div>
+          <div className="roadmap-item"></div>
         </div>
       </div>
     </Wrapper>
@@ -76,7 +76,7 @@ const Wrapper = styled.section`
     margin-bottom: ${Clamp(28, 64, 42, "px")};
     max-width: 734px;
   }
-  .wrapper {
+  .roadmap {
     width: calc(100vw - 16px);
     max-width: 1920px;
     pointer-events: none;
@@ -90,7 +90,7 @@ const Wrapper = styled.section`
     counter-reset: counter;
     margin-top: -12px;
     padding-bottom: 1rem;
-    .item {
+    .roadmap-item {
       flex-shrink: 0;
       width: calc(100% / 2.1);
       column-gap: 32px;
@@ -125,16 +125,22 @@ const Wrapper = styled.section`
       &:last-child {
         width: calc(100% - (100% / 2.1));
       }
+      &:nth-child(-n+9) h3::before {
+        content: "/0" counter(counter);
+      }
       h3 {
         font-size: ${Clamp(20, 32, 30)};
         margin-bottom: ${Clamp(8, 16, 16, "px")};
         &::before {
-          content: "/0" counter(counter);
+          content: "/" counter(counter);
           display: inline-block;
           width: 2rem;
           font-size: 1rem;
           margin-right: ${Clamp(8, 16, 16, "px")};
         }
+      }
+      &:nth-child(-n+9) h3::before {
+        content: "/0" counter(counter);
       }
       p {
         font-size: ${Clamp(16, 22, 22)};
@@ -146,8 +152,8 @@ const Wrapper = styled.section`
     }
   }
   @media (max-width: 999px){
-    .wrapper {
-      .item {
+    .roadmap {
+      .roadmap-item {
         width: calc(100% / 1.1);
         &:last-child {
           width: calc(100% - (100% / 1.1));
@@ -156,9 +162,9 @@ const Wrapper = styled.section`
     }
   }
   @media (max-width: 499px){
-    .wrapper {
+    .roadmap {
       width: 100vw;
-      .item {
+      .roadmap-item {
         width: 100%;
         &:not(:nth-last-of-type(2)){
           margin-right: 1rem;

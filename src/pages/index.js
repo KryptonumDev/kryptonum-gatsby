@@ -5,7 +5,7 @@ import Conquest from "../components/sections/Homepage/Conquest";
 import Challange from "../components/sections/Homepage/Challenge";
 import Services from "../components/sections/Homepage/Services";
 import Creativity from "../components/sections/Homepage/Creativity";
-import Roadmap from "../components/sections/Homepage/Roadmap";
+import Roadmap from "../components/sections/Roadmap";
 import Team from "../components/sections/Homepage/Team";
 import Testimonials from "../components/sections/Testimonials";
 import { SEO } from "../components/global/Seo";
@@ -23,7 +23,11 @@ const IndexPage = ({
       <Conquest data={homepage} />
       <Challange data={homepage} />
       <Creativity data={homepage} />
-      <Roadmap data={homepage} />
+      <Roadmap
+        heading={homepage.roadmap_Heading}
+        list={homepage.roadmap_Process}
+        cta={homepage.roadmap_Cta}
+      />
       <Team data={homepage} />
       <Testimonials />
       <BlogEntries />

@@ -157,7 +157,7 @@ const GlobalStyle = createGlobalStyle`
     gap: 24px;
   }
   .cta {
-    font-size: ${Clamp(16, 22, 22)};
+    font-size: ${Clamp(15, 22, 22)};
     display: inline-flex;
     align-items: center;
     justify-content: center;
@@ -176,6 +176,7 @@ const GlobalStyle = createGlobalStyle`
       }
       @media (max-width: 349px){
         padding: 12px 12px;
+        font-size: 14px;
       }
       background: linear-gradient(var(--neutral-950), var(--neutral-950)) padding-box,
                   var(--gradient) border-box;

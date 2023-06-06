@@ -2,12 +2,12 @@ import * as React from "react"
 import { graphql } from "gatsby";
 import { SEO } from "../components/global/Seo";
 import HeroServices from "../components/sections/HeroServices";
-import QuickForm from "../components/sections/QuickForm";
 import CaseStudies from "../components/sections/CaseStudies";
 import BlogEntries from "../components/sections/BlogEntries";
 import CtaSection from "../components/sections/CtaSection";
 import SimpleCtaSection from "../components/sections/SimpleCtaSection";
 import Pricing from "../components/sections/WebDevelopment_Site/Pricing";
+import Process from "../components/sections/WebDevelopment_Site/Process";
 
 const WebDevelopmentWebsitesPage = ({ data }) => {
   const { page: {
@@ -20,6 +20,10 @@ const WebDevelopmentWebsitesPage = ({ data }) => {
     hero_Cta,
     pricing_Heading,
     pricing_Plans,
+    process_Heading,
+    process_List,
+    roadmap_Heading,
+    roadmap_List,
     quickForm,
     caseStudies_Heading,
     ctaSection,
@@ -43,7 +47,13 @@ const WebDevelopmentWebsitesPage = ({ data }) => {
         pricing_Plans
       }} />
       <CtaSection data={ctaSection} />
-      <QuickForm data={quickForm} />
+      <Process data={{
+        process_Heading,
+        process_List,
+        roadmap_Heading,
+        roadmap_List,
+        quickForm,
+      }} />
       <CaseStudies heading={caseStudies_Heading} />
       <SimpleCtaSection heading={simpleCtaSection_Heading} cta={simpleCtaSection_Cta} />
       <BlogEntries heading={blogEntries_Heading} />
@@ -89,6 +99,26 @@ export const query = graphql`
         }
         hint
         mostPopular
+      }
+      # Process
+      process_Heading
+      process_List {
+        claim
+        heading
+        subheading
+        paragraph
+        img {
+          asset {
+            altText
+            gatsbyImageData(placeholder: BLURRED, width: 700)
+          }
+        }
+      }
+      # Roadmap
+      roadmap_Heading
+      roadmap_List {
+        title
+        description
       }
       # Quick Form
       quickForm {
