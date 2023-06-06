@@ -96,7 +96,7 @@ const Wrapper = styled.section`
     align-self: start;
     display: flex;
     flex-direction: column;
-    justify-content: center;
+    align-items: center;
     .img {
       flex-shrink: 0;
     }
@@ -111,7 +111,6 @@ const Wrapper = styled.section`
     }
     .images {
       flex-direction: row;
-      justify-content: start;
       flex-wrap: nowrap;
       overflow-x: auto;
       overflow-y: hidden;
