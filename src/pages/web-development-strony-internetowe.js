@@ -8,6 +8,7 @@ import CtaSection from "../components/sections/CtaSection";
 import SimpleCtaSection from "../components/sections/SimpleCtaSection";
 import Pricing from "../components/sections/WebDevelopment_Site/Pricing";
 import Process from "../components/sections/WebDevelopment_Site/Process";
+import Technology from "../components/sections/WebDevelopment_Site/Technology";
 
 const WebDevelopmentWebsitesPage = ({ data }) => {
   const { page: {
@@ -25,6 +26,10 @@ const WebDevelopmentWebsitesPage = ({ data }) => {
     roadmap_Heading,
     roadmap_List,
     quickForm,
+    technology_Heading,
+    technology_Paragraph,
+    technology_Content,
+    technology_Img,
     caseStudies_Heading,
     ctaSection,
     simpleCtaSection_Heading,
@@ -53,6 +58,12 @@ const WebDevelopmentWebsitesPage = ({ data }) => {
         roadmap_Heading,
         roadmap_List,
         quickForm,
+      }} />
+      <Technology data={{
+        technology_Heading,
+        technology_Paragraph,
+        technology_Content,
+        technology_Img,
       }} />
       <CaseStudies heading={caseStudies_Heading} />
       <SimpleCtaSection heading={simpleCtaSection_Heading} cta={simpleCtaSection_Cta} />
@@ -125,6 +136,16 @@ export const query = graphql`
         heading
         subheading
         cta
+      }
+      # Technology 
+      technology_Heading
+      technology_Paragraph
+      technology_Content
+      technology_Img {
+        asset {
+          altText
+          gatsbyImageData(placeholder: BLURRED, width: 250)
+        }
       }
       # Case Studies
       caseStudies_Heading

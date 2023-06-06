@@ -65,6 +65,8 @@ const Wrapper = styled.h1`
       text-align: right;
       font-size: ${Clamp(20, 22, 22)};
       margin: 0 0 .8em 0;
+      max-width: ${400/16}rem;
+      justify-self: end;
     }
   `}
   @media (max-width: 1199px){
@@ -74,6 +76,8 @@ const Wrapper = styled.h1`
       grid-column: 3/1;
       text-align: left;
       margin: 28px 0 0 0;
+      justify-self: unset;
+      max-width: unset;
     }
   }
   span > svg {

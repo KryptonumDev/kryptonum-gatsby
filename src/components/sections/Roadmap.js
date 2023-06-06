@@ -9,7 +9,7 @@ const Roadmap = ({heading, list, cta}) => {
   const [scrollable, setScrollable] = useState(0);
   useEffect(() => {
     const roadmap = document.querySelector('.roadmap');
-    const items = roadmap.querySelectorAll('.item');
+    const items = roadmap.querySelectorAll('.roadmap-item');
     const container = wrapper.current;
     const anim = () => {
       var scrollableWidth = container.scrollWidth - container.clientWidth
@@ -34,7 +34,7 @@ const Roadmap = ({heading, list, cta}) => {
   }, [])
 
   return (
-    <Wrapper data-height={scrollable} className="roadmap">
+    <Wrapper style={{minHeight: `calc(100vh + ${scrollable}px`}} className="roadmap">
       <div className="sticky">
         <DecorativeHeading type="h2">{heading}</DecorativeHeading>
         <div className="line"></div>
@@ -58,7 +58,6 @@ const Roadmap = ({heading, list, cta}) => {
 }
 
 const Wrapper = styled.section`
-  min-height: calc(100vh + ${props => `${props['data-height']}px`});
   .sticky {
     height: 100vh;
     position: sticky;
