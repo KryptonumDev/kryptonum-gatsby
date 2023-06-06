@@ -1,5 +1,5 @@
 import { GatsbyImage } from "gatsby-plugin-image";
-import React from "react";
+import React, { Fragment } from "react";
 import ReactMarkdown from "react-markdown";
 import styled from "styled-components";
 import { Clamp } from "../../../utils/functions";
@@ -23,8 +23,8 @@ const Process = ({
       </header>
       <div className="wrapper">
         {process_List.map((item, i) => (
-          <>
-            <div className="item" key={i}>
+          <Fragment key={i}>
+            <div className="item">
               <ReactMarkdown className="claim" components={{ p: 'h3' }}>{item.claim}</ReactMarkdown>
               <ReactMarkdown className="heading" components={{ p: 'h4' }}>{item.heading}</ReactMarkdown>
               <ReactMarkdown className="subheading">{item.subheading}</ReactMarkdown>
@@ -41,10 +41,12 @@ const Process = ({
                   heading={roadmap_Heading}
                   list={roadmap_List}
                 />
-                <QuickForm data={quickForm} />
+                <QuickForm
+                  data={quickForm}
+                />
               </>
             )}
-          </>
+          </Fragment>
         ))}
       </div>
     </Wrapper>

@@ -416,3 +416,21 @@ export const Tick = () => (
     </defs>
   </svg>
 )
+
+export const Cursor = () => (
+  <svg
+    xmlns='http://www.w3.org/2000/svg'
+    width='32'
+    height='32'
+    fill='none'
+    viewBox='0 0 33 33'
+  >
+    <path
+      stroke='#EFF0F3'
+      strokeLinecap='round'
+      strokeLinejoin='round'
+      strokeWidth='2'
+      d='M14.59 18.781l-8.215-4.286 20-7.5-7.5 20-4.286-8.214zm0 0l-8.215 8.214'
+    ></path>
+  </svg>
+)

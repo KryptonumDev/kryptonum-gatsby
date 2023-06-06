@@ -115,7 +115,7 @@ const Wrapper = styled.section`
         &::after {
           background: var(--gradient);
           transform: scale(0);
-          transition: transform .3s cubic-bezier(0.23,1,0.32,1);
+          transition: transform .3s var(--easing);
         }
         &.active::after {
           transform: scale(1);

@@ -9,6 +9,7 @@ import SimpleCtaSection from "../components/sections/SimpleCtaSection";
 import Pricing from "../components/sections/WebDevelopment_Site/Pricing";
 import Process from "../components/sections/WebDevelopment_Site/Process";
 import Technology from "../components/sections/WebDevelopment_Site/Technology";
+import Faq from "../components/sections/Faq";
 
 const WebDevelopmentWebsitesPage = ({ data }) => {
   const { page: {
@@ -51,6 +52,7 @@ const WebDevelopmentWebsitesPage = ({ data }) => {
         pricing_Heading,
         pricing_Plans
       }} />
+      <Faq />
       <CtaSection data={ctaSection} />
       <Process data={{
         process_Heading,

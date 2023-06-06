@@ -22,7 +22,7 @@ const Technology = ({
       </header>
       <div className="content">
         <ReactMarkdown>{technology_Content.split('\n\n').slice(0,3).join('\n\n')}</ReactMarkdown>
-        <button onClick={() => setShowMore(!showMore)} className={showMore && 'showedMore'}>
+        <button onClick={() => setShowMore(!showMore)} className={showMore ? 'showedMore' : ''}>
           <span>{showMore ? 'Pokaż mniej' : 'Pokaż więcej'}</span>
           <ArrowDown />
         </button>

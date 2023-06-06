@@ -22,6 +22,7 @@ const GlobalStyle = createGlobalStyle`
     --neutral-950: #040606;
     --primary-400: #2DD282;
     --gradient: linear-gradient(90deg, #90F4E8, #2DD282);
+    --easing: cubic-bezier(0.23,1,0.32,1);
   }
   body.scrollLock {
     overflow: hidden;

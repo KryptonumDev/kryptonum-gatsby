@@ -363,7 +363,7 @@ const Wrapper = styled.nav`
   .nav-list2 {
     transform: translateY(-8px);
     visibility: hidden;
-    transition: transform .5s cubic-bezier(0.23,1,0.32,1);
+    transition: transform .5s var(--easing);
     position: absolute;
     left: 0;
     top: 100%;
@@ -636,7 +636,7 @@ const Wrapper = styled.nav`
       height: calc(100vh - var(--nav-height));
       height: calc(100dvh - var(--nav-height));
       background-color: var(--neutral-950);
-      transition: transform .5s cubic-bezier(0.23,1,0.32,1);
+      transition: transform .5s var(--easing);
       visibility: hidden;
       transform: translateY(-13px);
       opacity: 0;
@@ -677,7 +677,7 @@ const Wrapper = styled.nav`
     }
     .nav-list2 {
       transform: translateX(-8px);
-      transition: transform .5s cubic-bezier(0.23,1,0.32,1);
+      transition: transform .5s var(--easing);
       top: 0;
       height: calc(100vh - var(--nav-height));
       height: calc(100dvh - var(--nav-height));
