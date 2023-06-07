@@ -4,7 +4,7 @@ import styled from "styled-components";
 import { Clamp } from "../../utils/functions";
 import { HeadingDecoration, HeadingLineFlexibility } from "./Icons";
 
-const DecorativeHeading = ({type="h1", children, decoration=true, components}) => {
+const DecorativeHeading = ({type="h1", children, decoration=true, components, ...props}) => {
   const renderParagraph = ({ children }) => {
     const renderedChildren = [];
     children.forEach(child => {
@@ -28,7 +28,7 @@ const DecorativeHeading = ({type="h1", children, decoration=true, components}) =
   
 
   return (
-    <Wrapper as={type} has2spans={children.includes('\n\n')}>
+    <Wrapper as={type} has2spans={children.includes('\n\n')} {...props}>
       {decoration && (
         <HeadingDecoration />
       )}

@@ -1,13 +1,13 @@
 import React from "react";
-import { graphql, Link, useStaticQuery } from "gatsby";
-import { GatsbyImage } from "gatsby-plugin-image";
+import { graphql, useStaticQuery } from "gatsby";
 import styled from "styled-components";
 import DecorativeHeading from "../atoms/DecorativeHeading";
-import { Clamp, removeMarkdown } from '../../utils/functions'
-import { Clock, Cursor } from "../atoms/Icons";
-import Button from '../atoms/Button';
+import { Clamp } from '../../utils/functions'
+import { Cursor } from "../atoms/Icons";
+import FaqPrice from "../organisms/faq/FaqPrice";
+import FaqPayment from "../organisms/faq/FaqPayment";
 
-const Faq = ({heading}) => {
+const Faq = ( { heading } ) => {
   const { global: { faq } } = useStaticQuery(graphql`
     query {
       global: sanityGlobal {
@@ -15,7 +15,7 @@ const Faq = ({heading}) => {
           heading
           hint
           price {
-            title
+            question
             heading
             paragraph
             secondParagraph
@@ -26,13 +26,46 @@ const Faq = ({heading}) => {
               href
             }
           }
+          payment {
+            question
+            heading
+            paragraph
+            secondParagraph
+            thirdParagraph
+            text
+            list
+          }
         }
       }
     }
   `);
-  const questions = Array.from([
-    faq.price,
-  ]);
+
+  const { price, payment } = faq;
+
+  const faqs = [
+    {
+      question: price.question,
+      answer: <FaqPrice data={{
+        heading: price.heading,
+        paragraph: price.paragraph,
+        secondParagraph: price.secondParagraph,
+        subheading: price.subheading,
+        cta: price.cta,
+      }} />,
+    },
+    {
+      question: payment.question,
+      answer: <FaqPayment data={{
+        heading: payment.heading,
+        paragraph: payment.paragraph,
+        secondParagraph: payment.secondParagraph,
+        thirdParagraph: payment.thirdParagraph,
+        text: payment.text,
+        list: payment.list,
+      }} />,
+    },
+  ];
+
   return (
     <Wrapper>
       <header>
@@ -43,14 +76,15 @@ const Faq = ({heading}) => {
         </p>
       </header>
       <div className="wrapper">
-        {questions.map((question, i) => (
+        {faqs.map((faq, i) => (
           <details key={i}>
-            <summary>{question.title}</summary>
-            <p>
-              Requires a computer running an operating system. The computer must have some
-              memory and ideally some kind of long-term storage. An input device as well
-              as some form of output device is recommended.
-            </p>
+            <summary>
+              <p>{faq.question}</p>
+              <div className="plus-icon"><span></span><span></span></div>
+            </summary>
+            <div className="answer">
+              {faq.answer}
+            </div>
           </details>
         ))}
       </div>
@@ -64,22 +98,99 @@ const Wrapper = styled.section`
     grid-template-columns: auto auto;
     align-items: flex-end;
     justify-content: space-between;
+    margin-bottom: ${Clamp(24, 32, 72, 'px')};
     .hint {
       display: flex;
       gap: 8px;
       font-size: ${Clamp(16, 22, 22)};
     }
+    @media (max-width: 999px){
+      grid-template-columns: 1fr;
+      gap: 24px;
+    }
   }
+  counter-reset: counter;
   details {
+    counter-increment: counter;
+    summary {
+      &::marker,
+      &::-webkit-details-marker {
+        display: none;
+      }
+      list-style: none;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 34px 0;
+      position: relative;
+      &::before,
+      &::after {
+        content: '';
+        position: absolute;
+        left: 0;
+        bottom: 0;
+        width: 100%;
+        height: 1px;
+        background-color: var(--neutral-800);
+      }
+      &::after {
+        transform: scaleX(0);
+        transform-origin: right;
+        background-image: var(--gradient);
+        transition: transform .8s var(--easing);
+      }
+      cursor: pointer;
+      p {
+        &::before {
+          content: "/" counter(counter);
+          display: inline-block;
+          width: 2rem;
+          font-size: 1rem;
+          margin-right: ${Clamp(8, 16, 16, "px")};
+        }
+      }
+      &:nth-child(-n+9) p::before {
+        content: "/0" counter(counter);
+      }
+      .plus-icon {
+        span {
+          display: block;
+          width: 22px;
+          height: 2px;
+          background-color: var(--neutral-200);
+          border-radius: 4px;
+          &:nth-child(2) {
+            transform: translateY(-2px) rotate(90deg);
+            transition: transform .3s;
+          }
+        }
+      }
+    }
+    .answer {
+      margin: 34px 0 68px
+    }
+    &[open]{
+      summary {
+        .plus-icon span:nth-child(2) {
+          transform: translateY(-2px) rotate(90deg) scaleX(0);
+        }
+        &::after {
+          transform: scaleX(1);
+          transform-origin: left;
+        }
+      }
+      .answer {
+        animation: details-show .3s;
+      }
+    }
     @keyframes details-show {
       from {
         opacity: 0;
         transform: translateY(-13px);
       }
-    }
-    &[open]{
-      p {
-        animation: details-show .3s;
+      to {
+        opacity: 1;
+        transform: translateY(0);
       }
     }
   }

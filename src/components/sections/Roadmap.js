@@ -124,9 +124,6 @@ const Wrapper = styled.section`
       &:last-child {
         width: calc(100% - (100% / 2.1));
       }
-      &:nth-child(-n+9) h3::before {
-        content: "/0" counter(counter);
-      }
       h3 {
         font-size: ${Clamp(20, 32, 30)};
         margin-bottom: ${Clamp(8, 16, 16, "px")};

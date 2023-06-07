@@ -73,6 +73,7 @@ const Wrapper = styled.section`
       transform: translateY(50%);
       margin-bottom: ${Clamp(28, 50, 48)};
       font-size: unset;
+      max-width: unset;
     }
   }
   .sticky {
