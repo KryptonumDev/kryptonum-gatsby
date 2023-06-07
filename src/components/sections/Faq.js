@@ -6,6 +6,7 @@ import { Clamp } from '../../utils/functions'
 import { Cursor } from "../atoms/Icons";
 import FaqPrice from "../organisms/faq/FaqPrice";
 import FaqPayment from "../organisms/faq/FaqPayment";
+import FaqTime from "../organisms/faq/FaqTime";
 
 const Faq = ( { heading } ) => {
   const { global: { faq } } = useStaticQuery(graphql`
@@ -35,12 +36,30 @@ const Faq = ( { heading } ) => {
             text
             list
           }
+          time {
+            question
+            img {
+              asset {
+                altText
+                gatsbyImageData(placeholder: BLURRED, width: 700)
+              }
+            }
+            heading
+            paragraph
+            cta {
+              theme
+              href
+              text
+            }
+            listHeading
+            list
+          }
         }
       }
     }
   `);
 
-  const { price, payment } = faq;
+  const { price, payment, time } = faq;
 
   const faqs = [
     {
@@ -62,6 +81,17 @@ const Faq = ( { heading } ) => {
         thirdParagraph: payment.thirdParagraph,
         text: payment.text,
         list: payment.list,
+      }} />,
+    },
+    {
+      question: time.question,
+      answer: <FaqTime data={{
+        img: time.img,
+        heading: time.heading,
+        paragraph: time.paragraph,
+        cta: time.cta,
+        listHeading: time.listHeading,
+        list: time.list,
       }} />,
     },
   ];
@@ -167,7 +197,7 @@ const Wrapper = styled.section`
       }
     }
     .answer {
-      margin: 34px 0 68px
+      margin: 48px 0 96px;
     }
     &[open]{
       summary {
