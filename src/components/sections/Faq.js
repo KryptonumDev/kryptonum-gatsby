@@ -9,6 +9,7 @@ import FaqPayment from "../organisms/faq/FaqPayment";
 import FaqTime from "../organisms/faq/FaqTime";
 import FaqInfo from "../organisms/faq/FaqInfo";
 import FaqWhy from "../organisms/faq/faqWhy";
+import FaqCopy from "../organisms/faq/FaqCopy";
 
 const Faq = ( { heading } ) => {
   const { global: { faq } } = useStaticQuery(graphql`
@@ -98,12 +99,31 @@ const Faq = ( { heading } ) => {
               href
             }
           }
+          seo {
+            question
+            heading
+            paragraph
+            secondParagraph
+            subheading
+          }
+          copy {
+            question
+            img {
+              asset {
+                altText
+                gatsbyImageData(placeholder: BLURRED, width: 700)
+              }
+            }
+            heading
+            paragraph
+            summary
+          }
         }
       }
     }
   `);
 
-  const { price, payment, time, info, why, cooperation, logo } = faq;
+  const { price, payment, time, info, why, cooperation, logo, seo, copy } = faq;
 
   const faqs = [
     {
@@ -180,6 +200,24 @@ const Faq = ( { heading } ) => {
         cta: logo.cta,
       }} />,
     },
+    {
+      question: seo.question,
+      answer: <Faq4Grid data={{
+        heading: seo.heading,
+        paragraph: seo.paragraph,
+        secondParagraph: seo.secondParagraph,
+        subheading: seo.subheading,
+      }} />,
+    },
+    {
+      question: copy.question,
+      answer: <FaqCopy data={{
+        img: copy.img,
+        heading: copy.heading,
+        paragraph: copy.paragraph,
+        summary: copy.summary,
+      }} />,
+    },
   ];
 
   return (
@@ -237,6 +275,7 @@ const Wrapper = styled.section`
       display: flex;
       justify-content: space-between;
       align-items: center;
+      gap: 16px;
       padding: 34px 0;
       position: relative;
       &::before,
@@ -257,11 +296,14 @@ const Wrapper = styled.section`
       }
       cursor: pointer;
       p {
+        display: grid;
+        grid-template-columns: auto 1fr;
         &::before {
           content: "/" counter(counter);
           display: inline-block;
           width: 2rem;
           font-size: 1rem;
+          margin-top: 2px;
           margin-right: ${Clamp(8, 16, 16, "px")};
         }
       }
