@@ -10,6 +10,7 @@ import FaqTime from "../organisms/faq/FaqTime";
 import FaqInfo from "../organisms/faq/FaqInfo";
 import FaqWhy from "../organisms/faq/faqWhy";
 import FaqCopy from "../organisms/faq/FaqCopy";
+import FaqWordpress from "../organisms/faq/FaqWordpress";
 
 const Faq = ( { heading } ) => {
   const { global: { faq } } = useStaticQuery(graphql`
@@ -118,12 +119,30 @@ const Faq = ( { heading } ) => {
             paragraph
             summary
           }
+          wordpress {
+            question
+            heading
+            paragraph
+            subheading
+            secondParagraph
+            cta {
+              theme
+              href
+              text
+            }
+            summary
+            summaryCta {
+              theme
+              href
+              text
+            }
+          }
         }
       }
     }
   `);
 
-  const { price, payment, time, info, why, cooperation, logo, seo, copy } = faq;
+  const { price, payment, time, info, why, cooperation, logo, seo, copy, wordpress } = faq;
 
   const faqs = [
     {
@@ -218,6 +237,18 @@ const Faq = ( { heading } ) => {
         summary: copy.summary,
       }} />,
     },
+    {
+      question: wordpress.question,
+      answer: <FaqWordpress data={{
+        heading: wordpress.heading,
+        paragraph: wordpress.paragraph,
+        subheading: wordpress.subheading,
+        secondParagraph: wordpress.secondParagraph,
+        cta: wordpress.cta,
+        summary: wordpress.summary,
+        summaryCta: wordpress.summaryCta,
+      }} />,
+    },
   ];
 
   return (
@@ -266,6 +297,10 @@ const Wrapper = styled.section`
   counter-reset: counter;
   details {
     counter-increment: counter;
+
+    &:nth-child(-n+9) summary p::before {
+      content: "/0" counter(counter);
+    }
     summary {
       &::marker,
       &::-webkit-details-marker {
@@ -306,9 +341,6 @@ const Wrapper = styled.section`
           margin-top: 2px;
           margin-right: ${Clamp(8, 16, 16, "px")};
         }
-      }
-      &:nth-child(-n+9) p::before {
-        content: "/0" counter(counter);
       }
       .plus-icon {
         span {
