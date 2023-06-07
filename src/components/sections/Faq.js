@@ -4,7 +4,7 @@ import styled from "styled-components";
 import DecorativeHeading from "../atoms/DecorativeHeading";
 import { Clamp } from '../../utils/functions'
 import { Cursor } from "../atoms/Icons";
-import FaqPrice from "../organisms/faq/FaqPrice";
+import Faq4Grid from "../organisms/faq/Faq4Grid";
 import FaqPayment from "../organisms/faq/FaqPayment";
 import FaqTime from "../organisms/faq/FaqTime";
 import FaqInfo from "../organisms/faq/FaqInfo";
@@ -74,17 +74,41 @@ const Faq = ( { heading } ) => {
             list
             summary
           }
+          cooperation {
+            question
+            heading
+            paragraph
+            secondParagraph
+            subheading
+            cta {
+              theme
+              text
+              href
+            }
+          }
+          logo {
+            question
+            heading
+            paragraph
+            secondParagraph
+            subheading
+            cta {
+              theme
+              text
+              href
+            }
+          }
         }
       }
     }
   `);
 
-  const { price, payment, time, info, why } = faq;
+  const { price, payment, time, info, why, cooperation, logo } = faq;
 
   const faqs = [
     {
       question: price.question,
-      answer: <FaqPrice data={{
+      answer: <Faq4Grid data={{
         heading: price.heading,
         paragraph: price.paragraph,
         secondParagraph: price.secondParagraph,
@@ -134,6 +158,26 @@ const Faq = ( { heading } ) => {
         paragraph: why.paragraph,
         list: why.list,
         summary: why.summary,
+      }} />,
+    },
+    {
+      question: cooperation.question,
+      answer: <Faq4Grid data={{
+        heading: cooperation.heading,
+        paragraph: cooperation.paragraph,
+        secondParagraph: cooperation.secondParagraph,
+        subheading: cooperation.subheading,
+        cta: cooperation.cta,
+      }} />,
+    },
+    {
+      question: logo.question,
+      answer: <Faq4Grid data={{
+        heading: logo.heading,
+        paragraph: logo.paragraph,
+        secondParagraph: logo.secondParagraph,
+        subheading: logo.subheading,
+        cta: logo.cta,
       }} />,
     },
   ];

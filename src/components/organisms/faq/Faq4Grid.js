@@ -4,7 +4,7 @@ import styled from "styled-components";
 import { Clamp } from "../../../utils/functions";
 import Button from "../../atoms/Button";
 
-const FaqPrice = ({
+const Faq4Grid = ({
   data: {
     heading,
     paragraph,
@@ -20,7 +20,9 @@ const FaqPrice = ({
       <ReactMarkdown className="subheading">{subheading}</ReactMarkdown>
       <div className="secondParagraph">
         <ReactMarkdown>{secondParagraph}</ReactMarkdown>
-        <Button theme={cta.theme} to={cta.href}>{cta.text}</Button>
+        {cta.text && (
+          <Button theme={cta.theme} to={cta.href}>{cta.text}</Button>
+        )}
       </div>
     </Wrapper>
   );
@@ -37,8 +39,32 @@ const Wrapper = styled.section`
     font-size: ${Clamp(16, 22, 22)};
   }
   .secondParagraph {
-    p:not(:last-of-type) {
+    p:not(:last-of-type),
+    ol:not(:last-child) {
       margin-bottom: ${Clamp(16, 32, 32, 'px')};
+    }
+    em {
+      font-size: .8em;
+      font-style: normal;
+    }
+    ol {
+      counter-reset: counter;
+      li {
+        counter-increment: counter;
+        list-style-type: none;
+        display: grid;
+        grid-template-columns: 32px auto;
+        column-gap: ${Clamp(12, 16, 32, "px")};
+        align-items: baseline;
+        &:not(:last-child){
+          margin-bottom: .5rem;
+        }
+        &::before {
+          content: "/0" counter(counter);
+          display: inline-block;
+          font-size: 1rem;
+        }
+      }
     }
     .cta {
       margin-top: ${Clamp(16, 48, 48, 'px')};
@@ -53,4 +79,4 @@ const Wrapper = styled.section`
   }
 `
 
-export default FaqPrice;
+export default Faq4Grid;
