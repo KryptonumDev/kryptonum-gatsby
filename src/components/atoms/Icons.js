@@ -359,7 +359,7 @@ export const Star = () => (
     viewBox='0 0 25 25'
   >
     <path
-      stroke='#010104'
+      stroke='currentColor'
       strokeLinecap='round'
       strokeLinejoin='round'
       strokeWidth='2'
