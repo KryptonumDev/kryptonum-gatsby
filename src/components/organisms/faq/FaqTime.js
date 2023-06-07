@@ -30,9 +30,7 @@ const FaqTime = ({
       <p className="listHeading">{listHeading}</p>
       <ul className="list">
         {list.map((item, i) => (
-          <li key={i}>
-            <p>{item}</p>
-          </li>
+          <li key={i}>{item}</li>
         ))}
       </ul>
     </Wrapper>
@@ -77,7 +75,7 @@ const Wrapper = styled.section`
       padding: ${Clamp(20, 32, 32, 'px')};
       border: 1px solid var(--neutral-800);
       counter-increment: counter;
-      p::before {
+      &::before {
         content: "/0" counter(counter);
         display: block;
         margin-bottom: ${Clamp(8, 16, 32, "px")};

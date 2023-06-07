@@ -7,6 +7,7 @@ import { Cursor } from "../atoms/Icons";
 import FaqPrice from "../organisms/faq/FaqPrice";
 import FaqPayment from "../organisms/faq/FaqPayment";
 import FaqTime from "../organisms/faq/FaqTime";
+import FaqInfo from "../organisms/faq/FaqInfo";
 
 const Faq = ( { heading } ) => {
   const { global: { faq } } = useStaticQuery(graphql`
@@ -54,12 +55,23 @@ const Faq = ( { heading } ) => {
             listHeading
             list
           }
+          info {
+            question
+            paragraph
+            firstHeading
+            firstList
+            secondHeading
+            secondList
+            thirdHeading
+            thirdList
+            summary
+          }
         }
       }
     }
   `);
 
-  const { price, payment, time } = faq;
+  const { price, payment, time, info } = faq;
 
   const faqs = [
     {
@@ -92,6 +104,19 @@ const Faq = ( { heading } ) => {
         cta: time.cta,
         listHeading: time.listHeading,
         list: time.list,
+      }} />,
+    },
+    {
+      question: info.question,
+      answer: <FaqInfo data={{
+        paragraph: info.paragraph,
+        firstHeading: info.firstHeading,
+        firstList: info.firstList,
+        secondHeading: info.secondHeading,
+        secondList: info.secondList,
+        thirdHeading: info.thirdHeading,
+        thirdList: info.thirdList,
+        summary: info.summary,
       }} />,
     },
   ];
