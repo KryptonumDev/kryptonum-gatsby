@@ -71,7 +71,7 @@ const GlobalStyle = createGlobalStyle`
     @media (max-width: 767px){
      --pageMargin: 16px;
     }
-    max-width: 1920px;
+    max-width: 1680px;
     width: calc(100% - var(--pageMargin)*2);
     margin: 0 auto;
   }
