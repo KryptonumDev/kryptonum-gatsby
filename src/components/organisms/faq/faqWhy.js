@@ -13,7 +13,7 @@ const FaqWhy = ({
   }
 }) => {
   return (
-    <Wrapper>
+    <Wrapper className="answer">
       <div className="copy">
         <ReactMarkdown className="heading">{heading}</ReactMarkdown>
         <ReactMarkdown className="paragraph">{paragraph}</ReactMarkdown>

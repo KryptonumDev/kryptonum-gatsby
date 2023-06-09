@@ -18,8 +18,7 @@ const WebDevelopmentWebsitesPage = ({ data }) => {
     hero_Paragraph,
     hero_SecondParagraph,
     hero_Img,
-    hero_CtaHeading,
-    hero_Cta,
+    hero_simpleCtaSection,
     pricing_Heading,
     pricing_Plans,
     process_Heading,
@@ -33,8 +32,7 @@ const WebDevelopmentWebsitesPage = ({ data }) => {
     technology_Img,
     caseStudies_Heading,
     ctaSection,
-    simpleCtaSection_Heading,
-    simpleCtaSection_Cta,
+    simpleCtaSection,
     blogEntries_Heading,
   } } = data;
   return (
@@ -45,8 +43,7 @@ const WebDevelopmentWebsitesPage = ({ data }) => {
         hero_Paragraph,
         hero_SecondParagraph,
         hero_Img,
-        hero_CtaHeading,
-        hero_Cta
+        hero_simpleCtaSection,
       }} />
       <Pricing data={{
         pricing_Heading,
@@ -68,7 +65,7 @@ const WebDevelopmentWebsitesPage = ({ data }) => {
         technology_Img,
       }} />
       <CaseStudies heading={caseStudies_Heading} />
-      <SimpleCtaSection heading={simpleCtaSection_Heading} cta={simpleCtaSection_Cta} />
+      <SimpleCtaSection data={simpleCtaSection} />
       <BlogEntries heading={blogEntries_Heading} />
     </>
   );
@@ -88,11 +85,13 @@ export const query = graphql`
           gatsbyImageData(placeholder: BLURRED)
         }
       }
-      hero_CtaHeading
-      hero_Cta {
-        theme
-        text
-        href
+      hero_simpleCtaSection {
+        heading
+        cta {
+          theme
+          text
+          href
+        }
       }
       # Pricing
       pricing_Heading
@@ -167,11 +166,13 @@ export const query = graphql`
         }
       }
       # Simple CTA Section
-      simpleCtaSection_Heading
-      simpleCtaSection_Cta {
-        theme
-        href
-        text
+      simpleCtaSection {
+        heading
+        cta {
+          text
+          theme
+          href
+        }
       }
       # Blog Entries
       blogEntries_Heading

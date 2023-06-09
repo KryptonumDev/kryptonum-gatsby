@@ -15,7 +15,7 @@ const FaqPayment = ({
   }
 }) => {
   return (
-    <Wrapper>
+    <Wrapper className="answer">
       <DecorativeHeading type="h3" className="heading" decoration={false}>{heading}</DecorativeHeading>
       <ReactMarkdown className="paragraph">{paragraph}</ReactMarkdown>
       <ReactMarkdown className="secondParagraph">{secondParagraph}</ReactMarkdown>

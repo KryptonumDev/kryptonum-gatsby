@@ -16,7 +16,7 @@ const FaqWordpress = ({
   }
 }) => {
   return (
-    <Wrapper>
+    <Wrapper className="answer">
       <ReactMarkdown className="heading">{heading}</ReactMarkdown>
       <ReactMarkdown className="paragraph">{paragraph}</ReactMarkdown>
       <ReactMarkdown className="subheading">{subheading}</ReactMarkdown>

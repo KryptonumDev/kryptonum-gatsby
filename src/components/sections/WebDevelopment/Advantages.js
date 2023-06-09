@@ -6,7 +6,7 @@ import { Clamp } from "../../../utils/functions";
 import DecorativeHeading from "../../atoms/DecorativeHeading";
 import SimpleCtaSection from "../SimpleCtaSection";
 
-const Advantages = ({ heading, advantages, ctaHeading, cta }) => {
+const Advantages = ({ heading, advantages, simpleCtaSection }) => {
   const [scales, setScales] = useState({ scale1: 0, scale2: 0, scale3: 0, scale4: 0 });
   useEffect(() => {
     const advantages = document.querySelectorAll('.advantages-item');
@@ -50,7 +50,7 @@ const Advantages = ({ heading, advantages, ctaHeading, cta }) => {
           </AdvantageItem>
         ))}
       </div>
-      <SimpleCtaSection heading={ctaHeading} cta={cta} />
+      <SimpleCtaSection data={simpleCtaSection} />
     </Wrapper>
   );
 }

@@ -19,8 +19,7 @@ const WebDevelopmentPage = ({ data }) => {
     hero_Nav,
     advantages_Heading,
     advantages_Array,
-    advantages_CtaHeading,
-    advantages_Cta,
+    simpleCtaSection,
     flexibility_Heading,
     flexibility_Claim,
     flexibility_Paragraph,
@@ -46,8 +45,7 @@ const WebDevelopmentPage = ({ data }) => {
       <Advantages
         heading={advantages_Heading}
         advantages={advantages_Array}
-        ctaHeading={advantages_CtaHeading}
-        cta={advantages_Cta}
+        simpleCtaSection={simpleCtaSection}
       />
       <Process data={{
         process_Heading,
@@ -102,11 +100,14 @@ export const query = graphql`
           }
         }
       }
-      advantages_CtaHeading
-      advantages_Cta {
-        theme
-        text
-        href
+      # Simple Cta Section
+      simpleCtaSection {
+        heading
+        cta {
+          theme
+          text
+          href
+        }
       }
       # Flexibility
       flexibility_Heading

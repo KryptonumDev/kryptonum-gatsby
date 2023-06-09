@@ -17,7 +17,7 @@ const FaqInfo = ({
   }
 }) => {
   return (
-    <Wrapper>
+    <Wrapper className="answer">
       <ReactMarkdown className="paragraph">{paragraph}</ReactMarkdown>
       <DecorativeHeading className="listHeading" type="h3">{firstHeading}</DecorativeHeading>
       <ul className="list">

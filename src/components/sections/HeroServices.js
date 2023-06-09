@@ -15,8 +15,7 @@ const HeroServices = ({
     hero_SecondParagraph,
     hero_Img,
     hero_Nav,
-    hero_CtaHeading,
-    hero_Cta,
+    hero_simpleCtaSection,
   }
 }) => {
   return (
@@ -55,8 +54,8 @@ const HeroServices = ({
           ))}
         </nav>
       )}
-      {(hero_CtaHeading && hero_Cta) && (
-        <SimpleCtaSection heading={hero_CtaHeading} cta={hero_Cta} />
+      {(hero_simpleCtaSection) && (
+        <SimpleCtaSection data={hero_simpleCtaSection} />
       )}
     </Wrapper>
   );

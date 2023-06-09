@@ -267,9 +267,7 @@ const Faq = ( { heading } ) => {
               <p>{faq.question}</p>
               <div className="plus-icon"><span></span><span></span></div>
             </summary>
-            <div className="answer">
-              {faq.answer}
-            </div>
+            {faq.answer}
           </details>
         ))}
       </div>

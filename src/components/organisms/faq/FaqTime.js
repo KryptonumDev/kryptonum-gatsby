@@ -16,7 +16,7 @@ const FaqTime = ({
   }
 }) => {
   return (
-    <Wrapper>
+    <Wrapper className="answer">
       <GatsbyImage
         image={img.asset.gatsbyImageData}
         alt={img.asset.altText || ''}

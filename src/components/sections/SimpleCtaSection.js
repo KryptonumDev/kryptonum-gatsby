@@ -4,7 +4,7 @@ import Button from "../atoms/Button";
 import DecorativeHeading from "../atoms/DecorativeHeading";
 import { Clamp } from '../../utils/functions';
 
-const SimpleCtaSection = ({ heading, cta }) => {
+const SimpleCtaSection = ({ data: { heading, cta } }) => {
   return (
     <Wrapper>
       <DecorativeHeading type="h2" decoration={false}>{heading}</DecorativeHeading>
