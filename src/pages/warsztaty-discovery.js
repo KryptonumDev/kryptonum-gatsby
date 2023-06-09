@@ -2,7 +2,7 @@ import * as React from "react"
 import { graphql } from "gatsby";
 import { SEO } from "../components/global/Seo";
 import HeroServices from "../components/sections/HeroServices";
-import Process from "../components/sections/Workshop/Process";
+import ListSection from "../components/sections/ListSection";
 import SimpleCtaSection from "../components/sections/SimpleCtaSection";
 import Why from "../components/sections/Workshop/Why";
 import Document from "../components/sections/Workshop/Document";
@@ -39,10 +39,7 @@ const WorkshopPage = ( { data} ) => {
         hero_Img,
       }} />
       <SimpleCtaSection data={simpleCtaSection} />
-      <Process data={{
-        process_Heading,
-        process_List
-      }} />
+      <ListSection heading={process_Heading} list={process_List} />
       <Why data={{
         why_Heading,
         why_Paragraph,

@@ -1,24 +1,18 @@
 import React, { useEffect, useRef } from "react";
 import ReactMarkdown from "react-markdown";
 import styled from "styled-components";
-import { Clamp } from "../../../utils/functions";
-import DecorativeHeading from "../../atoms/DecorativeHeading";
+import { Clamp } from "../../utils/functions";
+import DecorativeHeading from "../atoms/DecorativeHeading";
 
-const Process = ({
-  data: {
-    process_Heading,
-    process_List,
-  }
-}) => {
+const ListSection = ({ heading, list, paragraph, secondParagraph }) => {
   const wrapperRef = useRef(null);
-
   useEffect(() => {
     if (wrapperRef.current) {
       const items = wrapperRef.current.querySelectorAll('.item');
       const anim = () => {
         items.forEach(item => {
-          const { top, height } = item.getBoundingClientRect();
-          if(top + height <= window.innerHeight*.9) {
+          const { top } = item.getBoundingClientRect();
+          if(top <= window.innerHeight*.66) {
             item.classList.add('active');
           } else {
             item.classList.remove('active');
@@ -32,9 +26,13 @@ const Process = ({
 
   return (
     <Wrapper>
-      <DecorativeHeading type="h2" className="heading">{process_Heading}</DecorativeHeading>
+      <DecorativeHeading type="h2" className="heading">{heading}</DecorativeHeading>
+      <div className="copy">
+        <ReactMarkdown className="paragraph">{paragraph}</ReactMarkdown>
+        <ReactMarkdown className="paragraph2">{secondParagraph}</ReactMarkdown>
+      </div>
       <div className="wrapper" ref={wrapperRef}>
-        {process_List.map((item, i) => (
+        {list.map((item, i) => (
           <div className="item" key={i}>
             <ReactMarkdown className="title" components={{ p: 'h3' }}>{item.title}</ReactMarkdown>
             <ReactMarkdown className="description">{item.description}</ReactMarkdown>
@@ -48,6 +46,22 @@ const Process = ({
 const Wrapper = styled.section`
   .heading {
     margin-bottom: ${Clamp(28, 64, 64, 'px')};
+  }
+  .copy {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 32px;
+    @media (max-width: 949px){
+      grid-template-columns: 1fr;
+      gap: 16px;
+    }
+    margin-bottom: ${Clamp(28, 64, 64, 'px')};
+    .paragraph {
+      font-size: ${Clamp(20, 32, 30)};
+    }
+    .paragraph2 {
+      font-size: ${Clamp(16, 22, 22)};
+    }
   }
   .wrapper {
     counter-reset: counter;
@@ -130,4 +144,4 @@ const Wrapper = styled.section`
   }
 `
 
-export default Process;
+export default ListSection;

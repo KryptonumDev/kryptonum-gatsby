@@ -88,8 +88,26 @@ const Wrapper = styled.section`
     }
     .secondParagraph {
       font-size: ${Clamp(16, 22, 22)};
-      p:not(:last-child) {
-        margin-bottom: 16px;
+      > *:not(:last-child) {
+        margin-bottom: 24px;
+      }
+      ol {
+        counter-reset: counter;
+        li {
+          counter-increment: counter;
+          list-style-type: none;
+          display: grid;
+          grid-template-columns: 32px auto;
+          column-gap: ${Clamp(12, 16, 32, "px")};
+          align-items: baseline;
+          &:not(:last-child){
+            margin-bottom: 12px;
+          }
+          &::before {
+            content: "/0" counter(counter);
+            display: inline-block;
+          }
+        }
       }
     }
   }
