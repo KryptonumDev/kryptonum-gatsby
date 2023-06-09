@@ -4,6 +4,8 @@ import { SEO } from "../components/global/Seo";
 import HeroServices from "../components/sections/HeroServices";
 import Process from "../components/sections/Workshop/Process";
 import SimpleCtaSection from "../components/sections/SimpleCtaSection";
+import Why from "../components/sections/Workshop/Why";
+import Document from "../components/sections/Workshop/Document";
 
 const WorkshopPage = ( { data} ) => {
   const { page: {
@@ -15,6 +17,16 @@ const WorkshopPage = ( { data} ) => {
     simpleCtaSection,
     process_Heading,
     process_List,
+    why_Heading,
+    why_Paragraph,
+    why_SecondParagraph,
+    why_ThirdParagraph,
+    why_FourthParagraph,
+    why_Cta,
+    document_Heading,
+    document_Paragraph,
+    document_Paragraph2,
+    document_Images,
   } } = data;
   return (
     <>
@@ -29,6 +41,20 @@ const WorkshopPage = ( { data} ) => {
       <Process data={{
         process_Heading,
         process_List
+      }} />
+      <Why data={{
+        why_Heading,
+        why_Paragraph,
+        why_SecondParagraph,
+        why_ThirdParagraph,
+        why_FourthParagraph,
+        why_Cta,
+      }} />
+      <Document data={{
+        document_Heading,
+        document_Paragraph,
+        document_Paragraph2,
+        document_Images,
       }} />
     </>
   );
@@ -62,6 +88,27 @@ export const query = graphql`
       process_List {
         title
         description
+      }
+      # Why 
+      why_Heading
+      why_Paragraph
+      why_SecondParagraph
+      why_ThirdParagraph
+      why_FourthParagraph
+      why_Cta {
+        theme
+        text
+        href
+      }
+      # Document
+      document_Heading
+      document_Paragraph
+      document_Paragraph2
+      document_Images {
+        asset {
+          altText
+          gatsbyImageData(placeholder: BLURRED, width: 1000)
+        }
       }
       # Scroll To Next
       scrollToNext {
