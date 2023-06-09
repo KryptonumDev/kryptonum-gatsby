@@ -44,9 +44,7 @@ const HeroServices = ({
         <nav className="nav">
           {hero_Nav.map((item, i) => (
             <Link to={item.href} className="item" key={i}>
-              <ReactMarkdown
-                components={{ p: 'h3' }}
-              >
+              <ReactMarkdown components={{ p: 'h3' }}>
                 {item.title}
               </ReactMarkdown>
               <p>{item.description}</p>

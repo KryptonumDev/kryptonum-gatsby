@@ -13,6 +13,7 @@ const Process = ({
     process_List,
     roadmap_Heading,
     roadmap_List,
+    roadmap_Cta,
     quickForm,
   }
 }) => {
@@ -40,6 +41,7 @@ const Process = ({
                 <Roadmap
                   heading={roadmap_Heading}
                   list={roadmap_List}
+                  cta={roadmap_Cta}
                 />
                 <QuickForm
                   data={quickForm}

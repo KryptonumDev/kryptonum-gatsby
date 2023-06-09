@@ -864,14 +864,14 @@ const Wrapper = styled.nav`
         pointer-events: auto;
       }
     }
-  }
-  &[data-expand="services"] .nav-list2.services,
-  &[data-expand="caseStudies"] .nav-list2.caseStudies,
-  &[data-expand="team"] .nav-list2.team,
-  &[data-expand="blog"] .nav-list2.blog,
-  &[data-expand="academy"] .nav-list2.academy {
-    transform: translateX(0);
-    visibility: visible;
+    &[data-expand="services"] .nav-list2.services,
+    &[data-expand="caseStudies"] .nav-list2.caseStudies,
+    &[data-expand="team"] .nav-list2.team,
+    &[data-expand="blog"] .nav-list2.blog,
+    &[data-expand="academy"] .nav-list2.academy {
+      transform: translateX(0);
+      visibility: visible;
+    }
   }
   @media (max-width: 499px){
     .nav-cta {

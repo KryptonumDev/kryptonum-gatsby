@@ -25,6 +25,7 @@ const WebDevelopmentWebsitesPage = ({ data }) => {
     process_List,
     roadmap_Heading,
     roadmap_List,
+    roadmap_Cta,
     quickForm,
     technology_Heading,
     technology_Paragraph,
@@ -56,6 +57,7 @@ const WebDevelopmentWebsitesPage = ({ data }) => {
         process_List,
         roadmap_Heading,
         roadmap_List,
+        roadmap_Cta,
         quickForm,
       }} />
       <Technology data={{
@@ -131,6 +133,11 @@ export const query = graphql`
       roadmap_List {
         title
         description
+      }
+      roadmap_Cta {
+        theme
+        text
+        href
       }
       # Quick Form
       quickForm {

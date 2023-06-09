@@ -2,6 +2,8 @@ import * as React from "react"
 import { graphql } from "gatsby";
 import { SEO } from "../components/global/Seo";
 import HeroServices from "../components/sections/HeroServices";
+import Process from "../components/sections/Workshop/Process";
+import SimpleCtaSection from "../components/sections/SimpleCtaSection";
 
 const WorkshopPage = ( { data} ) => {
   const { page: {
@@ -10,6 +12,9 @@ const WorkshopPage = ( { data} ) => {
     hero_Paragraph,
     hero_SecondParagraph,
     hero_Img,
+    simpleCtaSection,
+    process_Heading,
+    process_List,
   } } = data;
   return (
     <>
@@ -19,6 +24,11 @@ const WorkshopPage = ( { data} ) => {
         hero_Paragraph,
         hero_SecondParagraph,
         hero_Img,
+      }} />
+      <SimpleCtaSection data={simpleCtaSection} />
+      <Process data={{
+        process_Heading,
+        process_List
       }} />
     </>
   );
@@ -37,6 +47,21 @@ export const query = graphql`
           altText
           gatsbyImageData(placeholder: BLURRED)
         }
+      }
+      # Simple CTA Section
+      simpleCtaSection {
+        heading
+        cta {
+          theme
+          href
+          text
+        }
+      }
+      # Process
+      process_Heading
+      process_List {
+        title
+        description
       }
       # Scroll To Next
       scrollToNext {

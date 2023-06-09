@@ -96,7 +96,7 @@ const Wrapper = styled.section`
       counter-increment: counter;
       position: relative;
       padding-top: 2rem;
-      padding-right: 2rem;
+      padding-right: 1rem;
       &:not(:last-child){
         &::before, &::after {
           content: '';
@@ -164,6 +164,9 @@ const Wrapper = styled.section`
         width: 100%;
         &:not(:nth-last-of-type(2)){
           margin-right: 1rem;
+        }
+        &:nth-last-of-type(2){
+          padding-right: 0;
         }
         &:last-child {
           display: none;
