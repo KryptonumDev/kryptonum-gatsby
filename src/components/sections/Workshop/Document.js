@@ -14,24 +14,26 @@ const Document = ({
   }
 }) => {
   return (
-    <Wrapper>
-      <DecorativeHeading className="heading" type="h2">{document_Heading}</DecorativeHeading>
-      <ReactMarkdown className="paragraph">{document_Paragraph}</ReactMarkdown>
-      <ReactMarkdown className="paragraph2">{document_Paragraph2}</ReactMarkdown>
-      <div className="slider">
-        <div className="slider-wrapper">
-          {document_Images.map((img, i) => (
-            <div className="item" key={i}>
-              <GatsbyImage
-                image={img.asset.gatsbyImageData}
-                alt={img.asset.altText || ''}
-                className="img"
-              />
-            </div>
-          ))}
+    <>
+      <Wrapper>
+        <DecorativeHeading className="heading" type="h2">{document_Heading}</DecorativeHeading>
+        <ReactMarkdown className="paragraph">{document_Paragraph}</ReactMarkdown>
+        <ReactMarkdown className="paragraph2">{document_Paragraph2}</ReactMarkdown>
+        <div className="slider">
+          <div className="slider-wrapper">
+            {document_Images.map((img, i) => (
+              <div className="item" key={i}>
+                <GatsbyImage
+                  image={img.asset.gatsbyImageData}
+                  alt={img.asset.altText || ''}
+                  className="img"
+                />
+              </div>
+            ))}
+          </div>
         </div>
-      </div>
-    </Wrapper>
+      </Wrapper>
+    </>
   );
 }
 

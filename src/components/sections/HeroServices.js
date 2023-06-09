@@ -142,6 +142,9 @@ const Wrapper = styled.section`
       }
     }
   }
+  .simpleCtaSection {
+    margin-top: ${Clamp(80, 144, 144, "px")};
+  }
   @media (max-width: 1199px){
     display: flex;
     flex-direction: column;

@@ -27,6 +27,7 @@ const WorkshopPage = ( { data} ) => {
     document_Paragraph,
     document_Paragraph2,
     document_Images,
+    document_SimpleCtaSection,
   } } = data;
   return (
     <>
@@ -56,6 +57,7 @@ const WorkshopPage = ( { data} ) => {
         document_Paragraph2,
         document_Images,
       }} />
+      <SimpleCtaSection data={document_SimpleCtaSection} />
     </>
   );
 }
@@ -108,6 +110,14 @@ export const query = graphql`
         asset {
           altText
           gatsbyImageData(placeholder: BLURRED, width: 1000)
+        }
+      }
+      document_SimpleCtaSection {
+        heading
+        cta {
+          theme
+          text
+          href
         }
       }
       # Scroll To Next

@@ -62,6 +62,9 @@ const Wrapper = styled.section`
       margin-bottom: ${Clamp(28, 64, 64, "px")};
     }
   }
+  .simpleCtaSection {
+    margin-top: ${Clamp(80, 144, 144, "px")};
+  }
   .advantages-item {
     display: grid;
     grid-template-columns: 1fr 1fr;
