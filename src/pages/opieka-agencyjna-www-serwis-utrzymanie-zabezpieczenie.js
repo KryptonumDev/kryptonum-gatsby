@@ -8,6 +8,7 @@ import QuickForm from "../components/sections/QuickForm";
 import CaseStudies from "../components/sections/CaseStudies";
 import CtaSection from "../components/sections/CtaSection";
 import Audit from "../components/sections/AgencyCare/Audit";
+import Copy from "../components/sections/AgencyCare/Copy";
 
 const AgencyCarePage = ( { data} ) => {
   const { page: {
@@ -32,6 +33,14 @@ const AgencyCarePage = ( { data} ) => {
     caseStudies_Heading,
     ctaSection,
     secondSimpleCtaSection,
+    copyHeading,
+    copyParagraph,
+    copyParagraph2,
+    copyParagraph3,
+    copyImg,
+    copyCta,
+    copyHeadline,
+    copyList,
   } } = data;
   return (
     <>
@@ -61,6 +70,16 @@ const AgencyCarePage = ( { data} ) => {
       <QuickForm data={quickForm} />
       <CaseStudies heading={caseStudies_Heading} />
       <CtaSection data={ctaSection} />
+      <Copy data={{
+        copyHeading,
+        copyParagraph,
+        copyParagraph2,
+        copyParagraph3,
+        copyImg,
+        copyCta,
+        copyHeadline,
+        copyList,
+      }} />
       <SimpleCtaSection data={secondSimpleCtaSection} />
     </>
   );
@@ -125,6 +144,32 @@ export const query = graphql`
           asset {
             altText
             gatsbyImageData(placeholder: BLURRED, width: 700)
+          }
+        }
+      }
+      # Copy 
+      copyHeading
+      copyParagraph
+      copyParagraph2
+      copyParagraph3
+      copyImg {
+        asset {
+          altText
+          gatsbyImageData(placeholder: BLURRED, width: 520)
+        }
+      }
+      copyCta {
+        theme
+        text
+        href
+      }
+      copyHeadline
+      copyList {
+        title
+        img {
+          asset {
+            altText
+            gatsbyImageData(placeholder: BLURRED, width: 630)
           }
         }
       }
