@@ -8,35 +8,35 @@ import DecorativeHeading from "../../atoms/DecorativeHeading";
 
 const Copy = ({
   data: {
-    copyHeading,
-    copyParagraph,
-    copyParagraph2,
-    copyParagraph3,
-    copyImg,
-    copyCta,
-    copyHeadline,
-    copyList,
+    copy_Heading,
+    copy_Paragraph,
+    copy_Paragraph2,
+    copy_Paragraph3,
+    copy_Img,
+    copy_Cta,
+    copy_Headline,
+    copy_List,
   }
 }) => {
   return (
     <Wrapper>
-      <DecorativeHeading type="h2" className="heading">{copyHeading}</DecorativeHeading>
-      <ReactMarkdown className="paragraph">{copyParagraph}</ReactMarkdown>
-      <ReactMarkdown className="paragraph2">{copyParagraph2}</ReactMarkdown>
+      <DecorativeHeading type="h2" className="heading">{copy_Heading}</DecorativeHeading>
+      <ReactMarkdown className="paragraph">{copy_Paragraph}</ReactMarkdown>
+      <ReactMarkdown className="paragraph2">{copy_Paragraph2}</ReactMarkdown>
       <div className="column">
         <div className="text">
-          <ReactMarkdown>{copyParagraph3}</ReactMarkdown>
-          <Button theme={copyCta.theme} to={copyCta.href}>{copyCta.text}</Button>
+          <ReactMarkdown>{copy_Paragraph3}</ReactMarkdown>
+          <Button theme={copy_Cta.theme} to={copy_Cta.href}>{copy_Cta.text}</Button>
         </div>
         <GatsbyImage
-          image={copyImg.asset.gatsbyImageData}
-          alt={copyImg.asset.altText || ''}
+          image={copy_Img.asset.gatsbyImageData}
+          alt={copy_Img.asset.altText || ''}
           className="img"
         />
       </div>
-      <ReactMarkdown className="headline">{copyHeadline}</ReactMarkdown>
+      <ReactMarkdown className="headline">{copy_Headline}</ReactMarkdown>
       <div className="wrapper">
-        {copyList.map((item, i) => (
+        {copy_List.map((item, i) => (
           <div className="item" key={i}>
             <ReactMarkdown>{item.title}</ReactMarkdown>
             <GatsbyImage

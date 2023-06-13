@@ -9,6 +9,7 @@ import CaseStudies from "../components/sections/CaseStudies";
 import CtaSection from "../components/sections/CtaSection";
 import Audit from "../components/sections/AgencyCare/Audit";
 import Copy from "../components/sections/AgencyCare/Copy";
+import Protection from "../components/sections/AgencyCare/Protection";
 
 const AgencyCarePage = ( { data} ) => {
   const { page: {
@@ -32,15 +33,20 @@ const AgencyCarePage = ( { data} ) => {
     quickForm,
     caseStudies_Heading,
     ctaSection,
+    protection_Heading,
+    protection_Paragraph,
+    protection_Paragraph2,
+    protection_Paragraph3,
+    protection_List,
+    copy_Heading,
+    copy_Paragraph,
+    copy_Paragraph2,
+    copy_Paragraph3,
+    copy_Img,
+    copy_Cta,
+    copy_Headline,
+    copy_List,
     secondSimpleCtaSection,
-    copyHeading,
-    copyParagraph,
-    copyParagraph2,
-    copyParagraph3,
-    copyImg,
-    copyCta,
-    copyHeadline,
-    copyList,
   } } = data;
   return (
     <>
@@ -70,15 +76,22 @@ const AgencyCarePage = ( { data} ) => {
       <QuickForm data={quickForm} />
       <CaseStudies heading={caseStudies_Heading} />
       <CtaSection data={ctaSection} />
+      <Protection data={{
+        protection_Heading,
+        protection_Paragraph,
+        protection_Paragraph2,
+        protection_Paragraph3,
+        protection_List,
+      }} />
       <Copy data={{
-        copyHeading,
-        copyParagraph,
-        copyParagraph2,
-        copyParagraph3,
-        copyImg,
-        copyCta,
-        copyHeadline,
-        copyList,
+        copy_Heading,
+        copy_Paragraph,
+        copy_Paragraph2,
+        copy_Paragraph3,
+        copy_Img,
+        copy_Cta,
+        copy_Headline,
+        copy_List,
       }} />
       <SimpleCtaSection data={secondSimpleCtaSection} />
     </>
@@ -147,24 +160,30 @@ export const query = graphql`
           }
         }
       }
+      # Protection
+      protection_Heading
+      protection_Paragraph
+      protection_Paragraph2
+      protection_Paragraph3
+      protection_List
       # Copy 
-      copyHeading
-      copyParagraph
-      copyParagraph2
-      copyParagraph3
-      copyImg {
+      copy_Heading
+      copy_Paragraph
+      copy_Paragraph2
+      copy_Paragraph3
+      copy_Img {
         asset {
           altText
           gatsbyImageData(placeholder: BLURRED, width: 520)
         }
       }
-      copyCta {
+      copy_Cta {
         theme
         text
         href
       }
-      copyHeadline
-      copyList {
+      copy_Headline
+      copy_List {
         title
         img {
           asset {
