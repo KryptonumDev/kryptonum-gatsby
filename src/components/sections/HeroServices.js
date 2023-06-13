@@ -41,7 +41,7 @@ const HeroServices = ({
         <ReactMarkdown className="secondParagraph">{hero_SecondParagraph}</ReactMarkdown>
       </div>
       {hero_Nav && (
-        <nav className="nav">
+        <nav className={`nav ${hero_Nav.length === 3 && 'three'}`}>
           {hero_Nav.map((item, i) => (
             <Link to={item.href} className="item" key={i}>
               <ReactMarkdown components={{ p: 'h3' }}>
@@ -137,6 +137,9 @@ const Wrapper = styled.section`
       border: 1px solid transparent;
       grid-row: 3/1;
     }
+    &.three {
+      grid-template-columns: 1fr 1fr;
+    }
     @media (max-width: 1099px){
       grid-template-columns: 1fr 1fr;
       .item {
@@ -149,7 +152,10 @@ const Wrapper = styled.section`
       }
     }
     @media (max-width: 549px){
-      grid-template-columns: 1fr;
+      &,
+      &.three {
+        grid-template-columns: 1fr;
+      }
       gap: 16px;
       .item {
         padding: 16px;
