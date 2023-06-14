@@ -440,3 +440,46 @@ export const Error = () => (
     <path d="M12.5508 16H12.5608M12.5508 8V12M8.41078 2H16.6908L22.5508 7.86V16.14L16.6908 22H8.41078L2.55078 16.14V7.86L8.41078 2Z" stroke="#EE6470" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
   </svg>
 )
+
+export const Plus = () => (
+  <svg width="41" height="40" viewBox="0 0 41 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <path d="M20.7253 8.33325V31.6666M9.05859 19.9999H32.3919" stroke="#EFF0F3" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+  </svg>
+)
+
+export const Cart = () => (
+  <svg width="33" height="32" viewBox="0 0 33 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <g clip-path="url(#clip0_4410_30088)">
+      <path d="M2.06055 1.33325H7.39388L10.9672 19.1866C11.0891 19.8004 11.4231 20.3519 11.9106 20.7443C12.3981 21.1368 13.0081 21.3452 13.6339 21.3333H26.5939C27.2196 21.3452 27.8296 21.1368 28.3172 20.7443C28.8047 20.3519 29.1386 19.8004 29.2605 19.1866L31.3939 7.99992H8.72721M28.7272 27.9999C28.7272 28.7363 28.1303 29.3333 27.3939 29.3333C26.6575 29.3333 26.0605 28.7363 26.0605 27.9999C26.0605 27.2635 26.6575 26.6666 27.3939 26.6666C28.1303 26.6666 28.7272 27.2635 28.7272 27.9999ZM14.0605 27.9999C14.0605 28.7363 13.4636 29.3333 12.7272 29.3333C11.9908 29.3333 11.3939 28.7363 11.3939 27.9999C11.3939 27.2635 11.9908 26.6666 12.7272 26.6666C13.4636 26.6666 14.0605 27.2635 14.0605 27.9999Z" stroke="#EFF0F3" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+    </g>
+    <defs>
+      <clipPath id="clip0_4410_30088">
+        <rect width="32" height="32" fill="white" transform="translate(0.726562)" />
+      </clipPath>
+    </defs>
+  </svg>
+)
+
+export const Website = () => (
+  <svg width="33" height="32" viewBox="0 0 33 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <path d="M20.7259 28H12.7259M6.05924 22.6667C5.352 22.6667 4.67372 22.3857 4.17363 21.8856C3.67353 21.3855 3.39258 20.7072 3.39258 20V6.66667C3.39258 5.95942 3.67353 5.28115 4.17363 4.78105C4.67372 4.28095 5.352 4 6.05924 4H27.3926C28.0998 4 28.7781 4.28095 29.2782 4.78105C29.7783 5.28115 30.0592 5.95942 30.0592 6.66667V20C30.0592 20.7072 29.7783 21.3855 29.2782 21.8856C28.7781 22.3857 28.0998 22.6667 27.3926 22.6667H6.05924Z" stroke="#EFF0F3" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+  </svg>
+)
+
+export const Book = () => (
+  <svg width="33" height="32" viewBox="0 0 33 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <path d="M16.7259 9.33333C16.7259 7.91885 17.2878 6.56229 18.288 5.5621C19.2882 4.5619 20.6448 4 22.0592 4H30.0592V24H20.7259C19.665 24 18.6476 24.4214 17.8975 25.1716C17.1473 25.9217 16.7259 26.9391 16.7259 28M16.7259 9.33333V28M16.7259 9.33333C16.7259 7.91885 16.164 6.56229 15.1638 5.5621C14.1636 4.5619 12.8071 4 11.3926 4H3.39258V24H12.7259C13.7868 24 14.8042 24.4214 15.5543 25.1716C16.3045 25.9217 16.7259 26.9391 16.7259 28" stroke="#EFF0F3" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+  </svg>
+)
+
+export const Next = () => (
+  <svg width="25" height="24" viewBox="0 0 25 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <path d="M9.72461 18L15.7246 12L9.72461 6" stroke="#EFF0F3" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+  </svg>
+)
+
+export const Prev = () => (
+  <svg width="25" height="24" viewBox="0 0 25 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <path d="M15.7246 18L9.72461 12L15.7246 6" stroke="#EFF0F3" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+  </svg>
+)

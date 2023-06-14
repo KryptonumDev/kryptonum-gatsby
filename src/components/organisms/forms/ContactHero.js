@@ -2,11 +2,9 @@ import React from "react"
 import { useForm } from "react-hook-form"
 import styled from "styled-components"
 import Button from "../../atoms/Button"
-import { Label } from "../../atoms/form-input"
-import { Checkbox } from "../../atoms/form-checkbox"
-
-const emailRegex = /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i
-const phoneRegex = /^(\+\d{1,3}\s?)?(\(\d{1,4}\)|\d{1,4})[-.\s]?\d{1,4}[-.\s]?\d{1,9}$/i
+import { Label } from "../../moleculas/FormInput"
+import { Checkbox } from "../../moleculas/FormCheckbox"
+import { emailRegex, phoneRegex } from "../../../constants/regex"
 
 export default function Form({ data }) {
   const {

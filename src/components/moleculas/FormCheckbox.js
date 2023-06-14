@@ -2,19 +2,19 @@ import React from "react"
 import styled from "styled-components"
 // import { Error } from "./Icons"
 
-export const Checkbox = ({ text, name, register, errors, error = 'Zgoda jest wymagana' }) => (
+export const Checkbox = ({ icon, text, name, register, errors, error = 'Zgoda jest wymagana' }) => (
   <Wrapper className={errors[name] ? 'errored' : ''}>
     <input type="checkbox" {...register} />
     <span className="checkbox" />
     <div className="text" dangerouslySetInnerHTML={{ __html: text }} />
+    {icon}
     {/* {errors[name] && <span className="error"><Error /> {error}</span>} */}
   </Wrapper>
 )
 
 const Wrapper = styled.label`
   position: relative;
-  display: grid;
-  grid-template-columns: 30px 1fr;
+  display: flex;
   gap: 12px;
   padding: 20px 22px;
   background: var(--neutral-900);
@@ -74,6 +74,7 @@ const Wrapper = styled.label`
     height: 30px;
     border-radius: 2px;
     position: relative;
+    min-width: 30px;
 
     &::after{
       content: '';

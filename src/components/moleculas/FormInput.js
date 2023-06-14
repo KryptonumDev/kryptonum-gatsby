@@ -1,6 +1,6 @@
 import React from "react"
 import styled from "styled-components"
-import { Error } from "./Icons"
+import { Error } from "../atoms/Icons"
 
 export const Label = ({ rows, placeholder, title, name, register, errors, error = 'To pole jest wymagane' }) => (
   <Wrapper>
@@ -8,7 +8,6 @@ export const Label = ({ rows, placeholder, title, name, register, errors, error 
     {rows
       ? <textarea rows={rows} placeholder={placeholder} className={errors[name] ? 'errored input' : 'input'} {...register} />
       : <input placeholder={placeholder} className={errors[name] ? 'errored input' : 'input'} {...register} />}
-
     <span className="border" />
     {errors[name] && <span className="error"><Error /> {error}</span>}
   </Wrapper>
@@ -16,18 +15,8 @@ export const Label = ({ rows, placeholder, title, name, register, errors, error 
 
 const Wrapper = styled.label`
   position: relative;
-  display: block;
+  display: flex;
   margin-top: 18px;
-
-  .legend{
-    padding: 4px 16px;
-    color: var(--neutral-200);
-    background: var(--neutral-950);
-    position: absolute;
-    left: 12px;
-    top: 0; 
-    transform: translateY(-50%);
-  }
 
   .error{
     position: absolute;
@@ -39,6 +28,16 @@ const Wrapper = styled.label`
     display: flex;
     gap: 4px;
     align-items: center;
+  }
+
+  .legend{
+    padding: 4px 16px;
+    color: var(--neutral-200);
+    background: var(--neutral-950);
+    position: absolute;
+    left: 12px;
+    top: 0; 
+    transform: translateY(-50%);
   }
 
   .border{
@@ -81,6 +80,7 @@ const Wrapper = styled.label`
     width: calc(100% - 4px);
     color: var(--neutral-200);
     font-size: 1.25rem;
+    resize: none;
 
     :focus-visible{
       outline: none;
