@@ -6,11 +6,11 @@ import SimpleCtaSection from "../components/sections/SimpleCtaSection";
 import BlogEntries from "../components/sections/BlogEntries";
 import CaseStudies from "../components/sections/CaseStudies";
 import CtaSection from "../components/sections/CtaSection";
-import Audit from "../components/sections/GraphicsDesign/Audit";
-import List from "../components/sections/GraphicsDesign/List";
+import Audit from "../components/sections/GraphicsAndDesign/Audit";
+import MasonryList from "../components/sections/MasonryList";
 
-const GraphicsPage = ( { data} ) => {
-  const { page: {
+const GraphicsAndDesignPage = ({
+  data: { page: {
     hero_Heading,
     hero_Annotation,
     hero_Paragraph,
@@ -36,7 +36,8 @@ const GraphicsPage = ( { data} ) => {
     caseStudies_Heading,
     ctaSection,
     blogEntries_Heading,
-  } } = data;
+  }}
+}) => {
   return (
     <>
       <HeroServices data={{
@@ -55,14 +56,14 @@ const GraphicsPage = ( { data} ) => {
         audit_Img
       }} />
       <SimpleCtaSection data={simpleCtaSection} />
-      <List
+      <MasonryList
         heading={digital_Heading}
         paragraph={digital_Paragraph}
         paragraph2={digital_Paragraph2}
         list={digital_List}
       />
       <SimpleCtaSection data={simpleCtaSection2} />
-      <List
+      <MasonryList
         heading={phisical_Heading}
         paragraph={phisical_Paragraph}
         paragraph2={phisical_Paragraph2}
@@ -180,7 +181,7 @@ export const query = graphql`
   }
 `
 
-export default GraphicsPage;
+export default GraphicsAndDesignPage;
 
 export const Head = () => (
   <SEO

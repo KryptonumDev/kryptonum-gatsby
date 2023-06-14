@@ -1,15 +1,19 @@
 import React from "react";
 import ReactMarkdown from "react-markdown";
 import styled from "styled-components";
-import { Clamp } from "../../../utils/functions";
-import DecorativeHeading from "../../atoms/DecorativeHeading";
+import { Clamp } from "../../utils/functions";
+import DecorativeHeading from "../atoms/DecorativeHeading";
 
-const List = ({ heading, paragraph, paragraph2, list}) => {
+const MasonryList = ({ heading, paragraph, paragraph2, list}) => {
   return (
     <Wrapper> 
       <DecorativeHeading type="h2" className="heading">{heading}</DecorativeHeading>
-      <ReactMarkdown className="paragraph">{paragraph}</ReactMarkdown>
-      <ReactMarkdown className="paragraph2">{paragraph2}</ReactMarkdown>
+      {(paragraph && paragraph2) && (
+        <>
+          <ReactMarkdown className="paragraph">{paragraph}</ReactMarkdown>
+          <ReactMarkdown className="paragraph2">{paragraph2}</ReactMarkdown>
+        </>
+      )}
       <ul className="wrapper">
         {list.map((item, i) => (
           <li key={i}>{item}</li>
@@ -40,8 +44,10 @@ const Wrapper = styled.section`
   .heading, .wrapper {
     grid-column: 3/1;
   }
-  .wrapper {
+  .paragraph2 + .wrapper {
     margin-top: ${Clamp(32, 48, 64, 'px')};
+  }
+  .wrapper {
     display: flex;
     flex-wrap: wrap;
     list-style-type: none;
@@ -72,32 +78,7 @@ const Wrapper = styled.section`
     .paragraph {
       margin-bottom: 16px;
     }
-    .wrapper {
-      margin-top: ${Clamp(32, 48, 64, 'px')};
-      display: flex;
-      flex-wrap: wrap;
-      list-style-type: none;
-      gap: ${Clamp(16, 24, 32, 'px')};
-      counter-reset: counter;
-      li {
-        flex-grow: 1;
-        padding: ${Clamp(20, 32, 32, 'px')};
-        border: 1px solid var(--neutral-800);
-        counter-increment: counter;
-        min-width: 25%;
-        &::before {
-          content: "/" counter(counter);
-          font-size: ${Clamp(16, 22, 22)};
-          margin-bottom: ${Clamp(16, 32, 32, 'px')};
-          display: block;
-        }
-        &:nth-child(-n+9)::before {
-          content: "/0" counter(counter);
-        }
-      }
-    }
-
   }
 `
 
-export default List;
+export default MasonryList;

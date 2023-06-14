@@ -71,7 +71,6 @@ const Wrapper = styled.h1`
   `}
   @media (max-width: 1199px){
     grid-template-columns: auto 1fr;
-    width: fit-content;
     span:nth-of-type(2) {
       grid-column: 3/1;
       text-align: left;
