@@ -54,20 +54,20 @@ const GraphicsPage = ( { data} ) => {
         audit_Cta,
         audit_Img
       }} />
+      <SimpleCtaSection data={simpleCtaSection} />
       <List
         heading={digital_Heading}
         paragraph={digital_Paragraph}
         paragraph2={digital_Paragraph2}
         list={digital_List}
       />
-      <SimpleCtaSection data={simpleCtaSection} />
+      <SimpleCtaSection data={simpleCtaSection2} />
       <List
         heading={phisical_Heading}
         paragraph={phisical_Paragraph}
         paragraph2={phisical_Paragraph2}
         list={phisical_List}
       />
-      <SimpleCtaSection data={simpleCtaSection2} />
       <SimpleCtaSection data={simpleCtaSection3} />
       <CaseStudies heading={caseStudies_Heading} />
       <CtaSection data={ctaSection} />
