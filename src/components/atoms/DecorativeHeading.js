@@ -68,17 +68,17 @@ const Wrapper = styled.h1`
       max-width: ${400/16}rem;
       justify-self: end;
     }
-  `}
-  @media (max-width: 1199px){
-    grid-template-columns: auto 1fr;
-    span:nth-of-type(2) {
-      grid-column: 3/1;
-      text-align: left;
-      margin: 28px 0 0 0;
-      justify-self: unset;
-      max-width: unset;
+    @media (max-width: 1199px){
+      grid-template-columns: auto 1fr;
+      span:nth-of-type(2) {
+        grid-column: 3/1;
+        text-align: left;
+        margin: 28px 0 0 0;
+        justify-self: unset;
+        max-width: unset;
+      }
     }
-  }
+  `}
   span > svg {
     vertical-align: middle;
     width: ${Clamp(100, 216, 216)};

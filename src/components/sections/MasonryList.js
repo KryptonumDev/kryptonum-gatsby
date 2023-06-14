@@ -29,6 +29,7 @@ const Wrapper = styled.section`
   column-gap: 32px;
   .heading {
     margin-bottom: ${Clamp(28, 48, 72, 'px')};
+    max-width: ${734/16}rem;
   }
   .paragraph, .wrapper {
     font-size: ${Clamp(20, 32, 30)};
@@ -58,7 +59,7 @@ const Wrapper = styled.section`
       padding: ${Clamp(20, 32, 32, 'px')};
       border: 1px solid var(--neutral-800);
       counter-increment: counter;
-      min-width: 25%;
+      min-width: 20%;
       &::before {
         content: "/" counter(counter);
         font-size: ${Clamp(16, 22, 22)};
