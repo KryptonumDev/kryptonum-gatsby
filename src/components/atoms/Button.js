@@ -30,7 +30,7 @@ const Button = ({theme = 'secondary', children, to, className, ...props}) => {
         )
       ) : (
         <button
-          className={`cta primary${className ? ` ${className}` : ''}`}
+          className={`cta ${theme}${className ? ` ${className}` : ''}`}
           type="submit"
           {...props}
         >
