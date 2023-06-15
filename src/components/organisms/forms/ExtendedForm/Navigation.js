@@ -7,34 +7,55 @@ export default function Navigation({ step, setStep }) {
   return (
     <Wrapper width={100 * ((step + 1) / 7)}>
       <div className="line" />
-      <div>
+      <Step display={step == '0' ? 'flex' : null} next={step == '0' ? 'flex' : null} >
         <First />
-        <span>Witaj na stacji!</span>
-      </div>
-      <div>
+        <div>
+          <span>Witaj na stacji!</span>
+          <span className="step">Krok 1 z 7</span>
+        </div>
+      </Step>
+      <Step  display={step == '0' ? 'flex' : null} next={step == '1' ? 'flex' : null} >
         <Second />
-        <span>Poznajmy się!</span>
-      </div>
-      <div>
+        <div>
+          <span>Poznajmy się!</span>
+          <span className="step">Krok 2 z 7</span>
+        </div>
+      </Step>
+      <Step  display={step == '1' ? 'flex' : null} next={step == '2' ? 'flex' : null} >
         <Third />
-        <span>Twoja marka</span>
-      </div>
-      <div>
+        <div>
+          <span>Twoja marka</span>
+          <span className="step">Krok 3 z 7</span>
+        </div>
+      </Step>
+      <Step display={step == '2' ? 'flex' : null} next={step == '3' ? 'flex' : null} >
         <Fourth />
-        <span>Potrzeba</span>
-      </div>
-      <div>
+        <div>
+          <span>Potrzeba</span>
+          <span className="step">Krok 4 z 7</span>
+        </div>
+      </Step>
+      <Step display={step == '3' ? 'flex' : null} next={step == '4' ? 'flex' : null} >
         <Fifth />
-        <span>Czas i budżet</span>
-      </div>
-      <div>
+        <div>
+          <span>Czas i budżet</span>
+          <span className="step">Krok 5 z 7</span>
+        </div>
+      </Step>
+      <Step display={step == '4' ? 'flex' : null} next={step == '5' ? 'flex' : null} >
         <Sixth />
-        <span>Informacje</span>
-      </div>
-      <div>
+        <div>
+          <span>Informacje</span>
+          <span className="step">Krok 6 z 7</span>
+        </div>
+      </Step>
+      <Step display={step == '5' ? 'flex' : null} next={step == '6' ? 'flex' : null} >
         <Seventh />
-        <span>Umów wizytę</span>
-      </div>
+        <div>
+          <span>Umów wizytę</span>
+          <span className="step">Krok 7 z 7</span>
+        </div>
+      </Step>
     </Wrapper>
   )
 }
@@ -44,13 +65,15 @@ const Wrapper = styled.nav`
   display: flex;
   justify-content: space-between;
 
-  div{
-    display: flex;
-    align-items: center;
+  @media (max-width: 920px) {
     flex-direction: column;
-    gap: 12px;
-    position: relative;
-    z-index: 1;
+    gap: 32px;
+    align-items: flex-start;
+  }
+
+  @media (max-width: 680px) {
+    flex-direction: row;
+    justify-content: space-between;
   }
 
   .line{
@@ -62,15 +85,70 @@ const Wrapper = styled.nav`
     background: var(--neutral-800);
     height: 4px;
 
+    @media (max-width: 920px){
+      width: 4px;
+      left: 30px; 
+      top: 0; 
+      bottom: 0;
+      height: 100%;
+    }
+
+    @media (max-width: 680px) {
+      display: none;
+    }
+
     &::after{
       content: '';
       position: absolute;
       left: 0;
       top: 0;
       bottom: 0;
-      transition: width .3s var(--easing);
-      width: ${props => props.width}%;
+      transition: all .3s var(--easing);
       background: var(--gradient);
+      width: ${props => props.width}%;
+
+      @media (max-width: 920px){
+        height: ${props => props.width}%;
+        width: 100%;
+      }
+    }
+  }
+`
+
+const Step = styled.div`
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  gap: 12px;
+  position: relative;
+  z-index: 1;
+
+  @media (max-width: 920px){
+    flex-direction: row;
+  }
+
+  @media (max-width: 680px) {
+    display: ${props => props.display || props.next ? 'flex' : 'none'}; 
+
+    ${props => props.display === 'flex' ? `
+      flex-direction: row-reverse;
+      text-align: right;
+      color: var(--neutral-700);
+      svg{
+        display: none;
+      }
+    `: null}
+  }
+
+  span{
+    font-size: clamp(1rem, calc(16vw/10.24), 1.25rem);
+  }
+
+  .step{
+    display: none;
+
+    @media (max-width: 680px) {
+      display: block;
     }
   }
 `

@@ -26,7 +26,7 @@ export default function SixthStep({ prevData, setData, setStep }) {
 
       <Calendar
         name='date'
-        register={register('date')}
+        register={register}
         errors={errors}
       />
 
@@ -42,7 +42,7 @@ export default function SixthStep({ prevData, setData, setStep }) {
         register={register('newsletter')}
         errors={errors}
       />
-      <Button>Wyślij formularz?</Button>
+      <Button theme="primary">Wyślij formularz?</Button>
     </Wrapper>
   )
 }

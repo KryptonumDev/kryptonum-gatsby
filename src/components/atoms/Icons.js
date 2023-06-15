@@ -483,3 +483,9 @@ export const Prev = () => (
     <path d="M15.7246 18L9.72461 12L15.7246 6" stroke="#EFF0F3" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
   </svg>
 )
+
+export const CalendarIcon = () => (
+  <svg width="33" height="32" viewBox="0 0 33 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <path d="M4.72461 13.3333H28.7246M22.0579 2.66663V7.99996M11.3913 2.66663V7.99996M7.39128 5.33329H26.0579C27.5307 5.33329 28.7246 6.5272 28.7246 7.99996V26.6666C28.7246 28.1394 27.5307 29.3333 26.0579 29.3333H7.39128C5.91852 29.3333 4.72461 28.1394 4.72461 26.6666V7.99996C4.72461 6.5272 5.91852 5.33329 7.39128 5.33329Z" stroke="#EFF0F3" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+  </svg>
+)

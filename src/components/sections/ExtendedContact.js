@@ -1,4 +1,4 @@
-import React, { useMemo, useState } from "react"
+import React, { useEffect, useMemo, useState } from "react"
 import styled from "styled-components"
 import FirstStep from "../organisms/forms/ExtendedForm/FirstStep"
 import SecondStep from "../organisms/forms/ExtendedForm/SecondStep"
@@ -45,6 +45,15 @@ export default function Kontakt() {
       return minutes + " minuty " + seconds + " sekund";
     }
     return null
+  }, [step])
+
+  useEffect(() => {
+    if (typeof window !== 'undefined') {
+      window.scrollTo({
+        top: 0,
+        behavior: "smooth"
+      })
+    }
   }, [step])
 
   return (
@@ -134,7 +143,7 @@ export default function Kontakt() {
             </StepWrap>
           )}
           {step === 7 && (
-            <StepWrap id='6'>
+            <StepWrap id='7'>
               <SeventhStep
                 name={formData.Client.name}
                 time={endTime}
@@ -150,13 +159,30 @@ export default function Kontakt() {
 const Wrapper = styled.section`
   display: grid;
   gap: 40px 32px;
-  grid-template-columns: 300px 1fr;
+  grid-template-columns: clamp(240px, calc(240vw/10.24), 300px) 1fr;
+  grid-template-rows: 1fr auto;
   grid-template-areas: 
   'nav nav'
   'left right';
   max-width: 1280px;
   margin: 0 auto;
   width: 100%;
+
+  @media (max-width: 920px) {
+    gap: 24px;
+    grid-template-areas: 
+    'nav right'
+    'left right';
+  }
+
+  @media (max-width: 680px) {
+    grid-template-columns: 1fr;
+    grid-template-areas:
+    'left'
+    'nav'
+    'right';
+  }
+
   button{
     max-width: unset;
     width: fit-content;

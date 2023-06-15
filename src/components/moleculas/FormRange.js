@@ -29,8 +29,25 @@ const Wrapper = styled.label`
   margin-top: 18px;
   padding: 8px 0;
 
+  @media (max-width: 1024px) {
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+    grid-template-areas: 
+    'left right'
+    'input input';
+  }
+
   .right{
     text-align: right;
+    @media (max-width: 1024px){
+      grid-area: right;
+    }
+  }
+
+  .left{
+    @media (max-width: 1024px){
+      grid-area: left;
+    }
   }
 
   .left, .right{
@@ -41,6 +58,12 @@ const Wrapper = styled.label`
     position: relative;
     width: 100%;
     height: 10px;
+
+    @media (max-width: 1024px){
+      grid-area: input;
+      grid-column-start: 1;
+      grid-column-end: 3;
+    }
 
     input{
       position: absolute;

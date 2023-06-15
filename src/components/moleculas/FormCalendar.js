@@ -2,8 +2,9 @@ import React, { useMemo, useState } from "react"
 import styled from "styled-components"
 import { CalendarDateDropdown } from "../atoms/CalendarDateDropdown"
 import { CalendarTimeDropdown } from "../atoms/CalendarTimeDropdown"
+import { CalendarIcon } from "../atoms/Icons"
 
-export const Calendar = () => {
+export const Calendar = ({ name, errors, register }) => {
   const [openedPopup, setOpenedPopup] = useState(false)
   const [chosenDate, setChosenDate] = useState(null)
   const [chosenTime, setChosenTime] = useState(null)
@@ -21,7 +22,15 @@ export const Calendar = () => {
     <Wrapper>
       <div className="input-wrap">
         <span className="legend">Wybierz datę i godzinę (opcjonalne)</span>
-        <input value={inputValue} onClick={() => { setOpenedPopup('date') }} className="input" placeholder="26/01/2023  |  Godzina" />
+        <input
+          {...register('date', { required: true, validate: () => chosenDate && chosenTime })}
+          value={inputValue}
+          onFocus={() => { openedPopup ? null : setOpenedPopup('date') }}
+          onClick={() => { setOpenedPopup('date') }}
+          className="input"
+          placeholder="26/01/2023  |  Godzina"
+        />
+        <CalendarIcon />
         <span className="border" />
       </div>
       {openedPopup === 'date' && (
@@ -49,6 +58,12 @@ const Wrapper = styled.div`
   .input-wrap{
     position: relative;
     max-width: 520px;
+
+    svg{
+      position: absolute;
+      right: 16px;
+      top: 12px;
+    }
   }
 
   .legend{

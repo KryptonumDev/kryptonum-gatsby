@@ -37,9 +37,8 @@ export default function ThirdStep({ prevData, setData, setStep }) {
       'feminine/masculine': prevData?.Needed?.['Need design']?.['Logo']?.['feminine/masculine'] || 4,
     }
   })
-  debugger
-  const onSubmit = (data) => {
 
+  const onSubmit = (data) => {
     const formatedData = {}
 
     if (data['Need website']) {
@@ -73,7 +72,6 @@ export default function ThirdStep({ prevData, setData, setStep }) {
       formatedData['Logo additional inform'] = data['Logo additional inform']
     }
 
-
     setData({ ...prevData, 'Needed': formatedData })
     setStep((step) => step + 1)
   }
@@ -81,6 +79,8 @@ export default function ThirdStep({ prevData, setData, setStep }) {
   const website = watch("Need website")
   const design = watch("Need design")
   const logo = watch("Logo")
+
+  // , { validate: () => website || design }
 
   return (
     <Wrapper onSubmit={handleSubmit(onSubmit)}>
@@ -239,6 +239,10 @@ const Wrapper = styled.form`
     display: grid;
     grid-template-columns: 1fr 1fr;
     gap: 20px;
+
+    @media (max-width: 1024px) {
+      grid-template-columns: 1fr;
+    }
   }
 
   .design-grid{
@@ -246,9 +250,17 @@ const Wrapper = styled.form`
     grid-template-columns: 1fr 1fr;
     gap: 20px;
 
+    @media (max-width: 1024px) {
+      grid-template-columns: 1fr;
+    }
+
     div:first-child{
       grid-column-start: 1;
       grid-column-end: 3;
+
+      @media (max-width: 1024px) {
+        grid-column-end: 2;
+      }
 
       h3{
         margin: 40px 0 32px;
