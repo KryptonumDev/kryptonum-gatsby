@@ -34,7 +34,7 @@ const Button = ({theme = 'secondary', children, to, className, ...props}) => {
           type="submit"
           {...props}
         >
-          <span>{children}</span>
+          <span data-text={theme === 'secondary' ? children : undefined}>{children}</span>
           <ArrowTopRight />
         </button>
       )}
