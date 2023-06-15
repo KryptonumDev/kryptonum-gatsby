@@ -27,6 +27,7 @@ const HeroServices = ({
         image={hero_Img.asset.gatsbyImageData}
         alt={hero_Img.asset.altText || ''}
         className="img"
+        loading="eager"
       />
       <div className="copy">
         {hero_Annotation && (
