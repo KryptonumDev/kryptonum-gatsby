@@ -4,28 +4,53 @@ import styled from "styled-components"
 import Button from "../../../atoms/Button"
 import { Label } from "../../../moleculas/FormInput"
 import { Radio } from "../../../moleculas/FormRadio"
-import { Plus } from "../../../atoms/Icons"
+import { Error, Plus } from "../../../atoms/Icons"
 
 export default function SecondStep({ prevData, setData, setStep }) {
   const {
     register,
     handleSubmit,
     formState: { errors },
-  } = useForm({ mode: 'onBlur' })
+  } = useForm({
+    mode: 'onBlur',
+    defaultValues: { ...prevData?.Brand }
+  })
 
   const onSubmit = (data) => {
-    setData({ ...prevData, 'Brand': data })
+    setData({
+      ...prevData,
+      'Brand': (() => {
+        // iterate over data and remove empty values
+        let a = {}
+        Object.keys(data).forEach((el) => {
+          if (data[el]) a[el] = data[el]
+        })
+        return a
+      })()
+    })
     setStep((step) => step + 1)
   }
 
-  const [links, setLinks] = useState([{}])
+  const [links, setLinks] = useState(() => {
+    let a = [{}]
+    // open link for each link in prevData
+    if (prevData?.Brand) {
+      Object.keys(prevData?.Brand).forEach((el, index) => {
+        if (index > 1) {
+          a.push({})
+        }
+      })
+    }
+    return a
+  })
 
   return (
     <Wrapper onSubmit={handleSubmit(onSubmit)}>
       <h2>Gdzie dzisiaj jest <strong>Twoja marka?</strong></h2>
       <div className="radio-group">
-        <Radio title='Dopiero na starcie' register={register('experience')} defaultChecked={true}/>
-        <Radio title='Trochę już przeszła' register={register('experience')} />
+        {errors.experience && <span className='error'><Error /> Proszę wybrać jedną z opcji</span>}
+        <Radio className={errors.experience ? 'errored' : ''} title='Dopiero na starcie' register={register('experience', { required: true })} />
+        <Radio className={errors.experience ? 'errored' : ''} title='Trochę już przeszła' register={register('experience', { required: true })} />
       </div>
       <h2>Podziel się linkami, chętnie zajrzymy</h2>
       {links.map((el, index) => (
@@ -77,6 +102,19 @@ const Wrapper = styled.form`
     max-width: 740px;
     width: 100%;
     margin-bottom: 32px;
+    position: relative;
+
+    .error{
+      position: absolute;
+      right: 0;
+      top: -6px;
+      transform: translateY(-100%);
+      color: #EE6470; 
+      font-size: 1rem;
+      display: flex;
+      gap: 4px;
+      align-items: center;
+    }
   }
 
   .divider{

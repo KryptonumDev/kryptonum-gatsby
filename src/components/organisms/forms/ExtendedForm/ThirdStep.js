@@ -15,8 +15,29 @@ export default function ThirdStep({ prevData, setData, setStep }) {
     handleSubmit,
     watch,
     formState: { errors },
-  } = useForm({ mode: 'onBlur' })
-
+  } = useForm({
+    mode: 'onBlur',
+    defaultValues: {
+      'Need website': !!prevData?.Needed?.['Need website'],
+      'e-commerce': !!prevData?.Needed?.['Need website']?.['e-commerce'],
+      'website': !!prevData?.Needed?.['Need website']?.['website'],
+      'blog': !!prevData?.Needed?.['Need website']?.['blog'],
+      'Need design': !!prevData?.Needed?.['Need design'],
+      'Print graphics': !!prevData?.Needed?.['Need design']?.['Print graphics'],
+      'Social media graphics': !!prevData?.Needed?.['Need design']?.['Social media graphics'],
+      'Brand book': !!prevData?.Needed?.['Need design']?.['Brand book'],
+      'Logo': !!prevData?.Needed?.['Need design']?.['Logo'],
+      'subtle/expressive': prevData?.Needed?.['Need design']?.['Logo']?.['subtle/expressive'] || 4,
+      'simple/complicated': prevData?.Needed?.['Need design']?.['Logo']?.['simple/complicated'] || 4,
+      'organic/geometric': prevData?.Needed?.['Need design']?.['Logo']?.['organic/geometric'] || 4,
+      'old/new': prevData?.Needed?.['Need design']?.['Logo']?.['old/new'] || 4,
+      'obvious/symbolic': prevData?.Needed?.['Need design']?.['Logo']?.['obvious/symbolic'] || 4,
+      'happy/serious': prevData?.Needed?.['Need design']?.['Logo']?.['happy/serious'] || 4,
+      'economic/luxurious': prevData?.Needed?.['Need design']?.['Logo']?.['economic/luxurious'] || 4,
+      'feminine/masculine': prevData?.Needed?.['Need design']?.['Logo']?.['feminine/masculine'] || 4,
+    }
+  })
+  debugger
   const onSubmit = (data) => {
 
     const formatedData = {}
@@ -57,9 +78,9 @@ export default function ThirdStep({ prevData, setData, setStep }) {
     setStep((step) => step + 1)
   }
 
-  const website = watch("Need website", false)
-  const design = watch("Need design", false)
-  const logo = watch("Logo", false)
+  const website = watch("Need website")
+  const design = watch("Need design")
+  const logo = watch("Logo")
 
   return (
     <Wrapper onSubmit={handleSubmit(onSubmit)}>

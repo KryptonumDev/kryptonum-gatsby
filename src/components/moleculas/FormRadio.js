@@ -1,9 +1,9 @@
 import React from "react"
 import styled from "styled-components"
 
-export const Radio = ({ defaultChecked, title, register }) => (
-  <Wrapper>
-    <input type="radio" {...register} value={title} id={title} defaultChecked={defaultChecked}/>
+export const Radio = ({ className, title, register }) => (
+  <Wrapper className={className}>
+    <input type="radio" {...register} value={title} id={title} />
     <span className="radio" />
     <p>{title}</p>
   </Wrapper>
@@ -19,6 +19,12 @@ const Wrapper = styled.label`
   gap: 10px;
   position: relative;
   align-items: center;
+  transition: border-color .3s var(--easing);
+  cursor: pointer;
+
+  &.errored{
+    border-color: #EE6470;
+  }
 
   input{
     position: absolute;

@@ -9,6 +9,7 @@ import SixthStep from "../organisms/forms/ExtendedForm/SixthStep"
 import { AnimatePresence, motion } from "framer-motion"
 import SeventhStep from "../organisms/forms/ExtendedForm/SeventhStep"
 import { Prev } from "../atoms/Icons"
+import Navigation from "../organisms/forms/ExtendedForm/Navigation"
 
 const StepWrap = ({ id, children }) => (
   <motion.div key={id} initial={{ opacity: 0, x: 10 }} animate={{ opacity: 1, x: 0 }} exit={{ opacity: 0, x: -10 }}>
@@ -38,8 +39,8 @@ export default function Kontakt() {
     if (step === 7 && !time) {
       const totalTime = new Date().getTime() - startTime
 
-      const minutes = Math.floor(totalTime / 60000); // 1 минута = 60000 миллисекунд
-      const seconds = Math.floor((totalTime % 60000) / 1000); // 1 секунда = 1000 миллисекунд
+      const minutes = Math.floor(totalTime / 60000);
+      const seconds = Math.floor((totalTime % 60000) / 1000);
 
       return minutes + " minuty " + seconds + " sekund";
     }
@@ -48,7 +49,10 @@ export default function Kontakt() {
 
   return (
     <Wrapper>
-      <div>
+      <div className="nav">
+        <Navigation step={step} setStep={setStep} />
+      </div>
+      <div className="left-wrap">
         <AnimatePresence mode='wait'>
           {step > 1 && (
             <motion.button initial={{ opacity: 0, y: -10 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: 10 }} onClick={() => { setStep((step) => step - 1) }}>
@@ -73,7 +77,7 @@ export default function Kontakt() {
           )}
         </AnimatePresence>
       </div>
-      <div>
+      <div className="right-wrap">
         <AnimatePresence mode='wait'>
           {step === 1 && (
             <StepWrap id='1'>
@@ -145,12 +149,29 @@ export default function Kontakt() {
 
 const Wrapper = styled.section`
   display: grid;
-  gap: 32px;
+  gap: 40px 32px;
   grid-template-columns: 300px 1fr;
+  grid-template-areas: 
+  'nav nav'
+  'left right';
   max-width: 1280px;
   margin: 0 auto;
   width: 100%;
+  button{
+    max-width: unset;
+    width: fit-content;
+  }
   label{
     max-width: 520px;
   }
+
+  .nav{
+    grid-area: nav;
+  }
+  .left-wrap{
+    grid-area: left;
+  }
+  .right-wrap{
+    grid-area: right;
+  }    
 `

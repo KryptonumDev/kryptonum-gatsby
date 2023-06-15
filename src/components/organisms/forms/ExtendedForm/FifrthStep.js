@@ -9,10 +9,13 @@ export default function FifthStep({ prevData, setData, setStep }) {
     register,
     handleSubmit,
     formState: { errors },
-  } = useForm({ mode: 'onBlur' })
+  } = useForm({
+    mode: 'onBlur',
+    defaultValues: { ...prevData?.Additional }
+  })
 
   const onSubmit = (data) => {
-    setData({ ...prevData, 'Cllient': data })
+    setData({ ...prevData, 'Additional': data })
     setStep((step) => step + 1)
   }
 

@@ -11,7 +11,13 @@ export default function FirstStep({ prevData, setData, setStep }) {
     handleSubmit,
     watch,
     formState: { errors },
-  } = useForm({ mode: 'onBlur' })
+  } = useForm({
+    mode: 'onBlur',
+    defaultValues: {
+      name: prevData?.Client?.name || '',
+      'e-mail': prevData?.Client?.['e-mail'] || '',
+    }
+  })
 
   const onSubmit = (data) => {
     setData({ ...prevData, 'Client': data })
@@ -35,7 +41,7 @@ export default function FirstStep({ prevData, setData, setStep }) {
         register={register('e-mail', { required: true, pattern: emailRegex })}
         errors={errors}
       />
-      <Button className='nav-cta'>Cześć{name ? `, ${name}` : ''}! Lecimy dalej!</Button>
+      <Button className='nav-cta'>{`Cześć${name ? `, ${name}` : ''}! Lecimy dalej!`}</Button>
     </Wrapper>
   )
 }
@@ -43,6 +49,10 @@ export default function FirstStep({ prevData, setData, setStep }) {
 const Wrapper = styled.form`
   display: grid;
   gap: 32px;
+
+  button{
+    justify-content: flex-start;
+  }
 
   h2{
     font-size: 2rem;

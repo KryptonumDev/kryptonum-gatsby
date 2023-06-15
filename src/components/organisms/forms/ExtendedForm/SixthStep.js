@@ -10,7 +10,10 @@ export default function SixthStep({ prevData, setData, setStep }) {
     register,
     handleSubmit,
     formState: { errors },
-  } = useForm({ mode: 'onBlur' })
+  } = useForm({
+    mode: 'onBlur',
+    defaultValues: { ...prevData?.Date }
+  })
 
   const onSubmit = (data) => {
     setData({ ...prevData, 'Date': data })

@@ -8,7 +8,10 @@ export default function FourthStep({ prevData, setData, setStep }) {
   const {
     register,
     handleSubmit,
-  } = useForm({ mode: 'onBlur' })
+  } = useForm({
+    mode: 'onBlur',
+    defaultValues: {...prevData['Deadline & Budget'] }
+  })
 
   const onSubmit = (data) => {
     setData({ ...prevData, 'Deadline & Budget': data })
