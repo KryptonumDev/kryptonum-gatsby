@@ -6,23 +6,32 @@ import DecorativeHeading from "../atoms/DecorativeHeading";
 
 const ListSection = ({ heading, list, paragraph, secondParagraph, title }) => {
   const wrapperRef = useRef(null);
+  
+  const animateItems = () => {
+    const items = wrapperRef.current.querySelectorAll('.item');
+    items.forEach(item => {
+      const { top } = item.getBoundingClientRect();
+      if (top <= window.innerHeight * 0.66) {
+        item.classList.add('active');
+      } else {
+        item.classList.remove('active');
+      }
+    });
+  };
+  
+  const handleScroll = () => {
+    requestAnimationFrame(animateItems);
+  };
+
   useEffect(() => {
     if (wrapperRef.current) {
-      const items = wrapperRef.current.querySelectorAll('.item');
-      const anim = () => {
-        items.forEach(item => {
-          const { top } = item.getBoundingClientRect();
-          if(top <= window.innerHeight*.66) {
-            item.classList.add('active');
-          } else {
-            item.classList.remove('active');
-          }
-        });
-      }
-      anim();
-      window.addEventListener('scroll', anim);
+      animateItems();
+      window.addEventListener('scroll', handleScroll);
     }
-  }, [])
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+    };
+  }, []);
 
   return (
     <Wrapper>

@@ -18,19 +18,19 @@ const Showcase = ({
     showcase_SummaryRight,
   }
 }) => {
-
   const listRef = useRef();
   const [animationValue, setAnimationValue] = useState(0);
-  useEffect(() => {
+ 
+  const handleScroll = () => {
     const list = listRef.current;
-    let animValue;
-    const handleScroll = () => {
-      const windowHeight = window.innerHeight;
-      const { top, bottom } = list.getBoundingClientRect();
-      if (top < windowHeight / 2 && bottom > windowHeight / 2) {
-        const distance = bottom - top;
-        const scrollPosition = windowHeight / 2 - top;
-        const value = scrollPosition / distance;
+    const windowHeight = window.innerHeight;
+    const { top, bottom } = list.getBoundingClientRect();
+    const distance = bottom - top;
+    const scrollPosition = windowHeight / 2 - top;
+    const value = scrollPosition / distance;
+    let animValue = 0;
+
+    if (top < windowHeight / 2 && bottom > windowHeight / 2) {
         animValue = easeInOut(value);
       } else if (bottom < windowHeight * 1.5) {
         animValue = 1;
@@ -38,15 +38,22 @@ const Showcase = ({
         animValue = 0;
       }
       animValue = window.innerWidth >= 3000
-      ? `-${animValue * 200}%`
-      : `-${animValue * (3000 + window.innerWidth)}px`;
+        ? `-${animValue * 200}%`
+        : `-${animValue * (3000 + window.innerWidth)}px`;
       setAnimationValue(animValue);
+  };
+  useEffect(() => {
+    const handleAnimationFrame = () => {
+      handleScroll();
+      requestAnimationFrame(handleAnimationFrame);
     };
-    window.addEventListener('scroll', handleScroll)
+    handleAnimationFrame();
+
     return () => {
-      window.removeEventListener('scroll', handleScroll)
-    }
-  }, [])
+      window.removeEventListener('scroll', handleScroll);
+    };
+  }, []);
+
   return (
     <Wrapper>
       <header>
