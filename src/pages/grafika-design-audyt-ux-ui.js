@@ -8,6 +8,7 @@ import BlogEntries from "../components/sections/BlogEntries";
 import CaseStudies from "../components/sections/CaseStudies";
 import CtaSection from "../components/sections/CtaSection";
 import Audit from "../components/sections/GraphicsAndDesign_Audit/Audit";
+import ImageAndStandout from '../components/sections/ImageAndStandout'
 
 const AuditPage = ({
   data: { page: {
@@ -40,6 +41,10 @@ const AuditPage = ({
     comboAudit_Paragraph2,
     comboAudit_ListHeading,
     comboAudit_List,
+    benefits_Heading,
+    benefits_Paragraph,
+    benefits_Standout,
+    benefits_Img,
     caseStudies_Heading,
     ctaSection,
     blogEntries_Heading,
@@ -86,6 +91,12 @@ const AuditPage = ({
         listHeading: comboAudit_ListHeading,
         list: comboAudit_List,
       }} />
+      <ImageAndStandout
+        heading={benefits_Heading}
+        paragraph={benefits_Paragraph}
+        standout={benefits_Standout}
+        img={benefits_Img}
+      />
       <CaseStudies heading={caseStudies_Heading} />
       <CtaSection data={ctaSection} />
       <BlogEntries heading={blogEntries_Heading} />
@@ -147,6 +158,16 @@ export const query = graphql`
       comboAudit_Paragraph2
       comboAudit_ListHeading
       comboAudit_List
+      # Benefits
+      benefits_Heading
+      benefits_Paragraph
+      benefits_Standout
+      benefits_Img {
+        asset {
+          altText
+          gatsbyImageData(placeholder: BLURRED)
+        }
+      }
       # Case Studies
       caseStudies_Heading
       # CTA Section

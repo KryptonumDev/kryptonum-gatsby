@@ -8,8 +8,8 @@ import BlogEntries from "../components/sections/BlogEntries";
 import CaseStudies from "../components/sections/CaseStudies";
 import CtaSection from "../components/sections/CtaSection";
 import MasonryList from "../components/sections/MasonryList";
-import Brandbook from "../components/sections/GraphicsAndDesign_VisualIdentity/Brandbook";
 import BrandbookTypes from "../components/sections/GraphicsAndDesign_VisualIdentity/BrandbookTypes";
+import ImageAndStandout from "../components/sections/ImageAndStandout";
 
 const VisualIdentityPage = ({
   data: { page: {
@@ -48,12 +48,12 @@ const VisualIdentityPage = ({
         hero_Img,
       }} />
       <SimpleCtaSection data={simpleCtaSection} />
-      <Brandbook data={{
-        brandbook_Heading,
-        brandbook_Paragraph,
-        brandbook_Standout,
-        brandbook_Img
-      }} />
+      <ImageAndStandout
+        heading={brandbook_Heading}
+        paragraph={brandbook_Paragraph}
+        standout={brandbook_Standout}
+        img={brandbook_Img}
+      />
       <BrandbookTypes data={{
         primaryBrandbook_Heading,
         primaryBrandbook_Paragraph,

@@ -2,26 +2,19 @@ import { GatsbyImage } from "gatsby-plugin-image";
 import React from "react";
 import ReactMarkdown from "react-markdown";
 import styled from "styled-components";
-import { Clamp } from "../../../utils/functions";
-import DecorativeHeading from "../../atoms/DecorativeHeading";
+import { Clamp } from "../../utils/functions";
+import DecorativeHeading from "../atoms/DecorativeHeading";
 
-const Brandbook = ({
-  data: {
-    brandbook_Heading,
-    brandbook_Paragraph,
-    brandbook_Standout,
-    brandbook_Img,
-  }
-}) => {
+const ImageAndStandout = ({ heading, paragraph, standout, img }) => {
   return (
     <Wrapper>
-      <DecorativeHeading type="h2" className="heading">{brandbook_Heading}</DecorativeHeading>
+      <DecorativeHeading type="h2" className="heading">{heading}</DecorativeHeading>
       <div className="column">
-        <ReactMarkdown className="paragraph">{brandbook_Paragraph}</ReactMarkdown>
-        <ReactMarkdown className="standout">{brandbook_Standout}</ReactMarkdown>
+        <ReactMarkdown className="paragraph">{paragraph}</ReactMarkdown>
+        <ReactMarkdown className="standout">{standout}</ReactMarkdown>
         <GatsbyImage
-          image={brandbook_Img.asset.gatsbyImageData}
-          alt={brandbook_Img.asset.altText}
+          image={img.asset.gatsbyImageData}
+          alt={img.asset.altText}
           className="img"
         />
       </div>
@@ -30,6 +23,9 @@ const Brandbook = ({
 }
 
 const Wrapper = styled.section`
+  .heading {
+    max-width: ${734/16}rem;
+  }
   .paragraph p:first-child, .standout {
     font-size: ${Clamp(20, 32, 30)};
   }
@@ -81,4 +77,4 @@ const Wrapper = styled.section`
   }
 `
 
-export default Brandbook;
+export default ImageAndStandout;
