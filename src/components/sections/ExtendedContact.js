@@ -1,4 +1,4 @@
-import React, { useState } from "react"
+import React, { useMemo, useState } from "react"
 import styled from "styled-components"
 import FirstStep from "../organisms/forms/ExtendedForm/FirstStep"
 import SecondStep from "../organisms/forms/ExtendedForm/SecondStep"
@@ -8,6 +8,7 @@ import FifthStep from "../organisms/forms/ExtendedForm/FifrthStep"
 import SixthStep from "../organisms/forms/ExtendedForm/SixthStep"
 import { AnimatePresence, motion } from "framer-motion"
 import SeventhStep from "../organisms/forms/ExtendedForm/SeventhStep"
+import { Prev } from "../atoms/Icons"
 
 const StepWrap = ({ id, children }) => (
   <motion.div key={id} initial={{ opacity: 0, x: 10 }} animate={{ opacity: 1, x: 0 }} exit={{ opacity: 0, x: -10 }}>
@@ -17,7 +18,7 @@ const StepWrap = ({ id, children }) => (
 
 const ButtonText = ({ id, children }) => (
   <motion.span key={id} initial={{ opacity: 0, y: -10 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: 10 }}>
-    {children}
+    <Prev /> {children}
   </motion.span>
 )
 
@@ -25,6 +26,25 @@ export default function Kontakt() {
 
   const [step, setStep] = useState(1)
   const [formData, setFormData] = useState({})
+
+  const startTime = useMemo((time) => {
+    if (step === 1 && !time) {
+      return new Date().getTime();
+    }
+    return null
+  }, [step])
+
+  const endTime = useMemo((time) => {
+    if (step === 7 && !time) {
+      const totalTime = new Date().getTime() - startTime
+
+      const minutes = Math.floor(totalTime / 60000); // 1 минута = 60000 миллисекунд
+      const seconds = Math.floor((totalTime % 60000) / 1000); // 1 секунда = 1000 миллисекунд
+
+      return minutes + " minuty " + seconds + " sekund";
+    }
+    return null
+  }, [step])
 
   return (
     <Wrapper>
@@ -112,8 +132,8 @@ export default function Kontakt() {
           {step === 7 && (
             <StepWrap id='6'>
               <SeventhStep
-                name='Placeholder'
-                time='3:13'
+                name={formData.Client.name}
+                time={endTime}
               />
             </StepWrap>
           )}

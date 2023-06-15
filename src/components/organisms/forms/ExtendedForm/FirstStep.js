@@ -1,9 +1,9 @@
 import React from "react"
 import { useForm } from "react-hook-form"
 import styled from "styled-components"
-import Button from "../../../atoms/Button"
 import { Label } from "../../../moleculas/FormInput"
 import { emailRegex } from "../../../../constants/regex"
+import Button from "../../../atoms/Button"
 
 export default function FirstStep({ prevData, setData, setStep }) {
   const {
@@ -14,7 +14,7 @@ export default function FirstStep({ prevData, setData, setStep }) {
   } = useForm({ mode: 'onBlur' })
 
   const onSubmit = (data) => {
-    setData({ ...prevData, 'Cllient': data })
+    setData({ ...prevData, 'Client': data })
     setStep((step) => step + 1)
   }
 
@@ -35,7 +35,7 @@ export default function FirstStep({ prevData, setData, setStep }) {
         register={register('e-mail', { required: true, pattern: emailRegex })}
         errors={errors}
       />
-      <Button>Cześć{name ? `, ${name}` : ''}! Lecimy dalej!</Button>
+      <Button className='nav-cta'>Cześć{name ? `, ${name}` : ''}! Lecimy dalej!</Button>
     </Wrapper>
   )
 }
