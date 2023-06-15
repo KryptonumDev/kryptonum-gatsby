@@ -23,8 +23,6 @@ const Nav = ({
 
   useEffect(() => {
     const nav = navRef.current;
-    nav.removeAttribute("style");
-
     const navHeight = nav.offsetHeight;
     let prevScrollPos = window.pageYOffset;
     let currentScrollPos = prevScrollPos;
@@ -46,6 +44,7 @@ const Nav = ({
         nav.classList.remove('fixed');
       }
     };
+    nav.removeAttribute("style");
 
     window.addEventListener("scroll", handleScroll)
     document.addEventListener("keydown", handleEscapeKey)
@@ -75,6 +74,7 @@ const Nav = ({
 
   const handleHideNav = () => {
     navRef.current.style.setProperty("pointer-events", "none");
+    navRef.current.removeAttribute("data-expand");
     setNavOpened(false);
     scrollLock(false);
   }
@@ -85,6 +85,7 @@ const Nav = ({
     }
     setNavOpened(!navOpened)
     scrollLock(!navOpened)
+    navRef.current.removeAttribute("data-expand");
   }
 
   return (
