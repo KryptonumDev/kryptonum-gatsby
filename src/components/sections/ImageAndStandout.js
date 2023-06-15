@@ -14,7 +14,7 @@ const ImageAndStandout = ({ heading, paragraph, standout, img }) => {
         <ReactMarkdown className="standout">{standout}</ReactMarkdown>
         <GatsbyImage
           image={img.asset.gatsbyImageData}
-          alt={img.asset.altText}
+          alt={img.asset.altText || ''}
           className="img"
         />
       </div>
@@ -60,7 +60,6 @@ const Wrapper = styled.section`
     .img {
       grid-area: img;
       margin-left: 112px;
-      max-width: 688px;
     }
   }
   @media (max-width: 1099px){

@@ -3,7 +3,7 @@ import { graphql, useStaticQuery } from "gatsby";
 import GlobalStyle from "../../styles/GlobalStyle";
 import Nav from "../organisms/Nav"
 import Footer from "../organisms/Footer";
-import ScrollToNext from "../sections/ScrollToNext";
+import ScrollToNext from "../organisms/ScrollToNext";
 
 const Layout = ({ data: { page }, children }) => {
   const data = useStaticQuery(graphql`
