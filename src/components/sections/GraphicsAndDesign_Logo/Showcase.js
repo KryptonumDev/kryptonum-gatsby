@@ -94,7 +94,7 @@ const Wrapper = styled.section`
     }
     .paragraph {
       p:not(:last-child) {
-        margin-bottom: 24px;
+        margin-bottom: 16px;
       }
     }
   }

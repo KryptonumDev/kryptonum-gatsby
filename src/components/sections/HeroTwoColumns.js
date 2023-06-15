@@ -6,13 +6,15 @@ import DecorativeHeading from '../atoms/DecorativeHeading';
 import Button from '../atoms/Button';
 import { Clamp } from '../../utils/functions';
 
-const HeroTwoColumns = ({heading, subheading, cta, img}) => {
+const HeroTwoColumns = ({heading, paragraph, cta, img}) => {
   return (
     <Wrapper>
       <header>
-        <DecorativeHeading>{heading}</DecorativeHeading>
-        <ReactMarkdown>{subheading}</ReactMarkdown>
-        <Button theme={cta.theme} to={cta.href}>{cta.text}</Button>
+        <DecorativeHeading className="heading">{heading}</DecorativeHeading>
+        <ReactMarkdown className="paragraph">{paragraph}</ReactMarkdown>
+        {cta?.text && (
+          <Button theme={cta.theme} to={cta.href}>{cta.text}</Button>
+        )}
       </header>
       <GatsbyImage
         image={img.asset.gatsbyImageData}
@@ -26,34 +28,32 @@ const HeroTwoColumns = ({heading, subheading, cta, img}) => {
 
 const Wrapper = styled.section`
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: 1fr auto;
   gap: 32px;
   header {
-    max-width: 684px;
-  }
-  h1 {
-    margin-bottom: ${Clamp(28, 32, 32, "px")};
-  }
-  p {
-    font-size: ${Clamp(20, 32, 30)};
-    &:not(:last-of-type){
-      margin-bottom: 1rem;
+    max-width: ${684/16}rem;
+    .heading {
+      margin-bottom: ${Clamp(28, 32, 32, "px")};
+    }
+    .paragraph {
+      font-size: ${Clamp(20, 32, 30)};
+      p:not(:last-of-type){
+        margin-bottom: 1rem;
+      }
+    }
+    .cta {
+      margin-top: ${Clamp(24, 48, 48, "px")};
     }
   }
-  .cta {
-    margin-top: ${Clamp(24, 48, 48, "px")};
-  }
   .img {
-    max-width: 700px;
-    margin-left: auto;
+    max-width: 600px;
+    max-height: 600px;
+    margin: 0 auto;
   }
   @media (max-width: 1409px){
     grid-template-columns: 1fr;
     header {
       max-width: unset;
-    }
-    .img {
-      margin-left: 0;
     }
   }
 `

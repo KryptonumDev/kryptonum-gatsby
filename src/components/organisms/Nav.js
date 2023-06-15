@@ -15,74 +15,82 @@ const Nav = ({
     blogCategories,
     curiosities,
     technologies
-  }
+  },
 }) => {
-  const [navOpened, setNavOpened] = useState(false);
-  const nav = useRef(null);
-
   const locationPath = typeof window !== 'undefined' ? window.location.pathname : '';
+  const [navOpened, setNavOpened] = useState(false)
+  const navRef = useRef(null)
 
   useEffect(() => {
-    const navHeight = nav.current?.offsetHeight;
+    const nav = navRef.current;
+    nav.removeAttribute("style");
+
+    const navHeight = nav.offsetHeight;
     let prevScrollPos = window.pageYOffset;
     let currentScrollPos = prevScrollPos;
     let scrollDistance = 0;
-    window.addEventListener('scroll', () => {
+    const handleScroll = () => {
       prevScrollPos = currentScrollPos;
       currentScrollPos = window.pageYOffset;
       if (currentScrollPos < prevScrollPos && currentScrollPos > navHeight) {
-        nav.current?.classList.add('fixed');
+        nav.classList.add('fixed');
         scrollDistance = 0;
-      } else if(nav.current?.classList.contains('fixed')) {
+      } else if(nav.classList.contains('fixed')) {
         scrollDistance += prevScrollPos - currentScrollPos;
         if (scrollDistance * -1 >= navHeight) {
-          nav.current?.classList.remove('fixed');
+          nav.classList.remove('fixed');
           scrollDistance = 0;
         }
       }
       if (currentScrollPos === 0) {
-        nav.current?.classList.remove('fixed');
+        nav.classList.remove('fixed');
       }
-    });
+    };
 
-    document.addEventListener('keydown', (e) => {
-      if (e.key === 'Escape') {
-        setNavOpened(false)
-        scrollLock(false)
-      }
-    })
+    window.addEventListener("scroll", handleScroll)
+    document.addEventListener("keydown", handleEscapeKey)
+    window.addEventListener("resize", handleScroll)
+    return () => {
+      window.removeEventListener("scroll", handleScroll)
+      document.removeEventListener("keydown", handleEscapeKey)
+      window.removeEventListener("resize", handleScroll)
+    }
   }, [locationPath])
 
+  const handleEscapeKey = (e) => {
+    if (e.key === "Escape") {
+      setNavOpened(false)
+      scrollLock(false)
+    }
+  }
+
   const handleNavLinks = (e, item) => {
-    if (window.matchMedia('(pointer: coarse), (max-width: 1149px)').matches) {
-      e.preventDefault();
+    if (window.matchMedia("(pointer: coarse), (max-width: 1149px)").matches) {
+      e.preventDefault()
       item
-      ? nav.current.setAttribute('data-expand', item)
-      : nav.current.removeAttribute('data-expand');
-    }      
+        ? navRef.current.setAttribute("data-expand", item)
+        : navRef.current.removeAttribute("data-expand")
+    }
   }
 
   const handleHideNav = () => {
-    nav.current?.style?.setProperty('pointer-events', 'none');
-    setNavOpened(false)
-    scrollLock(false)
-    setTimeout(() => {
-      nav.current?.removeAttribute('style');
-    }, 1000);
-  };
+    navRef.current.style.setProperty("pointer-events", "none");
+    setNavOpened(false);
+    scrollLock(false);
+  }
 
   const handleNavToggle = () => {
-    if(!nav.current?.classList.contains('fixed')){
-      window.scrollTo({top: 0});
+    if (!navRef.current.classList.contains("fixed")) {
+      window.scrollTo({ top: 0 })
     }
     setNavOpened(!navOpened)
     scrollLock(!navOpened)
   }
 
   return (
-    <Wrapper className="nav" aria-expanded={navOpened} ref={nav}>
+    <Wrapper className="nav" aria-expanded={navOpened} ref={navRef}>
       <div className="max-width">
-        <Link to="/" aria-label="Strona główna">
+        <Link to="/" aria-label="Strona główna" onClick={e => handleHideNav(e)}>
           <KryptonumLogo />
         </Link>
         <div className="nav-list">
@@ -217,7 +225,7 @@ const Nav = ({
               </ul>
             </li>
             <li>
-              <Link to="/akademia" onClick={(e) => handleNavLinks(e, 'academy')}>
+              <Link to="/pl/akademia" onClick={(e) => handleNavLinks(e, 'academy')}>
                 <span>Akademia</span>
                 <ChevronDown />
               </Link>
@@ -863,14 +871,14 @@ const Wrapper = styled.nav`
         opacity: 1;
         pointer-events: auto;
       }
-    }
-    &[data-expand="services"] .nav-list2.services,
-    &[data-expand="caseStudies"] .nav-list2.caseStudies,
-    &[data-expand="team"] .nav-list2.team,
-    &[data-expand="blog"] .nav-list2.blog,
-    &[data-expand="academy"] .nav-list2.academy {
-      transform: translateX(0);
-      visibility: visible;
+      &[data-expand="services"] .nav-list2.services,
+      &[data-expand="caseStudies"] .nav-list2.caseStudies,
+      &[data-expand="team"] .nav-list2.team,
+      &[data-expand="blog"] .nav-list2.blog,
+      &[data-expand="academy"] .nav-list2.academy {
+        transform: translateX(0);
+        visibility: visible;
+      }
     }
   }
   @media (max-width: 499px){
