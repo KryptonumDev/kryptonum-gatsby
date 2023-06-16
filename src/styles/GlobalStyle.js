@@ -68,7 +68,7 @@ const GlobalStyle = createGlobalStyle`
   }
   main, .max-width {
     --pageMargin: 40px;
-    @media (max-width: 767px){
+    @media (max-width: 699px){
      --pageMargin: 16px;
     }
     max-width: 1680px;

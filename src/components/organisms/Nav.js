@@ -6,6 +6,7 @@ import { ChevronDown, ChevronLeft, KryptonumLogo } from '../atoms/Icons';
 import { Clamp, removeMarkdown, scrollLock } from "../../utils/functions";
 import { useEffect } from "react";
 import Button from "../atoms/Button";
+import ReactMarkdown from "react-markdown";
 
 const Nav = ({
   data: {
@@ -13,7 +14,7 @@ const Nav = ({
     team,
     blogEntries,
     blogCategories,
-    curiosities,
+    curiosityEntries,
     technologies
   },
 }) => {
@@ -239,10 +240,14 @@ const Nav = ({
                   <h3 className="mobileElement"><Link to="/akademia" onClick={e => handleHideNav(e)}>Akademia</Link></h3>
                   <div className="curiosities">
                     <h3><Link to="/ciekawostki" onClick={e => handleHideNav(e)}>Ciekawostki</Link></h3>
-                    {curiosities.nodes.map((curiosity, i) => (
+                    {curiosityEntries.nodes.map((curiosity, i) => (
                       <Link to={`/akademia/ciekawostki/${curiosity.slug.current}`} key={i} className="link" onClick={e => handleHideNav(e)}>
-                        <GatsbyImage image={curiosity.thumbnail.asset.gatsbyImageData} alt={curiosity.thumbnail.asset.altText || ''} className="thumbnail" />
-                        <h3>{curiosity.title}</h3>
+                        <GatsbyImage
+                          image={curiosity.img.asset.gatsbyImageData}
+                          alt={curiosity.img.asset.altText || ''} 
+                          className="thumbnail"
+                        />
+                        <h3>{removeMarkdown(curiosity.title)}</h3>
                       </Link>
                     ))}
                   </div>

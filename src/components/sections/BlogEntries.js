@@ -58,7 +58,7 @@ const BlogEntries = ({heading}) => {
               alt={entry.cover.asset.altText || ''}
               className={`cover${i % 2 === 0 ? ' even' : ''}`}
             />
-            <Link to={entry.slug.current} className="link" aria-label={removeMarkdown(entry.title)}></Link>
+            <Link to={`/pl/blog/${entry.slug.current}`} className="link" aria-label={removeMarkdown(entry.title)}></Link>
             <h3 className="title">{removeMarkdown(entry.title)}</h3>
             <p className="subtitle">{removeMarkdown(entry.subtitle)}</p>
             <Link to={entry.author[0].slug.current} className="author">

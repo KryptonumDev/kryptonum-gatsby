@@ -71,13 +71,13 @@ const Layout = ({ data: { page }, children }) => {
           }
         }
       }
-      curiosities: allSanityCuriosities(limit: 2) {
+      curiosityEntries: allSanityCuriosityEntries(limit: 2) {
         nodes {
           title
           slug {
             current
           }
-          thumbnail {
+          img {
             asset {
               altText
               gatsbyImageData(placeholder: BLURRED)
