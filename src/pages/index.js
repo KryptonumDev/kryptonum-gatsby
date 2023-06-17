@@ -6,29 +6,80 @@ import Challange from "../components/sections/Homepage/Challenge";
 import Services from "../components/sections/Homepage/Services";
 import Creativity from "../components/sections/Homepage/Creativity";
 import Roadmap from "../components/sections/Roadmap";
-import Team from "../components/sections/Homepage/Team";
+import Team from "../components/sections/Team";
 import Testimonials from "../components/sections/Testimonials";
 import { SEO } from "../components/global/Seo";
 import BlogEntries from "../components/sections/BlogEntries";
 
 const IndexPage = ({
-  data: {
-    homepage
+  data: { page : {
+    hero_Heading,
+    hero_Subheading,
+    hero_Cta,
+    services_Heading,
+    services_List,
+    conquest_Heading,
+    conquest_Claim,
+    conquest_Paragraph,
+    conquest_SecondClaim,
+    conquest_Cta,
+    challenge_Heading,
+    challenge_Claim,
+    challenge_Paragraph,
+    challenge_SecondClaim,
+    challenge_Cta,
+    creativity_Heading,
+    creativity_Paragraph,
+    creativity_SecondParagraph,
+    roadmap_Heading,
+    roadmap_Process,
+    roadmap_Cta,
+    team_Heading,
+    team_Text,
+    team_Cta,
+  }
   }
 }) => {
   return (
     <>
-      <Hero data={homepage} />
-      <Services data={homepage} />
-      <Conquest data={homepage} />
-      <Challange data={homepage} />
-      <Creativity data={homepage} />
+      <Hero data={{
+        hero_Heading,
+        hero_Subheading,
+        hero_Cta,
+      }} />
+      <Services data={{
+        services_Heading,
+        services_List,
+      }} />
+      <Conquest data={{
+        conquest_Heading,
+        conquest_Claim,
+        conquest_Paragraph,
+        conquest_SecondClaim,
+        conquest_Cta,
+      }} />
+      <Challange data={{
+        challenge_Heading,
+        challenge_Claim,
+        challenge_Paragraph,
+        challenge_SecondClaim,
+        challenge_Cta,
+      }} />
+      <Creativity data={{
+        creativity_Heading,
+        creativity_Paragraph,
+        creativity_SecondParagraph,
+      }} />
       <Roadmap
-        heading={homepage.roadmap_Heading}
-        list={homepage.roadmap_Process}
-        cta={homepage.roadmap_Cta}
+        heading={roadmap_Heading}
+        list={roadmap_Process}
+        cta={roadmap_Cta}
       />
-      <Team data={homepage} />
+      <Team
+        heading={team_Heading}
+        paragraph={team_Text}
+        cta={team_Cta}
+      />
       <Testimonials />
       <BlogEntries />
     </>
@@ -37,7 +88,7 @@ const IndexPage = ({
 
 export const query = graphql`
   query {
-    homepage: sanityHomepage {
+    page: sanityHomepage {
       # Hero
       hero_Heading
       hero_Subheading
@@ -45,6 +96,12 @@ export const query = graphql`
         theme
         text
         href
+      }
+      # Services
+      services_Heading
+      services_List {
+        title
+        description
       }
       # Conquest
       conquest_Heading
@@ -65,12 +122,6 @@ export const query = graphql`
         theme
         text
         href
-      }
-      # Services
-      services_Heading
-      services_List {
-        title
-        description
       }
       # Creativity
       creativity_Heading
