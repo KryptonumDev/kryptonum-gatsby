@@ -21,6 +21,7 @@ const GlobalStyle = createGlobalStyle`
     --neutral-900: #0F0F10;
     --neutral-950: #040606;
     --primary-400: #2DD282;
+    --error-400: #EE6470;
     --gradient: linear-gradient(90deg, #90F4E8, #2DD282);
     --easing: cubic-bezier(0.23,1,0.32,1);
   }
@@ -120,7 +121,7 @@ const GlobalStyle = createGlobalStyle`
     }
   }
   h1 {
-    font-size: ${Clamp(28, 50, 60)};
+    font-size: ${Clamp(28, 50, 56)};
   }
   h2 {
     font-size: ${Clamp(28, 50, 48)};

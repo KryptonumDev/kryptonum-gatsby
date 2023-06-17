@@ -5,8 +5,15 @@ import Button from "../../atoms/Button";
 import DecorativeHeading from "../../atoms/DecorativeHeading";
 import { Clamp } from '../../../utils/functions';
 
-const Conquest = ({data}) => {
-  const {conquest_Heading, conquest_Claim, conquest_Paragraph, conquest_SecondClaim, conquest_Cta} = data;
+const Conquest = ({
+  data: {
+    conquest_Heading,
+    conquest_Claim,
+    conquest_Paragraph,
+    conquest_SecondClaim,
+    conquest_Cta,
+  }
+}) => {
   return (
     <Wrapper>
       <DecorativeHeading type="h2">{conquest_Heading}</DecorativeHeading>

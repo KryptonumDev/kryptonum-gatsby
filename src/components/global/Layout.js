@@ -22,7 +22,7 @@ const Layout = ({ data: { page }, children }) => {
           }
         }
       }
-      team: allSanityTeam {
+      team: allSanityTeamMember {
         nodes {
           name
           slug {

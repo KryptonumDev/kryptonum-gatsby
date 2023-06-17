@@ -5,8 +5,13 @@ import DecorativeHeading from "../../atoms/DecorativeHeading";
 import { Clamp } from '../../../utils/functions';
 import CaseStudies from "../CaseStudies";
 
-const Hero = ({data}) => {
-  const {hero_Heading, hero_Subheading, hero_Cta} = data;
+const Hero = ({
+  data: {
+    hero_Heading,
+    hero_Subheading,
+    hero_Cta,
+  }
+}) => {
   return (
     <Wrapper>
       <header>

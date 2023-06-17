@@ -59,7 +59,7 @@ const Wrapper = styled.section`
       padding: ${Clamp(20, 32, 32, 'px')};
       border: 1px solid var(--neutral-800);
       counter-increment: counter;
-      min-width: 20%;
+      min-width: 25%;
       &::before {
         content: "/" counter(counter);
         font-size: ${Clamp(16, 22, 22)};

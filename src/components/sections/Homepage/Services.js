@@ -3,8 +3,12 @@ import styled from "styled-components";
 import DecorativeHeading from "../../atoms/DecorativeHeading";
 import { Clamp } from "../../../utils/functions";
 
-const Services = ({data}) => {
-  const {services_Heading, services_List} = data;
+const Services = ({
+  data: {
+    services_Heading,
+    services_List,
+  }
+}) => {
   return (
     <Wrapper>
       <DecorativeHeading type="h2">{services_Heading}</DecorativeHeading>

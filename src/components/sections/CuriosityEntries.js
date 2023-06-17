@@ -6,7 +6,7 @@ import DecorativeHeading from "../atoms/DecorativeHeading";
 import { Clamp, removeMarkdown } from '../../utils/functions'
 import Button from '../atoms/Button';
 
-const CuriosityEntries = ({ data }) => {
+const CuriosityEntries = ({ data, heading }) => {
   let { curiosityEntries } = useStaticQuery(graphql`
     query {
       curiosityEntries: allSanityCuriosityEntries(sort: {_createdAt: DESC}) {
@@ -38,7 +38,7 @@ const CuriosityEntries = ({ data }) => {
 
   return (
     <Wrapper>
-      <DecorativeHeading type="h2">{`Arena **ciekawostek** (${curiosityEntries.nodes.length})`}</DecorativeHeading>
+      <DecorativeHeading type="h2">{heading || `Arena **ciekawostek** (${curiosityEntries.nodes.length})`}</DecorativeHeading>
       <div className="wrapper">
         {curiosityEntries.nodes.map((entry, i) => (
           <div className="entry" key={i}>

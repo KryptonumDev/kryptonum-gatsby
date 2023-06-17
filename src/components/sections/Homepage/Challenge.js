@@ -5,8 +5,15 @@ import Button from "../../atoms/Button";
 import DecorativeHeading from "../../atoms/DecorativeHeading";
 import { Clamp } from '../../../utils/functions';
 
-const Challange = ({data}) => {
-  const {challenge_Heading, challenge_Claim, challenge_Paragraph, challenge_SecondClaim, challenge_Cta} = data;
+const Challange = ({
+  data: {
+    challenge_Heading,
+    challenge_Claim,
+    challenge_Paragraph,
+    challenge_SecondClaim,
+    challenge_Cta,
+  }
+}) => {
   return (
     <Wrapper>
       <DecorativeHeading type="h2">{challenge_Heading}</DecorativeHeading>
