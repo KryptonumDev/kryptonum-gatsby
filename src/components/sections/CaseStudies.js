@@ -6,7 +6,7 @@ import Button from "../atoms/Button";
 import DecorativeHeading from "../atoms/DecorativeHeading";
 import { Clamp } from "../../utils/functions";
 
-const CaseStudies = ({heading}) => {
+const CaseStudies = ({heading, eagerLoading}) => {
   const { caseStudies } = useStaticQuery(graphql`
     query {
       caseStudies: allSanityCaseStudies(limit: 3) {
@@ -33,7 +33,7 @@ const CaseStudies = ({heading}) => {
       <div className="wrapper">
         {caseStudies.nodes.map((caseStudy, i) => (
           <div className="caseStudy" key={i}>
-            <GatsbyImage key={i} image={caseStudy.thumbnail.asset.gatsbyImageData} alt={caseStudy.thumbnail.asset.altText || ''} className="img" />
+            <GatsbyImage key={i} image={caseStudy.thumbnail.asset.gatsbyImageData} alt={caseStudy.thumbnail.asset.altText || ''} className="img" loading={(eagerLoading && i == 0) ? 'eager' : 'lazy'} />
             <Button to={`projekty/${caseStudy.slug.current}`} aria-label={`Sprawdź projekt ${caseStudy.name}`}>Sprawdź projekt</Button>
           </div>
         ))}

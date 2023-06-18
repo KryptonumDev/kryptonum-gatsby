@@ -111,7 +111,7 @@ const GlobalStyle = createGlobalStyle`
     letter-spacing: -0.005em;
     line-height: 1.3;
     font-size: inherit;
-    strong {
+    strong, &.strong {
       font-weight: 400;
       color: var(--primary-400);
       background-image: var(--gradient);
@@ -127,7 +127,7 @@ const GlobalStyle = createGlobalStyle`
     font-size: ${Clamp(28, 50, 48)};
   }
   p strong,
-  .strong {
+  p.strong {
     font-weight: 400;
     &::before,
     &::after {

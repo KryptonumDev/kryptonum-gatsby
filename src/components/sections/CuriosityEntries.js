@@ -42,7 +42,7 @@ const CuriosityEntries = ({ data, heading }) => {
       <div className="wrapper">
         {curiosityEntries.nodes.map((entry, i) => (
           <div className="entry" key={i}>
-            <Link to={`/pl/akademia/${entry.slug.current}`} aria-label={removeMarkdown(entry.title)} className="link"></Link>
+            <Link to={`/pl/akademia/${entry.slug.current}`} aria-label={removeMarkdown(entry.title)} className="link" tabIndex='-1'></Link>
             <GatsbyImage
               image={entry.img.asset.gatsbyImageData}
               alt={entry.img.asset.altText || ''}

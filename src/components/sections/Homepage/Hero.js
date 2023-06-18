@@ -27,7 +27,7 @@ const Hero = ({
           <Button to={hero_Cta.href} theme={hero_Cta.theme}>{hero_Cta.text}</Button>
         </div>
       </header>
-      <CaseStudies />
+      <CaseStudies eagerLoading={1} />
     </Wrapper>
   );
 }

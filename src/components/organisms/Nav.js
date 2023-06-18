@@ -6,7 +6,6 @@ import { ChevronDown, ChevronLeft, KryptonumLogo } from '../atoms/Icons';
 import { Clamp, removeMarkdown, scrollLock } from "../../utils/functions";
 import { useEffect } from "react";
 import Button from "../atoms/Button";
-import ReactMarkdown from "react-markdown";
 
 const Nav = ({
   data: {
@@ -150,7 +149,7 @@ const Nav = ({
               </ul>
             </li>
             <li>
-              <Link to="/zespol" onClick={(e) => handleNavLinks(e, 'team')}>
+              <Link to="/pl/zespol" onClick={(e) => handleNavLinks(e, 'team')}>
                 <span>Zespół</span>
                 <ChevronDown />
               </Link>
@@ -160,10 +159,10 @@ const Nav = ({
                     <ChevronLeft />
                     <span>Wróć</span>
                   </button>
-                  <h3 className="mobileElement"><Link to="/zespol" onClick={e => handleHideNav(e)}>Zobacz nasz zespół</Link></h3>
+                  <h3 className="mobileElement"><Link to="/pl/zespol" onClick={e => handleHideNav(e)}>Zobacz nasz zespół</Link></h3>
                   <div className="wrapper">
                     {team.nodes.map((person, i) => (
-                      <Link to={`/zespol/${person.slug.current}`} key={i} className="item" onClick={e => handleHideNav(e)}>
+                      <Link to={`/pl/zespol/${person.slug.current}`} key={i} className="item" onClick={e => handleHideNav(e)}>
                         <GatsbyImage image={person.img.asset.gatsbyImageData} alt={person.img.asset.altText || ''} className="img person-border" />
                         <p>{person.name}</p>
                       </Link>

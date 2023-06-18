@@ -16,7 +16,6 @@ const AcademyCategoryPage = ({
     curiosityEntries,
   }
 }) => {
-  // Why `curiosityEntries` is null?
   console.log(curiosityEntries);
   return (
     <>
@@ -34,15 +33,6 @@ const AcademyCategoryPage = ({
 export const query = graphql`
   query($id: String!) {
     page: sanityAcademy {
-      # Hero
-      hero_Heading
-      hero_Paragraph
-      hero_Img {
-        asset {
-          altText
-          gatsbyImageData(placeholder: BLURRED)
-        }
-      }
       # Call To Action
       ctaSection {
         heading
@@ -59,7 +49,7 @@ export const query = graphql`
         }
       }
     }
-    curiosityEntries: allSanityCuriosityEntries(filter: {categories: {elemMatch: {slug: {current: {eq: $id}}}}}) {
+    curiosityEntries: allSanityCuriosityEntries(filter: {categories: {elemMatch: {id: {eq: $id}}}}) {
       nodes {
         title
         subtitle
@@ -89,7 +79,7 @@ export const query = graphql`
         }
       }
     }
-    curiosityCategory: sanityCuriosityCategories(slug: {current: {eq: $id}}) {
+    curiosityCategory: sanityCuriosityCategories(id: {eq: $id}) {
       name
       slug {
         current

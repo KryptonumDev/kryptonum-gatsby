@@ -48,10 +48,10 @@ const Footer = ({data: {caseStudies, team, blogEntries, footer}}) => {
           ))}
         </li>
         <li className="team">
-          <h3><Link to="/zespol">Zespół</Link></h3>
+          <h3><Link to="/pl/zespol">Zespół</Link></h3>
           {team.nodes.map((person, i) => (
             <Link
-              to={`/zespol/${person.slug.current}`}
+              to={`/pl/zespol/${person.slug.current}`}
               className="person"
               key={i}
               style={{display: !showMore && i+1 > maxPeople ? 'none' : ''}}
@@ -75,7 +75,7 @@ const Footer = ({data: {caseStudies, team, blogEntries, footer}}) => {
               <Link to={`/blog/${entry.slug.current}`} className="link" aria-label={entry.title}></Link>
               <GatsbyImage image={entry.cover.asset.gatsbyImageData} alt={entry.cover.asset.altText || ''} className="thumbnail" />
               <div className="copy">
-                <Link to={`/zespol/${entry.author[0].slug.current}`} className="author">
+                <Link to={`/pl/zespol/${entry.author[0].slug.current}`} className="author">
                   <GatsbyImage image={entry.author[0].img.asset.gatsbyImageData} alt={entry.author[0].img.asset.altText || ''} className="person-border" />
                   <span>{entry.author[0].name}</span>
                 </Link>
