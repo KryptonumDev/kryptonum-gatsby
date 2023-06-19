@@ -3,13 +3,17 @@ import styled from "styled-components";
 import { Clamp } from "../../../utils/functions";
 import DecorativeHeading from "../../atoms/DecorativeHeading";
 
+const randomWidth = () => {
+  return Math.floor(Math.random() * 71) + 30;
+}
+
 const Inspirations = ({ data }) => {
   return (
     <Wrapper>
       <DecorativeHeading type="h2">Chmura **inspiracji**:</DecorativeHeading>
       <ul className="wrapper">
         {data.map((inspiration, i) => (
-          <Item key={i} data-width={Math.floor(Math.random() * 71) + 30}>{inspiration}</Item>
+          <Item key={i} data-width={randomWidth()}>{inspiration}</Item>
         ))}
       </ul>
     </Wrapper>
