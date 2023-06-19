@@ -368,7 +368,7 @@ const Wrapper = styled.nav`
         @media (pointer: fine) and (min-width: 1150px){
           &:hover,
           &:focus-within {
-            > a {
+            > a, span {
               &::before {
                 transform: scaleY(1);
               }
