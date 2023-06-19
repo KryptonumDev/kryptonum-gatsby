@@ -44,7 +44,7 @@ const Footer = ({data: {caseStudies, team, blogEntries, footer}}) => {
         <li>
           <h3><Link to="/pl/portfolio">Case study</Link></h3>
           {caseStudies.nodes.map((caseStudy, i) => (
-            <Link to={`/projekty/${caseStudy.slug.current}`} key={i}>{caseStudy.name}</Link>
+            <Link to={`/pl/portfolio/${caseStudy.slug.current}`} key={i}>{caseStudy.name}</Link>
           ))}
         </li>
         <li className="team">

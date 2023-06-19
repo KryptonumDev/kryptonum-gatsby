@@ -20,7 +20,7 @@ const Process = ({
   return (
     <Wrapper>
       <header>
-        <DecorativeHeading>{process_Heading}</DecorativeHeading>
+        <DecorativeHeading type="h2">{process_Heading}</DecorativeHeading>
       </header>
       <div className="wrapper">
         {process_List.map((item, i) => (

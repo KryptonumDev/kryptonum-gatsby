@@ -113,7 +113,7 @@ const Nav = ({
                     <ChevronLeft />
                     <span>Wróć</span>
                   </button>
-                  <h3 className="mobileElement"><Link to="/pl/projekty" onClick={(e) => handleHideNav(e)}>Wszystkie usługi</Link></h3>
+                  <h3 className="mobileElement"><Link to="/pl/portfolio" onClick={(e) => handleHideNav(e)}>Wszystkie usługi</Link></h3>
                   <li>
                     <h3><Link to="/pl/web-development" onClick={(e) => handleHideNav(e)}>Web Development</Link></h3>
                     <ul className="nav-list3">
@@ -140,7 +140,7 @@ const Nav = ({
               </ul>
             </li>
             <li>
-              <Link to="/pl/projekty" onClick={(e) => handleNavLinks(e, 'caseStudies')}>
+              <Link to="/pl/portfolio" onClick={(e) => handleNavLinks(e, 'caseStudies')}>
                 <span>Projekty</span>
                 <ChevronDown />
               </Link>
@@ -150,9 +150,9 @@ const Nav = ({
                     <ChevronLeft />
                     <span>Wróć</span>
                   </button>
-                  <h3 className="mobileElement"><Link to="/pl/projekty" onClick={(e) => handleHideNav(e)}>Wszystkie projekty</Link></h3>
+                  <h3 className="mobileElement"><Link to="/pl/portfolio" onClick={(e) => handleHideNav(e)}>Wszystkie projekty</Link></h3>
                   {caseStudies.nodes.map((caseStudy, i) => (
-                    <Link to={`/projekty/${caseStudy.slug.current}`} key={i} className="item" onClick={(e) => handleHideNav(e)}>
+                    <Link to={`/pl/portfolio/${caseStudy.slug.current}`} key={i} className="item" onClick={(e) => handleHideNav(e)}>
                       <GatsbyImage image={caseStudy.thumbnail.asset.gatsbyImageData} alt={caseStudy.thumbnail.asset.altText || ''} />
                       <p>{caseStudy.name}</p>
                     </Link>
