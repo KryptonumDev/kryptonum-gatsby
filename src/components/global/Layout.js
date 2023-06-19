@@ -133,7 +133,6 @@ const Layout = ({ data: { page }, children }) => {
       });
     });
   }, [locationPath, orphansRegex]);
-  
   return (
     <>
       <GlobalStyle />

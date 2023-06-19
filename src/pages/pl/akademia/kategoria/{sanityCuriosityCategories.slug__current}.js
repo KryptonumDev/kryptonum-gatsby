@@ -16,7 +16,6 @@ const AcademyCategoryPage = ({
     curiosityEntries,
   }
 }) => {
-  console.log(curiosityEntries);
   return (
     <>
       <Categories data={{
