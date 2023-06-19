@@ -2,7 +2,7 @@ import React, { useRef, useEffect, useState } from "react";
 import { navigate } from "gatsby"
 import ReactMarkdown from "react-markdown";
 import styled from "styled-components";
-import { Clamp } from "../../utils/functions";
+import { Clamp, scrollLock } from "../../utils/functions";
 import DecorativeHeading from "../atoms/DecorativeHeading";
 import { ArrowDown, ScrollDown } from "../atoms/Icons";
 
@@ -16,6 +16,7 @@ const ScrollToNext = ({ data: { heading, paragraph, title, link }}) => {
   const [scaleY, setScaleY] = useState(0);
   const locationPath = typeof window !== 'undefined' ? window.location.pathname : '';
   useEffect(() => {
+    scrollLock(false);
     const handleScroll = () => {
       const scrollPosition = window.scrollY;
       const windowHeight = window.innerHeight;
@@ -26,6 +27,7 @@ const ScrollToNext = ({ data: { heading, paragraph, title, link }}) => {
       progress = easeOut(progress);
       setScaleY(progress);
       if(remainingScroll <= 0){
+        scrollLock(true);
         window.scrollTo({top: scrollPosition - scrollHeight});
         navigate(link.href, { replace: false });
       }
