@@ -35,14 +35,14 @@ const Footer = ({data: {caseStudies, team, blogEntries, footer}}) => {
           </div>
         </li>
         <li>
-          <h3><Link to="/uslugi">Usługi</Link></h3>
-          <Link to="/web-development">Web Development</Link>
-          <Link to="/warsztaty-discovery">Warsztat strategiczny</Link>
-          <Link to="/opieka-agencyjna-www-serwis-utrzymanie-zabezpieczenie">Opieka agencyjna</Link>
-          <Link to="/grafika-design">Grafika & design</Link>
+          <h3>Usługi</h3>
+          <Link to="/pl/web-development">Web Development</Link>
+          <Link to="/pl/warsztaty-discovery">Warsztat strategiczny</Link>
+          <Link to="/pl/opieka-agencyjna-www-serwis-utrzymanie-zabezpieczenie">Opieka agencyjna</Link>
+          <Link to="/pl/grafika-design">Grafika & design</Link>
         </li>
         <li>
-          <h3><Link to="/case-study">Case study</Link></h3>
+          <h3><Link to="/pl/portfolio">Case study</Link></h3>
           {caseStudies.nodes.map((caseStudy, i) => (
             <Link to={`/projekty/${caseStudy.slug.current}`} key={i}>{caseStudy.name}</Link>
           ))}
@@ -69,7 +69,7 @@ const Footer = ({data: {caseStudies, team, blogEntries, footer}}) => {
           </button>
         </li>
         <li className="blog">
-          <h3><Link to="/blog">Blog</Link></h3>
+          <h3><Link to="/pl/blog">Blog</Link></h3>
           {blogEntries.nodes.map((entry, i) => (
             <div className="entry" key={i}>
               <Link to={`/blog/${entry.slug.current}`} className="link" aria-label={entry.title}></Link>

@@ -73,7 +73,6 @@ const Nav = ({
   }
 
   const handleHideNav = (e) => {
-    console.log(e.target);
     navRef.current.style.setProperty("pointer-events", "none");
     if(e.target.ariaCurrent) {
       e.target.blur();
@@ -104,10 +103,10 @@ const Nav = ({
         <div className="nav-list">
           <ul>
             <li>
-              <Link to="/pl/uslugi" onClick={(e) => handleNavLinks(e, 'services')}>
+              <span onClick={(e) => handleNavLinks(e, 'services')}>
                 <span>Usługi</span>
                 <ChevronDown />
-              </Link>
+              </span>
               <ul className="nav-list2 services">
                 <div className="max-width">
                   <button className="mobileElement backBtn" onClick={(e) => handleNavLinks(e)}>
@@ -345,7 +344,7 @@ const Wrapper = styled.nav`
       display: flex;
       & > li {
         margin: 0 24px;
-        > a {
+        > a, span {
           padding: 13px 0;
           &::before {
             position: relative;

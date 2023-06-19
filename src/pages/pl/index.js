@@ -1,15 +1,15 @@
 import * as React from "react"
 import { graphql } from "gatsby"
-import Hero from "../components/sections/Homepage/Hero";
-import Conquest from "../components/sections/Homepage/Conquest";
-import Challange from "../components/sections/Homepage/Challenge";
-import Services from "../components/sections/Homepage/Services";
-import Creativity from "../components/sections/Homepage/Creativity";
-import Roadmap from "../components/sections/Roadmap";
-import Team from "../components/sections/Team";
-import Testimonials from "../components/sections/Testimonials";
-import { SEO } from "../components/global/Seo";
-import BlogEntries from "../components/sections/BlogEntries";
+import Hero from "../../components/sections/Homepage/Hero";
+import Conquest from "../../components/sections/Homepage/Conquest";
+import Challange from "../../components/sections/Homepage/Challenge";
+import Services from "../../components/sections/Homepage/Services";
+import Creativity from "../../components/sections/Homepage/Creativity";
+import Roadmap from "../../components/sections/Roadmap";
+import Team from "../../components/sections/Team";
+import Testimonials from "../../components/sections/Testimonials";
+import { SEO } from "../../components/global/Seo";
+import BlogEntries from "../../components/sections/BlogEntries";
 
 const IndexPage = ({
   data: { page : {

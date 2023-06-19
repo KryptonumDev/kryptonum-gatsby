@@ -1,13 +1,13 @@
 import * as React from "react"
 import { graphql } from "gatsby";
-import { SEO } from "../components/global/Seo";
-import HeroServices from "../components/sections/HeroServices";
-import Process from "../components/sections/WebDevelopment_Pwa/Process";
-import CtaSection from "../components/sections/CtaSection";
-import CaseStudies from "../components/sections/CaseStudies";
-import BlogEntries from '../components/sections/BlogEntries';
-import QuickForm from "../components/sections/QuickForm";
-import Customer from "../components/sections/WebDevelopment_Pwa/Customer";
+import { SEO } from "../../components/global/Seo";
+import HeroServices from "../../components/sections/HeroServices";
+import QuickForm from "../../components/sections/QuickForm";
+import CaseStudies from "../../components/sections/CaseStudies";
+import BlogEntries from "../../components/sections/BlogEntries";
+import CtaSection from "../../components/sections/CtaSection";
+import Process from "../../components/sections/WebDevelopment_Ecom/Process";
+import Develop from "../../components/sections/WebDevelopment_Ecom/Develop";
 
 const WebDevelopmentPWAsPage = ({ data }) => {
   const { page: {
@@ -19,20 +19,15 @@ const WebDevelopmentPWAsPage = ({ data }) => {
     hero_CtaHeading,
     hero_Cta,
     process_Heading,
-    process_Paragraph,
-    process_SecondParagraph,
+    process_Claim,
     process_List,
     quickForm,
-    customer_Heading,
-    customer_WhatHeading,
-    customer_WhatList,
-    customer_WhatParagraph,
-    customer_WhatSecondParagraph,
-    customer_WhoHeading,
-    customer_WhoList,
-    customer_WhoAnnotation,
-    ctaSection,
     caseStudies_Heading,
+    develop_Paragraph1,
+    develop_Paragraph2,
+    develop_Paragraph3,
+    develop_Paragraph4,
+    ctaSection,
     blogEntries_Heading,
   } } = data;
   return (
@@ -48,23 +43,18 @@ const WebDevelopmentPWAsPage = ({ data }) => {
       }} />
       <Process data={{
         process_Heading,
-        process_Paragraph,
-        process_SecondParagraph,
-        process_List
+        process_Claim,
+        process_List,
       }} />
       <QuickForm data={quickForm} />
-      <Customer data={{
-        customer_Heading,
-        customer_WhatHeading,
-        customer_WhatList,
-        customer_WhatParagraph,
-        customer_WhatSecondParagraph,
-        customer_WhoHeading,
-        customer_WhoList,
-        customer_WhoAnnotation,
+      <CaseStudies heading={caseStudies_Heading} />
+      <Develop data={{
+        develop_Paragraph1,
+        develop_Paragraph2,
+        develop_Paragraph3,
+        develop_Paragraph4,
       }} />
       <CtaSection data={ctaSection} />
-      <CaseStudies heading={caseStudies_Heading} />
       <BlogEntries heading={blogEntries_Heading} />
     </>
   );
@@ -72,7 +62,7 @@ const WebDevelopmentPWAsPage = ({ data }) => {
 
 export const query = graphql`
   query {
-    page: sanityWebDevelopmentPwa {
+    page: sanityWebDevelopmentEcom {
       # Hero
       hero_Heading
       hero_Annotation
@@ -92,18 +82,17 @@ export const query = graphql`
       }
       # Process
       process_Heading
-      process_Paragraph
-      process_SecondParagraph
+      process_Claim
       process_List {
         heading
         subheading
         paragraph
         secondParagraph
-        img {
-          asset {
-            altText
-            gatsbyImageData
-          }
+        secondHeading
+        cta {
+          theme
+          text
+          href
         }
       }
       # Quick Form
@@ -112,19 +101,13 @@ export const query = graphql`
         subheading
         cta
       }
-      # Customer
-      customer_Heading
-      customer_WhatHeading
-      customer_WhatList {
-        title
-      }
-      customer_WhatParagraph
-      customer_WhatSecondParagraph
-      customer_WhoHeading
-      customer_WhoList {
-        title
-      }
-      customer_WhoAnnotation
+      # Case Studies
+      caseStudies_Heading
+      # Develop
+      develop_Paragraph1
+      develop_Paragraph2
+      develop_Paragraph3
+      develop_Paragraph4
       # Call To Action
       ctaSection {
         heading
@@ -140,8 +123,6 @@ export const query = graphql`
           }
         }
       }
-      # Case Studies
-      caseStudies_Heading
       # Blog Entries
       blogEntries_Heading
       # Scroll To Next
@@ -162,7 +143,7 @@ export default WebDevelopmentPWAsPage;
 
 export const Head = () => (
   <SEO
-    title="Web development, e-commerce, usługi internetowe | Oferta Kryptonum"
-    description="Usługi internetowe szyte na miarę: od strategii web i identyfikacji wizualnej, przez chwytliwe treści www, do zaawansowanych stron i sklepów online."
+    title="Profesjonalne sklepy internetowe na zamówienie | Kryptonum"
+    description="W Kryptonum tworzymy profesjonalne sklepy internetowe z kluczowymi funkcjonalnościami: szybkie płatności, dostawy, opinie. Indywidualny e-commerce!"
   />
 )
