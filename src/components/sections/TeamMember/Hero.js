@@ -1,8 +1,8 @@
 import React from "react";
 import { GatsbyImage } from "gatsby-plugin-image";
 import styled from "styled-components";
-import DecorativeHeading from '../../../atoms/DecorativeHeading';
-import { Clamp } from "../../../../utils/functions";
+import DecorativeHeading from '../../atoms/DecorativeHeading';
+import { Clamp } from "../../../utils/functions";
 
 const Hero = ({name, cryptonym, img}) => {
   return (
@@ -22,10 +22,10 @@ const Hero = ({name, cryptonym, img}) => {
 
 const Wrapper = styled.section`
   display: grid;
-  grid-template-columns: auto auto;
+  grid-template-columns: 1.5fr 1fr;
   align-items: end;
   justify-content: center;
-  gap: 144px;
+  gap: 32px;
   header {
     h1 {
       margin-bottom: 8px;
@@ -41,6 +41,12 @@ const Wrapper = styled.section`
   }
   .img {
     max-width: 356px;
+  }
+  @media (max-width: 549px){
+    grid-template-columns: 1fr;
+    .img {
+      order: -1;
+    }
   }
 `
 

@@ -91,7 +91,7 @@ const Nav = ({
   return (
     <Wrapper className="nav" aria-expanded={navOpened} ref={navRef}>
       <div className="max-width">
-        <Link to="/" aria-label="Strona główna" onClick={e => handleHideNav(e)}>
+        <Link to="/" aria-label="Strona główna" onClick={() => handleHideNav()}>
           <KryptonumLogo />
         </Link>
         <div className="nav-list">
@@ -107,23 +107,23 @@ const Nav = ({
                     <ChevronLeft />
                     <span>Wróć</span>
                   </button>
-                  <h3 className="mobileElement"><Link to="/projekty" onClick={e => handleHideNav(e)}>Wszystkie usługi</Link></h3>
-                  <li><Link to="/web-development" onClick={e => handleHideNav(e)}><h3>Web Development</h3></Link>
+                  <h3 className="mobileElement"><Link to="/projekty" onClick={() => handleHideNav()}>Wszystkie usługi</Link></h3>
+                  <li><Link to="/web-development" onClick={() => handleHideNav()}><h3>Web Development</h3></Link>
                     <ul className="nav-list3">
-                      <li><Link to="/web-development-strony-internetowe" onClick={e => handleHideNav(e)}>Strony internetowe</Link></li>
-                      <li><Link to="/web-development-aplikacje-internetowe" onClick={e => handleHideNav(e)}>Aplikacje internetowe</Link></li>
-                      <li><Link to="/web-development-sklepy-internetowe" onClick={e => handleHideNav(e)}>Sklepy internetowe</Link></li>
+                      <li><Link to="/web-development-strony-internetowe" onClick={() => handleHideNav()}>Strony internetowe</Link></li>
+                      <li><Link to="/web-development-aplikacje-internetowe" onClick={() => handleHideNav()}>Aplikacje internetowe</Link></li>
+                      <li><Link to="/web-development-sklepy-internetowe" onClick={() => handleHideNav()}>Sklepy internetowe</Link></li>
                     </ul>
                   </li>
-                  <li><Link to="/grafika-design" onClick={e => handleHideNav(e)}><h3>Grafika & design</h3></Link>
+                  <li><Link to="/grafika-design" onClick={() => handleHideNav()}><h3>Grafika & design</h3></Link>
                     <ul className="nav-list3">
-                      <li><Link to="/grafika-design-projektowanie-logo" onClick={e => handleHideNav(e)}>Logo</Link></li>
-                      <li><Link to="/grafika-design-audyt-ux-ui" onClick={e => handleHideNav(e)}>Audyty</Link></li>
-                      <li><Link to="/grafika-design-identyfikacja-wizualna-marki" onClick={e => handleHideNav(e)}>Identyfikacja wizualna i branding</Link></li>
+                      <li><Link to="/grafika-design-projektowanie-logo" onClick={() => handleHideNav()}>Logo</Link></li>
+                      <li><Link to="/grafika-design-audyt-ux-ui" onClick={() => handleHideNav()}>Audyty</Link></li>
+                      <li><Link to="/grafika-design-identyfikacja-wizualna-marki" onClick={() => handleHideNav()}>Identyfikacja wizualna i branding</Link></li>
                     </ul>
                   </li>
-                  <li><Link to="/opieka-agencyjna-www-serwis-utrzymanie-zabezpieczenie" onClick={e => handleHideNav(e)}><h3>Opieka agencyjna</h3></Link></li>
-                  <li><Link to="/warsztaty-discovery" onClick={e => handleHideNav(e)}><h3>Warsztat strategiczny</h3></Link></li>
+                  <li><Link to="/opieka-agencyjna-www-serwis-utrzymanie-zabezpieczenie" onClick={() => handleHideNav()}><h3>Opieka agencyjna</h3></Link></li>
+                  <li><Link to="/warsztaty-discovery" onClick={() => handleHideNav()}><h3>Warsztat strategiczny</h3></Link></li>
                 </div>
               </ul>
             </li>
@@ -138,9 +138,9 @@ const Nav = ({
                     <ChevronLeft />
                     <span>Wróć</span>
                   </button>
-                  <h3 className="mobileElement"><Link to="/projekty" onClick={e => handleHideNav(e)}>Wszystkie projekty</Link></h3>
+                  <h3 className="mobileElement"><Link to="/projekty" onClick={() => handleHideNav()}>Wszystkie projekty</Link></h3>
                   {caseStudies.nodes.map((caseStudy, i) => (
-                    <Link to={`/projekty/${caseStudy.slug.current}`} key={i} className="item" onClick={e => handleHideNav(e)}>
+                    <Link to={`/projekty/${caseStudy.slug.current}`} key={i} className="item" onClick={() => handleHideNav()}>
                       <GatsbyImage image={caseStudy.thumbnail.asset.gatsbyImageData} alt={caseStudy.thumbnail.asset.altText || ''} />
                       <p>{caseStudy.name}</p>
                     </Link>
@@ -159,10 +159,10 @@ const Nav = ({
                     <ChevronLeft />
                     <span>Wróć</span>
                   </button>
-                  <h3 className="mobileElement"><Link to="/pl/zespol" onClick={e => handleHideNav(e)}>Zobacz nasz zespół</Link></h3>
+                  <h3 className="mobileElement"><Link to="/pl/zespol" onClick={() => handleHideNav()}>Zobacz nasz zespół</Link></h3>
                   <div className="wrapper">
                     {team.nodes.map((person, i) => (
-                      <Link to={`/pl/zespol/${person.slug.current}`} key={i} className="item" onClick={e => handleHideNav(e)}>
+                      <Link to={`/pl/zespol/${person.slug.current}`} key={i} className="item" onClick={() => handleHideNav()}>
                         <GatsbyImage image={person.img.asset.gatsbyImageData} alt={person.img.asset.altText || ''} className="img person-border" />
                         <p>{person.name}</p>
                       </Link>
@@ -186,11 +186,11 @@ const Nav = ({
                     <h3><Link to="/blog">Zobacz bloga</Link></h3>
                     {blogEntries.nodes.map((entry, i) => (
                       <div className="entry" key={i}>
-                        <Link to={`/blog/${entry.slug.current}`} className="link" aria-label={removeMarkdown(entry.title)} onClick={e => handleHideNav(e)}></Link>
+                        <Link to={`/blog/${entry.slug.current}`} className="link" aria-label={removeMarkdown(entry.title)} onClick={() => handleHideNav()}></Link>
                         <GatsbyImage image={entry.cover.asset.gatsbyImageData} alt={entry.cover.asset.altText || ''} className="thumbnail" />
                         <div className="copy">
                           <div className="copy-top">
-                            <Link to={`/blog/autor/${entry.author[0].slug.current}`} onClick={e => handleHideNav(e)}>
+                            <Link to={`/blog/autor/${entry.author[0].slug.current}`} onClick={() => handleHideNav()}>
                               <GatsbyImage image={entry.author[0].img.asset.gatsbyImageData} alt={entry.author[0].img.asset.altText || ''} className="person-border" />
                               <span>{entry.author[0].name}</span>
                             </Link>
@@ -205,7 +205,7 @@ const Nav = ({
                     <h3>Kategorie:</h3>
                     <div className="wrapper">
                       {blogCategories.nodes.map((category, i) => (
-                        <Link to={`/blog/kategoria/${category.slug.current}`} key={i} onClick={e => handleHideNav(e)}>
+                        <Link to={`/blog/kategoria/${category.slug.current}`} key={i} onClick={() => handleHideNav()}>
                           {category.name}
                         </Link>
                       ))}
@@ -215,7 +215,7 @@ const Nav = ({
                     <h3>Twórcy:</h3>
                     <div className="wrapper">
                       {team.nodes.map((person, i) => (
-                        <Link to={`/blog/autor/${person.slug.current}`} key={i} onClick={e => handleHideNav(e)}>
+                        <Link to={`/blog/autor/${person.slug.current}`} key={i} onClick={() => handleHideNav()}>
                           <GatsbyImage image={person.img.asset.gatsbyImageData} alt={person.img.asset.altText || ''} className="person-border" />
                           <p>{person.name}</p>
                         </Link>
@@ -236,11 +236,11 @@ const Nav = ({
                     <ChevronLeft />
                     <span>Wróć</span>
                   </button>
-                  <h3 className="mobileElement"><Link to="/akademia" onClick={e => handleHideNav(e)}>Akademia</Link></h3>
+                  <h3 className="mobileElement"><Link to="/akademia" onClick={() => handleHideNav()}>Akademia</Link></h3>
                   <div className="curiosities">
-                    <h3><Link to="/ciekawostki" onClick={e => handleHideNav(e)}>Ciekawostki</Link></h3>
+                    <h3><Link to="/ciekawostki" onClick={() => handleHideNav()}>Ciekawostki</Link></h3>
                     {curiosityEntries.nodes.map((curiosity, i) => (
-                      <Link to={`/akademia/ciekawostki/${curiosity.slug.current}`} key={i} className="link" onClick={e => handleHideNav(e)}>
+                      <Link to={`/akademia/ciekawostki/${curiosity.slug.current}`} key={i} className="link" onClick={() => handleHideNav()}>
                         <GatsbyImage
                           image={curiosity.img.asset.gatsbyImageData}
                           alt={curiosity.img.asset.altText || ''} 
@@ -251,10 +251,10 @@ const Nav = ({
                     ))}
                   </div>
                   <div className="technologies">
-                    <h3><Link to="/technologie" onClick={e => handleHideNav(e)}>Technologie</Link></h3>
+                    <h3><Link to="/technologie" onClick={() => handleHideNav()}>Technologie</Link></h3>
                     <div className="wrapper">
                       {technologies.nodes.map((technology, i) => (
-                        <Link to={`/akademia/technologie/${technology.slug.current}`} key={i} onClick={e => handleHideNav(e)}>
+                        <Link to={`/akademia/technologie/${technology.slug.current}`} key={i} onClick={() => handleHideNav()}>
                           <GatsbyImage image={technology.thumbnail.asset.gatsbyImageData} alt={technology.thumbnail.asset.altText || ''} />
                           <p>{technology.name}</p>
                         </Link>
@@ -265,7 +265,7 @@ const Nav = ({
                     <h3>Twórcy:</h3>
                     <div className="wrapper">
                       {team.nodes.map((person, i) => (
-                        <Link to={`/blog/autor/${person.slug.current}`} key={i} onClick={e => handleHideNav(e)}>
+                        <Link to={`/blog/autor/${person.slug.current}`} key={i} onClick={() => handleHideNav()}>
                           <GatsbyImage image={person.img.asset.gatsbyImageData} alt={person.img.asset.altText || ''} className="person-border" />
                           <p>{person.name}</p>
                         </Link>
@@ -277,7 +277,7 @@ const Nav = ({
             </li>
           </ul>
         </div>
-        <Button to='/kontakt' className='nav-cta' onClick={e => handleHideNav(e)}>Darmowa konsultacja</Button>
+        <Button to='/kontakt' className='nav-cta' onClick={() => handleHideNav()}>Darmowa konsultacja</Button>
         <button
           id="nav-toggle"
           onClick={() => handleNavToggle()}
