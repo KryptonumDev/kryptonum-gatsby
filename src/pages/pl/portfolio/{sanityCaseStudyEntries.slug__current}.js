@@ -5,6 +5,8 @@ import { SEO } from "../../../components/global/Seo";
 import Hero from "../../../components/sections/CaseStudies/Hero";
 import CtaSection from "../../../components/sections/CtaSection";
 import ImageAndStanduout from "../../../components/sections/ImageAndStandout";
+import Challenge from "../../../components/sections/CaseStudies/Challenge";
+import Technologies from "../../../components/sections/CaseStudies/Technologies";
 
 const CaseStudyPage = ({
   data: { caseStudy : {
@@ -18,6 +20,9 @@ const CaseStudyPage = ({
     client_Paragraph,
     client_Standout,
     client_Img,
+    challenge_Heading,
+    challenge_Paragraph,
+    technologies_Paragraph,
     technologies,
     ctaSection,
   }}
@@ -33,12 +38,22 @@ const CaseStudyPage = ({
         categories,
         img,
       }} />
-      <ImageAndStanduout
-        heading={client_Heading}
-        paragraph={client_Paragraph}
-        standout={client_Standout}
-        img={client_Img}
-        reversed={1}
+      {client_Heading && client_Paragraph && client_Standout && client_Img.asset && (
+        <ImageAndStanduout
+          heading={client_Heading}
+          paragraph={client_Paragraph}
+          standout={client_Standout}
+          img={client_Img}
+          reversed={1}
+        />
+      )}
+      <Challenge
+        heading={challenge_Heading}
+        paragraph={challenge_Paragraph}
+      />
+      <Technologies
+        heading={technologies_Paragraph}
+        technologies={technologies}
       />
       <CtaSection data={ctaSection} />
     </>
@@ -61,6 +76,7 @@ export const query = graphql`
           gatsbyImageData(placeholder: BLURRED)
         }
       }
+      # Client
       client_Heading
       client_Paragraph
       client_Standout
@@ -70,12 +86,17 @@ export const query = graphql`
           gatsbyImageData(placeholder: BLURRED)
         }
       }
+      # Challenge
+      challenge_Heading
+      challenge_Paragraph
+      # Technologies
+      technologies_Paragraph
       technologies {
         name
         img {
           asset {
             altText
-            gatsbyImageData(placeholder: BLURRED, width: 700)
+            gatsbyImageData(placeholder: BLURRED, width: 152, height: 152)
           }
         }
       }

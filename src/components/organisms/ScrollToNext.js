@@ -16,7 +16,6 @@ const ScrollToNext = ({ data: { heading, paragraph, title, link }}) => {
   const [scaleY, setScaleY] = useState(0);
   const locationPath = typeof window !== 'undefined' ? window.location.pathname : '';
   useEffect(() => {
-    scrollLock(false);
     const handleScroll = () => {
       const scrollPosition = window.scrollY;
       const windowHeight = window.innerHeight;
@@ -33,6 +32,7 @@ const ScrollToNext = ({ data: { heading, paragraph, title, link }}) => {
       }
     };
     handleScroll();
+    scrollLock(false);
     window.addEventListener("scroll", handleScroll);
     return () => {
       window.removeEventListener("scroll", handleScroll);
