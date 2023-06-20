@@ -5,23 +5,15 @@ import Button from "../../atoms/Button";
 import DecorativeHeading from "../../atoms/DecorativeHeading";
 import { Clamp } from '../../../utils/functions';
 
-const Conquest = ({
-  data: {
-    conquest_Heading,
-    conquest_Claim,
-    conquest_Paragraph,
-    conquest_SecondClaim,
-    conquest_Cta,
-  }
-}) => {
+const FourGrid = ({ heading, claim, paragraph, secondClaim, cta }) => {
   return (
     <Wrapper>
-      <DecorativeHeading type="h2">{conquest_Heading}</DecorativeHeading>
-      <ReactMarkdown>{conquest_Claim}</ReactMarkdown>
-      <p>{conquest_Paragraph}</p>
+      <DecorativeHeading type="h2">{heading}</DecorativeHeading>
+      <ReactMarkdown>{claim}</ReactMarkdown>
+      <p>{paragraph}</p>
       <div>
-        <ReactMarkdown>{conquest_SecondClaim}</ReactMarkdown>
-        <Button theme={conquest_Cta.theme} to={conquest_Cta.href}>{conquest_Cta.text}</Button>
+        <ReactMarkdown>{secondClaim}</ReactMarkdown>
+        <Button theme={cta.theme} to={cta.href}>{cta.text}</Button>
       </div>
     </Wrapper>
   );
@@ -44,10 +36,9 @@ const Wrapper = styled.section`
     font-size: ${Clamp(16, 22, 22)};
     p:last-of-type {
       margin-top: 12px;
-      font-size: ${14/16}em;
     }
     em {
-      color: var(--neutral-600);
+      color: var(--neutral-700);
       font-style: normal;
     }
     .cta {
@@ -76,4 +67,4 @@ const Wrapper = styled.section`
   }
 `
  
-export default Conquest;
+export default FourGrid;

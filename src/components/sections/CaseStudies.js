@@ -41,7 +41,7 @@ const CaseStudies = ({heading, eagerLoading}) => {
               loading={(eagerLoading && i == 0) ? 'eager' : 'lazy'}
             />
             <Button
-              to={`projekty/${caseStudy.slug.current}`}
+              to={`/pl/portfolio/${caseStudy.slug.current}`}
               aria-label={`Sprawdź projekt ${caseStudy.name}`}
             >
               Sprawdź projekt
@@ -49,7 +49,7 @@ const CaseStudies = ({heading, eagerLoading}) => {
           </div>
         ))}
       </div>
-      <Button theme="secondary" to="/projekty">Wszystkie projekty</Button>
+      <Button theme="secondary" to="/pl/portfolio">Wszystkie projekty</Button>
     </Wrapper>
   );
 }

@@ -1,8 +1,6 @@
 import * as React from "react"
 import { graphql } from "gatsby"
 import Hero from "../../components/sections/Homepage/Hero";
-import Conquest from "../../components/sections/Homepage/Conquest";
-import Challange from "../../components/sections/Homepage/Challenge";
 import Services from "../../components/sections/Homepage/Services";
 import Creativity from "../../components/sections/Homepage/Creativity";
 import Roadmap from "../../components/sections/Roadmap";
@@ -10,6 +8,7 @@ import Team from "../../components/sections/Team";
 import Testimonials from "../../components/sections/Testimonials";
 import { SEO } from "../../components/global/Seo";
 import BlogEntries from "../../components/sections/BlogEntries";
+import FourGrid from "../../components/sections/Homepage/FourGrid";
 
 const IndexPage = ({
   data: { page : {
@@ -51,20 +50,20 @@ const IndexPage = ({
         services_Heading,
         services_List,
       }} />
-      <Conquest data={{
-        conquest_Heading,
-        conquest_Claim,
-        conquest_Paragraph,
-        conquest_SecondClaim,
-        conquest_Cta,
-      }} />
-      <Challange data={{
-        challenge_Heading,
-        challenge_Claim,
-        challenge_Paragraph,
-        challenge_SecondClaim,
-        challenge_Cta,
-      }} />
+      <FourGrid
+        heading={conquest_Heading}
+        claim={conquest_Claim}
+        paragraph={conquest_Paragraph}
+        secondClaim={conquest_SecondClaim}
+        cta={conquest_Cta}
+      />
+      <FourGrid
+        heading={challenge_Heading}
+        claim={challenge_Claim}
+        paragraph={challenge_Paragraph}
+        secondClaim={challenge_SecondClaim}
+        cta={challenge_Cta}
+      />
       <Creativity data={{
         creativity_Heading,
         creativity_Paragraph,

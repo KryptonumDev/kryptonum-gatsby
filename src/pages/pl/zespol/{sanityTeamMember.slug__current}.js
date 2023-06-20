@@ -82,7 +82,7 @@ export const query = graphql`
       skills
       tools {
         name
-        thumbnail {
+        img {
           asset {
             altText
             gatsbyImageData(placeholder: BLURRED, width: 152, height: 152)

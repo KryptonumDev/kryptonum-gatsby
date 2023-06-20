@@ -91,7 +91,7 @@ const Layout = ({ data: { page }, children }) => {
           slug {
             current
           }
-          thumbnail {
+          img {
             asset {
               altText
               gatsbyImageData(placeholder: BLURRED, width: 160, height: 160)

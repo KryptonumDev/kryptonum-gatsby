@@ -5,9 +5,9 @@ import styled from "styled-components";
 import { Clamp } from "../../utils/functions";
 import DecorativeHeading from "../atoms/DecorativeHeading";
 
-const ImageAndStandout = ({ heading, paragraph, standout, img }) => {
+const ImageAndStandout = ({ heading, paragraph, standout, img, reversed }) => {
   return (
-    <Wrapper>
+    <Wrapper className={reversed ? 'reversed' : ''}>
       <DecorativeHeading type="h2" className="heading">{heading}</DecorativeHeading>
       <div className="column">
         <ReactMarkdown className="paragraph">{paragraph}</ReactMarkdown>
@@ -62,17 +62,30 @@ const Wrapper = styled.section`
       margin-left: 112px;
     }
   }
+  &.reversed {
+    .column {
+      grid-template-areas: "img paragraph" "img standout";
+    }
+    .img {
+      margin-left: 0;
+      margin-right: 112px;
+    }
+  }
   @media (max-width: 1099px){
     .column {
       grid-template-columns: 1fr;
       gap: 0;
       grid-template-areas: "img" "paragraph" "standout";
       .img {
-        margin-left: 0;
+        margin-inline: 0;
         margin-bottom: 40px;
       }
     }
-
+    &.reversed {
+      .column {
+        grid-template-areas: "img" "paragraph" "standout";
+      }
+    }
   }
 `
 

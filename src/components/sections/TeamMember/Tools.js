@@ -12,8 +12,8 @@ const Tools = ({ data }) => {
         {data.map((tool, i) => (
           <div className="item" key={i}>
             <GatsbyImage
-              image={tool.thumbnail.asset.gatsbyImageData}
-              alt={tool.thumbnail.altText || ''}
+              image={tool.img.asset.gatsbyImageData}
+              alt={tool.img.altText || ''}
               className="img"
             />
             <p>{tool.name}</p>

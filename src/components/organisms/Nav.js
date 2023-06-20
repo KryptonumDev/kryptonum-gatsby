@@ -202,7 +202,11 @@ const Nav = ({
                     {blogEntries.nodes.map((entry, i) => (
                       <div className="entry" key={i}>
                         <Link to={`/blog/${entry.slug.current}`} className="link" aria-label={removeMarkdown(entry.title)} onClick={(e) => handleHideNav(e)}></Link>
-                        <GatsbyImage image={entry.cover.asset.gatsbyImageData} alt={entry.cover.asset.altText || ''} className="thumbnail" />
+                        <GatsbyImage
+                          image={entry.cover.asset.gatsbyImageData}
+                          alt={entry.cover.asset.altText || ''}
+                          className="thumbnail"
+                        />
                         <div className="copy">
                           <div className="copy-top">
                             <Link to={`/blog/autor/${entry.author[0].slug.current}`} onClick={(e) => handleHideNav(e)}>
@@ -270,7 +274,10 @@ const Nav = ({
                     <div className="wrapper">
                       {technologies.nodes.map((technology, i) => (
                         <Link to={`/akademia/technologie/${technology.slug.current}`} key={i} onClick={(e) => handleHideNav(e)}>
-                          <GatsbyImage image={technology.thumbnail.asset.gatsbyImageData} alt={technology.thumbnail.asset.altText || ''} />
+                          <GatsbyImage
+                            image={technology.img.asset.gatsbyImageData}
+                            alt={technology.img.asset.altText || ''}
+                          />
                           <p>{technology.name}</p>
                         </Link>
                       ))}
@@ -347,7 +354,8 @@ const Wrapper = styled.nav`
       display: flex;
       & > li {
         margin: 0 24px;
-        > a, span {
+        > a,
+        > span {
           padding: 13px 0;
           &::before {
             position: relative;
@@ -371,7 +379,8 @@ const Wrapper = styled.nav`
         @media (pointer: fine) and (min-width: 1150px){
           &:hover,
           &:focus-within {
-            > a, span {
+            > a,
+            > span {
               &::before {
                 transform: scaleY(1);
               }
@@ -674,8 +683,10 @@ const Wrapper = styled.nav`
       overflow-x: hidden;
       ul {
         display: block;
-        > li > a, span {
-          font-size: ${32/16}rem;
+        > li > {
+          a, span {
+            font-size: ${32/16}rem;
+          }
         }
       }
       & > ul {

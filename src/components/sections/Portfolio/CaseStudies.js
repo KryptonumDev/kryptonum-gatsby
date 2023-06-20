@@ -5,7 +5,6 @@ import { Clamp, removeMarkdown } from "../../../utils/functions";
 import { Link } from "gatsby";
 
 const CaseStudies = ({ data }) => {
-  console.log(data);
   return (
     <Wrapper>
       {data.map((caseStudy, i) => (

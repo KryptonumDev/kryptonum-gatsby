@@ -148,7 +148,7 @@ export const query = graphql`
       }
       # Case Studies
       caseStudies_Heading
-      # Call To Action
+      # Call To Action Section
       ctaSection {
         heading
         cta {
