@@ -5,7 +5,22 @@ import styled from "styled-components";
 import { Facebook, Instagram, KryptonumLogoSimple, Mail, Tel, Tiktok, Whatsapp, Youtube } from "../atoms/Icons";
 import { Clamp, removeMarkdown } from "../../utils/functions";
 
-const Footer = ({data: {caseStudies, team, blogEntries, footer}}) => {
+const Footer = ({
+  data: {
+    caseStudies,
+    team,
+    blogEntries,
+    global: {
+      footer_OfficeCity,
+      footer_OfficeStreet,
+      footer_ContactName,
+      footer_ContactTel,
+      footer_ContactEmail,
+      footer_LegalLinks,
+      footer_Socials,
+    }
+  }
+}) => {
   const [showMore, setShowMore] = useState(0);
   const maxPeople = 6;
   const peopleToExpand = team.nodes.length - maxPeople;
@@ -19,18 +34,18 @@ const Footer = ({data: {caseStudies, team, blogEntries, footer}}) => {
           </Link>
           <h3><Link to='/kontakt'>Kontakt</Link></h3>
           <div>
-            <h3>{footer.officeCity}</h3>
-            <p>{footer.officeStreet}</p>
+            <h3>{footer_OfficeCity}</h3>
+            <p>{footer_OfficeStreet}</p>
           </div>
           <div>
-            <h3>{footer.contactName}</h3>
-            <a href={`tel:${footer.contactTel.replace(/\s/g, '')}`}>
+            <h3>{footer_ContactName}</h3>
+            <a href={`tel:${footer_ContactTel.replace(/\s/g, '')}`}>
               <Tel />
-              <span>{footer.contactTel}</span>
+              <span>{footer_ContactTel}</span>
             </a>
-            <a href={`mailto:${footer.contactEmail}`}>
+            <a href={`mailto:${footer_ContactEmail}`}>
               <Mail />
-              <span>{footer.contactEmail}</span>
+              <span>{footer_ContactEmail}</span>
             </a>
           </div>
         </li>
@@ -89,7 +104,7 @@ const Footer = ({data: {caseStudies, team, blogEntries, footer}}) => {
       <div className="footer-info">
         <p>&copy; {new Date().getFullYear()} Kryptonum</p>
         <div className="social">
-          {footer.socials.map((social, i) => {
+          {footer_Socials.map((social, i) => {
             let SocialComponent = null;
             const name = social.text.toLowerCase();
             if(name === 'youtube') {
@@ -111,7 +126,7 @@ const Footer = ({data: {caseStudies, team, blogEntries, footer}}) => {
           })}
         </div>
         <div className="legal">
-          {footer.legalLinks.map((link, i) => (
+          {footer_LegalLinks.map((link, i) => (
             <Link to={link.href} key={i}>{link.text}</Link>
           ))}
         </div>

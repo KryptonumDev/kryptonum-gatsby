@@ -153,7 +153,10 @@ const Nav = ({
                   <h3 className="mobileElement"><Link to="/pl/portfolio" onClick={(e) => handleHideNav(e)}>Wszystkie projekty</Link></h3>
                   {caseStudies.nodes.map((caseStudy, i) => (
                     <Link to={`/pl/portfolio/${caseStudy.slug.current}`} key={i} className="item" onClick={(e) => handleHideNav(e)}>
-                      <GatsbyImage image={caseStudy.thumbnail.asset.gatsbyImageData} alt={caseStudy.thumbnail.asset.altText || ''} />
+                      <GatsbyImage
+                        image={caseStudy.img.asset.gatsbyImageData}
+                        alt={caseStudy.img.asset.altText || ''}
+                      />
                       <p>{caseStudy.name}</p>
                     </Link>
                   ))}
@@ -671,7 +674,7 @@ const Wrapper = styled.nav`
       overflow-x: hidden;
       ul {
         display: block;
-        > li > a {
+        > li > a, span {
           font-size: ${32/16}rem;
         }
       }
@@ -682,7 +685,8 @@ const Wrapper = styled.nav`
           @media (max-width: 767px){
             margin: 0 16px;
           }
-          > a svg {
+          > a svg,
+          span svg {
             width: 40px;
             height: 40px;
             path {
