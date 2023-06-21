@@ -38,7 +38,7 @@ const Wrapper = styled.section`
       margin-top: 12px;
     }
     em {
-      color: var(--neutral-700);
+      color: var(--neutral-600);
       font-style: normal;
     }
     .cta {
