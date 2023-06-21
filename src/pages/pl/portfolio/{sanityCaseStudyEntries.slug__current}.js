@@ -9,6 +9,7 @@ import Challenge from "../../../components/sections/CaseStudies/Challenge";
 import Technologies from "../../../components/sections/CaseStudies/Technologies";
 import Testimonial from "../../../components/sections/CaseStudies/Testimonial";
 import Logo from "../../../components/sections/CaseStudies/Logo";
+import VisualIdentification from "../../../components/sections/CaseStudies/VisualIdentification";
 
 const CaseStudyPage = ({
   data: { caseStudy : {
@@ -27,6 +28,9 @@ const CaseStudyPage = ({
     technologies_Paragraph,
     logo_Images,
     logo_Paragraph,
+    visualIdentification_Images,
+    visualIdentification_Paragraph,
+    visualIdentification_Paragraph2,
     testimonial_Heading,
     testimonial,
     testimonial_Paragraph,
@@ -64,8 +68,13 @@ const CaseStudyPage = ({
         technologies={technologies}
       />
       <Logo
-        paragraph={logo_Paragraph}
         showcase={logo_Images}
+        paragraph={logo_Paragraph}
+      />
+      <VisualIdentification
+        showcase={visualIdentification_Images}
+        paragraph={visualIdentification_Paragraph}
+        secondParagraph={visualIdentification_Paragraph2}
       />
       <Testimonial
         heading={testimonial_Heading}

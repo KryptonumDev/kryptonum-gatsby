@@ -1,6 +1,6 @@
-import { GatsbyImage } from "gatsby-plugin-image";
 import React from "react";
 import ReactMarkdown from "react-markdown";
+import { GatsbyImage } from "gatsby-plugin-image";
 import styled from "styled-components";
 import { Clamp } from "../../../utils/functions";
 
@@ -17,7 +17,7 @@ const Logo = ({ paragraph, showcase }) => {
           />
         ))}
       </div>
-      <ReactMarkdown className="paragraph">{paragraph}</ReactMarkdown>
+      <ReactMarkdown>{paragraph}</ReactMarkdown>
     </Wrapper>
   );
 }
@@ -27,7 +27,7 @@ const Wrapper = styled.section`
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
     gap: ${Clamp(16, 16, 32, 'px')};
-    @media (max-width: 499px){
+    @media (max-width: 449px){
       grid-template-columns: 1fr;
     }
   }
