@@ -7,6 +7,7 @@ import CtaSection from "../../../components/sections/CtaSection";
 import ImageAndStanduout from "../../../components/sections/ImageAndStandout";
 import Challenge from "../../../components/sections/CaseStudies/Challenge";
 import Technologies from "../../../components/sections/CaseStudies/Technologies";
+import Testimonial from "../../../components/sections/CaseStudies/Testimonial";
 
 const CaseStudyPage = ({
   data: { caseStudy : {
@@ -23,6 +24,10 @@ const CaseStudyPage = ({
     challenge_Heading,
     challenge_Paragraph,
     technologies_Paragraph,
+    testimonial_Heading,
+    testimonial,
+    testimonial_Paragraph,
+    testimonial_Paragraph2,
     technologies,
     ctaSection,
   }}
@@ -55,6 +60,12 @@ const CaseStudyPage = ({
         heading={technologies_Paragraph}
         technologies={technologies}
       />
+      <Testimonial
+        heading={testimonial_Heading}
+        testimonial={testimonial}
+        paragraph={testimonial_Paragraph}
+        secondParagraph={testimonial_Paragraph2}
+      />
       <CtaSection data={ctaSection} />
     </>
   )
@@ -63,6 +74,7 @@ const CaseStudyPage = ({
 export const query = graphql`
   query($id: String!) {
     caseStudy: sanityCaseStudyEntries(id: {eq: $id}) {
+      name
       heading
       paragraph
       paragraph2
@@ -89,6 +101,68 @@ export const query = graphql`
       # Challenge
       challenge_Heading
       challenge_Paragraph
+      # Process
+      process {
+        img {
+          asset {
+            altText
+            gatsbyImageData(placeholder: BLURRED)
+          }
+        }
+        heading
+        subheading
+        paragraph
+        paragraph2
+        principles_Paragraph
+        principles_List
+        keyElements_Paragraph
+        keyElements_List {
+          img {
+            asset {
+              altText
+              gatsbyImageData(placeholder: BLURRED)
+            }
+          }
+          heading
+          paragraph
+        }
+      }
+      # Logo showcase
+      logo_Images {
+        asset {
+          altText
+          gatsbyImageData(placeholder: BLURRED)
+        }
+      }
+      logo_Paragraph
+      # Visual Identification
+      visualIdentification_Images {
+        asset {
+          altText
+          gatsbyImageData(placeholder: BLURRED)
+        }
+      }
+      visualIdentification_Paragraph
+      visualIdentification_Paragraph2
+      # Testimonial
+      testimonial_Heading
+      testimonial {
+        name
+        text
+        img {
+          asset {
+            altText
+            gatsbyImageData(placeholder: BLURRED)
+          }
+        }
+        cta {
+          text
+          theme
+          href
+        }
+      }
+      testimonial_Paragraph
+      testimonial_Paragraph2
       # Technologies
       technologies_Paragraph
       technologies {
@@ -146,6 +220,6 @@ export const Head = ({
 
 const GlobalStyle = createGlobalStyle`
   main {
-    padding-top: 0 !important;
+    padding-top: 0;
   }
 `
