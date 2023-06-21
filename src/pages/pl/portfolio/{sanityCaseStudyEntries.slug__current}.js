@@ -8,6 +8,7 @@ import ImageAndStanduout from "../../../components/sections/ImageAndStandout";
 import Challenge from "../../../components/sections/CaseStudies/Challenge";
 import Technologies from "../../../components/sections/CaseStudies/Technologies";
 import Testimonial from "../../../components/sections/CaseStudies/Testimonial";
+import Logo from "../../../components/sections/CaseStudies/Logo";
 
 const CaseStudyPage = ({
   data: { caseStudy : {
@@ -24,6 +25,8 @@ const CaseStudyPage = ({
     challenge_Heading,
     challenge_Paragraph,
     technologies_Paragraph,
+    logo_Images,
+    logo_Paragraph,
     testimonial_Heading,
     testimonial,
     testimonial_Paragraph,
@@ -59,6 +62,10 @@ const CaseStudyPage = ({
       <Technologies
         heading={technologies_Paragraph}
         technologies={technologies}
+      />
+      <Logo
+        paragraph={logo_Paragraph}
+        showcase={logo_Images}
       />
       <Testimonial
         heading={testimonial_Heading}
