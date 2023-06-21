@@ -4,6 +4,7 @@ import { SEO } from "../../../components/global/Seo";
 import HeroTwoColumns from "../../../components/sections/HeroTwoColumns";
 import CaseStudies from "../../../components/sections/Portfolio/CaseStudies";
 import QuickForm from "../../../components/sections/QuickForm";
+import BlogEntries from "../../../components/sections/BlogEntries";
 
 const PortfolioPage = ({
   data: { page : {
@@ -11,6 +12,7 @@ const PortfolioPage = ({
     hero_Paragraph,
     caseStudies,
     quickForm,
+    blogEntries_Heading
   }}
 }) => {
   return (
@@ -18,6 +20,7 @@ const PortfolioPage = ({
       <HeroTwoColumns heading={hero_Heading} paragraph={hero_Paragraph} />
       <CaseStudies data={caseStudies} />
       <QuickForm data={quickForm} />
+      <BlogEntries heading={blogEntries_Heading} />
     </>
   )
 }
