@@ -1,12 +1,12 @@
 import * as React from "react"
 import { graphql } from "gatsby";
-import { SEO } from "../../../components/global/Seo";
-import HeroTwoColumns from "../../../components/sections/HeroTwoColumns";
-import CtaSection from "../../../components/sections/CtaSection";
-import BlogEntries from "../../../components/sections/BlogEntries";
-import Faq from "../../../components/sections/Faq";
-import Categories from "../../../components/sections/Categories";
-import CuriosityEntries from "../../../components/sections/CuriosityEntries";
+import { SEO } from "./../components/global/Seo";
+import HeroTwoColumns from "./../components/sections/HeroTwoColumns";
+import CtaSection from "./../components/sections/CtaSection";
+import BlogEntries from "./../components/sections/BlogEntries";
+import Faq from "./../components/sections/Faq";
+import Categories from "./../components/sections/Categories";
+import CuriosityEntries from "./../components/sections/CuriosityEntries";
 
 const BlogPage = ({
   data: {
