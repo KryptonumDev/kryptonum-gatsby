@@ -203,8 +203,8 @@ const Nav = ({
                       <div className="entry" key={i}>
                         <Link to={`/blog/${entry.slug.current}`} className="link" aria-label={removeMarkdown(entry.title)} onClick={(e) => handleHideNav(e)}></Link>
                         <GatsbyImage
-                          image={entry.cover.asset.gatsbyImageData}
-                          alt={entry.cover.asset.altText || ''}
+                          image={entry.img.asset.gatsbyImageData}
+                          alt={entry.img.asset.altText || ''}
                           className="thumbnail"
                         />
                         <div className="copy">

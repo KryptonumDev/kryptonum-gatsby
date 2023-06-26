@@ -35,7 +35,7 @@ const BlogEntries = ({ data, heading }) => {
               current
             }
           }
-          cover {
+          img {
             asset {
               altText
               gatsbyImageData(placeholder: BLURRED, width: 230, height: 230)
@@ -56,9 +56,9 @@ const BlogEntries = ({ data, heading }) => {
         {blogEntries.nodes.map((entry, i) => (
           <div className="entry" key={i}>
             <GatsbyImage
-              image={entry.cover.asset.gatsbyImageData}
-              alt={entry.cover.asset.altText || ''}
-              className={`cover${i % 2 === 0 ? ' even' : ''}`}
+              image={entry.img.asset.gatsbyImageData}
+              alt={entry.img.asset.altText || ''}
+              className={`img${i % 2 === 0 ? ' even' : ''}`}
             />
             <Link to={`/pl/blog/${entry.slug.current}`} className="link" aria-label={removeMarkdown(entry.title)}></Link>
             <h3 className="title">{removeMarkdown(entry.title)}</h3>
@@ -108,7 +108,7 @@ const Wrapper = styled.section`
     grid-template-areas: "c e . f" ". . d d" "a a b b";
     align-items: flex-start;
     position: relative;
-    .cover {
+    .img {
       position: absolute;
       left: 50%;
       top: 100%;
@@ -119,7 +119,7 @@ const Wrapper = styled.section`
       transition: transform .3s, opacity .3s;
     }
     &:hover {
-      .cover {
+      .img {
         opacity: 1;
         transform: translate(-50%, -50%) rotate(13deg);
         &.even {

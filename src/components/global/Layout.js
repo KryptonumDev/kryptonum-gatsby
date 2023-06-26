@@ -54,7 +54,7 @@ const Layout = ({ data: { page }, children }) => {
               }
             }
           }
-          cover {
+          img {
             asset {
               altText
               gatsbyImageData(placeholder: BLURRED, width: 128, height: 128)
