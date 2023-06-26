@@ -106,6 +106,7 @@ const Wrapper = styled.nav`
       transition: all .3s var(--easing);
       background: var(--gradient);
       width: ${props => props.width}%;
+      max-width: 100%;
 
       @media (max-width: 920px){
         height: ${props => props.width}%;

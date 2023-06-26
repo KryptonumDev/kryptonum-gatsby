@@ -27,12 +27,12 @@ export default function Kontakt() {
 
   const [step, setStep] = useState(1)
   const [formData, setFormData] = useState({})
+  const [startTime, setStartTime] = useState(null)
 
-  const startTime = useMemo((time) => {
-    if (step === 1 && !time) {
-      return new Date().getTime();
+  useEffect(() => {
+    if (step === 1 && !startTime) {
+      setStartTime(new Date().getTime())
     }
-    return null
   }, [step])
 
   const endTime = useMemo((time) => {
@@ -42,7 +42,7 @@ export default function Kontakt() {
       const minutes = Math.floor(totalTime / 60000);
       const seconds = Math.floor((totalTime % 60000) / 1000);
 
-      return minutes + " minuty " + seconds + " sekund";
+      return minutes + ':' + seconds
     }
     return null
   }, [step])

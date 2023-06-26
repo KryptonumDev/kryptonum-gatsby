@@ -23,7 +23,7 @@ export const Calendar = ({ name, errors, register }) => {
       <div className="input-wrap">
         <span className="legend">Wybierz datę i godzinę (opcjonalne)</span>
         <input
-          {...register('date', { required: true, validate: () => chosenDate && chosenTime })}
+          {...register('date')}
           value={inputValue}
           onFocus={() => { openedPopup ? null : setOpenedPopup('date') }}
           onClick={() => { setOpenedPopup('date') }}

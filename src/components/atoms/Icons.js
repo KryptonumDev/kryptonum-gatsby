@@ -452,6 +452,12 @@ export const Error = () => (
   </svg>
 )
 
+export const SmallError = () => (
+  <svg width="25" height="24" viewBox="0 0 25 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <path d="M12.5508 16H12.5608M12.5508 8V12M8.41078 2H16.6908L22.5508 7.86V16.14L16.6908 22H8.41078L2.55078 16.14V7.86L8.41078 2Z" stroke="#EE6470" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+  </svg>
+)
+
 export const Plus = () => (
   <svg width="41" height="40" viewBox="0 0 41 40" fill="none" xmlns="http://www.w3.org/2000/svg">
     <path d="M20.7253 8.33325V31.6666M9.05859 19.9999H32.3919" stroke="#EFF0F3" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />

@@ -20,7 +20,14 @@ export default function SeventhStep({ name, time }) {
 const Wrapper = styled.section`
   display: grid;
   gap: 32px;
+  
   h2{
     font-size: 1.875rem;
+    max-width: 640px;
+  }
+
+  p{
+    font-size: 1.375rem;
+    max-width: 520px;
   }
 `

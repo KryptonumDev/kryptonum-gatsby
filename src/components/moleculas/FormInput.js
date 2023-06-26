@@ -1,6 +1,6 @@
 import React from "react"
 import styled from "styled-components"
-import { Error } from "../atoms/Icons"
+import { SmallError } from "../atoms/Icons"
 
 export const Label = ({ rows, placeholder, title, name, register, errors, error = 'To pole jest wymagane' }) => (
   <Wrapper>
@@ -9,7 +9,7 @@ export const Label = ({ rows, placeholder, title, name, register, errors, error 
       ? <textarea rows={rows} placeholder={placeholder} className={errors[name] ? 'errored input' : 'input'} {...register} />
       : <input placeholder={placeholder} className={errors[name] ? 'errored input' : 'input'} {...register} />}
     <span className="border" />
-    {errors[name] && <span className="error"><Error /> {error}</span>}
+    {errors[name] && <span className="error"><SmallError /> {error}</span>}
   </Wrapper>
 )
 

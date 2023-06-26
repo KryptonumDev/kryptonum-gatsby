@@ -14,6 +14,7 @@ export default function Form({ data }) {
   } = useForm({ mode: 'onBlur' })
 
   const onSubmit = (data) => console.log(data)
+  // TODO: send data to API
 
   return (
     <Wrapper onSubmit={handleSubmit(onSubmit)}>

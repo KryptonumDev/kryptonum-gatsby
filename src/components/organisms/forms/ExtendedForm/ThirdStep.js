@@ -6,6 +6,7 @@ import { Checkbox } from "../../../moleculas/FormCheckbox"
 import { Book, Cart, Website } from "../../../atoms/Icons"
 import { Range } from "../../../moleculas/FormRange"
 import { Label } from "../../../moleculas/FormInput"
+import { AnimatePresence, motion } from "framer-motion"
 
 
 
@@ -91,127 +92,132 @@ export default function ThirdStep({ prevData, setData, setStep }) {
         register={register('Need website')}
         errors={errors}
       />
-      {website && (
-        <>
-          <h2>Cool! Skomponuj swój zestaw:</h2>
-          <div className="check-grid">
-            <Checkbox
-              icon={<Cart />}
-              text='e-commerce'
-              name='e-commerce'
-              register={register('e-commerce')}
-              errors={errors}
-            />
-            <Checkbox
-              icon={<Website />}
-              text='Aplikacje web'
-              name='website'
-              register={register('website')}
-              errors={errors}
-            />
-            <Checkbox
-              icon={<Book />}
-              text='Blog'
-              name='blog'
-              register={register('blog')}
-              errors={errors}
-            />
-          </div>
-          <hr className="divider" />
-        </>
-      )}
+      <AnimatePresence>
+        {website && (
+          <motion.div initial={{ x: 10, opacity: 0 }} animate={{ x: 0, opacity: 1 }} exit={{ x: -10, opacity: 0 }}>
+            <h2>Cool! Skomponuj swój zestaw:</h2>
+            <div className="check-grid">
+              <Checkbox
+                icon={<Cart />}
+                text='e-commerce'
+                name='e-commerce'
+                register={register('e-commerce')}
+                errors={errors}
+              />
+              <Checkbox
+                icon={<Website />}
+                text='Aplikacje web'
+                name='website'
+                register={register('website')}
+                errors={errors}
+              />
+              <Checkbox
+                icon={<Book />}
+                text='Blog'
+                name='blog'
+                register={register('blog')}
+                errors={errors}
+              />
+            </div>
+            <hr className="divider" />
+          </motion.div>
+        )}
+      </AnimatePresence>
       <Checkbox
         text={`Marzy mi się spójna identyfikacja wizualna`}
         name='Need design'
         register={register('Need design')}
         errors={errors}
       />
-      {design && (
-        <>
-          <h2>Spełniamy marzenia! Powiedz tylko, które:</h2>
-          <div className="design-grid">
-            <div>
+      <AnimatePresence>
+        {design && (
+          <motion.div initial={{ x: 10, opacity: 0 }} animate={{ x: 0, opacity: 1 }} exit={{ x: -10, opacity: 0 }}>
+            <h2>Spełniamy marzenia! Powiedz tylko, które:</h2>
+            <div className="design-grid">
+              <div>
+                <Checkbox
+                  text='Logo'
+                  name='logo'
+                  register={register('Logo')}
+                  errors={errors}
+                />
+                <AnimatePresence>
+                  {logo && (
+                    <motion.div initial={{ x: 10, opacity: 0 }} animate={{ x: 0, opacity: 1 }} exit={{ x: -10, opacity: 0 }}>
+                      <h3>Jakie logo Ci się marzy?</h3>
+                      <Range
+                        left={'Klasyczne'}
+                        right={'Nowoczesne'}
+                        register={register('old/new')}
+                      />
+                      <Range
+                        left={'Proste'}
+                        right={'Skomplikowane'}
+                        register={register('simple/complicated')}
+                      />
+                      <Range
+                        left={'Delikatne'}
+                        right={'Wyraziste'}
+                        register={register('subtle/expressive')}
+                      />
+                      <Range
+                        left={'Kobiece'}
+                        right={'Męskie'}
+                        register={register('feminine/masculine')}
+                      />
+                      <Range
+                        left={'Organiczne'}
+                        right={'Geometryczne'}
+                        register={register('organic/geometric')}
+                      />
+                      <Range
+                        left={'Radosne'}
+                        right={'Poważne'}
+                        register={register('happy/serious')}
+                      />
+                      <Range
+                        left={'Ekonomiczne'}
+                        right={'Luksusowe '}
+                        register={register('economic/luxurious')}
+                      />
+                      <Range
+                        left={'Oczywiste'}
+                        right={'Symboliczne'}
+                        register={register('obvious/symbolic')}
+                      />
+                      <Label
+                        title='Dodatkowe informacje (opcjonalne)'
+                        name='Logo additional inform'
+                        register={register('Logo additional inform')}
+                        errors={errors}
+                        rows={3}
+                      />
+                    </motion.div>
+                  )}
+                </AnimatePresence>
+              </div>
               <Checkbox
-                text='Logo'
-                name='logo'
-                register={register('Logo')}
+                text='Księga znaku'
+                name='Brand book'
+                register={register('Brand book')}
                 errors={errors}
               />
-              {logo && (
-                <>
-                  <h3>Jakie logo Ci się marzy?</h3>
-                  <Range
-                    left={'Klasyczne'}
-                    right={'Nowoczesne'}
-                    register={register('old/new')}
-                  />
-                  <Range
-                    left={'Proste'}
-                    right={'Skomplikowane'}
-                    register={register('simple/complicated')}
-                  />
-                  <Range
-                    left={'Delikatne'}
-                    right={'Wyraziste'}
-                    register={register('subtle/expressive')}
-                  />
-                  <Range
-                    left={'Kobiece'}
-                    right={'Męskie'}
-                    register={register('feminine/masculine')}
-                  />
-                  <Range
-                    left={'Organiczne'}
-                    right={'Geometryczne'}
-                    register={register('organic/geometric')}
-                  />
-                  <Range
-                    left={'Radosne'}
-                    right={'Poważne'}
-                    register={register('happy/serious')}
-                  />
-                  <Range
-                    left={'Ekonomiczne'}
-                    right={'Luksusowe '}
-                    register={register('economic/luxurious')}
-                  />
-                  <Range
-                    left={'Oczywiste'}
-                    right={'Symboliczne'}
-                    register={register('obvious/symbolic')}
-                  />
-                  <Label
-                    title='Dodatkowe informacje (opcjonalne)'
-                    name='Logo additional inform'
-                    register={register('Logo additional inform')}
-                    errors={errors}
-                    rows={3}
-                  />
-                </>
-              )}
+              <Checkbox
+                text='Grafiki do social mediów'
+                name='Social media graphics'
+                register={register('Social media graphics')}
+                errors={errors}
+              />
+              <Checkbox
+                text='Grafiki do druku'
+                name='Print graphics'
+                register={register('Print graphics')}
+                errors={errors}
+              />
             </div>
-            <Checkbox
-              text='Księga znaku'
-              name='Brand book'
-              register={register('Brand book')}
-              errors={errors}
-            />
-            <Checkbox
-              text='Grafiki do social mediów'
-              name='Social media graphics'
-              register={register('Social media graphics')}
-              errors={errors}
-            />
-            <Checkbox
-              text='Grafiki do druku'
-              name='Print graphics'
-              register={register('Print graphics')}
-              errors={errors}
-            />
-          </div>
-        </>
-      )}
-
+          </motion.div>
+        )}
+      </AnimatePresence>
       <Button>Szanujemy deadline'y. Jaki jest Twój?</Button>
     </Wrapper>
   )
@@ -239,6 +245,7 @@ const Wrapper = styled.form`
     display: grid;
     grid-template-columns: 1fr 1fr;
     gap: 20px;
+    margin: 24px 0;
 
     @media (max-width: 1024px) {
       grid-template-columns: 1fr;
@@ -273,6 +280,10 @@ const Wrapper = styled.form`
 
         &:last-child{
           margin-top: 42px;
+        }
+
+        &:first-child{
+          margin-top: 16px;
         }
       }
     }

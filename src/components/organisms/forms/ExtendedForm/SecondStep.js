@@ -4,7 +4,8 @@ import styled from "styled-components"
 import Button from "../../../atoms/Button"
 import { Label } from "../../../moleculas/FormInput"
 import { Radio } from "../../../moleculas/FormRadio"
-import { Error, Plus } from "../../../atoms/Icons"
+import { SmallError, Plus } from "../../../atoms/Icons"
+import { AnimatePresence, motion } from "framer-motion"
 
 export default function SecondStep({ prevData, setData, setStep }) {
   const {
@@ -44,27 +45,45 @@ export default function SecondStep({ prevData, setData, setStep }) {
     return a
   })
 
+  const addMoreLinks = () => {
+    setLinks([...links, {}])
+  }
+
   return (
     <Wrapper onSubmit={handleSubmit(onSubmit)}>
       <h2>Gdzie dzisiaj jest <strong>Twoja marka?</strong></h2>
       <div className="radio-group">
-        {errors.experience && <span className='error'><Error /> Proszę wybrać jedną z opcji</span>}
+        {errors.experience && <span className='error'><SmallError /> Proszę wybrać jedną z opcji</span>}
         <Radio className={errors.experience ? 'errored' : ''} title='Dopiero na starcie' register={register('experience', { required: true })} />
         <Radio className={errors.experience ? 'errored' : ''} title='Trochę już przeszła' register={register('experience', { required: true })} />
       </div>
       <h2>Podziel się linkami, chętnie zajrzymy</h2>
-      {links.map((el, index) => (
-        <Label
-          title='Link (opcjonalne)'
-          name={'additional link №' + (1 + index)}
-          register={register('additional link №' + (1 + index))}
-          errors={errors}
-        />
-      ))}
-      <AddMoreLinks type="button" onClick={() => { (setLinks([...links, {}])) }}>
-        <Plus />
-        <span>Dodaj więcej linków</span>
-      </AddMoreLinks>
+      <Label
+        title='Link (opcjonalne)'
+        name={'additional link № 1'}
+        register={register('additional link № 1')}
+        errors={errors}
+      />
+      <AnimatePresence mode="wait">
+        {links?.slice(1)?.map((el, index) => (
+          <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }}>
+            <Label
+              title='Link (opcjonalne)'
+              name={'additional link №' + (2 + index)}
+              register={register('additional link №' + (2 + index))}
+              errors={errors}
+            />
+          </motion.div>
+        ))}
+      </AnimatePresence>
+      <AnimatePresence mode="wait">
+        {links?.length < 5 && (
+          <AddMoreLinks initial={{ opacity: 1 }} exit={{ opacity: 0 }} type="button" onClick={addMoreLinks}>
+            <Plus />
+            <span>Dodaj więcej linków</span>
+          </AddMoreLinks>
+        )}
+      </AnimatePresence>
       <hr className="divider" />
       <h2 className="area">Chcesz coś dorzucić?</h2>
       <Label
@@ -128,7 +147,7 @@ const Wrapper = styled.form`
   }
 `
 
-const AddMoreLinks = styled.button`
+const AddMoreLinks = styled(motion.button)`
   margin-top: 12px;
   gap: 6px;
   display: grid;

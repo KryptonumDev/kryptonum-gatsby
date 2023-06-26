@@ -1,13 +1,13 @@
 import * as React from "react"
 import { graphql } from "gatsby"
-import { SEO } from "../components/global/Seo";
-import Hero from "../components/sections/Contact/Hero";
-import Kontakt from "../components/sections/ExtendedContact";
+import { SEO } from "../../components/global/Seo";
+import Kontakt from "../../components/sections/ExtendedContact";
+import Hero from "../../components/sections/ExtendedContactHero";
 
 const IndexPage = ({ data }) => {
   return (
     <>
-      {/* <Hero /> */}
+      <Hero />
       <Kontakt />
     </>
   )
