@@ -22,7 +22,7 @@ export const SEO = ({ title, description, url, children }) => {
     description: description || '',
     url: url || '',
   }
-  const domain = 'https://kryptonum.eu/pl';
+  const domain = 'https://kryptonum.eu';
   const locale = "pl_PL";
   return (
     <>
@@ -38,12 +38,12 @@ export const SEO = ({ title, description, url, children }) => {
       <meta name="twitter:card" content="summary_large_image" />
       <meta name="twitter:title" content={seo.title} />
       <meta name="twitter:description" content={seo.description} />
-      <meta property="twitter:domain" content={domain} />
+      <meta property="twitter:domain" content={`${domain}/pl`} />
       <meta property="twitter:image" content={og_Img.asset.url} />
       <meta property="og:image:width" content="1200" />
       <meta property="og:image:height" content="630" />
 
-      <meta property="twitter:url" content={`${domain}/${seo.url}`} />
+      <meta property="twitter:url" content={`${domain}${seo.url}`} />
       <meta property="og:url" content={`${domain}${seo.url}`} />
       {children}
     </>
