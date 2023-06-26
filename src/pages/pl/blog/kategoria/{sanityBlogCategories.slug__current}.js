@@ -5,21 +5,18 @@ import CtaSection from "../../../../components/sections/CtaSection";
 import BlogEntries from "../../../../components/sections/BlogEntries";
 import Faq from "../../../../components/sections/Faq";
 import Categories from "../../../../components/sections/Academy/Categories";
-import CuriosityEntries from "../../../../components/sections/CuriosityEntries";
 
-const AcademyCategoryPage = ({
+const BlogCategoryPage = ({
   data: {
     page: {
       ctaSection,
     },
-    curiosityCategories,
-    curiosityEntries,
+    blogCategories,
   }
 }) => {
   return (
     <>
-      <Categories slug="/pl/akademia/kategoria/" categories={curiosityCategories} />
-      <CuriosityEntries data={curiosityEntries} />
+      <Categories slug="/pl/blog/kategoria/" categories={blogCategories} />
       <CtaSection data={ctaSection} />
       <BlogEntries />
       <Faq />
@@ -29,7 +26,7 @@ const AcademyCategoryPage = ({
 
 export const query = graphql`
   query($id: String!) {
-    page: sanityAcademy {
+    page: sanityBlog {
       # Call To Action
       ctaSection {
         heading
@@ -51,29 +48,8 @@ export const query = graphql`
         description
       }
     }
-    curiosityEntries: allSanityCuriosityEntries(filter: {categories: {elemMatch: {id: {eq: $id}}}}) {
-      nodes {
-        title
-        subtitle
-        slug {
-          current
-        }
-        categories {
-          name
-          slug {
-            current
-          }
-        }
-        img {
-          asset {
-            altText
-            gatsbyImageData(placeholder: BLURRED, width: 688)
-          }
-        }
-        _createdAt(formatString: "D MMMM Y", locale: "pl")
-      }
-    }
-    curiosityCategories: allSanityCuriosityCategories {
+   
+    blogCategories: allSanityBlogCategories {
       nodes {
         name
         slug {
@@ -81,7 +57,7 @@ export const query = graphql`
         }
       }
     }
-    curiosityCategory: sanityCuriosityCategories(id: {eq: $id}) {
+    blogCategory: sanityBlogCategories(id: {eq: $id}) {
       name
       slug {
         current
@@ -90,20 +66,20 @@ export const query = graphql`
   }
 `
 
-export default AcademyCategoryPage;
+export default BlogCategoryPage;
 
 export const Head = ({
   data: { page: { seo: {
     title,
     description
   }},
-  curiosityCategory: {
+  blogCategory: {
     slug
   }
 }}) => (
   <SEO
     title={title}
     description={description}
-    url={`/pl/akademia/kategoria/${slug.current}`}
+    url={`/pl/blog/kategoria/${slug.current}`}
   />
 )

@@ -234,5 +234,6 @@ export const Head = ({
   <SEO
     title={title}
     description={description}
+    url='/pl/opieka-agencyjna-www-serwis-utrzymanie-zabezpieczenie'
   />
 )

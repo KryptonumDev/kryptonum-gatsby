@@ -174,5 +174,6 @@ export const Head = ({
   <SEO
     title={title}
     description={description}
+    url='/pl/web-development-aplikacje-internetowe'
   />
 )

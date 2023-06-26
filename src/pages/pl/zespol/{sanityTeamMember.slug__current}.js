@@ -72,6 +72,9 @@ export const query = graphql`
     teamMember: sanityTeamMember(id: {eq: $id}) {
       name
       cryptonym
+      slug {
+        current
+      }
       img {
         asset {
           altText
@@ -110,9 +113,10 @@ export const query = graphql`
 
 export default TeamMemberPage;
 
-export const Head = ({data: { teamMember : { name, cryptonym } } }) => (
+export const Head = ({data: { teamMember : { name, cryptonym, slug } } }) => (
   <SEO
     title={`${name} - ${cryptonym} w Kryptonum`}
     description=""
+    url={`/pl/zespol/${slug.current}`}
   />
 )

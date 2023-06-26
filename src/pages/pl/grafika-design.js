@@ -197,5 +197,6 @@ export const Head = ({
   <SEO
     title={title}
     description={description}
+    url='/pl/grafika-design'
   />
 )

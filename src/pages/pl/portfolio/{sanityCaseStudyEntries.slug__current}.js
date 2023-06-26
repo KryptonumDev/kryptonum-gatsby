@@ -87,6 +87,9 @@ export const query = graphql`
   query($id: String!) {
     caseStudy: sanityCaseStudyEntries(id: {eq: $id}) {
       name
+      slug {
+        current
+      }
       heading
       paragraph
       paragraph2
@@ -210,6 +213,7 @@ export default CaseStudyPage
 export const Head = ({
   data: { caseStudy: {
     name,
+    slug,
     categories,
     technologies
   }}
@@ -226,6 +230,7 @@ export const Head = ({
     <SEO
       title={`${categories[0].name} dla ${name} | Kryptonum`}
       description={`Zobacz case study dla ${name}. ${categories[0].name}, którą zrealizowaliśmy wykorzystując ${getCommaSeparatedNames(technologies)}`}
+      url={`/pl/portfolio/${slug.current}`}
     />
   )
 }
