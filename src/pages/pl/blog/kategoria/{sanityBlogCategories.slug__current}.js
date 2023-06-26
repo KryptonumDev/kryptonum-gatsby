@@ -5,6 +5,7 @@ import CtaSection from "../../../../components/sections/CtaSection";
 import BlogEntries from "../../../../components/sections/BlogEntries";
 import Faq from "../../../../components/sections/Faq";
 import Categories from "../../../../components/sections/Academy/Categories";
+import CuriosityEntries from "../../../../components/sections/CuriosityEntries";
 
 const BlogCategoryPage = ({
   data: {
@@ -12,13 +13,15 @@ const BlogCategoryPage = ({
       ctaSection,
     },
     blogCategories,
+    blogEntries
   }
 }) => {
   return (
     <>
       <Categories slug="/pl/blog/kategoria/" categories={blogCategories} />
+      <BlogEntries data={blogEntries} />
       <CtaSection data={ctaSection} />
-      <BlogEntries />
+      <CuriosityEntries />
       <Faq />
     </>
   );
@@ -48,7 +51,6 @@ export const query = graphql`
         description
       }
     }
-   
     blogCategories: allSanityBlogCategories {
       nodes {
         name
@@ -61,6 +63,40 @@ export const query = graphql`
       name
       slug {
         current
+      }
+    }
+    blogEntries: allSanityBlogEntries(filter: {categories: {elemMatch: {id: {eq: $id}}}}) {
+      nodes {
+        title
+        subtitle
+        slug {
+          current
+        }
+        author {
+          name
+          slug {
+            current
+          }
+          img {
+            asset {
+              altText
+              gatsbyImageData(placeholder: BLURRED, width: 48, height: 48)
+            }
+          }
+        }
+        categories {
+          name
+          slug {
+            current
+          }
+        }
+        cover {
+          asset {
+            altText
+            gatsbyImageData(placeholder: BLURRED, width: 230, height: 230)
+          }
+        }
+        _createdAt(formatString: "D MMMM Y", locale: "pl")
       }
     }
   }

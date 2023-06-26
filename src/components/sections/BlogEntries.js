@@ -7,10 +7,10 @@ import { Clamp, removeMarkdown } from '../../utils/functions'
 import { Clock } from "../atoms/Icons";
 import Button from '../atoms/Button';
 
-const BlogEntries = ({heading}) => {
-  const { entries } = useStaticQuery(graphql`
+const BlogEntries = ({ data, heading }) => {
+  let { blogEntries } = useStaticQuery(graphql`
     query {
-       entries: allSanityBlogEntries(limit: 3, sort: {_createdAt: DESC}) {
+      blogEntries: allSanityBlogEntries(limit: 3, sort: {_createdAt: DESC}) {
         nodes {
           title
           subtitle
@@ -47,11 +47,13 @@ const BlogEntries = ({heading}) => {
     }
   `);
 
+  blogEntries = data ? data : blogEntries;
+
   return (
     <Wrapper>
-      <DecorativeHeading type="h2">{heading || 'Zobacz nasze najnowsze **posty** na blogu'}</DecorativeHeading>
+      <DecorativeHeading type="h2">{heading || `**Najświeższe** artykuły (${blogEntries.nodes.length})`}</DecorativeHeading>
       <div className="wrapper">
-        {entries.nodes.map((entry, i) => (
+        {blogEntries.nodes.map((entry, i) => (
           <div className="entry" key={i}>
             <GatsbyImage
               image={entry.cover.asset.gatsbyImageData}
