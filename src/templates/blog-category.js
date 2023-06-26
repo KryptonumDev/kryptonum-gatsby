@@ -90,7 +90,7 @@ export const query = graphql`
             current
           }
         }
-        cover {
+        img {
           asset {
             altText
             gatsbyImageData(placeholder: BLURRED, width: 230, height: 230)

@@ -88,7 +88,11 @@ const Footer = ({
           {blogEntries.nodes.map((entry, i) => (
             <div className="entry" key={i}>
               <Link to={`/blog/${entry.slug.current}`} className="link" aria-label={entry.title}></Link>
-              <GatsbyImage image={entry.cover.asset.gatsbyImageData} alt={entry.cover.asset.altText || ''} className="thumbnail" />
+              <GatsbyImage
+                image={entry.img.asset.gatsbyImageData}
+                alt={entry.img.asset.altText || ''}
+                className="thumbnail"
+              />
               <div className="copy">
                 <Link to={`/pl/zespol/${entry.author[0].slug.current}`} className="author">
                   <GatsbyImage image={entry.author[0].img.asset.gatsbyImageData} alt={entry.author[0].img.asset.altText || ''} className="person-border" />
