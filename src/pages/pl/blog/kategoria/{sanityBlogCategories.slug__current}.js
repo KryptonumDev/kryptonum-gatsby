@@ -4,7 +4,7 @@ import { SEO } from "../../../../components/global/Seo";
 import CtaSection from "../../../../components/sections/CtaSection";
 import BlogEntries from "../../../../components/sections/BlogEntries";
 import Faq from "../../../../components/sections/Faq";
-import Categories from "../../../../components/sections/Academy/Categories";
+import Categories from "../../../../components/sections/Categories";
 import CuriosityEntries from "../../../../components/sections/CuriosityEntries";
 
 const BlogCategoryPage = ({

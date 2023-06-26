@@ -1,8 +1,8 @@
 import { Link } from "gatsby";
 import React from "react";
 import styled from "styled-components";
-import { Clamp } from "../../../utils/functions";
-import DecorativeHeading from "../../atoms/DecorativeHeading";
+import { Clamp } from "../../utils/functions";
+import DecorativeHeading from "../atoms/DecorativeHeading";
 
 const Categories = ({ categories, slug }) => {
   return (
