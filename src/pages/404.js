@@ -4,14 +4,15 @@ import HeroTwoColumns from "../components/sections/HeroTwoColumns"
 import CtaSection from "../components/sections/CtaSection";
 import { SEO } from "../components/global/Seo";
 
-const NotFoundPage = ({data}) => {
-  const { page: {
+const NotFoundPage = ({
+  data: { page: {
     hero_Heading,
     hero_Subheading,
     hero_Cta,
     hero_Img,
     ctaSection,
-  } } = data;
+  }}
+}) => {
   return (
     <>
       <HeroTwoColumns
