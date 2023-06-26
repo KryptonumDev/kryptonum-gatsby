@@ -43,14 +43,25 @@ export const query = graphql`
           text
         }
       }
+      # SEO
+      seo {
+        title
+        description
+      }
     }
   }
 `
 
 export default PrivacyPolicyPage;
 
-export const Head = () => (
+export const Head = ({
+  data: { page: { seo: {
+    title,
+    description
+  }}}
+}) => (
   <SEO
-    title="Polityka Prywatności | Kryptonum"
+    title={title}
+    description={description}
   />
 )

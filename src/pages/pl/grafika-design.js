@@ -177,15 +177,25 @@ export const query = graphql`
           href
         }
       }
+      # SEO
+      seo {
+        title
+        description
+      }
     }
   }
 `
 
 export default GraphicsAndDesignPage;
 
-export const Head = () => (
+export const Head = ({
+  data: { page: { seo: {
+    title,
+    description
+  }}}
+}) => (
   <SEO
-    title="Usługi graficzne: identyfikacja wizualna, design i kreacja | Kryptonum"
-    description="Kompleksowe usługi w zakresie kreacji, projektowania wizerunku marki, identyfikacji wizualnej, designu i tworzenia dedykowanych projektów graficznych!"
+    title={title}
+    description={description}
   />
 )

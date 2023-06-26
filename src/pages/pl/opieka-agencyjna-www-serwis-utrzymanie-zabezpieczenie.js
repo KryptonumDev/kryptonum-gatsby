@@ -214,15 +214,25 @@ export const query = graphql`
           href
         }
       }
+      # SEO
+      seo {
+        title
+        description
+      }
     }
   }
 `
 
 export default AgencyCarePage;
 
-export const Head = () => (
+export const Head = ({
+  data: { page: { seo: {
+    title,
+    description
+  }}}
+}) => (
   <SEO
-    title="Opieka agencyjna, utrzymanie i zabezpieczenie stron www | Kryptonum"
-    description="Czy Twoja strona została zainfekowana przez złośliwe oprogramowanie? Potrzebujesz nowszych technologii i zabezpieczeń? Zamów serwis Kryptonum!"
+    title={title}
+    description={description}
   />
 )

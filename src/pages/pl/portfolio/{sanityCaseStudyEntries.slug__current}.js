@@ -6,7 +6,6 @@ import Hero from "../../../components/sections/CaseStudies/Hero";
 import CtaSection from "../../../components/sections/CtaSection";
 import ImageAndStanduout from "../../../components/sections/ImageAndStandout";
 import Challenge from "../../../components/sections/CaseStudies/Challenge";
-import Technologies from "../../../components/sections/CaseStudies/Technologies";
 import Testimonial from "../../../components/sections/CaseStudies/Testimonial";
 import Process from "../../../components/sections/CaseStudies/Process";
 

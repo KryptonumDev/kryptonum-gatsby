@@ -64,6 +64,11 @@ export const query = graphql`
           }
         }
       }
+      # SEO
+      seo {
+        title
+        description
+      }
     }
     curiosityCategories: allSanityCuriosityCategories {
       nodes {
@@ -78,9 +83,14 @@ export const query = graphql`
 
 export default AcademyPage;
 
-export const Head = () => (
+export const Head = ({
+  data: { page: { seo: {
+    title,
+    description
+  }}}
+}) => (
   <SEO
-    title="Akademia Kryptonum - ekspercka wiedza z cyfrowego świata"
-    description="Tutoriale, insighty, case studies i porady z obszaru web developmentu, designu, UX, UI, copywritingu i SEO. W Akademii Kryptonum każdy znajdzie coś dla siebie."
+    title={title}
+    description={description}
   />
 )
