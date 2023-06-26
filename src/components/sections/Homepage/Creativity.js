@@ -4,9 +4,13 @@ import styled from "styled-components";
 import DecorativeHeading from "../../atoms/DecorativeHeading";
 import { Clamp } from "../../../utils/functions";
 
-const Creativity = ({data}) => {
-  const {creativity_Heading, creativity_Paragraph, creativity_SecondParagraph} = data;
-
+const Creativity = ({
+  data: {
+    creativity_Heading,
+    creativity_Paragraph,
+    creativity_SecondParagraph,
+  }
+}) => {
   return (
     <Wrapper>
       <DecorativeHeading type="h2">{creativity_Heading}</DecorativeHeading>

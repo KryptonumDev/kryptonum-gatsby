@@ -3,18 +3,18 @@ import { graphql, useStaticQuery } from "gatsby";
 import GlobalStyle from "../../styles/GlobalStyle";
 import Nav from "../organisms/Nav"
 import Footer from "../organisms/Footer";
-import ScrollToNext from "../sections/ScrollToNext";
+import ScrollToNext from "../organisms/ScrollToNext";
 
 const Layout = ({ data: { page }, children }) => {
   const data = useStaticQuery(graphql`
     query {
-      caseStudies: allSanityCaseStudies(limit: 4) {
+      caseStudies: allSanityCaseStudyEntries(limit: 4) {
         nodes {
           name
           slug {
             current
           }
-          thumbnail {
+          img {
             asset {
               altText
               gatsbyImageData(placeholder: BLURRED, width: 456)
@@ -22,7 +22,7 @@ const Layout = ({ data: { page }, children }) => {
           }
         }
       }
-      team: allSanityTeam {
+      team: allSanityTeamMember {
         nodes {
           name
           slug {
@@ -71,13 +71,13 @@ const Layout = ({ data: { page }, children }) => {
           }
         }
       }
-      curiosities: allSanityCuriosities(limit: 2) {
+      curiosityEntries: allSanityCuriosityEntries(limit: 2) {
         nodes {
           title
           slug {
             current
           }
-          thumbnail {
+          img {
             asset {
               altText
               gatsbyImageData(placeholder: BLURRED)
@@ -91,7 +91,7 @@ const Layout = ({ data: { page }, children }) => {
           slug {
             current
           }
-          thumbnail {
+          img {
             asset {
               altText
               gatsbyImageData(placeholder: BLURRED, width: 160, height: 160)
@@ -99,17 +99,17 @@ const Layout = ({ data: { page }, children }) => {
           }
         }
       }
-      footer: sanityFooter {
-        contactName
-        contactEmail
-        contactTel
-        officeCity
-        officeStreet
-        legalLinks {
+      global: sanityGlobal {
+        footer_OfficeCity
+        footer_OfficeStreet
+        footer_ContactName
+        footer_ContactTel
+        footer_ContactEmail
+        footer_LegalLinks {
           text
           href
         }
-        socials {
+        footer_Socials {
           text
           href
         }
@@ -133,7 +133,6 @@ const Layout = ({ data: { page }, children }) => {
       });
     });
   }, [locationPath, orphansRegex]);
-  
   return (
     <>
       <GlobalStyle />

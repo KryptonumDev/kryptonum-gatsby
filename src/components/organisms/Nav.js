@@ -13,113 +13,134 @@ const Nav = ({
     team,
     blogEntries,
     blogCategories,
-    curiosities,
+    curiosityEntries,
     technologies
-  }
+  },
 }) => {
-  const [navOpened, setNavOpened] = useState(false);
-  const nav = useRef(null);
-
   const locationPath = typeof window !== 'undefined' ? window.location.pathname : '';
+  const [navOpened, setNavOpened] = useState(false)
+  const navRef = useRef(null)
 
   useEffect(() => {
-    const navHeight = nav.current?.offsetHeight;
+    const nav = navRef.current;
+    const navHeight = nav.offsetHeight;
     let prevScrollPos = window.pageYOffset;
     let currentScrollPos = prevScrollPos;
     let scrollDistance = 0;
-    window.addEventListener('scroll', () => {
+    const handleScroll = () => {
       prevScrollPos = currentScrollPos;
       currentScrollPos = window.pageYOffset;
       if (currentScrollPos < prevScrollPos && currentScrollPos > navHeight) {
-        nav.current?.classList.add('fixed');
+        nav.classList.add('fixed');
         scrollDistance = 0;
-      } else if(nav.current?.classList.contains('fixed')) {
+      } else if(nav.classList.contains('fixed')) {
         scrollDistance += prevScrollPos - currentScrollPos;
         if (scrollDistance * -1 >= navHeight) {
-          nav.current?.classList.remove('fixed');
+          nav.classList.remove('fixed');
           scrollDistance = 0;
         }
       }
       if (currentScrollPos === 0) {
-        nav.current?.classList.remove('fixed');
+        nav.classList.remove('fixed');
       }
-    });
+    };
+    nav.removeAttribute("style");
 
-    document.addEventListener('keydown', (e) => {
-      if (e.key === 'Escape') {
-        setNavOpened(false)
-        scrollLock(false)
-      }
-    })
+    window.addEventListener("scroll", handleScroll)
+    document.addEventListener("keydown", handleEscapeKey)
+    window.addEventListener("resize", handleScroll)
+    return () => {
+      window.removeEventListener("scroll", handleScroll)
+      document.removeEventListener("keydown", handleEscapeKey)
+      window.removeEventListener("resize", handleScroll)
+    }
   }, [locationPath])
 
-  const handleNavLinks = (e, item) => {
-    if (window.matchMedia('(pointer: coarse), (max-width: 1149px)').matches) {
-      e.preventDefault();
-      item
-      ? nav.current.setAttribute('data-expand', item)
-      : nav.current.removeAttribute('data-expand');
-    }      
+  const handleEscapeKey = (e) => {
+    if (e.key === "Escape") {
+      setNavOpened(false)
+      scrollLock(false)
+    }
   }
 
-  const handleHideNav = () => {
-    nav.current?.style?.setProperty('pointer-events', 'none');
-    setNavOpened(false)
-    scrollLock(false)
-    setTimeout(() => {
-      nav.current?.removeAttribute('style');
-    }, 1000);
-  };
+  const handleNavLinks = (e, item) => {
+    if (window.matchMedia("(pointer: coarse), (max-width: 1149px)").matches) {
+      e.preventDefault()
+      item
+        ? navRef.current.setAttribute("data-expand", item)
+        : navRef.current.removeAttribute("data-expand")
+    }
+  }
+
+  const handleHideNav = (e) => {
+    navRef.current.style.setProperty("pointer-events", "none");
+    if(e.target.ariaCurrent) {
+      e.target.blur();
+      setTimeout(() => {
+        navRef.current.removeAttribute("style");
+      }, 100);
+    }
+    navRef.current.removeAttribute("data-expand");
+    setNavOpened(false);
+    scrollLock(false);
+  }
 
   const handleNavToggle = () => {
-    if(!nav.current?.classList.contains('fixed')){
-      window.scrollTo({top: 0});
+    if (!navRef.current.classList.contains("fixed")) {
+      window.scrollTo({ top: 0 })
     }
     setNavOpened(!navOpened)
     scrollLock(!navOpened)
+    navRef.current.removeAttribute("data-expand");
   }
 
   return (
-    <Wrapper className="nav" aria-expanded={navOpened} ref={nav}>
+    <Wrapper className="nav" aria-expanded={navOpened} ref={navRef}>
       <div className="max-width">
-        <Link to="/" aria-label="Strona główna">
+        <Link to="/pl" aria-label="Strona główna" onClick={(e) => handleHideNav(e)}>
           <KryptonumLogo />
         </Link>
         <div className="nav-list">
           <ul>
             <li>
-              <Link to="/uslugi" onClick={(e) => handleNavLinks(e, 'services')}>
+              <span onClick={(e) => handleNavLinks(e, 'services')}>
                 <span>Usługi</span>
                 <ChevronDown />
-              </Link>
+              </span>
               <ul className="nav-list2 services">
                 <div className="max-width">
                   <button className="mobileElement backBtn" onClick={(e) => handleNavLinks(e)}>
                     <ChevronLeft />
                     <span>Wróć</span>
                   </button>
-                  <h3 className="mobileElement"><Link to="/projekty" onClick={e => handleHideNav(e)}>Wszystkie usługi</Link></h3>
-                  <li><Link to="/web-development" onClick={e => handleHideNav(e)}><h3>Web Development</h3></Link>
+                  <h3 className="mobileElement"><Link to="/pl/portfolio" onClick={(e) => handleHideNav(e)}>Wszystkie usługi</Link></h3>
+                  <li>
+                    <h3><Link to="/pl/web-development" onClick={(e) => handleHideNav(e)}>Web Development</Link></h3>
                     <ul className="nav-list3">
-                      <li><Link to="/web-development-strony-internetowe" onClick={e => handleHideNav(e)}>Strony internetowe</Link></li>
-                      <li><Link to="/web-development-aplikacje-internetowe" onClick={e => handleHideNav(e)}>Aplikacje internetowe</Link></li>
-                      <li><Link to="/web-development-sklepy-internetowe" onClick={e => handleHideNav(e)}>Sklepy internetowe</Link></li>
+                      <li><Link to="/pl/web-development-strony-internetowe" onClick={(e) => handleHideNav(e)}>Strony internetowe</Link></li>
+                      <li><Link to="/pl/web-development-aplikacje-internetowe" onClick={(e) => handleHideNav(e)}>Aplikacje internetowe</Link></li>
+                      <li><Link to="/pl/web-development-sklepy-internetowe" onClick={(e) => handleHideNav(e)}>Sklepy internetowe</Link></li>
                     </ul>
                   </li>
-                  <li><Link to="/grafika-design" onClick={e => handleHideNav(e)}><h3>Grafika & design</h3></Link>
+                  <li>
+                    <h3><Link to="/pl/grafika-design" onClick={(e) => handleHideNav(e)}>Grafika & design</Link></h3>
                     <ul className="nav-list3">
-                      <li><Link to="/grafika-design-projektowanie-logo" onClick={e => handleHideNav(e)}>Logo</Link></li>
-                      <li><Link to="/grafika-design-audyt-ux-ui" onClick={e => handleHideNav(e)}>Audyty</Link></li>
-                      <li><Link to="/grafika-design-identyfikacja-wizualna-marki" onClick={e => handleHideNav(e)}>Identyfikacja wizualna i branding</Link></li>
+                      <li><Link to="/pl/grafika-design-projektowanie-logo" onClick={(e) => handleHideNav(e)}>Logo</Link></li>
+                      <li><Link to="/pl/grafika-design-audyt-ux-ui" onClick={(e) => handleHideNav(e)}>Audyty</Link></li>
+                      <li><Link to="/pl/grafika-design-identyfikacja-wizualna-marki" onClick={(e) => handleHideNav(e)}>Identyfikacja wizualna i branding</Link></li>
                     </ul>
                   </li>
-                  <li><Link to="/opieka-agencyjna-www-serwis-utrzymanie-zabezpieczenie" onClick={e => handleHideNav(e)}><h3>Opieka agencyjna</h3></Link></li>
-                  <li><Link to="/warsztaty-discovery" onClick={e => handleHideNav(e)}><h3>Warsztat strategiczny</h3></Link></li>
+                  <li>
+                    <h3><Link to="/pl/opieka-agencyjna-www-serwis-utrzymanie-zabezpieczenie" onClick={(e) => handleHideNav(e)}>Opieka agencyjna</Link></h3>
+                  </li>
+                  <li>
+                    <h3><Link to="/pl/warsztaty-discovery" onClick={(e) => handleHideNav(e)}>Warsztat strategiczny</Link></h3>
+                  </li>
                 </div>
               </ul>
             </li>
             <li>
-              <Link to="/projekty" onClick={(e) => handleNavLinks(e, 'caseStudies')}>
+              <Link to="/pl/portfolio" onClick={(e) => handleNavLinks(e, 'caseStudies')}>
                 <span>Projekty</span>
                 <ChevronDown />
               </Link>
@@ -129,10 +150,13 @@ const Nav = ({
                     <ChevronLeft />
                     <span>Wróć</span>
                   </button>
-                  <h3 className="mobileElement"><Link to="/projekty" onClick={e => handleHideNav(e)}>Wszystkie projekty</Link></h3>
+                  <h3 className="mobileElement"><Link to="/pl/portfolio" onClick={(e) => handleHideNav(e)}>Wszystkie projekty</Link></h3>
                   {caseStudies.nodes.map((caseStudy, i) => (
-                    <Link to={`/projekty/${caseStudy.slug.current}`} key={i} className="item" onClick={e => handleHideNav(e)}>
-                      <GatsbyImage image={caseStudy.thumbnail.asset.gatsbyImageData} alt={caseStudy.thumbnail.asset.altText || ''} />
+                    <Link to={`/pl/portfolio/${caseStudy.slug.current}`} key={i} className="item" onClick={(e) => handleHideNav(e)}>
+                      <GatsbyImage
+                        image={caseStudy.img.asset.gatsbyImageData}
+                        alt={caseStudy.img.asset.altText || ''}
+                      />
                       <p>{caseStudy.name}</p>
                     </Link>
                   ))}
@@ -140,7 +164,7 @@ const Nav = ({
               </ul>
             </li>
             <li>
-              <Link to="/zespol" onClick={(e) => handleNavLinks(e, 'team')}>
+              <Link to="/pl/zespol" onClick={(e) => handleNavLinks(e, 'team')}>
                 <span>Zespół</span>
                 <ChevronDown />
               </Link>
@@ -150,10 +174,10 @@ const Nav = ({
                     <ChevronLeft />
                     <span>Wróć</span>
                   </button>
-                  <h3 className="mobileElement"><Link to="/zespol" onClick={e => handleHideNav(e)}>Zobacz nasz zespół</Link></h3>
+                  <h3 className="mobileElement"><Link to="/pl/zespol" onClick={(e) => handleHideNav(e)}>Zobacz nasz zespół</Link></h3>
                   <div className="wrapper">
                     {team.nodes.map((person, i) => (
-                      <Link to={`/zespol/${person.slug.current}`} key={i} className="item" onClick={e => handleHideNav(e)}>
+                      <Link to={`/pl/zespol/${person.slug.current}`} key={i} className="item" onClick={(e) => handleHideNav(e)}>
                         <GatsbyImage image={person.img.asset.gatsbyImageData} alt={person.img.asset.altText || ''} className="img person-border" />
                         <p>{person.name}</p>
                       </Link>
@@ -163,7 +187,7 @@ const Nav = ({
               </ul>
             </li>
             <li>
-              <Link to="/blog" onClick={(e) => handleNavLinks(e, 'blog')}>
+              <Link to="/pl/blog" onClick={(e) => handleNavLinks(e, 'blog')}>
                 <span>Blog</span>
                 <ChevronDown />
               </Link>
@@ -174,14 +198,18 @@ const Nav = ({
                     <span>Wróć</span>
                   </button>
                   <div className="entries">
-                    <h3><Link to="/blog">Zobacz bloga</Link></h3>
+                    <h3><Link to="/pl/blog">Zobacz bloga</Link></h3>
                     {blogEntries.nodes.map((entry, i) => (
                       <div className="entry" key={i}>
-                        <Link to={`/blog/${entry.slug.current}`} className="link" aria-label={removeMarkdown(entry.title)} onClick={e => handleHideNav(e)}></Link>
-                        <GatsbyImage image={entry.cover.asset.gatsbyImageData} alt={entry.cover.asset.altText || ''} className="thumbnail" />
+                        <Link to={`/blog/${entry.slug.current}`} className="link" aria-label={removeMarkdown(entry.title)} onClick={(e) => handleHideNav(e)}></Link>
+                        <GatsbyImage
+                          image={entry.cover.asset.gatsbyImageData}
+                          alt={entry.cover.asset.altText || ''}
+                          className="thumbnail"
+                        />
                         <div className="copy">
                           <div className="copy-top">
-                            <Link to={`/blog/autor/${entry.author[0].slug.current}`} onClick={e => handleHideNav(e)}>
+                            <Link to={`/blog/autor/${entry.author[0].slug.current}`} onClick={(e) => handleHideNav(e)}>
                               <GatsbyImage image={entry.author[0].img.asset.gatsbyImageData} alt={entry.author[0].img.asset.altText || ''} className="person-border" />
                               <span>{entry.author[0].name}</span>
                             </Link>
@@ -196,7 +224,7 @@ const Nav = ({
                     <h3>Kategorie:</h3>
                     <div className="wrapper">
                       {blogCategories.nodes.map((category, i) => (
-                        <Link to={`/blog/kategoria/${category.slug.current}`} key={i} onClick={e => handleHideNav(e)}>
+                        <Link to={`/blog/kategoria/${category.slug.current}`} key={i} onClick={(e) => handleHideNav(e)}>
                           {category.name}
                         </Link>
                       ))}
@@ -206,7 +234,7 @@ const Nav = ({
                     <h3>Twórcy:</h3>
                     <div className="wrapper">
                       {team.nodes.map((person, i) => (
-                        <Link to={`/blog/autor/${person.slug.current}`} key={i} onClick={e => handleHideNav(e)}>
+                        <Link to={`/blog/autor/${person.slug.current}`} key={i} onClick={(e) => handleHideNav(e)}>
                           <GatsbyImage image={person.img.asset.gatsbyImageData} alt={person.img.asset.altText || ''} className="person-border" />
                           <p>{person.name}</p>
                         </Link>
@@ -217,7 +245,7 @@ const Nav = ({
               </ul>
             </li>
             <li>
-              <Link to="/akademia" onClick={(e) => handleNavLinks(e, 'academy')}>
+              <Link to="/pl/akademia" onClick={(e) => handleNavLinks(e, 'academy')}>
                 <span>Akademia</span>
                 <ChevronDown />
               </Link>
@@ -227,22 +255,29 @@ const Nav = ({
                     <ChevronLeft />
                     <span>Wróć</span>
                   </button>
-                  <h3 className="mobileElement"><Link to="/akademia" onClick={e => handleHideNav(e)}>Akademia</Link></h3>
+                  <h3 className="mobileElement"><Link to="/pl/akademia" onClick={(e) => handleHideNav(e)}>Akademia</Link></h3>
                   <div className="curiosities">
-                    <h3><Link to="/ciekawostki" onClick={e => handleHideNav(e)}>Ciekawostki</Link></h3>
-                    {curiosities.nodes.map((curiosity, i) => (
-                      <Link to={`/akademia/ciekawostki/${curiosity.slug.current}`} key={i} className="link" onClick={e => handleHideNav(e)}>
-                        <GatsbyImage image={curiosity.thumbnail.asset.gatsbyImageData} alt={curiosity.thumbnail.asset.altText || ''} className="thumbnail" />
-                        <h3>{curiosity.title}</h3>
+                    <h3>Ciekawostki</h3>
+                    {curiosityEntries.nodes.map((curiosity, i) => (
+                      <Link to={`/akademia/ciekawostki/${curiosity.slug.current}`} key={i} className="link" onClick={(e) => handleHideNav(e)}>
+                        <GatsbyImage
+                          image={curiosity.img.asset.gatsbyImageData}
+                          alt={curiosity.img.asset.altText || ''} 
+                          className="thumbnail"
+                        />
+                        <h3>{removeMarkdown(curiosity.title)}</h3>
                       </Link>
                     ))}
                   </div>
                   <div className="technologies">
-                    <h3><Link to="/technologie" onClick={e => handleHideNav(e)}>Technologie</Link></h3>
+                    <h3><Link to="/pl/technologie" onClick={(e) => handleHideNav(e)}>Technologie</Link></h3>
                     <div className="wrapper">
                       {technologies.nodes.map((technology, i) => (
-                        <Link to={`/akademia/technologie/${technology.slug.current}`} key={i} onClick={e => handleHideNav(e)}>
-                          <GatsbyImage image={technology.thumbnail.asset.gatsbyImageData} alt={technology.thumbnail.asset.altText || ''} />
+                        <Link to={`/akademia/technologie/${technology.slug.current}`} key={i} onClick={(e) => handleHideNav(e)}>
+                          <GatsbyImage
+                            image={technology.img.asset.gatsbyImageData}
+                            alt={technology.img.asset.altText || ''}
+                          />
                           <p>{technology.name}</p>
                         </Link>
                       ))}
@@ -252,7 +287,7 @@ const Nav = ({
                     <h3>Twórcy:</h3>
                     <div className="wrapper">
                       {team.nodes.map((person, i) => (
-                        <Link to={`/blog/autor/${person.slug.current}`} key={i} onClick={e => handleHideNav(e)}>
+                        <Link to={`/blog/autor/${person.slug.current}`} key={i} onClick={(e) => handleHideNav(e)}>
                           <GatsbyImage image={person.img.asset.gatsbyImageData} alt={person.img.asset.altText || ''} className="person-border" />
                           <p>{person.name}</p>
                         </Link>
@@ -264,7 +299,7 @@ const Nav = ({
             </li>
           </ul>
         </div>
-        <Button to='/kontakt' className='nav-cta' onClick={e => handleHideNav(e)}>Darmowa konsultacja</Button>
+        <Button to='/pl/kontakt' className='nav-cta' onClick={(e) => handleHideNav(e)}>Darmowa konsultacja</Button>
         <button
           id="nav-toggle"
           onClick={() => handleNavToggle()}
@@ -319,7 +354,8 @@ const Wrapper = styled.nav`
       display: flex;
       & > li {
         margin: 0 24px;
-        > a {
+        > a,
+        > span {
           padding: 13px 0;
           &::before {
             position: relative;
@@ -343,7 +379,8 @@ const Wrapper = styled.nav`
         @media (pointer: fine) and (min-width: 1150px){
           &:hover,
           &:focus-within {
-            > a {
+            > a,
+            > span {
               &::before {
                 transform: scaleY(1);
               }
@@ -395,6 +432,9 @@ const Wrapper = styled.nav`
         a {
           display: inline-block;
           font-size: ${20/16}rem;
+        }
+        h3 > a {
+          font-size: inherit;
         }
         &:nth-of-type(1) {
           grid-area: one;
@@ -643,8 +683,10 @@ const Wrapper = styled.nav`
       overflow-x: hidden;
       ul {
         display: block;
-        > li > a {
-          font-size: ${32/16}rem;
+        > li > {
+          a, span {
+            font-size: ${32/16}rem;
+          }
         }
       }
       & > ul {
@@ -654,7 +696,8 @@ const Wrapper = styled.nav`
           @media (max-width: 767px){
             margin: 0 16px;
           }
-          > a svg {
+          > a svg,
+          span svg {
             width: 40px;
             height: 40px;
             path {
@@ -863,14 +906,14 @@ const Wrapper = styled.nav`
         opacity: 1;
         pointer-events: auto;
       }
-    }
-    &[data-expand="services"] .nav-list2.services,
-    &[data-expand="caseStudies"] .nav-list2.caseStudies,
-    &[data-expand="team"] .nav-list2.team,
-    &[data-expand="blog"] .nav-list2.blog,
-    &[data-expand="academy"] .nav-list2.academy {
-      transform: translateX(0);
-      visibility: visible;
+      &[data-expand="services"] .nav-list2.services,
+      &[data-expand="caseStudies"] .nav-list2.caseStudies,
+      &[data-expand="team"] .nav-list2.team,
+      &[data-expand="blog"] .nav-list2.blog,
+      &[data-expand="academy"] .nav-list2.academy {
+        transform: translateX(0);
+        visibility: visible;
+      }
     }
   }
   @media (max-width: 499px){

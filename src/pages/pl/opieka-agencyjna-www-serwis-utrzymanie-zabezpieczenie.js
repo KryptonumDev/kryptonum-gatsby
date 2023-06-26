@@ -1,15 +1,15 @@
 import * as React from "react"
 import { graphql } from "gatsby";
-import { SEO } from "../components/global/Seo";
-import HeroServices from "../components/sections/HeroServices";
-import SimpleCtaSection from "../components/sections/SimpleCtaSection";
-import ListSection from '../components/sections/ListSection';
-import QuickForm from "../components/sections/QuickForm";
-import CaseStudies from "../components/sections/CaseStudies";
-import CtaSection from "../components/sections/CtaSection";
-import Audit from "../components/sections/AgencyCare/Audit";
-import Copy from "../components/sections/AgencyCare/Copy";
-import Protection from "../components/sections/AgencyCare/Protection";
+import { SEO } from "../../components/global/Seo";
+import HeroServices from "../../components/sections/HeroServices";
+import SimpleCtaSection from "../../components/sections/SimpleCtaSection";
+import ListSection from '../../components/sections/ListSection';
+import QuickForm from "../../components/sections/QuickForm";
+import CaseStudies from "../../components/sections/CaseStudies";
+import CtaSection from "../../components/sections/CtaSection";
+import Audit from "../../components/sections/AgencyCare/Audit";
+import Copy from "../../components/sections/AgencyCare/Copy";
+import Protection from "../../components/sections/AgencyCare/Protection";
 
 const AgencyCarePage = ( { data} ) => {
   const { page: {
@@ -22,6 +22,7 @@ const AgencyCarePage = ( { data} ) => {
     services_Heading,
     services_Paragraph,
     services_Paragraph2,
+    services_Title,
     services_List,
     audit_Heading,
     audit_Paragraph,
@@ -60,9 +61,10 @@ const AgencyCarePage = ( { data} ) => {
       <SimpleCtaSection data={simpleCtaSection} />
       <ListSection
         heading={services_Heading}
-        list={services_List}
         paragraph={services_Paragraph}
         secondParagraph={services_Paragraph2}
+        title={services_Title}
+        list={services_List}
       />
       <Audit data={{
         audit_Heading,
@@ -125,6 +127,7 @@ export const query = graphql`
       services_Heading
       services_Paragraph
       services_Paragraph2
+      services_Title
       services_List {
         title
         description
@@ -145,7 +148,7 @@ export const query = graphql`
       }
       # Case Studies
       caseStudies_Heading
-      # Call To Action
+      # Call To Action Section
       ctaSection {
         heading
         cta {

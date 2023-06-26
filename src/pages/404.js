@@ -16,7 +16,7 @@ const NotFoundPage = ({data}) => {
     <>
       <HeroTwoColumns
         heading={hero_Heading}
-        subheading={hero_Subheading}
+        paragraph={hero_Subheading}
         cta={hero_Cta}
         img={hero_Img}
       />

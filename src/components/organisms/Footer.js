@@ -5,7 +5,22 @@ import styled from "styled-components";
 import { Facebook, Instagram, KryptonumLogoSimple, Mail, Tel, Tiktok, Whatsapp, Youtube } from "../atoms/Icons";
 import { Clamp, removeMarkdown } from "../../utils/functions";
 
-const Footer = ({data: {caseStudies, team, blogEntries, footer}}) => {
+const Footer = ({
+  data: {
+    caseStudies,
+    team,
+    blogEntries,
+    global: {
+      footer_OfficeCity,
+      footer_OfficeStreet,
+      footer_ContactName,
+      footer_ContactTel,
+      footer_ContactEmail,
+      footer_LegalLinks,
+      footer_Socials,
+    }
+  }
+}) => {
   const [showMore, setShowMore] = useState(0);
   const maxPeople = 6;
   const peopleToExpand = team.nodes.length - maxPeople;
@@ -19,39 +34,39 @@ const Footer = ({data: {caseStudies, team, blogEntries, footer}}) => {
           </Link>
           <h3><Link to='/kontakt'>Kontakt</Link></h3>
           <div>
-            <h3>{footer.officeCity}</h3>
-            <p>{footer.officeStreet}</p>
+            <h3>{footer_OfficeCity}</h3>
+            <p>{footer_OfficeStreet}</p>
           </div>
           <div>
-            <h3>{footer.contactName}</h3>
-            <a href={`tel:${footer.contactTel.replace(/\s/g, '')}`}>
+            <h3>{footer_ContactName}</h3>
+            <a href={`tel:${footer_ContactTel.replace(/\s/g, '')}`}>
               <Tel />
-              <span>{footer.contactTel}</span>
+              <span>{footer_ContactTel}</span>
             </a>
-            <a href={`mailto:${footer.contactEmail}`}>
+            <a href={`mailto:${footer_ContactEmail}`}>
               <Mail />
-              <span>{footer.contactEmail}</span>
+              <span>{footer_ContactEmail}</span>
             </a>
           </div>
         </li>
         <li>
-          <h3><Link to="/uslugi">Usługi</Link></h3>
-          <Link to="/web-development">Web Development</Link>
-          <Link to="/warsztaty-discovery">Warsztat strategiczny</Link>
-          <Link to="/opieka-agencyjna-www-serwis-utrzymanie-zabezpieczenie">Opieka agencyjna</Link>
-          <Link to="/grafika-design">Grafika & design</Link>
+          <h3>Usługi</h3>
+          <Link to="/pl/web-development">Web Development</Link>
+          <Link to="/pl/warsztaty-discovery">Warsztat strategiczny</Link>
+          <Link to="/pl/opieka-agencyjna-www-serwis-utrzymanie-zabezpieczenie">Opieka agencyjna</Link>
+          <Link to="/pl/grafika-design">Grafika & design</Link>
         </li>
         <li>
-          <h3><Link to="/case-study">Case study</Link></h3>
+          <h3><Link to="/pl/portfolio">Case study</Link></h3>
           {caseStudies.nodes.map((caseStudy, i) => (
-            <Link to={`/projekty/${caseStudy.slug.current}`} key={i}>{caseStudy.name}</Link>
+            <Link to={`/pl/portfolio/${caseStudy.slug.current}`} key={i}>{caseStudy.name}</Link>
           ))}
         </li>
         <li className="team">
-          <h3><Link to="/zespol">Zespół</Link></h3>
+          <h3><Link to="/pl/zespol">Zespół</Link></h3>
           {team.nodes.map((person, i) => (
             <Link
-              to={`/zespol/${person.slug.current}`}
+              to={`/pl/zespol/${person.slug.current}`}
               className="person"
               key={i}
               style={{display: !showMore && i+1 > maxPeople ? 'none' : ''}}
@@ -69,13 +84,13 @@ const Footer = ({data: {caseStudies, team, blogEntries, footer}}) => {
           </button>
         </li>
         <li className="blog">
-          <h3><Link to="/blog">Blog</Link></h3>
+          <h3><Link to="/pl/blog">Blog</Link></h3>
           {blogEntries.nodes.map((entry, i) => (
             <div className="entry" key={i}>
               <Link to={`/blog/${entry.slug.current}`} className="link" aria-label={entry.title}></Link>
               <GatsbyImage image={entry.cover.asset.gatsbyImageData} alt={entry.cover.asset.altText || ''} className="thumbnail" />
               <div className="copy">
-                <Link to={`/zespol/${entry.author[0].slug.current}`} className="author">
+                <Link to={`/pl/zespol/${entry.author[0].slug.current}`} className="author">
                   <GatsbyImage image={entry.author[0].img.asset.gatsbyImageData} alt={entry.author[0].img.asset.altText || ''} className="person-border" />
                   <span>{entry.author[0].name}</span>
                 </Link>
@@ -89,7 +104,7 @@ const Footer = ({data: {caseStudies, team, blogEntries, footer}}) => {
       <div className="footer-info">
         <p>&copy; {new Date().getFullYear()} Kryptonum</p>
         <div className="social">
-          {footer.socials.map((social, i) => {
+          {footer_Socials.map((social, i) => {
             let SocialComponent = null;
             const name = social.text.toLowerCase();
             if(name === 'youtube') {
@@ -111,7 +126,7 @@ const Footer = ({data: {caseStudies, team, blogEntries, footer}}) => {
           })}
         </div>
         <div className="legal">
-          {footer.legalLinks.map((link, i) => (
+          {footer_LegalLinks.map((link, i) => (
             <Link to={link.href} key={i}>{link.text}</Link>
           ))}
         </div>

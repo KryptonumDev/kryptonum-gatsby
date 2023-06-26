@@ -14,6 +14,7 @@ const scrollHeight = 800;
 const ScrollToNext = ({ data: { heading, paragraph, title, link }}) => {
   const scrollToNext = useRef(null);
   const [scaleY, setScaleY] = useState(0);
+  const locationPath = typeof window !== 'undefined' ? window.location.pathname : '';
   useEffect(() => {
     const handleScroll = () => {
       const scrollPosition = window.scrollY;
@@ -31,12 +32,10 @@ const ScrollToNext = ({ data: { heading, paragraph, title, link }}) => {
     };
     handleScroll();
     window.addEventListener("scroll", handleScroll);
-    window.addEventListener("resize", handleScroll);
     return () => {
       window.removeEventListener("scroll", handleScroll);
-      window.removeEventListener("resize", handleScroll);
     };
-  }, []);
+  }, [locationPath]);
 
   return (
     <Wrapper className="max-width" ref={scrollToNext}>

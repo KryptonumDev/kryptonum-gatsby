@@ -4,33 +4,50 @@ import styled from "styled-components";
 import { Clamp } from "../../utils/functions";
 import DecorativeHeading from "../atoms/DecorativeHeading";
 
-const ListSection = ({ heading, list, paragraph, secondParagraph }) => {
+const ListSection = ({ heading, list, paragraph, secondParagraph, title }) => {
   const wrapperRef = useRef(null);
+  
+  const animateItems = () => {
+    const items = wrapperRef.current.querySelectorAll('.item');
+    items.forEach(item => {
+      const { top } = item.getBoundingClientRect();
+      if (top <= window.innerHeight * 0.66) {
+        item.classList.add('active');
+      } else {
+        item.classList.remove('active');
+      }
+    });
+  };
+  
+  const handleScroll = () => {
+    requestAnimationFrame(animateItems);
+  };
+
   useEffect(() => {
     if (wrapperRef.current) {
-      const items = wrapperRef.current.querySelectorAll('.item');
-      const anim = () => {
-        items.forEach(item => {
-          const { top } = item.getBoundingClientRect();
-          if(top <= window.innerHeight*.66) {
-            item.classList.add('active');
-          } else {
-            item.classList.remove('active');
-          }
-        });
-      }
-      anim();
-      window.addEventListener('scroll', anim);
+      animateItems();
+      window.addEventListener('scroll', handleScroll);
     }
-  }, [])
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+    };
+  }, []);
 
   return (
     <Wrapper>
-      <DecorativeHeading type="h2" className="heading">{heading}</DecorativeHeading>
+      {secondParagraph && (
+        <DecorativeHeading type="h2" className="heading">{heading}</DecorativeHeading>
+      )}
       <div className="copy">
+        {!secondParagraph && (
+          <DecorativeHeading type="h2" className="heading">{heading}</DecorativeHeading>
+        )}
         <ReactMarkdown className="paragraph">{paragraph}</ReactMarkdown>
-        <ReactMarkdown className="paragraph2">{secondParagraph}</ReactMarkdown>
+        {secondParagraph && (
+          <ReactMarkdown className="paragraph2">{secondParagraph}</ReactMarkdown>
+        )}
       </div>
+      <ReactMarkdown className="title">{title}</ReactMarkdown>
       <div className="wrapper" ref={wrapperRef}>
         {list.map((item, i) => (
           <div className="item" key={i}>
@@ -66,10 +83,14 @@ const Wrapper = styled.section`
   .wrapper {
     counter-reset: counter;
   }
+  .title {
+    font-size: ${Clamp(20, 32, 30)};
+    margin-bottom: 32px;
+  }
   .item {
     position: relative;
     overflow: hidden;
-    &:not(:first-child)::before {
+    &::before {
       content: '';
       width: 100%;
       height: 100%;

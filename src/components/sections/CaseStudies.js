@@ -6,16 +6,16 @@ import Button from "../atoms/Button";
 import DecorativeHeading from "../atoms/DecorativeHeading";
 import { Clamp } from "../../utils/functions";
 
-const CaseStudies = ({heading}) => {
+const CaseStudies = ({heading, eagerLoading}) => {
   const { caseStudies } = useStaticQuery(graphql`
     query {
-      caseStudies: allSanityCaseStudies(limit: 3) {
+      caseStudies: allSanityCaseStudyEntries(limit: 3) {
         nodes {
           name
           slug {
             current
           }
-          thumbnail {
+          img {
             asset {
               altText
               gatsbyImageData(placeholder: BLURRED, width: 456)
@@ -33,12 +33,23 @@ const CaseStudies = ({heading}) => {
       <div className="wrapper">
         {caseStudies.nodes.map((caseStudy, i) => (
           <div className="caseStudy" key={i}>
-            <GatsbyImage key={i} image={caseStudy.thumbnail.asset.gatsbyImageData} alt={caseStudy.thumbnail.asset.altText || ''} className="img" />
-            <Button to={`projekty/${caseStudy.slug.current}`} aria-label={`Sprawdź projekt ${caseStudy.name}`}>Sprawdź projekt</Button>
+            <GatsbyImage
+              key={i}
+              image={caseStudy.img.asset.gatsbyImageData}
+              alt={caseStudy.img.asset.altText || ''}
+              className="img"
+              loading={(eagerLoading && i == 0) ? 'eager' : 'lazy'}
+            />
+            <Button
+              to={`/pl/portfolio/${caseStudy.slug.current}`}
+              aria-label={`Sprawdź projekt ${caseStudy.name}`}
+            >
+              Sprawdź projekt
+            </Button>
           </div>
         ))}
       </div>
-      <Button theme="secondary" to="/projekty">Wszystkie projekty</Button>
+      <Button theme="secondary" to="/pl/portfolio">Wszystkie projekty</Button>
     </Wrapper>
   );
 }

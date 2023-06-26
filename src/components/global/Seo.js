@@ -2,7 +2,7 @@ import React from "react"
 
 export const SEO = ({ title, description, children }) => {
   const seo = {
-    title: title + ' | Kryptonum' || 'Kryptonum',
+    title: title || 'Kryptonum',
     description: description || '',
   }
 

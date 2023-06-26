@@ -25,7 +25,7 @@ const Audit = ({
         </div>
         <GatsbyImage
           image={audit_Img.asset.gatsbyImageData}
-          alt={audit_Img.asset.altText}
+          alt={audit_Img.asset.altText || ''}
           className="img"
         />
       </div>

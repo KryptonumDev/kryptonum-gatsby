@@ -76,8 +76,8 @@ const Wrapper = styled.section`
     max-width: 734px;
   }
   .roadmap {
-    width: calc(100vw - 16px);
-    max-width: 1920px;
+    width: 100vw;
+    max-width: 1680px;
     pointer-events: none;
     ::-webkit-scrollbar {
       display: none;
