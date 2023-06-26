@@ -193,15 +193,26 @@ export const query = graphql`
           href
         }
       }
+      # SEO
+      seo {
+        title
+        description
+      }
     }
   }
 `
 
 export default WebDevelopmentWebsitesPage;
 
-export const Head = () => (
+export const Head = ({
+  data: { page: { seo: {
+    title,
+    description
+  }}}
+}) => (
   <SEO
-    title="Profesjonalne strony internetowe na zamówienie | Kryptonum"
-    description="Stworzymy dla Ciebie stronę internetową, która nie tylko zachwyci wyglądem, będzie też funkcjonalna, szybka i zoptymalizowana."
+    title={title}
+    description={description}
+    url='/pl/web-development-strony-internetowe'
   />
 )

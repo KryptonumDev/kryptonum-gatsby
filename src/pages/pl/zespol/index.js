@@ -120,15 +120,26 @@ export const query = graphql`
       }
       # Curiosity Entries
       curiosityEntries_Heading
+      # SEO
+      seo {
+        title
+        description
+      }
     }
   }
 `
 
 export default TeamPage
 
-export const Head = () => (
+export const Head = ({
+  data: { page: { seo: {
+    title,
+    description
+  }}}
+}) => (
   <SEO
-    title="Poznaj zespół specjalistów agencji interaktywnej Kryptonum"
-    description="Z tych połączonych mocy powstają wyjątkowe projekty. Inżynierowie programowania, kreatorzy designu, czarodzieje słowa. Poznaj zespół Kryptonum!"
+    title={title}
+    description={description}
+    url='/pl/zespol'
   />
 )

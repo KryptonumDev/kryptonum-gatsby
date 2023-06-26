@@ -154,15 +154,26 @@ export const query = graphql`
           href
         }
       }
+      # SEO
+      seo {
+        title
+        description
+      }
     }
   }
 `
 
 export default VisualIdentityPage;
 
-export const Head = () => (
+export const Head = ({
+  data: { page: { seo: {
+    title,
+    description
+  }}}
+}) => (
   <SEO
-    title="Identyfikacja wizualna marki i branding | Kryptonum"
-    description="Księga znaków, warianty logo i kolorystyczne, budowa znaku, stylescape'y, typografia i więcej! Profesjonalna identyfikacja wizualna marki z Kryptonum"
+    title={title}
+    description={description}
+    url='/pl/grafika-design-identyfikacja-wizualna-marki'
   />
 )

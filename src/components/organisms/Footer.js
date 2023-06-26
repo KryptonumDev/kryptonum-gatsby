@@ -29,10 +29,10 @@ const Footer = ({
     <Wrapper className="max-width">
       <ul className="footer-wrapper">
         <li className="info">
-          <Link to='/' aria-label="Strona główna" className="footer-logo">
+          <Link to='/pl' aria-label="Strona główna" className="footer-logo">
             <KryptonumLogoSimple />
           </Link>
-          <h3><Link to='/kontakt'>Kontakt</Link></h3>
+          <h3><Link to='/pl/kontakt'>Kontakt</Link></h3>
           <div>
             <h3>{footer_OfficeCity}</h3>
             <p>{footer_OfficeStreet}</p>

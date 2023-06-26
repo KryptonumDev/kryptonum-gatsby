@@ -139,15 +139,26 @@ export const query = graphql`
           href
         }
       }
+      # SEO
+      seo {
+        title
+        description
+      }
     }
   }
 `
 
 export default LogoPage;
 
-export const Head = () => (
+export const Head = ({
+  data: { page: { seo: {
+    title,
+    description
+  }}}
+}) => (
   <SEO
-    title="Projektowanie logo dla firm i profesjonalistów | Kryptonum"
-    description="Postaw na profesjonalne logo dla swojej firmy! Zaprojektujemy dla Ciebie wizualną wizytówkę - esencję Twojej marki, która zapadnie w pamięć. Sprawdź!"
+    title={title}
+    description={description}
+    url='/pl/grafika-design-projektowanie-logo'
   />
 )

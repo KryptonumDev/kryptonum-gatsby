@@ -135,15 +135,26 @@ export const query = graphql`
           href
         }
       }
+      # SEO
+      seo {
+        title
+        description
+      }
     }
   }
 `
 
 export default WebDevelopmentPWAsPage;
 
-export const Head = () => (
+export const Head = ({
+  data: { page: { seo: {
+    title,
+    description
+  }}}
+}) => (
   <SEO
-    title="Profesjonalne sklepy internetowe na zamówienie | Kryptonum"
-    description="W Kryptonum tworzymy profesjonalne sklepy internetowe z kluczowymi funkcjonalnościami: szybkie płatności, dostawy, opinie. Indywidualny e-commerce!"
+    title={title}
+    description={description}
+    url='/pl/web-development-sklepy-internetowe'
   />
 )

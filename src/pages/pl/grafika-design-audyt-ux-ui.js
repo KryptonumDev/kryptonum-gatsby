@@ -197,15 +197,26 @@ export const query = graphql`
           href
         }
       }
+      # SEO
+      seo {
+        title
+        description
+      }
     }
   }
 `
 
 export default AuditPage;
 
-export const Head = () => (
+export const Head = ({
+  data: { page: { seo: {
+    title,
+    description
+  }}}
+}) => (
   <SEO
-    title="Usługi UX / UI: audyt wizualny, design, prototypowanie | Kryptonum"
-    description="Zachwyć użytkowników funkcjonalnym interfejsem strony i zapewnij niepowtarzalne doświadczenia użytkownika. Usługi User Experience i User Interface"
+    title={title}
+    description={description}
+    url='/pl/grafika-design-audyt-ux-ui'
   />
 )

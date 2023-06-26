@@ -154,15 +154,26 @@ export const query = graphql`
           href
         }
       }
+      # SEO
+      seo {
+        title
+        description
+      }
     }
   }
 `
 
 export default WebDevelopmentPWAsPage;
 
-export const Head = () => (
+export const Head = ({
+  data: { page: { seo: {
+    title,
+    description
+  }}}
+}) => (
   <SEO
-    title="Web development, e-commerce, usługi internetowe | Oferta Kryptonum"
-    description="Usługi internetowe szyte na miarę: od strategii web i identyfikacji wizualnej, przez chwytliwe treści www, do zaawansowanych stron i sklepów online."
+    title={title}
+    description={description}
+    url='/pl/web-development-aplikacje-internetowe'
   />
 )

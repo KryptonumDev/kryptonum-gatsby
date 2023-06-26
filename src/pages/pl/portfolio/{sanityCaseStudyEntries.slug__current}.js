@@ -6,10 +6,8 @@ import Hero from "../../../components/sections/CaseStudies/Hero";
 import CtaSection from "../../../components/sections/CtaSection";
 import ImageAndStanduout from "../../../components/sections/ImageAndStandout";
 import Challenge from "../../../components/sections/CaseStudies/Challenge";
-import Technologies from "../../../components/sections/CaseStudies/Technologies";
 import Testimonial from "../../../components/sections/CaseStudies/Testimonial";
-import Logo from "../../../components/sections/CaseStudies/Logo";
-import VisualIdentification from "../../../components/sections/CaseStudies/VisualIdentification";
+import Process from "../../../components/sections/CaseStudies/Process";
 
 const CaseStudyPage = ({
   data: { caseStudy : {
@@ -25,7 +23,7 @@ const CaseStudyPage = ({
     client_Img,
     challenge_Heading,
     challenge_Paragraph,
-    technologies_Paragraph,
+    process,
     logo_Images,
     logo_Paragraph,
     visualIdentification_Images,
@@ -35,6 +33,7 @@ const CaseStudyPage = ({
     testimonial,
     testimonial_Paragraph,
     testimonial_Paragraph2,
+    technologies_Paragraph,
     technologies,
     ctaSection,
   }}
@@ -63,18 +62,15 @@ const CaseStudyPage = ({
         heading={challenge_Heading}
         paragraph={challenge_Paragraph}
       />
-      <Technologies
-        heading={technologies_Paragraph}
+      <Process
+        data={process}
+        logo_Showcase={logo_Images}
+        logo_Paragraph={logo_Paragraph}
+        visualIdentification_Showcase={visualIdentification_Images}
+        visualIdentification_Paragraph={visualIdentification_Paragraph}
+        visualIdentification_SecondParagraph={visualIdentification_Paragraph2}
+        technologies_Paragraph={technologies_Paragraph}
         technologies={technologies}
-      />
-      <Logo
-        showcase={logo_Images}
-        paragraph={logo_Paragraph}
-      />
-      <VisualIdentification
-        showcase={visualIdentification_Images}
-        paragraph={visualIdentification_Paragraph}
-        secondParagraph={visualIdentification_Paragraph2}
       />
       <Testimonial
         heading={testimonial_Heading}
@@ -91,6 +87,9 @@ export const query = graphql`
   query($id: String!) {
     caseStudy: sanityCaseStudyEntries(id: {eq: $id}) {
       name
+      slug {
+        current
+      }
       heading
       paragraph
       paragraph2
@@ -214,6 +213,7 @@ export default CaseStudyPage
 export const Head = ({
   data: { caseStudy: {
     name,
+    slug,
     categories,
     technologies
   }}
@@ -230,6 +230,7 @@ export const Head = ({
     <SEO
       title={`${categories[0].name} dla ${name} | Kryptonum`}
       description={`Zobacz case study dla ${name}. ${categories[0].name}, którą zrealizowaliśmy wykorzystując ${getCommaSeparatedNames(technologies)}`}
+      url={`/pl/portfolio/${slug.current}`}
     />
   )
 }

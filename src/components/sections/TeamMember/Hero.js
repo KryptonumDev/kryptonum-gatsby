@@ -9,7 +9,7 @@ const Hero = ({name, cryptonym, img}) => {
     <Wrapper>
       <header>
         <DecorativeHeading>{name}</DecorativeHeading>
-        <h3 className="strong">{cryptonym}</h3>
+        <h2 className="strong">{cryptonym}</h2>
       </header>
       <GatsbyImage
         image={img.asset.gatsbyImageData}
@@ -30,7 +30,7 @@ const Wrapper = styled.section`
     h1 {
       margin-bottom: 8px;
     }
-    h3 {
+    h2 {
       font-size: ${Clamp(16, 22, 22)};
       &::before {
         content: "01/";

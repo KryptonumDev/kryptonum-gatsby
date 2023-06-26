@@ -127,15 +127,26 @@ export const query = graphql`
           href
         }
       }
+      # SEO
+      seo {
+        title
+        description
+      }
     }
   }
 `
 
 export default WorkshopPage;
 
-export const Head = () => (
+export const Head = ({
+  data: { page: { seo: {
+    title,
+    description
+  }}}
+}) => (
   <SEO
-    title="Warsztaty UX, product discovery i MVP | Kryptonum"
-    description="Weź udział w warsztatach i wznieś swój produkt na wyżyny. Minimum viable product, product discovery, warsztaty UX, scrum w praktyce i więcej!"
+    title={title}
+    description={description}
+    url='/pl/warsztaty-discovery'
   />
 )

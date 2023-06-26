@@ -66,15 +66,26 @@ export const query = graphql`
           href
         }
       }
+      # SEO
+      seo {
+        title
+        description
+      }
     }
   }
 `
 
 export default PortfolioPage
 
-export const Head = () => (
+export const Head = ({
+  data: { page: { seo: {
+    title,
+    description
+  }}}
+}) => (
   <SEO
-    title="Kryptonum case studies -  niesamowite porftolio projektów www"
-    description="Zobacz portolio projektów z obszaru web developmentu, grafiki, UX i UI designu, copywritingu i SXO. Poznaj jakość idącą za realizacjami Kryptonum!"
+    title={title}
+    description={description}
+    url='/pl/portfolio'
   />
 )

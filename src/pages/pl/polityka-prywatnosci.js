@@ -2,12 +2,7 @@ import * as React from "react"
 import { graphql } from "gatsby";
 import { SEO } from "../../components/global/Seo";
 
-const PrivacyPolicyPage = ( { data} ) => {
-  const { page: {
-    hero_Heading,
-    hero_Paragraph,
-    hero_Img,
-  } } = data;
+const PrivacyPolicyPage = () => {
   return (
     <>
       <h1>HEJ</h1>
@@ -43,14 +38,26 @@ export const query = graphql`
           text
         }
       }
+      # SEO
+      seo {
+        title
+        description
+      }
     }
   }
 `
 
 export default PrivacyPolicyPage;
 
-export const Head = () => (
+export const Head = ({
+  data: { page: { seo: {
+    title,
+    description
+  }}}
+}) => (
   <SEO
-    title="Polityka Prywatności | Kryptonum"
+    title={title}
+    description={description}
+    url='/pl/polityka-prywatnosci'
   />
 )

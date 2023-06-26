@@ -7,7 +7,7 @@ import HeroServices from "../../components/sections/HeroServices";
 import Testimonials from "../../components/sections/Testimonials";
 import Advantages from "../../components/sections/WebDevelopment/Advantages";
 import Flexibility from "../../components/sections/WebDevelopment/Flexibility";
-import Process from "../../components/sections/WebDevelopment/Process";
+import ListSection from "../../components/sections/ListSection";
 
 const WebDevelopmentPage = ({ data }) => {
   const { page: {
@@ -47,12 +47,12 @@ const WebDevelopmentPage = ({ data }) => {
         advantages={advantages_Array}
         simpleCtaSection={simpleCtaSection}
       />
-      <Process data={{
-        process_Heading,
-        process_Claim,
-        process_Paragraph,
-        process_List,
-      }} />
+      <ListSection
+        heading={process_Heading}
+        paragraph={process_Claim}
+        title={process_Paragraph}
+        list={process_List}
+      />
       <Flexibility data={{
         flexibility_Heading,
         flexibility_Claim,
@@ -154,15 +154,26 @@ export const query = graphql`
           href
         }
       }
+      # SEO
+      seo {
+        title
+        description
+      }
     }
   }
 `
 
 export default WebDevelopmentPage;
 
-export const Head = () => (
+export const Head = ({
+  data: { page: { seo: {
+    title,
+    description
+  }}}
+}) => (
   <SEO
-    title="Web development, e-commerce, usługi internetowe | Oferta Kryptonum"
-    description="Usługi internetowe szyte na miarę: od strategii web i identyfikacji wizualnej, przez chwytliwe treści www, do zaawansowanych stron i sklepów online."
+    title={title}
+    description={description}
+    url='/pl/web-development'
   />
 )

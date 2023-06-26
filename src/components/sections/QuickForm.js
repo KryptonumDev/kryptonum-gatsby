@@ -62,7 +62,7 @@ const QuickForm = ( { data: { heading, subheading, cta }} ) => {
             <span>Zgadzam się na <Link to="/polityka-prywatnosci">przetwarzanie moich danych</Link></span>
           </label>
         </div>
-        <Button>{cta}</Button>
+        <Button theme="primary">{cta}</Button>
       </form>
       <div className="info">
         <p>{quickForm_Paragraph}</p>

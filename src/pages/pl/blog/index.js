@@ -8,7 +8,7 @@ import Faq from "../../../components/sections/Faq";
 import Categories from "../../../components/sections/Categories";
 import CuriosityEntries from "../../../components/sections/CuriosityEntries";
 
-const AcademyPage = ({
+const BlogPage = ({
   data: {
     page: {
       hero_Heading,
@@ -16,7 +16,7 @@ const AcademyPage = ({
       hero_Img,
       ctaSection,
     },
-    curiosityCategories
+    blogCategories
   }
 }) => {
   return (
@@ -26,10 +26,10 @@ const AcademyPage = ({
         paragraph={hero_Paragraph}
         img={hero_Img}
       />
-      <Categories slug="/pl/akademia/kategoria/" categories={curiosityCategories} />
-      <CuriosityEntries />
-      <CtaSection data={ctaSection} />
+      <Categories slug="/pl/blog/kategoria/" categories={blogCategories} />
       <BlogEntries />
+      <CtaSection data={ctaSection} />
+      <CuriosityEntries />
       <Faq />
     </>
   );
@@ -37,7 +37,7 @@ const AcademyPage = ({
 
 export const query = graphql`
   query {
-    page: sanityAcademy {
+    page: sanityBlog {
       # Hero
       hero_Heading
       hero_Paragraph
@@ -68,7 +68,7 @@ export const query = graphql`
         description
       }
     }
-    curiosityCategories: allSanityCuriosityCategories {
+    blogCategories: allSanityBlogCategories {
       nodes {
         name
         slug {
@@ -79,7 +79,7 @@ export const query = graphql`
   }
 `
 
-export default AcademyPage;
+export default BlogPage;
 
 export const Head = ({
   data: { page: { seo: {
@@ -90,6 +90,6 @@ export const Head = ({
   <SEO
     title={title}
     description={description}
-    url="/pl/akademia"
+    url='/pl/blog'
   />
 )

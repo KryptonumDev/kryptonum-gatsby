@@ -4,14 +4,15 @@ import HeroTwoColumns from "../components/sections/HeroTwoColumns"
 import CtaSection from "../components/sections/CtaSection";
 import { SEO } from "../components/global/Seo";
 
-const NotFoundPage = ({data}) => {
-  const { notFound: {
+const NotFoundPage = ({
+  data: { page: {
     hero_Heading,
     hero_Subheading,
     hero_Cta,
     hero_Img,
     ctaSection,
-  } } = data;
+  }}
+}) => {
   return (
     <>
       <HeroTwoColumns
@@ -27,7 +28,7 @@ const NotFoundPage = ({data}) => {
 
 export const query = graphql`
   query {
-    notFound: sanityNotFound {
+    page: sanityNotFound {
       hero_Heading
       hero_Subheading
       hero_Cta {
@@ -55,14 +56,26 @@ export const query = graphql`
           }
         }
       }
+      # SEO
+      seo {
+        title
+        description
+      }
     }
   }
 `
 
 export default NotFoundPage
 
-export const Head = () => (
+export const Head = ({
+  data: { page: { seo: {
+    title,
+    description
+  }}}
+}) => (
   <SEO
-    title="Wystrzeliło Cię w kosmos!"
+    title={title}
+    description={description}
+    url='/404'
   />
 )

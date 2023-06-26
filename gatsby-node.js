@@ -1,8 +1,11 @@
-exports.createPages = async ({ actions }) => {
-  const { createRedirect } = actions
+const redirects = require("./redirects.json")
 
-  createRedirect({
-    fromPath: `/`,
-    toPath: `/pl`,
-  })
+exports.createPages = async ({ actions }) => {
+  const { createRedirect } = actions;
+  redirects.forEach(redirect =>
+    createRedirect({
+      fromPath: redirect.fromPath,
+      toPath: redirect.toPath,
+    })
+  )
 }
