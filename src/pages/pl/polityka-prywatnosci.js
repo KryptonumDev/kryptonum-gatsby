@@ -2,7 +2,7 @@ import * as React from "react"
 import { graphql } from "gatsby";
 import { SEO } from "../../components/global/Seo";
 
-const PrivacyPolicyPage = ( { data} ) => {
+const PrivacyPolicyPage = ( { data } ) => {
   const { page: {
     hero_Heading,
     hero_Paragraph,
