@@ -1994,6 +1994,26 @@
     "@pnpm/network.ca-file" "^1.0.1"
     config-chain "^1.1.11"
 
+"@portabletext/react@^3.0.3":
+  version "3.0.3"
+  resolved "https://registry.yarnpkg.com/@portabletext/react/-/react-3.0.3.tgz#e2c79ccacd87641935b2daab76119921b2c938e2"
+  integrity sha512-NVZq1DwQ/a75VJPYQRgWideJns+yfOu9r8eG/0ZbKJ2KGYKkQ1ll5NjFavG+qct5e3Up5Tq5EqSMAvoDbXPxBw==
+  dependencies:
+    "@portabletext/toolkit" "^2.0.2"
+    "@portabletext/types" "^2.0.5"
+
+"@portabletext/toolkit@^2.0.2":
+  version "2.0.3"
+  resolved "https://registry.yarnpkg.com/@portabletext/toolkit/-/toolkit-2.0.3.tgz#f23ac9401bd399338604dadaa10e0c23168d523f"
+  integrity sha512-ND1yKoHQ+n4YOel8IqCT1xdQ9+sydQ2mlNfTDWqWXKE/CI7mi93oTHnDjr9qV1/+uiXWLhswlXh8OJi9HHYqhw==
+  dependencies:
+    "@portabletext/types" "^2.0.0"
+
+"@portabletext/types@^2.0.0", "@portabletext/types@^2.0.5":
+  version "2.0.5"
+  resolved "https://registry.yarnpkg.com/@portabletext/types/-/types-2.0.5.tgz#89872bd5b25df8c1d917e13fe3f035cdf135ae0e"
+  integrity sha512-AceKp/Y6UIzvUe/T675oPKlO2Dnt1BVIiUpwhcplPzLeYqaYaWYvb7ricVyWj7j0rukYRgBRQdrTBvgo9E1D+g==
+
 "@sanity/client@^3.4.1":
   version "3.4.1"
   resolved "https://registry.yarnpkg.com/@sanity/client/-/client-3.4.1.tgz#d1bd02bafc50eb0aac8d5b6fab942da52549652f"

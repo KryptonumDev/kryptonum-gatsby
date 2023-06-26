@@ -16,18 +16,22 @@ const BlogPage = ({
       hero_Img,
       ctaSection,
     },
+    blogEntries,
     blogCategories
-  }
+  },
+  pageContext: { currentPage, totalCount, urlBasis }
 }) => {
   return (
     <>
-      <HeroTwoColumns
-        heading={hero_Heading}
-        paragraph={hero_Paragraph}
-        img={hero_Img}
-      />
+      {currentPage === 1 && (
+        <HeroTwoColumns
+          heading={hero_Heading}
+          paragraph={hero_Paragraph}
+          img={hero_Img}
+        />
+      )}
       <Categories slug="/pl/blog/kategoria/" categories={blogCategories} />
-      <BlogEntries />
+      <BlogEntries urlBasis={urlBasis} totalCount={totalCount} blogEntries={blogEntries} page={currentPage} />
       <CtaSection data={ctaSection} />
       <CuriosityEntries />
       <Faq />
@@ -36,7 +40,42 @@ const BlogPage = ({
 }
 
 export const query = graphql`
-  query {
+  query($perPage: Int!, $skip: Int!) {
+    blogEntries: allSanityBlogEntries(limit: $perPage, skip: $skip, sort: {_createdAt: DESC}) {
+      totalCount
+      nodes {
+        title
+        subtitle
+        slug {
+          current
+        }
+        author {
+          name
+          slug {
+            current
+          }
+          img {
+            asset {
+              altText
+              gatsbyImageData(placeholder: BLURRED, width: 48, height: 48)
+            }
+          }
+        }
+        categories {
+          name
+          slug {
+            current
+          }
+        }
+        img {
+          asset {
+            altText
+            gatsbyImageData(placeholder: BLURRED, width: 230, height: 230)
+          }
+        }
+        _createdAt(formatString: "D MMMM Y", locale: "pl")
+      }
+    }
     page: sanityBlog {
       # Hero
       hero_Heading
@@ -85,7 +124,7 @@ export const Head = ({
   data: { page: { seo: {
     title,
     description
-  }}}
+  } } }
 }) => (
   <SEO
     title={title}

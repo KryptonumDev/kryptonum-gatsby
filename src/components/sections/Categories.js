@@ -10,7 +10,7 @@ const Categories = ({ categories, slug }) => {
       <DecorativeHeading type="h2" className="heading">Co Cię **interesuje**?</DecorativeHeading>
       <div className="categories">
         {categories.nodes.map((category, i) => (
-          <Link to={`${slug}${category.slug.current}`} key={i}>{category.name}</Link>
+          <Link activeClassName="active" partiallyActive={true} to={`${slug}${category.slug.current}`} key={i}>{category.name}</Link>
         ))}
       </div>
     </Wrapper>
@@ -35,7 +35,7 @@ const Wrapper = styled.section`
       background-color: var(--neutral-900);
       border-radius: 2px;
       text-align: center;
-      &[aria-current="page"] {
+      &.active {
         background-image: var(--gradient);
         color: var(--neutral-950);
       }

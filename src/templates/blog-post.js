@@ -1,9 +1,9 @@
 import * as React from "react"
 import { graphql } from "gatsby";
-import { SEO } from "../../../components/global/Seo";
-import Hero from "../../../components/sections/BlogEntry/Hero";
-import CuriosityEntries from "../../../components/sections/CuriosityEntries";
-import Content from "../../../components/sections/BlogEntry/Content";
+import { SEO } from "./../components/global/Seo";
+import Hero from "./../components/sections/BlogEntry/Hero";
+import CuriosityEntries from "./../components/sections/CuriosityEntries";
+import Content from "./../components/sections/BlogEntry/Content";
 
 
 const BlogEntryPage = ({

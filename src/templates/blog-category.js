@@ -14,12 +14,13 @@ const BlogCategoryPage = ({
     },
     blogCategories,
     blogEntries
-  }
+  },
+  pageContext: { currentPage, totalCount, urlBasis }
 }) => {
   return (
     <>
       <Categories slug="/pl/blog/kategoria/" categories={blogCategories} />
-      <BlogEntries data={blogEntries} />
+      <BlogEntries urlBasis={urlBasis} totalCount={totalCount} blogEntries={blogEntries} page={currentPage} />
       <CtaSection data={ctaSection} />
       <CuriosityEntries />
       <Faq />
@@ -28,7 +29,7 @@ const BlogCategoryPage = ({
 }
 
 export const query = graphql`
-  query($id: String!) {
+  query($id: String!, $perPage: Int!, $skip: Int!) {
     page: sanityBlog {
       # Call To Action
       ctaSection {
@@ -65,7 +66,7 @@ export const query = graphql`
         current
       }
     }
-    blogEntries: allSanityBlogEntries(filter: {categories: {elemMatch: {id: {eq: $id}}}}) {
+    blogEntries: allSanityBlogEntries(limit: $perPage, skip: $skip, sort: {_createdAt: DESC}, filter: {categories: {elemMatch: {id: {eq: $id}}}}) {
       nodes {
         title
         subtitle
@@ -108,11 +109,11 @@ export const Head = ({
   data: { page: { seo: {
     title,
     description
-  }},
-  blogCategory: {
-    slug
-  }
-}}) => (
+  } },
+    blogCategory: {
+      slug
+    }
+  } }) => (
   <SEO
     title={title}
     description={description}

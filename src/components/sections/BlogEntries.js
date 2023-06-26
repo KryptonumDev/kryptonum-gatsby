@@ -5,50 +5,9 @@ import styled from "styled-components";
 import DecorativeHeading from "../atoms/DecorativeHeading";
 import { Clamp, removeMarkdown } from '../../utils/functions'
 import { Clock } from "../atoms/Icons";
-import Button from '../atoms/Button';
+import Pagination from "../organisms/BlogPagination";
 
-const BlogEntries = ({ data, heading }) => {
-  let { blogEntries } = useStaticQuery(graphql`
-    query {
-      blogEntries: allSanityBlogEntries(limit: 3, sort: {_createdAt: DESC}) {
-        nodes {
-          title
-          subtitle
-          slug {
-            current
-          }
-          author {
-            name
-            slug {
-              current
-            }
-            img {
-              asset {
-                altText
-                gatsbyImageData(placeholder: BLURRED, width: 48, height: 48)
-              }
-            }
-          }
-          categories {
-            name
-            slug {
-              current
-            }
-          }
-          img {
-            asset {
-              altText
-              gatsbyImageData(placeholder: BLURRED, width: 230, height: 230)
-            }
-          }
-          _createdAt(formatString: "D MMMM Y", locale: "pl")
-        }
-      }
-    }
-  `);
-
-  blogEntries = data ? data : blogEntries;
-
+const BlogEntries = ({ urlBasis, totalCount, blogEntries, page, heading }) => {
   return (
     <Wrapper>
       <DecorativeHeading type="h2">{heading || `**Najświeższe** artykuły (${blogEntries.nodes.length})`}</DecorativeHeading>
@@ -84,14 +43,14 @@ const BlogEntries = ({ data, heading }) => {
           </div>
         ))}
       </div>
-      <Button theme="secondary" to='/blog' className='cta'>Przejdź do bloga</Button>
+      <Pagination currentPage={page} itemCount={totalCount} urlBasis={urlBasis} />
     </Wrapper>
   );
 }
 
 const Wrapper = styled.section`
   h2 {
-    max-width: ${686/16}rem;
+    max-width: ${686 / 16}rem;
     margin-bottom: ${Clamp(28, 48, 72)};
   }
   .entry {
@@ -206,5 +165,5 @@ const Wrapper = styled.section`
     }
   }
 `
- 
+
 export default BlogEntries;
