@@ -5,10 +5,12 @@ import EntryHero from "../components/sections/EntryHero";
 import Meaty from "../components/sections/AcademyEntry/Meaty";
 import Standout from "../components/sections/AcademyEntry/Standout";
 import Showcase from "../components/sections/AcademyEntry/Showcase";
+import Share from "../components/sections/AcademyEntry/Share";
 
 const CuriosityEntryPage = ({
   data: { page: {
     title,
+    slug,
     subtitle,
     author,
     categories,
@@ -51,6 +53,11 @@ const CuriosityEntryPage = ({
         img={showcase_Img}
         paragraph={showcase_Paragraph}
         paragraph2={showcase_Paragraph2}
+      />
+      <Share
+        heading={share_Heading}
+        img={share_Img}
+        url={slug.current}
       />
     </>
   );
@@ -107,7 +114,7 @@ export const query = graphql`
       share_Img {
         asset {
           altText
-          gatsbyImageData
+          gatsbyImageData(placeholder: NONE)
         }
       }
       sources_Heading

@@ -3,12 +3,10 @@ import { useForm } from "react-hook-form"
 import styled from "styled-components"
 import Button from "../../../atoms/Button"
 import { Checkbox } from "../../../moleculas/FormCheckbox"
-import { Book, Cart, Website } from "../../../atoms/Icons"
+import { Book, Cart, Desktop } from "../../../atoms/Icons"
 import { Range } from "../../../moleculas/FormRange"
 import { Label } from "../../../moleculas/FormInput"
 import { AnimatePresence, motion } from "framer-motion"
-
-
 
 export default function ThirdStep({ prevData, setData, setStep }) {
   const {
@@ -105,7 +103,7 @@ export default function ThirdStep({ prevData, setData, setStep }) {
                 errors={errors}
               />
               <Checkbox
-                icon={<Website />}
+                icon={<Desktop />}
                 text='Aplikacje web'
                 name='website'
                 register={register('website')}
@@ -218,7 +216,7 @@ export default function ThirdStep({ prevData, setData, setStep }) {
           </motion.div>
         )}
       </AnimatePresence>
-      <Button>Szanujemy deadline'y. Jaki jest Twój?</Button>
+      <Button>Szanujemy deadline`y. Jaki jest Twój?</Button>
     </Wrapper>
   )
 }

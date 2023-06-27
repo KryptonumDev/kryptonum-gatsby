@@ -268,6 +268,38 @@ export const Whatsapp = () => (
   </svg>
 )
 
+export const Linkedin = () => (
+  <svg
+    xmlns='http://www.w3.org/2000/svg'
+    width='70'
+    height='64'
+    fill='none'
+    viewBox='0 0 70 64'
+  >
+    <path
+      fill='#EFF0F3'
+      fillRule='evenodd'
+      d='M12.83 5.44c-2.173 0-3.934 1.712-3.934 3.82v45.694c0 2.11 1.762 3.82 3.933 3.82h45.359c2.172 0 3.934-1.711 3.934-3.82V9.26c0-2.108-1.761-3.82-3.934-3.82H12.829zm12.242 20.623v24.01h-7.965v-24.01h7.965zm.525-7.426c0 2.304-1.73 4.148-4.506 4.148h-.052c-2.673 0-4.402-1.844-4.402-4.148 0-2.357 1.78-4.149 4.507-4.149 2.724 0 4.4 1.792 4.453 4.149zm11.847 31.436H29.48v.001s.105-21.758 0-24.01h7.965v3.398c1.059-1.636 2.954-3.962 7.178-3.962 5.24 0 9.17 3.431 9.17 10.806v13.767h-7.965V37.23c0-3.228-1.153-5.43-4.034-5.43-2.201 0-3.512 1.485-4.087 2.919-.21.512-.263 1.23-.263 1.947v13.407z'
+      clipRule='evenodd'
+    ></path>
+  </svg>
+)
+
+export const Pinterest = () => (
+  <svg
+    xmlns='http://www.w3.org/2000/svg'
+    width='70'
+    height='64'
+    fill='none'
+    viewBox='0 0 70 64'
+  >
+    <path
+      fill='#EFF0F3'
+      d='M6.23 33.334c0 11.465 6.895 21.315 16.76 25.646-.078-1.955-.013-4.302.488-6.43.539-2.273 3.603-15.257 3.603-15.257s-.894-1.788-.894-4.43c0-4.15 2.404-7.249 5.4-7.249 2.547 0 3.777 1.913 3.777 4.204 0 2.56-1.633 6.39-2.473 9.937-.701 2.97 1.49 5.393 4.42 5.393 5.305 0 8.878-6.814 8.878-14.887 0-6.137-4.133-10.73-11.651-10.73-8.494 0-13.785 6.334-13.785 13.409 0 2.44.72 4.16 1.846 5.492.518.612.59.858.402 1.56-.134.516-.443 1.756-.57 2.247-.187.71-.761.963-1.402.701-3.912-1.597-5.734-5.881-5.734-10.697 0-7.954 6.708-17.492 20.011-17.492 10.69 0 17.727 7.736 17.727 16.04 0 10.984-6.107 19.19-15.108 19.19-3.023 0-5.867-1.634-6.841-3.49 0 0-1.626 6.452-1.97 7.697-.594 2.16-1.756 4.317-2.818 5.999a27.977 27.977 0 007.936 1.148c15.462 0 27.999-12.536 27.999-28.001 0-15.464-12.537-28-28-28s-28 12.536-28 28z'
+    ></path>
+  </svg>
+)
+
 export const Tel = () => (
   <svg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 16 16' fill='none'>
     <g>
@@ -453,56 +485,125 @@ export const Error = () => (
 )
 
 export const SmallError = () => (
-  <svg width="25" height="24" viewBox="0 0 25 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-    <path d="M12.5508 16H12.5608M12.5508 8V12M8.41078 2H16.6908L22.5508 7.86V16.14L16.6908 22H8.41078L2.55078 16.14V7.86L8.41078 2Z" stroke="#EE6470" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+  <svg
+    xmlns='http://www.w3.org/2000/svg'
+    width='25'
+    height='24'
+    fill='none'
+    viewBox='0 0 25 24'
+  >
+    <path
+      stroke='#EE6470'
+      strokeLinecap='round'
+      strokeWidth='2'
+      d='M12.55 16h.01m-.01-8v4M8.41 2h8.28l5.86 5.86v8.28L16.69 22H8.41l-5.86-5.86V7.86L8.41 2z'
+    ></path>
   </svg>
 )
 
 export const Plus = () => (
-  <svg width="41" height="40" viewBox="0 0 41 40" fill="none" xmlns="http://www.w3.org/2000/svg">
-    <path d="M20.7253 8.33325V31.6666M9.05859 19.9999H32.3919" stroke="#EFF0F3" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+  <svg
+    xmlns='http://www.w3.org/2000/svg'
+    width='41'
+    height='40'
+    fill='none'
+    viewBox='0 0 41 40'
+  >
+    <path stroke='#EFF0F3' d='M20.725 8.333v23.334M9.06 20h23.333'></path>
   </svg>
 )
 
 export const Cart = () => (
-  <svg width="33" height="32" viewBox="0 0 33 32" fill="none" xmlns="http://www.w3.org/2000/svg">
-    <g clip-path="url(#clip0_4410_30088)">
-      <path d="M2.06055 1.33325H7.39388L10.9672 19.1866C11.0891 19.8004 11.4231 20.3519 11.9106 20.7443C12.3981 21.1368 13.0081 21.3452 13.6339 21.3333H26.5939C27.2196 21.3452 27.8296 21.1368 28.3172 20.7443C28.8047 20.3519 29.1386 19.8004 29.2605 19.1866L31.3939 7.99992H8.72721M28.7272 27.9999C28.7272 28.7363 28.1303 29.3333 27.3939 29.3333C26.6575 29.3333 26.0605 28.7363 26.0605 27.9999C26.0605 27.2635 26.6575 26.6666 27.3939 26.6666C28.1303 26.6666 28.7272 27.2635 28.7272 27.9999ZM14.0605 27.9999C14.0605 28.7363 13.4636 29.3333 12.7272 29.3333C11.9908 29.3333 11.3939 28.7363 11.3939 27.9999C11.3939 27.2635 11.9908 26.6666 12.7272 26.6666C13.4636 26.6666 14.0605 27.2635 14.0605 27.9999Z" stroke="#EFF0F3" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
-    </g>
+  <svg
+    xmlns='http://www.w3.org/2000/svg'
+    width='33'
+    height='32'
+    fill='none'
+    viewBox='0 0 33 32'
+  >
+    <path
+      stroke='#EFF0F3'
+      strokeLinecap='round'
+      strokeLinejoin='round'
+      strokeWidth='2'
+      d='M2.06 1.333h5.334l3.573 17.854a2.667 2.667 0 002.667 2.146h12.96a2.667 2.667 0 002.666-2.146L31.395 8H8.727m20 20a1.333 1.333 0 11-2.666 0 1.333 1.333 0 012.666 0zM14.06 28a1.333 1.333 0 11-2.666 0 1.333 1.333 0 012.666 0z'
+    ></path>
     <defs>
-      <clipPath id="clip0_4410_30088">
-        <rect width="32" height="32" fill="white" transform="translate(0.726562)" />
+      <clipPath id='clip0_4410_30088'>
+        <path fill='#fff' d='M.727 0h32v32h-32z'></path>
       </clipPath>
     </defs>
   </svg>
 )
 
-export const Website = () => (
-  <svg width="33" height="32" viewBox="0 0 33 32" fill="none" xmlns="http://www.w3.org/2000/svg">
-    <path d="M20.7259 28H12.7259M6.05924 22.6667C5.352 22.6667 4.67372 22.3857 4.17363 21.8856C3.67353 21.3855 3.39258 20.7072 3.39258 20V6.66667C3.39258 5.95942 3.67353 5.28115 4.17363 4.78105C4.67372 4.28095 5.352 4 6.05924 4H27.3926C28.0998 4 28.7781 4.28095 29.2782 4.78105C29.7783 5.28115 30.0592 5.95942 30.0592 6.66667V20C30.0592 20.7072 29.7783 21.3855 29.2782 21.8856C28.7781 22.3857 28.0998 22.6667 27.3926 22.6667H6.05924Z" stroke="#EFF0F3" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
-  </svg>
-)
-
 export const Book = () => (
-  <svg width="33" height="32" viewBox="0 0 33 32" fill="none" xmlns="http://www.w3.org/2000/svg">
-    <path d="M16.7259 9.33333C16.7259 7.91885 17.2878 6.56229 18.288 5.5621C19.2882 4.5619 20.6448 4 22.0592 4H30.0592V24H20.7259C19.665 24 18.6476 24.4214 17.8975 25.1716C17.1473 25.9217 16.7259 26.9391 16.7259 28M16.7259 9.33333V28M16.7259 9.33333C16.7259 7.91885 16.164 6.56229 15.1638 5.5621C14.1636 4.5619 12.8071 4 11.3926 4H3.39258V24H12.7259C13.7868 24 14.8042 24.4214 15.5543 25.1716C16.3045 25.9217 16.7259 26.9391 16.7259 28" stroke="#EFF0F3" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+  <svg
+    xmlns='http://www.w3.org/2000/svg'
+    width='33'
+    height='32'
+    fill='none'
+    viewBox='0 0 33 32'
+  >
+    <path
+      stroke='#EFF0F3'
+      strokeLinecap='round'
+      strokeLinejoin='round'
+      strokeWidth='2'
+      d='M16.726 9.333A5.333 5.333 0 0122.059 4h8v20h-9.333a4 4 0 00-4 4m0-18.667V28m0-18.667A5.333 5.333 0 0011.393 4h-8v20h9.333a4 4 0 014 4'
+    ></path>
   </svg>
 )
 
 export const Next = () => (
-  <svg width="25" height="24" viewBox="0 0 25 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-    <path d="M9.72461 18L15.7246 12L9.72461 6" stroke="#EFF0F3" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+  <svg
+    xmlns='http://www.w3.org/2000/svg'
+    width='25'
+    height='24'
+    fill='none'
+    viewBox='0 0 25 24'
+  >
+    <path
+      stroke='#EFF0F3'
+      strokeLinecap='round'
+      strokeLinejoin='round'
+      strokeWidth='2'
+      d='M9.725 18l6-6-6-6'
+    ></path>
   </svg>
 )
 
 export const Prev = () => (
-  <svg width="25" height="24" viewBox="0 0 25 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-    <path d="M15.7246 18L9.72461 12L15.7246 6" stroke="#EFF0F3" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+  <svg
+    xmlns='http://www.w3.org/2000/svg'
+    width='25'
+    height='24'
+    fill='none'
+    viewBox='0 0 25 24'
+  >
+    <path
+      stroke='#EFF0F3'
+      strokeLinecap='round'
+      strokeLinejoin='round'
+      strokeWidth='2'
+      d='M15.725 18l-6-6 6-6'
+    ></path>
   </svg>
 )
 
 export const CalendarIcon = () => (
-  <svg width="33" height="32" viewBox="0 0 33 32" fill="none" xmlns="http://www.w3.org/2000/svg">
-    <path d="M4.72461 13.3333H28.7246M22.0579 2.66663V7.99996M11.3913 2.66663V7.99996M7.39128 5.33329H26.0579C27.5307 5.33329 28.7246 6.5272 28.7246 7.99996V26.6666C28.7246 28.1394 27.5307 29.3333 26.0579 29.3333H7.39128C5.91852 29.3333 4.72461 28.1394 4.72461 26.6666V7.99996C4.72461 6.5272 5.91852 5.33329 7.39128 5.33329Z" stroke="#EFF0F3" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+  <svg
+    xmlns='http://www.w3.org/2000/svg'
+    width='33'
+    height='32'
+    fill='none'
+    viewBox='0 0 33 32'
+  >
+    <path
+      stroke='#EFF0F3'
+      strokeLinecap='round'
+      strokeLinejoin='round'
+      strokeWidth='2'
+      d='M4.725 13.333h24M22.058 2.667V8M11.39 2.667V8m-4-2.667h18.667A2.667 2.667 0 0128.725 8v18.667a2.667 2.667 0 01-2.667 2.666H7.39a2.667 2.667 0 01-2.666-2.666V8A2.667 2.667 0 017.39 5.333z'
+    ></path>
   </svg>
 )
