@@ -238,8 +238,12 @@ const Nav = ({
                     <h3>Twórcy:</h3>
                     <div className="wrapper">
                       {team.nodes.map((person, i) => (
-                        <Link to={`/blog/autor/${person.slug.current}`} key={i} onClick={(e) => handleHideNav(e)}>
-                          <GatsbyImage image={person.img.asset.gatsbyImageData} alt={person.img.asset.altText || ''} className="person-border" />
+                        <Link to={`/pl/zespol/${person.slug.current}`} key={i} onClick={(e) => handleHideNav(e)}>
+                          <GatsbyImage
+                            image={person.img.asset.gatsbyImageData}
+                            alt={person.img.asset.altText || ''}
+                            className="person-border"
+                          />
                           <p>{person.name}</p>
                         </Link>
                       ))}
@@ -287,8 +291,12 @@ const Nav = ({
                     <h3>Twórcy:</h3>
                     <div className="wrapper">
                       {team.nodes.map((person, i) => (
-                        <Link to={`/blog/autor/${person.slug.current}`} key={i} onClick={(e) => handleHideNav(e)}>
-                          <GatsbyImage image={person.img.asset.gatsbyImageData} alt={person.img.asset.altText || ''} className="person-border" />
+                        <Link to={`/pl/zespol/${person.slug.current}`} key={i} onClick={(e) => handleHideNav(e)}>
+                          <GatsbyImage
+                            image={person.img.asset.gatsbyImageData}
+                            alt={person.img.asset.altText || ''}
+                            className="person-border"
+                          />
                           <p>{person.name}</p>
                         </Link>
                       ))}

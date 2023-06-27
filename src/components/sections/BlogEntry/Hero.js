@@ -3,7 +3,6 @@ import ReactMarkdown from "react-markdown";
 import { GatsbyImage } from "gatsby-plugin-image";
 import styled from "styled-components";
 import DecorativeHeading from '../../atoms/DecorativeHeading';
-import Button from '../../atoms/Button';
 import { Clamp } from '../../../utils/functions';
 import { Link } from "gatsby";
 
@@ -15,12 +14,19 @@ const Hero = ({
   img,
   author
 }) => {
-  console.log(a)``
   return (
     <Wrapper>
       <header>
         <DecorativeHeading className="title">{title}</DecorativeHeading>
         <ReactMarkdown className="subtitle">{subtitle}</ReactMarkdown>
+        <Link to={`/pl/zespol/${author[0].slug.current}`} className="author">
+          <GatsbyImage
+            image={author[0].img.asset.gatsbyImageData}
+            alt={author[0].img.asset.altText || ''}
+            className="person-border"
+          />
+          <span>{author[0].name}</span>
+        </Link>
         <div className="categories">
           {categories.map((category, i) => (
             <Link key={i} to={`/pl/blog/kategoria/${category.slug.current}`}>{category.name}</Link>
@@ -28,14 +34,12 @@ const Hero = ({
         </div>
         <p className="createdAt">{_createdAt}</p>
       </header>
-      {img?.asset.gatsbyImageData && (
-        <GatsbyImage
-          image={img.asset.gatsbyImageData}
-          alt={img.asset.altText || ''}
-          objectFit="contain"
-          className="img"
-        />
-      )}
+      <GatsbyImage
+        image={img.asset.gatsbyImageData}
+        alt={img.asset.altText || ''}
+        objectFit="contain"
+        className="img"
+      />
     </Wrapper>
   );
 }
@@ -47,11 +51,11 @@ const Wrapper = styled.section`
   header {
     max-width: ${739/16}rem;
     display: grid;
-    grid-template-columns: 1fr auto;
-    justify-content: space-between;
+    grid-template-columns: auto 1fr auto;
+    align-items: center;
     column-gap: 32px;
     .title, .subtitle {
-      grid-column: 3/1;
+      grid-column: 4/1;
     }
     .subtitle {
       margin: ${Clamp(28, 32, 32, "px")} 0 ${Clamp(24, 48, 48, "px")};
@@ -59,6 +63,12 @@ const Wrapper = styled.section`
       p:not(:last-of-type){
         margin-bottom: 1rem;
       }
+    }
+    .author {
+      display: grid;
+      grid-template-columns: 48px auto;
+      align-items: center;
+      gap: 8px;
     }
     .categories {
       display: flex;
@@ -68,6 +78,15 @@ const Wrapper = styled.section`
         padding: 4px 16px;
         background-color: var(--neutral-900);
         border-radius: 2px;
+      }
+    }
+    @media (max-width: 599px){
+      grid-template-columns: 1fr;
+      .title, .subtitle {
+        grid-column: unset;
+      }
+      .categories {
+        margin: 24px 0;
       }
     }
   }
