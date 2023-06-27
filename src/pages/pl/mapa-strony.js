@@ -1,12 +1,12 @@
 import { graphql } from "gatsby";
 import React from "react";
-import Hero from '../../components/sections/Sitemap/Hero'
 import Grid from "../../components/sections/Sitemap/Grid";
+import HeroTwoColumns from "../../components/sections/HeroTwoColumns";
 
 export default function Sitemap({ data: { page, team, blogEntries, sanityWebDevelopment, sanityAgency, sanityGraphicsDesign, sanityWorkshop, caseStudies, akademiaEntries } }) {
   return (
     <>
-      <Hero data={page}/>
+      <HeroTwoColumns heading={page.hero_Heading} paragraph={page.hero_Subheading} img={page.hero_Img}/>
       <Grid
         team={team}
         blogEntries={blogEntries}
