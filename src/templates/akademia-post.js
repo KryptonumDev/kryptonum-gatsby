@@ -3,6 +3,7 @@ import { graphql } from "gatsby";
 import { SEO } from "./../components/global/Seo";
 import EntryHero from "../components/sections/EntryHero";
 import Meaty from "../components/sections/AcademyEntry/Meaty";
+import Standout from "../components/sections/AcademyEntry/Standout";
 
 const CuriosityEntryPage = ({
   data: { page: {
@@ -39,6 +40,10 @@ const CuriosityEntryPage = ({
       <Meaty
         heading={meaty_Heading}
         list={meaty_List}
+      />
+      <Standout
+        heading={standout_Heading}
+        paragraph={standout_Paragraph}
       />
     </>
   );

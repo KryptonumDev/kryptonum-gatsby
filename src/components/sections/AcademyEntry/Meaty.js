@@ -35,10 +35,13 @@ const Wrapper = styled.section`
     li {
       counter-increment: counter;
       &::before {
-        content: "/0" counter(counter);
+        content: "/" counter(counter);
         display: inline-block;
         font-size: ${Clamp(16, 22, 22)};
         margin-bottom: ${Clamp(12, 16, 24, 'px')};
+      }
+      &:nth-child(-n+9)::before {
+        content: "/0" counter(counter);
       }
       font-size: ${Clamp(16, 32, 30)};
     }
