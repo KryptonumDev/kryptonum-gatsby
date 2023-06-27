@@ -1,9 +1,11 @@
 import React from "react";
 import { graphql } from "gatsby";
+import Hero from "../../components/sections/Contact/Hero";
 
 const ContactPage = ({ data }) => {
   return (
     <>
+      <Hero />
     </>
   )
 }

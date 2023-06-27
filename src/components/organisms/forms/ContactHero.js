@@ -44,7 +44,7 @@ export default function Form({ data }) {
         register={register('check', { required: true })}
         errors={errors}
       />
-      <Button>Wyślij wiadomość</Button>
+      <Button theme="primary">Wyślij wiadomość</Button>
     </Wrapper>
   )
 }
