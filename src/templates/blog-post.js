@@ -1,9 +1,9 @@
 import * as React from "react"
 import { graphql } from "gatsby";
 import { SEO } from "./../components/global/Seo";
-import Hero from "./../components/sections/BlogEntry/Hero";
 import Content from "./../components/sections/BlogEntry/Content";
 import LatestCuriosityEntries from "../components/sections/LatestCuriosityEntries";
+import EntryHero from "../components/sections/EntryHero";
 
 const BlogEntryPage = ({
   data: { page: {
@@ -18,7 +18,7 @@ const BlogEntryPage = ({
 }) => {
   return (
     <>
-      <Hero
+      <EntryHero
         title={title}
         subtitle={subtitle}
         categories={categories}
