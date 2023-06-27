@@ -24,7 +24,7 @@ export default function FirstStep({ prevData, setData, setStep }) {
     setStep((step) => step + 1)
   }
 
-  const name = watch("name", false)
+  const name = watch("name")
 
   return (
     <Wrapper onSubmit={handleSubmit(onSubmit)}>

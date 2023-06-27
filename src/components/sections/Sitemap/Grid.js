@@ -140,7 +140,7 @@ const Wrapper = styled.section`
   }
 
   .big-link{
-    margin-top: ${Clamp(48, 96, 96)};
+    margin-top: ${Clamp(48, 96, 96, "px")};
     font-size: ${Clamp(28, 50, 48)};
     display: block;
     letter-spacing: -0.24px;
@@ -181,7 +181,7 @@ const Wrapper = styled.section`
 const TeamGrid = styled.div`
   display: flex;
   flex-wrap: wrap;
-  gap: 32px ${Clamp(16, 24, 48)};
+  gap: 32px ${Clamp(16, 24, 48, "px")};
   margin-top: 32px;
 
   .item{

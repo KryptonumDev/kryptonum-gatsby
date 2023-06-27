@@ -3,6 +3,7 @@ import { useForm } from "react-hook-form"
 import styled from "styled-components"
 import Button from "../../../atoms/Button"
 import { Radio } from "../../../moleculas/FormRadio"
+import { Clamp } from "../../../../utils/functions"
 
 export default function FourthStep({ prevData, setData, setStep }) {
   const {
@@ -42,6 +43,7 @@ export default function FourthStep({ prevData, setData, setStep }) {
 const Wrapper = styled.form`
   h2{
     margin-bottom: 24px;
+    font-size: ${Clamp(24, 32, 48)};
   }
 
   .radio-group{

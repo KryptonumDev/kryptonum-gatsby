@@ -1,6 +1,7 @@
 import React from "react"
 import styled from "styled-components"
 import { SmallError } from "../atoms/Icons"
+import { AnimatePresence, motion } from "framer-motion"
 
 export const Label = ({ rows, placeholder, title, name, register, errors, error = 'To pole jest wymagane' }) => (
   <Wrapper>
@@ -9,7 +10,9 @@ export const Label = ({ rows, placeholder, title, name, register, errors, error 
       ? <textarea rows={rows} placeholder={placeholder} className={errors[name] ? 'errored input' : 'input'} {...register} />
       : <input placeholder={placeholder} className={errors[name] ? 'errored input' : 'input'} {...register} />}
     <span className="border" />
-    {errors[name] && <span className="error"><SmallError /> {error}</span>}
+    <AnimatePresence>
+      {errors[name] && <motion.span initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }} className="error"><SmallError /> {error}</motion.span>}
+    </AnimatePresence>
   </Wrapper>
 )
 

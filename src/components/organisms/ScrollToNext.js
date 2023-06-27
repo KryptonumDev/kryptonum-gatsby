@@ -70,7 +70,7 @@ const Wrapper = styled.section`
     }
     span:nth-of-type(2){
       transform: translateY(50%);
-      margin-bottom: ${Clamp(28, 50, 48)};
+      margin-bottom: ${Clamp(28, 50, 48, "px")};
       font-size: unset;
       max-width: unset;
     }
@@ -81,9 +81,9 @@ const Wrapper = styled.section`
     padding-bottom: 64px;
   }
   .paragraph {
-    max-width: ${Clamp(210, 290, 300)};
+    max-width: ${Clamp(210, 290, 300, "px")};
     font-size: ${Clamp(16, 22, 22)};
-    margin: ${Clamp(64, 64, 72)} auto ${Clamp(24, 32, 40)};
+    margin: ${Clamp(64, 64, 72, "px")} auto ${Clamp(24, 32, 40, "px")};
     text-align: center;
     p {
       margin-bottom: 8px;
@@ -131,7 +131,7 @@ const Wrapper = styled.section`
     .grid {
       grid-template-columns: 1fr;
       text-align: center;
-      gap: ${Clamp(16, 48, 64)};
+      gap: ${Clamp(16, 48, 64, "px")};
       svg {
         display: none;
       }

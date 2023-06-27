@@ -76,10 +76,42 @@ const Wrapper = styled.label`
       appearance: none;
       background: var(--neutral-800);
       cursor: pointer;
-  }
+
+      &::-webkit-slider-thumb {
+          -webkit-appearance: none;
+          height: 28px;
+          width: 28px;
+          border-radius: 64px;
+          background: var(--neutral-200, #EFF0F3);
+          cursor: pointer;
+          z-index: 2;
+          position: relative;
+      }
+
+      &::-moz-range-thumb {
+          height: 28px;
+          width: 28px;
+          border-radius: 64px;
+          background: var(--neutral-200, #EFF0F3);
+          cursor: pointer;
+          z-index: 2;
+          position: relative;
+      }
+
+      &::-ms-thumb {
+          height: 28px;
+          width: 28px;
+          border-radius: 64px;
+          background: var(--neutral-200, #EFF0F3);
+          cursor: pointer;
+          z-index: 2;
+          position: relative;
+      }
+    }
 
     .dots{
       position: absolute;
+      z-index: 0;
       display: flex;
       justify-content: space-between;
       left: 5px;

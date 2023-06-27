@@ -7,52 +7,52 @@ export default function Navigation({ step, setStep }) {
   return (
     <Wrapper width={100 * ((step + 1) / 7)}>
       <div className="line" />
-      <Step display={step == '0' ? 'flex' : null} next={step == '0' ? 'flex' : null} >
+      <Step display={step == '0' ? 'flex' : null} next={step == '0' ? 'flex' : null} complete={step >= 0 ? 'true' : 'false'}>
         <First />
         <div>
-          <span>Witaj na stacji!</span>
+          <span className="name">Witaj na stacji!</span>
           <span className="step">Krok 1 z 7</span>
         </div>
       </Step>
-      <Step  display={step == '0' ? 'flex' : null} next={step == '1' ? 'flex' : null} >
+      <Step  display={step == '0' ? 'flex' : null} next={step == '1' ? 'flex' : null} complete={step >= 1 ? 'true' : 'false'}>
         <Second />
         <div>
-          <span>Poznajmy się!</span>
+          <span className="name">Poznajmy się!</span>
           <span className="step">Krok 2 z 7</span>
         </div>
       </Step>
-      <Step  display={step == '1' ? 'flex' : null} next={step == '2' ? 'flex' : null} >
+      <Step  display={step == '1' ? 'flex' : null} next={step == '2' ? 'flex' : null} complete={step >= 2 ? 'true' : 'false'}>
         <Third />
         <div>
-          <span>Twoja marka</span>
+          <span className="name">Twoja marka</span>
           <span className="step">Krok 3 z 7</span>
         </div>
       </Step>
-      <Step display={step == '2' ? 'flex' : null} next={step == '3' ? 'flex' : null} >
+      <Step display={step == '2' ? 'flex' : null} next={step == '3' ? 'flex' : null} complete={step >= 3 ? 'true' : 'false'}>
         <Fourth />
         <div>
-          <span>Potrzeba</span>
+          <span className="name">Potrzeba</span>
           <span className="step">Krok 4 z 7</span>
         </div>
       </Step>
-      <Step display={step == '3' ? 'flex' : null} next={step == '4' ? 'flex' : null} >
+      <Step display={step == '3' ? 'flex' : null} next={step == '4' ? 'flex' : null} complete={step >= 4 ? 'true' : 'false'}>
         <Fifth />
         <div>
-          <span>Czas i budżet</span>
+          <span className="name">Czas i budżet</span>
           <span className="step">Krok 5 z 7</span>
         </div>
       </Step>
-      <Step display={step == '4' ? 'flex' : null} next={step == '5' ? 'flex' : null} >
+      <Step display={step == '4' ? 'flex' : null} next={step == '5' ? 'flex' : null} complete={step >= 5 ? 'true' : 'false'}>
         <Sixth />
         <div>
-          <span>Informacje</span>
+          <span className="name">Informacje</span>
           <span className="step">Krok 6 z 7</span>
         </div>
       </Step>
-      <Step display={step == '5' ? 'flex' : null} next={step == '6' ? 'flex' : null} >
+      <Step display={step == '5' ? 'flex' : null} next={step == '6' ? 'flex' : null} complete={step >= 6 ? 'true' : 'false'}>
         <Seventh />
         <div>
-          <span>Umów wizytę</span>
+          <span className="name">Umów wizytę</span>
           <span className="step">Krok 7 z 7</span>
         </div>
       </Step>
@@ -74,6 +74,7 @@ const Wrapper = styled.nav`
   @media (max-width: 680px) {
     flex-direction: row;
     justify-content: space-between;
+    align-items: center;
   }
 
   .line{
@@ -143,7 +144,50 @@ const Step = styled.div`
 
   span{
     font-size: clamp(1rem, calc(16vw/10.24), 1.25rem);
+    font-weight: 700;
+
+    color: #5B5F67;
+    transition: background .3s var(--easing);
   }
+
+  svg{
+    linearGradient{
+      stop{
+        stop-color: var(--neutral-700, #5B5F67);
+        transition: stop-color .3s var(--easing);
+      }
+    }
+  }
+
+  ${props => props.complete === 'true' ? `
+
+  span{
+    color: #EFF0F3 !important;
+    font-weight: 500;
+
+    &.name{
+      font-weight: 700;
+      background: -webkit-linear-gradient(0deg, #90F4E8, #2DD282);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+  }
+
+  svg{
+    linearGradient{
+      stop{
+
+        &:first-child{
+          stop-color: #2DD282;
+        }
+
+        &:last-child{
+          stop-color: #90F4E8;
+        }
+      }
+    }
+  }
+  ` : null}
 
   .step{
     display: none;

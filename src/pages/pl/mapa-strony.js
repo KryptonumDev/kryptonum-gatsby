@@ -3,10 +3,10 @@ import React from "react";
 import Hero from '../../components/sections/Sitemap/Hero'
 import Grid from "../../components/sections/Sitemap/Grid";
 
-export default function Sitemap({ data: { team, blogEntries, sanityWebDevelopment, sanityAgency, sanityGraphicsDesign, sanityWorkshop, caseStudies, akademiaEntries } }) {
+export default function Sitemap({ data: { page, team, blogEntries, sanityWebDevelopment, sanityAgency, sanityGraphicsDesign, sanityWorkshop, caseStudies, akademiaEntries } }) {
   return (
     <>
-      {/* <Hero /> */}
+      {/* <Hero data={page}/> */}
       <Grid
         team={team}
         blogEntries={blogEntries}
@@ -23,6 +23,20 @@ export default function Sitemap({ data: { team, blogEntries, sanityWebDevelopmen
 
 export const query = graphql`
   query {
+    page: sanitySitemap {
+      hero_Heading
+      hero_Subheading
+      hero_Img {
+        asset {
+          altText
+          gatsbyImageData(placeholder: BLURRED)
+        }
+      }
+      seo {
+        title
+        description
+      }
+    }
     caseStudies: allSanityCaseStudyEntries{
       nodes {
         name

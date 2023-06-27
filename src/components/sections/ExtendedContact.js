@@ -7,7 +7,6 @@ import FourthStep from "../organisms/forms/ExtendedForm/FourthStep"
 import FifthStep from "../organisms/forms/ExtendedForm/FifrthStep"
 import SixthStep from "../organisms/forms/ExtendedForm/SixthStep"
 import { AnimatePresence, motion } from "framer-motion"
-import SeventhStep from "../organisms/forms/ExtendedForm/SeventhStep"
 import { Prev } from "../atoms/Icons"
 import Navigation from "../organisms/forms/ExtendedForm/Navigation"
 
@@ -23,29 +22,7 @@ const ButtonText = ({ id, children }) => (
   </motion.span>
 )
 
-export default function Kontakt() {
-
-  const [step, setStep] = useState(1)
-  const [formData, setFormData] = useState({})
-  const [startTime, setStartTime] = useState(null)
-
-  useEffect(() => {
-    if (step === 1 && !startTime) {
-      setStartTime(new Date().getTime())
-    }
-  }, [step])
-
-  const endTime = useMemo((time) => {
-    if (step === 7 && !time) {
-      const totalTime = new Date().getTime() - startTime
-
-      const minutes = Math.floor(totalTime / 60000);
-      const seconds = Math.floor((totalTime % 60000) / 1000);
-
-      return minutes + ':' + seconds
-    }
-    return null
-  }, [step])
+export default function Kontakt({ step, setStep, formData, setFormData, endTime }) {
 
   useEffect(() => {
     if (typeof window !== 'undefined') {
@@ -142,17 +119,9 @@ export default function Kontakt() {
               />
             </StepWrap>
           )}
-          {step === 7 && (
-            <StepWrap id='7'>
-              <SeventhStep
-                name={formData.Client.name}
-                time={endTime}
-              />
-            </StepWrap>
-          )}
         </AnimatePresence>
       </div>
-    </Wrapper >
+    </Wrapper>
   )
 }
 
