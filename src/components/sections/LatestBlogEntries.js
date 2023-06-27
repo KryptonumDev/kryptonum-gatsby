@@ -7,9 +7,9 @@ import Button from '../atoms/Button';
 import BlogEntry from "../organisms/BlogEntry";
 
 const LatestBlogEntries = ({ heading }) => {
-  const { entries } = useStaticQuery(graphql`
+  const { blogEntries } = useStaticQuery(graphql`
     query {
-       entries: allSanityBlogEntries(limit: 3, sort: {_createdAt: DESC}) {
+      blogEntries: allSanityBlogEntries(limit: 3, sort: {_createdAt: DESC}) {
         nodes {
           title
           subtitle
@@ -50,7 +50,7 @@ const LatestBlogEntries = ({ heading }) => {
     <Wrapper>
       <DecorativeHeading type="h2">{heading || 'Zobacz nasze najnowsze **posty** na blogu'}</DecorativeHeading>
       <div className="wrapper">
-        {entries.nodes.map((entry, i) => (
+        {blogEntries.nodes.map((entry, i) => (
           <BlogEntry data={entry} key={i} />
         ))}
       </div>
