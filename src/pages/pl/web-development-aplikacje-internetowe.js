@@ -5,9 +5,9 @@ import HeroServices from "../../components/sections/HeroServices";
 import Process from "../../components/sections/WebDevelopment_Pwa/Process";
 import CtaSection from "../../components/sections/CtaSection";
 import CaseStudies from "../../components/sections/CaseStudies";
-import BlogEntries from '../../components/sections/BlogEntries';
 import QuickForm from "../../components/sections/QuickForm";
 import Customer from "../../components/sections/WebDevelopment_Pwa/Customer";
+import LatestBlogEntries from "../../components/sections/LatestBlogEntries";
 
 const WebDevelopmentPWAsPage = ({ data }) => {
   const { page: {
@@ -65,7 +65,7 @@ const WebDevelopmentPWAsPage = ({ data }) => {
       }} />
       <CtaSection data={ctaSection} />
       <CaseStudies heading={caseStudies_Heading} />
-      <BlogEntries heading={blogEntries_Heading} />
+      <LatestBlogEntries heading={blogEntries_Heading} />
     </>
   );
 }

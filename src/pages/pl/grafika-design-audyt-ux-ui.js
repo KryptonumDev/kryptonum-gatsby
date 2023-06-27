@@ -4,11 +4,11 @@ import { SEO } from "../../components/global/Seo";
 import HeroServices from "../../components/sections/HeroServices";
 import SimpleCtaSection from "../../components/sections/SimpleCtaSection";
 import QuickForm from "../../components/sections/QuickForm";
-import BlogEntries from "../../components/sections/BlogEntries";
 import CaseStudies from "../../components/sections/CaseStudies";
 import CtaSection from "../../components/sections/CtaSection";
 import Audit from "../../components/sections/GraphicsAndDesign_Audit/Audit";
 import ImageAndStandout from '../../components/sections/ImageAndStandout'
+import LatestBlogEntries from "../../components/sections/LatestBlogEntries";
 
 const AuditPage = ({
   data: { page: {
@@ -99,7 +99,7 @@ const AuditPage = ({
       />
       <CaseStudies heading={caseStudies_Heading} />
       <CtaSection data={ctaSection} />
-      <BlogEntries heading={blogEntries_Heading} />
+      <LatestBlogEntries heading={blogEntries_Heading} />
     </>
   );
 }

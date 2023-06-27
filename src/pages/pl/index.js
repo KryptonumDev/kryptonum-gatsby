@@ -1,14 +1,14 @@
 import * as React from "react"
 import { graphql } from "gatsby"
+import { SEO } from "../../components/global/Seo";
 import Hero from "../../components/sections/Homepage/Hero";
 import Services from "../../components/sections/Homepage/Services";
 import Creativity from "../../components/sections/Homepage/Creativity";
 import Roadmap from "../../components/sections/Roadmap";
 import Team from "../../components/sections/Team";
 import Testimonials from "../../components/sections/Testimonials";
-import { SEO } from "../../components/global/Seo";
-import BlogEntries from "../../components/sections/BlogEntries";
 import FourGrid from "../../components/sections/Homepage/FourGrid";
+import LatestBlogEntries from "../../components/sections/LatestBlogEntries";
 
 const IndexPage = ({
   data: { page : {
@@ -80,7 +80,7 @@ const IndexPage = ({
         cta={team_Cta}
       />
       <Testimonials />
-      <BlogEntries />
+      <LatestBlogEntries />
     </>
   )
 }

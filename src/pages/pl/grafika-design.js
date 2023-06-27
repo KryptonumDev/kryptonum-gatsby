@@ -3,11 +3,11 @@ import { graphql } from "gatsby";
 import { SEO } from "../../components/global/Seo";
 import HeroServices from "../../components/sections/HeroServices";
 import SimpleCtaSection from "../../components/sections/SimpleCtaSection";
-import BlogEntries from "../../components/sections/BlogEntries";
 import CaseStudies from "../../components/sections/CaseStudies";
 import CtaSection from "../../components/sections/CtaSection";
 import Audit from "../../components/sections/GraphicsAndDesign/Audit";
 import MasonryList from "../../components/sections/MasonryList";
+import LatestBlogEntries from "../../components/sections/LatestBlogEntries";
 
 const GraphicsAndDesignPage = ({
   data: { page: {
@@ -72,7 +72,7 @@ const GraphicsAndDesignPage = ({
       <SimpleCtaSection data={simpleCtaSection3} />
       <CaseStudies heading={caseStudies_Heading} />
       <CtaSection data={ctaSection} />
-      <BlogEntries heading={blogEntries_Heading} />
+      <LatestBlogEntries heading={blogEntries_Heading} />
     </>
   );
 }

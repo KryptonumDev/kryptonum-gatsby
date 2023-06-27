@@ -4,10 +4,10 @@ import { SEO } from "../../components/global/Seo";
 import HeroServices from "../../components/sections/HeroServices";
 import QuickForm from "../../components/sections/QuickForm";
 import CaseStudies from "../../components/sections/CaseStudies";
-import BlogEntries from "../../components/sections/BlogEntries";
 import CtaSection from "../../components/sections/CtaSection";
 import Process from "../../components/sections/WebDevelopment_Ecom/Process";
 import Develop from "../../components/sections/WebDevelopment_Ecom/Develop";
+import LatestBlogEntries from "../../components/sections/LatestBlogEntries";
 
 const WebDevelopmentPWAsPage = ({ data }) => {
   const { page: {
@@ -55,7 +55,7 @@ const WebDevelopmentPWAsPage = ({ data }) => {
         develop_Paragraph4,
       }} />
       <CtaSection data={ctaSection} />
-      <BlogEntries heading={blogEntries_Heading} />
+      <LatestBlogEntries heading={blogEntries_Heading} />
     </>
   );
 }
