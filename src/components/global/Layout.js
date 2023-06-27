@@ -85,17 +85,11 @@ const Layout = ({ data: { page }, children }) => {
           }
         }
       }
-      technologies: allSanityTechnologies(limit: 2) {
+      curiosityCategories: allSanityCuriosityCategories(limit: 8) {
         nodes {
           name
           slug {
             current
-          }
-          img {
-            asset {
-              altText
-              gatsbyImageData(placeholder: BLURRED, width: 160, height: 160)
-            }
           }
         }
       }

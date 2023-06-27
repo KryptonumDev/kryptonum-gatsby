@@ -1,7 +1,7 @@
 const redirects = require("./redirects.json")
 const path = require("path");
 require("dotenv").config({
-  path: `.env.${process.env.NODE_ENV}`,
+  path: `.env`,
 })
 
 exports.createPages = async ({ actions, graphql }) => {

@@ -14,7 +14,7 @@ const Nav = ({
     blogEntries,
     blogCategories,
     curiosityEntries,
-    technologies
+    curiosityCategories
   },
 }) => {
   const locationPath = typeof window !== 'undefined' ? window.location.pathname : '';
@@ -198,10 +198,10 @@ const Nav = ({
                     <span>Wróć</span>
                   </button>
                   <div className="entries">
-                    <h3><Link to="/pl/blog">Zobacz bloga</Link></h3>
+                    <h3><Link to="/pl/blog" onClick={(e) => handleHideNav(e)}>Zobacz bloga</Link></h3>
                     {blogEntries.nodes.map((entry, i) => (
                       <div className="entry" key={i}>
-                        <Link to={`/blog/${entry.slug.current}`} className="link" aria-label={removeMarkdown(entry.title)} onClick={(e) => handleHideNav(e)}></Link>
+                        <Link to={`/pl/blog/${entry.slug.current}`} className="link" aria-label={removeMarkdown(entry.title)} onClick={(e) => handleHideNav(e)}></Link>
                         <GatsbyImage
                           image={entry.img.asset.gatsbyImageData}
                           alt={entry.img.asset.altText || ''}
@@ -209,8 +209,12 @@ const Nav = ({
                         />
                         <div className="copy">
                           <div className="copy-top">
-                            <Link to={`/blog/autor/${entry.author[0].slug.current}`} onClick={(e) => handleHideNav(e)}>
-                              <GatsbyImage image={entry.author[0].img.asset.gatsbyImageData} alt={entry.author[0].img.asset.altText || ''} className="person-border" />
+                            <Link to={`/pl/blog/autor/${entry.author[0].slug.current}`} onClick={(e) => handleHideNav(e)}>
+                              <GatsbyImage
+                                image={entry.author[0].img.asset.gatsbyImageData}
+                                alt={entry.author[0].img.asset.altText || ''}
+                                className="person-border"
+                              />
                               <span>{entry.author[0].name}</span>
                             </Link>
                             <span>{entry._createdAt}</span>
@@ -224,7 +228,7 @@ const Nav = ({
                     <h3>Kategorie:</h3>
                     <div className="wrapper">
                       {blogCategories.nodes.map((category, i) => (
-                        <Link to={`/blog/kategoria/${category.slug.current}`} key={i} onClick={(e) => handleHideNav(e)}>
+                        <Link to={`/pl/blog/kategoria/${category.slug.current}`} key={i} onClick={(e) => handleHideNav(e)}>
                           {category.name}
                         </Link>
                       ))}
@@ -269,16 +273,12 @@ const Nav = ({
                       </Link>
                     ))}
                   </div>
-                  <div className="technologies">
-                    <h3><Link to="/pl/technologie" onClick={(e) => handleHideNav(e)}>Technologie</Link></h3>
+                  <div className="categories">
+                    <h3>Kategorie:</h3>
                     <div className="wrapper">
-                      {technologies.nodes.map((technology, i) => (
-                        <Link to={`/akademia/technologie/${technology.slug.current}`} key={i} onClick={(e) => handleHideNav(e)}>
-                          <GatsbyImage
-                            image={technology.img.asset.gatsbyImageData}
-                            alt={technology.img.asset.altText || ''}
-                          />
-                          <p>{technology.name}</p>
+                      {curiosityCategories.nodes.map((category, i) => (
+                        <Link to={`/pl/akademia/kategoria/${category.slug.current}`} key={i} onClick={(e) => handleHideNav(e)}>
+                          {category.name}
                         </Link>
                       ))}
                     </div>
@@ -592,14 +592,15 @@ const Wrapper = styled.nav`
           }
         }
       }
-      .technologies {
+      .categories {
         .wrapper {
           display: grid;
           grid-template-columns: 1fr 1fr;
-          gap: 24px;
-          p {
-            font-size: ${22/16}rem;
-            margin-top: 1rem;
+          gap: 20px;
+          a {
+            background-color: var(--neutral-900);
+            padding: 4px 16px;
+            border-radius: 2px;
           }
         }
       }
@@ -868,11 +869,12 @@ const Wrapper = styled.nav`
             }
           }
         }
-        .technologies {
+        .categories {
           .wrapper {
-            gap: 1fr;
-            p {
-              font-size: ${20/16}rem;
+            gap: 1rem;
+            a {
+              overflow: hidden;
+              text-overflow: ellipsis;
             }
           }
         }

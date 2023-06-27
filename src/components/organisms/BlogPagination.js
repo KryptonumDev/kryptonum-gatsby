@@ -2,7 +2,6 @@ import React, { useMemo } from "react"
 import styled from "styled-components"
 import { Link } from "gatsby"
 
-// urlBasis = 'https://example.com/blog/'
 
 export default function Pagination({ currentPage, itemCount, urlBasis }) {
   const pagesCount = useMemo(() => {

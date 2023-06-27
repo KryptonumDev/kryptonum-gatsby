@@ -5,7 +5,6 @@ import Hero from "./../components/sections/BlogEntry/Hero";
 import CuriosityEntries from "./../components/sections/CuriosityEntries";
 import Content from "./../components/sections/BlogEntry/Content";
 
-
 const BlogEntryPage = ({
   data: { page: {
     title,
@@ -13,7 +12,6 @@ const BlogEntryPage = ({
     categories,
     img,
     _createdAt,
-    author,
     content
   }}
 }) => {
