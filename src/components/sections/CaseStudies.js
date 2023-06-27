@@ -18,7 +18,7 @@ const CaseStudies = ({heading, eagerLoading}) => {
           img {
             asset {
               altText
-              gatsbyImageData(placeholder: BLURRED, width: 456)
+              gatsbyImageData(placeholder: BLURRED)
             }
           }
         }
@@ -68,8 +68,8 @@ const Wrapper = styled.section`
       overflow: hidden;
       position: sticky;
       top: 0;
-      height: 100vh;
-      height: 100dvh;
+      max-height: 100vh;
+      max-height: 100dvh;
       .img {
         width: 100%;
         height: 100%;

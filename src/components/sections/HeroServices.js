@@ -105,8 +105,11 @@ const Wrapper = styled.section`
             margin-bottom: 12px;
           }
           &::before {
-            content: "/0" counter(counter);
+            content: "/" counter(counter);
             display: inline-block;
+          }
+          &:nth-child(-n+9)::before {
+            content: "/0" counter(counter);
           }
         }
       }

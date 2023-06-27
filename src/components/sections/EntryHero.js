@@ -2,11 +2,11 @@ import React from "react";
 import ReactMarkdown from "react-markdown";
 import { GatsbyImage } from "gatsby-plugin-image";
 import styled from "styled-components";
-import DecorativeHeading from '../../atoms/DecorativeHeading';
-import { Clamp } from '../../../utils/functions';
+import DecorativeHeading from '../atoms/DecorativeHeading';
+import { Clamp } from '../../utils/functions';
 import { Link } from "gatsby";
 
-const Hero = ({
+const EntryHero = ({
   title,
   subtitle,
   categories,
@@ -106,4 +106,4 @@ const Wrapper = styled.section`
   }
 `
  
-export default Hero;
+export default EntryHero;

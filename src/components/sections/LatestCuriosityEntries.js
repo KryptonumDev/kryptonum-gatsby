@@ -35,7 +35,10 @@ const LatestCuriosityEntries = ({ heading }) => {
 
   return (
     <Wrapper>
-      <DecorativeHeading type="h2">{heading || `Arena **ciekawostek** (${curiosityEntries.nodes.length})`}</DecorativeHeading>
+      <header>
+        <DecorativeHeading type="h2">{heading || `Spieszysz się? Skubnij **ciekawostkę** na raz!`}</DecorativeHeading>
+        <p>Oto nasz TOP3:</p>
+      </header>
       <div className="wrapper">
         {curiosityEntries.nodes.map((entry, i) => (
           <CuriosityEntry data={entry} key={i} />
@@ -46,9 +49,22 @@ const LatestCuriosityEntries = ({ heading }) => {
 }
 
 const Wrapper = styled.section`
-  h2 {
-    max-width: ${686/16}rem;
+  header {
+    display: grid;
+    grid-template-columns: auto auto;
+    @media (max-width: 849px){
+      grid-template-columns: 1fr;
+    }
+    justify-content: space-between;
+    align-items: end;
+    gap: 24px 32px;
     margin-bottom: ${Clamp(28, 48, 72)};
+    h2 {
+      max-width: ${686/16}rem;
+    }
+    p {
+      font-size: ${Clamp(16, 22, 22)};
+    }
   }
 `
  
