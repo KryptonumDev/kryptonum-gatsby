@@ -1,11 +1,11 @@
 import * as React from "react"
 import { graphql } from "gatsby";
-import { SEO } from "../../../../components/global/Seo";
-import CtaSection from "../../../../components/sections/CtaSection";
-import Faq from "../../../../components/sections/Faq";
-import Categories from "../../../../components/sections/Categories";
-import CuriosityEntries from "../../../../components/sections/CuriosityEntries";
-import LatestBlogEntries from "../../../../components/sections/LatestBlogEntries";
+import { SEO } from "./../components/global/Seo";
+import CtaSection from "./../components/sections/CtaSection";
+import Faq from "./../components/sections/Faq";
+import Categories from "./../components/sections/Categories";
+import CuriosityEntries from "./../components/sections/CuriosityEntries";
+import LatestBlogEntries from "./../components/sections/LatestBlogEntries";
 
 const AcademyCategoryPage = ({
   data: {
@@ -14,12 +14,13 @@ const AcademyCategoryPage = ({
     },
     curiosityCategories,
     curiosityEntries,
-  }
+  },
+  pageContext: { currentPage, totalCount, urlBasis }
 }) => {
   return (
     <>
       <Categories slug="/pl/akademia/kategoria/" categories={curiosityCategories} />
-      <CuriosityEntries data={curiosityEntries} />
+      <CuriosityEntries urlBasis={urlBasis} totalCount={totalCount} curiosityEntries={curiosityEntries} page={currentPage} />
       <CtaSection data={ctaSection} />
       <LatestBlogEntries />
       <Faq />
@@ -28,7 +29,7 @@ const AcademyCategoryPage = ({
 }
 
 export const query = graphql`
-  query($id: String!) {
+  query($perPage: Int!, $skip: Int!, $id: String!) {
     page: sanityAcademy {
       # Call To Action
       ctaSection {
@@ -51,7 +52,7 @@ export const query = graphql`
         description
       }
     }
-    curiosityEntries: allSanityCuriosityEntries(filter: {categories: {elemMatch: {id: {eq: $id}}}}) {
+    curiosityEntries: allSanityCuriosityEntries(limit: $perPage, skip: $skip, sort: {_createdAt: DESC}, filter: {categories: {elemMatch: {id: {eq: $id}}}}) {
       nodes {
         title
         subtitle

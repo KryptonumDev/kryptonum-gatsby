@@ -40,7 +40,7 @@ exports.createPages = async ({ actions, graphql }) => {
   }
 
   createPage({
-    path: '/pl/blog/',
+    path: '/pl/blog',
     component: path.resolve('./src/templates/blog-archive.js'),
     context: {
       currentPage: 1,
@@ -120,6 +120,119 @@ exports.createPages = async ({ actions, graphql }) => {
     createPage({
       path: `/pl/blog/${slug}`,
       component: path.resolve('./src/templates/blog-post.js'),
+      context: {
+        id: id,
+        slug: slug,
+      }
+    });
+  })
+
+  // Akademia and pagination
+
+  const { data: { allSanityCuriosityEntries } } = await graphql(`
+    query {
+      allSanityCuriosityEntries {
+        totalCount
+      }
+    }
+  `);
+
+  for (let i = 1; i < Math.ceil(allSanityCuriosityEntries.totalCount / process.env.GATSBY_PAGE_ITEM_COUNT); i++) {
+    let page = i + 1
+    createPage({
+      path: `/pl/akademia/${page}`,
+      component: path.resolve('./src/templates/akademia-archive.js'),
+      context: {
+        currentPage: page,
+        perPage: Number(process.env.GATSBY_PAGE_ITEM_COUNT),
+        skip: i * process.env.GATSBY_PAGE_ITEM_COUNT,
+        totalCount: allSanityCuriosityEntries.totalCount,
+        urlBasis: '/pl/akademia'
+      }
+    });
+  }
+
+  createPage({
+    path: '/pl/akademia',
+    component: path.resolve('./src/templates/akademia-archive.js'),
+    context: {
+      currentPage: 1,
+      perPage: Number(process.env.GATSBY_PAGE_ITEM_COUNT),
+      skip: 0,
+      totalCount: allSanityCuriosityEntries.totalCount,
+      urlBasis: '/pl/akademia'
+    }
+  });
+
+  // Akademia categories and pagination
+
+  const { data: { allSanityCuriosityEntries: { nodes: akademiaPosts }, allSanityCuriosityCategories: { nodes: akademiaCategories } } } = await graphql(`
+    query {
+      allSanityCuriosityEntries {
+        nodes {
+          id
+          slug{
+            current
+          }
+          categories {
+            slug {
+              current
+            }
+          }
+        }
+      }
+      allSanityCuriosityCategories {
+        nodes {
+          id
+          slug {
+            current
+          }
+        }
+      }
+    }
+  `);
+
+  akademiaCategories.forEach(({ id, slug: { current: slug } }) => {
+
+    const postsCount = akademiaPosts.filter(({ categories }) => categories.some(({ slug: { current: categorySlug } }) => categorySlug === slug)).length
+
+    for (let i = 1; i < Math.ceil(postsCount / process.env.GATSBY_PAGE_ITEM_COUNT); i++) {
+      let page = i + 1
+
+      createPage({
+        path: `/pl/akademia/kategoria/${slug}/${page}`,
+        component: path.resolve('./src/templates/akademia-category.js'),
+        context: {
+          id: id,
+          slug: slug,
+          currentPage: page,
+          perPage: Number(process.env.GATSBY_PAGE_ITEM_COUNT),
+          skip: i * process.env.GATSBY_PAGE_ITEM_COUNT,
+          totalCount: postsCount,
+          urlBasis: `/pl/akademia/kategoria/${slug}`
+        }
+      });
+    }
+
+    createPage({
+      path: `/pl/akademia/kategoria/${slug}`,
+      component: path.resolve('./src/templates/akademia-category.js'),
+      context: {
+        id: id,
+        slug: slug,
+        currentPage: 1,
+        perPage: Number(process.env.GATSBY_PAGE_ITEM_COUNT),
+        skip: 0,
+        totalCount: postsCount,
+        urlBasis: `/pl/akademia/kategoria/${slug}`
+      }
+    });
+  })
+
+  akademiaPosts.forEach(({ slug: { current: slug }, id }) => {
+    createPage({
+      path: `/pl/akademia/${slug}`,
+      component: path.resolve('./src/templates/akademia-post.js'),
       context: {
         id: id,
         slug: slug,

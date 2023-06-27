@@ -5,37 +5,9 @@ import styled from "styled-components";
 import DecorativeHeading from "../atoms/DecorativeHeading";
 import { Clamp, removeMarkdown } from '../../utils/functions'
 import Button from '../atoms/Button';
+import Pagination from "../organisms/BlogPagination";
 
-const CuriosityEntries = ({ data, heading }) => {
-  let { curiosityEntries } = useStaticQuery(graphql`
-    query {
-      curiosityEntries: allSanityCuriosityEntries(sort: {_createdAt: DESC}) {
-        nodes {
-          title
-          subtitle
-          slug {
-            current
-          }
-          categories {
-            name
-            slug {
-              current
-            }
-          }
-          img {
-            asset {
-              altText
-              gatsbyImageData(placeholder: BLURRED, width: 688)
-            }
-          }
-          _createdAt(formatString: "D MMMM Y", locale: "pl")
-        }
-      }
-    }
-  `);
-
-  curiosityEntries = data ? data : curiosityEntries;
-
+const CuriosityEntries = ({ page, totalCount, urlBasis, curiosityEntries, heading }) => {
   return (
     <Wrapper>
       <DecorativeHeading type="h2">{heading || `Arena **ciekawostek** (${curiosityEntries.nodes.length})`}</DecorativeHeading>
@@ -61,13 +33,14 @@ const CuriosityEntries = ({ data, heading }) => {
           </div>
         ))}
       </div>
+      <Pagination currentPage={page} itemCount={totalCount} urlBasis={urlBasis} />
     </Wrapper>
   );
 }
 
 const Wrapper = styled.section`
   h2 {
-    max-width: ${686/16}rem;
+    max-width: ${686 / 16}rem;
     margin-bottom: ${Clamp(28, 48, 72)};
   }
   .entry {
@@ -124,5 +97,5 @@ const Wrapper = styled.section`
     }
   }
 `
- 
+
 export default CuriosityEntries;
