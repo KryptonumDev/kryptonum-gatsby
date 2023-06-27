@@ -4,6 +4,7 @@ import { SEO } from "./../components/global/Seo";
 import EntryHero from "../components/sections/EntryHero";
 import Meaty from "../components/sections/AcademyEntry/Meaty";
 import Standout from "../components/sections/AcademyEntry/Standout";
+import Showcase from "../components/sections/AcademyEntry/Showcase";
 
 const CuriosityEntryPage = ({
   data: { page: {
@@ -44,6 +45,12 @@ const CuriosityEntryPage = ({
       <Standout
         heading={standout_Heading}
         paragraph={standout_Paragraph}
+      />
+      <Showcase
+        heading={showcase_Heading}
+        img={showcase_Img}
+        paragraph={showcase_Paragraph}
+        paragraph2={showcase_Paragraph2}
       />
     </>
   );
