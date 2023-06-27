@@ -6,7 +6,7 @@ import DecorativeHeading from '../atoms/DecorativeHeading';
 import Button from '../atoms/Button';
 import { Clamp } from '../../utils/functions';
 
-const HeroTwoColumns = ({heading, paragraph, cta, img}) => {
+const HeroTwoColumns = ({ heading, paragraph, cta, img }) => {
   return (
     <Wrapper>
       <header>

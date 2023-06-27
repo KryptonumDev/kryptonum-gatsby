@@ -1,11 +1,25 @@
 import * as React from "react"
 import { graphql } from "gatsby";
 import { SEO } from "../../components/global/Seo";
+import HeroTwoColumns from "../../components/sections/HeroTwoColumns";
+import SimpleCtaSection from "../../components/sections/SimpleCtaSection";
 
-const PrivacyPolicyPage = () => {
+const PrivacyPolicyPage = ({
+  data: { page: {
+    hero_Heading,
+    hero_Paragraph,
+    hero_Img,
+    simpleCtaSection
+  }}
+}) => {
   return (
     <>
-      <h1>HEJ</h1>
+      <HeroTwoColumns
+        heading={hero_Heading}
+        paragraph={hero_Paragraph}
+        img={hero_Img}
+      />
+      <SimpleCtaSection data={simpleCtaSection} />
     </>
   );
 }
