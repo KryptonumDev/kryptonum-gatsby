@@ -4,7 +4,7 @@ import { SEO } from "../../components/global/Seo";
 import Kontakt from "../../components/sections/ExtendedContact";
 import Hero from "../../components/sections/ExtendedContactHero";
 
-const IndexPage = ({ data }) => {
+const ContactPage = ({ data }) => {
   return (
     <>
       <Hero />
@@ -21,7 +21,7 @@ export const query = graphql`
   }
 `
 
-export default IndexPage
+export default ContactPage
 
 export const Head = () => (
   <SEO

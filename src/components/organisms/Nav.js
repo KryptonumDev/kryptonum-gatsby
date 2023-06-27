@@ -104,7 +104,7 @@ const Nav = ({
           <ul>
             <li>
               <span onClick={(e) => handleNavLinks(e, 'services')}>
-                <span>Usługi</span>
+                <span tabIndex="0">Usługi</span>
                 <ChevronDown />
               </span>
               <ul className="nav-list2 services">

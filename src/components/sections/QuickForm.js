@@ -12,7 +12,6 @@ const QuickForm = ( { data: { heading, subheading, cta }} ) => {
     global : {
       quickForm_Paragraph,
       quickForm_Person,
-      quickForm_Tel
     }
   } = useStaticQuery(graphql`
     query {
@@ -26,8 +25,8 @@ const QuickForm = ( { data: { heading, subheading, cta }} ) => {
               gatsbyImageData(placeholder: BLURRED, width: 96, height: 96)
             }
           }
+          tel
         }
-        quickForm_Tel
       }
     }
   `)
@@ -73,7 +72,9 @@ const QuickForm = ( { data: { heading, subheading, cta }} ) => {
             alt={quickForm_Person.img.asset.altText || ''}
             class="img person-border"
           />
-          <a href={`tel:${quickForm_Tel.replace(/\s/g, '')}`}>{quickForm_Tel}</a>
+          {quickForm_Person.tel && (
+            <a href={`tel:${quickForm_Person.tel.replace(/\s/g, '')}`}>{quickForm_Person.tel}</a>
+          )}
         </div>
       </div>
     </Wrapper>
