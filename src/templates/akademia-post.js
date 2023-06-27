@@ -6,6 +6,8 @@ import Meaty from "../components/sections/AcademyEntry/Meaty";
 import Standout from "../components/sections/AcademyEntry/Standout";
 import Showcase from "../components/sections/AcademyEntry/Showcase";
 import Share from "../components/sections/AcademyEntry/Share";
+import LatestCuriosityEntries from "../components/sections/LatestCuriosityEntries";
+import Sources from "../components/sections/AcademyEntry/Sources";
 
 const CuriosityEntryPage = ({
   data: { page: {
@@ -28,6 +30,7 @@ const CuriosityEntryPage = ({
     share_Img,
     sources_Heading,
     sources_List,
+    latestCuriosities_Heading
   }}
 }) => {
   return (
@@ -59,6 +62,11 @@ const CuriosityEntryPage = ({
         img={share_Img}
         url={slug.current}
       />
+      <Sources
+        heading={sources_Heading}
+        list={sources_List}
+      />
+      <LatestCuriosityEntries heading={latestCuriosities_Heading} />
     </>
   );
 }
@@ -122,6 +130,7 @@ export const query = graphql`
         text
         href
       }
+      latestCuriosities_Heading
       # SEO
       seo {
         title
