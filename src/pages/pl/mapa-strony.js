@@ -6,7 +6,7 @@ import Grid from "../../components/sections/Sitemap/Grid";
 export default function Sitemap({ data: { page, team, blogEntries, sanityWebDevelopment, sanityAgency, sanityGraphicsDesign, sanityWorkshop, caseStudies, akademiaEntries } }) {
   return (
     <>
-      {/* <Hero data={page}/> */}
+      <Hero data={page}/>
       <Grid
         team={team}
         blogEntries={blogEntries}

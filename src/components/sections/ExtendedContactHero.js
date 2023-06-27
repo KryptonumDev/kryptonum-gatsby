@@ -1,7 +1,7 @@
-import React, { useEffect, useRef, useState } from "react"
+import React, { useEffect } from "react"
 import styled from "styled-components"
 import DecorativeHeading from "../atoms/DecorativeHeading";
-import { Clamp, scrollLock } from "../../utils/functions";
+import { Clamp } from "../../utils/functions";
 import { ScrollDown } from "../atoms/Icons";
 
 export default function Hero({setStep}) {
