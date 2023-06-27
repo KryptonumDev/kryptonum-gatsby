@@ -2,13 +2,14 @@ import * as React from "react"
 import { graphql } from "gatsby";
 import { SEO } from "./../components/global/Seo";
 import Hero from "./../components/sections/BlogEntry/Hero";
-import CuriosityEntries from "./../components/sections/CuriosityEntries";
 import Content from "./../components/sections/BlogEntry/Content";
+import LatestCuriosityEntries from "../components/sections/LatestCuriosityEntries";
 
 const BlogEntryPage = ({
   data: { page: {
     title,
     subtitle,
+    author,
     categories,
     img,
     _createdAt,
@@ -22,10 +23,11 @@ const BlogEntryPage = ({
         subtitle={subtitle}
         categories={categories}
         _createdAt={_createdAt}
+        author={author}
         img={img}
       />
       <Content data={content} />
-      <CuriosityEntries />
+      <LatestCuriosityEntries />
     </>
   );
 }

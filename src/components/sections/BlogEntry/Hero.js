@@ -13,7 +13,9 @@ const Hero = ({
   categories,
   _createdAt,
   img,
+  author
 }) => {
+  console.log(a)``
   return (
     <Wrapper>
       <header>

@@ -6,7 +6,7 @@ import CtaSection from "./../components/sections/CtaSection";
 import BlogEntries from "./../components/sections/BlogEntries";
 import Faq from "./../components/sections/Faq";
 import Categories from "./../components/sections/Categories";
-import CuriosityEntries from "./../components/sections/CuriosityEntries";
+import LatestCuriosityEntries from "../components/sections/LatestCuriosityEntries";
 
 const BlogPage = ({
   data: {
@@ -33,7 +33,7 @@ const BlogPage = ({
       <Categories slug="/pl/blog/kategoria/" categories={blogCategories} />
       <BlogEntries urlBasis={urlBasis} totalCount={totalCount} blogEntries={blogEntries} page={currentPage} />
       <CtaSection data={ctaSection} />
-      <CuriosityEntries />
+      <LatestCuriosityEntries />
       <Faq />
     </>
   );

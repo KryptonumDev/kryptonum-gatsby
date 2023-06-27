@@ -5,9 +5,9 @@ import Team from "../../../components/sections/Team";
 import Hero from "../../../components/sections/Team/Hero";
 import Testimonials from "../../../components/sections/Team/Testimonials";
 import CtaSection from '../../../components/sections/CtaSection';
-import CuriosityEntries from '../../../components/sections/CuriosityEntries';
 import Attitude from "../../../components/sections/Team/Attitude";
 import SmallCtaSection from "../../../components/sections/Team/SmallCtaSection";
+import LatestCuriosityEntries from "../../../components/sections/LatestCuriosityEntries";
 
 const TeamPage = ({
   data: { page : {
@@ -59,7 +59,7 @@ const TeamPage = ({
         attitude_Img,
       }} />
       <CtaSection data={ctaSection} />
-      <CuriosityEntries heading={curiosityEntries_Heading} />
+      <LatestCuriosityEntries heading={curiosityEntries_Heading} />
     </>
   )
 }
