@@ -22,7 +22,7 @@ const readingTime = (text) => {
 
 const ReadingTime = ({ content }) => {
   return (
-    <Wrapper>
+    <Wrapper className="readingTime">
       <Clock />
       <span>{readingTime(content)} min. czytania</span>
     </Wrapper>

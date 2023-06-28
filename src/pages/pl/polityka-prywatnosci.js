@@ -5,12 +5,17 @@ import HeroTwoColumns from "../../components/sections/HeroTwoColumns";
 import SimpleCtaSection from "../../components/sections/SimpleCtaSection";
 import PortableContent from "../../components/organisms/PortableContent";
 import ReadingTime from "../../components/atoms/ReadingTIme";
+import KeyElements from "../../components/sections/PrivacyPolicy/KeyElements";
+import Content from "../../components/sections/PrivacyPolicy/Content";
 
 const PrivacyPolicyPage = ({
   data: { page: {
     hero_Heading,
     hero_Paragraph,
     hero_Img,
+    keyInfo_Heading,
+    keyInfo_List,
+    content_Heading,
     _rawContent,
     simpleCtaSection
   }}
@@ -22,8 +27,14 @@ const PrivacyPolicyPage = ({
         paragraph={hero_Paragraph}
         img={hero_Img}
       />
-      <ReadingTime content={_rawContent} />
-      <PortableContent data={_rawContent} />
+      <KeyElements
+        heading={keyInfo_Heading}
+        list={keyInfo_List}
+      />
+      <Content
+        heading={content_Heading}
+        _rawContent={_rawContent}
+      />
       <SimpleCtaSection data={simpleCtaSection} />
     </>
   );
@@ -42,6 +53,9 @@ export const query = graphql`
         }
       }
       # Content
+      keyInfo_Heading
+      keyInfo_List
+      content_Heading
       _rawContent
       # Simple CTA Section
       simpleCtaSection {

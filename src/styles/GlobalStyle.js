@@ -29,6 +29,9 @@ const GlobalStyle = createGlobalStyle`
     overflow: hidden;
     touch-action: none;
   }
+  html {
+    scroll-behavior: smooth;
+  }
   body {
     min-width: 320px;
     background-color: var(--neutral-950);
@@ -107,6 +110,7 @@ const GlobalStyle = createGlobalStyle`
     appearance: none;
   }
   h1, h2, h3, h4, h5, h6 {
+    scroll-margin-top: 126px;
     font-weight: 400;
     letter-spacing: -0.005em;
     line-height: 1.3;
@@ -125,6 +129,9 @@ const GlobalStyle = createGlobalStyle`
   }
   h2 {
     font-size: ${Clamp(28, 50, 48)};
+  }
+  h3 {
+    font-size: ${Clamp(24, 40, 40)};
   }
   p strong,
   p.strong {

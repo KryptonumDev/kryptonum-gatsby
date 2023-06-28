@@ -1,3 +1,8 @@
+import React from "react";
+import { PortableText } from "@portabletext/react";
+import { renderToStaticMarkup } from 'react-dom/server';
+import { Link } from "gatsby";
+
 export const scrollLock = (boolean) => {
   const body = (typeof document !== `undefined`) ? document.body : null;
   switch (boolean) {
@@ -35,3 +40,29 @@ export const portableTextToMarkdown = (node) => {
   }
   return '';
 };
+
+export const slugify = (text) => {
+  const a = 'àáâäæãåāăąçćčđďèéêëēėęěğǵḧîïíīįìłḿñńǹňôöòóœøōõőṕŕřßśšşșťțûüùúūǘůűųẃẍÿýžźż·/_,:;',
+        b = 'aaaaaaaaaacccddeeeeeeeegghiiiiiilmnnnnoooooooooprrsssssttuuuuuuuuuwxyyzzz------',
+        p = new RegExp(a.split('').join('|'), 'g');
+  return text.toString().toLowerCase().replace(/\s+/g, '-').replace(p, c => b.charAt(a.indexOf(c))).replace(/&/g, '-i-').replace(/[^\w-]+/g, '').replace(/--+/g, '-').replace(/^-+/, '').replace(/-+$/, '');
+};
+
+export const generateHeadings = (portableText) => {
+  const content = renderToStaticMarkup(<PortableText value={portableText} />);
+  const headingsRegex = /<h[23].*?>(.*?)<\/h[23]>/g;
+  const headingMatches = content.match(headingsRegex);
+  if (!headingMatches) {
+    return null;
+  }
+  const listItems = headingMatches.map((match, i) => {
+    const tag = match.match(/<\/?(h[23])/)[1];
+    const text = match.replace(/<\/?[^>]+(>|$)/g, '');
+    return (
+      <li key={i} className={tag}>
+        <Link to={`#${slugify(text)}`}>{text}</Link>
+      </li>
+    );
+  });
+  return <ul>{listItems}</ul>;
+}
