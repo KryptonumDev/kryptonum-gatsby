@@ -3,8 +3,6 @@ import { graphql } from "gatsby";
 import { SEO } from "../../components/global/Seo";
 import HeroTwoColumns from "../../components/sections/HeroTwoColumns";
 import SimpleCtaSection from "../../components/sections/SimpleCtaSection";
-import PortableContent from "../../components/organisms/PortableContent";
-import ReadingTime from "../../components/atoms/ReadingTIme";
 import KeyElements from "../../components/sections/PrivacyPolicy/KeyElements";
 import Content from "../../components/sections/PrivacyPolicy/Content";
 
