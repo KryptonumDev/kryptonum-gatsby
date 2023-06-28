@@ -23,7 +23,6 @@ const BlogEntryPage = ({
         subtitle={subtitle}
         categories={categories}
         _createdAt={_createdAt}
-        author={author}
         img={img}
       />
       <Content data={content} />

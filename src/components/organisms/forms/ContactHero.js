@@ -6,7 +6,7 @@ import { Label } from "../../moleculas/FormInput"
 import { Checkbox } from "../../moleculas/FormCheckbox"
 import { emailRegex, phoneRegex } from "../../../constants/regex"
 
-export default function Form({ data }) {
+export default function Form() {
   const {
     register,
     handleSubmit,

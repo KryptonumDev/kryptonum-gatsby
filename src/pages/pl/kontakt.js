@@ -1,19 +1,43 @@
 import React from "react";
 import { graphql } from "gatsby";
-import Hero from "../../components/sections/Contact/Hero";
 import { SEO } from "../../components/global/Seo";
+import Hero from "../../components/sections/Contact/Hero";
 
-const ContactPage = ({ data }) => {
+const ContactPage = ({
+  data: { page: {
+    hero_Heading,
+    hero_Subheading,
+  }}
+}) => {
   return (
     <>
-      <Hero />
+      <Hero
+        heading={hero_Heading}
+        subheading={hero_Subheading}
+      />
     </>
   )
 }
 
 export const query = graphql`
   query {
-    page: sanitySitemap {
+    page: sanityContact {
+      hero_Heading
+      hero_Subheading
+      hero_Contact {
+        title
+        person {
+          name
+          email
+          tel
+          img {
+            asset {
+              altText
+              gatsbyImageData
+            }
+          }
+        }
+      }
       seo {
         title
         description

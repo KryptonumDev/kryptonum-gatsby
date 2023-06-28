@@ -2,11 +2,32 @@ import { graphql } from "gatsby";
 import React from "react";
 import Grid from "../../components/sections/Sitemap/Grid";
 import HeroTwoColumns from "../../components/sections/HeroTwoColumns";
+import { SEO } from "../../components/global/Seo";
 
-export default function Sitemap({ data: { page, team, blogEntries, sanityWebDevelopment, sanityAgency, sanityGraphicsDesign, sanityWorkshop, caseStudies, akademiaEntries } }) {
+export default function Sitemap({
+  data: {
+    page: {
+      hero_Heading,
+      hero_Subheading,
+      hero_Img,
+    },
+    team,
+    blogEntries,
+    sanityWebDevelopment,
+    sanityAgency,
+    sanityGraphicsDesign,
+    sanityWorkshop,
+    caseStudies,
+    akademiaEntries
+  }
+}) {
   return (
     <>
-      <HeroTwoColumns heading={page.hero_Heading} paragraph={page.hero_Subheading} img={page.hero_Img}/>
+      <HeroTwoColumns
+        heading={hero_Heading}
+        paragraph={hero_Subheading}
+        img={hero_Img}
+      />
       <Grid
         team={team}
         blogEntries={blogEntries}
@@ -165,3 +186,17 @@ export const query = graphql`
     }
   }
 `
+
+
+export const Head = ({
+  data: { page: { seo: {
+    title,
+    description
+  }}}
+}) => (
+  <SEO
+    title={title}
+    description={description}
+    url='/pl/konatkt'
+  />
+)
