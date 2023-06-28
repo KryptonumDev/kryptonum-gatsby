@@ -51,7 +51,7 @@ export default function Grid({ team, blogEntries, sanityWebDevelopment, sanityAg
   return (
     <Wrapper>
       <Link className="big-link" to='/pl'>Strona główna</Link>
-      <Link className="big-link" to='/pl'>Szybki kontakt</Link>
+      <Link className="big-link" to='/pl/kontakt'>Szybki kontakt</Link>
       <Link className="big-link" to='/pl'>Formularz rozbudowany</Link>
       <div>
         <Link className="big-link" to='/pl'>Zespół</Link>
