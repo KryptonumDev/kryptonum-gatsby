@@ -13,7 +13,7 @@ const BlogEntryPage = ({
     categories,
     img,
     _createdAt,
-    content
+    _rawContent
   }}
 }) => {
   return (
@@ -25,7 +25,7 @@ const BlogEntryPage = ({
         _createdAt={_createdAt}
         img={img}
       />
-      <Content data={content} />
+      <Content data={_rawContent} />
       <LatestCuriosityEntries />
     </>
   );
@@ -63,19 +63,7 @@ export const query = graphql`
           gatsbyImageData(placeholder: BLURRED)
         }
       }
-      content {
-        style
-        children {
-          _type
-          text
-          _key
-          marks
-        }
-        list
-        _type
-        _rawChildren
-        _key
-      }
+      _rawContent
       _createdAt(formatString: "D MMMM Y", locale: "pl")
       seo {
         title

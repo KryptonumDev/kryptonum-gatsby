@@ -21,3 +21,17 @@ export const Clamp = (minSize, vw, maxSize, unit="rem") => {
 export const removeMarkdown = (markdown) => {
   return markdown?.replace(/\*\*(.*?)\*\*/g, '$1');
 }
+
+export const portableTextToMarkdown = (node) => {
+  if (node._type === 'span') {
+    let text = node.text;
+    if (node.marks && node.marks.includes('strong')) {
+      text = `**${text}**`;
+    }
+    return text;
+  }
+  if (Array.isArray(node.children)) {
+    return node.children.map(child => portableTextToMarkdown(child)).join('');
+  }
+  return '';
+};
