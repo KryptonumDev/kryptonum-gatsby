@@ -1,7 +1,6 @@
 import React from "react";
 import { PortableText } from "@portabletext/react";
 import { renderToStaticMarkup } from 'react-dom/server';
-import { Link } from "gatsby";
 
 export const scrollLock = (boolean) => {
   const body = (typeof document !== `undefined`) ? document.body : null;
@@ -60,9 +59,17 @@ export const generateHeadings = (portableText) => {
     const text = match.replace(/<\/?[^>]+(>|$)/g, '');
     return (
       <li key={i} className={tag}>
-        <Link to={`#${slugify(text)}`}>{text}</Link>
+        <a href={`#${slugify(text)}`} onClick={e => smoothScroll(e)}>{text}</a>
       </li>
     );
   });
   return <ul>{listItems}</ul>;
+}
+
+const smoothScroll = (e) => {
+  e.preventDefault();
+  const targetId = e.target.getAttribute('href');
+  const targetElement = document.querySelector(targetId);
+  targetElement.scrollIntoView({ behavior: 'smooth' });
+  history.pushState(null, '', targetId);
 }

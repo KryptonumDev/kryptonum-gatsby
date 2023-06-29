@@ -29,9 +29,6 @@ const GlobalStyle = createGlobalStyle`
     overflow: hidden;
     touch-action: none;
   }
-  html {
-    scroll-behavior: smooth;
-  }
   body {
     min-width: 320px;
     background-color: var(--neutral-950);
