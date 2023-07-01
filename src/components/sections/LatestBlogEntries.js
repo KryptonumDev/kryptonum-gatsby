@@ -34,6 +34,7 @@ const LatestBlogEntries = ({ heading }) => {
               current
             }
           }
+          _rawContent
           img {
             asset {
               altText

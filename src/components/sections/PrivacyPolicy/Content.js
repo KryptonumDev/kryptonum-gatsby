@@ -1,8 +1,9 @@
 import React from "react";
 import styled from "styled-components";
-import { Clamp, generateHeadings } from "../../../utils/functions";
+import { Clamp } from "../../../utils/functions";
 import DecorativeHeading from "../../atoms/DecorativeHeading";
-import ReadingTime from "../../atoms/ReadingTIme";
+import ReadingTime from "../../atoms/ReadingTime";
+import TableOfContent from "../../moleculas/TableOfContent";
 import PortableContent from "../../organisms/PortableContent";
 
 const Content = ({ heading, _rawContent }) => {
@@ -13,7 +14,7 @@ const Content = ({ heading, _rawContent }) => {
       </header>
       <div className="column">
         <nav>
-          {generateHeadings(_rawContent)}
+          <TableOfContent content={_rawContent} />
         </nav>
         <div>
           <ReadingTime content={_rawContent} />
@@ -51,26 +52,8 @@ const Wrapper = styled.section`
       margin-bottom: 24px;
     }
     nav {
-      border: 1px solid var(--neutral-900);
+      border: 1px solid var(--neutral-800);
       padding: 32px 16px;
-      li {
-        list-style-type: none;
-        &.h2 {
-          font-size: 20px;
-          &:not(:last-child) {
-            margin-bottom: 8px;
-          }
-        }
-        &.h3 {
-          font-size: 16px;
-          &:not(:last-child) {
-            margin-bottom: 5px;
-          }
-        }
-        &.h2:not(:first-of-type) {
-          margin-top: 24px;
-        }
-      }
     }
   }
 `

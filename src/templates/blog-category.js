@@ -97,6 +97,7 @@ export const query = graphql`
             gatsbyImageData(placeholder: BLURRED, width: 230, height: 230)
           }
         }
+        _rawContent
         _createdAt(formatString: "D MMMM Y", locale: "pl")
       }
     }

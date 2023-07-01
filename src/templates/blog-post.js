@@ -13,7 +13,8 @@ const BlogEntryPage = ({
     categories,
     img,
     _createdAt,
-    _rawContent
+    _rawContent,
+    seo
   }}
 }) => {
   return (
@@ -25,7 +26,11 @@ const BlogEntryPage = ({
         _createdAt={_createdAt}
         img={img}
       />
-      <Content data={_rawContent} />
+      <Content
+        _rawContent={_rawContent}
+        author={author}
+        share={seo}
+      />
       <LatestCuriosityEntries />
     </>
   );
@@ -47,7 +52,7 @@ export const query = graphql`
         img {
           asset {
             altText
-            gatsbyImageData(placeholder: BLURRED, width: 48, height: 48)
+            gatsbyImageData(placeholder: BLURRED, width: 156, height: 156)
           }
         }
       }

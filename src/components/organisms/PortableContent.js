@@ -1,14 +1,17 @@
 import React from "react";
 import styled from "styled-components";
 import { GatsbyImage } from "gatsby-plugin-image";
+import { PortableText, toPlainText } from "@portabletext/react";
 import { getGatsbyImageData } from "gatsby-source-sanity";
 import { Clamp, portableTextToMarkdown, slugify } from "../../utils/functions";
 import DecorativeHeading from "../atoms/DecorativeHeading";
-import { PortableText, toPlainText } from "@portabletext/react";
+import { Star } from "../atoms/Icons";
+import QuickForm from "../sections/BlogEntry/QuickForm";
+import OrderedList from "../sections/BlogEntry/OrderedList";
 
 const sanityConfig = {projectId: process.env.GATSBY_SANITY_PROJECT_ID, dataset: process.env.GATSBY_SANITY_DATASET}
 
-const SampleImageComponent = ({ value }) => {
+const ImageComponent = ({ value }) => {
   const gatsbyImageData = getGatsbyImageData(value.asset._ref, { maxWidth: 1024 }, sanityConfig);
   return (
     <GatsbyImage image={gatsbyImageData} alt={value.altText || ''} className="img" />
@@ -17,11 +20,17 @@ const SampleImageComponent = ({ value }) => {
 
 const components = {
   types: {
-    image: SampleImageComponent,
+    image: ImageComponent,
+    quickForm: ({ value: { heading, subheading, cta} }) => <QuickForm data={{heading,subheading, cta}} />,
+    orderedList: ({ value: { array }}) => <OrderedList data={array} />
   },
   block: {
     h2: ({ value }) => <DecorativeHeading type="h2" id={slugify(toPlainText(value))}>{portableTextToMarkdown(value)}</DecorativeHeading>,
-    h3: ({ value }) => <DecorativeHeading type="h3" id={slugify(toPlainText(value))}>{portableTextToMarkdown(value)}</DecorativeHeading>
+    h3: ({ value }) => <DecorativeHeading type="h3" id={slugify(toPlainText(value))}>{portableTextToMarkdown(value)}</DecorativeHeading>,
+    largeParagraph: ({ children }) => <p className="largeParagraph">{children}</p>,
+  },
+  listItem : {
+    bullet: ({ children }) => <li><Star /><span>{children}</span></li>,
   },
   marks: {
     link: ({value, children}) => {
@@ -34,7 +43,10 @@ const components = {
 const PortableContent = ({ data }) => {
   return (
     <Wrapper>
-      <PortableText value={data} components={components} />
+      <PortableText
+        value={data}
+        components={components}
+      />
     </Wrapper>
   );
 }
@@ -43,9 +55,10 @@ const Wrapper = styled.section`
   p + p {
     margin-top: 24px;
   }
-  p {
-    font-size: ${Clamp(16, 22, 22)};
+  p.largeParagraph {
+    font-size: ${Clamp(16, 30, 30)};
   }
+  font-size: ${Clamp(16, 22, 22)};
   h2 {
     &:not(:first-of-type) {
       margin-top: 96px;
@@ -58,24 +71,39 @@ const Wrapper = styled.section`
     }
     margin-bottom: 32px;
   }
-  .img {
+  > .img {
     margin-top: 96px;
     & + h3 {
       margin-top: 48px;
     }
   }
-  ol {
+  a {
+    text-decoration: underline;
+  }
+  ul, ol {
     list-style-type: none;
-    counter-reset: counter;
     margin: 24px 0;
+    display: grid;
+    grid-template-columns: 1fr;
+    row-gap: 16px;
+  }
+  ul {
     li {
-      counter-increment: counter;
       display: grid;
-      grid-template-columns: 32px 1fr;
-      column-gap: 16px;
-      &:not(:last-child){
-        margin-bottom: 16px;
+      column-gap: 8px;
+      grid-template-columns: 24px 1fr;
+      svg {
+        margin-top: .1em;
       }
+    }
+  }
+  ol:not(.orderedList) {
+    counter-reset: counter;
+    li {
+      display: grid;
+      column-gap: 8px;
+      grid-template-columns: 32px 1fr;
+      counter-increment: counter;
       &::before {
         content: counter(counter) ".";
         display: inline-block;

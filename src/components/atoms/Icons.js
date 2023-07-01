@@ -607,3 +607,21 @@ export const CalendarIcon = () => (
     ></path>
   </svg>
 )
+
+export const Share = () => (
+  <svg
+    xmlns='http://www.w3.org/2000/svg'
+    width='33'
+    height='32'
+    fill='none'
+    viewBox='0 0 33 32'
+  >
+    <path
+      stroke='#EFF0F3'
+      strokeLinecap='round'
+      strokeLinejoin='round'
+      strokeWidth='2'
+      d='M11.879 18.013l9.106 5.307m-.013-14.64l-9.093 5.306m16.546 11.347a4 4 0 11-8 0 4 4 0 018 0zm-16-9.333a4 4 0 11-8 0 4 4 0 018 0zm16-9.334a4 4 0 11-8 0 4 4 0 018 0z'
+    ></path>
+  </svg>
+)

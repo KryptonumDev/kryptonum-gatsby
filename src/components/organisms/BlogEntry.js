@@ -3,7 +3,7 @@ import { Link } from "gatsby";
 import { GatsbyImage } from "gatsby-plugin-image";
 import styled from "styled-components";
 import { Clamp, removeMarkdown } from "../../utils/functions";
-import { Clock } from "../atoms/Icons";
+import ReadingTime from "../atoms/ReadingTime";
 
 const BlogEntry = ({ data }) => {
   return (
@@ -29,10 +29,7 @@ const BlogEntry = ({ data }) => {
           <Link to={`/pl/blog/kategoria/${category.slug.current}`} key={i}>{category.name}</Link>
         ))}
       </div>
-      <div className="estimatedTime">
-        <Clock />
-        <span>6 min. czytania</span>
-      </div>
+      <ReadingTime content={data._rawContent} />
       <span className="createdAt">{data._createdAt}</span>
     </Wrapper>
   );
@@ -115,7 +112,7 @@ const Wrapper = styled.div`
       background-color: var(--neutral-900);
     }
   }
-  .estimatedTime {
+  .readingTime {
     grid-area: e;
     justify-self: flex-end;
     height: 48px;
@@ -139,7 +136,7 @@ const Wrapper = styled.div`
     .categories {
       margin: 24px 0;
     }
-    .estimatedTime {
+    .readingTime {
       font-size: 14px;
     }
   }

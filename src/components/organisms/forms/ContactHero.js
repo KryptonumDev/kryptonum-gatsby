@@ -39,7 +39,7 @@ export default function Form() {
         rows={3}
       />
       <Checkbox
-        text='Zgadzam się na <a href="/polityka-prywatnosci">przetwarzanie moich danych</a>'
+        text='Zgadzam się na <a href="/pl/polityka-prywatnosci">przetwarzanie moich danych</a>'
         name='check'
         register={register('check', { required: true })}
         errors={errors}
@@ -52,8 +52,7 @@ export default function Form() {
 const Wrapper = styled.form`
   display: grid;
   gap: 32px;
-
-  button{
+  button {
     max-width: 400px;
   }
 `

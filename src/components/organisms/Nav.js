@@ -236,7 +236,7 @@ const Nav = ({
                         <div className="copy">
                           <div className="copy-top">
                             <Link
-                              to={`/pl/blog/autor/${entry.author[0].slug.current}`}
+                              to={`/pl/zespol/${entry.author[0].slug.current}`}
                               onClick={() => handleHideNav()}
                             >
                               <GatsbyImage
