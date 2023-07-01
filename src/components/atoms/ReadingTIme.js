@@ -34,7 +34,6 @@ const Wrapper = styled.p`
   align-items: center;
   gap: 8px;
   font-size: ${Clamp(16, 22, 20)};
-
 `
 
 export default ReadingTime;
