@@ -10,10 +10,9 @@ import PortableContent from "../../organisms/PortableContent";
 
 const Content = ({ _rawContent, author, share }) => {
   author = author[0];
-
   const shareData = {
     title: share.title,
-    text: share.description,
+    text: share.description || '',
     url: typeof window !== 'undefined' ? window.location.href.split('?')[0]+'?feature=share' : 'kryptonum.eu',
   };
   const handleShare = async (e) => {
