@@ -83,6 +83,9 @@ const QuickForm = ( { data: { heading, subheading, cta }} ) => {
 
 const Wrapper = styled.aside`
   margin: 64px 0;
+  &:last-child{
+    margin-bottom: 0;
+  }
   background-color: var(--neutral-900);
   padding: ${Clamp(32, 48, 48, 'px')} ${Clamp(16, 64, 64, 'px')};
   h2 {

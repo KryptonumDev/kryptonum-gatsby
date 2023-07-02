@@ -559,7 +559,8 @@ const Wrapper = styled.nav`
             inset: 0;
             z-index: 1;
           }
-          display: flex;
+          display: grid;
+          grid-template-columns: 128px 1fr;
           gap: 22px;
           .copy {
             .copy-top {
@@ -592,7 +593,6 @@ const Wrapper = styled.nav`
         .thumbnail {
           width: 128px;
           height: 128px;
-          flex-shrink: 0;
         }
       }
       .categories {

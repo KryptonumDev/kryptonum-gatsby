@@ -65,7 +65,6 @@ const GlobalStyle = createGlobalStyle`
     }
   }
 `
-
 const Wrapper = styled.section`
   .column {
     display: grid;

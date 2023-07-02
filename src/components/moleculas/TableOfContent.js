@@ -24,7 +24,6 @@ const generateHeadings = (portableText) => {
 }
 
 const TableOfContent = ({ content }) => {
-
   return (
     <Wrapper>
       {generateHeadings(content)}

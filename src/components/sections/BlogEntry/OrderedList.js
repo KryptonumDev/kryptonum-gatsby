@@ -29,8 +29,8 @@ const OrderedList = ({ data }) => {
     <Wrapper className="orderedList" ref={listRef}>
       {data.map((item, i) => (
         <li key={i}>
-          <p>{item.title}</p>
-          <span>{item.description}</span>
+          <p className="title">{item.title}</p>
+          <p className="description">{item.description}</p>
         </li>
       ))}
     </Wrapper>
@@ -45,7 +45,7 @@ const Wrapper = styled.ol`
   li {
     counter-increment: counter;
     font-size: ${Clamp(16, 22, 22)};
-    p {
+    .title {
       display: grid;
       grid-template-columns: 54px 1fr;
       gap: 16px;
@@ -64,8 +64,7 @@ const Wrapper = styled.ol`
         align-items: center;
       }
     }
-    span {
-      display: block;
+    .description {
       padding-left: 70px;
     }
     &:nth-child(-n+9) p::before {
@@ -93,11 +92,9 @@ const Wrapper = styled.ol`
       }
     }
     &.active {
-      p {
-        &::before {
-          border-color: transparent;
-          transition-delay: 0s;
-        }
+      .title::before {
+        border-color: transparent;
+        transition-delay: 0s;
       }
       &::after {
         transform: scaleY(1);

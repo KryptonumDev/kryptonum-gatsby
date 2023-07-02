@@ -8,6 +8,7 @@ import DecorativeHeading from "../atoms/DecorativeHeading";
 import { Star } from "../atoms/Icons";
 import QuickForm from "../sections/BlogEntry/QuickForm";
 import OrderedList from "../sections/BlogEntry/OrderedList";
+import UnorderedList from "../sections/BlogEntry/UnorderedList";
 
 const sanityConfig = {projectId: process.env.GATSBY_SANITY_PROJECT_ID, dataset: process.env.GATSBY_SANITY_DATASET}
 
@@ -22,7 +23,13 @@ const components = {
   types: {
     image: ImageComponent,
     quickForm: ({ value: { heading, subheading, cta} }) => <QuickForm data={{heading,subheading, cta}} />,
-    orderedList: ({ value: { array }}) => <OrderedList data={array} />
+    orderedList: ({ value: { array }}) => <OrderedList data={array} />,
+    unorderedList: ({ value: { array }}) => {
+      const newArray = array.map(obj => {
+        return { ...obj, icon: <ImageComponent value={obj.icon} /> };
+      });
+      return <UnorderedList data={newArray} />
+    },
   },
   block: {
     h2: ({ value }) => <DecorativeHeading type="h2" id={slugify(toPlainText(value))}>{portableTextToMarkdown(value)}</DecorativeHeading>,
@@ -53,7 +60,7 @@ const PortableContent = ({ data }) => {
 
 const Wrapper = styled.section`
   p + p {
-    margin-top: 24px;
+    margin-top: 32px;
   }
   p.largeParagraph {
     font-size: ${Clamp(16, 30, 30)};
@@ -76,6 +83,9 @@ const Wrapper = styled.section`
     & + h3 {
       margin-top: 48px;
     }
+    + p {
+      margin-top: 32px;
+    }
   }
   a {
     text-decoration: underline;
@@ -87,7 +97,7 @@ const Wrapper = styled.section`
     grid-template-columns: 1fr;
     row-gap: 16px;
   }
-  ul {
+  ul:not(.unorderedList) {
     li {
       display: grid;
       column-gap: 8px;
