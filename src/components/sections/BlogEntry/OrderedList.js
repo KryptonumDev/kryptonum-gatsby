@@ -15,7 +15,7 @@ const OrderedList = ({ data }) => {
       const windowHeight = window.innerHeight;
       items.forEach(item => {
         const { top } = item.getBoundingClientRect();
-        if(top <= windowHeight * .66) {
+        if(top <= windowHeight * .5) {
           item.classList.add('active');
         } else {
           item.classList.remove('active');
@@ -50,6 +50,7 @@ const Wrapper = styled.ol`
       grid-template-columns: 54px 1fr;
       gap: 16px;
       align-items: center;
+      margin-bottom: 8px;
       &::before {
         content: counter(counter);
         background: linear-gradient(var(--neutral-950), var(--neutral-950)) padding-box,
@@ -65,9 +66,10 @@ const Wrapper = styled.ol`
       }
     }
     .description {
+      margin: 0;
       padding-left: 70px;
     }
-    &:nth-child(-n+9) p::before {
+    &:nth-child(-n+9) .title::before {
       content: "0" counter(counter);
     }
     position: relative;

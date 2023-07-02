@@ -40,6 +40,7 @@ const Wrapper = styled.ul`
       grid-template-columns: 48px 1fr;
       gap: 16px;
       align-items: center;
+      margin-bottom: 8px;
     }
     .description {
       padding-left: 64px;
