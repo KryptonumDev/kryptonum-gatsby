@@ -75,12 +75,12 @@ const Nav = ({
   const handleHideNav = (e) => {
     navRef.current.classList.add('hide');
     if(document.activeElement) {
+      document.activeElement.blur();
       if(e.currentTarget.getAttribute('aria-current') === 'page'){
         setTimeout(() => {
           navRef.current.classList.remove('hide');
         }, 200);
       }
-      document.activeElement.blur();
     }
     navRef.current.removeAttribute("data-expand");
     setNavOpened(false);
