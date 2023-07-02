@@ -111,7 +111,7 @@ const Wrapper = styled.section`
     counter-reset: counter;
     li {
       display: grid;
-      column-gap: 8px;
+      column-gap: 16px;
       grid-template-columns: 32px 1fr;
       counter-increment: counter;
       &::before {

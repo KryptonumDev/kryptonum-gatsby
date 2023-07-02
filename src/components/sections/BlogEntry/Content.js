@@ -16,10 +16,10 @@ const Content = ({ _rawContent, author, share }) => {
     url: typeof window !== 'undefined' ? window.location.href.split('?')[0]+'?feature=share' : 'kryptonum.eu',
   };
   const handleShare = async (e) => {
+    const btn = e.currentTarget;
     try {
       await navigator.share(shareData);
     } catch {
-      const btn = e.currentTarget;
       const btnSpan = btn.querySelector('span');
       const btnSpanText = btnSpan.textContent;
       await navigator.clipboard.writeText(shareData.url);

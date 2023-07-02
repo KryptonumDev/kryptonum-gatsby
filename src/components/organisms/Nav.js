@@ -77,7 +77,7 @@ const Nav = ({
     if(document.activeElement) {
       document.activeElement.blur();
       setTimeout(() => {
-        navRef.current.removeAttribute("style");
+        navRef?.current.removeAttribute("style");
       }, 100);
     }
     navRef.current.removeAttribute("data-expand");

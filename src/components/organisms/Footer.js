@@ -87,7 +87,7 @@ const Footer = ({
           <h3><Link to="/pl/blog">Blog</Link></h3>
           {blogEntries.nodes.map((entry, i) => (
             <div className="entry" key={i}>
-              <Link to={`/blog/${entry.slug.current}`} className="link" aria-label={entry.title}></Link>
+              <Link to={`/pl/blog/${entry.slug.current}`} className="link" aria-label={entry.title}></Link>
               <GatsbyImage
                 image={entry.img.asset.gatsbyImageData}
                 alt={entry.img.asset.altText || ''}
