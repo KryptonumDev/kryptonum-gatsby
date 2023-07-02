@@ -1,4 +1,4 @@
-import React from "react";
+import React, { Fragment } from "react";
 import { GatsbyImage } from "gatsby-plugin-image";
 import styled from "styled-components";
 import ReactMarkdown from "react-markdown";
@@ -20,7 +20,7 @@ const Process = ({
   return (
     <Wrapper>
       {data.map((step, i) => (
-        <>
+        <Fragment key={i}>
           {(i === 2 && logo_Showcase && logo_Paragraph && visualIdentification_Showcase && visualIdentification_Paragraph && visualIdentification_SecondParagraph) && (
             <>
               <Logo
@@ -34,7 +34,7 @@ const Process = ({
               />
             </>
           )}
-          <div className="step" key={i}>
+          <div className="step">
             <GatsbyImage
               image={step.img.asset.gatsbyImageData}
               alt={step.img.asset.altText || ''}
@@ -89,7 +89,7 @@ const Process = ({
               technologies={technologies}
             />
           )}
-        </>
+        </Fragment>
       ))}
     </Wrapper>
   );

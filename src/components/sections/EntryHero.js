@@ -87,6 +87,9 @@ const Wrapper = styled.section`
     }
     @media (max-width: 599px){
       grid-template-columns: 1fr;
+      &.hasAuthor {
+        grid-template-columns: 1fr;
+      }
       .title, .subtitle {
         grid-column: unset;
       }

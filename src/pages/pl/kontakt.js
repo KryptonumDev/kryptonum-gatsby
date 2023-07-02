@@ -7,6 +7,7 @@ const ContactPage = ({
   data: { page: {
     hero_Heading,
     hero_Subheading,
+    hero_Contact
   }}
 }) => {
   return (
@@ -14,6 +15,7 @@ const ContactPage = ({
       <Hero
         heading={hero_Heading}
         subheading={hero_Subheading}
+        contact={hero_Contact}
       />
     </>
   )
@@ -28,13 +30,15 @@ export const query = graphql`
       hero_Contact {
         title
         person {
-          name
           email
           tel
+          slug {
+            current
+          }
           img {
             asset {
               altText
-              gatsbyImageData
+              gatsbyImageData(placeholder: BLURRED, width: 160, height: 160)
             }
           }
         }

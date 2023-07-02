@@ -56,7 +56,7 @@ const Wrapper = styled.ol`
         background: linear-gradient(var(--neutral-950), var(--neutral-950)) padding-box,
                     var(--gradient) border-box;
         border: 1px solid var(--neutral-800);
-        transition: border-color .3s .1s;
+        transition: border-color .1s .1s;
         border-radius: 50%;
         width: 54px;
         height: 54px;
@@ -89,7 +89,7 @@ const Wrapper = styled.ol`
       &::after {
         background: var(--gradient);
         transform: scaleY(0);
-        transition: transform .3s 0s;
+        transition: transform .3s var(--easing);
         transform-origin: top;
       }
     }
@@ -98,9 +98,10 @@ const Wrapper = styled.ol`
         border-color: transparent;
         transition-delay: 0s;
       }
-      &::after {
-        transform: scaleY(1);
-        transition-delay: .1s;
+      &:not(:last-of-type) {
+        &::after {
+          transform: scaleY(1);
+        }
       }
     }
   }
