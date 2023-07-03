@@ -6,7 +6,7 @@ import Hero from "../../components/sections/ExtendedContactHero";
 import Summary from "../../components/sections/ExtendedContactSummary";
 import { AnimatePresence, motion } from "framer-motion";
 
-const IndexPage = ({ data }) => {
+const BriefPage = ({ data }) => {
 
   const [step, setStep] = useState(0)
   const [formData, setFormData] = useState({})
@@ -59,11 +59,17 @@ export const query = graphql`
   }
 `
 
-export default IndexPage
+export default BriefPage
 
-export const Head = () => (
-  <SEO
-    title="Agencja interaktywna Kryptonum - partner biznesu online"
-    description="Kryptonum, to agencja interaktywna kompleksowo wspierająca Twój biznes online. Partner technologiczny na każdym etapie obecności firmy w internecie."
-  />
-)
+// export const Head = ({
+//   data: { page: { seo: {
+//     title,
+//     description
+//   }}}
+// }) => (
+//   <SEO
+//     title={title}
+//     description={description}
+//     url='/pl/brief-z-kryptonum'
+//   />
+// )
