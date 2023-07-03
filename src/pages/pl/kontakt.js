@@ -3,6 +3,7 @@ import { graphql } from "gatsby";
 import { SEO } from "../../components/global/Seo";
 import Hero from "../../components/sections/Contact/Hero";
 import ContactUs from "../../components/sections/Contact/ContactUs";
+import Pricing from "../../components/sections/Contact/Pricing";
 
 const ContactPage = ({
   data: { page: {
@@ -13,6 +14,9 @@ const ContactPage = ({
     contact_Tel,
     contact_Address,
     contact_Img,
+    pricing_Paragraph,
+    pricing_Paragraph2,
+    pricing_Cta,
   }}
 }) => {
   return (
@@ -27,6 +31,11 @@ const ContactPage = ({
         contact_Tel,
         contact_Address,
         contact_Img,
+      }} />
+      <Pricing data={{
+        pricing_Paragraph,
+        pricing_Paragraph2,
+        pricing_Cta,
       }} />
     </>
   )
