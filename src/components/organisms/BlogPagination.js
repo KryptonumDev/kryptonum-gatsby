@@ -35,7 +35,7 @@ export default function Pagination({ currentPage, itemCount, urlBasis }) {
         </svg>
       </Button>
       <div className="center">
-        {pagesCount < 5 ? (
+        {pagesCount < 6 ? (
           <>
             {buttons.map(el => (
               <Button
