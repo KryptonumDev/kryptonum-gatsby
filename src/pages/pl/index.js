@@ -36,7 +36,11 @@ const IndexPage = ({
     team_Heading,
     team_Text,
     team_Cta,
-  }
+  },
+  webDevelopment,
+  workshop,
+  agency,
+  graphicsAndDesign,
   }
 }) => {
   return (
@@ -49,6 +53,10 @@ const IndexPage = ({
       <Services data={{
         services_Heading,
         services_List,
+        webDevelopment,
+        workshop,
+        agency,
+        graphicsAndDesign,
       }} />
       <FourGrid
         heading={conquest_Heading}
@@ -101,6 +109,7 @@ export const query = graphql`
       services_List {
         title
         description
+        href
       }
       # Conquest
       conquest_Heading
@@ -149,6 +158,38 @@ export const query = graphql`
       seo {
         title
         description
+      }
+    }
+    webDevelopment: sanityWebDevelopment {
+      hero_Img {
+        asset {
+          altText
+          gatsbyImageData(placeholder: BLURRED, width: 200, height: 200)
+        }
+      }
+    }
+    workshop: sanityWorkshop {
+      hero_Img {
+        asset {
+          altText
+          gatsbyImageData(placeholder: BLURRED, width: 200, height: 200)
+        }
+      }
+    }
+    agency: sanityAgency {
+      hero_Img {
+        asset {
+          altText
+          gatsbyImageData(placeholder: BLURRED, width: 200, height: 200)
+        }
+      }
+    }
+    graphicsAndDesign: sanityGraphicsDesign {
+      hero_Img {
+        asset {
+          altText
+          gatsbyImageData(placeholder: BLURRED, width: 200, height: 200)
+        }
       }
     }
   }

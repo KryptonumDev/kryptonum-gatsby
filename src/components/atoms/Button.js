@@ -54,7 +54,7 @@ const StyledAnchor = styled.a`
   justify-content: center;
   white-space: nowrap;
   position: relative;
-  gap: 12px;
+  gap: 8px;
   svg {
     flex-shrink: 0;
   }

@@ -49,7 +49,7 @@ const CaseStudies = ({heading, eagerLoading}) => {
           </div>
         ))}
       </div>
-      <Button theme="secondary" to="/pl/portfolio">Wszystkie projekty</Button>
+      <Button theme="primary" to="/pl/portfolio">Wszystkie projekty</Button>
     </Wrapper>
   );
 }
