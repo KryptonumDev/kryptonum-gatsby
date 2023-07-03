@@ -4,6 +4,9 @@ import { SEO } from "../../components/global/Seo";
 import Hero from "../../components/sections/Contact/Hero";
 import ContactUs from "../../components/sections/Contact/ContactUs";
 import Pricing from "../../components/sections/Contact/Pricing";
+import Team from "../../components/sections/Team";
+import Faq from "../../components/sections/Faq";
+import Helpdesk from "../../components/sections/Contact/Helpdesk";
 
 const ContactPage = ({
   data: { page: {
@@ -17,6 +20,10 @@ const ContactPage = ({
     pricing_Paragraph,
     pricing_Paragraph2,
     pricing_Cta,
+    helpDesk_Heading,
+    helpDesk_Subheading,
+    helpDesk_Paragraph,
+    helpDesk_FormTitle,
   }}
 }) => {
   return (
@@ -37,6 +44,14 @@ const ContactPage = ({
         pricing_Paragraph2,
         pricing_Cta,
       }} />
+      <Helpdesk data={{
+        helpDesk_Heading,
+        helpDesk_Subheading,
+        helpDesk_Paragraph,
+        helpDesk_FormTitle,
+      }} />
+      <Team />
+      <Faq />
     </>
   )
 }
@@ -81,10 +96,12 @@ export const query = graphql`
         text
         href
       }
+      # Help Desk
       helpDesk_Heading
       helpDesk_Subheading
       helpDesk_Paragraph
       helpDesk_FormTitle
+      # Seo
       seo {
         title
         description
