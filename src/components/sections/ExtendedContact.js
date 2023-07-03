@@ -1,4 +1,4 @@
-import React, { useEffect, useMemo, useState } from "react"
+import React, { useEffect } from "react"
 import styled from "styled-components"
 import FirstStep from "../organisms/forms/ExtendedForm/FirstStep"
 import SecondStep from "../organisms/forms/ExtendedForm/SecondStep"

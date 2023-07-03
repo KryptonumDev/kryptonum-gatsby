@@ -1,6 +1,6 @@
 import React from "react"
 import styled from "styled-components"
-import Form from "../../organisms/forms/ContactHero"
+import Form from "../../organisms/forms/FastContact"
 import DecorativeHeading from "../../atoms/DecorativeHeading"
 import ReactMarkdown from "react-markdown"
 import { GatsbyImage } from "gatsby-plugin-image"

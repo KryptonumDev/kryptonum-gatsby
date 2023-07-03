@@ -4,6 +4,7 @@ import GlobalStyle from "../../styles/GlobalStyle";
 import Nav from "../organisms/Nav"
 import Footer from "../organisms/Footer";
 import ScrollToNext from "../organisms/ScrollToNext";
+import Breadcrumbs from "./Breadcrumbs";
 
 const Layout = ({ data: { page }, children }) => {
   const data = useStaticQuery(graphql`
@@ -131,6 +132,7 @@ const Layout = ({ data: { page }, children }) => {
     <>
       <GlobalStyle />
       <Nav data={data} />
+      <Breadcrumbs />
       <main id="main">
         {children}
       </main>
@@ -141,5 +143,5 @@ const Layout = ({ data: { page }, children }) => {
     </>
   );
 }
- 
+
 export default Layout;

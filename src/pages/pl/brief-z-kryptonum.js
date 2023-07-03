@@ -11,10 +11,25 @@ const BriefPage = ({ data }) => {
   const [step, setStep] = useState(0)
   const [formData, setFormData] = useState({})
   const [startTime, setStartTime] = useState(null)
+  const [isEmailSent, setIsEmailSent] = useState(false)
 
   useEffect(() => {
     if (step === 1 && !startTime) {
       setStartTime(new Date().getTime())
+    }
+
+    if (step === 7 && !isEmailSent) {
+      fetch('/api/brief-contact', {
+        method: 'POST',
+        body: JSON.stringify(formData),
+        headers: {
+          'Content-Type': 'application/json',
+        }
+      }).then(() => {
+        setIsEmailSent('success')
+      }).catch(() => {
+        setIsEmailSent('failed')
+      })
     }
   }, [step])
 
@@ -37,12 +52,18 @@ const BriefPage = ({ data }) => {
           <Hero setStep={setStep} />
         </motion.div>
       )}
-      {(step > 0 && step < 7) && (
+      {(step > 0 && step < 8 && !isEmailSent) && (
         <motion.div key='kontakt' initial={{ opacity: 0, x: 10 }} animate={{ opacity: 1, x: 0 }} exit={{ opacity: 0, x: -10 }}>
           <Kontakt step={step} setStep={setStep} formData={formData} setFormData={setFormData} endTime={endTime} />
         </motion.div>
       )}
-      {(step === 7) && (
+      {(step === 7 && !isEmailSent) && (
+        <>LOADER</>
+      )}
+      {(step === 7 && isEmailSent === 'failed') && (
+        <>Fail</>
+      )}
+      {(step === 7  && isEmailSent === 'success') && (
         <motion.div key='summary' initial={{ opacity: 0, x: 10 }} animate={{ opacity: 1, x: 0 }} exit={{ opacity: 0, x: -10 }}>
           <Summary name={formData?.Client?.name} endTime={endTime} />
         </motion.div>

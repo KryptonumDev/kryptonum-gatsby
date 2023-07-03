@@ -67,7 +67,7 @@ const GlobalStyle = createGlobalStyle`
     outline: 2px solid #26D9C3;
     outline-offset: 5px;
   }
-  main, .max-width {
+  main, .max-width, .breadcrumbs {
     --pageMargin: 40px;
     @media (max-width: 699px){
      --pageMargin: 16px;
