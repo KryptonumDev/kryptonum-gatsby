@@ -16,17 +16,19 @@ const EntryHero = ({
 }) => {
   return (
     <Wrapper>
-      <header>
+      <header className={author ? 'hasAuthor' : ''}>
         <DecorativeHeading className="title">{title}</DecorativeHeading>
         <ReactMarkdown className="subtitle">{subtitle}</ReactMarkdown>
-        <Link to={`/pl/zespol/${author[0].slug.current}`} className="author">
-          <GatsbyImage
-            image={author[0].img.asset.gatsbyImageData}
-            alt={author[0].img.asset.altText || ''}
-            className="person-border"
-          />
-          <span>{author[0].name}</span>
-        </Link>
+        {author && (
+          <Link to={`/pl/zespol/${author[0].slug.current}`} className="author">
+            <GatsbyImage
+              image={author[0].img.asset.gatsbyImageData}
+              alt={author[0].img.asset.altText || ''}
+              className="person-border"
+            />
+            <span>{author[0].name}</span>
+          </Link>
+        )}
         <div className="categories">
           {categories.map((category, i) => (
             <Link key={i} to={`/pl/blog/kategoria/${category.slug.current}`}>{category.name}</Link>
@@ -51,7 +53,10 @@ const Wrapper = styled.section`
   header {
     max-width: ${739/16}rem;
     display: grid;
-    grid-template-columns: auto 1fr auto;
+    grid-template-columns: 1fr auto;
+    &.hasAuthor {
+      grid-template-columns: auto 1fr auto;
+    }
     align-items: center;
     column-gap: 32px;
     .title, .subtitle {
@@ -82,6 +87,9 @@ const Wrapper = styled.section`
     }
     @media (max-width: 599px){
       grid-template-columns: 1fr;
+      &.hasAuthor {
+        grid-template-columns: 1fr;
+      }
       .title, .subtitle {
         grid-column: unset;
       }

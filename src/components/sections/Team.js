@@ -29,7 +29,7 @@ const Team = ({ heading, paragraph, cta }) => {
   `);
   return (
     <Wrapper>
-      <DecorativeHeading type="h2">{heading}</DecorativeHeading>
+      <DecorativeHeading type="h2">{heading || 'Kryptonum to **MY**!'}</DecorativeHeading>
       <div className="wrapper">
         {team.nodes.map((person, i) => (
           <Link to={`/pl/zespol/${person.slug.current}`} key={i}>

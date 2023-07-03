@@ -4,9 +4,9 @@ import styled from "styled-components"
 import Button from "../../atoms/Button"
 import { Label } from "../../moleculas/FormInput"
 import { Checkbox } from "../../moleculas/FormCheckbox"
-import { emailRegex, phoneRegex } from "../../../constants/regex"
+import { emailRegex } from "../../../constants/regex"
 
-export default function Form() {
+const HelpDesk_Form = () => {
   const {
     register,
     handleSubmit,
@@ -19,9 +19,9 @@ export default function Form() {
   return (
     <Wrapper onSubmit={handleSubmit(onSubmit)}>
       <Label
-        title='Telefon'
-        name='phone'
-        register={register('phone', { required: true, pattern: phoneRegex })}
+        title='Imię'
+        name='name'
+        register={register('name', { required: true })}
         errors={errors}
       />
       <Label
@@ -44,7 +44,7 @@ export default function Form() {
         register={register('check', { required: true })}
         errors={errors}
       />
-      <Button theme="primary">Wyślij wiadomość</Button>
+      <Button theme="primary">Wysyłam zapytanie</Button>
     </Wrapper>
   )
 }
@@ -56,3 +56,5 @@ const Wrapper = styled.form`
     max-width: 400px;
   }
 `
+
+export default HelpDesk_Form;

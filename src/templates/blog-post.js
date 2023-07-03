@@ -13,7 +13,8 @@ const BlogEntryPage = ({
     categories,
     img,
     _createdAt,
-    content
+    _rawContent,
+    seo
   }}
 }) => {
   return (
@@ -23,10 +24,13 @@ const BlogEntryPage = ({
         subtitle={subtitle}
         categories={categories}
         _createdAt={_createdAt}
-        author={author}
         img={img}
       />
-      <Content data={content} />
+      <Content
+        _rawContent={_rawContent}
+        author={author}
+        share={seo}
+      />
       <LatestCuriosityEntries />
     </>
   );
@@ -48,7 +52,7 @@ export const query = graphql`
         img {
           asset {
             altText
-            gatsbyImageData(placeholder: BLURRED, width: 48, height: 48)
+            gatsbyImageData(placeholder: BLURRED, width: 156, height: 156)
           }
         }
       }
@@ -64,19 +68,7 @@ export const query = graphql`
           gatsbyImageData(placeholder: BLURRED)
         }
       }
-      content {
-        style
-        children {
-          _type
-          text
-          _key
-          marks
-        }
-        list
-        _type
-        _rawChildren
-        _key
-      }
+      _rawContent
       _createdAt(formatString: "D MMMM Y", locale: "pl")
       seo {
         title

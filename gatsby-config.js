@@ -2,6 +2,9 @@ require("dotenv").config({
   path: `.env`,
 })
 
+const isProd = process.env.NODE_ENV === "production"
+const previewEnabled = (process.env.GATSBY_IS_PREVIEW || "false").toLowerCase() === "true"
+
 module.exports = {
   siteMetadata: {
     title: `Kryptonum`,
@@ -11,12 +14,12 @@ module.exports = {
     {
       resolve: `gatsby-source-sanity`,
       options: {
-        projectId: process.env.SANITY_PROJECT_ID,
-        dataset: process.env.SANITY_DATASET,
+        projectId: process.env.GATSBY_SANITY_PROJECT_ID,
+        dataset: process.env.GATSBY_SANITY_DATASET,
         token: process.env.SANITY_TOKEN,
         graphqlTag: 'default',
-        watchMode: true,
-        overlayDrafts: true,
+        watchMode: !isProd,
+        overlayDrafts: !isProd || previewEnabled,
       },
     },
     {

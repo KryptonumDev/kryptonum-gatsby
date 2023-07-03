@@ -42,6 +42,7 @@ const Showcase = ({
         : `-${animValue * (3000 + window.innerWidth)}px`;
       setAnimationValue(animValue);
   };
+
   useEffect(() => {
     const handleAnimationFrame = () => {
       handleScroll();
