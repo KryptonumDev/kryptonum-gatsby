@@ -646,8 +646,7 @@ const Wrapper = styled.nav`
     left: 0;
     top: 100%;
     width: 100%;
-    max-height: calc(100vh - var(--nav-height) * 1.5);
-    max-height: calc(100dvh - var(--nav-height) * 1.5);
+    max-height: calc(100vh - var(--nav-height) * 2);
     overflow-y: auto;
     border-bottom: 1px solid var(--neutral-800);
     background-color: var(--neutral-950);
@@ -768,7 +767,6 @@ const Wrapper = styled.nav`
       right: 0;
       top: var(--nav-height);
       height: calc(100vh - var(--nav-height) * 2);
-      height: calc(100dvh - var(--nav-height) * 2);
       background-color: var(--neutral-950);
       border-bottom: 1px solid var(--neutral-800);
       box-sizing: content-box;
@@ -782,7 +780,7 @@ const Wrapper = styled.nav`
         gap: 24px;
       }
       .navList-item {
-        > span {
+        > button {
           font-size: ${20/16}rem;
           padding: 0;
           svg {
