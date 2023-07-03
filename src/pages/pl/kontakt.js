@@ -2,12 +2,17 @@ import React from "react";
 import { graphql } from "gatsby";
 import { SEO } from "../../components/global/Seo";
 import Hero from "../../components/sections/Contact/Hero";
+import ContactUs from "../../components/sections/Contact/ContactUs";
 
 const ContactPage = ({
   data: { page: {
     hero_Heading,
     hero_Subheading,
-    hero_Contact
+    hero_Contact,
+    contact_Email,
+    contact_Tel,
+    contact_Address,
+    contact_Img,
   }}
 }) => {
   return (
@@ -17,6 +22,12 @@ const ContactPage = ({
         subheading={hero_Subheading}
         contact={hero_Contact}
       />
+      <ContactUs data={{
+        contact_Email,
+        contact_Tel,
+        contact_Address,
+        contact_Img,
+      }} />
     </>
   )
 }
