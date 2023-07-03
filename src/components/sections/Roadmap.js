@@ -73,7 +73,7 @@ const Wrapper = styled.section`
   }
   h2 {
     margin-bottom: ${Clamp(28, 64, 42, "px")};
-    max-width: 734px;
+    max-width: ${734/16}rem;
   }
   .roadmap {
     width: 100vw;
@@ -83,6 +83,7 @@ const Wrapper = styled.section`
       display: none;
     }
     display: flex;
+    column-gap: 32px;
     overflow-x: auto;
     margin: 0 calc(var(--pageMargin) * -1);
     padding: 0 var(--pageMargin);
@@ -92,11 +93,10 @@ const Wrapper = styled.section`
     .roadmap-item {
       flex-shrink: 0;
       width: calc(100% / 2.1);
-      column-gap: 32px;
-      counter-increment: counter;
       position: relative;
       padding-top: 2rem;
       padding-right: 1rem;
+      counter-increment: counter;
       &:not(:last-child){
         &::before, &::after {
           content: '';
@@ -122,7 +122,7 @@ const Wrapper = styled.section`
         }
       }
       &:last-child {
-        width: calc(100% - (100% / 2.1));
+        width: calc(100% - (100% / 2.1) - 32px);
       }
       h3 {
         font-size: ${Clamp(20, 32, 30)};
@@ -130,8 +130,8 @@ const Wrapper = styled.section`
         &::before {
           content: "/" counter(counter);
           display: inline-block;
-          width: 2rem;
           font-size: 1rem;
+          width: 40px;
           margin-right: ${Clamp(8, 16, 16, "px")};
         }
       }
@@ -139,37 +139,37 @@ const Wrapper = styled.section`
         content: "/0" counter(counter);
       }
       p {
+        padding-left: ${Clamp(8+40, 16+40, 16+40, "px")};
         font-size: ${Clamp(16, 22, 22)};
       }
-      a {
+      .cta {
         margin-top: 2rem;
+        margin-left: ${Clamp(8+40, 16+40, 16+40, "px")};
         pointer-events: auto;
       }
     }
   }
-  @media (max-width: 999px){
+  @media (max-width: 1099px){
     .roadmap {
       .roadmap-item {
         width: calc(100% / 1.1);
         &:last-child {
-          width: calc(100% - (100% / 1.1));
+          width: calc(100% - (100% / 1.1) - 32px);
         }
       }
     }
   }
   @media (max-width: 499px){
     .roadmap {
-      width: 100vw;
       .roadmap-item {
+        padding-right: 0;
         width: 100%;
-        &:not(:nth-last-of-type(2)){
-          margin-right: 1rem;
-        }
-        &:nth-last-of-type(2){
-          padding-right: 0;
-        }
         &:last-child {
           display: none;
+        }
+        .cta {
+          margin-left: 0;
+          width: 100%;
         }
       }
     }

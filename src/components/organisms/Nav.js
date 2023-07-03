@@ -98,7 +98,7 @@ const Nav = ({
 
   return (
     <Wrapper className="nav" aria-expanded={navOpened} ref={navRef}>
-      <Link href="#main" className="skipToMainContent">Przejdź do głównego kontentu</Link>
+      <Link to="#main" className="skipToMainContent">Przejdź do głównego kontentu</Link>
       <div className="max-width">
         <Link to="/pl" aria-label="Strona główna" onClick={(e) => handleHideNav(e)}>
           <KryptonumLogo />
