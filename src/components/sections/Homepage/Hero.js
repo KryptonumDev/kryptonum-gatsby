@@ -36,7 +36,7 @@ const Wrapper = styled.section`
   header {
     display: grid;
     align-items: flex-end;
-    grid-template-columns: ${740/16}rem auto;
+    grid-template-columns: auto auto;
     margin-bottom: 172px;
     .copy {
       max-width: ${740/16}rem;

@@ -80,17 +80,16 @@ const Wrapper = styled.section`
         }
       }
       h3 {
-        display: flex;
-        align-items: center;
+        display: grid;
+        grid-template-columns: ${Clamp(40, 72, 72, "px")} auto 1fr;
         gap: ${Clamp(8, 16, 16, "px")};
         font-size: ${Clamp(20, 32, 30)};
         margin-bottom: ${Clamp(8, 16, 32, "px")};
         &::before {
           content: "/0" counter(counter);
-          text-decoration: unset;
-          width: ${Clamp(40, 72, 72, "px")};
         }
         svg {
+          align-self: center;
           transition: transform .3s;
         }
       }
