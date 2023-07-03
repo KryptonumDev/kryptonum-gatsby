@@ -131,7 +131,7 @@ const Layout = ({ data: { page }, children }) => {
     <>
       <GlobalStyle />
       <Nav data={data} />
-      <main>
+      <main id="main">
         {children}
       </main>
       <Footer data={data} />

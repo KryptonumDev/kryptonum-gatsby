@@ -98,6 +98,7 @@ const Nav = ({
 
   return (
     <Wrapper className="nav" aria-expanded={navOpened} ref={navRef}>
+      <Link href="#main" className="skipToMainContent">Przejdź do głównego kontentu</Link>
       <div className="max-width">
         <Link to="/pl" aria-label="Strona główna" onClick={(e) => handleHideNav(e)}>
           <KryptonumLogo />
@@ -383,6 +384,15 @@ const Nav = ({
 
 const Wrapper = styled.nav`
   --nav-height: 94px;
+  .skipToMainContent {
+    opacity: 0;
+    position: absolute;
+    left: 5px;
+    top: calc(var(--nav-height) + 5px);
+    &:focus-visible {
+      opacity: 1;
+    }
+  }
   background-color: var(--neutral-950);
   position: relative;
   z-index: 9;
