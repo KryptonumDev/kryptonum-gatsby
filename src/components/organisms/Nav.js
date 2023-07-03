@@ -123,10 +123,10 @@ const Nav = ({
                 >Darmowa konsultacja</Button>
               </li>
               <li className="navList-item services">
-                <span onClick={(e) => handleNavLinks(e, 'services')}>
+                <button onClick={(e) => handleNavLinks(e, 'services')}>
                   <span>Usługi</span>
                   <ChevronDown />
-                </span>
+                </button>
                 <ul className="navList2">
                   <div className="max-width">
                     <button className="backBtn" onClick={(e) => handleNavLinks(e)}>
@@ -159,10 +159,10 @@ const Nav = ({
                 </ul>
               </li>
               <li className="navList-item caseStudies">
-                <span onClick={(e) => handleNavLinks(e, 'caseStudies')}>
+                <button onClick={(e) => handleNavLinks(e, 'caseStudies')}>
                   <span>Projekty</span>
                   <ChevronDown />
-                </span>
+                </button>
                 <ul className="navList2">
                   <div className="max-width">
                     <button className="backBtn" onClick={(e) => handleNavLinks(e)}>
@@ -191,10 +191,10 @@ const Nav = ({
                 </ul>
               </li>
               <li className="navList-item team">
-                <span onClick={(e) => handleNavLinks(e, 'team')}>
+                <button onClick={(e) => handleNavLinks(e, 'team')}>
                   <span>Zespół</span>
                   <ChevronDown />
-                </span>
+                </button>
                 <ul className="navList2">
                   <div className="max-width">
                     <button className="backBtn" onClick={(e) => handleNavLinks(e)}>
@@ -224,10 +224,10 @@ const Nav = ({
                 </ul>
               </li>
               <li className="navList-item blog">
-                <span onClick={(e) => handleNavLinks(e, 'blog')}>
+                <button onClick={(e) => handleNavLinks(e, 'blog')}>
                   <span>Blog</span>
                   <ChevronDown />
-                </span>
+                </button>
                 <ul className="navList2">
                   <div className="max-width">
                     <button className="backBtn" onClick={(e) => handleNavLinks(e)}>
@@ -302,10 +302,10 @@ const Nav = ({
                 </ul>
               </li>
               <li className="navList-item academy">
-                <span onClick={(e) => handleNavLinks(e, 'academy')}>
+                <button onClick={(e) => handleNavLinks(e, 'academy')}>
                   <span>Akademia</span>
                   <ChevronDown />
-                </span>
+                </button>
                 <ul className="navList2">
                   <div className="max-width">
                     <button className="backBtn" onClick={(e) => handleNavLinks(e)}>
@@ -438,7 +438,7 @@ const Wrapper = styled.nav`
       gap: 48px;
     }
     .navList-item {
-      > span {
+      > button {
         padding: 13px 0;
         display: inline-flex;
         align-items: center;
@@ -740,7 +740,7 @@ const Wrapper = styled.nav`
     &[data-tab="team"] .navList-item.team,
     &[data-tab="blog"] .navList-item.blog,
     &[data-tab="academy"] .navList-item.academy {
-      > span {
+      > button {
         span {
           background-image: var(--gradient);
           -webkit-background-clip: text;
