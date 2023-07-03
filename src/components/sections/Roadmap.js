@@ -10,7 +10,7 @@ const Roadmap = ({heading, list, cta}) => {
   useEffect(() => {
     const roadmap = roadmapRef.current;
     const container = roadmap.querySelector('.wrapper');
-    const items = container.querySelectorAll('.roadmap-item');
+    const items = container.querySelectorAll('.wrapper-item');
     const anim = () => {
       var scrollableWidth = container.scrollWidth - container.clientWidth
       setScrollable(scrollableWidth)

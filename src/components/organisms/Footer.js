@@ -34,7 +34,7 @@ const Footer = ({
           </Link>
           <h3><Link to='/pl/kontakt'>Kontakt</Link></h3>
           <div>
-            <h3>{footer_OfficeCity}</h3>
+            <p>{footer_OfficeCity}</p>
             <p>{footer_OfficeStreet}</p>
           </div>
           <div>
@@ -49,14 +49,14 @@ const Footer = ({
             </a>
           </div>
         </li>
-        <li>
+        <li className="services">
           <h3>Usługi</h3>
           <Link to="/pl/web-development">Web Development</Link>
           <Link to="/pl/warsztaty-discovery">Warsztat strategiczny</Link>
           <Link to="/pl/opieka-agencyjna-www-serwis-utrzymanie-zabezpieczenie">Opieka agencyjna</Link>
           <Link to="/pl/grafika-design">Grafika & design</Link>
         </li>
-        <li>
+        <li className="caseStudies">
           <h3><Link to="/pl/portfolio">Case study</Link></h3>
           {caseStudies.nodes.map((caseStudy, i) => (
             <Link to={`/pl/portfolio/${caseStudy.slug.current}`} key={i}>{caseStudy.name}</Link>
@@ -336,6 +336,18 @@ const Wrapper = styled.footer`
         &.info {
           display: block;
           grid-column: unset;
+        }
+        &.services, &.caseStudies {
+          display: grid;
+          grid-template-columns: 1fr 1fr;
+          gap: 8px 16px;
+          h3 {
+            grid-column: 3/1;
+            margin-bottom: 4px;
+          }
+          a {
+            margin: 0;
+          }
         }
         &.team {
           display: grid;
