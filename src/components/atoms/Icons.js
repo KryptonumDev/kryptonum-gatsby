@@ -150,25 +150,43 @@ export const ArrowTopRight = ({ id = `arrow_${Math.random().toString(36).substri
 );
 
 export const ChevronDown = () => (
-  <svg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 16 16' fill='none'>
+  <svg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 16 16' fill='none' stroke="url(#ChevronDown)">
     <path
-      stroke='#EFF0F3'
       strokeLinecap='round'
       strokeLinejoin='round'
       strokeWidth='2'
       d='M4.664 6l4 4 4-4'
     ></path>
+    <defs>
+      <linearGradient
+        id="ChevronDown"
+        x1="12.514"
+        x2="4.288"
+        y1="6"
+        y2="7.048"
+        gradientUnits="userSpaceOnUse"
+      >
+        <stop stopColor="#2DD282"></stop>
+        <stop offset="1" stopColor="#90F4E8"></stop>
+      </linearGradient>
+    </defs>
   </svg>
 )
 
 export const ChevronLeft = () => (
-  <svg xmlns='http://www.w3.org/2000/svg' width='40' height='40' fill='none'>
+  <svg
+    xmlns='http://www.w3.org/2000/svg'
+    width='32'
+    height='32'
+    fill='none'
+    viewBox='0 0 32 32'
+  >
     <path
       stroke='#EFF0F3'
       strokeLinecap='round'
       strokeLinejoin='round'
       strokeWidth='2'
-      d='M25 30L15 20l10-10'
+      d='M20 24l-8-8 8-8'
     ></path>
   </svg>
 )

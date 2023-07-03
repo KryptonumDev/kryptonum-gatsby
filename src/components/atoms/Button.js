@@ -57,6 +57,7 @@ const StyledAnchor = styled.a`
   gap: 8px;
   svg {
     flex-shrink: 0;
+    transition: transform .3s;
   }
   &.primary {
     border-radius: 2px;
@@ -128,6 +129,11 @@ const StyledAnchor = styled.a`
     }
     &:active span::before {
       opacity: 0;
+    }
+  }
+  &:hover {
+    svg {
+      transform: translate(3px, -3px);
     }
   }
 `
