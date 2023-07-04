@@ -12,7 +12,15 @@ import AfterWork from "../components/sections/TeamMember/AfterWork";
 import Hobbies from "../components/sections/TeamMember/Hobbies";
 import Inspirations from "../components/sections/TeamMember/Inspirations";
 import DecorativeHeading from "../components/atoms/DecorativeHeading";
-import { Clamp } from "../utils/functions";
+import { Clamp, removeMarkdown } from "../utils/functions";
+
+const truncateText = (text, limit = 140) => {
+  text = removeMarkdown(text).replace(/[\r\n]+/gm, " ");
+  if (text.length > limit) {
+    text = text.slice(0, limit - 3) + "...";
+  }
+  return text;
+}
 
 const TeamMemberPage = ({
   data: { teamMember : {
@@ -113,10 +121,16 @@ export const query = graphql`
 
 export default TeamMemberPage;
 
-export const Head = ({data: { teamMember : { name, cryptonym, slug } } }) => (
+export const Head = ({
+  data: { teamMember : {
+    name,
+    cryptonym,
+    slug, bio
+  }}
+}) => (
   <SEO
     title={`${name} - ${cryptonym} w Kryptonum`}
-    description=""
+    description={truncateText(bio)}
     url={`/pl/zespol/${slug.current}`}
   />
 )
