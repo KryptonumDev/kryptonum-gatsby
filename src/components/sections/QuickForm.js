@@ -58,7 +58,7 @@ const QuickForm = ( { data: { heading, subheading, cta }} ) => {
         <div className="input legal">
           <label>
             <input type="checkbox" name="legal" />
-            <span>Zgadzam się na <Link to="/polityka-prywatnosci">przetwarzanie moich danych</Link></span>
+            <span>Zgadzam się na <Link to="/pl/polityka-prywatnosci">przetwarzanie moich danych</Link></span>
           </label>
         </div>
         <Button theme="primary">{cta}</Button>

@@ -4,13 +4,22 @@ import styled from "styled-components";
 import { Clamp } from "../../utils/functions";
 import DecorativeHeading from "../atoms/DecorativeHeading";
 
-const Categories = ({ categories, slug }) => {
+const categoryUrl = 'kategoria/';
+
+const Categories = ({ categories, categorySlug, currentSlug }) => {
+  const fullSlug = categorySlug + categoryUrl;
+  console.log(fullSlug);
   return (
     <Wrapper>
       <DecorativeHeading type="h2" className="heading">Co Cię **interesuje**?</DecorativeHeading>
       <div className="categories">
         {categories.nodes.map((category, i) => (
-          <Link activeClassName="active" partiallyActive={true} to={`${slug}${category.slug.current}`} key={i}>{category.name}</Link>
+          <Link
+            activeClassName="active"
+            partiallyActive={true}
+            to={category.slug.current == currentSlug ? categorySlug : `${fullSlug}${category.slug.current}`}
+            key={i}
+          >{category.name}</Link>
         ))}
       </div>
     </Wrapper>

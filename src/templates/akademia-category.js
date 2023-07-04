@@ -6,6 +6,7 @@ import Faq from "./../components/sections/Faq";
 import Categories from "./../components/sections/Categories";
 import CuriosityEntries from "./../components/sections/CuriosityEntries";
 import LatestBlogEntries from "./../components/sections/LatestBlogEntries";
+import HeroTwoColumns from "../components/sections/HeroTwoColumns";
 
 const AcademyCategoryPage = ({
   data: {
@@ -13,14 +14,34 @@ const AcademyCategoryPage = ({
       ctaSection,
     },
     curiosityCategories,
+    curiosityCategory: {
+      slug,
+      hero_Heading,
+      hero_Paragraph,
+      hero_Img,
+    },
     curiosityEntries,
   },
   pageContext: { currentPage, totalCount, urlBasis }
 }) => {
   return (
     <>
-      <Categories slug="/pl/akademia/kategoria/" categories={curiosityCategories} />
-      <CuriosityEntries urlBasis={urlBasis} totalCount={totalCount} curiosityEntries={curiosityEntries} page={currentPage} />
+      <HeroTwoColumns
+        heading={hero_Heading}
+        paragraph={hero_Paragraph}
+        img={hero_Img}
+      />
+      <Categories
+        categorySlug="/pl/akademia/"
+        currentSlug={slug.current}
+        categories={curiosityCategories}
+      />
+      <CuriosityEntries
+        urlBasis={urlBasis}
+        totalCount={totalCount}
+        curiosityEntries={curiosityEntries}
+        page={currentPage}
+      />
       <CtaSection data={ctaSection} />
       <LatestBlogEntries />
       <Faq />
@@ -86,6 +107,14 @@ export const query = graphql`
       name
       slug {
         current
+      }
+      hero_Heading
+      hero_Paragraph
+      hero_Img {
+        asset {
+          altText
+          gatsbyImageData(placeholder: BLURRED)
+        }
       }
     }
   }

@@ -87,7 +87,6 @@ const Nav = ({
     nav.removeAttribute('data-tab');
     setNavOpened(false);
     scrollLock(false);
-    console.log('hej');
   }
 
   const handleNavToggle = () => {
