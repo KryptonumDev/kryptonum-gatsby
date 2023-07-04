@@ -68,6 +68,11 @@ export const query = graphql`
           gatsbyImageData(placeholder: BLURRED)
         }
       }
+      ogImage: img {
+        asset {
+          url
+        }
+      }
       _rawContent
       _createdAt(formatString: "D MMMM Y", locale: "pl")
       seo {
@@ -81,15 +86,19 @@ export const query = graphql`
 export default BlogEntryPage;
 
 export const Head = ({
-  data: { page: { seo: {
-    title,
-    description
-  },
-  slug
-}}}) => (
+  data: { page: {
+    seo: {
+      title,
+      description
+    },
+    ogImage,
+    slug
+  }}
+}) => (
   <SEO
     title={title}
     description={description}
     url={`/pl/blog/${slug.current}`}
+    ogImage={ogImage.asset.url}
   />
 )

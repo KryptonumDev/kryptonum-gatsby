@@ -1,7 +1,7 @@
 import React from "react"
 import { graphql, useStaticQuery } from "gatsby";
 
-export const SEO = ({ title, description, url, children }) => {
+export const SEO = ({ title, description, url, ogImage, children }) => {
   const { global: { globalSeo: {
     og_Img
   }}} = useStaticQuery(graphql`
@@ -34,7 +34,7 @@ export const SEO = ({ title, description, url, children }) => {
       <meta property="og:locale" content={locale} />
       <meta property="og:type" content="website" />
 
-      <meta property="og:image" content={og_Img.asset.url} />
+      <meta property="og:image" content={ogImage || og_Img.asset.url} />
       <meta name="twitter:card" content="summary_large_image" />
       <meta name="twitter:title" content={seo.title} />
       <meta name="twitter:description" content={seo.description} />

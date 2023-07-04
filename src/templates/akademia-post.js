@@ -103,6 +103,11 @@ export const query = graphql`
           gatsbyImageData(placeholder: BLURRED)
         }
       }
+      ogImage: img {
+        asset {
+          url
+        }
+      }
       _createdAt(formatString: "D MMMM Y", locale: "pl")
       # Content
       meaty_Heading
@@ -143,15 +148,19 @@ export const query = graphql`
 export default CuriosityEntryPage;
 
 export const Head = ({
-  data: { page: { seo: {
-    title,
-    description
-  },
-  slug
-}}}) => (
+  data: { page: {
+    seo: {
+      title,
+      description
+    },
+    ogImage,
+    slug
+  }}
+}) => (
   <SEO
     title={title}
     description={description}
     url={`/pl/akademia/${slug.current}`}
+    ogImage={ogImage.asset.url}
   />
 )
