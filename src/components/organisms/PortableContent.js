@@ -60,7 +60,7 @@ const PortableContent = ({ data }) => {
 
 const Wrapper = styled.section`
   p + p {
-    margin-top: 32px;
+    margin-top: ${Clamp(16, 24, 32, 'px')};
   }
   p.largeParagraph {
     font-size: ${Clamp(16, 30, 30)};

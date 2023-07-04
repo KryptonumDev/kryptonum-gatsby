@@ -28,7 +28,9 @@ const OrderedList = ({ paragraph, array }) => {
 
   return (
     <Wrapper className="orderedList" ref={listRef}>
-      <ReactMarkdown className="paragraph">{paragraph}</ReactMarkdown>
+      {paragraph && (
+        <ReactMarkdown className="paragraph">{paragraph}</ReactMarkdown>
+      )}
       {array.map((item, i) => (
         <li key={i}>
           <p className="title">{item.title}</p>
