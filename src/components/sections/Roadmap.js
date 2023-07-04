@@ -9,8 +9,8 @@ const Roadmap = ({heading, list, cta}) => {
   const [scrollable, setScrollable] = useState(0);
   useEffect(() => {
     const roadmap = roadmapRef.current;
-    const container = roadmap.querySelector('.wrapper');
-    const items = container.querySelectorAll('.wrapper-item');
+    const container = roadmap.querySelector('.roadmap');
+    const items = container.querySelectorAll('.roadmap-item');
     const anim = () => {
       var scrollableWidth = container.scrollWidth - container.clientWidth
       setScrollable(scrollableWidth)
@@ -38,9 +38,9 @@ const Roadmap = ({heading, list, cta}) => {
       <div className="sticky">
         <DecorativeHeading type="h2">{heading}</DecorativeHeading>
         <div className="line"></div>
-        <div className="wrapper">
+        <div className="roadmap">
           {list.map((item, i) => (
-            <div className="wrapper-item" key={i}>
+            <div className="roadmap-item" key={i}>
               <h3>{item.title}</h3>
               <p>{item.description}</p>
               {(i+1 === list.length && cta?.text) && (
@@ -50,7 +50,7 @@ const Roadmap = ({heading, list, cta}) => {
               )}
             </div>
           ))}
-          <div className="wrapper-item"></div>
+          <div className="roadmap-item"></div>
         </div>
       </div>
     </Wrapper>
@@ -75,7 +75,7 @@ const Wrapper = styled.section`
     margin-bottom: ${Clamp(28, 64, 42, "px")};
     max-width: ${734/16}rem;
   }
-  .wrapper {
+  .roadmap {
     width: 100vw;
     max-width: 1680px;
     pointer-events: none;
@@ -90,7 +90,7 @@ const Wrapper = styled.section`
     counter-reset: counter;
     margin-top: -12px;
     padding-bottom: 1rem;
-    .wrapper-item {
+    .roadmap-item {
       flex-shrink: 0;
       width: calc(100% / 2.1);
       position: relative;
@@ -153,8 +153,8 @@ const Wrapper = styled.section`
     }
   }
   @media (max-width: 1099px){
-    .wrapper {
-      .wrapper-item {
+    .roadmap {
+      .roadmap-item {
         width: calc(100% / 1.1);
         &:last-child {
           width: calc(100% - (100% / 1.1) - 32px);
@@ -163,8 +163,8 @@ const Wrapper = styled.section`
     }
   }
   @media (max-width: 499px){
-    .wrapper {
-      .wrapper-item {
+    .roadmap {
+      .roadmap-item {
         padding-right: 0;
         width: 100%;
         &:last-child {

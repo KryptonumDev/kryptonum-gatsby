@@ -8,7 +8,6 @@ const categoryUrl = 'kategoria/';
 
 const Categories = ({ categories, categorySlug, currentSlug }) => {
   const fullSlug = categorySlug + categoryUrl;
-  console.log(fullSlug);
   return (
     <Wrapper>
       <DecorativeHeading type="h2" className="heading">Co Cię **interesuje**?</DecorativeHeading>
