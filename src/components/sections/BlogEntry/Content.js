@@ -11,8 +11,8 @@ import PortableContent from "../../organisms/PortableContent";
 const Content = ({ _rawContent, author, share }) => {
   author = author[0];
   const shareData = {
-    title: share.title,
-    text: share.description || '',
+    title: share?.title,
+    text: share?.description || '',
     url: typeof window !== 'undefined' ? window.location.href.split('?')[0]+'?feature=share' : 'kryptonum.eu',
   };
   const handleShare = async (e) => {
@@ -43,11 +43,13 @@ const Content = ({ _rawContent, author, share }) => {
             />
             <p>Autor: {author.name}</p>
           </Link>
-          <button className="share" onClick={(e) => handleShare(e)}>
-            <Share />
-            <span>Udostępnij</span>
-          </button>
-          <TableOfContent content={_rawContent} />
+          <div className="overflow">
+            <button className="share" onClick={(e) => handleShare(e)}>
+              <Share />
+              <span>Udostępnij</span>
+            </button>
+            <TableOfContent content={_rawContent} />
+          </div>
         </nav>
         <div>
           <ReadingTime content={_rawContent} />
@@ -60,7 +62,7 @@ const Content = ({ _rawContent, author, share }) => {
 
 const GlobalStyle = createGlobalStyle`
   @media (min-width: 1099px){
-    nav:not(.fixed) ~ main .content nav {
+    nav.nav:not(.fixed) ~ main .content nav {
       transform: translateY(-94px);
     }
   }
@@ -68,19 +70,6 @@ const GlobalStyle = createGlobalStyle`
 const Wrapper = styled.section`
   .column {
     display: grid;
-    @media (min-width: 1100px){
-      grid-template-columns: 1fr 2fr;
-      nav {
-        position: sticky;
-        top: 204px;
-      }
-    }
-    @media (min-width: 1099px){
-      nav {
-        max-height: calc(100vh - 204px);
-        max-height: calc(100dvh - 204px);
-      }
-    }
     align-items: start;
     gap: 144px 32px;
     .readingTime {
@@ -89,8 +78,12 @@ const Wrapper = styled.section`
     nav {
       transition: transform .5s;
       border: 1px solid var(--neutral-800);
-      padding: 0 16px 32px;
       margin-top: 78px;
+      display: flex;
+      flex-direction: column;
+      .overflow {
+        padding: 32px 16px;
+      }
       .author {
         text-align: center;
         display: flex;
@@ -110,6 +103,38 @@ const Wrapper = styled.section`
         gap: 8px;
         font-size: ${Clamp(16, 22, 22)};
         margin: 16px auto 24px;
+      }
+    }
+    @media (min-width: 1099px){
+      grid-template-columns: 1fr 2fr;
+      nav {
+        position: sticky;
+        top: 204px;
+        max-height: calc(100vh - 204px);
+        max-height: calc(100dvh - 204px);
+        .overflow {
+          position: relative;
+          padding: 0 32px;
+          overflow-y: auto;
+          &::before,
+          &::after {
+            content: '';
+            width: 100%;
+            height: 16px;
+            display: block;
+            position: sticky;
+            left: 0;
+            top: 0;
+            z-index: 1;
+          }
+          &::before {
+            background: linear-gradient(var(--neutral-950), rgba(0,0,0,0));
+          }
+          &::after {
+            bottom: 0;
+            background: linear-gradient(rgba(0,0,0,0), var(--neutral-950));
+          }
+        }
       }
     }
   }

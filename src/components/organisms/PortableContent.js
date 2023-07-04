@@ -13,7 +13,7 @@ import UnorderedList from "./portableText/UnorderedList";
 const sanityConfig = {projectId: process.env.GATSBY_SANITY_PROJECT_ID, dataset: process.env.GATSBY_SANITY_DATASET}
 
 const ImageComponent = ({ value }) => {
-  const gatsbyImageData = getGatsbyImageData(value.asset._ref, { maxWidth: 1024 }, sanityConfig);
+  const gatsbyImageData = getGatsbyImageData(value.asset?._ref, { maxWidth: 1024 }, sanityConfig);
   return (
     <GatsbyImage image={gatsbyImageData} alt={value.altText || ''} className="img" />
   )

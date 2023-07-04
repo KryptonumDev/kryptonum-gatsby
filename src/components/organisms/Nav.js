@@ -246,19 +246,19 @@ const Nav = ({
                             onClick={(e) => handleNavLinks(e)}
                           ></Link>
                           <GatsbyImage
-                            image={entry.img.asset.gatsbyImageData}
-                            alt={entry.img.asset.altText || ''}
+                            image={entry.img?.asset.gatsbyImageData}
+                            alt={entry.img?.asset.altText || ''}
                             className="thumbnail"
                           />
                           <div className="copy">
                             <div className="copy-top">
                               <Link
-                                to={`/pl/zespol/${entry.author[0].slug.current}`}
+                                to={`/pl/zespol/${entry.author[0]?.slug.current}`}
                                 onClick={(e) => handleNavLinks(e)}
                               >
                                 <GatsbyImage
-                                  image={entry.author[0].img.asset.gatsbyImageData}
-                                  alt={entry.author[0].img.asset.altText || ''}
+                                  image={entry.author[0]?.img.asset.gatsbyImageData}
+                                  alt={entry.author[0]?.img.asset.altText || ''}
                                   className="person-border"
                                 />
                                 <span>{entry.author[0].name}</span>

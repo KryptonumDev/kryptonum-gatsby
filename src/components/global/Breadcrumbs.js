@@ -1,4 +1,4 @@
-import React from "react"
+import React, { Fragment } from "react"
 import styled from "styled-components"
 import { Clamp, removeMarkdown } from "../../utils/functions"
 
@@ -49,14 +49,14 @@ export default function Breadcrumbs({ portfolio, data }) {
         <li><a href="/pl">Strona główna</a></li>
         <li><Icon /></li>
         {data?.map((el, index) => (
-          <>
+          <Fragment key={index}>
             {data.length - 1 !== index ? <>
               <li><a href={el.link}>{removeMarkdown(el.name)}</a></li>
               <li><Icon /></li>
             </> :
               <li>{removeMarkdown(el.name)}</li>
             }
-          </>
+          </Fragment>
         ))}
       </ul>
     </Wrapper>
