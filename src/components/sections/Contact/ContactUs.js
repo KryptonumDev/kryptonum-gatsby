@@ -24,7 +24,8 @@ const ContactUs = ({
         image={contact_Img.asset.gatsbyImageData}
         alt={contact_Img.asset.altText || ''}
         className="img"
-        objectFit="contain"
+        objectFit="cover"
+        objectPosition="left"
       />
     </Wrapper>
   );
@@ -53,7 +54,8 @@ const Wrapper = styled.section`
   margin-top: 48px;
   .img {
     margin-top: -48px;
-    margin-right: -50%;
+    height: calc(100% + 48px);
+    margin-right: calc(var(--pageMargin) * -1);
   }
   @media (max-width: 1249px){
     header {
@@ -68,6 +70,7 @@ const Wrapper = styled.section`
     margin-top: unset;
     .img {
       max-width: 500px;
+      height: auto;
       margin: 0 auto;
       order: -1;
     }

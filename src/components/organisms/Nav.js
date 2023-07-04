@@ -76,9 +76,10 @@ const Nav = ({
     : 
       nav.removeAttribute("data-tab")
       
-    e.currentTarget.getAttribute('aria-current') &&
+    if(e.currentTarget.getAttribute('aria-current') === 'page'){
       setNavOpened(false);
       scrollLock(false);
+    }
   }
 
   const handleOverlay = () => {
@@ -86,11 +87,12 @@ const Nav = ({
     nav.removeAttribute('data-tab');
     setNavOpened(false);
     scrollLock(false);
+    console.log('hej');
   }
 
   const handleNavToggle = () => {
     const nav = navRef.current;
-    if (!navRef.current.classList.contains("fixed")){
+    if (!nav.classList.contains("fixed")){
       window.scrollTo({ top: 0 });
     }
     setNavOpened(!navOpened);
@@ -388,11 +390,13 @@ const Wrapper = styled.nav`
   --nav-height: 94px;
   .skipToMainContent {
     opacity: 0;
+    pointer-events: none;
     position: absolute;
     left: 5px;
     top: calc(var(--nav-height) + 5px);
     &:focus-visible {
       opacity: 1;
+      pointer-events: auto;
     }
   }
   background-color: var(--neutral-950);

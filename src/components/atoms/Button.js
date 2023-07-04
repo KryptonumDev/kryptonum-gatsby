@@ -117,10 +117,15 @@ const StyledAnchor = styled.a`
         transition: opacity .3s;
       }
       &::before {
-        filter: drop-shadow(0px 0px 2px #E1FFFA) drop-shadow(0px 0px 5px #6DF1DD) drop-shadow(0px 0px 15px rgba(55, 193, 131, 0.5));
+        filter: drop-shadow(0px 0px 2px #E1FFFA)
+                drop-shadow(0px 0px 8px #6DF1DD)
+                drop-shadow(0px 0px 15px rgba(55, 193, 131, 0.5));
       }
       &::after {
-        filter: drop-shadow(0px 0px 2px #FFFFFF) drop-shadow(0px 0px 6px #E1FFFA) drop-shadow(0px 0px 25px #6DF1DD) drop-shadow(0px 0px 35px rgba(55, 193, 131, 0.75));
+        filter: drop-shadow(0px 0px 2px #FFFFFF)
+                drop-shadow(0px 0px 6px #E1FFFA)
+                drop-shadow(0px 0px 25px #6DF1DD)
+                drop-shadow(0px 0px 35px rgba(55, 193, 131, 0.75));
       }
     }
     &:hover span::before,
