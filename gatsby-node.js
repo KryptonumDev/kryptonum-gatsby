@@ -345,7 +345,7 @@ exports.createPages = async ({ actions, graphql }) => {
   });
 
   createPage({
-    path: `/pl/web-development/strony-internetowe`,
+    path: `/pl/web-development-strony-internetowe`,
     component: path.resolve('./src/templates/web-development-strony-internetowe.js'),
     context: {
       breadcrumbs: [
@@ -355,14 +355,14 @@ exports.createPages = async ({ actions, graphql }) => {
         },
         {
           name: 'Strony internetowe',
-          link: '/pl/web-development/strony-internetowe'
+          link: '/pl/web-development-strony-internetowe'
         }
       ]
     }
   });
 
   createPage({
-    path: `/pl/web-development/sklepy-internetowe`,
+    path: `/pl/web-development-sklepy-internetowe`,
     component: path.resolve('./src/templates/web-development-sklepy-internetowe.js'),
     context: {
       breadcrumbs: [
@@ -372,14 +372,14 @@ exports.createPages = async ({ actions, graphql }) => {
         },
         {
           name: 'Sklepy internetowe',
-          link: '/pl/web-development/sklepy-internetowe'
+          link: '/pl/web-development-sklepy-internetowe'
         }
       ]
     }
   });
 
   createPage({
-    path: `/pl/web-development/aplikacje-internetowe`,
+    path: `/pl/web-development-aplikacje-internetowe`,
     component: path.resolve('./src/templates/web-development-aplikacje-internetowe.js'),
     context: {
       breadcrumbs: [
@@ -389,7 +389,7 @@ exports.createPages = async ({ actions, graphql }) => {
         },
         {
           name: 'Aplikacje internetowe',
-          link: '/pl/web-development/aplikacje-internetowe'
+          link: '/pl/web-development-aplikacje-internetowe'
         }
       ]
     }
@@ -409,7 +409,7 @@ exports.createPages = async ({ actions, graphql }) => {
   });
 
   createPage({
-    path: `/pl/grafika-design/projektowanie-logo`,
+    path: `/pl/grafika-design-projektowanie-logo`,
     component: path.resolve('./src/templates/grafika-design-projektowanie-logo.js'),
     context: {
       breadcrumbs: [
@@ -419,14 +419,14 @@ exports.createPages = async ({ actions, graphql }) => {
         },
         {
           name: 'Projektowanie logo',
-          link: '/pl/grafika-design/projektowanie-logo'
+          link: '/pl/grafika-design-projektowanie-logo'
         }
       ]
     }
   });
 
   createPage({
-    path: `/pl/grafika-design/identyfikacja-wizualna-marki`,
+    path: `/pl/grafika-design-identyfikacja-wizualna-marki`,
     component: path.resolve('./src/templates/grafika-design-identyfikacja-wizualna-marki.js'),
     context: {
       breadcrumbs: [
@@ -436,14 +436,14 @@ exports.createPages = async ({ actions, graphql }) => {
         },
         {
           name: 'Identyfikacja wizualna marki',
-          link: '/pl/grafika-design/identyfikacja-wizualna-marki'
+          link: '/pl/grafika-design-identyfikacja-wizualna-marki'
         }
       ]
     }
   });
 
   createPage({
-    path: `/pl/grafika-design/audyt-ux-ui`,
+    path: `/pl/grafika-design-audyt-ux-ui`,
     component: path.resolve('./src/templates/grafika-design-audyt-ux-ui.js'),
     context: {
       breadcrumbs: [
@@ -453,20 +453,20 @@ exports.createPages = async ({ actions, graphql }) => {
         },
         {
           name: 'Audyt UX/UI',
-          link: '/pl/grafika-design/audyt-ux-ui'
+          link: '/pl/grafika-design-audyt-ux-ui'
         }
       ]
     }
   });
 
   createPage({
-    path: `/pl/warsztaty-strategiczny`,
-    component: path.resolve('./src/templates/warsztaty-strategiczny.js'),
+    path: `/pl/warsztaty-discovery`,
+    component: path.resolve('./src/templates/warsztaty-discovery.js'),
     context: {
       breadcrumbs: [
         {
           name: 'Warsztat strategiczny',
-          link: '/pl/warsztaty-strategiczny'
+          link: '/pl/warsztaty-discovery'
         }
       ]
     }
@@ -486,13 +486,13 @@ exports.createPages = async ({ actions, graphql }) => {
   });
 
   createPage({
-    path: `/pl/opieka-agencyjna`,
+    path: `/pl/opieka-agencyjna-www-serwis-utrzymanie-zabezpieczenie`,
     component: path.resolve('./src/templates/opieka-agencyjna.js'),
     context: {
       breadcrumbs: [
         {
           name: 'Opieka agencyjna',
-          link: '/pl/opieka-agencyjna'
+          link: '/pl/opieka-agencyjna-www-serwis-utrzymanie-zabezpieczenie'
         }
       ]
     }
