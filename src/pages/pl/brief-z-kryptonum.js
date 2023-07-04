@@ -61,7 +61,7 @@ export const query = graphql`
       hero_ScrollText
       seo {
         title
-        descriptin
+        description
       }
     }
   }
@@ -69,15 +69,15 @@ export const query = graphql`
 
 export default BriefPage
 
-// export const Head = ({
-//   data: { page: { seo: {
-//     title,
-//     description
-//   }}}
-// }) => (
-//   <SEO
-//     title={title}
-//     description={description}
-//     url='/pl/brief-z-kryptonum'
-//   />
-// )
+export const Head = ({
+  data: { page: { seo: {
+    title,
+    description
+  }}}
+}) => (
+  <SEO
+    title={title}
+    description={description}
+    url='/pl/brief-z-kryptonum'
+  />
+)

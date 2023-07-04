@@ -3,6 +3,7 @@ import { graphql } from "gatsby"
 import HeroTwoColumns from "../components/sections/HeroTwoColumns"
 import CtaSection from "../components/sections/CtaSection";
 import { SEO } from "../components/global/Seo";
+import LatestCuriosityEntries from "../components/sections/LatestCuriosityEntries";
 
 const NotFoundPage = ({
   data: { page: {
@@ -10,6 +11,7 @@ const NotFoundPage = ({
     hero_Subheading,
     hero_Cta,
     hero_Img,
+    curiosities_Heading,
     ctaSection,
   }}
 }) => {
@@ -21,6 +23,7 @@ const NotFoundPage = ({
         cta={hero_Cta}
         img={hero_Img}
       />
+      <LatestCuriosityEntries heading={curiosities_Heading} />
       <CtaSection data={ctaSection} />
     </>
   )
@@ -29,6 +32,7 @@ const NotFoundPage = ({
 export const query = graphql`
   query {
     page: sanityNotFound {
+      # Hero
       hero_Heading
       hero_Subheading
       hero_Cta {
@@ -42,6 +46,9 @@ export const query = graphql`
           gatsbyImageData(placeholder: BLURRED, width: 700)
         }
       }
+      # Curiosities
+      curiosities_Heading
+      # CTA
       ctaSection {
         heading
         cta {
