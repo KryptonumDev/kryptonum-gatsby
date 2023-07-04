@@ -1,21 +1,30 @@
-import React, { useEffect } from "react"
+import React, { useEffect, useRef } from "react"
 import styled from "styled-components"
 import DecorativeHeading from "../atoms/DecorativeHeading";
 import { Clamp } from "../../utils/functions";
 import { ScrollDown } from "../atoms/Icons";
 import { ReactMarkdown } from "react-markdown/lib/react-markdown";
+import { useInView } from "framer-motion";
 
 export default function Hero({ setStep, data }) {
 
-  useEffect(() => {
-    const handleScroll = (e) => {
+  const ref = useRef(null)
+  const isInView = useInView(ref)
+
+  const handleScroll = (e) => {
+    if (isInView) {
       setStep(1)
-    };
-    window.addEventListener("scroll", handleScroll);
+    }
+  };
+
+  useEffect(() => {
+    if (isInView) {
+      window.addEventListener("scroll", handleScroll);
+    }
     return () => {
       window.removeEventListener("scroll", handleScroll);
     };
-  }, []);
+  }, [isInView]);
 
   return (
     <Wrapper >
@@ -35,6 +44,7 @@ export default function Hero({ setStep, data }) {
           <ScrollDown />
         </div>
       </div>
+      <div className="bottom" ref={ref} />
     </Wrapper>
   )
 }
@@ -43,7 +53,16 @@ const Wrapper = styled.section`
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  margin-top: ${Clamp(64, 128, 172, "px")};
+
+  margin-top: 50px;
+
+  @media (max-height: 750px) {
+    margin-top: 0;
+  }
+
+  @media (max-width: 1240px) {
+    margin-top: 0;
+  }
 
   .sticky{
     position: sticky;
