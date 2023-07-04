@@ -53,8 +53,16 @@ const BriefPage = ({ data }) => {
 
 export const query = graphql`
   query {
-    sanityGlobal {
-      id
+    page: sanityBrief {
+      hero_Heading
+      hero_Subheading
+      hero_Paragraph
+      hero_Paragraph2
+      hero_ScrollText
+      seo {
+        title
+        descriptin
+      }
     }
   }
 `
