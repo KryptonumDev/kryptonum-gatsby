@@ -707,13 +707,10 @@ const Wrapper = styled.nav`
     background-color: var(--neutral-950);
     position: sticky;
     top: 0;
-    z-index: 2;
+    z-index: 4;
     span {
       margin: 0 auto;
     }
-  }
-  .backBtn + h3 {
-    margin-bottom: 32px;
   }
   &[data-tab],
   &[aria-expanded="true"] {

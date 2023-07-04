@@ -517,7 +517,7 @@ exports.createPages = async ({ actions, graphql }) => {
     context: {
       breadcrumbs: [
         {
-          name: 'Mapa strony',
+          name: 'Kontakt',
           link: '/pl/kontakt'
         }
       ]

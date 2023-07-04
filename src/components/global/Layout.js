@@ -133,10 +133,10 @@ const Layout = ({ data: { page }, children, pageContext }) => {
     <>
       <GlobalStyle />
       <Nav data={data} />
-      {!pageContext.portfolio && (
-        <Breadcrumbs data={pageContext.breadcrumbs} />
-      )}
       <main id="main">
+        {!pageContext.portfolio && (
+          <Breadcrumbs data={pageContext.breadcrumbs} />
+        )}
         {children}
       </main>
       <Footer data={data} />

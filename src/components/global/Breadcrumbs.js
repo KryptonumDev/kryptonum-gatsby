@@ -64,24 +64,25 @@ export default function Breadcrumbs({ portfolio, data }) {
 }
 
 const Wrapper = styled.nav`
-  margin-top: 40px;
-  @media (max-width: 999px) {
-    margin-top: clamp(48px, calc(104vw/7.68), 128px);
-    margin-bottom: calc(-1 * clamp(24px, calc(104vw/7.68), 104px));
+  width: calc(100vw - var(--pageMargin) * 2);
+  &:not(.portfolio){
+    margin-bottom: ${Clamp(16, 24, 24, 'px')};
+    + * {
+      margin-top: ${Clamp(-172, -144, -96, 'px')};
+    }
   }
   &.portfolio {
-    margin-top: 24px !important;
-    margin-bottom: 0 !important;
+    margin-top: ${Clamp(16, 24, 24, 'px')};
   }
   ul {
+    width: 100%;
     display: flex;
-    flex-wrap: wrap;
     align-items: center;
-    gap: 5px 8px;
+    gap: 8px;
     li {
-      font-size: ${Clamp(16, 20, 20)};
-      list-style: none;
-      height: fit-content;
+      font-size: ${Clamp(14, 18, 20)};
+      list-style-type: none;
+      white-space: nowrap;
       svg {
         display: block;
       }
@@ -91,7 +92,8 @@ const Wrapper = styled.nav`
         -webkit-text-fill-color: transparent;
         -webkit-background-clip: text;
         background-clip: text;
-        display: block;
+        text-overflow: ellipsis;
+        overflow: hidden;
       }
     }
   }
