@@ -690,7 +690,7 @@ const Wrapper = styled.nav`
     width: 100%;
     z-index: 8;
     background-color: rgba(0,0,0,.4);
-    backdrop-filter: blur(4px);
+    backdrop-filter: blur(8px);
     opacity: 0;
     transition: opacity .3s;
     pointer-events: none;
