@@ -26,10 +26,7 @@ export default function Kontakt({ step, setStep, formData, setFormData, endTime 
 
   useEffect(() => {
     if (typeof window !== 'undefined') {
-      window.scrollTo({
-        top: 0,
-        behavior: "smooth"
-      })
+      document.getElementById('main').scrollIntoView()
     }
   }, [step])
 
@@ -136,6 +133,7 @@ const Wrapper = styled.section`
   max-width: 1280px;
   margin: 0 auto;
   width: 100%;
+  margin-top: 40px;
 
   @media (max-width: 920px) {
     gap: 24px;

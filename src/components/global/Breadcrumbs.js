@@ -4,7 +4,7 @@ import { removeMarkdown } from "../../utils/functions"
 
 const Icon = () => (
   <svg width="17" height="16" viewBox="0 0 17 16" fill="none" xmlns="http://www.w3.org/2000/svg">
-    <path d="M6.5 12L10.5 8L6.5 4" stroke="#EFF0F3" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+    <path d="M6.5 12L10.5 8L6.5 4" stroke="#EFF0F3" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
   </svg>
 )
 
@@ -31,7 +31,7 @@ const createBreadcrumbs = (breadCrumbs) => {
 }
 
 export default function Breadcrumbs({ data }) {
-  if (data.length === 0) return null
+  if (data?.length < 1 || !data?.breadCrumbs) return null
 
   const breadCrumbsItems = createBreadcrumbs(data)
   return (
@@ -69,6 +69,10 @@ const Wrapper = styled.nav`
     margin-top: clamp(48px, calc(104vw/7.68), 128px);
     margin-bottom: calc(-1 * clamp(24px, calc(104vw/7.68), 104px));
   } */
+
+  @media (max-width: 680px) {
+    display: none;
+  }
   ul{
     display: flex;
     align-items: center;

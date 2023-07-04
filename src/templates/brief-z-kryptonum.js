@@ -49,7 +49,7 @@ const BriefPage = ({ data }) => {
     <AnimatePresence mode="wait">
       {step === 0 && (
         <motion.div key='hero' exit={{ opacity: 0, x: -10 }}>
-          <Hero setStep={setStep} />
+          <Hero data={data.page} setStep={setStep} />
         </motion.div>
       )}
       {(step > 0 && step < 8 && !isEmailSent) && (
@@ -74,23 +74,31 @@ const BriefPage = ({ data }) => {
 
 export const query = graphql`
   query {
-    sanityGlobal {
-      id
+    page : sanityBrief {
+      hero_Heading
+      hero_Paragraph
+      hero_Paragraph2
+      hero_ScrollText
+      hero_Subheading
+      seo {
+        title
+        description
+      }
     }
   }
 `
 
 export default BriefPage
 
-// export const Head = ({
-//   data: { page: { seo: {
-//     title,
-//     description
-//   }}}
-// }) => (
-//   <SEO
-//     title={title}
-//     description={description}
-//     url='/pl/brief-z-kryptonum'
-//   />
-// )
+export const Head = ({
+  data: { page: { seo: {
+    title,
+    description
+  }}}
+}) => (
+  <SEO
+    title={title}
+    description={description}
+    url='/pl/brief-z-kryptonum'
+  />
+)

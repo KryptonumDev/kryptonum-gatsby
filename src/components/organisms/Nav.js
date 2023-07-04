@@ -784,7 +784,7 @@ const Wrapper = styled.nav`
             width: 40px;
             height: 40px;
             path {
-              stroke-width: 1;
+              strokeWidth: 1;
             }
             transform: rotate(-90deg);
           }
