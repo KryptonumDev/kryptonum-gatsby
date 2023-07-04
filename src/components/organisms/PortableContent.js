@@ -6,9 +6,9 @@ import { getGatsbyImageData } from "gatsby-source-sanity";
 import { Clamp, portableTextToMarkdown, slugify } from "../../utils/functions";
 import DecorativeHeading from "../atoms/DecorativeHeading";
 import { Star } from "../atoms/Icons";
-import QuickForm from "../sections/BlogEntry/QuickForm";
-import OrderedList from "../sections/BlogEntry/OrderedList";
-import UnorderedList from "../sections/BlogEntry/UnorderedList";
+import QuickForm from "./portableText/QuickForm";
+import OrderedList from "./portableText/OrderedList";
+import UnorderedList from "./portableText/UnorderedList";
 
 const sanityConfig = {projectId: process.env.GATSBY_SANITY_PROJECT_ID, dataset: process.env.GATSBY_SANITY_DATASET}
 
@@ -23,7 +23,7 @@ const components = {
   types: {
     image: ImageComponent,
     quickForm: ({ value: { heading, subheading, cta} }) => <QuickForm data={{heading,subheading, cta}} />,
-    orderedList: ({ value: { array }}) => <OrderedList data={array} />,
+    orderedList: ({ value: { array, paragraph }}) => <OrderedList paragraph={paragraph} array={array} />,
     unorderedList: ({ value: { array }}) => {
       const newArray = array.map(obj => {
         return { ...obj, icon: <ImageComponent value={obj.icon} /> };
