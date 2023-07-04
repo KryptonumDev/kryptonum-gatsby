@@ -82,7 +82,7 @@ const Wrapper = styled.section`
       display: flex;
       flex-direction: column;
       .overflow {
-        padding: 32px 16px;
+        padding: 16px 16px 32px;
       }
       .author {
         text-align: center;
@@ -90,11 +90,9 @@ const Wrapper = styled.section`
         flex-direction: column;
         gap: 8px;
         align-items: center;
-        .img {
           margin-top: -78px;
-        }
         p {
-          font-size: ${Clamp(16, 22, 22)};
+          font-size: ${22/16}rem;
         }
       }
       .share {
@@ -102,7 +100,7 @@ const Wrapper = styled.section`
         align-items: center;
         gap: 8px;
         font-size: ${Clamp(16, 22, 22)};
-        margin: 16px auto 24px;
+        margin: 0 auto 24px;
       }
     }
     @media (min-width: 1099px){
