@@ -30,8 +30,16 @@ const AcademyPage = ({
           img={hero_Img}
         />
       )}
-      <Categories slug="/pl/akademia/kategoria/" categories={curiosityCategories} />
-      <CuriosityEntries urlBasis={urlBasis} totalCount={totalCount} page={currentPage} curiosityEntries={curiosityEntries} />
+      <Categories
+        categorySlug="/pl/akademia/"
+        categories={curiosityCategories}
+      />
+      <CuriosityEntries
+        urlBasis={urlBasis}
+        totalCount={totalCount}
+        page={currentPage}
+        curiosityEntries={curiosityEntries}
+      />
       <CtaSection data={ctaSection} />
       <LatestBlogEntries />
       <Faq />

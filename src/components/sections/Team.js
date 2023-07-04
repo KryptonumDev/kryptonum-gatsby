@@ -112,6 +112,12 @@ const Wrapper = styled.section`
       grid-template-columns: 1fr;
       gap: 28px;
     }
+    h2 {
+      margin-left: 0;
+    }
+    .copy {
+      text-align: left;
+    }
   }
 `
  

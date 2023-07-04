@@ -30,8 +30,16 @@ const BlogPage = ({
           img={hero_Img}
         />
       )}
-      <Categories slug="/pl/blog/kategoria/" categories={blogCategories} />
-      <BlogEntries urlBasis={urlBasis} totalCount={totalCount} blogEntries={blogEntries} page={currentPage} />
+      <Categories
+        categorySlug="/pl/blog/"
+        categories={blogCategories}
+      />
+      <BlogEntries
+        urlBasis={urlBasis}
+        totalCount={totalCount}
+        blogEntries={blogEntries}
+        page={currentPage}
+      />
       <CtaSection data={ctaSection} />
       <LatestCuriosityEntries />
       <Faq />

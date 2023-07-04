@@ -60,7 +60,7 @@ const Content = ({ _rawContent, author, share }) => {
 
 const GlobalStyle = createGlobalStyle`
   @media (min-width: 1099px){
-    nav:not(.fixed) + main .content nav {
+    nav:not(.fixed) ~ main .content nav {
       transform: translateY(-94px);
     }
   }

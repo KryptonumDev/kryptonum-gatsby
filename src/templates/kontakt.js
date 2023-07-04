@@ -121,6 +121,6 @@ export const Head = ({
   <SEO
     title={title}
     description={description}
-    url='/pl/konatkt'
+    url='/pl/kontakt'
   />
 )

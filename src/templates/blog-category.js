@@ -6,6 +6,7 @@ import BlogEntries from "./../components/sections/BlogEntries";
 import Faq from "./../components/sections/Faq";
 import Categories from "./../components/sections/Categories";
 import LatestCuriosityEntries from "../components/sections/LatestCuriosityEntries";
+import HeroTwoColumns from '../components/sections/HeroTwoColumns';
 
 const BlogCategoryPage = ({
   data: {
@@ -13,14 +14,34 @@ const BlogCategoryPage = ({
       ctaSection,
     },
     blogCategories,
+    blogCategory: {
+      slug,
+      hero_Heading,
+      hero_Paragraph,
+      hero_Img,
+    },
     blogEntries
   },
   pageContext: { currentPage, totalCount, urlBasis }
 }) => {
   return (
     <>
-      <Categories slug="/pl/blog/kategoria/" categories={blogCategories} />
-      <BlogEntries urlBasis={urlBasis} totalCount={totalCount} blogEntries={blogEntries} page={currentPage} />
+      <HeroTwoColumns
+        heading={hero_Heading}
+        paragraph={hero_Paragraph}
+        img={hero_Img}
+      />
+      <Categories
+        categorySlug="/pl/blog/"
+        currentSlug={slug.current}
+        categories={blogCategories}
+      />
+      <BlogEntries
+        urlBasis={urlBasis}
+        totalCount={totalCount}
+        blogEntries={blogEntries}
+        page={currentPage}
+      />
       <CtaSection data={ctaSection} />
       <LatestCuriosityEntries />
       <Faq />
@@ -64,6 +85,14 @@ export const query = graphql`
       name
       slug {
         current
+      }
+      hero_Heading
+      hero_Paragraph
+      hero_Img {
+        asset {
+          altText
+          gatsbyImageData(placeholder: BLURRED)
+        }
       }
     }
     blogEntries: allSanityBlogEntries(limit: $perPage, skip: $skip, sort: {_createdAt: DESC}, filter: {categories: {elemMatch: {id: {eq: $id}}}}) {

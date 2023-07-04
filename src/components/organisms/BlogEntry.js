@@ -119,6 +119,7 @@ const Wrapper = styled.div`
     display: flex;
     align-items: center;
     gap: 8px;
+    font-size: 1rem;
   }
   .createdAt {
     grid-area: f;
@@ -139,6 +140,9 @@ const Wrapper = styled.div`
     .readingTime {
       font-size: 14px;
     }
+  }
+  @media (max-width: 349px){
+    column-gap: 8px;
   }
 `
 

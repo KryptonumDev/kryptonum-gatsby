@@ -44,6 +44,7 @@ export const SEO = ({ title, description, url, children }) => {
       <meta property="og:image:height" content="630" />
 
       <meta property="twitter:url" content={`${domain}${seo.url}`} />
+      <link rel="canonical" href={`${domain}${seo.url}`} />
       <meta property="og:url" content={`${domain}${seo.url}`} />
       {children}
     </>

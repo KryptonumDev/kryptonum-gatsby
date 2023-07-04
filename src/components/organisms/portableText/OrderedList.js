@@ -1,10 +1,11 @@
 import React, { useEffect, useRef } from "react";
+import ReactMarkdown from "react-markdown";
 import styled from "styled-components";
 import { Clamp } from "../../../utils/functions";
 
 const locationPath = typeof window !== 'undefined' ? window.location.pathname : '';
 
-const OrderedList = ({ data }) => {
+const OrderedList = ({ paragraph, array }) => {
   const listRef = useRef(null);
 
   useEffect(() => {
@@ -27,7 +28,8 @@ const OrderedList = ({ data }) => {
 
   return (
     <Wrapper className="orderedList" ref={listRef}>
-      {data.map((item, i) => (
+      <ReactMarkdown className="paragraph">{paragraph}</ReactMarkdown>
+      {array.map((item, i) => (
         <li key={i}>
           <p className="title">{item.title}</p>
           <p className="description">{item.description}</p>
@@ -38,6 +40,8 @@ const OrderedList = ({ data }) => {
 }
 
 const Wrapper = styled.ol`
+  border: 1px solid var(--neutral-800);
+  padding: 32px ${Clamp(16, 32, 32, 'px')};
   counter-reset: counter;
   display: grid;
   grid-template-columns: 1fr;
@@ -48,7 +52,7 @@ const Wrapper = styled.ol`
     .title {
       display: grid;
       grid-template-columns: 54px 1fr;
-      gap: 16px;
+      gap: ${Clamp(8, 16, 16, 'px')};
       align-items: center;
       margin-bottom: 8px;
       &::before {
@@ -56,7 +60,7 @@ const Wrapper = styled.ol`
         background: linear-gradient(var(--neutral-950), var(--neutral-950)) padding-box,
                     var(--gradient) border-box;
         border: 1px solid var(--neutral-800);
-        transition: border-color .1s .1s;
+        transition: border-color .2s .1s;
         border-radius: 50%;
         width: 54px;
         height: 54px;
@@ -67,7 +71,7 @@ const Wrapper = styled.ol`
     }
     .description {
       margin: 0;
-      padding-left: 70px;
+      padding-left: ${Clamp(8+54, 16+54, 16+54, 'px')};
     }
     &:nth-child(-n+9) .title::before {
       content: "0" counter(counter);
@@ -89,7 +93,7 @@ const Wrapper = styled.ol`
       &::after {
         background: var(--gradient);
         transform: scaleY(0);
-        transition: transform .3s var(--easing);
+        transition: transform .5s var(--easing);
         transform-origin: top;
       }
     }

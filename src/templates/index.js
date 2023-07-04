@@ -11,33 +11,39 @@ import FourGrid from "../components/sections/Homepage/FourGrid";
 import LatestBlogEntries from "../components/sections/LatestBlogEntries";
 
 const IndexPage = ({
-  data: { page: {
-    hero_Heading,
-    hero_Subheading,
-    hero_Cta,
-    services_Heading,
-    services_List,
-    conquest_Heading,
-    conquest_Claim,
-    conquest_Paragraph,
-    conquest_SecondClaim,
-    conquest_Cta,
-    challenge_Heading,
-    challenge_Claim,
-    challenge_Paragraph,
-    challenge_SecondClaim,
-    challenge_Cta,
-    creativity_Heading,
-    creativity_Paragraph,
-    creativity_SecondParagraph,
-    roadmap_Heading,
-    roadmap_Process,
-    roadmap_Cta,
-    team_Heading,
-    team_Text,
-    team_Cta,
-  }
-  }, pageContext
+  data: {
+    page: {
+      hero_Heading,
+      hero_Subheading,
+      hero_Cta,
+      services_Heading,
+      services_List,
+      conquest_Heading,
+      conquest_Claim,
+      conquest_Paragraph,
+      conquest_SecondClaim,
+      conquest_Cta,
+      challenge_Heading,
+      challenge_Claim,
+      challenge_Paragraph,
+      challenge_SecondClaim,
+      challenge_Cta,
+      creativity_Heading,
+      creativity_Paragraph,
+      creativity_SecondParagraph,
+      roadmap_Heading,
+      roadmap_Process,
+      roadmap_Cta,
+      team_Heading,
+      team_Text,
+      team_Cta,
+    },
+    webDevelopment,
+    workshop,
+    agency,
+    graphicsAndDesign,
+  },
+  pageContext
 }) => {
   pageContext = 'ABRAKADABRA'
   return (
@@ -50,6 +56,10 @@ const IndexPage = ({
       <Services data={{
         services_Heading,
         services_List,
+        webDevelopment,
+        workshop,
+        agency,
+        graphicsAndDesign,
       }} />
       <FourGrid
         heading={conquest_Heading}
@@ -102,6 +112,7 @@ export const query = graphql`
       services_List {
         title
         description
+        href
       }
       # Conquest
       conquest_Heading
@@ -150,6 +161,38 @@ export const query = graphql`
       seo {
         title
         description
+      }
+    }
+    webDevelopment: sanityWebDevelopment {
+      hero_Img {
+        asset {
+          altText
+          gatsbyImageData(placeholder: BLURRED, width: 200, height: 200)
+        }
+      }
+    }
+    workshop: sanityWorkshop {
+      hero_Img {
+        asset {
+          altText
+          gatsbyImageData(placeholder: BLURRED, width: 200, height: 200)
+        }
+      }
+    }
+    agency: sanityAgency {
+      hero_Img {
+        asset {
+          altText
+          gatsbyImageData(placeholder: BLURRED, width: 200, height: 200)
+        }
+      }
+    }
+    graphicsAndDesign: sanityGraphicsDesign {
+      hero_Img {
+        asset {
+          altText
+          gatsbyImageData(placeholder: BLURRED, width: 200, height: 200)
+        }
       }
     }
   }
