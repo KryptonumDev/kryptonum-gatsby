@@ -1,6 +1,6 @@
 import React from "react"
 import styled from "styled-components"
-import { removeMarkdown } from "../../utils/functions"
+import { Clamp, removeMarkdown } from "../../utils/functions"
 
 const Icon = () => (
   <svg width="17" height="16" viewBox="0 0 17 16" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -53,9 +53,9 @@ export default function Breadcrumbs({ portfolio, data }) {
             {data.length - 1 !== index ? <>
               <li><a href={el.link}>{removeMarkdown(el.name)}</a></li>
               <li><Icon /></li>
-            </> : <>
-              <li><button disabled={true}>{removeMarkdown(el.name)}</button></li>
-            </>}
+            </> :
+              <li>{removeMarkdown(el.name)}</li>
+            }
           </>
         ))}
       </ul>
@@ -69,30 +69,23 @@ const Wrapper = styled.nav`
     margin-top: clamp(48px, calc(104vw/7.68), 128px);
     margin-bottom: calc(-1 * clamp(24px, calc(104vw/7.68), 104px));
   }
-
-  &.portfolio{
+  &.portfolio {
     margin-top: 24px !important;
     margin-bottom: 0 !important;
   }
-
-  @media (max-width: 680px) {
-    display: none;
-  }
-  ul{
+  ul {
     display: flex;
+    flex-wrap: wrap;
     align-items: center;
-    gap: 8px;
-
-    li{
+    gap: 5px 8px;
+    li {
+      font-size: ${Clamp(16, 20, 20)};
       list-style: none;
       height: fit-content;
-
-      svg{
+      svg {
         display: block;
       }
-
-      &:last-child button{
-        border: none;
+      &:last-child {
         color: var(--primary-400);
         background-image: var(--gradient);
         -webkit-text-fill-color: transparent;
@@ -101,10 +94,5 @@ const Wrapper = styled.nav`
         display: block;
       }
     }
-  }
-
-  *{
-    font-size: 22px;
-    color: var(--neutral-200, #EFF0F3);
   }
 `
