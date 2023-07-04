@@ -52,7 +52,7 @@ export default function Kontakt({ step, setStep, formData, setFormData, endTime 
                 {step === 5 && (
                   <ButtonText id='5'>Czas i budżet</ButtonText>
                 )}
-                {step === 6 && (
+                {step > 5 && (
                   <ButtonText id='6'>Informacje</ButtonText>
                 )}
               </AnimatePresence>
@@ -107,7 +107,7 @@ export default function Kontakt({ step, setStep, formData, setFormData, endTime 
               />
             </StepWrap>
           )}
-          {step === 6 && (
+          {step > 5 && (
             <StepWrap id='6'>
               <SixthStep
                 setData={setFormData}

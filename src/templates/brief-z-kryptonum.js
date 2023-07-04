@@ -5,6 +5,7 @@ import Kontakt from "../components/sections/ExtendedContact";
 import Hero from "../components/sections/ExtendedContactHero";
 import Summary from "../components/sections/ExtendedContactSummary";
 import { AnimatePresence, motion } from "framer-motion";
+import Loader from "../components/sections/Loader";
 
 const BriefPage = ({ data }) => {
 
@@ -47,6 +48,7 @@ const BriefPage = ({ data }) => {
 
   return (
     <AnimatePresence mode="wait">
+
       {step === 0 && (
         <motion.div key='hero' exit={{ opacity: 0, x: -10 }}>
           <Hero data={data.page} setStep={setStep} />
@@ -58,12 +60,14 @@ const BriefPage = ({ data }) => {
         </motion.div>
       )}
       {(step === 7 && !isEmailSent) && (
-        <>LOADER</>
+        <motion.div key='loader' initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }}>
+          <Loader />
+        </motion.div>
       )}
       {(step === 7 && isEmailSent === 'failed') && (
         <>Fail</>
       )}
-      {(step === 7  && isEmailSent === 'success') && (
+      {(step === 7 && isEmailSent === 'success') && (
         <motion.div key='summary' initial={{ opacity: 0, x: 10 }} animate={{ opacity: 1, x: 0 }} exit={{ opacity: 0, x: -10 }}>
           <Summary name={formData?.Client?.name} endTime={endTime} />
         </motion.div>
@@ -94,7 +98,7 @@ export const Head = ({
   data: { page: { seo: {
     title,
     description
-  }}}
+  } } }
 }) => (
   <SEO
     title={title}
