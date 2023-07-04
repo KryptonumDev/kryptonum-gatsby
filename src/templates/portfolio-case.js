@@ -36,7 +36,7 @@ const CaseStudyPage = ({
     technologies_Paragraph,
     technologies,
     ctaSection,
-  }}
+  }}, pageContext
 }) => {
   return (
     <>
@@ -48,7 +48,7 @@ const CaseStudyPage = ({
         categories_Paragraph,
         categories,
         img,
-      }} />
+      }} pageContext={pageContext}/>
       {client_Heading && client_Paragraph && client_Standout && client_Img.asset && (
         <ImageAndStanduout
           heading={client_Heading}

@@ -30,12 +30,12 @@ const createBreadcrumbs = (breadCrumbs) => {
   return items
 }
 
-export default function Breadcrumbs({ data }) {
-  if (data?.length < 1 || !data?.breadCrumbs) return null
+export default function Breadcrumbs({ portfolio, data }) {
+  if (data?.length < 1 || !data) return null
 
   const breadCrumbsItems = createBreadcrumbs(data)
   return (
-    <Wrapper className="breadcrumbs">
+    <Wrapper className={portfolio ? 'portfolio breadcrumbs' : "breadcrumbs"}>
       {breadCrumbsItems.length > 1 && (
         <script type="application/ld+json">
           {JSON.stringify({
@@ -65,10 +65,15 @@ export default function Breadcrumbs({ data }) {
 
 const Wrapper = styled.nav`
   margin-top: 40px;
-  /* @media (max-width: 999px) {
+  @media (max-width: 999px) {
     margin-top: clamp(48px, calc(104vw/7.68), 128px);
     margin-bottom: calc(-1 * clamp(24px, calc(104vw/7.68), 104px));
-  } */
+  }
+
+  &.portfolio{
+    margin-top: 24px !important;
+    margin-bottom: 0 !important;
+  }
 
   @media (max-width: 680px) {
     display: none;

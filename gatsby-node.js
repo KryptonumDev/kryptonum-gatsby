@@ -634,7 +634,8 @@ exports.createPages = async ({ actions, graphql }) => {
             name: name,
             link: `/pl/portfolio/${current}`
           }
-        ]
+        ],
+        portfolio: true
       }
     });
   })

@@ -4,6 +4,7 @@ import ReactMarkdown from "react-markdown";
 import styled from "styled-components";
 import { Clamp } from "../../../utils/functions";
 import DecorativeHeading from "../../atoms/DecorativeHeading";
+import Breadcrumbs from "../../global/Breadcrumbs";
 
 const Hero = ({
   data: {
@@ -13,7 +14,8 @@ const Hero = ({
     categories_Paragraph,
     categories,
     img,
-  }
+  },
+  pageContext
 }) => {
   return (
     <Wrapper>
@@ -23,6 +25,7 @@ const Hero = ({
         className="img"
         loading="eager"
       />
+      <Breadcrumbs portfolio={true} data={pageContext.breadcrumbs} />
       <header>
         <DecorativeHeading className="heading">{heading}</DecorativeHeading>
         <div className="categories">
