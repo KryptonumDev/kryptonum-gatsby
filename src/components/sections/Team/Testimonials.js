@@ -43,7 +43,7 @@ const Wrapper = styled.section`
         content: '';
         position: absolute;
         inset: -8px;
-        backdrop-filter: blur(8px);
+        backdrop-filter: blur(4px);
         pointer-events: none;
         transition: opacity .3s;
         opacity: 1;
