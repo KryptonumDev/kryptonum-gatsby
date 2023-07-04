@@ -1,15 +1,15 @@
 import * as React from "react"
 import { graphql } from "gatsby";
-import { SEO } from "../../components/global/Seo";
-import HeroServices from "../../components/sections/HeroServices";
-import SimpleCtaSection from "../../components/sections/SimpleCtaSection";
-import QuickForm from "../../components/sections/QuickForm";
-import CaseStudies from "../../components/sections/CaseStudies";
-import CtaSection from "../../components/sections/CtaSection";
-import MasonryList from "../../components/sections/MasonryList";
-import BrandbookTypes from "../../components/sections/GraphicsAndDesign_VisualIdentity/BrandbookTypes";
-import ImageAndStandout from "../../components/sections/ImageAndStandout";
-import LatestBlogEntries from "../../components/sections/LatestBlogEntries";
+import { SEO } from "../components/global/Seo";
+import HeroServices from "../components/sections/HeroServices";
+import SimpleCtaSection from "../components/sections/SimpleCtaSection";
+import QuickForm from "../components/sections/QuickForm";
+import CaseStudies from "../components/sections/CaseStudies";
+import CtaSection from "../components/sections/CtaSection";
+import MasonryList from "../components/sections/MasonryList";
+import BrandbookTypes from "../components/sections/GraphicsAndDesign_VisualIdentity/BrandbookTypes";
+import ImageAndStandout from "../components/sections/ImageAndStandout";
+import LatestBlogEntries from "../components/sections/LatestBlogEntries";
 
 const VisualIdentityPage = ({
   data: { page: {

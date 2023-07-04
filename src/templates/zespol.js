@@ -1,13 +1,13 @@
 import * as React from "react"
 import { graphql } from "gatsby"
-import { SEO } from "../../../components/global/Seo";
-import Team from "../../../components/sections/Team";
-import Hero from "../../../components/sections/Team/Hero";
-import Testimonials from "../../../components/sections/Team/Testimonials";
-import CtaSection from '../../../components/sections/CtaSection';
-import Attitude from "../../../components/sections/Team/Attitude";
-import SmallCtaSection from "../../../components/sections/Team/SmallCtaSection";
-import LatestCuriosityEntries from "../../../components/sections/LatestCuriosityEntries";
+import { SEO } from "../components/global/Seo";
+import Team from "../components/sections/Team";
+import Hero from "../components/sections/Team/Hero";
+import Testimonials from "../components/sections/Team/Testimonials";
+import CtaSection from '../components/sections/CtaSection';
+import Attitude from "../components/sections/Team/Attitude";
+import SmallCtaSection from "../components/sections/Team/SmallCtaSection";
+import LatestCuriosityEntries from "../components/sections/LatestCuriosityEntries";
 
 const TeamPage = ({
   data: { page : {

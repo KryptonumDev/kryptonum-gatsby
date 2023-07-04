@@ -1,9 +1,9 @@
 import React, { useEffect, useMemo, useState } from "react"
 import { graphql } from "gatsby"
-import { SEO } from "../../components/global/Seo";
-import Kontakt from "../../components/sections/ExtendedContact";
-import Hero from "../../components/sections/ExtendedContactHero";
-import Summary from "../../components/sections/ExtendedContactSummary";
+import { SEO } from "../components/global/Seo";
+import Kontakt from "../components/sections/ExtendedContact";
+import Hero from "../components/sections/ExtendedContactHero";
+import Summary from "../components/sections/ExtendedContactSummary";
 import { AnimatePresence, motion } from "framer-motion";
 
 const BriefPage = ({ data }) => {

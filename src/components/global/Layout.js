@@ -6,7 +6,7 @@ import Footer from "../organisms/Footer";
 import ScrollToNext from "../organisms/ScrollToNext";
 import Breadcrumbs from "./Breadcrumbs";
 
-const Layout = ({ data: { page }, children }) => {
+const Layout = ({ data: { page }, children, pageContext }) => {
   const data = useStaticQuery(graphql`
     query {
       caseStudies: allSanityCaseStudyEntries(limit: 4) {
@@ -128,11 +128,12 @@ const Layout = ({ data: { page }, children }) => {
       });
     });
   }, [locationPath, orphansRegex]);
+
   return (
     <>
       <GlobalStyle />
       <Nav data={data} />
-      <Breadcrumbs />
+      <Breadcrumbs data={pageContext.breadcrumbs}/>
       <main id="main">
         {children}
       </main>

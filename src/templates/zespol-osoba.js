@@ -1,18 +1,18 @@
 import * as React from "react"
 import { graphql } from "gatsby";
 import { createGlobalStyle } from "styled-components";
-import { SEO } from "../../../components/global/Seo";
-import Hero from "../../../components/sections/TeamMember/Hero";
-import Bio from "../../../components/sections/TeamMember/Bio";
-import Skills from "../../../components/sections/TeamMember/Skills";
-import Tools from "../../../components/sections/TeamMember/Tools";
-import Benefits from "../../../components/sections/TeamMember/Benefits";
-import Links from "../../../components/sections/TeamMember/Links";
-import AfterWork from "../../../components/sections/TeamMember/AfterWork";
-import Hobbies from "../../../components/sections/TeamMember/Hobbies";
-import Inspirations from "../../../components/sections/TeamMember/Inspirations";
-import DecorativeHeading from "../../../components/atoms/DecorativeHeading";
-import { Clamp } from "../../../utils/functions";
+import { SEO } from "../components/global/Seo";
+import Hero from "../components/sections/TeamMember/Hero";
+import Bio from "../components/sections/TeamMember/Bio";
+import Skills from "../components/sections/TeamMember/Skills";
+import Tools from "../components/sections/TeamMember/Tools";
+import Benefits from "../components/sections/TeamMember/Benefits";
+import Links from "../components/sections/TeamMember/Links";
+import AfterWork from "../components/sections/TeamMember/AfterWork";
+import Hobbies from "../components/sections/TeamMember/Hobbies";
+import Inspirations from "../components/sections/TeamMember/Inspirations";
+import DecorativeHeading from "../components/atoms/DecorativeHeading";
+import { Clamp } from "../utils/functions";
 
 const TeamMemberPage = ({
   data: { teamMember : {

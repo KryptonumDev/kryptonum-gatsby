@@ -1,17 +1,17 @@
 import * as React from "react"
 import { graphql } from "gatsby"
-import { SEO } from "../../components/global/Seo";
-import Hero from "../../components/sections/Homepage/Hero";
-import Services from "../../components/sections/Homepage/Services";
-import Creativity from "../../components/sections/Homepage/Creativity";
-import Roadmap from "../../components/sections/Roadmap";
-import Team from "../../components/sections/Team";
-import Testimonials from "../../components/sections/Testimonials";
-import FourGrid from "../../components/sections/Homepage/FourGrid";
-import LatestBlogEntries from "../../components/sections/LatestBlogEntries";
+import { SEO } from "../components/global/Seo";
+import Hero from "../components/sections/Homepage/Hero";
+import Services from "../components/sections/Homepage/Services";
+import Creativity from "../components/sections/Homepage/Creativity";
+import Roadmap from "../components/sections/Roadmap";
+import Team from "../components/sections/Team";
+import Testimonials from "../components/sections/Testimonials";
+import FourGrid from "../components/sections/Homepage/FourGrid";
+import LatestBlogEntries from "../components/sections/LatestBlogEntries";
 
 const IndexPage = ({
-  data: { page : {
+  data: { page: {
     hero_Heading,
     hero_Subheading,
     hero_Cta,
@@ -37,8 +37,9 @@ const IndexPage = ({
     team_Text,
     team_Cta,
   }
-  }
+  }, pageContext
 }) => {
+  pageContext = 'ABRAKADABRA'
   return (
     <>
       <Hero data={{
@@ -160,7 +161,7 @@ export const Head = ({
   data: { page: { seo: {
     title,
     description
-  }}}
+  } } }
 }) => (
   <SEO
     title={title}

@@ -1,11 +1,11 @@
 import * as React from "react"
 import { graphql } from "gatsby";
-import { SEO } from "../../components/global/Seo";
-import HeroServices from "../../components/sections/HeroServices";
-import ListSection from "../../components/sections/ListSection";
-import SimpleCtaSection from "../../components/sections/SimpleCtaSection";
-import Why from "../../components/sections/Workshop/Why";
-import Document from "../../components/sections/Workshop/Document";
+import { SEO } from "../components/global/Seo";
+import HeroServices from "../components/sections/HeroServices";
+import ListSection from "../components/sections/ListSection";
+import SimpleCtaSection from "../components/sections/SimpleCtaSection";
+import Why from "../components/sections/Workshop/Why";
+import Document from "../components/sections/Workshop/Document";
 
 const WorkshopPage = ( { data} ) => {
   const { page: {
