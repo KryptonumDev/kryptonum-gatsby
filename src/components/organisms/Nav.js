@@ -704,6 +704,10 @@ const Wrapper = styled.nav`
     margin-bottom: 32px;
     padding-bottom: 12px;
     border-bottom: 1px solid var(--neutral-800);
+    background-color: var(--neutral-950);
+    position: sticky;
+    top: 0;
+    z-index: 2;
     span {
       margin: 0 auto;
     }

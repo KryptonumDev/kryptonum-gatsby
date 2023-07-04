@@ -146,11 +146,12 @@ export const Head = ({
   data: { page: { seo: {
     title,
     description
-  }}}
-}) => (
+  },
+  slug
+}}}) => (
   <SEO
     title={title}
     description={description}
-    url='/pl/blog'
+    url={`/pl/akademia/${slug.current}`}
   />
 )
