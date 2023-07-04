@@ -1,48 +1,51 @@
 import * as React from "react"
 import { graphql } from "gatsby"
-import { SEO } from "../../components/global/Seo";
-import Hero from "../../components/sections/Homepage/Hero";
-import Services from "../../components/sections/Homepage/Services";
-import Creativity from "../../components/sections/Homepage/Creativity";
-import Roadmap from "../../components/sections/Roadmap";
-import Team from "../../components/sections/Team";
-import Testimonials from "../../components/sections/Testimonials";
-import FourGrid from "../../components/sections/Homepage/FourGrid";
-import LatestBlogEntries from "../../components/sections/LatestBlogEntries";
+import { SEO } from "../components/global/Seo";
+import Hero from "../components/sections/Homepage/Hero";
+import Services from "../components/sections/Homepage/Services";
+import Creativity from "../components/sections/Homepage/Creativity";
+import Roadmap from "../components/sections/Roadmap";
+import Team from "../components/sections/Team";
+import Testimonials from "../components/sections/Testimonials";
+import FourGrid from "../components/sections/Homepage/FourGrid";
+import LatestBlogEntries from "../components/sections/LatestBlogEntries";
 
 const IndexPage = ({
-  data: { page : {
-    hero_Heading,
-    hero_Subheading,
-    hero_Cta,
-    services_Heading,
-    services_List,
-    conquest_Heading,
-    conquest_Claim,
-    conquest_Paragraph,
-    conquest_SecondClaim,
-    conquest_Cta,
-    challenge_Heading,
-    challenge_Claim,
-    challenge_Paragraph,
-    challenge_SecondClaim,
-    challenge_Cta,
-    creativity_Heading,
-    creativity_Paragraph,
-    creativity_SecondParagraph,
-    roadmap_Heading,
-    roadmap_Process,
-    roadmap_Cta,
-    team_Heading,
-    team_Text,
-    team_Cta,
+  data: {
+    page: {
+      hero_Heading,
+      hero_Subheading,
+      hero_Cta,
+      services_Heading,
+      services_List,
+      conquest_Heading,
+      conquest_Claim,
+      conquest_Paragraph,
+      conquest_SecondClaim,
+      conquest_Cta,
+      challenge_Heading,
+      challenge_Claim,
+      challenge_Paragraph,
+      challenge_SecondClaim,
+      challenge_Cta,
+      creativity_Heading,
+      creativity_Paragraph,
+      creativity_SecondParagraph,
+      roadmap_Heading,
+      roadmap_Process,
+      roadmap_Cta,
+      team_Heading,
+      team_Text,
+      team_Cta,
+    },
+    webDevelopment,
+    workshop,
+    agency,
+    graphicsAndDesign,
   },
-  webDevelopment,
-  workshop,
-  agency,
-  graphicsAndDesign,
-  }
+  pageContext
 }) => {
+  pageContext = 'ABRAKADABRA'
   return (
     <>
       <Hero data={{
@@ -201,7 +204,7 @@ export const Head = ({
   data: { page: { seo: {
     title,
     description
-  }}}
+  } } }
 }) => (
   <SEO
     title={title}

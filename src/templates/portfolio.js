@@ -1,10 +1,10 @@
 import * as React from "react"
 import { graphql } from "gatsby"
-import { SEO } from "../../../components/global/Seo";
-import HeroTwoColumns from "../../../components/sections/HeroTwoColumns";
-import CaseStudies from "../../../components/sections/Portfolio/CaseStudies";
-import QuickForm from "../../../components/sections/QuickForm";
-import LatestBlogEntries from "../../../components/sections/LatestBlogEntries";
+import { SEO } from "../components/global/Seo";
+import HeroTwoColumns from "../components/sections/HeroTwoColumns";
+import CaseStudies from "../components/sections/Portfolio/CaseStudies";
+import QuickForm from "../components/sections/QuickForm";
+import LatestBlogEntries from "../components/sections/LatestBlogEntries";
 
 const PortfolioPage = ({
   data: { page : {

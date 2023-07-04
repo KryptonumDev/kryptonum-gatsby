@@ -1,13 +1,13 @@
 import * as React from "react"
 import { graphql } from "gatsby";
-import { SEO } from "../../components/global/Seo";
-import HeroServices from "../../components/sections/HeroServices";
-import Process from "../../components/sections/WebDevelopment_Pwa/Process";
-import CtaSection from "../../components/sections/CtaSection";
-import CaseStudies from "../../components/sections/CaseStudies";
-import QuickForm from "../../components/sections/QuickForm";
-import Customer from "../../components/sections/WebDevelopment_Pwa/Customer";
-import LatestBlogEntries from "../../components/sections/LatestBlogEntries";
+import { SEO } from "../components/global/Seo";
+import HeroServices from "../components/sections/HeroServices";
+import Process from "../components/sections/WebDevelopment_Pwa/Process";
+import CtaSection from "../components/sections/CtaSection";
+import CaseStudies from "../components/sections/CaseStudies";
+import QuickForm from "../components/sections/QuickForm";
+import Customer from "../components/sections/WebDevelopment_Pwa/Customer";
+import LatestBlogEntries from "../components/sections/LatestBlogEntries";
 
 const WebDevelopmentPWAsPage = ({ data }) => {
   const { page: {

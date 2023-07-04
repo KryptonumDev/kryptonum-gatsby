@@ -1,15 +1,15 @@
 import * as React from "react"
 import { graphql } from "gatsby";
-import { SEO } from "../../components/global/Seo";
-import HeroServices from "../../components/sections/HeroServices";
-import SimpleCtaSection from "../../components/sections/SimpleCtaSection";
-import ListSection from '../../components/sections/ListSection';
-import QuickForm from "../../components/sections/QuickForm";
-import CaseStudies from "../../components/sections/CaseStudies";
-import CtaSection from "../../components/sections/CtaSection";
-import Audit from "../../components/sections/AgencyCare/Audit";
-import Copy from "../../components/sections/AgencyCare/Copy";
-import Protection from "../../components/sections/AgencyCare/Protection";
+import { SEO } from "../components/global/Seo";
+import HeroServices from "../components/sections/HeroServices";
+import SimpleCtaSection from "../components/sections/SimpleCtaSection";
+import ListSection from '../components/sections/ListSection';
+import QuickForm from "../components/sections/QuickForm";
+import CaseStudies from "../components/sections/CaseStudies";
+import CtaSection from "../components/sections/CtaSection";
+import Audit from "../components/sections/AgencyCare/Audit";
+import Copy from "../components/sections/AgencyCare/Copy";
+import Protection from "../components/sections/AgencyCare/Protection";
 
 const AgencyCarePage = ( { data} ) => {
   const { page: {

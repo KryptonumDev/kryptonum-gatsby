@@ -1,4 +1,4 @@
-import React, { useEffect, useMemo, useState } from "react"
+import React, { useEffect } from "react"
 import styled from "styled-components"
 import FirstStep from "../organisms/forms/ExtendedForm/FirstStep"
 import SecondStep from "../organisms/forms/ExtendedForm/SecondStep"
@@ -26,10 +26,7 @@ export default function Kontakt({ step, setStep, formData, setFormData, endTime 
 
   useEffect(() => {
     if (typeof window !== 'undefined') {
-      window.scrollTo({
-        top: 0,
-        behavior: "smooth"
-      })
+      document.getElementById('main').scrollIntoView()
     }
   }, [step])
 
@@ -55,7 +52,7 @@ export default function Kontakt({ step, setStep, formData, setFormData, endTime 
                 {step === 5 && (
                   <ButtonText id='5'>Czas i budżet</ButtonText>
                 )}
-                {step === 6 && (
+                {step > 5 && (
                   <ButtonText id='6'>Informacje</ButtonText>
                 )}
               </AnimatePresence>
@@ -110,7 +107,7 @@ export default function Kontakt({ step, setStep, formData, setFormData, endTime 
               />
             </StepWrap>
           )}
-          {step === 6 && (
+          {step > 5 && (
             <StepWrap id='6'>
               <SixthStep
                 setData={setFormData}
@@ -136,6 +133,7 @@ const Wrapper = styled.section`
   max-width: 1280px;
   margin: 0 auto;
   width: 100%;
+  margin-top: 40px;
 
   @media (max-width: 920px) {
     gap: 24px;

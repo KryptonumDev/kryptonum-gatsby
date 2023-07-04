@@ -1,14 +1,14 @@
 import * as React from "react"
 import { graphql } from "gatsby";
-import { SEO } from "../../components/global/Seo";
-import HeroServices from "../../components/sections/HeroServices";
-import SimpleCtaSection from "../../components/sections/SimpleCtaSection";
-import QuickForm from "../../components/sections/QuickForm";
-import CaseStudies from "../../components/sections/CaseStudies";
-import CtaSection from "../../components/sections/CtaSection";
-import Audit from "../../components/sections/GraphicsAndDesign_Audit/Audit";
-import ImageAndStandout from '../../components/sections/ImageAndStandout'
-import LatestBlogEntries from "../../components/sections/LatestBlogEntries";
+import { SEO } from "../components/global/Seo";
+import HeroServices from "../components/sections/HeroServices";
+import SimpleCtaSection from "../components/sections/SimpleCtaSection";
+import QuickForm from "../components/sections/QuickForm";
+import CaseStudies from "../components/sections/CaseStudies";
+import CtaSection from "../components/sections/CtaSection";
+import Audit from "../components/sections/GraphicsAndDesign_Audit/Audit";
+import ImageAndStandout from '../components/sections/ImageAndStandout'
+import LatestBlogEntries from "../components/sections/LatestBlogEntries";
 
 const AuditPage = ({
   data: { page: {

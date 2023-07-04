@@ -1,13 +1,13 @@
 import * as React from "react"
 import { graphql } from "gatsby"
 import { createGlobalStyle } from "styled-components";
-import { SEO } from "../../../components/global/Seo";
-import Hero from "../../../components/sections/CaseStudies/Hero";
-import CtaSection from "../../../components/sections/CtaSection";
-import ImageAndStanduout from "../../../components/sections/ImageAndStandout";
-import Challenge from "../../../components/sections/CaseStudies/Challenge";
-import Testimonial from "../../../components/sections/CaseStudies/Testimonial";
-import Process from "../../../components/sections/CaseStudies/Process";
+import { SEO } from "../components/global/Seo";
+import Hero from "../components/sections/CaseStudies/Hero";
+import CtaSection from "../components/sections/CtaSection";
+import ImageAndStanduout from "../components/sections/ImageAndStandout";
+import Challenge from "../components/sections/CaseStudies/Challenge";
+import Testimonial from "../components/sections/CaseStudies/Testimonial";
+import Process from "../components/sections/CaseStudies/Process";
 
 const CaseStudyPage = ({
   data: { caseStudy : {

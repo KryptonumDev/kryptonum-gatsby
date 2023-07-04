@@ -1,8 +1,8 @@
 import { graphql } from "gatsby";
 import React from "react";
-import Grid from "../../components/sections/Sitemap/Grid";
-import HeroTwoColumns from "../../components/sections/HeroTwoColumns";
-import { SEO } from "../../components/global/Seo";
+import Grid from "../components/sections/Sitemap/Grid";
+import HeroTwoColumns from "../components/sections/HeroTwoColumns";
+import { SEO } from "../components/global/Seo";
 
 export default function Sitemap({
   data: {

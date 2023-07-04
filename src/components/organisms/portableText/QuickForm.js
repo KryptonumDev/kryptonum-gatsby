@@ -6,10 +6,11 @@ import DecorativeHeading from '../../atoms/DecorativeHeading';
 import Button from '../../atoms/Button';
 import ReactMarkdown from "react-markdown";
 import { Clamp } from "../../../utils/functions";
+import Form from "../../organisms/forms/QuickContact";
 
-const QuickForm = ( { data: { heading, subheading, cta }} ) => {
+const QuickForm = ({ data: { heading, subheading, cta } }) => {
   const {
-    global : {
+    global: {
       quickForm_Paragraph,
       quickForm_Person,
     }
@@ -36,33 +37,7 @@ const QuickForm = ( { data: { heading, subheading, cta }} ) => {
         <DecorativeHeading type="h2">{heading}</DecorativeHeading>
         <ReactMarkdown className="subheading">{subheading}</ReactMarkdown>
       </header>
-      <form action="post">
-        <div className="input">
-          <label>
-            <span>Imię</span>
-            <input type="text" />
-          </label>
-        </div>
-        <div className="input">
-          <label>
-            <span>Email</span>
-            <input type="email" />
-          </label>
-        </div>
-        <div className="input">
-          <label>
-            <span>Telefon</span>
-            <input type="tel" />
-          </label>
-        </div>
-        <div className="input legal">
-          <label>
-            <input type="checkbox" name="legal" />
-            <span>Zgadzam się na <Link to="/pl/polityka-prywatnosci">przetwarzanie moich danych</Link></span>
-          </label>
-        </div>
-        <Button theme="primary">{cta}</Button>
-      </form>
+      <Form />
       <div className="info">
         <p>{quickForm_Paragraph}</p>
         <div className="person">
@@ -83,6 +58,7 @@ const QuickForm = ( { data: { heading, subheading, cta }} ) => {
 
 const Wrapper = styled.aside`
   margin: 64px 0;
+  position: relative;
   &:last-child{
     margin-bottom: 0;
   }
@@ -95,6 +71,8 @@ const Wrapper = styled.aside`
     font-size: ${Clamp(20, 32, 30)};
   }
   .info {
+    position: relative;
+    z-index: 5;
     padding-top: ${Clamp(16, 20, 24, 'px')};
     border-top: 1px solid var(--neutral-800);
     font-size: ${Clamp(20, 32, 30)};
@@ -110,63 +88,21 @@ const Wrapper = styled.aside`
       text-decoration: none;
     }
   }
-  form {
+  form{
     margin: 32px 0;
-    .input {
-      width: 100%;
-      margin-bottom: 32px;
-      span {
-        display: inline-block;
-        margin-left: 12px;
-        padding: 0 16px;
-        background-color: var(--neutral-900);
-        transform: translateY(50%);
-        pointer-events: none;
-      }
-      input {
-        width: 100%;
-        background: linear-gradient(var(--neutral-900), var(--neutral-900)) padding-box,
-                    var(--gradient) border-box;
-        border: 2px solid var(--neutral-700);
-        border-radius: 2px;
-        height: 58px;
-        outline: none;
-        padding: 14px 16px;
-        transition: border-color .1s;
-        &:hover {
-          border-color: var(--neutral-300);
-        }
-        &:focus {
-          border-color: transparent;
-        }
-      }
-      &.legal {
-        label {
-          display: grid;
-          grid-template-columns: auto 1fr;
-        }
-        span {
-          transform: unset;
-          pointer-events: auto;
-          margin-left: 8px;
-          padding: 0;
-          margin-top: 2px;
-        }
-        input {
-          cursor: pointer;
-          width: 28px;
-          height: 28px;
-          padding: 0;
-          background-color: transparent;
-          &:checked {
-            background: var(--gradient);
-            border: none;
-          }
-        }
-        a {
-          text-decoration: underline;
-        }
-      }
+    input, textarea{
+      background: var(--neutral-900) !important;
+      position: relative;
+      z-index: 2;
+    }
+
+    .legend{
+      background: var(--neutral-900) !important;
+      z-index: 3;
+    }
+
+    .border{
+      z-index: 0;
     }
   }
   @media (max-width: 1329px){
@@ -180,6 +116,7 @@ const Wrapper = styled.aside`
     padding-left: 16px;
     padding-right: 16px;
     margin: 0 calc(var(--pageMargin) * -1);
+    margin-top: 32px;
     .info {
       .img {
         width: 48px;

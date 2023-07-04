@@ -5,7 +5,7 @@ export const Range = ({ left, right, register }) => (
   <Wrapper>
     <span className="left">{left}</span>
     <div className="input-wrap">
-      <input {...register} type="range" min={1} defaultValue={4} max={7} />
+      <input {...register} type="range" min={'1'} defaultValue={'4'} max={'7'} />
       <div className="dots">
         <span />
         <span />

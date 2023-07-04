@@ -1,12 +1,12 @@
 import React from "react";
 import { graphql } from "gatsby";
-import { SEO } from "../../components/global/Seo";
-import Hero from "../../components/sections/Contact/Hero";
-import ContactUs from "../../components/sections/Contact/ContactUs";
-import Pricing from "../../components/sections/Contact/Pricing";
-import Team from "../../components/sections/Team";
-import Faq from "../../components/sections/Faq";
-import Helpdesk from "../../components/sections/Contact/Helpdesk";
+import { SEO } from "../components/global/Seo";
+import Hero from "../components/sections/Contact/Hero";
+import ContactUs from "../components/sections/Contact/ContactUs";
+import Pricing from "../components/sections/Contact/Pricing";
+import Team from "../components/sections/Team";
+import Faq from "../components/sections/Faq";
+import Helpdesk from "../components/sections/Contact/Helpdesk";
 
 const ContactPage = ({
   data: { page: {

@@ -3,16 +3,17 @@ import styled from "styled-components"
 import DecorativeHeading from "../atoms/DecorativeHeading";
 import { Clamp } from "../../utils/functions";
 import { ScrollDown } from "../atoms/Icons";
+import { ReactMarkdown } from "react-markdown/lib/react-markdown";
 
-export default function Hero({setStep}) {
+export default function Hero({ setStep, data }) {
 
   useEffect(() => {
     const handleScroll = (e) => {
       setStep(1)
     };
-    window.addEventListener("wheel", handleScroll);
+    window.addEventListener("scroll", handleScroll);
     return () => {
-      window.removeEventListener("wheel", handleScroll);
+      window.removeEventListener("scroll", handleScroll);
     };
   }, []);
 
@@ -21,16 +22,16 @@ export default function Hero({setStep}) {
       <div className="sticky">
         <div className="grid">
           <div>
-            <DecorativeHeading type="h1">Daj znać, co Ci chodzi po głowie!</DecorativeHeading>
-            <p className="left">Ruszasz na podbój kosmosu onlajnu? Przyda Ci się solidne [ wsparcie ] z ziemi!</p>
+            <DecorativeHeading type="h1">{data.hero_Heading}</DecorativeHeading>
+            <ReactMarkdown className="left">{data.hero_Subheading}</ReactMarkdown>
           </div>
           <div>
-            <p className="top">Podziel się z nami swoimi zamiarami, a my odwdzięczymy się wstępną wyceną i [ planem działań ].</p>
-            <p className="bot">Całość nie zajmie Ci dłużej niż 4 minuty 17 sekund. Słowo!</p>
+            <ReactMarkdown className="top">{data.hero_Paragraph}</ReactMarkdown>
+            <ReactMarkdown className="bot" components={{ 'p': 'h3' }}>{data.hero_Paragraph2}</ReactMarkdown>
           </div>
         </div>
         <div className="scroll">
-          <p>[ Scrolluj ], by przejść do formularza</p>
+          <ReactMarkdown >{data.hero_ScrollText}</ReactMarkdown>
           <ScrollDown />
         </div>
       </div>
@@ -66,11 +67,24 @@ const Wrapper = styled.section`
     grid-template-columns: 740fr 520fr;
     align-items: flex-end;
     gap: 32px;
+
+    @media (max-width: 1024px) {
+      display: block;
+
+      .left{
+        margin-bottom: 24px;
+      }
+    }
   }
 
   .left{
     font-size: ${Clamp(16, 22, 30)};
     margin-top: 32px;
+
+    em{
+      color: var(--neutral-700);
+      font-style: normal;
+    }
   }
 
   .top{

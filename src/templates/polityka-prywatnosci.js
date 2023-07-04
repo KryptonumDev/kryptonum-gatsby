@@ -1,10 +1,10 @@
 import * as React from "react"
 import { graphql } from "gatsby";
-import { SEO } from "../../components/global/Seo";
-import HeroTwoColumns from "../../components/sections/HeroTwoColumns";
-import SimpleCtaSection from "../../components/sections/SimpleCtaSection";
-import KeyElements from "../../components/sections/PrivacyPolicy/KeyElements";
-import Content from "../../components/sections/PrivacyPolicy/Content";
+import { SEO } from "../components/global/Seo";
+import HeroTwoColumns from "../components/sections/HeroTwoColumns";
+import SimpleCtaSection from "../components/sections/SimpleCtaSection";
+import KeyElements from "../components/sections/PrivacyPolicy/KeyElements";
+import Content from "../components/sections/PrivacyPolicy/Content";
 
 const PrivacyPolicyPage = ({
   data: { page: {

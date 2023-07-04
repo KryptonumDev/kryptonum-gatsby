@@ -31,11 +31,11 @@ export default function Pagination({ currentPage, itemCount, urlBasis }) {
           : `${urlBasis}`}
       >
         <svg width="33" height="32" viewBox="0 0 33 32" fill="none" xmlns="http://www.w3.org/2000/svg">
-          <path d="M20.75 24L12.75 16L20.75 8" stroke="#EFF0F3" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+          <path d="M20.75 24L12.75 16L20.75 8" stroke="#EFF0F3" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
         </svg>
       </Button>
       <div className="center">
-        {pagesCount < 5 ? (
+        {pagesCount < 6 ? (
           <>
             {buttons.map(el => (
               <Button
@@ -115,7 +115,7 @@ export default function Pagination({ currentPage, itemCount, urlBasis }) {
             : `${urlBasis}/${pagesCount}`}
       >
         <svg width="33" height="32" viewBox="0 0 33 32" fill="none" xmlns="http://www.w3.org/2000/svg">
-          <path d="M12.75 24L20.75 16L12.75 8" stroke="#EFF0F3" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+          <path d="M12.75 24L20.75 16L12.75 8" stroke="#EFF0F3" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
         </svg>
       </Button>
     </Wrapper>

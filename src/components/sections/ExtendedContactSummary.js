@@ -3,7 +3,7 @@ import styled from "styled-components";
 import LatestBlogEntries from "./LatestBlogEntries";
 import { Clamp } from "../../utils/functions";
 
-export default function Summary({ name, endTime }) {
+export default function   Summary({ name, endTime }) {
   return (
     <Wrapper>
       <div className="text-part">

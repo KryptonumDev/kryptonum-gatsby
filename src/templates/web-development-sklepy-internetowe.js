@@ -1,38 +1,35 @@
 import * as React from "react"
 import { graphql } from "gatsby";
-import { SEO } from "../../components/global/Seo";
-import HeroServices from "../../components/sections/HeroServices";
-import SimpleCtaSection from "../../components/sections/SimpleCtaSection";
-import QuickForm from "../../components/sections/QuickForm";
-import CaseStudies from "../../components/sections/CaseStudies";
-import CtaSection from "../../components/sections/CtaSection";
-import Showcase from "../../components/sections/GraphicsAndDesign_Logo/Showcase";
-import ListSection from "../../components/sections/ListSection";
-import LatestBlogEntries from "../../components/sections/LatestBlogEntries";
+import { SEO } from "../components/global/Seo";
+import HeroServices from "../components/sections/HeroServices";
+import QuickForm from "../components/sections/QuickForm";
+import CaseStudies from "../components/sections/CaseStudies";
+import CtaSection from "../components/sections/CtaSection";
+import Process from "../components/sections/WebDevelopment_Ecom/Process";
+import Develop from "../components/sections/WebDevelopment_Ecom/Develop";
+import LatestBlogEntries from "../components/sections/LatestBlogEntries";
 
-const LogoPage = ({
-  data: { page: {
+const WebDevelopmentPWAsPage = ({ data }) => {
+  const { page: {
     hero_Heading,
     hero_Annotation,
     hero_Paragraph,
     hero_SecondParagraph,
     hero_Img,
-    simpleCtaSection,
-    showcase_Heading,
-    showcase_Paragraph,
-    showcase_List,
-    showcase_SummaryLeft,
-    showcase_SummaryRight,
-    quickForm,
+    hero_CtaHeading,
+    hero_Cta,
     process_Heading,
-    process_Paragraph,
-    process_Title,
+    process_Claim,
     process_List,
+    quickForm,
     caseStudies_Heading,
+    develop_Paragraph1,
+    develop_Paragraph2,
+    develop_Paragraph3,
+    develop_Paragraph4,
     ctaSection,
     blogEntries_Heading,
-  }}
-}) => {
+  } } = data;
   return (
     <>
       <HeroServices data={{
@@ -41,23 +38,22 @@ const LogoPage = ({
         hero_Paragraph,
         hero_SecondParagraph,
         hero_Img,
+        hero_CtaHeading,
+        hero_Cta
       }} />
-      <SimpleCtaSection data={simpleCtaSection} />
-      <Showcase data={{
-        showcase_Heading,
-        showcase_Paragraph,
-        showcase_List,
-        showcase_SummaryLeft,
-        showcase_SummaryRight,
+      <Process data={{
+        process_Heading,
+        process_Claim,
+        process_List,
       }} />
       <QuickForm data={quickForm} />
-      <ListSection
-        heading={process_Heading}
-        paragraph={process_Paragraph}
-        title={process_Title}
-        list={process_List}
-      />
       <CaseStudies heading={caseStudies_Heading} />
+      <Develop data={{
+        develop_Paragraph1,
+        develop_Paragraph2,
+        develop_Paragraph3,
+        develop_Paragraph4,
+      }} />
       <CtaSection data={ctaSection} />
       <LatestBlogEntries heading={blogEntries_Heading} />
     </>
@@ -66,7 +62,7 @@ const LogoPage = ({
 
 export const query = graphql`
   query {
-    page: sanityGraphicsDesignLogo {
+    page: sanityWebDevelopmentEcom {
       # Hero
       hero_Heading
       hero_Annotation
@@ -78,41 +74,41 @@ export const query = graphql`
           gatsbyImageData(placeholder: BLURRED)
         }
       }
-      # Simple CTA Section
-      simpleCtaSection {
+      hero_CtaHeading
+      hero_Cta {
+        theme
+        text
+        href
+      }
+      # Process
+      process_Heading
+      process_Claim
+      process_List {
         heading
+        subheading
+        paragraph
+        secondParagraph
+        secondHeading
         cta {
           theme
-          href
           text
+          href
         }
       }
-      # Showcase
-      showcase_Heading
-      showcase_Paragraph
-      showcase_List {
-        title
-        description
-      }
-      showcase_SummaryLeft
-      showcase_SummaryRight
       # Quick Form
       quickForm {
         heading
         subheading
         cta
       }
-      # Process
-      process_Heading
-      process_Paragraph
-      process_Title
-      process_List {
-        title
-        description
-      }
       # Case Studies
       caseStudies_Heading
-      # CTA Section
+      # Develop
+      develop_Paragraph1
+      develop_Paragraph2
+      develop_Paragraph3
+      develop_Paragraph4
+      # Call To Action
       ctaSection {
         heading
         cta {
@@ -127,7 +123,7 @@ export const query = graphql`
           }
         }
       }
-      # Blog entries
+      # Blog Entries
       blogEntries_Heading
       # Scroll To Next
       scrollToNext {
@@ -148,7 +144,7 @@ export const query = graphql`
   }
 `
 
-export default LogoPage;
+export default WebDevelopmentPWAsPage;
 
 export const Head = ({
   data: { page: { seo: {
@@ -159,6 +155,6 @@ export const Head = ({
   <SEO
     title={title}
     description={description}
-    url='/pl/grafika-design-projektowanie-logo'
+    url='/pl/web-development-sklepy-internetowe'
   />
 )
