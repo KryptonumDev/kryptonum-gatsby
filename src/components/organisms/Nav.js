@@ -795,7 +795,7 @@ const Wrapper = styled.nav`
             width: 32px;
             height: 32px;
             path {
-              strokeWidth: 1;
+              stroke-width: 1;
             }
           }
         }
