@@ -10,6 +10,7 @@ import KeyElements from "../components/sections/AcademyEntry/KeyElements";
 import Highlight from "../components/sections/AcademyEntry/Highlight";
 import Note from "../components/sections/AcademyEntry/Note";
 import Tiles from "../components/sections/AcademyEntry/Tiles";
+import LargeList from "../components/sections/LargeList";
 
 const CuriosityEntryPage = ({
   data: { page: {
@@ -82,6 +83,16 @@ const CuriosityEntryPage = ({
                 heading={component.heading}
                 list={component.list}
                 annotation={component.annotation}
+              />
+            );
+          case 'curiosity_LargeList':
+            return (
+              <LargeList
+                key={i}
+                isHeading={true}
+                title={component.heading}
+                list={component.list}
+                paragraph={component.paragraph}
               />
             );
           default:
@@ -179,6 +190,12 @@ export const query = graphql`
           heading
           list
           annotation
+        }
+        ... on SanityCuriosityLargeList {
+          _type
+          heading
+          list
+          paragraph
         }
       }
       share {
