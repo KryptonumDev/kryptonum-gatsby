@@ -7,6 +7,7 @@ import Sources from "../components/sections/AcademyEntry/Sources";
 import LatestCuriosityEntries from "../components/sections/LatestCuriosityEntries";
 import ImageAndStandout from "../components/sections/ImageAndStandout";
 import KeyElements from "../components/sections/AcademyEntry/KeyElements";
+import Highlight from "../components/sections/AcademyEntry/Highlight";
 
 const CuriosityEntryPage = ({
   data: { page: {
@@ -52,6 +53,14 @@ const CuriosityEntryPage = ({
                 key={i}
                 heading={component.heading}
                 list={component.list}
+              />
+            );
+          case 'curiosity_Highlight':
+            return (
+              <Highlight
+                key={i}
+                heading={component.heading}
+                paragraph={component.paragraph}
               />
             );
           default:
@@ -132,6 +141,11 @@ export const query = graphql`
             }
           }
           reversed
+        }
+        ... on SanityCuriosityHighlight {
+          _type
+          heading
+          paragraph
         }
       }
       share {
