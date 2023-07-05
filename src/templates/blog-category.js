@@ -67,11 +67,6 @@ export const query = graphql`
           }
         }
       }
-      # SEO
-      seo {
-        title
-        description
-      }
     }
     blogCategories: allSanityBlogCategories {
       nodes {
@@ -93,6 +88,11 @@ export const query = graphql`
           altText
           gatsbyImageData(placeholder: BLURRED)
         }
+      }
+      # SEO
+      seo {
+        title
+        description
       }
     }
     blogEntries: allSanityBlogEntries(limit: $perPage, skip: $skip, sort: {_createdAt: DESC}, filter: {categories: {elemMatch: {id: {eq: $id}}}}) {
@@ -136,14 +136,16 @@ export const query = graphql`
 export default BlogCategoryPage;
 
 export const Head = ({
-  data: { page: { seo: {
-    title,
-    description
-  } },
+  data: {
     blogCategory: {
-      slug
+      slug,
+      seo: {
+        title,
+        description
+      }
     }
-  } }) => (
+  }
+}) => (
   <SEO
     title={title}
     description={description}
