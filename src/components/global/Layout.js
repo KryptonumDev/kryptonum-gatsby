@@ -72,7 +72,7 @@ const Layout = ({ data: { page }, children, pageContext }) => {
           }
         }
       }
-      curiosityEntries: allSanityCuriosityEntries(limit: 2) {
+      curiosityEntries: allSanityCuriosityEntries(limit: 2, sort: {_createdAt: DESC}) {
         nodes {
           title
           slug {

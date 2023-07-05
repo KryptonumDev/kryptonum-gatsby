@@ -9,6 +9,7 @@ import ImageAndStandout from "../components/sections/ImageAndStandout";
 import KeyElements from "../components/sections/AcademyEntry/KeyElements";
 import Highlight from "../components/sections/AcademyEntry/Highlight";
 import Note from "../components/sections/AcademyEntry/Note";
+import Tiles from "../components/sections/AcademyEntry/Tiles";
 
 const CuriosityEntryPage = ({
   data: { page: {
@@ -31,6 +32,7 @@ const CuriosityEntryPage = ({
         title={title}
         subtitle={subtitle}
         categories={categories}
+        categorySlug='/pl/akademia/kategoria/'
         _createdAt={_createdAt}
         author={author}
         img={img}
@@ -71,6 +73,15 @@ const CuriosityEntryPage = ({
                 heading={component.heading}
                 paragraph={component.paragraph}
                 attention={component.attention}
+              />
+            );
+          case 'curiosity_Tiles':
+            return (
+              <Tiles
+                key={i}
+                heading={component.heading}
+                list={component.list}
+                annotation={component.annotation}
               />
             );
           default:
@@ -162,6 +173,12 @@ export const query = graphql`
           heading
           paragraph
           attention
+        }
+        ... on SanityCuriosityTiles {
+          _type
+          heading
+          list
+          annotation
         }
       }
       share {

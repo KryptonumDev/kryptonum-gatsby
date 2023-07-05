@@ -253,7 +253,7 @@ const Nav = ({
                           <div className="copy">
                             <div className="copy-top">
                               <Link
-                                to={`/pl/zespol/${entry.author[0]?.slug.current}`}
+                                to={`/pl/zespol/${entry.author[0]?.slug?.current}`}
                                 onClick={(e) => handleNavLinks(e)}
                               >
                                 <GatsbyImage
@@ -261,7 +261,7 @@ const Nav = ({
                                   alt={entry.author[0]?.img.asset.altText || ''}
                                   className="person-border"
                                 />
-                                <span>{entry.author[0].name}</span>
+                                <span>{entry.author[0]?.name}</span>
                               </Link>
                               <span>{entry._createdAt}</span>
                             </div>

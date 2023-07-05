@@ -23,6 +23,7 @@ const BlogEntryPage = ({
         title={title}
         subtitle={subtitle}
         categories={categories}
+        categorySlug='/pl/blog/kategoria/'
         _createdAt={_createdAt}
         img={img}
       />

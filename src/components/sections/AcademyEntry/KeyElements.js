@@ -11,7 +11,10 @@ const KeyElements = ({ heading, list }) => {
       <ol>
         {list.map((item, i) => (
           <li key={i}>
-            <ReactMarkdown components={{ 'p': 'span' }}>{item}</ReactMarkdown>
+            <ReactMarkdown components={{
+              p: 'span',
+              a: ({ href, children }) => <a href={href} target="_blank" rel="noreferrer">{children}</a>
+            }}>{item}</ReactMarkdown>
           </li>
         ))}
       </ol>
@@ -20,6 +23,9 @@ const KeyElements = ({ heading, list }) => {
 }
 
 const Wrapper = styled.section`
+  a {
+    text-decoration: underline;
+  }
   display: grid;
   @media (min-width: 1189px){
     gap: 72px;

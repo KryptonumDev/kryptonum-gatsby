@@ -10,6 +10,7 @@ const EntryHero = ({
   title,
   subtitle,
   categories,
+  categorySlug,
   _createdAt,
   img,
   author
@@ -31,7 +32,7 @@ const EntryHero = ({
         )}
         <div className="categories">
           {categories.map((category, i) => (
-            <Link key={i} to={`/pl/blog/kategoria/${category.slug.current}`}>{category.name}</Link>
+            <Link key={i} to={`${categorySlug}${category.slug.current}`}>{category.name}</Link>
           ))}
         </div>
         <p className="createdAt">{_createdAt}</p>
