@@ -8,6 +8,7 @@ import LatestCuriosityEntries from "../components/sections/LatestCuriosityEntrie
 import ImageAndStandout from "../components/sections/ImageAndStandout";
 import KeyElements from "../components/sections/AcademyEntry/KeyElements";
 import Highlight from "../components/sections/AcademyEntry/Highlight";
+import Note from "../components/sections/AcademyEntry/Note";
 
 const CuriosityEntryPage = ({
   data: { page: {
@@ -61,6 +62,15 @@ const CuriosityEntryPage = ({
                 key={i}
                 heading={component.heading}
                 paragraph={component.paragraph}
+              />
+            );
+          case 'curiosity_Note':
+            return (
+              <Note
+                key={i}
+                heading={component.heading}
+                paragraph={component.paragraph}
+                attention={component.attention}
               />
             );
           default:
@@ -146,6 +156,12 @@ export const query = graphql`
           _type
           heading
           paragraph
+        }
+        ... on SanityCuriosityNote {
+          _type
+          heading
+          paragraph
+          attention
         }
       }
       share {
