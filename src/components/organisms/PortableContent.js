@@ -9,6 +9,7 @@ import { Star } from "../atoms/Icons";
 import QuickForm from "./portableText/QuickForm";
 import OrderedList from "./portableText/OrderedList";
 import UnorderedList from "./portableText/UnorderedList";
+import Tiles from "./portableText/Tiles";
 
 const sanityConfig = {projectId: process.env.GATSBY_SANITY_PROJECT_ID, dataset: process.env.GATSBY_SANITY_DATASET}
 
@@ -30,6 +31,7 @@ const components = {
       });
       return <UnorderedList data={newArray} />
     },
+    blog_Tiles: ({ value: { array } }) => <Tiles data={array} />
   },
   block: {
     h2: ({ value }) => <DecorativeHeading type="h2" id={slugify(toPlainText(value))}>{portableTextToMarkdown(value)}</DecorativeHeading>,

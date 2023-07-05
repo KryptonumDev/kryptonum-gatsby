@@ -33,9 +33,9 @@ const LargeList = ({ isHeading, title, list, paragraph, paragraph2 }) => {
 
 const Wrapper = styled.section`
   .title {
-    text-align: center;
     margin: ${Clamp(32, 64, 96, 'px')} auto ${Clamp(28, 48, 64, 'px')};
     &:not(.heading){
+      text-align: center;
       font-size: ${Clamp(20, 32, 30)};
     }
   }

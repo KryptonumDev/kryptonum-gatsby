@@ -103,6 +103,7 @@ const Wrapper = styled.section`
     max-width: 600px;
     max-height: 600px;
     margin: 0 auto;
+    border: 1px solid var(--neutral-800);
   }
   @media (max-width: 1199px){
     grid-template-columns: 1fr;

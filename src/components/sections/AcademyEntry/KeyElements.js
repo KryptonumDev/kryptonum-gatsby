@@ -12,7 +12,6 @@ const KeyElements = ({ heading, list }) => {
         {list.map((item, i) => (
           <li key={i}>
             <ReactMarkdown components={{
-              p: 'span',
               a: ({ href, children }) => <a href={href} target="_blank" rel="noreferrer">{children}</a>
             }}>{item}</ReactMarkdown>
           </li>
@@ -45,7 +44,7 @@ const Wrapper = styled.section`
       display: grid;
       grid-template-columns: auto 1fr;
       gap: 16px;
-      span {
+      p {
         padding-top: .4em;
       }
       &::before {

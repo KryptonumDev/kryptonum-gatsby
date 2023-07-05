@@ -703,7 +703,8 @@ const Wrapper = styled.nav`
   }
   .backBtn {
     display: none;
-    width: 100%;
+    margin: 0 calc(var(--pageMargin) * -1);
+    width: calc(100% + var(--pageMargin) * 2);
     align-items: center;
     font-size: ${20/16}rem;
     gap: 4px;
@@ -714,6 +715,9 @@ const Wrapper = styled.nav`
     position: sticky;
     top: 0;
     z-index: 4;
+    svg {
+      margin-left: var(--pageMargin);
+    }
     span {
       margin: 0 auto;
     }
