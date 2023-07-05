@@ -41,13 +41,13 @@ const Wrapper = styled.div`
   .cta, .categories a {
     z-index: 2;
   }
-  .img {
-    max-width: 516px;
-  }
   display: grid;
-  grid-template-columns: auto auto;
+  grid-template-columns: 1fr 2fr;
   column-gap: 32px;
   align-items: center;
+  .img {
+    border: 1px solid var(--neutral-800);
+  }
   .copy {
     padding: 16px 0;
     .categories {
@@ -71,10 +71,7 @@ const Wrapper = styled.div`
       margin-bottom: ${Clamp(24, 32, 32, 'px')};
     }
   }
-  @media (max-width: 768px){
-    .img {
-      max-width: unset;
-    }
+  @media (max-width: 989px){
     grid-template-columns: 1fr;
     gap: 24px;
   }

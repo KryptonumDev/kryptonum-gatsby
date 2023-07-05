@@ -66,19 +66,20 @@ const Wrapper = styled.section`
     font-size: ${Clamp(16, 30, 30)};
   }
   font-size: ${Clamp(16, 22, 22)};
-  h2 {
+  > h2 {
     &:not(:nth-child(2)) {
       margin-top: 96px;
     }
     margin-bottom: 32px;
   }
-  h3 {
+  > h3 {
     &:not(:first-child) {
       margin-top: 96px;
     }
     margin-bottom: 32px;
   }
   > .img {
+    border: 1px solid var(--neutral-800);
     margin-top: 96px;
     & + h3 {
       margin-top: 48px;

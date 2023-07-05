@@ -25,10 +25,10 @@ export default function Form() {
       headers: {
         'Content-Type': 'application/json',
       }
-    }).then((res) => {
+    }).then(() => {
       clear()
       setIsEmailSent('success')
-    }).catch((error) => {
+    }).catch(() => {
       setIsEmailSent('failed')
     })
   }
@@ -106,14 +106,13 @@ const Overlay = styled(motion.div)`
   position: absolute;
   z-index: 4;
   inset: -2px;
-  /* pointer-events: none;
-  opacity: 0; */
   border-radius: 4px;
   background: var(--neutral-900, #101012);
   padding: ${Clamp(24, 48, 64)} ${Clamp(16, 64, 64)} 0 ${Clamp(16, 64, 64)};
   display: grid;
 
   .grid{
+    margin: auto;
     display: grid;
     gap: 32px;
     height: fit-content;

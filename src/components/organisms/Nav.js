@@ -248,7 +248,7 @@ const Nav = ({
                           <GatsbyImage
                             image={entry.img?.asset.gatsbyImageData}
                             alt={entry.img?.asset.altText || ''}
-                            className="thumbnail"
+                            className="img"
                           />
                           <div className="copy">
                             <div className="copy-top">
@@ -325,7 +325,7 @@ const Nav = ({
                           <GatsbyImage
                             image={curiosity.img.asset.gatsbyImageData}
                             alt={curiosity.img.asset.altText || ''} 
-                            className="thumbnail"
+                            className="img"
                           />
                           <p>{removeMarkdown(curiosity.title)}</p>
                         </Link>
@@ -525,6 +525,9 @@ const Wrapper = styled.nav`
             display: grid;
             grid-template-columns: 128px 1fr;
             gap: ${Clamp(12, 22, 22)};
+            .img {
+              border: 1px solid var(--neutral-800);
+            }
             .copy {
               .copy-top {
                 display: flex;
@@ -604,6 +607,9 @@ const Wrapper = styled.nav`
             p {
               font-size: ${20/16}rem;
             }
+          }
+          .img {
+            border: 1px solid var(--neutral-800);
           }
         }
         .categories {

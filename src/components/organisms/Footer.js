@@ -223,6 +223,7 @@ const Wrapper = styled.footer`
           .thumbnail {
             max-width: 156px;
             max-height: 156px;
+            border: 1px solid var(--neutral-800);
           }
           .link {
             position: absolute;
