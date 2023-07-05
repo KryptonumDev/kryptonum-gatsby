@@ -5,7 +5,7 @@ import Kontakt from "../components/sections/ExtendedContact";
 import Hero from "../components/sections/ExtendedContactHero";
 import Summary from "../components/sections/ExtendedContactSummary";
 import { AnimatePresence, motion } from "framer-motion";
-import Loader from "../components/sections/Loader";
+import Loader from "../components/atoms/Loader";
 
 const BriefPage = ({ data }) => {
 

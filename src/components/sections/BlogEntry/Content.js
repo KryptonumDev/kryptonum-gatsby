@@ -23,7 +23,7 @@ const Content = ({ _rawContent, author, share }) => {
       const btnSpan = btn.querySelector('span');
       const btnSpanText = btnSpan.textContent;
       await navigator.clipboard.writeText(shareData.url);
-      btnSpan.textContent = 'Skopiowano!'
+      btnSpan.textContent = 'Skopiowano link! 👏🏼'
       setTimeout(() => {
         btnSpan.textContent = btnSpanText;
       }, 3000);
@@ -43,11 +43,11 @@ const Content = ({ _rawContent, author, share }) => {
             />
             <p>Autor: {author.name}</p>
           </Link>
+          <button className="share" onClick={(e) => handleShare(e)}>
+            <Share />
+            <span>Udostępnij</span>
+          </button>
           <div className="overflow">
-            <button className="share" onClick={(e) => handleShare(e)}>
-              <Share />
-              <span>Udostępnij</span>
-            </button>
             <TableOfContent content={_rawContent} />
           </div>
         </nav>
@@ -82,7 +82,7 @@ const Wrapper = styled.section`
       display: flex;
       flex-direction: column;
       .overflow {
-        padding: 16px 16px 32px;
+        padding: 32px 24px;
       }
       .author {
         text-align: center;
@@ -100,7 +100,7 @@ const Wrapper = styled.section`
         align-items: center;
         gap: 8px;
         font-size: ${Clamp(16, 22, 22)};
-        margin: 0 auto 24px;
+        margin: 16px auto;
       }
     }
     @media (min-width: 1099px){
@@ -118,7 +118,7 @@ const Wrapper = styled.section`
           &::after {
             content: '';
             width: 100%;
-            height: 16px;
+            height: 24px;
             display: block;
             position: sticky;
             left: 0;

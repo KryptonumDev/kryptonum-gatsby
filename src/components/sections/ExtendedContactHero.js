@@ -8,8 +8,10 @@ import { ReactMarkdown } from "react-markdown/lib/react-markdown";
 export default function Hero({ setStep, data }) {
 
   useEffect(() => {
-    const handleScroll = (e) => {
-      setStep(1)
+    const handleScroll = () => {
+      if(window.scrollY >= 20){
+        setStep(1);
+      }
     };
     window.addEventListener("scroll", handleScroll);
     return () => {
@@ -43,8 +45,6 @@ const Wrapper = styled.section`
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  margin-top: ${Clamp(64, 128, 172, "px")};
-
   .sticky{
     position: sticky;
     top: 200px;

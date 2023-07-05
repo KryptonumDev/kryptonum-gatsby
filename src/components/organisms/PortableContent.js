@@ -67,7 +67,7 @@ const Wrapper = styled.section`
   }
   font-size: ${Clamp(16, 22, 22)};
   h2 {
-    &:not(:first-of-type) {
+    &:not(:nth-child(2)) {
       margin-top: 96px;
     }
     margin-bottom: 32px;

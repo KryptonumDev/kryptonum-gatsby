@@ -2,12 +2,11 @@ import * as React from "react"
 import { graphql } from "gatsby";
 import { SEO } from "./../components/global/Seo";
 import EntryHero from "../components/sections/EntryHero";
-import Meaty from "../components/sections/AcademyEntry/Meaty";
-import Standout from "../components/sections/AcademyEntry/Standout";
-import Showcase from "../components/sections/AcademyEntry/Showcase";
 import Share from "../components/sections/AcademyEntry/Share";
-import LatestCuriosityEntries from "../components/sections/LatestCuriosityEntries";
 import Sources from "../components/sections/AcademyEntry/Sources";
+import LatestCuriosityEntries from "../components/sections/LatestCuriosityEntries";
+import ImageAndStandout from "../components/sections/ImageAndStandout";
+import KeyElements from "../components/sections/AcademyEntry/KeyElements";
 
 const CuriosityEntryPage = ({
   data: { page: {
@@ -18,19 +17,10 @@ const CuriosityEntryPage = ({
     categories,
     img,
     _createdAt,
-    meaty_Heading,
-    meaty_List,
-    standout_Heading,
-    standout_Paragraph,
-    showcase_Heading,
-    showcase_Img,
-    showcase_Paragraph,
-    showcase_Paragraph2,
-    share_Heading,
-    share_Img,
-    sources_Heading,
-    sources_List,
-    latestCuriosities_Heading
+    content,
+    share,
+    sources,
+    latestCuriosities_Heading,
   }}
 }) => {
   return (
@@ -43,29 +33,43 @@ const CuriosityEntryPage = ({
         author={author}
         img={img}
       />
-      <Meaty
-        heading={meaty_Heading}
-        list={meaty_List}
-      />
-      <Standout
-        heading={standout_Heading}
-        paragraph={standout_Paragraph}
-      />
-      <Showcase
+      {content.map((component, i) => {
+        switch (component._type) {
+          case 'standout':
+            return (
+              <ImageAndStandout
+                key={i}
+                heading={component.heading}
+                paragraph={component.paragraph}
+                standout={component.standout}
+                img={component.img}
+                reversed={component.reversed}
+              />
+            );
+          case 'curiosity_KeyElements':
+            return (
+              <KeyElements
+                key={i}
+                heading={component.heading}
+                list={component.list}
+              />
+            );
+          default:
+            break;
+        }
+      })}
+      {/* <Showcase
         heading={showcase_Heading}
         img={showcase_Img}
         paragraph={showcase_Paragraph}
         paragraph2={showcase_Paragraph2}
-      />
+      /> */}
       <Share
-        heading={share_Heading}
-        img={share_Img}
+        heading={share.heading}
+        img={share.img}
         url={slug.current}
       />
-      <Sources
-        heading={sources_Heading}
-        list={sources_List}
-      />
+      <Sources data={sources} />
       <LatestCuriosityEntries heading={latestCuriosities_Heading} />
     </>
   );
@@ -110,30 +114,41 @@ export const query = graphql`
       }
       _createdAt(formatString: "D MMMM Y", locale: "pl")
       # Content
-      meaty_Heading
-      meaty_List
-      standout_Heading
-      standout_Paragraph
-      showcase_Heading
-      showcase_Img {
-        asset {
-          altText
-          gatsbyImageData
+      content {
+        ... on SanityCuriosityKeyElements {
+          _type
+          heading
+          list
+        }
+        ... on SanityStandout {
+          _type
+          heading
+          paragraph
+          standout
+          img {
+            asset {
+              altText
+              gatsbyImageData(placeholder: BLURRED)
+            }
+          }
+          reversed
         }
       }
-      showcase_Paragraph
-      showcase_Paragraph2
-      share_Heading
-      share_Img {
-        asset {
-          altText
-          gatsbyImageData(placeholder: NONE)
+      share {
+        heading
+        img {
+          asset {
+            altText
+            gatsbyImageData(placeholder: NONE)
+          }
         }
       }
-      sources_Heading
-      sources_List {
-        text
-        href
+      sources {
+        heading
+        list {
+          text
+          href
+        }
       }
       latestCuriosities_Heading
       # SEO

@@ -3,7 +3,7 @@ import styled from "styled-components";
 import { Clamp } from "../../../utils/functions";
 import DecorativeHeading from "../../atoms/DecorativeHeading";
 
-const Sources = ({ heading, list }) => {
+const Sources = ({ data: { heading, list }}) => {
   const showRootDomain = list.map(item => {
     const domain = new URL(item.href).hostname.replace('www.', '');
     return {
@@ -36,19 +36,20 @@ const Wrapper = styled.section`
       grid-template-columns: 1fr 1fr;
     }
     a {
-      p {
-        font-size: ${Clamp(20, 30, 30)};
-      }
-      span {
-        font-size: ${Clamp(16, 22, 22)};
-      }
       display: flex;
       flex-direction: column;
       gap: 8px;
       justify-content: space-between;
       padding: ${Clamp(20, 32, 32, 'px')};
-      border: 1px solid var(--neutral-900);
+      background-color: var(--neutral-900);
       border-radius: 2px;
+      p {
+        text-decoration: underline;
+        font-size: ${Clamp(20, 30, 30)};
+      }
+      span {
+        font-size: ${Clamp(16, 22, 22)};
+      }
     }
   }
 `

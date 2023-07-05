@@ -8,7 +8,9 @@ import DecorativeHeading from "../atoms/DecorativeHeading";
 const ImageAndStandout = ({ heading, paragraph, standout, img, reversed }) => {
   return (
     <Wrapper className={reversed ? 'reversed' : ''}>
-      <DecorativeHeading type="h2" className="heading">{heading}</DecorativeHeading>
+      {heading && (
+        <DecorativeHeading type="h2" className="heading">{heading}</DecorativeHeading>
+      )}
       <div className="column">
         <ReactMarkdown className="paragraph">{paragraph}</ReactMarkdown>
         <ReactMarkdown className="standout">{standout}</ReactMarkdown>

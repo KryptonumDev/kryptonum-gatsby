@@ -64,7 +64,6 @@ export default function Breadcrumbs({ portfolio, data }) {
 }
 
 const Wrapper = styled.nav`
-  overflow: hidden;
   &:not(.portfolio){
     margin-bottom: ${Clamp(16, 24, 24, 'px')};
     + * {
@@ -76,14 +75,13 @@ const Wrapper = styled.nav`
   }
   ul {
     max-width: calc(100vw - var(--pageMargin) * 2);
-    width: 100%;
     display: flex;
     align-items: center;
     gap: 8px;
+    white-space: nowrap;
     li {
       font-size: ${Clamp(14, 16, 18)};
       list-style-type: none;
-      white-space: nowrap;
       svg {
         display: block;
       }
