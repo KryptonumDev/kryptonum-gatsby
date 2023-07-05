@@ -50,6 +50,7 @@ const EntryHero = ({
 const Wrapper = styled.section`
   display: grid;
   grid-template-columns: 1.5fr 1fr;
+  align-items: center;
   gap: 48px 32px;
   header {
     max-width: ${739/16}rem;

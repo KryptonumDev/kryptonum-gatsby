@@ -11,6 +11,7 @@ import Highlight from "../components/sections/AcademyEntry/Highlight";
 import Note from "../components/sections/AcademyEntry/Note";
 import Tiles from "../components/sections/AcademyEntry/Tiles";
 import LargeList from "../components/sections/LargeList";
+import ColumnText from "../components/sections/AcademyEntry/ColumnText";
 
 const CuriosityEntryPage = ({
   data: { page: {
@@ -92,6 +93,14 @@ const CuriosityEntryPage = ({
                 isHeading={true}
                 title={component.heading}
                 list={component.list}
+                paragraph={component.paragraph}
+              />
+            );
+          case 'curiosity_ColumnText':
+            return (
+              <ColumnText
+                key={i}
+                heading={component.heading}
                 paragraph={component.paragraph}
               />
             );
@@ -195,6 +204,11 @@ export const query = graphql`
           _type
           heading
           list
+          paragraph
+        }
+        ... on SanityCuriosityColumnText {
+          _type
+          heading
           paragraph
         }
       }
