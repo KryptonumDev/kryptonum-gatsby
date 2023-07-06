@@ -4,7 +4,7 @@ import styled from "styled-components";
 import { Clamp } from "../../../utils/functions";
 import DecorativeHeading from "../../atoms/DecorativeHeading";
 
-const Standout = ({ heading, paragraph }) => {
+const Highlight = ({ heading, paragraph }) => {
   return (
     <Wrapper>
       <DecorativeHeading type="h2">{heading}</DecorativeHeading>
@@ -14,22 +14,22 @@ const Standout = ({ heading, paragraph }) => {
 }
 
 const Wrapper = styled.section`
+  padding: ${Clamp(34, 48, 64, 'px')} ${Clamp(16, 64, 110, 'px')};
   background-color: var(--neutral-900);
-  padding: ${Clamp(24, 40, 64, 'px')} ${Clamp(16, 40, 110, 'px')};
-  @media (max-width: 599px){
-    margin: 0 calc(var(--pageMargin) * -1);
-    padding-inline: 16px;
-  }
   border-radius: 2px;
   h2 {
-    margin-bottom: ${Clamp(32, 48, 48, 'px')}
+    margin-bottom: ${Clamp(28, 32, 48, 'px')}
   }
   .paragraph {
-    font-size: ${Clamp(16, 22, 22)};
+    font-size: ${Clamp(16, 28, 30)};
     p:not(:last-child){
       margin-bottom: 16px;
     }
   }
+  @media (max-width: 999px){
+    padding: ${Clamp(32, 48, 64, 'px')} var(--pageMargin);
+    margin: 0 calc(var(--pageMargin) * -1);
+  }
 `
 
-export default Standout;
+export default Highlight;

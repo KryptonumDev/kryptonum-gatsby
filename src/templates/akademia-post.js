@@ -2,12 +2,18 @@ import * as React from "react"
 import { graphql } from "gatsby";
 import { SEO } from "./../components/global/Seo";
 import EntryHero from "../components/sections/EntryHero";
-import Meaty from "../components/sections/AcademyEntry/Meaty";
-import Standout from "../components/sections/AcademyEntry/Standout";
-import Showcase from "../components/sections/AcademyEntry/Showcase";
 import Share from "../components/sections/AcademyEntry/Share";
-import LatestCuriosityEntries from "../components/sections/LatestCuriosityEntries";
 import Sources from "../components/sections/AcademyEntry/Sources";
+import LatestCuriosityEntries from "../components/sections/LatestCuriosityEntries";
+import ImageAndStandout from "../components/sections/ImageAndStandout";
+import KeyElements from "../components/sections/AcademyEntry/KeyElements";
+import Highlight from "../components/sections/AcademyEntry/Highlight";
+import Note from "../components/sections/AcademyEntry/Note";
+import Tiles from "../components/sections/AcademyEntry/Tiles";
+import LargeList from "../components/sections/LargeList";
+import ColumnText from "../components/sections/AcademyEntry/ColumnText";
+import QuickForm from "../components/sections/QuickForm";
+import ExtendedList from "../components/sections/AcademyEntry/ExtendedList";
 
 const CuriosityEntryPage = ({
   data: { page: {
@@ -18,19 +24,10 @@ const CuriosityEntryPage = ({
     categories,
     img,
     _createdAt,
-    meaty_Heading,
-    meaty_List,
-    standout_Heading,
-    standout_Paragraph,
-    showcase_Heading,
-    showcase_Img,
-    showcase_Paragraph,
-    showcase_Paragraph2,
-    share_Heading,
-    share_Img,
-    sources_Heading,
-    sources_List,
-    latestCuriosities_Heading
+    content,
+    share,
+    sources,
+    latestCuriosities_Heading,
   }}
 }) => {
   return (
@@ -39,34 +36,101 @@ const CuriosityEntryPage = ({
         title={title}
         subtitle={subtitle}
         categories={categories}
+        categorySlug='/pl/akademia/kategoria/'
         _createdAt={_createdAt}
         author={author}
         img={img}
       />
-      <Meaty
-        heading={meaty_Heading}
-        list={meaty_List}
-      />
-      <Standout
-        heading={standout_Heading}
-        paragraph={standout_Paragraph}
-      />
-      <Showcase
-        heading={showcase_Heading}
-        img={showcase_Img}
-        paragraph={showcase_Paragraph}
-        paragraph2={showcase_Paragraph2}
-      />
+      {content.map((component, i) => {
+        switch (component._type) {
+          case 'standout':
+            return (
+              <ImageAndStandout
+                key={i}
+                heading={component.heading}
+                paragraph={component.paragraph}
+                standout={component.standout}
+                img={component.img}
+                reversed={component.reversed}
+              />
+            );
+          case 'curiosity_KeyElements':
+            return (
+              <KeyElements
+                key={i}
+                heading={component.heading}
+                list={component.list}
+              />
+            );
+          case 'curiosity_Highlight':
+            return (
+              <Highlight
+                key={i}
+                heading={component.heading}
+                paragraph={component.paragraph}
+              />
+            );
+          case 'curiosity_Note':
+            return (
+              <Note
+                key={i}
+                heading={component.heading}
+                paragraph={component.paragraph}
+                attention={component.attention}
+              />
+            );
+          case 'curiosity_Tiles':
+            return (
+              <Tiles
+                key={i}
+                heading={component.heading}
+                list={component.list}
+                annotation={component.annotation}
+              />
+            );
+          case 'curiosity_LargeList':
+            return (
+              <LargeList
+                key={i}
+                isHeading={true}
+                title={component.heading}
+                list={component.list}
+                paragraph={component.paragraph}
+              />
+            );
+          case 'curiosity_ColumnText':
+            return (
+              <ColumnText
+                key={i}
+                heading={component.heading}
+                paragraph={component.paragraph}
+              />
+            );
+          case 'quickForm':
+            return (
+              <QuickForm
+                key={i}
+                data={component}
+              />
+            );
+          case 'curiosity_ExtendedList':
+            return (
+              <ExtendedList
+                key={i}
+                data={component}
+              />
+            );
+          default:
+            break;
+        }
+      })}
       <Share
-        heading={share_Heading}
-        img={share_Img}
+        heading={share.heading}
+        img={share.img}
         url={slug.current}
       />
-      <Sources
-        heading={sources_Heading}
-        list={sources_List}
-      />
-      <LatestCuriosityEntries heading={latestCuriosities_Heading} />
+      <Sources data={sources} />
+      <LatestCuriosityEntries heading={latestCuriosities_Heading} exclude={slug.current} />
     </>
   );
 }
@@ -103,32 +167,99 @@ export const query = graphql`
           gatsbyImageData(placeholder: BLURRED)
         }
       }
+      ogImage: img {
+        asset {
+          url
+        }
+      }
       _createdAt(formatString: "D MMMM Y", locale: "pl")
       # Content
-      meaty_Heading
-      meaty_List
-      standout_Heading
-      standout_Paragraph
-      showcase_Heading
-      showcase_Img {
-        asset {
-          altText
-          gatsbyImageData
+      content {
+        ... on SanityCuriosityKeyElements {
+          _type
+          heading
+          list
+        }
+        ... on SanityStandout {
+          _type
+          heading
+          paragraph
+          standout
+          img {
+            asset {
+              altText
+              gatsbyImageData(placeholder: BLURRED)
+            }
+          }
+          reversed
+        }
+        ... on SanityCuriosityHighlight {
+          _type
+          heading
+          paragraph
+        }
+        ... on SanityCuriosityNote {
+          _type
+          heading
+          paragraph
+          attention
+        }
+        ... on SanityCuriosityTiles {
+          _type
+          heading
+          list
+          annotation
+        }
+        ... on SanityCuriosityLargeList {
+          _type
+          heading
+          list
+          paragraph
+        }
+        ... on SanityCuriosityColumnText {
+          _type
+          heading
+          paragraph
+        }
+        ... on SanityQuickForm {
+          _type
+          heading
+          subheading
+          cta
+        }
+        ... on SanityCuriosityExtendedList {
+          _type
+          heading
+          subtitle
+          extendedList: list {
+            paragraph
+            item {
+              img {
+                asset {
+                  altText
+                  gatsbyImageData(placeholder: BLURRED)
+                }
+              }
+              paragraph
+            }
+          }
         }
       }
-      showcase_Paragraph
-      showcase_Paragraph2
-      share_Heading
-      share_Img {
-        asset {
-          altText
-          gatsbyImageData(placeholder: NONE)
+      share {
+        heading
+        img {
+          asset {
+            altText
+            gatsbyImageData(placeholder: NONE)
+          }
         }
       }
-      sources_Heading
-      sources_List {
-        text
-        href
+      sources {
+        heading
+        list {
+          text
+          href
+        }
       }
       latestCuriosities_Heading
       # SEO
@@ -143,15 +274,19 @@ export const query = graphql`
 export default CuriosityEntryPage;
 
 export const Head = ({
-  data: { page: { seo: {
-    title,
-    description
-  },
-  slug
-}}}) => (
+  data: { page: {
+    seo: {
+      title,
+      description
+    },
+    ogImage,
+    slug
+  }}
+}) => (
   <SEO
     title={title}
     description={description}
     url={`/pl/akademia/${slug.current}`}
+    ogImage={ogImage.asset.url}
   />
 )

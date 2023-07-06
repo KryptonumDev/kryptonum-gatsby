@@ -26,7 +26,7 @@ export default function Kontakt({ step, setStep, formData, setFormData, endTime 
 
   useEffect(() => {
     if (typeof window !== 'undefined') {
-      document.getElementById('main').scrollIntoView()
+      window.scrollTo({ top: 0, behavior: 'smooth' });
     }
   }, [step])
 

@@ -67,11 +67,6 @@ export const query = graphql`
           }
         }
       }
-      # SEO
-      seo {
-        title
-        description
-      }
     }
     curiosityEntries: allSanityCuriosityEntries(limit: $perPage, skip: $skip, sort: {_createdAt: DESC}, filter: {categories: {elemMatch: {id: {eq: $id}}}}) {
       nodes {
@@ -116,6 +111,11 @@ export const query = graphql`
           gatsbyImageData(placeholder: BLURRED)
         }
       }
+      # SEO
+      seo {
+        title
+        description
+      }
     }
   }
 `
@@ -123,14 +123,16 @@ export const query = graphql`
 export default AcademyCategoryPage;
 
 export const Head = ({
-  data: { page: { seo: {
-    title,
-    description
-  }},
-  curiosityCategory: {
-    slug
+  data: {
+    curiosityCategory: {
+      slug,
+      seo: {
+        title,
+        description
+      }
+    }
   }
-}}) => (
+}) => (
   <SEO
     title={title}
     description={description}

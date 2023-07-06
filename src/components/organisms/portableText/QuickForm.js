@@ -1,14 +1,13 @@
 import React from "react";
-import { graphql, Link, useStaticQuery } from "gatsby";
+import { graphql, useStaticQuery } from "gatsby";
 import { GatsbyImage } from "gatsby-plugin-image";
 import styled from "styled-components";
 import DecorativeHeading from '../../atoms/DecorativeHeading';
-import Button from '../../atoms/Button';
 import ReactMarkdown from "react-markdown";
 import { Clamp } from "../../../utils/functions";
 import Form from "../../organisms/forms/QuickContact";
 
-const QuickForm = ({ data: { heading, subheading, cta } }) => {
+const QuickForm = ({ data: { heading, subheading } }) => {
   const {
     global: {
       quickForm_Paragraph,

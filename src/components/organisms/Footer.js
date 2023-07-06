@@ -94,9 +94,9 @@ const Footer = ({
                 className="thumbnail"
               />
               <div className="copy">
-                <Link to={`/pl/zespol/${entry.author[0].slug.current}`} className="author">
-                  <GatsbyImage image={entry.author[0].img.asset.gatsbyImageData} alt={entry.author[0].img.asset.altText || ''} className="person-border" />
-                  <span>{entry.author[0].name}</span>
+                <Link to={`/pl/zespol/${entry.author[0]?.slug.current}`} className="author">
+                  <GatsbyImage image={entry.author[0]?.img.asset.gatsbyImageData} alt={entry.author[0]?.img.asset.altText || ''} className="person-border" />
+                  <span>{entry.author[0]?.name}</span>
                 </Link>
                 <span>{entry._createdAt}</span>
                 <h3>{removeMarkdown(entry.title)}</h3>
@@ -223,6 +223,7 @@ const Wrapper = styled.footer`
           .thumbnail {
             max-width: 156px;
             max-height: 156px;
+            border: 1px solid var(--neutral-800);
           }
           .link {
             position: absolute;

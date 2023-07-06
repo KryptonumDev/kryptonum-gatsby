@@ -1,6 +1,7 @@
-import React from "react"
+import { Link } from "gatsby"
+import React, { Fragment } from "react"
 import styled from "styled-components"
-import { removeMarkdown } from "../../utils/functions"
+import { Clamp, removeMarkdown } from "../../utils/functions"
 
 const Icon = () => (
   <svg width="17" height="16" viewBox="0 0 17 16" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -49,14 +50,14 @@ export default function Breadcrumbs({ portfolio, data }) {
         <li><a href="/pl">Strona główna</a></li>
         <li><Icon /></li>
         {data?.map((el, index) => (
-          <>
+          <Fragment key={index}>
             {data.length - 1 !== index ? <>
-              <li><a href={el.link}>{removeMarkdown(el.name)}</a></li>
+              <li><Link to={el.link}>{removeMarkdown(el.name)}</Link></li>
               <li><Icon /></li>
-            </> : <>
-              <li><button disabled={true}>{removeMarkdown(el.name)}</button></li>
-            </>}
-          </>
+            </> :
+              <li>{removeMarkdown(el.name)}</li>
+            }
+          </Fragment>
         ))}
       </ul>
     </Wrapper>
@@ -64,47 +65,36 @@ export default function Breadcrumbs({ portfolio, data }) {
 }
 
 const Wrapper = styled.nav`
-  margin-top: 40px;
-  @media (max-width: 999px) {
-    margin-top: clamp(48px, calc(104vw/7.68), 128px);
-    margin-bottom: calc(-1 * clamp(24px, calc(104vw/7.68), 104px));
+  &:not(.portfolio){
+    margin-bottom: ${Clamp(16, 24, 24, 'px')};
+    + * {
+      margin-top: ${Clamp(-172, -144, -96, 'px')};
+    }
   }
-
-  &.portfolio{
-    margin-top: 24px !important;
-    margin-bottom: 0 !important;
+  &.portfolio {
+    margin-top: ${Clamp(16, 24, 24, 'px')};
   }
-
-  @media (max-width: 680px) {
-    display: none;
-  }
-  ul{
+  ul {
+    max-width: calc(100vw - var(--pageMargin) * 2);
     display: flex;
     align-items: center;
     gap: 8px;
-
-    li{
-      list-style: none;
-      height: fit-content;
-
-      svg{
+    white-space: nowrap;
+    li {
+      font-size: ${Clamp(14, 16, 18)};
+      list-style-type: none;
+      svg {
         display: block;
       }
-
-      &:last-child button{
-        border: none;
+      &:last-child {
         color: var(--primary-400);
         background-image: var(--gradient);
         -webkit-text-fill-color: transparent;
         -webkit-background-clip: text;
         background-clip: text;
-        display: block;
+        text-overflow: ellipsis;
+        overflow: hidden;
       }
     }
-  }
-
-  *{
-    font-size: 22px;
-    color: var(--neutral-200, #EFF0F3);
   }
 `

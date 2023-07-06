@@ -8,7 +8,7 @@ import { emailRegex, phoneRegex } from "../../../constants/regex"
 import { AnimatePresence, motion } from "framer-motion"
 import { Clamp } from "../../../utils/functions"
 
-export default function Form() {
+const Form = ({ cta }) => {
   const {
     register,
     handleSubmit,
@@ -25,10 +25,10 @@ export default function Form() {
       headers: {
         'Content-Type': 'application/json',
       }
-    }).then((res) => {
+    }).then(() => {
       clear()
       setIsEmailSent('success')
-    }).catch((error) => {
+    }).catch(() => {
       setIsEmailSent('failed')
     })
   }
@@ -59,7 +59,7 @@ export default function Form() {
         register={register('check', { required: true })}
         errors={errors}
       />
-      <Button theme="primary">Wyślij wiadomość</Button>
+      <Button theme="primary">{cta || 'Wyślij wiadomość'}</Button>
       <AnimatePresence>
         {isEmailSent === 'success' && (
           <Overlay className="overlay" initial={{ opacity: 0, x: 10 }} animate={{ opacity: 1, x: 0 }} exit={{ opacity: 0, x: -10 }}>
@@ -93,6 +93,7 @@ export default function Form() {
 const Wrapper = styled.form`
   display: grid;
   gap: 32px;
+  max-width: ${500/16}rem;
   button {
     max-width: 400px;
   }
@@ -106,14 +107,13 @@ const Overlay = styled(motion.div)`
   position: absolute;
   z-index: 4;
   inset: -2px;
-  /* pointer-events: none;
-  opacity: 0; */
   border-radius: 4px;
   background: var(--neutral-900, #101012);
   padding: ${Clamp(24, 48, 64)} ${Clamp(16, 64, 64)} 0 ${Clamp(16, 64, 64)};
   display: grid;
 
   .grid{
+    margin: auto;
     display: grid;
     gap: 32px;
     height: fit-content;
@@ -129,3 +129,5 @@ const Overlay = styled(motion.div)`
     width: fit-content;
   }
 `
+
+export default Form;

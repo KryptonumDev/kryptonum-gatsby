@@ -10,6 +10,7 @@ const EntryHero = ({
   title,
   subtitle,
   categories,
+  categorySlug,
   _createdAt,
   img,
   author
@@ -31,7 +32,7 @@ const EntryHero = ({
         )}
         <div className="categories">
           {categories.map((category, i) => (
-            <Link key={i} to={`/pl/blog/kategoria/${category.slug.current}`}>{category.name}</Link>
+            <Link key={i} to={`${categorySlug}${category.slug.current}`}>{category.name}</Link>
           ))}
         </div>
         <p className="createdAt">{_createdAt}</p>
@@ -49,6 +50,7 @@ const EntryHero = ({
 const Wrapper = styled.section`
   display: grid;
   grid-template-columns: 1.5fr 1fr;
+  align-items: center;
   gap: 48px 32px;
   header {
     max-width: ${739/16}rem;
@@ -102,6 +104,7 @@ const Wrapper = styled.section`
     max-width: 600px;
     max-height: 600px;
     margin: 0 auto;
+    border: 1px solid var(--neutral-800);
   }
   @media (max-width: 1199px){
     grid-template-columns: 1fr;

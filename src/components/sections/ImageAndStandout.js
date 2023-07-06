@@ -8,10 +8,14 @@ import DecorativeHeading from "../atoms/DecorativeHeading";
 const ImageAndStandout = ({ heading, paragraph, standout, img, reversed }) => {
   return (
     <Wrapper className={reversed ? 'reversed' : ''}>
-      <DecorativeHeading type="h2" className="heading">{heading}</DecorativeHeading>
+      {heading && (
+        <DecorativeHeading type="h2" className="heading">{heading}</DecorativeHeading>
+      )}
       <div className="column">
         <ReactMarkdown className="paragraph">{paragraph}</ReactMarkdown>
-        <ReactMarkdown className="standout">{standout}</ReactMarkdown>
+        {standout && (
+          <ReactMarkdown className="standout">{standout}</ReactMarkdown>
+        )}
         <GatsbyImage
           image={img.asset.gatsbyImageData}
           alt={img.asset.altText || ''}
@@ -31,6 +35,33 @@ const Wrapper = styled.section`
   }
   .paragraph {
     font-size: ${Clamp(16, 22, 22)};
+    ol {
+      counter-reset: counter;
+      display: grid;
+      gap: 16px;
+      li {
+        list-style-type: none;
+        counter-increment: counter;
+        display: grid;
+        grid-template-columns: auto 1fr;
+        gap: 16px;
+        padding-top: .4em;
+        &::before {
+          content: counter(counter);
+          margin-top: -.4em;
+          width: ${Clamp(42, 48, 54, 'px')};
+          height: ${Clamp(42, 48, 54, 'px')};
+          border: 1px solid var(--neutral-800);
+          border-radius: 50%;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+        }
+        &:nth-child(-n+9)::before {
+          content: "0" counter(counter);
+        }
+      }
+    }
   }
   .column {
     margin-top: ${Clamp(28, 48, 72, 'px')};

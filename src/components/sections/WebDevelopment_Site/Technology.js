@@ -49,6 +49,7 @@ const Wrapper = styled.section`
   display: grid;
   grid-template-columns: 1.5fr 1fr;
   column-gap: 32px;
+  align-items: start;
   grid-template-areas: "header header" "content paragraph" "content images";
   header {
     grid-area: header;

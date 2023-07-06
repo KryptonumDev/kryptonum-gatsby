@@ -7,14 +7,11 @@ import { ReactMarkdown } from "react-markdown/lib/react-markdown";
 import { useInView } from "framer-motion";
 
 export default function Hero({ setStep, data }) {
-
   const ref = useRef(null)
   const isInView = useInView(ref)
 
-  const handleScroll = (e) => {
-    if (isInView) {
-      setStep(1)
-    }
+  const handleScroll = () => {
+    setStep(1)
   };
 
   useEffect(() => {
@@ -69,19 +66,16 @@ const Wrapper = styled.section`
     top: 200px;
     padding-bottom: 64px;
   }
-
-  .scroll{
+  .scroll {
     text-align: center;
     margin: 64px auto 0 auto;
     width: 350px;
     font-size: 22px;
-
-    p{
+    p {
       margin-bottom: 16px;
     }
   }
-
-  .grid{
+  .grid {
     display: grid;
     grid-template-columns: 740fr 520fr;
     align-items: flex-end;
@@ -95,22 +89,18 @@ const Wrapper = styled.section`
       }
     }
   }
-
-  .left{
+  .left {
     font-size: ${Clamp(16, 22, 30)};
     margin-top: 32px;
-
-    em{
+    em {
       color: var(--neutral-700);
       font-style: normal;
     }
   }
-
-  .top{
+  .top {
     font-size: ${Clamp(16, 22, 22)};
   }
-
-  .bot{
+  .bot {
     font-size: ${Clamp(20, 30, 30)};
     margin-top: 16px;
   }

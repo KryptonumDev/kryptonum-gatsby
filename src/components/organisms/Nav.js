@@ -181,8 +181,8 @@ const Nav = ({
                           onClick={(e) => handleNavLinks(e)}
                         >
                           <GatsbyImage
-                            image={caseStudy.img.asset.gatsbyImageData}
-                            alt={caseStudy.img.asset.altText || ''}
+                            image={caseStudy.img?.asset.gatsbyImageData}
+                            alt={caseStudy.img?.asset.altText || ''}
                           />
                           <p>{caseStudy.name}</p>
                         </Link>
@@ -246,22 +246,22 @@ const Nav = ({
                             onClick={(e) => handleNavLinks(e)}
                           ></Link>
                           <GatsbyImage
-                            image={entry.img.asset.gatsbyImageData}
-                            alt={entry.img.asset.altText || ''}
-                            className="thumbnail"
+                            image={entry.img?.asset.gatsbyImageData}
+                            alt={entry.img?.asset.altText || ''}
+                            className="img"
                           />
                           <div className="copy">
                             <div className="copy-top">
                               <Link
-                                to={`/pl/zespol/${entry.author[0].slug.current}`}
+                                to={`/pl/zespol/${entry.author[0]?.slug?.current}`}
                                 onClick={(e) => handleNavLinks(e)}
                               >
                                 <GatsbyImage
-                                  image={entry.author[0].img.asset.gatsbyImageData}
-                                  alt={entry.author[0].img.asset.altText || ''}
+                                  image={entry.author[0]?.img.asset.gatsbyImageData}
+                                  alt={entry.author[0]?.img.asset.altText || ''}
                                   className="person-border"
                                 />
-                                <span>{entry.author[0].name}</span>
+                                <span>{entry.author[0]?.name}</span>
                               </Link>
                               <span>{entry._createdAt}</span>
                             </div>
@@ -325,7 +325,7 @@ const Nav = ({
                           <GatsbyImage
                             image={curiosity.img.asset.gatsbyImageData}
                             alt={curiosity.img.asset.altText || ''} 
-                            className="thumbnail"
+                            className="img"
                           />
                           <p>{removeMarkdown(curiosity.title)}</p>
                         </Link>
@@ -525,6 +525,9 @@ const Wrapper = styled.nav`
             display: grid;
             grid-template-columns: 128px 1fr;
             gap: ${Clamp(12, 22, 22)};
+            .img {
+              border: 1px solid var(--neutral-800);
+            }
             .copy {
               .copy-top {
                 display: flex;
@@ -604,6 +607,9 @@ const Wrapper = styled.nav`
             p {
               font-size: ${20/16}rem;
             }
+          }
+          .img {
+            border: 1px solid var(--neutral-800);
           }
         }
         .categories {
@@ -697,7 +703,8 @@ const Wrapper = styled.nav`
   }
   .backBtn {
     display: none;
-    width: 100%;
+    margin: 0 calc(var(--pageMargin) * -1);
+    width: calc(100% + var(--pageMargin) * 2);
     align-items: center;
     font-size: ${20/16}rem;
     gap: 4px;
@@ -707,13 +714,13 @@ const Wrapper = styled.nav`
     background-color: var(--neutral-950);
     position: sticky;
     top: 0;
-    z-index: 2;
+    z-index: 4;
+    svg {
+      margin-left: var(--pageMargin);
+    }
     span {
       margin: 0 auto;
     }
-  }
-  .backBtn + h3 {
-    margin-bottom: 32px;
   }
   &[data-tab],
   &[aria-expanded="true"] {

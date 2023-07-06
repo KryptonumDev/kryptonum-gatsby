@@ -9,7 +9,7 @@ import Breadcrumbs from "./Breadcrumbs";
 const Layout = ({ data: { page }, children, pageContext }) => {
   const data = useStaticQuery(graphql`
     query {
-      caseStudies: allSanityCaseStudyEntries(limit: 4) {
+      caseStudies: allSanityCaseStudyEntries(limit: 4, sort: {_createdAt: DESC}) {
         nodes {
           name
           slug {
@@ -72,7 +72,7 @@ const Layout = ({ data: { page }, children, pageContext }) => {
           }
         }
       }
-      curiosityEntries: allSanityCuriosityEntries(limit: 2) {
+      curiosityEntries: allSanityCuriosityEntries(limit: 2, sort: {_createdAt: DESC}) {
         nodes {
           title
           slug {
@@ -133,10 +133,10 @@ const Layout = ({ data: { page }, children, pageContext }) => {
     <>
       <GlobalStyle />
       <Nav data={data} />
-      {!pageContext.portfolio && (
-        <Breadcrumbs data={pageContext.breadcrumbs} />
-      )}
       <main id="main">
+        {!pageContext.portfolio && (
+          <Breadcrumbs data={pageContext.breadcrumbs} />
+        )}
         {children}
       </main>
       <Footer data={data} />

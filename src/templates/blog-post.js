@@ -1,13 +1,15 @@
 import * as React from "react"
 import { graphql } from "gatsby";
 import { SEO } from "./../components/global/Seo";
+import EntryHero from "../components/sections/EntryHero";
 import Content from "./../components/sections/BlogEntry/Content";
 import LatestCuriosityEntries from "../components/sections/LatestCuriosityEntries";
-import EntryHero from "../components/sections/EntryHero";
+import LatestBlogEntries from "../components/sections/LatestBlogEntries";
 
 const BlogEntryPage = ({
   data: { page: {
     title,
+    slug,
     subtitle,
     author,
     categories,
@@ -23,6 +25,7 @@ const BlogEntryPage = ({
         title={title}
         subtitle={subtitle}
         categories={categories}
+        categorySlug='/pl/blog/kategoria/'
         _createdAt={_createdAt}
         img={img}
       />
@@ -31,6 +34,7 @@ const BlogEntryPage = ({
         author={author}
         share={seo}
       />
+      <LatestBlogEntries exclude={slug.current} />
       <LatestCuriosityEntries />
     </>
   );
@@ -68,6 +72,11 @@ export const query = graphql`
           gatsbyImageData(placeholder: BLURRED)
         }
       }
+      ogImage: img {
+        asset {
+          url
+        }
+      }
       _rawContent
       _createdAt(formatString: "D MMMM Y", locale: "pl")
       seo {
@@ -81,15 +90,19 @@ export const query = graphql`
 export default BlogEntryPage;
 
 export const Head = ({
-  data: { page: { seo: {
-    title,
-    description
-  },
-  slug
-}}}) => (
+  data: { page: {
+    seo: {
+      title,
+      description
+    },
+    ogImage,
+    slug
+  }}
+}) => (
   <SEO
     title={title}
     description={description}
     url={`/pl/blog/${slug.current}`}
+    ogImage={ogImage.asset.url}
   />
 )

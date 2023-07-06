@@ -9,11 +9,12 @@ import { Star } from "../atoms/Icons";
 import QuickForm from "./portableText/QuickForm";
 import OrderedList from "./portableText/OrderedList";
 import UnorderedList from "./portableText/UnorderedList";
+import Tiles from "./portableText/Tiles";
 
 const sanityConfig = {projectId: process.env.GATSBY_SANITY_PROJECT_ID, dataset: process.env.GATSBY_SANITY_DATASET}
 
 const ImageComponent = ({ value }) => {
-  const gatsbyImageData = getGatsbyImageData(value.asset._ref, { maxWidth: 1024 }, sanityConfig);
+  const gatsbyImageData = getGatsbyImageData(value.asset?._ref, { maxWidth: 1024 }, sanityConfig);
   return (
     <GatsbyImage image={gatsbyImageData} alt={value.altText || ''} className="img" />
   )
@@ -30,6 +31,7 @@ const components = {
       });
       return <UnorderedList data={newArray} />
     },
+    blog_Tiles: ({ value: { array } }) => <Tiles data={array} />
   },
   block: {
     h2: ({ value }) => <DecorativeHeading type="h2" id={slugify(toPlainText(value))}>{portableTextToMarkdown(value)}</DecorativeHeading>,
@@ -60,25 +62,26 @@ const PortableContent = ({ data }) => {
 
 const Wrapper = styled.section`
   p + p {
-    margin-top: 32px;
+    margin-top: ${Clamp(16, 24, 32, 'px')};
   }
   p.largeParagraph {
     font-size: ${Clamp(16, 30, 30)};
   }
   font-size: ${Clamp(16, 22, 22)};
-  h2 {
-    &:not(:first-of-type) {
+  > h2 {
+    &:not(:nth-child(2)) {
       margin-top: 96px;
     }
     margin-bottom: 32px;
   }
-  h3 {
+  > h3 {
     &:not(:first-child) {
       margin-top: 96px;
     }
     margin-bottom: 32px;
   }
   > .img {
+    border: 1px solid var(--neutral-800);
     margin-top: 96px;
     & + h3 {
       margin-top: 48px;
