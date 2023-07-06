@@ -43,9 +43,7 @@ const IndexPage = ({
     agency,
     graphicsAndDesign,
   },
-  pageContext
 }) => {
-  pageContext = 'ABRAKADABRA'
   return (
     <>
       <Hero data={{
@@ -209,6 +207,6 @@ export const Head = ({
   <SEO
     title={title}
     description={description}
-    url=''
+    url='/pl'
   />
 )
