@@ -101,6 +101,27 @@ const Wrapper = styled.section`
   row-gap: ${Clamp(80, 96, 172, "px")};
   .step {
     counter-increment: counter;
+    * + ol {
+      margin-top: 24px;
+    }
+    ol {
+      counter-reset: counter;
+      display: grid;
+      gap: 12px;
+      li {
+        display: grid;
+        column-gap: 16px;
+        grid-template-columns: ${Clamp(32, 42, 42, 'px')} 1fr;
+        counter-increment: counter;
+        &::before {
+          content: counter(counter);
+          display: inline-block;
+        }
+        &:nth-child(-n+9)::before {
+          content: "/0" counter(counter);
+        }
+      }
+    }
     header {
       display: grid;
       grid-template-columns: 1fr;
