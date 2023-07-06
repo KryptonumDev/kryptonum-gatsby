@@ -28,7 +28,7 @@ const CuriosityEntryPage = ({
     share,
     sources,
     latestCuriosities_Heading,
-  }}
+  } }
 }) => {
   return (
     <>
@@ -275,18 +275,24 @@ export default CuriosityEntryPage;
 
 export const Head = ({
   data: { page: {
+    _createdAt,
+    author: {
+      name
+    },
     seo: {
       title,
       description
     },
     ogImage,
     slug
-  }}
+  } }
 }) => (
   <SEO
     title={title}
     description={description}
     url={`/pl/akademia/${slug.current}`}
     ogImage={ogImage.asset.url}
+    date={_createdAt}
+    author={name}
   />
 )
