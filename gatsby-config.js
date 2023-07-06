@@ -44,7 +44,6 @@ module.exports = {
     {
       resolve: 'gatsby-plugin-robots-txt',
       options: {
-        host: 'https://kryptonum.eu',
         sitemap: 'https://kryptonum.eu/sitemap-index.xml',
         policy: [{userAgent: '*', allow: '/'}]
       }
