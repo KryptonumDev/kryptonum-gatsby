@@ -70,6 +70,15 @@ const Wrapper = styled.section`
       align-items: center;
       .img {
         width: 156px;
+        img {
+          transform-origin: bottom;
+          transition: transform .5s var(--easing);
+        }
+      }
+      &:hover {
+        .img img {
+          transform: scale(1.05);
+        }
       }
       .info {
         h3 {

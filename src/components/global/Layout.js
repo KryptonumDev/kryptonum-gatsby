@@ -94,6 +94,38 @@ const Layout = ({ data: { page }, children, pageContext }) => {
           }
         }
       }
+      blogAuthors: allSanityBlogEntries {
+        nodes {
+          author {
+            name
+            slug {
+              current
+            }
+            img {
+              asset {
+                altText
+                gatsbyImageData(placeholder: BLURRED, width: 96, height: 96)
+              }
+            }
+          }
+        }
+      }
+      academyAuthors: allSanityCuriosityEntries {
+        nodes {
+          author {
+            name
+            slug {
+              current
+            }
+            img {
+              asset {
+                altText
+                gatsbyImageData(placeholder: BLURRED, width: 96, height: 96)
+              }
+            }
+          }
+        }
+      }
       global: sanityGlobal {
         footer_OfficeCity
         footer_OfficeStreet

@@ -13,9 +13,27 @@ const Nav = ({
     blogEntries,
     blogCategories,
     curiosityEntries,
-    curiosityCategories
+    curiosityCategories,
+    blogAuthors,
+    academyAuthors
   },
 }) => {
+  const uniqudeAuthors = (data) => {
+    const uniqueAuthors = {};
+    data.forEach(node => {
+      const author = node.author[0];
+      const key = author.name;
+      if (!uniqueAuthors[key]) {
+        uniqueAuthors[key] = author;
+      }
+    });
+    return Object.values(uniqueAuthors);
+  }
+  
+  blogAuthors = uniqudeAuthors(blogAuthors.nodes);
+  academyAuthors = uniqudeAuthors(academyAuthors.nodes);
+
+
   const locationPath = typeof window !== 'undefined' ? window.location.pathname : '';
   const [ navOpened, setNavOpened ] = useState(false)
   const navRef = useRef(null)
@@ -287,7 +305,7 @@ const Nav = ({
                     <div className="authors">
                       <h3>Twórcy:</h3>
                       <div className="wrapper">
-                        {team.nodes.map((person, i) => (
+                        {blogAuthors.map((person, i) => (
                           <Link to={`/pl/zespol/${person.slug.current}`} key={i} onClick={(e) => handleNavLinks(e)}>
                             <GatsbyImage
                               image={person.img.asset.gatsbyImageData}
@@ -348,7 +366,7 @@ const Nav = ({
                     <div className="authors">
                       <h3>Twórcy:</h3>
                       <div className="wrapper">
-                        {team.nodes.map((person, i) => (
+                        {academyAuthors.map((person, i) => (
                           <Link
                             to={`/pl/zespol/${person.slug.current}`}
                             key={i}
