@@ -54,10 +54,12 @@ const TeamMemberPage = ({
       {inspirations.length >= 1 && (
         <Inspirations data={inspirations} />
       )}
-      <div className="contact">
-        <DecorativeHeading type="h2">A może **pogadamy**?</DecorativeHeading>
-        <p><a href={`mailto:${email}`}>{email}</a></p>
-      </div>
+      {email && (
+        <div className="contact">
+          <DecorativeHeading type="h2">A może **pogadamy**?</DecorativeHeading>
+          <p><a href={`mailto:${email}`}>{email}</a></p>
+        </div>
+      )}
     </>
   );
 }
