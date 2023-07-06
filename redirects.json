@@ -1,90 +1,232 @@
 [
   {
-    "fromPath": "/",
-    "toPath": "/pl"
-  },
-  {
     "fromPath": "/projekty/dwa-slowa/",
-    "toPath": "/pl/portfolio"
+    "toPath": "/pl/portfolio",
+    "isPermanent": true
   },
   {
     "fromPath": "/projekty/brygida-helbig/",
-    "toPath": "/pl/portfolio"
+    "toPath": "/pl/portfolio",
+    "isPermanent": true
   },
   {
     "fromPath": "/projekty/",
-    "toPath": "/pl/portfolio"
-  },
-  {
-    "fromPath": "/projekty/9m13/",
-    "toPath": "/pl/portfolio"
-  },
-  {
-    "fromPath": "/projekty/centrum-korekty/",
-    "toPath": "/pl/portfolio"
-  },
-  {
-    "fromPath": "/projekty/altwork/",
-    "toPath": "/pl/portfolio"
-  },
-  {
-    "fromPath": "/projekty/cargem/",
-    "toPath": "/pl/portfolio"
-  },
-  {
-    "fromPath": "/projekty/justyna-holosyniuk/",
-    "toPath": "/pl/portfolio"
-  },
-  {
-    "fromPath": "/projekty/xminer/",
-    "toPath": "/pl/portfolio"
-  },
-  {
-    "fromPath": "/projekty/wloski-od-zera/",
-    "toPath": "/pl/portfolio"
+    "toPath": "/pl/portfolio",
+    "isPermanent": true
   },
   {
     "fromPath": "/oferta/",
-    "toPath": "/pl"
+    "toPath": "/pl",
+    "isPermanent": true
+  },
+  {
+    "fromPath": "/projekty/9m13/",
+    "toPath": "/pl/portfolio",
+    "isPermanent": true
   },
   {
     "fromPath": "/kontakt/",
-    "toPath": "/pl/kontakt"
-  },
-  {
-    "fromPath": "/faq/",
-    "toPath": "/pl"
-  },
-  {
-    "fromPath": "/polityka-prywatnosci/",
-    "toPath": "/pl/polityka-prywatnosci"
-  },
-  {
-    "fromPath": "/o-nas/",
-    "toPath": "/pl/zespol"
-  },
-  {
-    "fromPath": "/blog/",
-    "toPath": "/pl/blog"
+    "toPath": "/pl/kontakt",
+    "isPermanent": true
   },
   {
     "fromPath": "/blog/jak-rozmawiac-z-tworcami-stron-internetowych/",
-    "toPath": "/pl/blog"
+    "toPath": "/pl/blog",
+    "isPermanent": true
+  },
+  {
+    "fromPath": "/projekty/centrum-korekty/",
+    "toPath": "/pl/portfolio",
+    "isPermanent": true
+  },
+  {
+    "fromPath": "/faq/",
+    "toPath": "/pl",
+    "isPermanent": true
   },
   {
     "fromPath": "/blog/strony-internetowe-na-lata/",
-    "toPath": "/pl/blog"
+    "toPath": "/pl/blog",
+    "isPermanent": true
+  },
+  {
+    "fromPath": "/blog/",
+    "toPath": "/pl/blog",
+    "isPermanent": true
+  },
+  {
+    "fromPath": "/projekty/wloski-od-zera/",
+    "toPath": "/pl/portfolio",
+    "isPermanent": true
+  },
+  {
+    "fromPath": "/polityka-prywatnosci/",
+    "toPath": "/pl/polityka-prywatnosci",
+    "isPermanent": true
+  },
+  {
+    "fromPath": "/o-nas/",
+    "toPath": "/pl/zespol",
+    "isPermanent": true
   },
   {
     "fromPath": "/blog/strona-internetowa-czy-media-spolecznosciowe/",
-    "toPath": "/pl/blog"
+    "toPath": "/pl/blog",
+    "isPermanent": true
+  },
+  {
+    "fromPath": "/projekty/altwork/",
+    "toPath": "/pl/portfolio",
+    "isPermanent": true
+  },
+  {
+    "fromPath": "/projekty/cargem/",
+    "toPath": "/pl/portfolio",
+    "isPermanent": true
+  },
+  {
+    "fromPath": "/projekty/justyna-holosyniuk/",
+    "toPath": "/pl/portfolio",
+    "isPermanent": true
+  },
+  {
+    "fromPath": "/projekty/xminer/",
+    "toPath": "/pl/portfolio",
+    "isPermanent": true
   },
   {
     "fromPath": "/blog/jak-zdobyc-pierwszego-klienta/",
-    "toPath": "/pl/blog"
+    "toPath": "/pl/blog",
+    "isPermanent": true
   },
   {
     "fromPath": "/blog/3-sposoby-na-rozpoznawalnosc-twojej-marki/",
-    "toPath": "/pl/blog"
+    "toPath": "/pl/blog",
+    "isPermanent": true
+  },
+  {
+    "fromPath": "/blog/jak-zdobyc-pierwszego-klienta/mailtokuba@kryptonum.eu",
+    "toPath": "/pl",
+    "isPermanent": true
+  },
+  {
+    "fromPath": "/page-data/blog/jak-zdobyc-pierwszego-klienta/mailtokuba@kryptonum.eu/page-data.json",
+    "toPath": "/pl",
+    "isPermanent": true
+  },
+  {
+    "fromPath": "/projekty/dwa-slowa",
+    "toPath": "/pl/portfolio",
+    "isPermanent": true
+  },
+  {
+    "fromPath": "/projekty/brygida-helbig",
+    "toPath": "/pl/portfolio",
+    "isPermanent": true
+  },
+  {
+    "fromPath": "/projekty",
+    "toPath": "/pl/portfolio",
+    "isPermanent": true
+  },
+  {
+    "fromPath": "/oferta",
+    "toPath": "/pl",
+    "isPermanent": true
+  },
+  {
+    "fromPath": "/projekty/9m13",
+    "toPath": "/pl/portfolio",
+    "isPermanent": true
+  },
+  {
+    "fromPath": "/portfolio",
+    "toPath": "/pl/portfolio",
+    "isPermanent": true
+  },
+  {
+    "fromPath": "/blog/jak-rozmawiac-z-tworcami-stron-internetowych",
+    "toPath": "/pl/blog",
+    "isPermanent": true
+  },
+  {
+    "fromPath": "/projekty/centrum-korekty",
+    "toPath": "/pl/portfolio",
+    "isPermanent": true
+  },
+  {
+    "fromPath": "/faq",
+    "toPath": "/pl",
+    "isPermanent": true
+  },
+  {
+    "fromPath": "/blog/strony-internetowe-na-lata",
+    "toPath": "/pl/blog",
+    "isPermanent": true
+  },
+  {
+    "fromPath": "/blog",
+    "toPath": "/pl/blog",
+    "isPermanent": true
+  },
+  {
+    "fromPath": "/projekty/wloski-od-zera",
+    "toPath": "/pl/portfolio",
+    "isPermanent": true
+  },
+  {
+    "fromPath": "/polityka-prywatnosci",
+    "toPath": "/pl/polityka-prywatnosci",
+    "isPermanent": true
+  },
+  {
+    "fromPath": "/o-nas",
+    "toPath": "/pl/zespol",
+    "isPermanent": true
+  },
+  {
+    "fromPath": "/blog/strona-internetowa-czy-media-spolecznosciowe",
+    "toPath": "/pl/blog",
+    "isPermanent": true
+  },
+  {
+    "fromPath": "/projekty/altwork",
+    "toPath": "/pl/portfolio",
+    "isPermanent": true
+  },
+  {
+    "fromPath": "/projekty/cargem",
+    "toPath": "/pl/portfolio",
+    "isPermanent": true
+  },
+  {
+    "fromPath": "/projekty/justyna-holosyniuk",
+    "toPath": "/pl/portfolio",
+    "isPermanent": true
+  },
+  {
+    "fromPath": "/projekty/xminer",
+    "toPath": "/pl/portfolio",
+    "isPermanent": true
+  },
+  {
+    "fromPath": "/blog/jak-zdobyc-pierwszego-klienta",
+    "toPath": "/pl/blog",
+    "isPermanent": true
+  },
+  {
+    "fromPath": "/blog/3-sposoby-na-rozpoznawalnosc-twojej-marki",
+    "toPath": "/pl/blog",
+    "isPermanent": true
+  },
+  {
+    "fromPath": "/sitemap-index.xml",
+    "toPath": "/pl/sitemap-index.xml",
+    "isPermanent": true
+  },
+  {
+    "fromPath": "/sitemap-0.xml",
+    "toPath": "/pl/sitemap-0.xml",
+    "isPermanent": true
   }
 ]
