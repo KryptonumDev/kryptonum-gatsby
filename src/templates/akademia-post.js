@@ -60,6 +60,7 @@ const CuriosityEntryPage = ({
                 key={i}
                 heading={component.heading}
                 list={component.list}
+                paragraph={component.paragraph}
               />
             );
           case 'curiosity_Highlight':
@@ -179,6 +180,7 @@ export const query = graphql`
           _type
           heading
           list
+          paragraph
         }
         ... on SanityStandout {
           _type

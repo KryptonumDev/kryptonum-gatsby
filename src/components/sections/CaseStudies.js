@@ -35,8 +35,8 @@ const CaseStudies = ({heading, eagerLoading}) => {
           <div className="caseStudy" key={i}>
             <GatsbyImage
               key={i}
-              image={caseStudy.img.asset.gatsbyImageData}
-              alt={caseStudy.img.asset.altText || ''}
+              image={caseStudy.img?.asset.gatsbyImageData}
+              alt={caseStudy.img?.asset.altText || ''}
               className="img"
               loading={(eagerLoading && i == 0) ? 'eager' : 'lazy'}
             />

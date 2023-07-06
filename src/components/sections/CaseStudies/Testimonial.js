@@ -9,33 +9,30 @@ import { Quote } from "../../atoms/Icons";
 
 const Testimonial = ({
   heading,
-  testimonial: {
-    name,
-    text,
-    img,
-    cta,
-  },
+  testimonial,
   paragraph,
   secondParagraph,
 }) => {
   return (
     <Wrapper>
       <DecorativeHeading type="h2">{heading}</DecorativeHeading>
-      <div className="wrapper">
-        <GatsbyImage
-          image={img.asset.gatsbyImageData}
-          alt={img.asset.altText || ''}
-          className="img"
-          objectFit="contain"
-          objectPosition="bottom"
-        />
+      <div className={`wrapper ${testimonial?.img ? '' : 'noImg'}`}>
+        {testimonial?.img && (
+          <GatsbyImage
+            image={testimonial.img?.asset.gatsbyImageData}
+            alt={testimonial.img?.asset.altText || ''}
+            className="img"
+            objectFit="contain"
+            objectPosition="bottom"
+          />
+        )}
         <div className="info">
-          <h3>{name}</h3>
-          <Button theme={cta.theme} to={cta.href}>{cta.text}</Button>
+          <h3>{testimonial.name}</h3>
+          <Button theme={testimonial?.cta.theme} to={testimonial?.cta.href}>{testimonial?.cta.text}</Button>
         </div>
         <div className="content">
           <Quote />
-          <p>{text}</p>
+          <p>{testimonial?.text}</p>
         </div>
       </div>
       <div className="summary">
@@ -56,8 +53,13 @@ const Wrapper = styled.section`
     display: grid;
     gap: 0 48px;
     padding: 64px 32px 0;
-    grid-template-columns: auto auto;
+    grid-template-columns: 1fr 3fr;
     grid-template-areas: "img info" "img content";
+    &.noImg {
+      padding: 64px 64px 0;
+      grid-template-columns: 1fr;
+      grid-template-areas: "info" "content";
+    }
     .img {
       max-width: 362px;
       grid-area: img;
@@ -89,6 +91,10 @@ const Wrapper = styled.section`
       padding: 0;
       gap: 0 24px;
       grid-template-areas: "info info" "img content";
+      &.noImg {
+        padding: 0;
+        grid-template-areas: "info info" "content content";
+      }
       .img {
         max-width: 148px;
         margin: 0 auto;

@@ -21,7 +21,7 @@ export default function FourthStep({ prevData, setData, setStep }) {
 
   return (
     <Wrapper onSubmit={handleSubmit(onSubmit)}>
-      <h2>Szanujemy <strong>deadline'y</strong>. Jaki jest Twój? (opcjonalne)</h2>
+      <h2>Szanujemy <strong>deadline&apos;y</strong>. Jaki jest Twój? (opcjonalne)</h2>
       <div className="radio-group">
         <Radio title='3-4 tyg.' register={register('deadline')} />
         <Radio title='1-3 mies.' register={register('deadline')} />
@@ -30,10 +30,10 @@ export default function FourthStep({ prevData, setData, setStep }) {
       </div>
       <h2>Budżet ważna rzecz. Pokaż, w jakim zakresie się <strong>spotkamy</strong>: (opcjonalne)</h2>
       <div className="radio-group">
-        <Radio title='14–26 tys. zł' register={register('budget')} />
-        <Radio title='26–32 tys. zł' register={register('budget')} />
-        <Radio title='32–50 tys. zł' register={register('budget')} />
-        <Radio title='50 tys.+ zł' register={register('budget')} />
+        <Radio title='20-34 tys. zł' register={register('budget')} />
+        <Radio title='40-54 tys. zł' register={register('budget')} />
+        <Radio title='50-64 tys. zł' register={register('budget')} />
+        <Radio title='75 tys. + zł' register={register('budget')} />
       </div>
       <Button>Whoa, jesteś już za półmetkiem!</Button>
     </Wrapper>

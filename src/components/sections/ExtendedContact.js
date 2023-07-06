@@ -22,7 +22,7 @@ const ButtonText = ({ id, children }) => (
   </motion.span>
 )
 
-export default function Kontakt({ step, setStep, formData, setFormData, endTime }) {
+export default function Kontakt({ step, setStep, formData, setFormData }) {
 
   useEffect(() => {
     if (typeof window !== 'undefined') {

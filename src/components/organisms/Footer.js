@@ -235,6 +235,7 @@ const Wrapper = styled.footer`
             align-items: center;
             z-index: 2;
             .person-border {
+              opacity: 1;
               margin-right: 4px;
             }
             span {
@@ -254,6 +255,56 @@ const Wrapper = styled.footer`
             margin-top: 1rem;
             grid-column: 3/1;
           }
+        }
+      }
+    }
+  }
+  .info,
+  .services,
+  .caseStudies,
+  .footer-info {
+    a {
+      transition: opacity .3s;
+      &:hover {
+        opacity: .7;
+      }
+    }
+  }
+  .team a,
+  .blog .author {
+    span {
+      transition: opacity .3s;
+    }
+    .person-border {
+      img {
+        transition: transform .3s;
+      }
+    }
+    &:hover {
+      .person-border {
+        img {
+          transform: scale(1.05);
+        }
+      }
+      span {
+        opacity: .7;
+      }
+    }
+  }
+  .blog {
+    .thumbnail img {
+      transition: transform .3s;
+    }
+    .copy h3 {
+      transition: opacity .3s;
+    }
+    .link {
+      &:hover {
+        ~ .thumbnail img {
+          transform: scale(1.05);
+        }
+        ~ .copy h3 {
+          opacity: .7;
         }
       }
     }

@@ -5,7 +5,6 @@ import { Clamp } from "../../../utils/functions";
 import DecorativeHeading from "../../atoms/DecorativeHeading";
 import { Facebook, Linkedin, Pinterest } from "../../atoms/Icons";
 
-const baseUrl = `https://kryptonum.eu/pl/akademia/`;
 const share = {
   facebook: `https://www.facebook.com/sharer/sharer.php?u=`,
   twitter: `https://twitter.com/intent/tweet?url=`,
@@ -13,24 +12,27 @@ const share = {
   pinterest: `https://pinterest.com/pin/create/link/?url=`,
 }
 
+const baseUrl = `https://kryptonum.eu/pl/akademia/`;
+
+const shareLink = (platform, url) => {
+  return share[platform] + baseUrl + url;
+}
+
 const Share = ({ heading, img, url }) => {
-  Object.keys(share).forEach((platform) => {
-    share[platform] += baseUrl + url;
-  });
   return (
     <Wrapper>
       <header>
         <DecorativeHeading type="h2">{heading}</DecorativeHeading>
         <div className="wrapper">
-          <a href={share.facebook} target="_blank" rel="noreferrer">
+          <a href={shareLink('facebook', url)} target="_blank" rel="noreferrer">
             <Facebook />
             <span>Facebook</span>
           </a>
-          <a href={share.linkedin} target="_blank" rel="noreferrer">
+          <a href={shareLink('linkedin', url)} target="_blank" rel="noreferrer">
             <Linkedin />
             <span>Linkedin</span>
           </a>
-          <a href={share.pinterest} target="_blank" rel="noreferrer">
+          <a href={shareLink('pinterest', url)} target="_blank" rel="noreferrer">
             <Pinterest />
             <span>Pinterst</span>
           </a>
@@ -105,6 +107,12 @@ const Wrapper = styled.section`
     .img {
       order: -1;
       margin-top: 0;
+    }
+  }
+  @media (max-width: 899px){
+    margin: 0 calc(var(--pageMargin) * -1);
+    .img {
+      margin: 0 var(--pageMargin);
     }
   }
   @media (max-width: 599px){
