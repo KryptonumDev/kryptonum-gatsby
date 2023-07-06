@@ -65,6 +65,7 @@ export default function Breadcrumbs({ portfolio, data }) {
 }
 
 const Wrapper = styled.nav`
+  max-width: ${680/16}rem;
   &:not(.portfolio){
     margin-bottom: ${Clamp(16, 24, 24, 'px')};
     + * {

@@ -41,6 +41,17 @@ module.exports = {
         theme_color: `#040606`,
       },
     },
+    {
+      resolve: "gatsby-plugin-sitemap",
+    },
+    {
+      resolve: 'gatsby-plugin-robots-txt',
+      options: {
+        host: 'https://kryptonum.eu',
+        sitemap: 'https://kryptonum.eu/sitemap.xml',
+        policy: [{userAgent: '*', allow: '/'}]
+      }
+    },
     `gatsby-plugin-sharp`,
     `gatsby-plugin-styled-components`,
     `gatsby-plugin-sitemap`,

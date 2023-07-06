@@ -2,5 +2,89 @@
   {
     "fromPath": "/",
     "toPath": "/pl"
-  }
+  },
+  {
+    "fromPath": "/projekty/dwa-slowa/",
+    "toPath": "/pl/portfolio"
+  },
+  {
+    "fromPath": "/projekty/brygida-helbig/",
+    "toPath": "/pl/portfolio"
+  },
+  {
+    "fromPath": "/projekty/",
+    "toPath": "/pl/portfolio"
+  },
+  {
+    "fromPath": "/projekty/9m13/",
+    "toPath": "/pl/portfolio"
+  },
+  {
+    "fromPath": "/projekty/centrum-korekty/",
+    "toPath": "/pl/portfolio"
+  },
+  {
+    "fromPath": "/projekty/altwork/",
+    "toPath": "/pl/portfolio"
+  },
+  {
+    "fromPath": "/projekty/cargem/",
+    "toPath": "/pl/portfolio"
+  },
+  {
+    "fromPath": "/projekty/justyna-holosyniuk/",
+    "toPath": "/pl/portfolio"
+  },
+  {
+    "fromPath": "/projekty/xminer/",
+    "toPath": "/pl/portfolio"
+  },
+  {
+    "fromPath": "/projekty/wloski-od-zera/",
+    "toPath": "/pl/portfolio"
+  },
+  {
+    "fromPath": "/oferta/",
+    "toPath": "/pl"
+  },
+  {
+    "fromPath": "/kontakt/",
+    "toPath": "/pl/kontakt"
+  },
+  {
+    "fromPath": "/faq/",
+    "toPath": "/pl"
+  },
+  {
+    "fromPath": "/polityka-prywatnosci/",
+    "toPath": "/pl/polityka-prywatnosci"
+  },
+  {
+    "fromPath": "/o-nas/",
+    "toPath": "/pl/zespol"
+  },
+  {
+    "fromPath": "/blog/",
+    "toPath": "/pl/blog"
+  },
+  {
+    "fromPath": "/blog/jak-rozmawiac-z-tworcami-stron-internetowych/",
+    "toPath": "/pl/blog"
+  },
+  {
+    "fromPath": "/blog/strony-internetowe-na-lata/",
+    "toPath": "/pl/blog"
+  },
+  {
+    "fromPath": "/blog/strona-internetowa-czy-media-spolecznosciowe/",
+    "toPath": "/pl/blog"
+  },
+  {
+    "fromPath": "/blog/jak-zdobyc-pierwszego-klienta/",
+    "toPath": "/pl/blog"
+  },
+  {
+    "fromPath": "/blog/3-sposoby-na-rozpoznawalnosc-twojej-marki/",
+    "toPath": "/pl/blog"
+  },
 ]

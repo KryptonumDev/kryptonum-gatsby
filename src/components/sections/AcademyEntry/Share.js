@@ -6,6 +6,7 @@ import DecorativeHeading from "../../atoms/DecorativeHeading";
 import { Facebook, Linkedin, Pinterest } from "../../atoms/Icons";
 
 const baseUrl = `https://kryptonum.eu/pl/akademia/`;
+
 const share = {
   facebook: `https://www.facebook.com/sharer/sharer.php?u=`,
   twitter: `https://twitter.com/intent/tweet?url=`,
@@ -105,6 +106,12 @@ const Wrapper = styled.section`
     .img {
       order: -1;
       margin-top: 0;
+    }
+  }
+  @media (max-width: 899px){
+    margin: 0 calc(var(--pageMargin) * -1);
+    .img {
+      margin: 0 var(--pageMargin);
     }
   }
   @media (max-width: 599px){

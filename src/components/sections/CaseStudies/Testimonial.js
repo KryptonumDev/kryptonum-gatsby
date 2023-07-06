@@ -9,23 +9,18 @@ import { Quote } from "../../atoms/Icons";
 
 const Testimonial = ({
   heading,
-  testimonial: {
-    name,
-    text,
-    img,
-    cta,
-  },
+  testimonial,
   paragraph,
   secondParagraph,
 }) => {
   return (
     <Wrapper>
       <DecorativeHeading type="h2">{heading}</DecorativeHeading>
-      <div className={`wrapper ${img ? '' : 'noImg'}`}>
-        {img && (
+      <div className={`wrapper ${testimonial?.img ? '' : 'noImg'}`}>
+        {testimonial?.img && (
           <GatsbyImage
-            image={img.asset.gatsbyImageData}
-            alt={img.asset.altText || ''}
+            image={testimonial.img?.asset.gatsbyImageData}
+            alt={testimonial.img?.asset.altText || ''}
             className="img"
             objectFit="contain"
             objectPosition="bottom"
@@ -33,11 +28,11 @@ const Testimonial = ({
         )}
         <div className="info">
           <h3>{name}</h3>
-          <Button theme={cta.theme} to={cta.href}>{cta.text}</Button>
+          <Button theme={testimonial?.cta.theme} to={testimonial?.cta.href}>{testimonial?.cta.text}</Button>
         </div>
         <div className="content">
           <Quote />
-          <p>{text}</p>
+          <p>{testimonial?.text}</p>
         </div>
       </div>
       <div className="summary">
