@@ -1,5 +1,10 @@
 [
   {
+    "fromPath": "/",
+    "toPath": "/pl",
+    "isPermanent": true
+  },
+  {
     "fromPath": "/projekty/dwa-slowa/",
     "toPath": "/pl/portfolio",
     "isPermanent": true
