@@ -1,10 +1,12 @@
 import React from "react"
 import { graphql, useStaticQuery } from "gatsby";
+import Organization from "./OrganisationSchema";
+import Article from "./ArticleSchema";
 
-export const SEO = ({ title, description, url, ogImage, children }) => {
+export const SEO = ({ author, date, title, description, url, ogImage, children }) => {
   const { global: { globalSeo: {
     og_Img
-  }}} = useStaticQuery(graphql`
+  } } } = useStaticQuery(graphql`
     query {
       global: sanityGlobal {
         globalSeo {
@@ -26,6 +28,7 @@ export const SEO = ({ title, description, url, ogImage, children }) => {
   const locale = "pl_PL";
   return (
     <>
+      <Organization />
       <meta name="robots" content="noindex" />
       <title>{seo.title}</title>
       <meta property="og:title" content={seo.title} />
@@ -47,6 +50,21 @@ export const SEO = ({ title, description, url, ogImage, children }) => {
       <link rel="canonical" href={`${domain}${seo.url}`} />
       <meta property="og:url" content={`${domain}${seo.url}`} />
       {children}
+
+      {(date && author) && (
+        <>
+          <Article
+            canonical={`${domain}${seo.url}`}
+            title={seo.title}
+            description={seo.description}
+            ogImage={ogImage || og_Img.asset.url}
+            date={date}
+            author={author}
+          />
+          <meta property="article:author" content={author} />
+          <meta property="article:published_time" content={date} />
+        </>
+      )}
     </>
   )
 }

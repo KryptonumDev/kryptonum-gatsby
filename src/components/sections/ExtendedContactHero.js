@@ -18,7 +18,6 @@ export default function Hero({ setStep, data }) {
     if (isInView) {
       window.addEventListener("scroll", handleScroll);
     }
-    window.addEventListener("scroll", handleScroll);
     return () => {
       window.removeEventListener("scroll", handleScroll);
     };
@@ -51,13 +50,17 @@ const Wrapper = styled.section`
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+
   margin-top: 50px;
+
   @media (max-height: 750px) {
     margin-top: 0;
   }
+
   @media (max-width: 1240px) {
     margin-top: 0;
   }
+
   .sticky{
     position: sticky;
     top: 200px;
