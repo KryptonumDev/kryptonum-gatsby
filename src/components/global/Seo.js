@@ -29,7 +29,6 @@ export const SEO = ({ author, date, title, description, url, ogImage, children }
   return (
     <>
       <Organization />
-      <meta name="robots" content="noindex" />
       <title>{seo.title}</title>
       <meta property="og:title" content={seo.title} />
       <meta name="description" content={seo.description} />
