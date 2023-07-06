@@ -10,8 +10,10 @@ const TestimonialsSwiper = ({testimonials}) => {
   return (
     <Wrapper>
       {testimonials.nodes.map((testimonial, i) => (
-        <div className="item" key={i}>
-          <GatsbyImage image={testimonial.img.asset.gatsbyImageData} alt={testimonial.img.asset.altText || ''} className="img" objectFit="contain" />
+        <div className={`item ${testimonial.img ? '' : 'noImg'}`} key={i}>
+          {testimonial.img && (
+            <GatsbyImage image={testimonial.img.asset.gatsbyImageData} alt={testimonial.img.asset.altText || ''} className="img" objectFit="contain" />
+          )}
           <div className="content">
             <Quote />
             <ReactMarkdown>{testimonial.text}</ReactMarkdown>
@@ -36,12 +38,17 @@ const Wrapper = styled.div`
     }
     background-color: var(--neutral-900);
     display: grid;
-    grid-template-columns: 240px 2fr 1.2fr;
     align-items: center;
     padding: 72px 32px 64px;
+    grid-template-columns: 240px 2fr 1.2fr;
+    &.noImg {
+      padding: 72px 32px 64px 64px;
+      grid-template-columns: 2fr 1.2fr;
+    }
     gap: 48px;
     .img {
       margin-bottom: -64px;
+      align-self: end;
     }
     .content {
       svg {
@@ -79,6 +86,12 @@ const Wrapper = styled.div`
     .item {
       grid-template-columns: 1fr 2fr;
       padding: 32px;
+      &.noImg {
+        padding: 32px;
+        .content {
+          grid-column: 3 / 1;
+        }
+      }
       align-items: flex-end;
       gap: 24px;
       .img {
@@ -115,6 +128,13 @@ const Wrapper = styled.div`
       grid-template-columns: 1fr;
       padding: 24px;
       gap: 34px;
+      &.noImg {
+        grid-template-columns: 1fr;
+        padding: 24px;
+        .content {
+          grid-column: unset;
+        }
+      }
       .img {
         width: 100%;
         height: 200px;

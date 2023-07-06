@@ -6,6 +6,18 @@ import { ChevronDown, ChevronLeft, KryptonumLogo } from '../atoms/Icons';
 import { Clamp, removeMarkdown, scrollLock } from "../../utils/functions";
 import Button from "../atoms/Button";
 
+const uniqudeAuthors = (data) => {
+  const uniqueAuthors = {};
+  data.forEach(node => {
+    const author = node.author[0];
+    const key = author.name;
+    if (!uniqueAuthors[key]) {
+      uniqueAuthors[key] = author;
+    }
+  });
+  return Object.values(uniqueAuthors);
+}
+
 const Nav = ({
   data: {
     caseStudies,
@@ -18,21 +30,8 @@ const Nav = ({
     academyAuthors
   },
 }) => {
-  const uniqudeAuthors = (data) => {
-    const uniqueAuthors = {};
-    data.forEach(node => {
-      const author = node.author[0];
-      const key = author.name;
-      if (!uniqueAuthors[key]) {
-        uniqueAuthors[key] = author;
-      }
-    });
-    return Object.values(uniqueAuthors);
-  }
-  
   blogAuthors = uniqudeAuthors(blogAuthors.nodes);
   academyAuthors = uniqudeAuthors(academyAuthors.nodes);
-
 
   const locationPath = typeof window !== 'undefined' ? window.location.pathname : '';
   const [ navOpened, setNavOpened ] = useState(false)
@@ -738,6 +737,7 @@ const Wrapper = styled.nav`
     }
     span {
       margin: 0 auto;
+      padding-right: var(--pageMargin);
     }
   }
   &[data-tab],
