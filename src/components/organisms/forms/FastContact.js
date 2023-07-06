@@ -12,7 +12,7 @@ export default function Form() {
   const {
     register,
     handleSubmit,
-    clear,
+    reset,
     formState: { errors },
   } = useForm({ mode: 'onBlur' })
 
@@ -25,10 +25,11 @@ export default function Form() {
       headers: {
         'Content-Type': 'application/json',
       }
-    }).then((res) => {
-      clear()
+    }).then(() => {
+      reset()
       setIsEmailSent('success')
-    }).catch((error) => {
+    }).catch(() => {
+      
       setIsEmailSent('failed')
     })
   }
