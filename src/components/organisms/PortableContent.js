@@ -83,8 +83,11 @@ const Wrapper = styled.section`
   > .img {
     border: 1px solid var(--neutral-800);
     margin-top: 96px;
-    & + h3 {
+    & + h2 {
       margin-top: 48px;
+    }
+    & + h3 {
+      margin-top: 32px;
     }
     + p {
       margin-top: 32px;
