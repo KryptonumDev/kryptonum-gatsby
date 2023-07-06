@@ -42,13 +42,10 @@ module.exports = {
       },
     },
     {
-      resolve: "gatsby-plugin-sitemap",
-    },
-    {
       resolve: 'gatsby-plugin-robots-txt',
       options: {
         host: 'https://kryptonum.eu',
-        sitemap: 'https://kryptonum.eu/sitemap.xml',
+        sitemap: 'https://kryptonum.eu/sitemap-index.xml',
         policy: [{userAgent: '*', allow: '/'}]
       }
     },

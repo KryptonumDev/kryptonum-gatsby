@@ -135,6 +135,19 @@ const Wrapper = styled.section`
         font-size: ${Clamp(16, 22, 22)};
       }
       position: relative;
+      &::before {
+        content: '';
+        position: absolute;
+        inset: 0;
+        box-shadow: 0px 0px 2px #fff,
+                    0px 0px 5px #fff,
+                    0px 0px 25px rgba(255, 255, 255, 0.5);
+        opacity: 0;
+        transition: opacity .5s;
+      }
+      &:hover::before {
+        opacity: 1;
+      }
       &:first-child {
         background: linear-gradient(var(--neutral-950), var(--neutral-950)) padding-box,
         var(--gradient) border-box;
