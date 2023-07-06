@@ -200,6 +200,7 @@ const Nav = ({
                           <GatsbyImage
                             image={caseStudy.img?.asset.gatsbyImageData}
                             alt={caseStudy.img?.asset.altText || ''}
+                            className="img"
                           />
                           <p>{caseStudy.name}</p>
                         </Link>
@@ -228,6 +229,7 @@ const Nav = ({
                           to={`/pl/zespol/${person.slug.current}`}
                           key={i}
                           onClick={(e) => handleNavLinks(e)}
+                          className="person"
                         >
                           <GatsbyImage
                             image={person.img.asset.gatsbyImageData}
@@ -272,6 +274,7 @@ const Nav = ({
                               <Link
                                 to={`/pl/zespol/${entry.author[0]?.slug?.current}`}
                                 onClick={(e) => handleNavLinks(e)}
+                                className="person"
                               >
                                 <GatsbyImage
                                   image={entry.author[0]?.img.asset.gatsbyImageData}
@@ -305,7 +308,12 @@ const Nav = ({
                       <h3>Twórcy:</h3>
                       <div className="wrapper">
                         {blogAuthors.map((person, i) => (
-                          <Link to={`/pl/zespol/${person.slug.current}`} key={i} onClick={(e) => handleNavLinks(e)}>
+                          <Link
+                            to={`/pl/zespol/${person.slug.current}`}
+                            key={i}
+                            onClick={(e) => handleNavLinks(e)}
+                            className="person"
+                          >
                             <GatsbyImage
                               image={person.img.asset.gatsbyImageData}
                               alt={person.img.asset.altText || ''}
@@ -370,6 +378,7 @@ const Nav = ({
                             to={`/pl/zespol/${person.slug.current}`}
                             key={i}
                             onClick={(e) => handleNavLinks(e)}
+                            className="person"
                           >
                             <GatsbyImage
                               image={person.img.asset.gatsbyImageData}
@@ -459,6 +468,14 @@ const Wrapper = styled.nav`
     }
     .navList-item {
       > button {
+        span {
+          transition: opacity .3s;
+        }
+        &:hover {
+          span {
+            opacity: .7;
+          }
+        }
         padding: 13px 0;
         display: inline-flex;
         align-items: center;
@@ -470,6 +487,12 @@ const Wrapper = styled.nav`
         }
       }
       &.services .navList2 {
+        a {
+          transition: opacity .3s;
+          &:hover {
+            opacity: .7;
+          }
+        }
         .max-width {
           display: grid;
           grid-template: "one two three" "one two four";
@@ -498,9 +521,21 @@ const Wrapper = styled.nav`
           grid-template-columns: repeat(4, 1fr);
           gap: 32px;
           a {
+            .img img {
+              transition: transform .5s var(--easing);
+            }
+            &:hover {
+              .img img {
+                transform: scale(1.05);
+              }
+              p {
+                opacity: .7;
+              }
+            }
             text-align: center;
             font-size: ${22/16}rem;
             p {
+              transition: opacity .3s;
               margin-top: 24px;
             }
           }
@@ -518,6 +553,7 @@ const Wrapper = styled.nav`
           p {
             font-size: ${Clamp(16, 22, 22)};
             margin-top: 8px;
+            transition: opacity .3s;
           }
         }
       }
@@ -529,6 +565,12 @@ const Wrapper = styled.nav`
           gap: 32px;
         }
         .entries {
+          > h3 a {
+            transition: opacity .3s;
+            &:hover {
+              opacity: .7;
+            }
+          }
           .entry {
             &:not(:last-child){
               margin-bottom: 20px;
@@ -538,12 +580,23 @@ const Wrapper = styled.nav`
               position: absolute;
               inset: 0;
               z-index: 1;
+              &:hover {
+                ~ .img img {
+                  transform: scale(1.05);
+                }
+                ~ .copy h3 {
+                  opacity: .7;
+                }
+              }
             }
             display: grid;
             grid-template-columns: 128px 1fr;
             gap: ${Clamp(12, 22, 22)};
             .img {
               border: 1px solid var(--neutral-800);
+              img {
+                transition: transform .3s;
+              }
             }
             .copy {
               .copy-top {
@@ -570,6 +623,7 @@ const Wrapper = styled.nav`
               h3 {
                 margin-top: 1rem;
                 font-size: 1rem;
+                transition: opacity .3s;
               }
             }
           }
@@ -614,6 +668,12 @@ const Wrapper = styled.nav`
           gap: 32px;
         }
         .curiosities {
+          > h3 a {
+            transition: opacity .3s;
+            &:hover {
+              opacity: .7;
+            }
+          }
           .link {
             &:not(:last-child) {
               margin-bottom: 24px;
@@ -624,9 +684,23 @@ const Wrapper = styled.nav`
             p {
               font-size: ${20/16}rem;
             }
+            &:hover {
+              .img img {
+                transform: scale(1.05);
+              }
+              p {
+                opacity: .7;
+              }
+            }
+          }
+          p {
+            transition: opacity .3s;
           }
           .img {
             border: 1px solid var(--neutral-800);
+            img {
+              transition: transform .3s;
+            }
           }
         }
         .categories {
@@ -661,6 +735,39 @@ const Wrapper = styled.nav`
           }
         }
       }
+      &.blog .navList2,
+      &.academy .navList2 {
+        .categories a {
+          transition: background-color .3s;
+          &:hover {
+            background-color: var(--neutral-800);
+          }
+        }
+      }
+      &.team .navList2,
+      &.blog .navList2,
+      &.academy .navList2 {
+        .person {
+          p, span {
+            transition: opacity .3s;
+          }
+          .person-border {
+            img {
+              transition: transform .3s;
+            }
+          }
+          &:hover {
+            .person-border {
+              img {
+                transform: scale(1.05);
+              }
+            }
+            p, span {
+              opacity: .7;
+            }
+          }
+        }
+      }
     }
   }
   .navList2 {
@@ -683,6 +790,12 @@ const Wrapper = styled.nav`
       text-align: center;
       font-size: ${Clamp(20, 32, 30)};
       margin-bottom: 32px;
+      a {
+        transition: opacity .3s;
+        &:hover {
+          opacity: .7;
+        }
+      }
     }
     h3 {
       font-size: ${Clamp(20, 32, 30)};
@@ -777,6 +890,7 @@ const Wrapper = styled.nav`
           -webkit-background-clip: text;
           background-clip: text;
           -webkit-text-fill-color: transparent;
+          opacity: 1 !important;
         }
         svg {
           stroke: url(#ChevronDown);
