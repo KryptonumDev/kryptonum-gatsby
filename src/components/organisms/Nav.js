@@ -181,8 +181,8 @@ const Nav = ({
                           onClick={(e) => handleNavLinks(e)}
                         >
                           <GatsbyImage
-                            image={caseStudy.img.asset.gatsbyImageData}
-                            alt={caseStudy.img.asset.altText || ''}
+                            image={caseStudy.img?.asset.gatsbyImageData}
+                            alt={caseStudy.img?.asset.altText || ''}
                           />
                           <p>{caseStudy.name}</p>
                         </Link>

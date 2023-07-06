@@ -9,7 +9,7 @@ import Breadcrumbs from "./Breadcrumbs";
 const Layout = ({ data: { page }, children, pageContext }) => {
   const data = useStaticQuery(graphql`
     query {
-      caseStudies: allSanityCaseStudyEntries(limit: 4) {
+      caseStudies: allSanityCaseStudyEntries(limit: 4, sort: {_createdAt: DESC}) {
         nodes {
           name
           slug {

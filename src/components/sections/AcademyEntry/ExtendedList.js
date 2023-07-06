@@ -19,7 +19,9 @@ const ExtendedList = ({
       <div className="list">
         {extendedList.map((list, i) => (
           <div className="listItem" key={i}>
-            <ReactMarkdown className="paragraph">{list.paragraph}</ReactMarkdown>
+            {list.paragraph && (
+              <ReactMarkdown className="paragraph">{list.paragraph}</ReactMarkdown>
+            )}
             <div className="wrapper">
               {list.item.map((item, i) => (
                 <div className="wrapperItem" key={i}>
