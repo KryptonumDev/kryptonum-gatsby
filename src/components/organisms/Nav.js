@@ -445,7 +445,7 @@ const Wrapper = styled.nav`
   }
   .nav-cta,
   .navCtaMobile a {
-    font-size: ${20/16}rem;
+    font-size: ${Clamp(16, 11, 20)};
     &[aria-current="page"] {
       svg {
         transform: rotate(180deg);
@@ -468,6 +468,7 @@ const Wrapper = styled.nav`
     }
     .navList-item {
       > button {
+        font-size: ${Clamp(16, 11, 20)};
         span {
           transition: opacity .3s;
         }
@@ -925,6 +926,9 @@ const Wrapper = styled.nav`
         flex-direction: column;
         gap: 24px;
       }
+      .navCtaMobile a {
+        font-size: ${20/16}rem;
+      }
       .navList-item {
         > button {
           font-size: ${20/16}rem;
@@ -1042,7 +1046,7 @@ const Wrapper = styled.nav`
       display: flex;
     }
   }
-  @media (max-width: 599px){
+  @media (max-width: 549px){
     .nav-cta {
       display: none;
     }
