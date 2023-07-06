@@ -5,10 +5,10 @@ import DecorativeHeading from "../atoms/DecorativeHeading";
 import { Clamp } from '../../utils/functions'
 import CuriosityEntry from "../organisms/CuriosityEntry";
 
-const LatestCuriosityEntries = ({ heading }) => {
+const LatestCuriosityEntries = ({ heading, exclude=null }) => {
   let { curiosityEntries } = useStaticQuery(graphql`
     query {
-      curiosityEntries: allSanityCuriosityEntries(sort: {_createdAt: DESC}) {
+      curiosityEntries: allSanityCuriosityEntries(limit: 4, sort: {_createdAt: DESC}) {
         nodes {
           title
           subtitle
@@ -40,8 +40,10 @@ const LatestCuriosityEntries = ({ heading }) => {
         <p>Oto nasz TOP3:</p>
       </header>
       <div className="wrapper">
-        {curiosityEntries.nodes.map((entry, i) => (
-          <CuriosityEntry data={entry} key={i} />
+        {curiosityEntries.nodes.filter(entry => entry.slug.current !== exclude).map((entry, i) => (
+          i < 3 && (
+            <CuriosityEntry data={entry} key={i} />
+          )
         ))}
       </div>
     </Wrapper>

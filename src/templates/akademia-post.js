@@ -124,19 +124,13 @@ const CuriosityEntryPage = ({
             break;
         }
       })}
-      {/* <Showcase
-        heading={showcase_Heading}
-        img={showcase_Img}
-        paragraph={showcase_Paragraph}
-        paragraph2={showcase_Paragraph2}
-      /> */}
       <Share
         heading={share.heading}
         img={share.img}
         url={slug.current}
       />
       <Sources data={sources} />
-      <LatestCuriosityEntries heading={latestCuriosities_Heading} />
+      <LatestCuriosityEntries heading={latestCuriosities_Heading} exclude={slug.current} />
     </>
   );
 }
