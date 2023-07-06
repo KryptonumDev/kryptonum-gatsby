@@ -104,6 +104,9 @@ const Wrapper = styled.section`
     * + ol {
       margin-top: 24px;
     }
+    .img {
+      width: 100%;
+    }
     ol {
       counter-reset: counter;
       display: grid;
