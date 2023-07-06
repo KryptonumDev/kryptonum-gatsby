@@ -12,6 +12,8 @@ import Note from "../components/sections/AcademyEntry/Note";
 import Tiles from "../components/sections/AcademyEntry/Tiles";
 import LargeList from "../components/sections/LargeList";
 import ColumnText from "../components/sections/AcademyEntry/ColumnText";
+import QuickForm from "../components/sections/QuickForm";
+import ExtendedList from "../components/sections/AcademyEntry/ExtendedList";
 
 const CuriosityEntryPage = ({
   data: { page: {
@@ -102,6 +104,20 @@ const CuriosityEntryPage = ({
                 key={i}
                 heading={component.heading}
                 paragraph={component.paragraph}
+              />
+            );
+          case 'quickForm':
+            return (
+              <QuickForm
+                key={i}
+                data={component}
+              />
+            );
+          case 'curiosity_ExtendedList':
+            return (
+              <ExtendedList
+                key={i}
+                data={component}
               />
             );
           default:
@@ -210,6 +226,29 @@ export const query = graphql`
           _type
           heading
           paragraph
+        }
+        ... on SanityQuickForm {
+          _type
+          heading
+          subheading
+          cta
+        }
+        ... on SanityCuriosityExtendedList {
+          _type
+          heading
+          subtitle
+          extendedList: list {
+            paragraph
+            item {
+              img {
+                asset {
+                  altText
+                  gatsbyImageData(placeholder: BLURRED)
+                }
+              }
+              paragraph
+            }
+          }
         }
       }
       share {

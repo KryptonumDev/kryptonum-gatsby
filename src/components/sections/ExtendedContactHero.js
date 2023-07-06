@@ -1,23 +1,28 @@
-import React, { useEffect } from "react"
+import React, { useEffect, useRef } from "react"
 import styled from "styled-components"
 import DecorativeHeading from "../atoms/DecorativeHeading";
 import { Clamp } from "../../utils/functions";
 import { ScrollDown } from "../atoms/Icons";
 import { ReactMarkdown } from "react-markdown/lib/react-markdown";
+import { useInView } from "framer-motion";
 
 export default function Hero({ setStep, data }) {
+  const ref = useRef(null)
+  const isInView = useInView(ref)
+
+  const handleScroll = () => {
+    setStep(1)
+  };
 
   useEffect(() => {
-    const handleScroll = () => {
-      if(window.scrollY >= 20){
-        setStep(1);
-      }
-    };
+    if (isInView) {
+      window.addEventListener("scroll", handleScroll);
+    }
     window.addEventListener("scroll", handleScroll);
     return () => {
       window.removeEventListener("scroll", handleScroll);
     };
-  }, []);
+  }, [isInView]);
 
   return (
     <Wrapper >
@@ -37,6 +42,7 @@ export default function Hero({ setStep, data }) {
           <ScrollDown />
         </div>
       </div>
+      <div className="bottom" ref={ref} />
     </Wrapper>
   )
 }
@@ -45,24 +51,28 @@ const Wrapper = styled.section`
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+  margin-top: 50px;
+  @media (max-height: 750px) {
+    margin-top: 0;
+  }
+  @media (max-width: 1240px) {
+    margin-top: 0;
+  }
   .sticky{
     position: sticky;
     top: 200px;
     padding-bottom: 64px;
   }
-
-  .scroll{
+  .scroll {
     text-align: center;
     margin: 64px auto 0 auto;
     width: 350px;
     font-size: 22px;
-
-    p{
+    p {
       margin-bottom: 16px;
     }
   }
-
-  .grid{
+  .grid {
     display: grid;
     grid-template-columns: 740fr 520fr;
     align-items: flex-end;
@@ -76,22 +86,18 @@ const Wrapper = styled.section`
       }
     }
   }
-
-  .left{
+  .left {
     font-size: ${Clamp(16, 22, 30)};
     margin-top: 32px;
-
-    em{
+    em {
       color: var(--neutral-700);
       font-style: normal;
     }
   }
-
-  .top{
+  .top {
     font-size: ${Clamp(16, 22, 22)};
   }
-
-  .bot{
+  .bot {
     font-size: ${Clamp(20, 30, 30)};
     margin-top: 16px;
   }

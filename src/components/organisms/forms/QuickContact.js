@@ -8,7 +8,7 @@ import { emailRegex, phoneRegex } from "../../../constants/regex"
 import { AnimatePresence, motion } from "framer-motion"
 import { Clamp } from "../../../utils/functions"
 
-export default function Form() {
+const Form = ({ cta }) => {
   const {
     register,
     handleSubmit,
@@ -59,7 +59,7 @@ export default function Form() {
         register={register('check', { required: true })}
         errors={errors}
       />
-      <Button theme="primary">Wyślij wiadomość</Button>
+      <Button theme="primary">{cta || 'Wyślij wiadomość'}</Button>
       <AnimatePresence>
         {isEmailSent === 'success' && (
           <Overlay className="overlay" initial={{ opacity: 0, x: 10 }} animate={{ opacity: 1, x: 0 }} exit={{ opacity: 0, x: -10 }}>
@@ -128,3 +128,5 @@ const Overlay = styled(motion.div)`
     width: fit-content;
   }
 `
+
+export default Form;

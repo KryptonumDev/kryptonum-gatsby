@@ -271,11 +271,11 @@ exports.createPages = async ({ actions, graphql }) => {
           breadcrumbs: [
             {
               name: 'Akademia',
-              url: '/pl/akademia'
+              link: '/pl/akademia'
             },
             {
               name: name,
-              url: `/pl/akademia/kategoria/${slug}`
+              link: `/pl/akademia/kategoria/${slug}`
             }
           ]
         }
@@ -296,11 +296,11 @@ exports.createPages = async ({ actions, graphql }) => {
         breadcrumbs: [
           {
             name: 'Akademia',
-            url: '/pl/akademia'
+            link: '/pl/akademia'
           },
           {
             name: name,
-            url: `/pl/akademia/kategoria/${slug}`
+            link: `/pl/akademia/kategoria/${slug}`
           }
         ]
       }
