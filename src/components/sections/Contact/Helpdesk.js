@@ -3,7 +3,7 @@ import ReactMarkdown from "react-markdown";
 import styled from "styled-components";
 import { Clamp } from "../../../utils/functions";
 import DecorativeHeading from "../../atoms/DecorativeHeading";
-import HelpDesk_Form from "./Helpdesk_Form";
+import Form from './../../organisms/forms/FastContact'
 
 const Helpdesk = ({
   data: {
@@ -22,7 +22,7 @@ const Helpdesk = ({
       </header>
       <div className="form">
         <ReactMarkdown components={{ 'p': 'h3' }}>{helpDesk_FormTitle}</ReactMarkdown>
-        <HelpDesk_Form />
+        <Form />
       </div>
     </Wrapper>
   );

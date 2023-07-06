@@ -28,8 +28,12 @@ const Hero = ({ heading, subheading, contact }) => {
                 />
               </Link>
               <p>
-                <a href={`mailto:${item.person.email}`}>{item.person.email}</a>
-                <a href={`tel:${item.person.tel?.replace(/\s/g, '')}`}>{item.person.tel}</a>
+                {item.person.email && (
+                  <a href={`mailto:${item.person.email}`}>{item.person.email}</a>
+                )}
+                {item.person.tel && (
+                  <a href={`tel:${item.person.tel?.replace(/\s/g, '')}`}>{item.person.tel}</a>
+                )}
               </p>
             </div>
           </div>
