@@ -16,7 +16,8 @@ const share = {
 
 const Share = ({ heading, img, url }) => {
   Object.keys(share).forEach((platform) => {
-    share[platform] += baseUrl + url;
+    console.log(share[platform]);
+    share[platform] = baseUrl + url;
   });
   return (
     <Wrapper>
