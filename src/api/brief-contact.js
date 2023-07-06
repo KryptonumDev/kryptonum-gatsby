@@ -8,9 +8,9 @@ export default async function handler(req, res) {
 
   sgMail
     .send({
-      to: 'kryptonumstudio@gmail.com',
-      from: 'kryptonumstudio@gmail.com',
-      subject: 'Kryptonum Studio - Brief kontaktowy',
+      to: 'michal@kryptonum.eu',
+      from: 'michal@kryptonum.eu',
+      subject: 'Brief kontaktowy - kryptonum.eu',
       text: 'Wiadomość z briefu kontaktowego.',
       html: `
       <div>
@@ -110,4 +110,4 @@ export default async function handler(req, res) {
         statusMSG: 'Błąd wysyłania wiadomości do nas'
       });
     })
-};
+}
