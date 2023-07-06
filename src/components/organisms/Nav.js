@@ -285,7 +285,7 @@ const Nav = ({
                               </Link>
                               <span>{entry._createdAt}</span>
                             </div>
-                            <h3>{removeMarkdown(entry.title)}</h3>
+                            <p>{removeMarkdown(entry.title)}</p>
                           </div>
                         </div>
                       ))}
@@ -592,6 +592,7 @@ const Wrapper = styled.nav`
             }
             display: grid;
             grid-template-columns: 128px 1fr;
+            align-items: start;
             gap: ${Clamp(12, 22, 22)};
             .img {
               border: 1px solid var(--neutral-800);
@@ -600,6 +601,8 @@ const Wrapper = styled.nav`
               }
             }
             .copy {
+              overflow: hidden;
+              text-overflow: ellipsis;
               .copy-top {
                 display: flex;
                 justify-content: space-between;
@@ -621,10 +624,12 @@ const Wrapper = styled.nav`
                   }
                 }
               }
-              h3 {
+              p {
                 margin-top: 1rem;
                 font-size: 1rem;
                 transition: opacity .3s;
+                overflow: hidden;
+                text-overflow: ellipsis;
               }
             }
           }
@@ -681,9 +686,10 @@ const Wrapper = styled.nav`
             }
             display: grid;
             grid-template-columns: 188px 1fr;
-            gap: 12px;
+            align-items: start;
+            gap: 8px 12px;
             p {
-              font-size: ${20/16}rem;
+                font-size: 1rem;
             }
             &:hover {
               .img img {

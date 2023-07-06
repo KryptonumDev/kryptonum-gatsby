@@ -87,7 +87,7 @@ const Footer = ({
           <h3><Link to="/pl/blog">Blog</Link></h3>
           {blogEntries.nodes.map((entry, i) => (
             <div className="entry" key={i}>
-              <Link to={`/pl/blog/${entry.slug.current}`} className="link" aria-label={entry.title}></Link>
+              <Link to={`/pl/blog/${entry.slug.current}`} className="link" aria-label={removeMarkdown(entry.title)}></Link>
               <GatsbyImage
                 image={entry.img.asset.gatsbyImageData}
                 alt={entry.img.asset.altText || ''}
@@ -99,7 +99,7 @@ const Footer = ({
                   <span>{entry.author[0]?.name}</span>
                 </Link>
                 <span>{entry._createdAt}</span>
-                <h3>{removeMarkdown(entry.title)}</h3>
+                <p>{removeMarkdown(entry.title)}</p>
               </div>
             </div>
           ))}
@@ -250,10 +250,12 @@ const Wrapper = styled.footer`
               margin-left: auto;
             }
           }
-          h3 {
+          p {
             font-size: 1rem;
             margin-top: 1rem;
             grid-column: 3/1;
+            overflow: hidden;
+            text-overflow: ellipsis;
           }
         }
       }
@@ -295,7 +297,7 @@ const Wrapper = styled.footer`
     .thumbnail img {
       transition: transform .3s;
     }
-    .copy h3 {
+    .copy p {
       transition: opacity .3s;
     }
     .link {
@@ -303,7 +305,7 @@ const Wrapper = styled.footer`
         ~ .thumbnail img {
           transform: scale(1.05);
         }
-        ~ .copy h3 {
+        ~ .copy p {
           opacity: .7;
         }
       }
@@ -421,6 +423,7 @@ const Wrapper = styled.footer`
           grid-template-columns: 1fr 1fr;
           gap: 1rem;
           grid-column: unset;
+          align-items: start;
           > h3 {
             grid-column: 3/1;
           }
@@ -429,7 +432,7 @@ const Wrapper = styled.footer`
             &:not(:last-child) {
               margin-bottom: 0;
             }
-            h3 {
+            p {
               font-size: ${14/16}rem;
               margin: 1rem 0;
               grid-column: unset;
