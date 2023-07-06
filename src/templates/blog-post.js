@@ -1,13 +1,15 @@
 import * as React from "react"
 import { graphql } from "gatsby";
 import { SEO } from "./../components/global/Seo";
+import EntryHero from "../components/sections/EntryHero";
 import Content from "./../components/sections/BlogEntry/Content";
 import LatestCuriosityEntries from "../components/sections/LatestCuriosityEntries";
-import EntryHero from "../components/sections/EntryHero";
+import LatestBlogEntries from "../components/sections/LatestBlogEntries";
 
 const BlogEntryPage = ({
   data: { page: {
     title,
+    slug,
     subtitle,
     author,
     categories,
@@ -32,6 +34,7 @@ const BlogEntryPage = ({
         author={author}
         share={seo}
       />
+      <LatestBlogEntries exclude={slug.current} />
       <LatestCuriosityEntries />
     </>
   );

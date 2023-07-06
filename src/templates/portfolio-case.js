@@ -204,6 +204,10 @@ export const query = graphql`
           }
         }
       }
+      seo {
+        title
+        description
+      }
     }
   }
 `
@@ -212,24 +216,14 @@ export default CaseStudyPage
 
 export const Head = ({
   data: { caseStudy: {
-    name,
-    slug,
-    categories,
-    technologies
+    seo,
+    slug
   }}
 }) => {
-  const getCommaSeparatedNames = (json) => {
-    const names = json.map(item => item.name).slice(0, 3);
-    let commaSeparatedNames = names.join(", ");
-    if (json.length > 3) {
-      commaSeparatedNames += " i więcej...";
-    }
-    return commaSeparatedNames;
-  }
   return (
     <SEO
-      title={`${categories[0].name} dla ${name} | Kryptonum`}
-      description={`Zobacz case study dla ${name}. ${categories[0].name}, którą zrealizowaliśmy wykorzystując ${getCommaSeparatedNames(technologies)}`}
+      title={seo?.title}
+      description={seo?.description}
       url={`/pl/portfolio/${slug.current}`}
     />
   )

@@ -4,7 +4,6 @@ import styled from "styled-components";
 import { Clamp } from "../../../utils/functions";
 
 const Tiles = ({ data }) => {
-  console.log(data);
   return (
     <Wrapper>
       {data.map((item, i) => (
