@@ -41,14 +41,17 @@ const CaseStudyPage = ({
   return (
     <>
       <GlobalStyle />
-      <Hero data={{
-        heading,
-        paragraph,
-        paragraph2,
-        categories_Paragraph,
-        categories,
-        img,
-      }} pageContext={pageContext}/>
+      <Hero
+        data={{
+          heading,
+          paragraph,
+          paragraph2,
+          categories_Paragraph,
+          categories,
+          img,
+        }}
+        pageContext={pageContext}
+      />
       {client_Heading && client_Paragraph && client_Standout && client_Img.asset && (
         <ImageAndStanduout
           heading={client_Heading}

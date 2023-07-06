@@ -27,7 +27,7 @@ const Testimonial = ({
           />
         )}
         <div className="info">
-          <h3>{testimonial.name}</h3>
+          <h3>{testimonial?.name}</h3>
           <Button theme={testimonial?.cta.theme} to={testimonial?.cta.href}>{testimonial?.cta.text}</Button>
         </div>
         <div className="content">
