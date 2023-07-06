@@ -1,3 +1,4 @@
+import { Link } from "gatsby"
 import React, { Fragment } from "react"
 import styled from "styled-components"
 import { Clamp, removeMarkdown } from "../../utils/functions"
@@ -51,7 +52,7 @@ export default function Breadcrumbs({ portfolio, data }) {
         {data?.map((el, index) => (
           <Fragment key={index}>
             {data.length - 1 !== index ? <>
-              <li><a href={el.link}>{removeMarkdown(el.name)}</a></li>
+              <li><Link to={el.link}>{removeMarkdown(el.name)}</Link></li>
               <li><Icon /></li>
             </> :
               <li>{removeMarkdown(el.name)}</li>
