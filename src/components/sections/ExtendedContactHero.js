@@ -10,7 +10,8 @@ export default function Hero({ setStep, data }) {
   const ref = useRef(null)
   const isInView = useInView(ref)
 
-  const handleScroll = () => {
+  const handleScroll = (e) => {
+    e.preventDefault()
     setStep(1)
   };
 
