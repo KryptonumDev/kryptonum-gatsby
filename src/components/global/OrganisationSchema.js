@@ -77,7 +77,8 @@ export default function Organization() {
               "name": "Aneta Jasińska",
               "jobTitle": "Copywriter",
               "sameAs": [
-                "https://www.linkedin.com/in/aneta-jasi%C5%84ska-612085275/"
+                "https://www.linkedin.com/in/aneta-jasinska/",
+                "https://www.last.fm/user/aneciaaak"
               ]
             },
             {
@@ -91,7 +92,7 @@ export default function Organization() {
               "name": "Patrycja Pokładek",
               "jobTitle": "Designer",
               "sameAs": [
-                "https://www.linkedin.com/in/patrycja-pok%C5%82adek/"
+                "https://www.linkedin.com/in/patrycja-pokladek/"
               ]
             },
             {

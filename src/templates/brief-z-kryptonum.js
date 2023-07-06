@@ -1,4 +1,4 @@
-import React, { useEffect, useMemo, useState } from "react"
+import React, { useCallback, useEffect, useMemo, useState } from "react"
 import { graphql } from "gatsby"
 import { SEO } from "../components/global/Seo";
 import Kontakt from "../components/sections/ExtendedContact";
@@ -6,6 +6,7 @@ import Hero from "../components/sections/ExtendedContactHero";
 import Summary from "../components/sections/ExtendedContactSummary";
 import { AnimatePresence, motion } from "framer-motion";
 import Loader from "../components/atoms/Loader";
+import ErrorSend from "../components/sections/ExtendedContactError";
 
 const BriefPage = ({ data }) => {
 
@@ -46,15 +47,19 @@ const BriefPage = ({ data }) => {
     return null
   }, [step])
 
+  const resend = useCallback(() => {
+    setIsEmailSent(false)
+    setStep(6)
+  }, [setStep, setIsEmailSent])
+
   return (
     <AnimatePresence mode="wait">
-
       {step === 0 && (
         <motion.div key='hero' exit={{ opacity: 0, x: -10 }}>
           <Hero data={data.page} setStep={setStep} />
         </motion.div>
       )}
-      {(step > 0 && step < 8 && !isEmailSent) && (
+      {(step > 0 && step <= 7 && !isEmailSent) && (
         <motion.div key='kontakt' initial={{ opacity: 0, x: 10 }} animate={{ opacity: 1, x: 0 }} exit={{ opacity: 0, x: -10 }}>
           <Kontakt step={step} setStep={setStep} formData={formData} setFormData={setFormData} endTime={endTime} />
         </motion.div>
@@ -65,7 +70,9 @@ const BriefPage = ({ data }) => {
         </motion.div>
       )}
       {(step === 7 && isEmailSent === 'failed') && (
-        <>Fail</>
+        <motion.div key='error' initial={{ opacity: 0, x: 10 }} animate={{ opacity: 1, x: 0 }} exit={{ opacity: 0, x: -10 }}>
+          <ErrorSend resend={resend}/>
+        </motion.div>
       )}
       {(step === 7 && isEmailSent === 'success') && (
         <motion.div key='summary' initial={{ opacity: 0, x: 10 }} animate={{ opacity: 1, x: 0 }} exit={{ opacity: 0, x: -10 }}>

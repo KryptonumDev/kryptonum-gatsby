@@ -12,7 +12,7 @@ const Form = ({ cta }) => {
   const {
     register,
     handleSubmit,
-    clear,
+    reset,
     formState: { errors },
   } = useForm({ mode: 'onBlur' })
 
@@ -26,7 +26,7 @@ const Form = ({ cta }) => {
         'Content-Type': 'application/json',
       }
     }).then(() => {
-      clear()
+      reset()
       setIsEmailSent('success')
     }).catch(() => {
       setIsEmailSent('failed')
