@@ -4,10 +4,10 @@ import { GatsbyImage } from "gatsby-plugin-image";
 import styled from "styled-components";
 import { Clamp, removeMarkdown } from "../../utils/functions";
 
-const AkademyEntrySmall = ({ data }) => {
+const AcademyEntrySmall = ({ data }) => {
   return (
     <Wrapper className="entry">
-      <Link to={`/pl/blog/${data.slug.current}`} className="link" aria-label={removeMarkdown(data.title)} />
+      <Link to={`/pl/akademia/${data.slug.current}`} className="link" aria-label={removeMarkdown(data.title)} />
       <GatsbyImage
         image={data.img.asset.gatsbyImageData}
         alt={data.img.asset.altText || ''}
@@ -118,4 +118,4 @@ const Wrapper = styled.div`
   }
 `
 
-export default AkademyEntrySmall;
+export default AcademyEntrySmall;

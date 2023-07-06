@@ -5,6 +5,7 @@ import styled from "styled-components"
 import EntryCard from "../../organisms/SitemapEntryCard"
 import CaseStudy from "../../organisms/CaseEntrySmall"
 import { Clamp } from "../../../utils/functions"
+import AcademyEntrySmall from "../../organisms/AcademyEntrySmall"
 
 export default function Grid({
   team,
@@ -152,13 +153,13 @@ export default function Grid({
           <div key={i}>
             <Link
               className="med-link"
-              to={`/pl/blog/kategoria/${el.category.slug.current}`}
+              to={`/pl/akademia/kategoria/${el.category.slug.current}`}
             >
               {el.category.name} ({el.posts.length})
             </Link>
             <ul>
               {el.posts.map((entry, i) => (
-                <EntryCard data={entry} key={i} />
+                <AcademyEntrySmall data={entry} key={i} />
               ))}
             </ul>
           </div>
