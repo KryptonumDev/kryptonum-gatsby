@@ -1,21 +1,24 @@
-import React from "react";
+import React  from "react";
 import styled from "styled-components";
 import { Clamp } from "../../../utils/functions";
 import DecorativeHeading from "../../atoms/DecorativeHeading";
-
-const randomWidth = () => {
-  return Math.floor(Math.random() * 71) + 30;
-}
+import TagCloud from "@frank-mayer/react-tag-cloud"
 
 const Inspirations = ({ data }) => {
+
   return (
     <Wrapper>
       <DecorativeHeading type="h2">Chmura **inspiracji**:</DecorativeHeading>
-      <ul className="wrapper">
-        {data.map((inspiration, i) => (
-          <Item key={i} data-width={randomWidth()}>{inspiration}</Item>
-        ))}
-      </ul>
+      <TagCloud
+        className="wrapper"
+        options={(w) => ({
+          radius: w.innerWidth >= 768 ? 768 / 2 : (w.innerWidth / 2) - 16,
+          maxSpeed: "fast",
+        })}
+        onClickOptions={{ passive: true }}
+      >
+        {data}
+      </TagCloud>
     </Wrapper>
   );
 }
@@ -26,20 +29,9 @@ const Wrapper = styled.section`
   }
   font-size: ${Clamp(20, 32, 30)};
   .wrapper {
-    list-style-type: none;
-    display: flex;
-    flex-wrap: wrap;
-    li:not(:last-child){
-      margin-bottom: 16px;
-    }
-    li {
-      text-align: right;
-    }
+    padding: 55px 0;
+    overflow: hidden;
+    margin: 0 calc(var(--pageMargin) * -1);
   }
 `
-
-const Item = styled.li`
-  width: ${props => `${props['data-width']}%`}
-`
-
 export default Inspirations;
