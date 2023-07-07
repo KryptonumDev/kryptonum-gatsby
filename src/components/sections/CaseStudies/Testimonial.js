@@ -122,6 +122,7 @@ const Wrapper = styled.section`
   }
   @media (max-width: 549px){
     .wrapper {
+      grid-template-columns: 1fr;
       grid-template-areas: "info" "content" "img";
       .info {
         grid-template-columns: 1fr;

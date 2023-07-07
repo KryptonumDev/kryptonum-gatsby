@@ -161,6 +161,9 @@ const Wrapper = styled.section`
       margin: 0 calc(var(--pageMargin) * -1);
       margin-top: 32px;
     }
+    &:last-child{
+      margin-bottom: 0;
+    }
   }
 `
 

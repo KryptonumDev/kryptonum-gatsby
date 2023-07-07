@@ -40,6 +40,9 @@ const Wrapper = styled.section`
   .paragraph2, .paragraph3 {
     font-size: ${Clamp(16, 22, 22)};
   }
+  .paragraph {
+    margin-bottom: 16px;
+  }
   display: grid;
   grid-template-columns: 1fr 1fr;
   column-gap: 32px;
@@ -59,6 +62,20 @@ const Wrapper = styled.section`
     }
     .img {
       margin-left: 112px;
+    }
+  }
+  @media (max-width: 899px){
+    grid-template-columns: 1fr;
+    .column {
+      grid-column: unset;
+      grid-template-columns: 1fr;
+      column-gap: 32px;
+      
+      .img {
+        margin-left: unset;
+        order: -1;
+        margin-bottom: ${Clamp(28, 48, 72, 'px')};
+      }
     }
   }
 `
