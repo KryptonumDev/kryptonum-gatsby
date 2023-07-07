@@ -1,6 +1,6 @@
 import React from "react"
 import styled from "styled-components"
-// import { Error } from "./Icons"
+import { Error } from "../atoms/Icons"
 
 export const Checkbox = ({ icon, text, name, register, errors, error }) => (
   <Wrapper className={errors[name] ? 'errored' : ''}>
@@ -61,17 +61,6 @@ const Wrapper = styled.label`
     }
   }
 
-  .text{
-    margin-top: 4px;
-
-    @media (max-width: 768px) {
-      margin-top: 0;
-    }
-
-    a{
-      text-decoration: underline;
-    }
-  }
 
   .checkbox{
     border: 2px solid var(--neutral-200);

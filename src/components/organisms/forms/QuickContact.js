@@ -94,10 +94,6 @@ const Wrapper = styled.form`
   display: grid;
   gap: 32px;
   max-width: ${500/16}rem;
-  button {
-    max-width: 400px;
-  }
-
   &.relative{
     position: relative;
   }

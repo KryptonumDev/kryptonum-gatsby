@@ -6,10 +6,10 @@ import { getGatsbyImageData } from "gatsby-source-sanity";
 import { Clamp, portableTextToMarkdown, slugify } from "../../utils/functions";
 import DecorativeHeading from "../atoms/DecorativeHeading";
 import { Star } from "../atoms/Icons";
-import QuickForm from "./portableText/QuickForm";
 import OrderedList from "./portableText/OrderedList";
 import UnorderedList from "./portableText/UnorderedList";
 import Tiles from "./portableText/Tiles";
+import QuickForm from "../sections/QuickForm";
 
 const sanityConfig = {projectId: process.env.GATSBY_SANITY_PROJECT_ID, dataset: process.env.GATSBY_SANITY_DATASET}
 
@@ -23,7 +23,7 @@ const ImageComponent = ({ value }) => {
 const components = {
   types: {
     image: ImageComponent,
-    quickForm: ({ value: { heading, subheading, cta} }) => <QuickForm data={{heading,subheading, cta}} />,
+    quickForm: ({ value: { heading, subheading, cta} }) => <QuickForm data={{heading,subheading, cta}} isPortableContent={true} />,
     orderedList: ({ value: { array, paragraph }}) => <OrderedList paragraph={paragraph} array={array} />,
     unorderedList: ({ value: { array }}) => {
       const newArray = array.map(obj => {
@@ -69,21 +69,21 @@ const Wrapper = styled.section`
   }
   font-size: ${Clamp(16, 22, 22)};
   > h2 {
-    &:not(:nth-child(2)) {
-      margin-top: 96px;
+    &:not(:first-child) {
+      margin-top: ${Clamp(48, 72, 96, 'px')};
     }
     margin-bottom: 32px;
   }
   > h3 {
     &:not(:first-child) {
-      margin-top: 96px;
+      margin-top: ${Clamp(48, 72, 96, 'px')};
     }
     margin-bottom: 32px;
   }
   > .img {
     border: 1px solid var(--neutral-800);
     &:not(:first-child){
-      margin-top: 96px;
+      margin-top: ${Clamp(48, 72, 96, 'px')};
     }
     & + h2 {
       margin-top: 48px;

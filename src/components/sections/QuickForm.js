@@ -11,8 +11,9 @@ const QuickForm = ({
   data: {
     heading,
     subheading,
-    cta
-  }
+    cta,
+  },
+  isPortableContent=false
 }) => {
   const {
     global : {
@@ -37,7 +38,7 @@ const QuickForm = ({
     }
   `)
   return (
-    <Wrapper>
+    <Wrapper className={isPortableContent ? 'portable' : ''}>
       <header>
         <DecorativeHeading type="h2">{heading}</DecorativeHeading>
         <ReactMarkdown className="subheading">{subheading}</ReactMarkdown>
@@ -92,12 +93,11 @@ const Wrapper = styled.section`
       align-items: center;
     }
   }
-
   .overlay{
     align-items: flex-start !important;
   }
   form{
-    input, textarea{
+    input:not([type="checkbox"]), textarea{
       background: var(--neutral-900) !important;
       position: relative;
       z-index: 2;
@@ -133,6 +133,33 @@ const Wrapper = styled.section`
       .img {
         width: 48px;
       }
+    }
+  }
+  &.portable {
+    padding: ${Clamp(32, 48, 48, 'px')} ${Clamp(16, 64, 64, 'px')};
+    margin: 64px 0;
+    display: block;
+    form {
+      margin: 32px 0px;
+    }
+    .info {
+      display: block;
+      .person {
+        margin-top: 8px;
+        display: flex;
+        flex-wrap: wrap;
+        gap: 8px 12px;
+        .img {
+          width: 64px;
+          height: 64px;
+        }
+      }
+    }
+    @media (max-width: 499px){
+      padding-left: var(--pageMargin);
+      padding-right: var(--pageMargin);
+      margin: 0 calc(var(--pageMargin) * -1);
+      margin-top: 32px;
     }
   }
 `

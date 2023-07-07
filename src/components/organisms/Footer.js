@@ -261,17 +261,6 @@ const Wrapper = styled.footer`
       }
     }
   }
-  .info,
-  .services,
-  .caseStudies,
-  .footer-info {
-    a {
-      transition: opacity .3s;
-      &:hover {
-        opacity: .7;
-      }
-    }
-  }
   .team a,
   .blog .author {
     span {
@@ -338,6 +327,12 @@ const Wrapper = styled.footer`
       width: 100%;
       height: 1px;
       background-color: var(--neutral-800);
+    }
+  }
+  a:not(.person) {
+    transition: opacity .3s;
+    &:hover {
+      opacity: .7;
     }
   }
   @media (max-width: 1419px){
