@@ -131,7 +131,8 @@ const GlobalStyle = createGlobalStyle`
     font-size: ${Clamp(24, 40, 40)};
   }
   p strong,
-  p.strong {
+  p.strong,
+  li strong {
     font-weight: 400;
     &::before,
     &::after {

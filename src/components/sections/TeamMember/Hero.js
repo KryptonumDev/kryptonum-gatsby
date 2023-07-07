@@ -31,6 +31,7 @@ const Wrapper = styled.section`
       margin-bottom: 8px;
     }
     h2 {
+      margin-bottom: 0;
       font-size: ${Clamp(16, 22, 22)};
       &::before {
         content: "01/";

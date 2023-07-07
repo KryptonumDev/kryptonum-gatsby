@@ -68,6 +68,9 @@ const GlobalStyle = createGlobalStyle`
   main {
     max-width: ${768/16}rem;
   }
+  h2 {
+    margin: 0 auto ${Clamp(28, 48, 48, 'px')};
+  }
   .contact p {
     font-size: ${Clamp(22, 50, 48)};
     text-align: center;

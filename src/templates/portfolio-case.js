@@ -23,6 +23,7 @@ const CaseStudyPage = ({
     client_Img,
     challenge_Heading,
     challenge_Paragraph,
+    challenge_Claim,
     process,
     logo_Images,
     logo_Paragraph,
@@ -64,6 +65,7 @@ const CaseStudyPage = ({
       <Challenge
         heading={challenge_Heading}
         paragraph={challenge_Paragraph}
+        claim={challenge_Claim}
       />
       <Process
         data={process}
@@ -119,6 +121,7 @@ export const query = graphql`
       # Challenge
       challenge_Heading
       challenge_Paragraph
+      challenge_Claim
       # Process
       process {
         img {
