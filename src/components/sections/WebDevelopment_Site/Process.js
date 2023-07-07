@@ -109,6 +109,9 @@ const Wrapper = styled.section`
       }
     }
   }
+  .roadmapWrapper {
+    margin: ${Clamp(-80, -64, -64, 'px')} 0;
+  }
   @media (max-width: 899px){
     .item {
       grid-template-columns: 1fr;

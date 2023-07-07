@@ -34,7 +34,7 @@ const Roadmap = ({heading, list, cta}) => {
   }, [])
 
   return (
-    <Wrapper style={{minHeight: `calc(100vh + ${scrollable}px`}} className="roadmap" ref={roadmapRef}>
+    <Wrapper style={{minHeight: `calc(100vh + ${scrollable}px`}} className="roadmapWrapper" ref={roadmapRef}>
       <div className="sticky">
         <DecorativeHeading type="h2">{heading}</DecorativeHeading>
         <div className="line"></div>
@@ -58,6 +58,7 @@ const Roadmap = ({heading, list, cta}) => {
 }
 
 const Wrapper = styled.section`
+  margin: ${Clamp(-172, -144, -96, "px")} 0;
   .sticky {
     height: 100vh;
     position: sticky;
@@ -77,7 +78,7 @@ const Wrapper = styled.section`
   }
   .roadmap {
     width: 100vw;
-    max-width: 1680px;
+    max-width: calc(1680px + (var(--pageMargin) * 2));
     pointer-events: none;
     ::-webkit-scrollbar {
       display: none;
