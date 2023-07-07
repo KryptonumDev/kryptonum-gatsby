@@ -13,7 +13,6 @@ const Inspirations = ({ data }) => {
         className="wrapper"
         options={(w) => ({
           radius: w.innerWidth >= 768 ? 768 / 2 : (w.innerWidth / 2) - 16,
-          maxSpeed: "fast",
         })}
         onClickOptions={{ passive: true }}
       >
