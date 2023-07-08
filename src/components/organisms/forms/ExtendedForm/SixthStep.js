@@ -1,4 +1,4 @@
-import React from "react"
+import React, { useMemo, useState } from "react"
 import { useForm } from "react-hook-form"
 import styled from "styled-components"
 import Button from "../../../atoms/Button"
@@ -15,8 +15,22 @@ export default function SixthStep({ prevData, setData, setStep }) {
     defaultValues: { ...prevData?.Date }
   })
 
+  const [chosenDate, setChosenDate] = useState(null)
+  const [chosenTime, setChosenTime] = useState(null)
+
+  const inputValue = useMemo(() => {
+    let str = ''
+    if (chosenDate && chosenTime) {
+      str = chosenDate.format('DD/MM/YYYY') + '  |  ' + chosenTime
+    } else if (chosenDate) {
+      str = chosenDate.format('DD/MM/YYYY') + '  |  Godzina'
+    }
+
+    return str
+  }, [chosenDate, chosenTime])
+
   const onSubmit = (data) => {
-    setData({ ...prevData, 'Date': data })
+    setData({ ...prevData, 'Date': {...data, 'date': inputValue} })
     setStep((step) => step + 1)
   }
 
@@ -25,9 +39,11 @@ export default function SixthStep({ prevData, setData, setStep }) {
       <h2>To kiedy się <strong>widzimy</strong>? Umów termin calla</h2>
 
       <Calendar
-        name='date'
-        register={register}
-        errors={errors}
+        chosenDate={chosenDate}
+        setChosenDate={setChosenDate}
+        chosenTime={chosenTime}
+        setChosenTime={setChosenTime}
+        inputValue={inputValue}
       />
 
       <Checkbox

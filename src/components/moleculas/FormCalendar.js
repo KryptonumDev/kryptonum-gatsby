@@ -1,29 +1,16 @@
-import React, { useMemo, useState } from "react"
+import React, { useState } from "react"
 import styled from "styled-components"
 import { CalendarDateDropdown } from "../atoms/CalendarDateDropdown"
 import { CalendarTimeDropdown } from "../atoms/CalendarTimeDropdown"
 import { CalendarIcon } from "../atoms/Icons"
 
-export const Calendar = ({ name, errors, register }) => {
+export const Calendar = ({ chosenDate, setChosenDate, chosenTime, setChosenTime, inputValue }) => {
   const [openedPopup, setOpenedPopup] = useState(false)
-  const [chosenDate, setChosenDate] = useState(null)
-  const [chosenTime, setChosenTime] = useState(null)
-  const inputValue = useMemo(() => {
-    let str = ''
-    if (chosenDate && chosenTime) {
-      str = chosenDate.format('DD/MM/YYYY') + '  |  ' + chosenTime
-    } else if (chosenDate) {
-      str = chosenDate.format('DD/MM/YYYY') + '  |  Godzina'
-    }
-
-    return str
-  }, [chosenDate, chosenTime])
   return (
     <Wrapper>
       <div className="input-wrap">
         <span className="legend">Wybierz datę i godzinę (opcjonalne)</span>
         <input
-          {...register('date')}
           value={inputValue}
           onFocus={() => { openedPopup ? null : setOpenedPopup('date') }}
           onClick={() => { setOpenedPopup('date') }}

@@ -1,4 +1,5 @@
 import dayjs from "dayjs"
+import 'dayjs/locale/pl';
 import React, { useMemo, useState } from "react"
 import styled from "styled-components"
 import { Next, Prev } from "./Icons"
@@ -8,7 +9,7 @@ import { getWeekDays } from "../../utils/getWeekDays.js"
 
 export const CalendarDateDropdown = ({ setOpenedPopup, setChosenDate, chosenDate }) => {
   const [currentDate, setCurrentDate] = useState(() => {
-    return dayjs().set('date', 1)
+    return dayjs().locale('pl').set('date', 1)
   })
 
   function handlePreviousMonth() {
@@ -25,6 +26,7 @@ export const CalendarDateDropdown = ({ setOpenedPopup, setChosenDate, chosenDate
 
   const currentMonth = currentDate.format('MMMM')
   const currentYear = currentDate.format('YYYY')
+  debugger
 
   // const { data: blockedDates } = useQuery(
   //   ['blocked-dates', currentDate.get('year'), currentDate.get('month')],
@@ -120,9 +122,9 @@ export const CalendarDateDropdown = ({ setOpenedPopup, setChosenDate, chosenDate
         <button type='button' onClick={handlePreviousMonth}>
           <Prev />
         </button>
-        <h2>
+        <p>
           {currentMonth} {currentYear}
-        </h2>
+        </p>
         <button type='button' onClick={handleNextMonth}>
           <Next />
         </button>
