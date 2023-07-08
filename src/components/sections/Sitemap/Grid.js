@@ -138,7 +138,7 @@ export default function Grid({
             alt={sanityWorkshop.hero_Img.asset.altText || ''}
             className="img main-img"
           />
-          <sapn>Warsztat strategiczny</sapn>
+          <span>Warsztat strategiczny</span>
         </Link>
       </div>
       <div>
