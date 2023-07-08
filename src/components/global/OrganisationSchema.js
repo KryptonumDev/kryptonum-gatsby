@@ -1,5 +1,4 @@
 import React from "react"
-import Logo from "./../../resources/images/kryptonum-favicon.webp"
 
 export default function Organization() {
   return (
@@ -15,7 +14,7 @@ export default function Organization() {
             "kuba@kryptonum.eu",
             "michal@kryptonum.eu"
           ],
-          "logo": Logo,
+          "logo": 'https://kryptonum.eu/logo.webp',
           "description": "Kryptonum, to agencja interaktywna kompleksowo wspierająca Twój biznes online. Partner technologiczny na każdym etapie obecności firmy w internecie.",
           "address": {
             "@type": "PostalAddress",
