@@ -1,5 +1,4 @@
 import React from "react"
-import Logo from "./../../resources/images/kryptonum-favicon.webp"
 
 export default function Article({ canonical, title, description, ogImage, date, author }) {
   return (
@@ -29,7 +28,7 @@ export default function Article({ canonical, title, description, ogImage, date, 
             "name": 'Kryptonum',
             "logo": {
               "@type": "ImageObject",
-              "url": Logo,
+              "url": 'https://kryptonum.eu/logo.webp',
               "width": 60,
               "height": 60
             }

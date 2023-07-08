@@ -15,7 +15,7 @@ const createBreadcrumbs = (breadCrumbs) => {
       "@type": "ListItem",
       "position": 1,
       "name": 'Kryptonum',
-      "item": '/pl'
+      "item": 'https://kryptonum.eu/pl'
     }
   ]
 
@@ -24,7 +24,7 @@ const createBreadcrumbs = (breadCrumbs) => {
       "@type": "ListItem",
       "position": index + 2,
       "name": el.name,
-      "item": el.link
+      "item": 'https://kryptonum.eu/' + el.link
     })
   });
 
