@@ -58,7 +58,7 @@ const Layout = ({ data: { page }, children, pageContext }) => {
           img {
             asset {
               altText
-              gatsbyImageData(placeholder: BLURRED, width: 128, height: 128)
+              gatsbyImageData(placeholder: BLURRED, width: 200)
             }
           }
           _createdAt(formatString: "D MMMM Y", locale: "pl")
@@ -81,7 +81,7 @@ const Layout = ({ data: { page }, children, pageContext }) => {
           img {
             asset {
               altText
-              gatsbyImageData(placeholder: BLURRED)
+              gatsbyImageData(placeholder: BLURRED, width: 188)
             }
           }
         }

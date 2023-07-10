@@ -221,8 +221,7 @@ const Wrapper = styled.footer`
             margin-bottom: 34px;
           }
           .thumbnail {
-            max-width: 156px;
-            max-height: 156px;
+            max-width: max-content;
             border: 1px solid var(--neutral-800);
           }
           .link {
