@@ -83,7 +83,7 @@ const Wrapper = styled.section`
   > .img {
     border: 1px solid var(--neutral-800);
     &:not(:first-child){
-      margin-top: ${Clamp(48, 72, 96, 'px')};
+      margin-top: ${Clamp(32, 48, 64, 'px')};
     }
     & + h2 {
       margin-top: 48px;
