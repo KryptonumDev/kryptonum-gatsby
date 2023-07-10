@@ -6,91 +6,79 @@ import { Clamp } from "../../../utils/functions";
 import Logo from "./Logo";
 import VisualIdentification from "./VisualIdentification";
 import Technologies from "./Technologies";
+import ProcessKeyElements from "./Process_KeyElements";
 
-const Process = ({
-  data,
-  logo_Showcase,
-  logo_Paragraph,
-  visualIdentification_Showcase,
-  visualIdentification_Paragraph,
-  visualIdentification_SecondParagraph,
-  technologies_Paragraph,
-  technologies,
-}) => {
+const Process = ({ data }) => {
   return (
     <Wrapper>
-      {data.map((step, i) => (
-        <Fragment key={i}>
-          {(i === 2 && logo_Showcase && logo_Paragraph && visualIdentification_Showcase && visualIdentification_Paragraph && visualIdentification_SecondParagraph) && (
-            <>
-              <Logo
-                showcase={logo_Showcase}
-                paragraph={logo_Paragraph}
-              />
-              <VisualIdentification
-                showcase={visualIdentification_Showcase}
-                paragraph={visualIdentification_Paragraph}
-                secondParagraph={visualIdentification_SecondParagraph}
-              />
-            </>
-          )}
-          <div className="step">
-            <GatsbyImage
-              image={step.img.asset.gatsbyImageData}
-              alt={step.img.asset.altText || ''}
-              className="img"
-            />
-            <header className={step.subheading ? 'two-column' : ''}>
-              <ReactMarkdown components={{ 'p': 'h2' }} className="heading">{step.heading}</ReactMarkdown>
-              <ReactMarkdown components={{ 'p': 'h3' }} className="subheading">{step.subheading}</ReactMarkdown>
-            </header>
-            {step.paragraph && (
-              <div className="column">
-                <ReactMarkdown className="paragraph">{step.paragraph}</ReactMarkdown>
-                <ReactMarkdown className="paragraph2">{step.paragraph2}</ReactMarkdown>
+      {data.map((component, i) => {
+        switch (component._type) {
+          case 'caseStudy_Process':
+            return (
+               <div className="step" key={i}>
+                <GatsbyImage
+                  image={component.img.asset.gatsbyImageData}
+                  alt={component.img.asset.altText || ''}
+                  className="img"
+                />
+                <header className={component.subheading ? 'two-column' : ''}>
+                  <ReactMarkdown components={{ 'p': 'h2' }} className="heading">{component.heading}</ReactMarkdown>
+                  <ReactMarkdown components={{ 'p': 'h3' }} className="subheading">{component.subheading}</ReactMarkdown>
+                </header>
+                {component.paragraph && (
+                  <div className="column">
+                    <ReactMarkdown className="paragraph">{component.paragraph}</ReactMarkdown>
+                    <ReactMarkdown className="paragraph2">{component.paragraph2}</ReactMarkdown>
+                  </div>
+                )}
+                {(component.principles_Paragraph && component.principles_List.length > 0) && (
+                  <>
+                    <ReactMarkdown className="principlesParagraph">{component.principles_Paragraph}</ReactMarkdown>
+                    <ul>
+                      {component.principles_List.map((item, i) => (
+                        <li key={i}>{item}</li>
+                      ))}
+                    </ul>
+                  </>
+                )}
+                {component.keyElements && (
+                  <ProcessKeyElements
+                    key={i}
+                    paragraph={component.keyElements.paragraph}
+                    list={component.keyElements.list}
+                  />
+                )}
               </div>
-            )}
-            {(step.principles_Paragraph && step.principles_List.length > 0) && (
-              <>
-                <ReactMarkdown className="principlesParagraph">{step.principles_Paragraph}</ReactMarkdown>
-                <ul>
-                  {step.principles_List.map((item, i) => (
-                    <li key={i}>{item}</li>
-                  ))}
-                </ul>
-              </>
-            )}
-            {(step.keyElements_Paragraph && step.keyElements_List.length > 0) && (
-              <>
-                <ReactMarkdown className="keyElementsParagraph">{step.keyElements_Paragraph}</ReactMarkdown>
-                <div className="keyElementsList">
-                  {step.keyElements_List.map((item, i) => (
-                    <div className="item" key={i}>
-                      <GatsbyImage
-                        image={item.img.asset.gatsbyImageData}
-                        alt={item.img.asset.altText || ''}
-                        className="img"
-                      />
-                      <div className="copy">
-                        <ReactMarkdown components={{ 'p': 'h3' }}>{item.heading}</ReactMarkdown>
-                        {item.paragraph && (
-                          <ReactMarkdown className="paragraph">{item.paragraph}</ReactMarkdown>
-                        )}
-                      </div>
-                    </div>
-                  ))}
-                </div>
-              </>
-            )}
-          </div>
-          {i === 3 && (
-            <Technologies
-              heading={technologies_Paragraph}
-              technologies={technologies}
-            />
-          )}
-        </Fragment>
-      ))}
+            );
+          case 'caseStudy_Logo':
+            return (
+             <Logo
+                key={i}
+                showcase={component.images}
+                paragraph={component.paragraph}
+              />
+            );
+          case 'caseStudy_VisualIdentification':
+            return (
+              <VisualIdentification
+                key={i}
+                showcase={component.images}
+                paragraph={component.paragraph}
+                secondParagraph={component.paragraph2}
+              />
+            );
+          case 'caseStudy_Technology':
+            return (
+              <Technologies
+                key={i}
+                heading={component.paragraph}
+                technologies={component.technologies}
+              />
+            );
+          default:
+            break;
+        }
+      })}
     </Wrapper>
   );
 }
@@ -172,15 +160,12 @@ const Wrapper = styled.section`
         font-size: ${Clamp(16, 22, 22)};
       }
     }
-    .principlesParagraph, .keyElementsParagraph {
+    .principlesParagraph {
       font-size: ${Clamp(24, 40, 40)};
       margin-bottom: ${Clamp(28, 32, 48, 'px')};
     }
     .principlesParagraph {
       margin-top: ${Clamp(48, 48, 64, 'px')};
-    }
-    .keyElementsParagraph {
-      margin-top: ${Clamp(80, 96, 96, 'px')};
     }
     ul {
       display: grid;
@@ -194,32 +179,6 @@ const Wrapper = styled.section`
         border-radius: 2px;
         font-size: ${Clamp(16, 22, 22)};
         padding: ${Clamp(20, 32, 32, 'px')};
-      }
-    }
-    .keyElementsList {
-      display: grid;
-      row-gap: ${Clamp(48, 48, 96, 'px')};
-      .item {
-        display: grid;
-        @media (min-width: 899px){
-          &:nth-child(even) .copy {
-            order: -1;
-          }
-          grid-template-columns: 1fr 1fr;
-        }
-        gap: 24px 32px;
-        h3 {
-          font-size: ${Clamp(20, 32, 36)};
-          margin-bottom: 16px;
-        }
-        .copy {
-          display: flex;
-          flex-direction: column;
-          justify-content: space-between;
-        }
-        .paragraph {
-          font-size: ${Clamp(16, 22, 22)};
-        }
       }
     }
     &:nth-last-of-type(2) {

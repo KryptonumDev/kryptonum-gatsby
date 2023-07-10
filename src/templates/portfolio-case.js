@@ -4,10 +4,13 @@ import { createGlobalStyle } from "styled-components";
 import { SEO } from "../components/global/Seo";
 import Hero from "../components/sections/CaseStudies/Hero";
 import CtaSection from "../components/sections/CtaSection";
-import ImageAndStanduout from "../components/sections/ImageAndStandout";
 import Challenge from "../components/sections/CaseStudies/Challenge";
 import Testimonial from "../components/sections/CaseStudies/Testimonial";
 import Process from "../components/sections/CaseStudies/Process";
+import ImageAndStandout from "../components/sections/ImageAndStandout";
+import Summary from "../components/sections/CaseStudies/Summary";
+import Technologies from "../components/sections/CaseStudies/Technologies";
+import ProcessKeyElements from "../components/sections/CaseStudies/Process_KeyElements";
 
 const CaseStudyPage = ({
   data: { caseStudy : {
@@ -17,25 +20,7 @@ const CaseStudyPage = ({
     categories_Paragraph,
     categories,
     img,
-    client_Heading,
-    client_Paragraph,
-    client_Standout,
-    client_Img,
-    challenge_Heading,
-    challenge_Paragraph,
-    challenge_Claim,
-    process,
-    logo_Images,
-    logo_Paragraph,
-    visualIdentification_Images,
-    visualIdentification_Paragraph,
-    visualIdentification_Paragraph2,
-    testimonial_Heading,
-    testimonial,
-    testimonial_Paragraph,
-    testimonial_Paragraph2,
-    technologies_Paragraph,
-    technologies,
+    content,
     ctaSection,
   }}, pageContext
 }) => {
@@ -53,36 +38,74 @@ const CaseStudyPage = ({
         }}
         pageContext={pageContext}
       />
-      {client_Heading && client_Paragraph && client_Standout && client_Img.asset && (
-        <ImageAndStanduout
-          heading={client_Heading}
-          paragraph={client_Paragraph}
-          standout={client_Standout}
-          img={client_Img}
-          reversed={1}
-        />
-      )}
-      <Challenge
-        heading={challenge_Heading}
-        paragraph={challenge_Paragraph}
-        claim={challenge_Claim}
-      />
-      <Process
-        data={process}
-        logo_Showcase={logo_Images}
-        logo_Paragraph={logo_Paragraph}
-        visualIdentification_Showcase={visualIdentification_Images}
-        visualIdentification_Paragraph={visualIdentification_Paragraph}
-        visualIdentification_SecondParagraph={visualIdentification_Paragraph2}
-        technologies_Paragraph={technologies_Paragraph}
-        technologies={technologies}
-      />
-      <Testimonial
-        heading={testimonial_Heading}
-        testimonial={testimonial}
-        paragraph={testimonial_Paragraph}
-        secondParagraph={testimonial_Paragraph2}
-      />
+      {content.map((component, i) => {
+        switch (component._type) {
+          case 'standout':
+            return (
+              <ImageAndStandout
+                key={i}
+                heading={component.heading}
+                paragraph={component.paragraph}
+                standout={component.standout}
+                img={component.img}
+                reversed={component.reversed}
+              />
+            );
+          case 'caseStudy_Highlight':
+            return (
+              <Challenge
+                key={i}
+                heading={component.heading}
+                paragraph={component.paragraph}
+                claim={component.claim}
+              />
+            );
+          case 'caseStudy_ProcessArray':
+            return (
+              <Process
+                key={i}
+                data={component.array}
+              />
+            );
+          case 'caseStudy_Testimonial':
+            return (
+              <Testimonial
+                key={i}
+                heading={component.heading}
+                testimonial={component.testimonial}
+                paragraph={component.paragraph}
+                secondParagraph={component.secondParagraph}
+              />
+            );
+          case 'caseStudy_Summary':
+            return (
+              <Summary
+                key={i}
+                paragraph={component.paragraph}
+                secondParagraph={component.paragraph2}
+              />
+            );
+          case 'caseStudy_Technology':
+            return (
+              <Technologies
+                key={i}
+                heading={component.paragraph}
+                technologies={component.technologies}
+              />
+            );
+          case 'process_KeyElementsWrapper':
+            return (
+              <ProcessKeyElements
+                key={i}
+                isHeading={true}
+                paragraph={component.paragraph}
+                list={component.list}
+              />
+            );
+          default:
+            break;
+        }
+      })}
       <CtaSection data={ctaSection} />
     </>
   )
@@ -108,90 +131,140 @@ export const query = graphql`
           gatsbyImageData(placeholder: BLURRED)
         }
       }
-      # Client
-      client_Heading
-      client_Paragraph
-      client_Standout
-      client_Img {
-        asset {
-          altText
-          gatsbyImageData(placeholder: BLURRED)
-        }
-      }
-      # Challenge
-      challenge_Heading
-      challenge_Paragraph
-      challenge_Claim
-      # Process
-      process {
-        img {
-          asset {
-            altText
-            gatsbyImageData(placeholder: BLURRED)
-          }
-        }
-        heading
-        subheading
-        paragraph
-        paragraph2
-        principles_Paragraph
-        principles_List
-        keyElements_Paragraph
-        keyElements_List {
+      content {
+        ... on SanityStandout {
+          _type
+          heading
+          paragraph
+          standout
           img {
             asset {
               altText
-              gatsbyImageData(placeholder: BLURRED)
+              gatsbyImageData(placeholder: DOMINANT_COLOR)
             }
           }
+          reversed
+        }
+        ... on SanityCaseStudyHighlight {
+          _type
           heading
           paragraph
+          claim
         }
-      }
-      # Logo showcase
-      logo_Images {
-        asset {
-          altText
-          gatsbyImageData(placeholder: BLURRED)
-        }
-      }
-      logo_Paragraph
-      # Visual Identification
-      visualIdentification_Images {
-        asset {
-          altText
-          gatsbyImageData(placeholder: BLURRED)
-        }
-      }
-      visualIdentification_Paragraph
-      visualIdentification_Paragraph2
-      # Testimonial
-      testimonial_Heading
-      testimonial {
-        name
-        text
-        img {
-          asset {
-            altText
-            gatsbyImageData(placeholder: BLURRED)
+        ... on SanityCaseStudyProcessArray {
+          _type
+          array {
+            ... on SanityCaseStudyProcess {
+              _type
+              img {
+                asset {
+                  altText
+                  gatsbyImageData(placeholder: DOMINANT_COLOR)
+                }
+              }
+              heading
+              subheading
+              paragraph
+              paragraph2
+              principles_Paragraph
+              principles_List
+              keyElements {
+                paragraph
+                list {
+                  img {
+                    asset {
+                      altText
+                      gatsbyImageData(placeholder: DOMINANT_COLOR)
+                    }
+                  }
+                  heading
+                  paragraph
+                }
+              }
+            }
+            ... on SanityCaseStudyTechnology {
+              _type
+              paragraph
+              technologies {
+                img {
+                  asset {
+                    altText
+                    gatsbyImageData(placeholder: DOMINANT_COLOR)
+                  }
+                }
+              }
+            }
+            ... on SanityCaseStudyVisualIdentification {
+              _type
+              images {
+                asset {
+                  altText
+                  gatsbyImageData(placeholder: DOMINANT_COLOR)
+                }
+              }
+              paragraph
+              paragraph2
+            }
+            ... on SanityCaseStudyLogo {
+              _type
+              images {
+                asset {
+                  altText
+                  gatsbyImageData(placeholder: DOMINANT_COLOR)
+                }
+              }
+              paragraph
+            }
           }
         }
-        cta {
-          text
-          theme
-          href
+        ... on SanityCaseStudyTestimonial {
+          _type
+          heading
+          testimonial {
+            name
+            text
+            img {
+              asset {
+                altText
+                gatsbyImageData(placeholder: DOMINANT_COLOR)
+              }
+            }
+            cta {
+              theme
+              text
+              href
+            }
+          }
         }
-      }
-      testimonial_Paragraph
-      testimonial_Paragraph2
-      # Technologies
-      technologies_Paragraph
-      technologies {
-        name
-        img {
-          asset {
-            altText
-            gatsbyImageData(placeholder: BLURRED, width: 152, height: 152)
+        ... on SanityCaseStudySummary {
+          _type
+          paragraph
+          paragraph2
+        }
+        ... on SanityCaseStudyTechnology {
+          _type
+          paragraph
+          technologies {
+            img {
+              asset {
+                altText
+                gatsbyImageData(placeholder: DOMINANT_COLOR)
+              }
+            }
+          }
+        }
+        ... on SanityProcessKeyElementsWrapper {
+          _type
+          paragraph
+          list {
+            heading
+            paragraph
+            img {
+              asset {
+                altText
+                gatsbyImageData(placeholder: DOMINANT_COLOR)
+              }
+            }
           }
         }
       }
