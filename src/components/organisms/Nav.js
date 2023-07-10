@@ -147,10 +147,12 @@ const Nav = ({
                 </button>
                 <ul className="navList2">
                   <div className="max-width">
-                    <button className="backBtn" onClick={(e) => handleNavLinks(e)}>
-                      <ChevronLeft />
+                    <div className="backBtn">
+                      <button onClick={(e) => handleNavLinks(e)}>
+                        <ChevronLeft />
+                      </button>
                       <span>Usługi</span>
-                    </button>
+                    </div>
                     <li>
                       <h3><Link to="/pl/web-development" onClick={(e) => handleNavLinks(e)}>Web Development</Link></h3>
                       <ul className="navList3">
@@ -183,10 +185,12 @@ const Nav = ({
                 </button>
                 <ul className="navList2">
                   <div className="max-width">
-                    <button className="backBtn" onClick={(e) => handleNavLinks(e)}>
-                      <ChevronLeft />
+                    <div className="backBtn">
+                      <button onClick={(e) => handleNavLinks(e)}>
+                        <ChevronLeft />
+                      </button>
                       <span>Projekty</span>
-                    </button>
+                    </div>
                     <h3 className="navList2-subpage">
                       <Link to="/pl/portfolio" onClick={(e) => handleNavLinks(e)}>Przejdź do projektów</Link>
                     </h3>
@@ -216,10 +220,12 @@ const Nav = ({
                 </button>
                 <ul className="navList2">
                   <div className="max-width">
-                    <button className="backBtn" onClick={(e) => handleNavLinks(e)}>
-                      <ChevronLeft />
+                    <div className="backBtn">
+                      <button onClick={(e) => handleNavLinks(e)}>
+                        <ChevronLeft />
+                      </button>
                       <span>Zespół</span>
-                    </button>
+                    </div>
                     <h3 className="navList2-subpage">
                       <Link to="/pl/zespol" onClick={(e) => handleNavLinks(e)}>Przejdź do: nasz zespół</Link>
                     </h3>
@@ -250,10 +256,12 @@ const Nav = ({
                 </button>
                 <ul className="navList2">
                   <div className="max-width">
-                    <button className="backBtn" onClick={(e) => handleNavLinks(e)}>
-                      <ChevronLeft />
+                    <div className="backBtn">
+                      <button onClick={(e) => handleNavLinks(e)}>
+                        <ChevronLeft />
+                      </button>
                       <span>Blog</span>
-                    </button>
+                    </div>
                     <div className="entries">
                       <h3><Link to="/pl/blog" onClick={(e) => handleNavLinks(e)}>Zobacz bloga</Link></h3>
                       {blogEntries.nodes.map((entry, i) => (
@@ -334,10 +342,12 @@ const Nav = ({
                 </button>
                 <ul className="navList2">
                   <div className="max-width">
-                    <button className="backBtn" onClick={(e) => handleNavLinks(e)}>
-                      <ChevronLeft />
+                    <div className="backBtn">
+                      <button onClick={(e) => handleNavLinks(e)}>
+                        <ChevronLeft />
+                      </button>
                       <span>Akademia</span>
-                    </button>
+                    </div>
                     <div className="curiosities">
                       <h3><Link to="/pl/akademia" onClick={(e) => handleNavLinks(e)}>Zobacz akademię</Link></h3>
                       {curiosityEntries.nodes.map((curiosity, i) => (
@@ -845,14 +855,19 @@ const Wrapper = styled.nav`
     align-items: center;
     font-size: ${20/16}rem;
     gap: 4px;
-    margin-bottom: 32px;
     padding-bottom: 12px;
+    margin-bottom: 32px;
     border-bottom: 1px solid var(--neutral-800);
     background-color: var(--neutral-950);
     position: sticky;
     top: 0;
     z-index: 4;
     svg {
+      width: 48px;
+      height: 48px;
+      path {
+        stroke-width: 1;
+      }
       margin-left: var(--pageMargin);
     }
     span {
@@ -1012,7 +1027,10 @@ const Wrapper = styled.nav`
           }
           .curiosities {
             .link {
-              grid-template-columns: 1fr;
+              grid-template-columns: 128px 1fr;
+              .img {
+                max-width: 188px;
+              }
             }
           }
           .categories {
