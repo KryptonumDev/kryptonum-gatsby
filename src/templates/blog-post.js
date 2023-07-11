@@ -8,6 +8,7 @@ import LatestBlogEntries from "../components/sections/LatestBlogEntries";
 
 const BlogEntryPage = ({
   data: { page: {
+    _id,
     title,
     slug,
     subtitle,
@@ -33,6 +34,7 @@ const BlogEntryPage = ({
         _rawContent={_rawContent}
         author={author}
         share={seo}
+        _id={_id}
       />
       <LatestBlogEntries exclude={slug.current} />
       <LatestCuriosityEntries />
@@ -43,6 +45,7 @@ const BlogEntryPage = ({
 export const query = graphql`
   query($id: String!) {
     page: sanityBlogEntries(id: {eq: $id}) {
+      _id
       title
       subtitle
       slug {

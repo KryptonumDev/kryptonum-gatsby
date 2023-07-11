@@ -1,20 +1,62 @@
 import { Link } from "gatsby";
 import { GatsbyImage } from "gatsby-plugin-image";
-import React from "react";
+import React, { useEffect, useState } from "react";
 import styled, { createGlobalStyle } from "styled-components";
 import { Clamp } from "../../../utils/functions";
-import { Share } from "../../atoms/Icons";
+import { Heart, Share } from "../../atoms/Icons";
 import ReadingTime from "../../atoms/ReadingTime";
 import TableOfContent from "../../moleculas/TableOfContent";
 import PortableContent from "../../organisms/PortableContent";
 
-const Content = ({ _rawContent, author, share }) => {
+const Content = ({ _id, _rawContent, author, share }) => {
   author = author[0];
   const shareData = {
     title: share?.title,
     text: share?.description || '',
     url: typeof window !== 'undefined' ? window.location.href.split('?')[0]+'?feature=share' : 'kryptonum.eu',
   };
+
+  const [ isLiked, setIsLiked ] = useState(false);
+
+  const saveToLocalStorage = (name, value) => {
+    const retrievedArrayString = localStorage.getItem(name);
+    const retrievedArray = JSON.parse(retrievedArrayString) || [];
+    const idAlreadyExists = retrievedArray.includes(value);
+    const newArray = idAlreadyExists ? retrievedArray : [...retrievedArray, value];
+    localStorage.setItem(name, JSON.stringify(newArray));  
+  }
+
+  const ifValueExsistFromLocalStorage = (name, value) => {
+    const retrievedArrayString = localStorage.getItem(name);
+    const retrievedArray = JSON.parse(retrievedArrayString) || [];
+    return retrievedArray.indexOf(value) !== -1 ? true : false;
+  }
+
+  const handleLike = () => {
+    setIsLiked(true);
+    fetch('/api/post-likes', {
+      method: 'POST', 
+      headers: {
+        "content-type": "application/json",
+      },
+      body: JSON.stringify({id: _id})
+    })
+    .then(response => response.json())
+    .then(response => {
+      if(response.success){
+        saveToLocalStorage('liked', _id);
+      }
+    })
+    .catch(() => {
+      setIsLiked(false);
+    })
+  }
+
+  const locationPath = typeof window !== 'undefined' ? window.location.pathname : '';
+  useEffect(() => {
+    ifValueExsistFromLocalStorage('liked', _id) && setIsLiked(true);
+  }, [locationPath])
+
   const handleShare = async (e) => {
     const btn = e.currentTarget;
     try {
@@ -43,6 +85,14 @@ const Content = ({ _rawContent, author, share }) => {
             />
             <p>Autor: {author.name}</p>
           </Link>
+          <button
+            className={`like${isLiked ? ' liked' : ''}`}
+            onClick={() => handleLike()}
+            disabled={isLiked ? true : false}
+          >
+            <Heart />
+            <span>Polub artykuł</span>
+          </button>
           <button className="share" onClick={(e) => handleShare(e)}>
             <Share />
             <span>Udostępnij</span>
@@ -95,12 +145,39 @@ const Wrapper = styled.section`
           font-size: ${22/16}rem;
         }
       }
-      .share {
+      .share,
+      .like {
         display: flex;
         align-items: center;
         gap: 8px;
         font-size: ${Clamp(16, 22, 22)};
         margin: 16px auto;
+      }
+      .like {
+        &[disabled] span {
+          opacity: .4;
+        }
+        margin-bottom: 0;
+        &.liked {
+          svg {
+            animation: .6s likeAnimation forwards;
+            fill: url(#heart);
+          }
+        }
+      }
+      @keyframes likeAnimation {
+        0% {
+          transform: scale(1) rotate(0deg);
+        }
+        30% {
+          transform: scale(1.5) rotate(8deg);
+        }
+        70% {
+          transform: scale(1.2) rotate(-5deg);
+        }
+        100% {
+          transform: scale(1) rotate(0deg);
+        }
       }
     }
     @media (min-width: 1099px){

@@ -625,3 +625,34 @@ export const Share = () => (
     ></path>
   </svg>
 )
+
+export const Heart = () => (
+  <svg
+    xmlns='http://www.w3.org/2000/svg'
+    width='33'
+    height='32'
+    fill='none'
+    viewBox='0 0 33 32'
+  >
+    <path
+      stroke='url(#heart)'
+      strokeLinecap='round'
+      strokeLinejoin='round'
+      strokeWidth='2'
+      d='M28.288 6.147a7.334 7.334 0 00-10.373 0L16.502 7.56l-1.414-1.413A7.335 7.335 0 104.715 16.52l11.787 11.787L28.288 16.52a7.333 7.333 0 000-10.373z'
+    ></path>
+    <defs>
+      <linearGradient
+        id='heart'
+        x1='29.915'
+        x2='0.946'
+        y1='3.998'
+        y2='6.113'
+        gradientUnits='userSpaceOnUse'
+      >
+        <stop stopColor='#2DD282'></stop>
+        <stop offset='1' stopColor='#90F4E8'></stop>
+      </linearGradient>
+    </defs>
+  </svg>
+)
