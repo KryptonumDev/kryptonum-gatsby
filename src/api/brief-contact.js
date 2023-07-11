@@ -108,6 +108,6 @@ export default async function handler(req, res) {
       res.status(400).json({ success: false })
     })
   } else {
-    res.status(404).send('');
+    res.redirect(404, '/404')
   }
 }
