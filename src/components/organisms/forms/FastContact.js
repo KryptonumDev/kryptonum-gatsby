@@ -29,7 +29,6 @@ export default function Form() {
       reset()
       setIsEmailSent('success')
     }).catch(() => {
-      
       setIsEmailSent('failed')
     })
   }

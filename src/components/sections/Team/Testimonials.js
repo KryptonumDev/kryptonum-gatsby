@@ -26,6 +26,9 @@ const Testimonials = ({
 }
 
 const Wrapper = styled.section`
+  overflow: hidden;
+  margin: 0 calc(var(--pageMargin) * -1);
+  padding: var(--pageMargin);
   h2 {
     margin-bottom: ${Clamp(28, 48, 72, 'px')};
   }

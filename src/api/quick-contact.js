@@ -2,16 +2,17 @@ require("dotenv").config({
   path: `.env.${process.env.NODE_ENV}`,
 })
 const sgMail = require('@sendgrid/mail')
+sgMail.setApiKey(process.env.SENDGRID_API_KEY)
 
 export default async function handler(req, res) {
-  sgMail.setApiKey(process.env.SENDGRID_API_KEY)
-
-  sgMail
-    .send({
+  res.setHeader('Access-Control-Allow-Origin', 'https://kryptonum.eu');
+  if(req.method === `POST`){
+    sgMail.send({
       to: 'michal@kryptonum.eu',
       from: 'michal@kryptonum.eu',
       subject: 'Szybki formularz - kryptonum.eu',
       text: 'Wiadomość z szybkiego formularza kontaktowego.',
+      replyTo: `${req.body.mail}`,
       html: `
       <div>
         <div>
@@ -41,9 +42,7 @@ export default async function handler(req, res) {
       //   `,
       // })
       //   .then(() => {
-          res.status(200).send({
-            statusMSG: 'Email wysłany pomyślnie'
-          });
+          res.status(200).json({ success: true })
         // })
         // .catch(() => {
         //   res.status(400).send({
@@ -52,8 +51,9 @@ export default async function handler(req, res) {
         // })
     })
     .catch(() => {
-      res.status(400).send({
-        statusMSG: 'Błąd wysyłania wiadomości do nas'
-      });
+      res.status(400).json({ success: false })
     })
+  } else {
+    res.status(404).send('');
+  }
 }

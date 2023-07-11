@@ -41,10 +41,6 @@ const Wrapper = styled.div`
     align-items: center;
     padding: 72px 32px 64px;
     grid-template-columns: 240px 2fr 1.2fr;
-    &.noImg {
-      padding: 72px 32px 64px 64px;
-      grid-template-columns: 2fr 1.2fr;
-    }
     gap: 48px;
     .img {
       margin-bottom: -64px;
@@ -79,6 +75,17 @@ const Wrapper = styled.div`
         left: -33px;
         bottom: 0;
         background-color: var(--neutral-800);
+      }
+    }
+    @media (min-width: 1190px){
+      &.noImg {
+        &::before {
+          content: '';
+          width: 240px;
+        }
+        .content {
+          margin-left: -288px;
+        }
       }
     }
   }
