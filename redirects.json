@@ -111,12 +111,12 @@
   },
   {
     "fromPath": "/blog/jak-zdobyc-pierwszego-klienta/mailtokuba@kryptonum.eu",
-    "toPath": "/pl",
+    "toPath": "/pl/blog",
     "isPermanent": true
   },
   {
     "fromPath": "/page-data/blog/jak-zdobyc-pierwszego-klienta/mailtokuba@kryptonum.eu/page-data.json",
-    "toPath": "/pl",
+    "toPath": "/pl/blog",
     "isPermanent": true
   },
   {
