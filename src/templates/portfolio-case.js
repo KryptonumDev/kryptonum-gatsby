@@ -11,19 +11,21 @@ import ImageAndStandout from "../components/sections/ImageAndStandout";
 import Summary from "../components/sections/CaseStudies/Summary";
 import Technologies from "../components/sections/CaseStudies/Technologies";
 import ProcessKeyElements from "../components/sections/CaseStudies/Process_KeyElements";
-import { siteMetadata } from "../../gatsby-config";
 
 const CaseStudyPage = ({
-  data: { caseStudy : {
-    heading,
-    paragraph,
-    paragraph2,
-    categories_Paragraph,
-    categories,
-    img,
-    content,
-    ctaSection,
-  }}, pageContext
+  data: {
+    caseStudy : {
+      heading,
+      paragraph,
+      paragraph2,
+      categories_Paragraph,
+      categories,
+      img,
+      content,
+      ctaSection,
+    },
+  },
+  pageContext,
 }) => {
   return (
     <>
@@ -296,24 +298,32 @@ export const query = graphql`
         }
       }
     }
+    site {
+      siteMetadata {
+        siteUrl
+      }
+    }
   }
 `
 
 export default CaseStudyPage
 
 export const Head = ({
-  data: { caseStudy: {
-    seo,
-    slug,
-    ogImage,
-  }}
+  data: {
+    caseStudy: {
+      seo,
+      slug,
+      ogImage,
+    },
+    site: { siteMetadata: { siteUrl } }
+  }
 }) => {
   return (
     <SEO
       title={seo?.title}
       description={seo?.description}
       url={`/pl/portfolio/${slug.current}`}
-      ogImage={`${siteMetadata.siteUrl}${ogImage.asset.resize.src}`}
+      ogImage={`${siteUrl}${ogImage.asset.resize.src}`}
     />
   )
 }
