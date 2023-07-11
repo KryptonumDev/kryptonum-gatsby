@@ -4,11 +4,11 @@ import styled from "styled-components"
 import Button from "../../atoms/Button"
 import { Label } from "../../moleculas/FormInput"
 import { Checkbox } from "../../moleculas/FormCheckbox"
-import { emailRegex, phoneRegex } from "../../../constants/regex"
+import { emailRegex } from "../../../constants/regex"
 import { AnimatePresence, motion } from "framer-motion"
 import { Clamp } from "../../../utils/functions"
 
-export default function Form() {
+const FaqContact = ({ cta }) => {
   const {
     register,
     handleSubmit,
@@ -16,31 +16,32 @@ export default function Form() {
     formState: { errors },
   } = useForm({ mode: 'onBlur' })
 
-  const [isEmailSent, setIsEmailSent] = useState(false)
+  const [ isEmailSent, setIsEmailSent ] = useState(false);
 
   const onSubmit = (data) => {
-    fetch('/api/fast-contact', {
+    fetch('/api/faq-contact', {
       method: 'POST',
       body: JSON.stringify(data),
       headers: {
         'Content-Type': 'application/json',
       }
-    }).then(() => {
-      reset()
-      setIsEmailSent('success')
-    }).catch(() => {
+    })
+    .then(response => response.json())
+    .then(response => {
+      if(response.success){
+        reset()
+        setIsEmailSent('success')
+      } else {
+        setIsEmailSent('failed')
+      }
+    })
+    .catch(() => {
       setIsEmailSent('failed')
     })
   }
 
   return (
-    <Wrapper onSubmit={handleSubmit(onSubmit)}>
-      <Label
-        title='Telefon'
-        name='phone'
-        register={register('phone', { required: true, pattern: phoneRegex })}
-        errors={errors}
-      />
+    <Wrapper className="form" onSubmit={handleSubmit(onSubmit)}>
       <Label
         title='Email'
         name='mail'
@@ -60,10 +61,10 @@ export default function Form() {
         register={register('check', { required: true })}
         errors={errors}
       />
-      <Button theme="primary">Wyślij wiadomość</Button>
+      <Button theme="primary">{cta || 'Wyślij wiadomość'}</Button>
       <AnimatePresence>
         {isEmailSent === 'success' && (
-          <Overlay initial={{ opacity: 0, x: 10 }} animate={{ opacity: 1, x: 0 }} exit={{ opacity: 0, x: -10 }}>
+          <Overlay className="overlay" initial={{ opacity: 0, x: 10 }} animate={{ opacity: 1, x: 0 }} exit={{ opacity: 0, x: -10 }}>
             <div className="grid">
               <h2>Formularz został <strong>wysłany</strong>!</h2>
               <p>Spodziewaj się od nas odpowiedzi do <strong>24 h!</strong></p>
@@ -74,7 +75,7 @@ export default function Form() {
       </AnimatePresence>
       <AnimatePresence>
         {isEmailSent === 'failed' && (
-          <Overlay initial={{ opacity: 0, x: 10 }} animate={{ opacity: 1, x: 0 }} exit={{ opacity: 0, x: -10 }}>
+          <Overlay className="overlay" initial={{ opacity: 0, x: 10 }} animate={{ opacity: 1, x: 0 }} exit={{ opacity: 0, x: -10 }}>
             <div className="grid">
               <h2>
                 <strong>Błąd</strong> serwera!
@@ -95,36 +96,31 @@ const Wrapper = styled.form`
   position: relative;
   display: grid;
   gap: 32px;
-  button {
-    max-width: 400px;
-  }
+  max-width: 500px;
 `
 
 const Overlay = styled(motion.div)`
   position: absolute;
-  z-index: 2;
+  z-index: 4;
   inset: -2px;
-  /* pointer-events: none;
-  opacity: 0; */
   border-radius: 4px;
   background: var(--neutral-900, #101012);
-  padding: 8px 64px;
+  padding: ${Clamp(24, 48, 64)} ${Clamp(16, 64, 64)};
   display: grid;
-  align-items: center;
-
-  .grid{
-    display: grid;
-    gap: 32px;
-    height: fit-content;
-
-    p{
-      font-size: ${Clamp(20, 32, 32, 'rem')};
+  .grid {
+    margin: auto;
+    h2 {
+      margin-bottom: 16px;
+    }
+    p {
+      font-size: ${Clamp(20, 22, 22)};
+    }
+    button{
+      margin-top: 64px;
+      margin-left: 0;
+      width: fit-content;
     }
   }
-
-  button{
-    margin-top: 64px;
-    margin-left: 0;
-    width: fit-content;
-  }
 `
+
+export default FaqContact;

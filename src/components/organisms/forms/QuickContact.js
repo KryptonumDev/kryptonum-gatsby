@@ -54,7 +54,6 @@ const Form = ({ cta }) => {
         errors={errors}
       />
       <Checkbox
-        text='Zgadzam się na <a href="/pl/polityka-prywatnosci">przetwarzanie moich danych</a>'
         name='check'
         register={register('check', { required: true })}
         errors={errors}

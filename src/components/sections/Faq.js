@@ -11,6 +11,9 @@ import FaqInfo from "../organisms/faq/FaqInfo";
 import FaqWhy from "../organisms/faq/faqWhy";
 import FaqCopy from "../organisms/faq/FaqCopy";
 import FaqWordpress from "../organisms/faq/FaqWordpress";
+import ReactMarkdown from "react-markdown";
+import { GatsbyImage } from "gatsby-plugin-image";
+import FaqContact from "../organisms/forms/FaqContact";
 
 const Faq = ( { heading } ) => {
   const { global: { faq } } = useStaticQuery(graphql`
@@ -135,6 +138,20 @@ const Faq = ( { heading } ) => {
               theme
               href
               text
+            }
+          }
+          form {
+            heading
+            subheading
+            paragraph
+            person {
+              img {
+                asset {
+                  altText
+                  gatsbyImageData(placeholder: BLURRED, width: 96, height: 96)
+                }
+              }
+              tel
             }
           }
         }
@@ -271,6 +288,24 @@ const Faq = ( { heading } ) => {
           </details>
         ))}
       </div>
+      <div className="faqForm">
+        <div className="max-width">
+          <div className="copy">
+            <ReactMarkdown className="heading" components={{ 'p': 'h3' }}>{faq.form.heading}</ReactMarkdown>
+            <ReactMarkdown className="subheading">{faq.form.subheading}</ReactMarkdown>
+          </div>
+          <FaqContact />
+          <div className="person">
+            <ReactMarkdown className="paragraph">{faq.form.paragraph}</ReactMarkdown>
+            <GatsbyImage
+              image={faq.form.person.img.asset.gatsbyImageData}
+              alt={faq.form.person.img.asset.altText || ''}
+              className="person-border img"
+            />
+            <a href={`tel:${faq.form.person.tel.replace(/\s/g, '')}`}>{faq.form.person.tel}</a>
+          </div>
+        </div>
+      </div>
     </Wrapper>
   );
 }
@@ -380,6 +415,57 @@ const Wrapper = styled.section`
         transform: translateY(0);
       }
     }
+  }
+  .faqForm {
+    > .max-width {
+      max-width: 1080px;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      grid-template-areas: "copy form" "person form";
+      @media (max-width: 1049px){
+        grid-template-columns: 1fr;
+        grid-template-areas: "copy" "form" "person";
+      }
+      .copy {
+        grid-area: copy;
+      }
+      .person {
+        grid-area: person;
+      }
+      .form {
+        align-self: start;
+        grid-area: form;
+      }
+      gap: 32px;
+    }
+    .heading {
+      font-size: ${Clamp(20, 32, 30)};
+      margin-bottom: 16px;
+    }
+    .subheading {
+      font-size: ${Clamp(16, 22, 22)};
+      margin-bottom: 24px;
+    }
+    .person {
+      display: grid;
+      grid-template-columns: 96px auto;
+      align-items: center;
+      gap: 8px;
+      a {
+        font-size: ${Clamp(20, 22, 22)};
+      }
+      @media (max-width: 399px){
+        grid-template-columns: 48px auto;
+      }
+      .paragraph {
+        grid-column: 3/1;
+        font-size: ${Clamp(20, 32, 30)};
+      }
+    }
+    margin-top: 64px;
+    padding-top: 32px;
+    border-top: 1px solid var(--neutral-800);
+
   }
 `
  

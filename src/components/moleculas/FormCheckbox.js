@@ -1,3 +1,4 @@
+import { Link } from "gatsby"
 import React from "react"
 import styled from "styled-components"
 import { Error } from "../atoms/Icons"
@@ -6,7 +7,11 @@ export const Checkbox = ({ icon, text, name, register, errors, error }) => (
   <Wrapper className={errors[name] ? 'errored' : ''}>
     <input type="checkbox" {...register} />
     <span className="checkbox" />
-    <div className="text" dangerouslySetInnerHTML={{ __html: text }} />
+    {text ? (
+      <p dangerouslySetInnerHTML={{ __html: text }} />
+      ) : (
+      <p>Zgadzam się na <Link to="/pl/polityka-prywatnosci">przetwarzanie moich danych</Link></p>
+    )}
     {icon}
     {error && (
       <>
@@ -60,8 +65,12 @@ const Wrapper = styled.label`
       transform: translate(-50%, -50%) scale(1);
     }
   }
-
-
+  p {
+    margin-top: 2px;
+    a {
+      text-decoration: underline;
+    }
+  }
   .checkbox{
     border: 2px solid var(--neutral-200);
     width: 30px;
@@ -69,7 +78,6 @@ const Wrapper = styled.label`
     border-radius: 2px;
     position: relative;
     min-width: 30px;
-
     &::after{
       content: '';
       position: absolute;

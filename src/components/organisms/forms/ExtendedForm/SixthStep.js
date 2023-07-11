@@ -45,9 +45,7 @@ export default function SixthStep({ prevData, setData, setStep }) {
         setChosenTime={setChosenTime}
         inputValue={inputValue}
       />
-
       <Checkbox
-        text='Zgadzam się na <a href="/polityka-prywatnosci">przetwarzanie moich danych</a>'
         name='privacy-policy'
         register={register('privacy-policy', { required: true })}
         errors={errors}
