@@ -5,9 +5,9 @@ import styled from "styled-components";
 import { Clamp, removeMarkdown } from "../../utils/functions";
 import ReadingTime from "../atoms/ReadingTime";
 
-const BlogEntry = ({ data }) => {
+const BlogEntry = ({ data, smallEntry }) => {
   return (
-    <Wrapper className="entry">
+    <Wrapper className={`entry${smallEntry ? ' smallEntry' : ''}`}>
       <GatsbyImage
         image={data.img.asset.gatsbyImageData}
         alt={data.img.asset.altText || ''}
@@ -124,6 +124,22 @@ const Wrapper = styled.div`
   .createdAt {
     grid-area: f;
     justify-self: flex-end;
+  }
+  &.smallEntry {
+    column-gap: 16px;
+    padding: ${Clamp(16, 24, 32, "px")} 0;
+    grid-template-columns: 1fr 1fr;
+    grid-template-areas: "c e" "a a" "b b" "d d" "f f";
+    .subtitle {
+      margin-top: 20px;
+      display: block;
+    }
+    .categories {
+      margin: 24px 0;
+    }
+    .readingTime {
+      font-size: 14px;
+    }
   }
   @media (max-width: 849px){
     column-gap: 16px;

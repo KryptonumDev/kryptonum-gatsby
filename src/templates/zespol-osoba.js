@@ -14,6 +14,7 @@ import Inspirations from "../components/sections/TeamMember/Inspirations";
 import DecorativeHeading from "../components/atoms/DecorativeHeading";
 import { Clamp, removeMarkdown } from "../utils/functions";
 import CaseStudies from "../components/sections/CaseStudies";
+import LatestBlogEntries from "../components/sections/LatestBlogEntries";
 
 const truncateText = (text, limit = 140) => {
   text = removeMarkdown(text).replace(/[\r\n]+/gm, " ");
@@ -39,10 +40,10 @@ const TeamMemberPage = ({
       inspirations,
       email,
     },
-    participatedProjects
+    participatedProjects,
+    blogEntries
   }
 }) => {
-  console.log(participatedProjects)
   return (
     <>
       <GlobalStyle />
@@ -60,7 +61,17 @@ const TeamMemberPage = ({
         <Inspirations data={inspirations} />
       )}
       {participatedProjects.nodes.length >= 1 && (
-        <CaseStudies heading="Mam swój **udział** w…" data={participatedProjects} />
+        <CaseStudies
+          heading="Mam swój **udział** w…"
+          data={participatedProjects}
+        />
+      )}
+      {blogEntries.nodes.length >= 1 && (
+        <LatestBlogEntries
+          heading="Tutaj dzielę się **wiedzą**"
+          data={blogEntries}
+          smallEntry={true}
+        />
       )}
       {email && (
         <div className="contact">
@@ -137,6 +148,41 @@ export const query = graphql`
         slug {
           current
         }
+      }
+    }
+    blogEntries: allSanityBlogEntries(filter: {author: {elemMatch: {id: {eq: $id}}}}, limit: 3) {
+      nodes {
+        title
+        subtitle
+        slug {
+          current
+        }
+        author {
+          name
+          slug {
+            current
+          }
+          img {
+            asset {
+              altText
+              gatsbyImageData(placeholder: BLURRED, width: 48, height: 48)
+            }
+          }
+        }
+        categories {
+          name
+          slug {
+            current
+          }
+        }
+        _rawContent
+        img {
+          asset {
+            altText
+            gatsbyImageData(placeholder: BLURRED, width: 230, height: 230)
+          }
+        }
+        _createdAt(formatString: "D MMMM Y", locale: "pl")
       }
     }
   }

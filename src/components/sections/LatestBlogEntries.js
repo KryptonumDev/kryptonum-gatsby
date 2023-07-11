@@ -6,8 +6,8 @@ import { Clamp } from '../../utils/functions'
 import Button from '../atoms/Button';
 import BlogEntry from "../organisms/BlogEntry";
 
-const LatestBlogEntries = ({ heading, exclude=null }) => {
-  const { blogEntries } = useStaticQuery(graphql`
+const LatestBlogEntries = ({ data, heading, exclude=null, smallEntry=false }) => {
+  let { blogEntries } = useStaticQuery(graphql`
     query {
       blogEntries: allSanityBlogEntries(limit: 4, sort: {_createdAt: DESC}) {
         nodes {
@@ -46,14 +46,16 @@ const LatestBlogEntries = ({ heading, exclude=null }) => {
       }
     }
   `);
-  
+  if(data){
+    blogEntries = data;
+  }
   return (
     <Wrapper>
       <DecorativeHeading type="h2">{heading || 'Zobacz nasze najnowsze **posty** na blogu'}</DecorativeHeading>
       <div className="wrapper">
         {blogEntries.nodes.filter(entry => entry.slug.current !== exclude).map((entry, i) => (
           i < 3 && (
-            <BlogEntry data={entry} key={i} />
+            <BlogEntry data={entry} key={i} smallEntry={smallEntry} />
           )
         ))}
       </div>
