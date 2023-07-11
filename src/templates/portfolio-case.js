@@ -11,6 +11,7 @@ import ImageAndStandout from "../components/sections/ImageAndStandout";
 import Summary from "../components/sections/CaseStudies/Summary";
 import Technologies from "../components/sections/CaseStudies/Technologies";
 import ProcessKeyElements from "../components/sections/CaseStudies/Process_KeyElements";
+import { siteMetadata } from "../../gatsby-config";
 
 const CaseStudyPage = ({
   data: { caseStudy : {
@@ -287,6 +288,13 @@ export const query = graphql`
         title
         description
       }
+      ogImage: img {
+        asset {
+          resize(width: 1200) {
+            src
+          }
+        }
+      }
     }
   }
 `
@@ -296,7 +304,8 @@ export default CaseStudyPage
 export const Head = ({
   data: { caseStudy: {
     seo,
-    slug
+    slug,
+    ogImage,
   }}
 }) => {
   return (
@@ -304,6 +313,7 @@ export const Head = ({
       title={seo?.title}
       description={seo?.description}
       url={`/pl/portfolio/${slug.current}`}
+      ogImage={`${siteMetadata.siteUrl}${ogImage.asset.resize.src}`}
     />
   )
 }
