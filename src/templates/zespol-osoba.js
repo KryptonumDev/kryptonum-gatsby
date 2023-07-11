@@ -13,6 +13,7 @@ import Hobbies from "../components/sections/TeamMember/Hobbies";
 import Inspirations from "../components/sections/TeamMember/Inspirations";
 import DecorativeHeading from "../components/atoms/DecorativeHeading";
 import { Clamp, removeMarkdown } from "../utils/functions";
+import CaseStudies from "../components/sections/CaseStudies";
 
 const truncateText = (text, limit = 140) => {
   text = removeMarkdown(text).replace(/[\r\n]+/gm, " ");
@@ -23,21 +24,25 @@ const truncateText = (text, limit = 140) => {
 }
 
 const TeamMemberPage = ({
-  data: { teamMember : {
-    name,
-    cryptonym,
-    img,
-    bio,
-    skills,
-    tools,
-    benefits,
-    links,
-    afterWork,
-    hobbies,
-    inspirations,
-    email,
-  }}
+  data: {
+    teamMember : {
+      name,
+      cryptonym,
+      img,
+      bio,
+      skills,
+      tools,
+      benefits,
+      links,
+      afterWork,
+      hobbies,
+      inspirations,
+      email,
+    },
+    participatedProjects
+  }
 }) => {
+  console.log(participatedProjects)
   return (
     <>
       <GlobalStyle />
@@ -53,6 +58,9 @@ const TeamMemberPage = ({
       <Hobbies data={hobbies} />
       {inspirations.length >= 1 && (
         <Inspirations data={inspirations} />
+      )}
+      {participatedProjects.nodes.length >= 1 && (
+        <CaseStudies heading="Mam swój **udział** w…" data={participatedProjects} />
       )}
       {email && (
         <div className="contact">
@@ -117,6 +125,19 @@ export const query = graphql`
       hobbies
       inspirations
       email
+    }
+    participatedProjects: allSanityCaseStudyEntries(filter: {participated: {elemMatch: {id: {eq: $id}}}}) {
+      nodes {
+        img {
+          asset {
+            altText
+            gatsbyImageData(placeholder: BLURRED)
+          }
+        }
+        slug {
+          current
+        }
+      }
     }
   }
 `

@@ -6,8 +6,8 @@ import Button from "../atoms/Button";
 import DecorativeHeading from "../atoms/DecorativeHeading";
 import { Clamp } from "../../utils/functions";
 
-const CaseStudies = ({heading, eagerLoading}) => {
-  const { caseStudies } = useStaticQuery(graphql`
+const CaseStudies = ({ data, heading, eagerLoading }) => {
+  let { caseStudies } = useStaticQuery(graphql`
     query {
       caseStudies: allSanityCaseStudyEntries(limit: 3) {
         nodes {
@@ -25,6 +25,9 @@ const CaseStudies = ({heading, eagerLoading}) => {
       }
     }
   `)
+  if(data){
+    caseStudies = data;
+  }
   return (
     <Wrapper>
       {heading && (
@@ -49,7 +52,9 @@ const CaseStudies = ({heading, eagerLoading}) => {
           </div>
         ))}
       </div>
-      <Button theme="primary" to="/pl/portfolio">Wszystkie projekty</Button>
+      {!data && (
+        <Button theme="primary" to="/pl/portfolio">Wszystkie projekty</Button>
+      )}
     </Wrapper>
   );
 }
