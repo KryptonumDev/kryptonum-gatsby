@@ -75,6 +75,11 @@
     "isPermanent": true
   },
   {
+    "fromPath": "/onas",
+    "toPath": "/pl/zespol",
+    "isPermanent": true
+  },
+  {
     "fromPath": "/blog/strona-internetowa-czy-media-spolecznosciowe/",
     "toPath": "/pl/blog",
     "isPermanent": true
