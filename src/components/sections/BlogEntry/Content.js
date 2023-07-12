@@ -32,25 +32,25 @@ const Content = ({ _id, _rawContent, author, share }) => {
     return retrievedArray.indexOf(value) !== -1 ? true : false;
   }
 
-  const handleLike = () => {
-    setIsLiked(true);
-    fetch('/api/post-likes', {
-      method: 'POST', 
-      headers: {
-        "content-type": "application/json",
-      },
-      body: JSON.stringify({id: _id})
-    })
-    .then(response => response.json())
-    .then(response => {
-      if(response.success){
-        saveToLocalStorage('liked', _id);
-      }
-    })
-    .catch(() => {
-      setIsLiked(false);
-    })
-  }
+  // const handleLike = () => {
+  //   setIsLiked(true);
+  //   fetch('/api/post-likes', {
+  //     method: 'POST', 
+  //     headers: {
+  //       "content-type": "application/json",
+  //     },
+  //     body: JSON.stringify({id: _id})
+  //   })
+  //   .then(response => response.json())
+  //   .then(response => {
+  //     if(response.success){
+  //       saveToLocalStorage('liked', _id);
+  //     }
+  //   })
+  //   .catch(() => {
+  //     setIsLiked(false);
+  //   })
+  // }
 
   const locationPath = typeof window !== 'undefined' ? window.location.pathname : '';
   useEffect(() => {
@@ -85,14 +85,14 @@ const Content = ({ _id, _rawContent, author, share }) => {
             />
             <p>Autor: {author.name}</p>
           </Link>
-          <button
+          {/* <button
             className={`like${isLiked ? ' liked' : ''}`}
             onClick={() => handleLike()}
             disabled={isLiked ? true : false}
           >
             <Heart />
             <span>Polub artykuł</span>
-          </button>
+          </button> */}
           <button className="share" onClick={(e) => handleShare(e)}>
             <Share />
             <span>Udostępnij</span>

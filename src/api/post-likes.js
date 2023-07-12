@@ -16,16 +16,29 @@ export default async function handler(req, res) {
   res.setHeader('Access-Control-Allow-Origin', 'https://kryptonum.eu');
   res.setHeader('Access-Control-Allow-Credentials', true);
   if(req.method === `POST`){
-    client
-    .patch(req.body.id)
-    .inc({likes: 1})
-    .commit()
-    .then(() => {
-      res.status(200).json({ success: true })
-    })
-    .catch(() => {
-      res.status(400).json({ success: false })
-    })
+    if(req.body.like){
+      client
+      .patch(req.body.id)
+      .inc({likes: 1})
+      .commit()
+      .then(() => {
+        res.status(200).json({ success: true })
+      })
+      .catch(() => {
+        res.status(400).json({ success: false })
+      })
+    } else {
+      client
+      .patch(req.body.id)
+      .dec({likes: 1})
+      .commit()
+      .then(() => {
+        res.status(200).json({ success: true })
+      })
+      .catch(() => {
+        res.status(400).json({ success: false })
+      })
+    }
   } else {
     res.redirect(404, '/404')
   }
