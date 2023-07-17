@@ -1,4 +1,4 @@
-import { Link } from "gatsby"
+import { Link, Script } from "gatsby"
 import React, { Fragment } from "react"
 import styled from "styled-components"
 import { Clamp, removeMarkdown } from "../../utils/functions"
@@ -14,8 +14,8 @@ const createBreadcrumbs = (breadCrumbs) => {
     {
       "@type": "ListItem",
       "position": 1,
-      "name": 'Kryptonum',
-      "item": 'https://kryptonum.eu/pl'
+      "name": "Kryptonum",
+      "item": "https://kryptonum.eu/pl",
     }
   ]
 
@@ -24,7 +24,7 @@ const createBreadcrumbs = (breadCrumbs) => {
       "@type": "ListItem",
       "position": index + 2,
       "name": el.name,
-      "item": 'https://kryptonum.eu/' + el.link
+      "item": "https://kryptonum.eu/" + el.link,
     })
   });
 
@@ -36,15 +36,15 @@ export default function Breadcrumbs({ portfolio, data }) {
 
   const breadCrumbsItems = createBreadcrumbs(data)
   return (
-    <Wrapper className={portfolio ? 'portfolio breadcrumbs' : "breadcrumbs"}>
+    <Wrapper className={portfolio ? "portfolio breadcrumbs" : "breadcrumbs"}>
       {breadCrumbsItems.length > 1 && (
-        <script type="application/ld+json">
+        <Script type="application/ld+json">
           {JSON.stringify({
             "@context": "https://schema.org",
             "@type": "BreadcrumbList",
             "itemListElement": breadCrumbsItems
           })}
-        </script>
+        </Script>
       )}
       <ul>
         <li><a href="/pl">Strona główna</a></li>
@@ -67,13 +67,13 @@ export default function Breadcrumbs({ portfolio, data }) {
 const Wrapper = styled.nav`
   max-width: ${680/16}rem;
   &:not(.portfolio){
-    margin-bottom: ${Clamp(16, 24, 24, 'px')};
+    margin-bottom: ${Clamp(16, 24, 24, "px")};
     + * {
-      margin-top: ${Clamp(-172, -144, -96, 'px')};
+      margin-top: ${Clamp(-172, -144, -96, "px")};
     }
   }
   &.portfolio {
-    margin-top: ${Clamp(16, 24, 24, 'px')};
+    margin-top: ${Clamp(16, 24, 24, "px")};
   }
   ul {
     max-width: calc(100vw - var(--pageMargin) * 2);

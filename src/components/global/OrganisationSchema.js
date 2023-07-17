@@ -14,7 +14,7 @@ export default function Organization() {
             "kuba@kryptonum.eu",
             "michal@kryptonum.eu"
           ],
-          "logo": 'https://kryptonum.eu/logo.webp',
+          "logo": "https://kryptonum.eu/logo.webp",
           "description": "Kryptonum, to agencja interaktywna kompleksowo wspierająca Twój biznes online. Partner technologiczny na każdym etapie obecności firmy w internecie.",
           "address": {
             "@type": "PostalAddress",
@@ -23,12 +23,6 @@ export default function Organization() {
             "postalCode": "02-722",
             "addressCountry": "PL"
           },
-          "openingHours": [
-            "Mo-Tu 09:00-22:00",
-            "We-Th 09:00-22:00",
-            "Fr 09:00-22:00",
-            "Sa-Su 09:00-22:00"
-          ],
           "contactPoint": [
             {
               "@type": "ContactPoint",
@@ -111,7 +105,6 @@ export default function Organization() {
               ]
             }
           ],
-          "hasMap": "https://www.google.com/maps/place/Kryptonum+Studio/@52.1596951,21.0284403,15z/data=!4m2!3m1!1s0x0:0xe05d60b0c3b5bfe7?sa=X&ved=2ahUKEwjzl-THqo7-AhXWr4sKHTBtAHMQ_BJ6BAhMEAg",
           "sameAs": [
             "https://www.facebook.com/kryptonumPL/",
             "https://www.instagram.com/kryptonum_pl/",
