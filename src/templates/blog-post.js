@@ -95,23 +95,21 @@ export default BlogEntryPage;
 export const Head = ({
   data: { page: {
     _createdAt,
-    author: {
-      name
-    },
+    author,
     seo: {
       title,
       description
     },
     ogImage,
     slug
-  }}
+  } }
 }) => (
   <SEO
     title={title}
     description={description}
-    url={`/pl/blog/${slug.current}`}
+    url={`/pl/akademia/${slug.current}`}
     ogImage={ogImage.asset.url}
     date={_createdAt}
-    author={name}
+    author={author[0].name}
   />
 )

@@ -278,9 +278,7 @@ export default CuriosityEntryPage;
 export const Head = ({
   data: { page: {
     _createdAt,
-    author: {
-      name
-    },
+    author,
     seo: {
       title,
       description
@@ -295,6 +293,6 @@ export const Head = ({
     url={`/pl/akademia/${slug.current}`}
     ogImage={ogImage.asset.url}
     date={_createdAt}
-    author={name}
+    author={author[0].name}
   />
 )
