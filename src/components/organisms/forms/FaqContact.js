@@ -16,9 +16,11 @@ const FaqContact = ({ cta }) => {
     formState: { errors },
   } = useForm({ mode: 'onBlur' })
 
-  const [ isEmailSent, setIsEmailSent ] = useState(false);
+  const [isEmailSent, setIsEmailSent] = useState(false);
+  const [submitProccessing, setSubmitProccessing] = useState(false)
 
   const onSubmit = (data) => {
+    setSubmitProccessing(true)
     fetch('/api/faq-contact', {
       method: 'POST',
       body: JSON.stringify(data),
@@ -26,18 +28,20 @@ const FaqContact = ({ cta }) => {
         'Content-Type': 'application/json',
       }
     })
-    .then(response => response.json())
-    .then(response => {
-      if(response.success){
-        reset()
-        setIsEmailSent('success')
-      } else {
+      .then(response => response.json())
+      .then(response => {
+        if (response.success) {
+          reset()
+          setIsEmailSent('success')
+          setSubmitProccessing(false)
+        } else {
+          setIsEmailSent('failed')
+          setSubmitProccessing(false)
+        }
+      })
+      .catch(() => {
         setIsEmailSent('failed')
-      }
-    })
-    .catch(() => {
-      setIsEmailSent('failed')
-    })
+      })
   }
 
   return (
@@ -83,7 +87,7 @@ const FaqContact = ({ cta }) => {
               <p>
                 Spróbuj ponownie później lub skontaktuj się z nami <strong>telefonicznie</strong>.
               </p>
-              <Button type='button' theme="secondary" onClick={() => setIsEmailSent(false)}>Spróbuj ponownie</Button>
+              <Button disabled={submitProccessing} type='button' theme="secondary" onClick={() => setIsEmailSent(false)}>Spróbuj ponownie</Button>
             </div>
           </Overlay>
         )}

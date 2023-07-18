@@ -17,8 +17,10 @@ const Form = ({ cta }) => {
   } = useForm({ mode: 'onBlur' })
 
   const [isEmailSent, setIsEmailSent] = useState(false)
+  const [submitProccessing, setSubmitProccessing] = useState(false)
 
   const onSubmit = (data) => {
+    setSubmitProccessing(true)
     fetch('/api/quick-contact', {
       method: 'POST',
       body: JSON.stringify(data),
@@ -28,8 +30,10 @@ const Form = ({ cta }) => {
     }).then(() => {
       reset()
       setIsEmailSent('success')
+      setSubmitProccessing(false)
     }).catch(() => {
       setIsEmailSent('failed')
+      setSubmitProccessing(false)
     })
   }
 
@@ -50,7 +54,7 @@ const Form = ({ cta }) => {
       <Label
         title='Telefon'
         name='phone'
-        register={register('phone', { required: true, pattern: phoneRegex })}
+        register={register('phone', { pattern: phoneRegex })}
         errors={errors}
       />
       <Checkbox
@@ -80,7 +84,7 @@ const Form = ({ cta }) => {
               <p>
                 Spróbuj ponownie później lub skontaktuj się z nami <strong>telefonicznie</strong>.
               </p>
-              <Button type='button' theme="secondary" onClick={() => setIsEmailSent(false)}>Spróbuj ponownie</Button>
+              <Button disabled={submitProccessing} type='button' theme="secondary" onClick={() => setIsEmailSent(false)}>Spróbuj ponownie</Button>
             </div>
           </Overlay>
         )}
