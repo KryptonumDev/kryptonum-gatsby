@@ -34,7 +34,7 @@ const Share = ({ heading, img, url }) => {
           </a>
           <a href={shareLink('pinterest', url)} target="_blank" rel="noreferrer">
             <Pinterest />
-            <span>Pinterst</span>
+            <span>Pinterest</span>
           </a>
         </div>
       </header>
