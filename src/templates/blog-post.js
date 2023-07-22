@@ -107,7 +107,7 @@ export const Head = ({
   <SEO
     title={title}
     description={description}
-    url={`/pl/akademia/${slug.current}`}
+    url={`/pl/blog/${slug.current}`}
     ogImage={ogImage.asset.url}
     date={_createdAt}
     author={author[0].name}
