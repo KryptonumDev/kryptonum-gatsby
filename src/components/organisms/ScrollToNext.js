@@ -41,7 +41,9 @@ const ScrollToNext = ({ data: { heading, paragraph, title, link }}) => {
     <Wrapper className="max-width" ref={scrollToNext}>
       <div className="margin" style={{height: `${scrollHeight}px`}}></div>
       <div className="sticky">
-        <DecorativeHeading type="h2">{heading}</DecorativeHeading>
+        {heading && (
+          <DecorativeHeading type="h2">{heading}</DecorativeHeading>
+        )}
         <div className="paragraph">
           <ReactMarkdown>{paragraph}</ReactMarkdown>
           <ArrowDown />

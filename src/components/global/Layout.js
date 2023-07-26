@@ -5,9 +5,10 @@ import Nav from "../organisms/Nav"
 import Footer from "../organisms/Footer";
 import ScrollToNext from "../organisms/ScrollToNext";
 import Breadcrumbs from "./Breadcrumbs";
+import { removeMarkdown } from "../../utils/functions";
 
-const Layout = ({ data: { page }, children, pageContext }) => {
-  const data = useStaticQuery(graphql`
+const Layout = ({ data, children, pageContext }) => {
+  const dataStaticQuery = useStaticQuery(graphql`
     query {
       caseStudies: allSanityCaseStudyEntries(limit: 4, sort: {_createdAt: DESC}) {
         nodes {
@@ -144,6 +145,23 @@ const Layout = ({ data: { page }, children, pageContext }) => {
     }
   `);
 
+  if(data?.scrollToText_BlogPost){
+    const arrayOfPosts = data.scrollToText_BlogPost.nodes;
+    const currentSlug = data.page.slug.current;
+    const currentIndex = arrayOfPosts.findIndex(item => item.slug.current === currentSlug);
+    const nextElement = currentIndex !== -1 && currentIndex < arrayOfPosts.length - 1 ? arrayOfPosts[currentIndex + 1] : null;
+    if(nextElement) {
+      data.page.scrollToNext = {
+        "paragraph": '**Scrolluj**, by przejść do następnego artykułu',
+        "title": "Następny post:",
+        "link": {
+          "text": removeMarkdown(nextElement.title),
+          "href": `/pl/blog/${nextElement.slug.current}`
+        }
+      }
+    }
+  }
+
   const locationPath = typeof window !== 'undefined' ? window.location.pathname : '';
   const orphansRegex = useMemo(() => {
     const orphans = ['a', 'i', 'o', 'u', 'w', 'z', 'np.'];
@@ -164,16 +182,16 @@ const Layout = ({ data: { page }, children, pageContext }) => {
   return (
     <>
       <GlobalStyle />
-      <Nav data={data} />
+      <Nav data={dataStaticQuery} />
       <main id="main">
         {!pageContext.portfolio && (
           <Breadcrumbs data={pageContext.breadcrumbs} />
         )}
         {children}
       </main>
-      <Footer data={data} />
-      {page?.scrollToNext && (
-        <ScrollToNext data={page.scrollToNext} />
+      <Footer data={dataStaticQuery} />
+      {data.page?.scrollToNext && (
+        <ScrollToNext data={data.page.scrollToNext} />
       )}
     </>
   );

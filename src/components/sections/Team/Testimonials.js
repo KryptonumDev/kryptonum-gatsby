@@ -13,6 +13,10 @@ const Testimonials = ({
   return (
     <Wrapper>
       <DecorativeHeading type="h2">{testimonials_Heading}</DecorativeHeading>
+      <p className="noMouseText">
+        <HandClick />
+        <span>Dotknij, aby zobaczyć</span>
+      </p>
       <div className="wrapper">
         {testimonials_List.map((item, i) => (
           <div className="item" key={i} tabIndex="0">
@@ -84,8 +88,28 @@ const Wrapper = styled.section`
         &:nth-child(6) { transform: rotate(-3deg) }
       }
     }
-
+  }
+  .noMouseText {
+    margin-bottom: ${Clamp(28, 48, 48, 'px')};
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  @media (pointer: fine) {
+    .noMouseText {
+      display: none;
+    }
   }
 `
+
+const HandClick = () => (
+  <svg xmlns='http://www.w3.org/2000/svg' width='25' height='24' fill='none'>
+    <path
+      stroke='#EFF0F3'
+      strokeWidth='2'
+      d='M16.498 10.048h-1.572s-.572-3.445-1.072-5.222c-.5-1.778-.925-2.778-2.428-2.778-1.504 0-1.934 1.244-1.934 2.778l.584 8.555-3.24-.94s-2.233-.32-3.026.94l-.384 1.567 6.65 5.944c.403.422 1.356.656 1.934.656h6.236c1.067 0 1.972-.778 2.146-1.856l.534-5.644c.477-2.791-2.216-4-4.428-4z'
+    ></path>
+  </svg>
+)
 
 export default Testimonials;

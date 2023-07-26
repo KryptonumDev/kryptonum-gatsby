@@ -87,6 +87,14 @@ export const query = graphql`
         description
       }
     }
+    scrollToText_BlogPost: allSanityBlogEntries(sort: {_createdAt: ASC}) {
+      nodes {
+        title
+        slug {
+          current
+        }
+      }
+    }
   }
 `
 
