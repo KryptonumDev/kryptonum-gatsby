@@ -5,6 +5,7 @@ import styled from "styled-components";
 import { Clamp } from "../../utils/functions";
 import DecorativeHeading from "../atoms/DecorativeHeading";
 import { ArrowDown, ScrollDown } from "../atoms/Icons";
+import { GatsbyImage } from "gatsby-plugin-image";
 
 const easeOut = (t) => {
   return 1 - Math.pow(1 - t, 3);
@@ -51,7 +52,21 @@ const ScrollToNext = ({ data: { heading, paragraph, title, link }}) => {
         <div className="grid">
           <ReactMarkdown>{title}</ReactMarkdown>
           <div className="page">
-            <p>{link.text}</p>
+            {link.person ? (
+              <div className="person">
+                <GatsbyImage
+                  image={link.person.img.asset.gatsbyImageData}
+                  alt={link.person.img.asset.altText || ''}
+                  className="person-border"
+                />
+                <div className="copy">
+                  <p className="name">{link.person.name}</p>
+                  <p className="cryptonym">{link.person.cryptonym}</p>
+                </div>
+              </div>
+            ) : (
+              <p>{link.text}</p>
+            )}
             <div className="indicator"><div className="bar" style={{ transform: `scaleY(${scaleY})`}}></div></div>
           </div>
           <ScrollDown />
@@ -114,6 +129,25 @@ const Wrapper = styled.section`
           height: 100%;
           background: linear-gradient(266deg, #2DD282, #90F4E8 100%);
           transform-origin: bottom;
+        }
+      }
+      .person {
+        width: fit-content;
+        margin: 0 auto;
+        text-align: left;
+        display: grid;
+        grid-template-columns: auto 1fr;
+        gap: 16px;
+        align-items: center;
+        .person-border {
+          width: ${Clamp(120, 144, 180, 'px')};
+          height: ${Clamp(120, 144, 180, 'px')};
+        }
+        .name {
+          font-size: ${Clamp(24, 32, 30)};
+        }
+        .cryptonym {
+          font-size: ${Clamp(16, 20, 22)};
         }
       }
     }

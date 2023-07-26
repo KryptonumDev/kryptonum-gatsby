@@ -26,7 +26,7 @@ const truncateText = (text, limit = 140) => {
 
 const TeamMemberPage = ({
   data: {
-    teamMember : {
+    page : {
       name,
       cryptonym,
       img,
@@ -98,7 +98,7 @@ const GlobalStyle = createGlobalStyle`
 
 export const query = graphql`
   query($id: String!) {
-    teamMember: sanityTeamMember(id: {eq: $id}) {
+    page: sanityTeamMember(id: {eq: $id}) {
       name
       cryptonym
       slug {
@@ -185,13 +185,28 @@ export const query = graphql`
         _createdAt(formatString: "D MMMM Y", locale: "pl")
       }
     }
+    scrollToText_TeamPerson: allSanityTeamMember(sort: {_createdAt: ASC}) {
+      nodes {
+        name
+        cryptonym
+        slug {
+          current
+        }
+        img {
+          asset {
+            altText
+            gatsbyImageData(placeholder: BLURRED, width: 180, height: 180)
+          }
+        }
+      }
+    }
   }
 `
 
 export default TeamMemberPage;
 
 export const Head = ({
-  data: { teamMember : {
+  data: { page : {
     name,
     cryptonym,
     slug,

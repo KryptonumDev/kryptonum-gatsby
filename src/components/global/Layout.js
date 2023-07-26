@@ -24,7 +24,7 @@ const Layout = ({ data, children, pageContext }) => {
           }
         }
       }
-      team: allSanityTeamMember {
+      team: allSanityTeamMember(sort: {_createdAt: ASC}) {
         nodes {
           name
           slug {
@@ -145,6 +145,7 @@ const Layout = ({ data, children, pageContext }) => {
     }
   `);
 
+  // Scroll to next blog post
   if(data?.scrollToText_BlogPost){
     const arrayOfPosts = data.scrollToText_BlogPost.nodes;
     const currentSlug = data.page.slug.current;
@@ -157,6 +158,28 @@ const Layout = ({ data, children, pageContext }) => {
         "link": {
           "text": removeMarkdown(nextElement.title),
           "href": `/pl/blog/${nextElement.slug.current}`
+        }
+      }
+    }
+  }
+
+  // Scroll to next person team
+  if(data?.scrollToText_TeamPerson){
+    const arrayOfPeople = data.scrollToText_TeamPerson.nodes;
+    const currentSlug = data.page.slug.current;
+    const currentIndex = arrayOfPeople.findIndex(item => item.slug.current === currentSlug);
+    const nextElement = currentIndex !== -1 && currentIndex < arrayOfPeople.length - 1 ? arrayOfPeople[currentIndex + 1] : arrayOfPeople[0];
+    if(nextElement) {
+      data.page.scrollToNext = {
+        "paragraph": '**Scrolluj**, by przejść do następnej osoby',
+        "title": "Następna osoba:",
+        "link": {
+          "person": {
+            "name": nextElement.name,
+            "cryptonym": nextElement.cryptonym,
+            "img": nextElement.img
+          },
+          "href": `/pl/zespol/${nextElement.slug.current}`
         }
       }
     }
