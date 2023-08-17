@@ -17,16 +17,18 @@ const Stylescape = ({ data: { heading, paragraph, stylescapes, elements } }) => 
       items.forEach((item, i) => {
         const { top, bottom } = item.getBoundingClientRect();
         let progress = 0;
+        const rotationAngle = i % 2 === 0 ? -animation.rotate : animation.rotate;
         if (top >= windowHeight) {
           progress = 0;
+          item.style = null;
         } else if (bottom <= 0) {
           progress = 1;
+          item.style.transform = `rotate(${rotationAngle}deg) translateX(${60}%)`;
         } else {
           progress = 1 - (bottom / windowHeight);
+          const translationX = Math.ceil((progress * (i % 2 === 0 ? -animation.x : animation.x)) * 100) / 100;
+          item.style.transform = `rotate(${rotationAngle}deg) translateX(${translationX}%)`;
         }
-        const rotationAngle = i % 2 === 0 ? -animation.rotate : animation.rotate;
-        const translationX = progress * (i % 2 === 0 ? -animation.x : animation.x);
-        item.style.transform = `rotate(${rotationAngle}deg) translateX(${translationX}%)`;
       });
       requestAnimationFrame(animateItems);
     }
@@ -93,6 +95,7 @@ const Wrapper = styled.section`
     .img {
       margin-bottom: ${Clamp(48, 64, 82, 'px')};
       width: 200%;
+      will-change: transform;
       &:nth-child(odd){
         transform: rotate(-2deg);
         transform-origin: left center;

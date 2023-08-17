@@ -13,6 +13,7 @@ import { Clamp } from "../utils/functions";
 import Stylescape from "../components/sections/CaseStudies/Stylescape";
 import Feautures from "../components/sections/CaseStudies/Feautures";
 import Testimonial from "../components/sections/CaseStudies/Testimonial";
+import Slider from "../components/sections/CaseStudies/Slider";
 
 const CaseStudyPage = ({
   data: {
@@ -79,6 +80,10 @@ const CaseStudyPage = ({
           case 'testimonials':
             return (
               <Testimonial key={i} data={component} />
+            );
+          case 'caseStudy_Slider':
+            return (
+              <Slider key={i} data={component} />
             );
           default:
             break;
@@ -232,6 +237,20 @@ export const query = graphql`
             asset {
               altText
               gatsbyImageData(placeholder: BLURRED, width: 156)
+            }
+          }
+        }
+        ... on SanityCaseStudySlider {
+          _type
+          heading
+          slides {
+            title
+            description
+            img {
+              asset {
+                altText
+                gatsbyImageData(placeholder: BLURRED, width: 40, height: 40)
+              }
             }
           }
         }

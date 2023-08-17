@@ -5376,10 +5376,10 @@
   "resolved" "https://registry.npmjs.org/fraction.js/-/fraction.js-4.2.0.tgz"
   "version" "4.2.0"
 
-"framer-motion@^10.12.16":
-  "integrity" "sha512-cfhiUpPbj+0eEWKjuD+5cz5cMqH71xOtMxGiS/cSGfHn2OlHIEAqFnFyzEMENw5PxWR9bMVhatzzpD6lexmHZQ=="
-  "resolved" "https://registry.npmjs.org/framer-motion/-/framer-motion-10.12.18.tgz"
-  "version" "10.12.18"
+"framer-motion@^10.16.0":
+  "integrity" "sha512-R+88Mkr/1dr7XHjacwptfJyrywRzQ1HZX3YSZtN4tFMBq1O8GGCbDEv31Nf/H08o0hUXLC87GkxsR/1bZgwXfw=="
+  "resolved" "https://registry.npmjs.org/framer-motion/-/framer-motion-10.16.0.tgz"
+  "version" "10.16.0"
   dependencies:
     "tslib" "^2.4.0"
   optionalDependencies:
@@ -10226,6 +10226,11 @@
   "version" "2.0.2"
   dependencies:
     "tslib" "^2.0.3"
+
+"swiper@^10.2.0":
+  "integrity" "sha512-nktQsOtBInJjr3f5DicxC8eHYGcLXDVIGPSon0QoXRaO6NjKnATCbQ8SZsD3dN1Ph1RH4EhVPwSYCcuDRFWHGQ=="
+  "resolved" "https://registry.npmjs.org/swiper/-/swiper-10.2.0.tgz"
+  "version" "10.2.0"
 
 "table@^6.0.9":
   "integrity" "sha512-Y4X9zqrCftUhMeH2EptSSERdVKt/nEdijTOacGD/97EKjhQ/Qs8RTlEGABSJNNN8lac9kheH+af7yAkEWlgneA=="
