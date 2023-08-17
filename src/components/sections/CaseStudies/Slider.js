@@ -51,10 +51,18 @@ const Slider = ({ data: { heading, slides }}) => {
         ))}
       </Swiper>
       <div className="controls">
-        <button onClick={() => { handlePrev() }} disabled={activeIndex===0}>
+        <button
+          onClick={() => { handlePrev() }}
+          disabled={activeIndex===0}
+          aria-label='Przejdź do poprzedniego elementu'
+        >
           <ArrowLeft />
         </button>
-        <button onClick={() => { handleNext() }} disabled={activeIndex===slides.length-1}>
+        <button
+          onClick={() => { handleNext() }}
+          disabled={activeIndex===slides.length-1}
+          aria-label='Przejdź do następnego elementu'
+        >
           <ArrowRight />
         </button>
       </div>
