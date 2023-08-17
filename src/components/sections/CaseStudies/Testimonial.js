@@ -6,136 +6,115 @@ import Button from "../../atoms/Button";
 import DecorativeHeading from "../../atoms/DecorativeHeading";
 import { Quote } from "../../atoms/Icons";
 
-const Testimonial = ({
-  heading,
-  testimonial,
-}) => {
+const heading = "**Opinia** klienta";
+
+const Testimonial = ({ data: { name, text, cta, img }}) => {
   return (
     <Wrapper>
       <DecorativeHeading type="h2">{heading}</DecorativeHeading>
-      <div className={`wrapper ${testimonial?.img ? '' : 'noImg'}`}>
-        {testimonial?.img && (
-          <GatsbyImage
-            image={testimonial.img?.asset.gatsbyImageData}
-            alt={testimonial.img?.asset.altText || ''}
-            className="img"
-            objectFit="contain"
-            objectPosition="bottom"
-          />
-        )}
-        <div className="info">
-          <h3>{testimonial?.name}</h3>
-          <Button theme={testimonial?.cta.theme} to={testimonial?.cta.href}>{testimonial?.cta.text}</Button>
+      <div className="hr"></div>
+      <div className="author">
+        <GatsbyImage
+          image={img.asset.gatsbyImageData}
+          alt={img.asset.altText || ''}
+          className="img"
+          objectFit="contain"
+          objectPosition='top'
+        />
+        <div>
+          <h3>{name}</h3>
+          <Button theme={cta.theme} to={cta.href}>{cta.text}</Button>
         </div>
-        <div className="content">
-          <Quote />
-          <p>{testimonial?.text}</p>
-        </div>
+      </div>
+      <div className="content">
+        <Quote />
+        <p>{text}</p>
       </div>
     </Wrapper>
   );
 }
 
 const Wrapper = styled.section`
-  h2 {
-    margin: 0 auto ${Clamp(28, 64, 64, 'px')};
+  display: grid;
+  grid-template-columns: 1fr auto auto 2fr;
+  align-items: center;
+  .hr {
+    height: 100%;
+    min-height: 550px;
+    width: 1px;
+    margin: 0 ${Clamp(48, 64, 120, 'px')};
+    background-color: var(--neutral-700);
   }
-  .wrapper {
-    background-color: var(--neutral-900);
-    border-radius: 2px;
-    display: grid;
-    gap: 0 48px;
-    padding: 64px 32px 0;
-    grid-template-columns: 1fr 3fr;
-    grid-template-areas: "img info" "img content";
-    &.noImg {
-      padding: 64px 64px 0;
-      grid-template-columns: 1fr;
-      grid-template-areas: "info" "content";
-    }
+  .author {
     .img {
-      max-width: 362px;
-      grid-area: img;
-    }
-    .info {
-      grid-area: info;
-      h3 {
-        font-size: ${Clamp(22, 32, 30)};
-        margin-bottom: 8px;
+      width: ${Clamp(96, 144, 156, 'px')};
+      height: ${Clamp(96, 144, 156, 'px')};
+      border: 1px solid var(--neutral-200);
+      border-radius: 50%;
+      img {
+        padding: 4px;
+        border-radius: inherit;
       }
     }
-    .content {
-      grid-area: content;
-      > svg {
-        display: block;
-        margin: 48px 0 16px;
-      }
-      p {
-        grid-area: text;
-        font-size: ${Clamp(16, 22, 30)};
-        margin-bottom: 64px;
-      }
+    text-align: center;
+    h3 {
+      font-size: ${Clamp(16, 18, 18)};
+      margin: ${Clamp(12, 24, 24, 'px')} auto ${Clamp(4, 12, 12, 'px')};
+    }
+    a {
+      font-size: ${Clamp(16, 18, 18)};
+    }
+  }
+  .content {
+    margin-left: ${Clamp(48, 64, 120, 'px')};
+    svg {
+      width: ${Clamp(24, 48, 48, 'px')};
+      height: ${Clamp(24, 48, 48, 'px')};
+      margin-bottom: 16px;
+    }
+    p {
+      font-size: ${Clamp(16, 18, 18)};
     }
   }
   @media (max-width: 999px){
-    .wrapper {
-      background-color: unset;
-      border-radius: none;
-      padding: 0;
-      gap: 0 24px;
-      grid-template-areas: "info info" "img content";
-      &.noImg {
-        padding: 0;
-        grid-template-areas: "info info" "content content";
-      }
-      .img {
-        max-width: 148px;
-        margin: 0 auto;
-      }
-      .info {
-        display: grid;
-        grid-template-columns: auto auto;
-        justify-content: space-between;
-        h3 {
-          margin-bottom: 0;
-        }
-        padding-bottom: 32px;
-        margin-bottom: 32px;
-        border-bottom: 1px solid var(--neutral-800);
-      }
-      .content {
-        > svg {
-          margin: 0 0 16px;
-        }
-        p {
-          margin-bottom: 32px;
-        }
-      }
+    grid-template-columns: 1fr 2fr;
+    h2 {
+      margin: 0 auto;
+      grid-column: 3/1;
+    }
+    .hr {
+      height: 1px;
+      min-height: unset;
+      width: 100%;
+      margin: ${Clamp(16, 32, 32, 'px')} 0 ${Clamp(32, 32, 72, 'px')};
+      grid-column: 3/1;
     }
   }
-  @media (max-width: 549px){
-    .wrapper {
-      grid-template-columns: 1fr;
-      grid-template-areas: "info" "content" "img";
-      .info {
-        grid-template-columns: 1fr;
-        .cta {
-          justify-self: start;
-        }
-        h3 {
-          margin-bottom: 8px;
-        }
+  @media (max-width: 499px){
+    grid-template-columns: 1fr;
+    h2 {
+      grid-column: unset;
+    }
+    .hr {
+      height: 1px;
+      min-height: unset;
+      width: 100%;
+      margin: ${Clamp(16, 32, 32, 'px')} 0 ${Clamp(32, 32, 72, 'px')};
+      grid-column: unset;
+    }
+    .author {
+      display: grid;
+      grid-template-columns: auto 1fr;
+      gap: 16px;
+      text-align: left;
+      align-items: center;
+      h3 {
+        margin: 0 0 4px 0;
       }
-      .content {
-        > svg {
-          width: 24px;
-          height: 24px;
-          margin: 0 auto 8px;
-        }
-        p {
-          text-align: center;
-        }
-      }
+    }
+    .content {
+      margin-left: 0;
+      margin-top: 16px;
     }
   }
 `

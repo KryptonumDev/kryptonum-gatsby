@@ -10,7 +10,7 @@ import Button from "../atoms/Button";
 const Team = ({ heading, paragraph, cta }) => {
   const { team } = useStaticQuery(graphql`
     query {
-      team: allSanityTeamMember {
+      team: allSanityTeamMember(sort: {_createdAt: ASC}) {
         nodes {
           name
           slug {

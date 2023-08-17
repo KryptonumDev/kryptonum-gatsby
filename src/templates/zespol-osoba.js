@@ -27,6 +27,7 @@ const truncateText = (text, limit = 140) => {
 const TeamMemberPage = ({
   data: {
     page : {
+      _id,
       name,
       cryptonym,
       img,
@@ -40,10 +41,17 @@ const TeamMemberPage = ({
       inspirations,
       email,
     },
-    participatedProjects,
+    allCaseStudies,
     blogEntries
   }
 }) => {
+  const filteredCaseStudiesByPerson = {
+    nodes: allCaseStudies.nodes.filter(node =>
+      node.content?.some(contentItem =>
+        contentItem.people?.some(person => person._id === _id)
+      )
+    )
+  };
   return (
     <>
       <GlobalStyle />
@@ -60,10 +68,10 @@ const TeamMemberPage = ({
       {inspirations.length >= 1 && (
         <Inspirations data={inspirations} />
       )}
-      {participatedProjects.nodes.length >= 1 && (
+      {filteredCaseStudiesByPerson.nodes.length >= 1 && (
         <CaseStudies
           heading="Mam swój **udział** w…"
-          data={participatedProjects}
+          data={filteredCaseStudiesByPerson}
         />
       )}
       {blogEntries.nodes.length >= 1 && (
@@ -99,6 +107,7 @@ const GlobalStyle = createGlobalStyle`
 export const query = graphql`
   query($id: String!) {
     page: sanityTeamMember(id: {eq: $id}) {
+      _id
       name
       cryptonym
       slug {
@@ -137,16 +146,24 @@ export const query = graphql`
       inspirations
       email
     }
-    participatedProjects: allSanityCaseStudyEntries(filter: {participated: {elemMatch: {id: {eq: $id}}}}) {
+    allCaseStudies: allSanityCaseStudyEntries {
       nodes {
+        name
+        slug {
+          current
+        }
         img {
           asset {
             altText
             gatsbyImageData(placeholder: BLURRED)
           }
         }
-        slug {
-          current
+        content {
+          ... on SanityCaseStudyParticipated {
+            people {
+              _id
+            }
+          }
         }
       }
     }

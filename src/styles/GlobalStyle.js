@@ -16,7 +16,7 @@ const GlobalStyle = createGlobalStyle`
     --neutral-400: #BFC1CA;
     --neutral-500: #A4A8B5;
     --neutral-600: #9699A3;
-    --neutral-700: #9699A3;
+    --neutral-700: #5B5F67;
     --neutral-800: #212123;
     --neutral-900: #161618;
     --neutral-950: #010104;
@@ -112,6 +112,7 @@ const GlobalStyle = createGlobalStyle`
     letter-spacing: -0.005em;
     line-height: 1.3;
     font-size: inherit;
+    width: fit-content;
     strong, &.strong {
       font-weight: 400;
       color: var(--primary-400);

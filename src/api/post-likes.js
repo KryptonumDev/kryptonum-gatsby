@@ -2,7 +2,7 @@ require("dotenv").config({
   path: `.env`,
 })
 
-import {createClient} from '@sanity/client'
+import { createClient } from '@sanity/client'
 
 export const client = createClient({
   projectId: process.env.GATSBY_SANITY_PROJECT_ID,
@@ -16,13 +16,13 @@ export default async function handler(req, res) {
   res.setHeader('Access-Control-Allow-Origin', 'https://kryptonum.eu');
   res.setHeader('Access-Control-Allow-Credentials', true);
   if(req.method === `POST`){
-    if(req.body.like){
+    if(req.body.like === true){
       client
       .patch(req.body.id)
       .inc({likes: 1})
       .commit()
       .then(() => {
-        res.status(200).json({ success: true })
+        res.status(200).json({ success: true, liked: true })
       })
       .catch(() => {
         res.status(400).json({ success: false })
@@ -33,7 +33,7 @@ export default async function handler(req, res) {
       .dec({likes: 1})
       .commit()
       .then(() => {
-        res.status(200).json({ success: true })
+        res.status(200).json({ success: true, liked: false })
       })
       .catch(() => {
         res.status(400).json({ success: false })

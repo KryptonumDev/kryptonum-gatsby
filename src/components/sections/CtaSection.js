@@ -10,10 +10,11 @@ const CtaSection = ({
     heading,
     cta,
     img
-  }
+  },
+  lighter=false
 }) => {
   return (
-    <Wrapper>
+    <Wrapper className='ctaSection' data-lighter={lighter}>
       <header>
         <DecorativeHeading type="h2">{heading}</DecorativeHeading>
         <Button theme={cta.theme} to={cta.href}>{cta.text}</Button>
@@ -30,22 +31,28 @@ const CtaSection = ({
 
 const Wrapper = styled.section`
   background-color: var(--neutral-900);
+  &[data-lighter="true"]{
+    border: 1px solid var(--neutral-700, #5B5F67);
+    background-color: var(--neutral-950);
+  }
   display: grid;
   align-items: center;
   grid-template-columns: 1fr 1fr;
   gap: 32px;
   padding: ${Clamp(24, 48, 72, "px")} ${Clamp(16, 32, 72, "px")};
+  border-radius: 2px;
   h2 {
     font-size: ${Clamp(28, 40, 48)};
     margin-bottom: ${Clamp(40, 40, 48, "px")};
   }
   position: relative;
+  margin-top: 55px;
   .img {
     position: absolute;
     right: 0;
     bottom: 0;
-    max-height: 120%;
     width: 50%;
+    height: calc(100% + 55px);
   }
   @media (max-width: 1289px){
     grid-template-columns: 1fr;
@@ -56,7 +63,8 @@ const Wrapper = styled.section`
       transform: translate(50%, -100%);
       bottom: unset;
       max-width: 80%;
-      width: auto;
+      width: 100%;
+      height: unset;
       max-height: 300px;
     }
   }

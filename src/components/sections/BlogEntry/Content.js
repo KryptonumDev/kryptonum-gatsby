@@ -16,7 +16,7 @@ const Content = ({ _id, _rawContent, author, share }) => {
     url: typeof window !== 'undefined' ? window.location.href.split('?')[0]+'?feature=share' : 'kryptonum.eu',
   };
 
-  const [ isLiked, setIsLiked ] = useState(false);
+  const [ likeStatus, setLikeStatus ] = useState({ liked: false });
 
   const saveToLocalStorage = (name, value) => {
     const retrievedArrayString = localStorage.getItem(name);
@@ -32,29 +32,34 @@ const Content = ({ _id, _rawContent, author, share }) => {
     return retrievedArray.indexOf(value) !== -1 ? true : false;
   }
 
-  // const handleLike = () => {
-  //   setIsLiked(true);
-  //   fetch('/api/post-likes', {
-  //     method: 'POST', 
-  //     headers: {
-  //       "content-type": "application/json",
-  //     },
-  //     body: JSON.stringify({id: _id})
-  //   })
-  //   .then(response => response.json())
-  //   .then(response => {
-  //     if(response.success){
-  //       saveToLocalStorage('liked', _id);
-  //     }
-  //   })
-  //   .catch(() => {
-  //     setIsLiked(false);
-  //   })
-  // }
+  const handleLike = () => {
+    setLikeStatus({ pending: true });
+    fetch('/api/post-likes', {
+      method: 'POST', 
+      headers: {
+        "content-type": "application/json",
+      },
+      body: JSON.stringify({ like: !likeStatus.liked, id: _id })
+    })
+    .then(response => response.json())
+    .then(response => {
+      if(response.success){
+        if(response.liked) {
+          setLikeStatus({ pending: false, liked: true });
+          saveToLocalStorage('liked', _id);
+        } else {
+          setLikeStatus({ pending: false, liked: false });
+        }
+      }
+    })
+    .catch(() => {
+      setLikeStatus({ pending: false });
+    })
+  }
 
   const locationPath = typeof window !== 'undefined' ? window.location.pathname : '';
   useEffect(() => {
-    ifValueExsistFromLocalStorage('liked', _id) && setIsLiked(true);
+    ifValueExsistFromLocalStorage('liked', _id) && setLikeStatus({ liked: true });
   }, [locationPath])
 
   const handleShare = async (e) => {
@@ -85,14 +90,14 @@ const Content = ({ _id, _rawContent, author, share }) => {
             />
             <p>Autor: {author.name}</p>
           </Link>
-          {/* <button
-            className={`like${isLiked ? ' liked' : ''}`}
+          <button
+            className={`like${likeStatus.liked ? ' liked' : ''}`}
             onClick={() => handleLike()}
-            disabled={isLiked ? true : false}
+            disabled={likeStatus.pending}
           >
             <Heart />
             <span>Polub artykuł</span>
-          </button> */}
+          </button>
           <button className="share" onClick={(e) => handleShare(e)}>
             <Share />
             <span>Udostępnij</span>
