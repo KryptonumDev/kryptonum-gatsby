@@ -43,7 +43,7 @@ const DecorativeHeading = ({ type="h1", children, decoration=true, components, .
 
 const Wrapper = styled.h1`
   display: grid;
-  grid-template-columns: auto auto;
+  grid-template-columns: auto 1fr;
   width: fit-content;
   > svg {
     width: 0.86em;

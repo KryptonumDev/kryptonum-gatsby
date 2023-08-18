@@ -78,6 +78,12 @@ const Wrapper = styled.section`
     align-self: center;
     max-width: 500px;
   }
+  .swiper-slide {
+    transition: transform .5s var(--easing);
+  }
+  .swiper-slide:not(.swiper-slide-active) {
+    transform: scale(.95);
+  }
   .slider {
     position: relative;
     &::before,
@@ -125,6 +131,7 @@ const Wrapper = styled.section`
     display: grid;
     grid-template-columns: 48px 48px;
     gap: 16px;
+    margin-top: -8px;
     button {
       width: 48px;
       height: 48px;

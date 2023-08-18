@@ -112,7 +112,6 @@ const GlobalStyle = createGlobalStyle`
     letter-spacing: -0.005em;
     line-height: 1.3;
     font-size: inherit;
-    width: fit-content;
     strong, &.strong {
       font-weight: 400;
       color: var(--primary-400);

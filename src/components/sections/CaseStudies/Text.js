@@ -4,6 +4,7 @@ import styled from 'styled-components';
 import DecorativeHeading from '../../atoms/DecorativeHeading';
 import { Clamp } from '../../../utils/functions';
 import { GatsbyImage } from 'gatsby-plugin-image';
+import Button from '../../atoms/Button';
 
 const Participated = ({ data: { heading, blocks } }) => {
   return (
@@ -21,7 +22,13 @@ const Participated = ({ data: { heading, blocks } }) => {
             ) : (
               <ReactMarkdown className='title'>{item.title}</ReactMarkdown>
             )}
-            <ReactMarkdown className='description'>{item.description}</ReactMarkdown>
+            <ReactMarkdown
+              className='description'
+              components={{
+                li: ({ children, ordered}) => <li>{!ordered && <BulletListIcon />}<span>{children}</span></li>,
+                a: ({ href, children }) => <Button theme='secondary' to={href}>{children}</Button>
+              }}
+            >{item.description}</ReactMarkdown>
           </div>
         ))}
       </div>
@@ -42,14 +49,13 @@ const Wrapper = styled.section`
       grid-template-columns: 188px 2fr;
       gap: 16px ${Clamp(24, 32, 32, 'px')};
       &:not(:last-child) {
-        margin-bottom: ${Clamp(28, 48, 48, 'px')};
+        margin-bottom: ${Clamp(28, 40, 40, 'px')};
       }
       .icon {
         width: ${Clamp(48, 64, 64, 'px')};
         height: ${Clamp(48, 64, 64, 'px')};
         margin-left: auto;
         img {
-
           padding: 4px;
         }
       }
@@ -60,6 +66,25 @@ const Wrapper = styled.section`
       .title,
       .description {
         font-size: ${Clamp(16, 18, 18)};
+      }
+      .description {
+        a {
+          font-size: inherit;
+        }
+        ul {
+          list-style-type: none;
+          li {
+            &:not(:last-child) {
+              margin-bottom: ${Clamp(16, 16, 24, 'px')};
+            }
+            svg {
+              margin-top: 1px;
+            }
+            display: grid;
+            grid-template-columns: 24px 1fr;
+            gap: 4px;
+          }
+        }
       }
     }
   }
@@ -87,5 +112,17 @@ const Wrapper = styled.section`
     }
   }
 `
+
+const BulletListIcon = () => (
+  <svg xmlns='http://www.w3.org/2000/svg' width='24' height='24' fill='none'>
+    <path
+      stroke='#EFF0F3'
+      strokeLinecap='round'
+      strokeLinejoin='round'
+      strokeWidth='2'
+      d='M9 18l6-6-6-6'
+    ></path>
+  </svg>
+)
 
 export default Participated;

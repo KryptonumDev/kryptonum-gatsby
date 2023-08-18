@@ -60,12 +60,18 @@ const Wrapper = styled.section`
     .img {
       right: 50%;
       top: 0px;
+     
       transform: translate(50%, -100%);
       bottom: unset;
       max-width: 80%;
       width: 100%;
       height: unset;
       max-height: 300px;
+    }
+    &[data-lighter="true"]{
+      .img {
+        top: -1px;
+      }
     }
   }
   @media (max-width: 767px){

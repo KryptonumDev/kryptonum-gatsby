@@ -19,8 +19,6 @@ const CaseStudyPage = ({
   data: {
     caseStudy : {
       heading,
-      paragraph,
-      paragraph2,
       categories_Paragraph,
       categories,
       img,
@@ -35,8 +33,6 @@ const CaseStudyPage = ({
       <Hero
         data={{
           heading,
-          paragraph,
-          paragraph2,
           categories_Paragraph,
           categories,
           img,

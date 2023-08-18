@@ -26,7 +26,7 @@ const Stylescape = ({ data: { heading, paragraph, stylescapes, elements } }) => 
           item.style.transform = `rotate(${rotationAngle}deg) translateX(${60}%)`;
         } else {
           progress = 1 - (bottom / windowHeight);
-          const translationX = Math.ceil((progress * (i % 2 === 0 ? -animation.x : animation.x)) * 100) / 100;
+          const translationX = Math.ceil((progress * (i % 2 === 0 ? -animation.x : animation.x)) * 10000) / 10000;
           item.style.transform = `rotate(${rotationAngle}deg) translateX(${translationX}%)`;
         }
       });
@@ -58,21 +58,23 @@ const Stylescape = ({ data: { heading, paragraph, stylescapes, elements } }) => 
           />
         ))}
       </div>
-      <div className="elements">
-        {elements.map((item, i) => (
-          <div className="item" key={i}>
-            <ReactMarkdown className="title">{item.title}</ReactMarkdown>
-             <GatsbyImage
-              image={item.img.asset.gatsbyImageData}
-              alt={item.img.asset.altText || ''}
-              className='img'
-              objectFit='contain'
-              objectPosition="left top"
-              key={i}
-            />
-          </div>
-        ))}
-      </div>
+      {elements && (
+        <div className="elements">
+          {elements.map((item, i) => (
+            <div className="item" key={i}>
+              <ReactMarkdown className="title">{item.title}</ReactMarkdown>
+              <GatsbyImage
+                image={item.img.asset.gatsbyImageData}
+                alt={item.img.asset.altText || ''}
+                className='img'
+                objectFit='contain'
+                objectPosition="left top"
+                key={i}
+              />
+            </div>
+          ))}
+        </div>
+      )}
     </Wrapper>
   );
 };

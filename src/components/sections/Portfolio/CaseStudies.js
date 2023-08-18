@@ -32,6 +32,16 @@ const CaseStudies = ({ data }) => {
 
 const Wrapper = styled.section`
   .item {
+    &:hover {
+      .img img {
+        transform: scale(1.03);
+      }
+    }
+    .img {
+      img {
+        transition: transform .5s var(--easing);
+      }
+    }
     &:not(:last-child){
       margin-bottom: ${Clamp(64, 64, 172, 'px')};
     }
