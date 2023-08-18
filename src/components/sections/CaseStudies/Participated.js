@@ -105,7 +105,7 @@ const Wrapper = styled.section`
       pointer-events: none;
       .avatar {
         z-index: 5;
-        animation: rotatePerson 20s infinite linear;
+        animation: rotatePerson 25s infinite linear;
         width: ${Clamp(48, 72, 106, 'px')};
         height: ${Clamp(48, 72, 106, 'px')};
         margin-top: calc(${Clamp(48, 72, 106, 'px')} * -.5);
@@ -129,7 +129,7 @@ const Wrapper = styled.section`
           width: fit-content;
         }
       }
-      animation: rotate 20s infinite linear;
+      animation: rotate 25s infinite linear;
       &:hover,
       &:hover .avatar,
       &:focus-within,
