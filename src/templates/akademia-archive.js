@@ -116,6 +116,9 @@ export const query = graphql`
 export default AcademyPage;
 
 export const Head = ({
+  pageContext: {
+    currentPage,
+  },
   data: { page: { seo: {
     title,
     description
@@ -125,5 +128,6 @@ export const Head = ({
     title={title}
     description={description}
     url="/pl/akademia"
+    pagination={currentPage > 1 ? currentPage : undefined}
   />
 )

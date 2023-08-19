@@ -3,7 +3,7 @@ import { graphql, useStaticQuery } from "gatsby";
 import Organization from "./OrganisationSchema";
 import Article from "./ArticleSchema";
 
-export const SEO = ({ author, date, title, description, url, ogImage, children }) => {
+export const SEO = ({ pagination, author, date, title, description, url, ogImage, children }) => {
   const { global: { globalSeo: {
     og_Img
   } } } = useStaticQuery(graphql`
@@ -22,7 +22,7 @@ export const SEO = ({ author, date, title, description, url, ogImage, children }
   const seo = {
     title: title || 'Kryptonum - Agencja dla tych, którym zależy',
     description: description || '',
-    url: url || '',
+    url: url ? (url + (pagination ? `/${pagination}` : '')): '',
   }
   const domain = 'https://kryptonum.eu';
   const locale = "pl_PL";

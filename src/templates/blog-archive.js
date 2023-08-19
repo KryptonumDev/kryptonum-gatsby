@@ -130,6 +130,9 @@ export const query = graphql`
 export default BlogPage;
 
 export const Head = ({
+  pageContext: {
+    currentPage,
+  },
   data: { page: { seo: {
     title,
     description
@@ -139,5 +142,6 @@ export const Head = ({
     title={title}
     description={description}
     url='/pl/blog'
+    pagination={currentPage > 1 ? currentPage : undefined}
   />
 )

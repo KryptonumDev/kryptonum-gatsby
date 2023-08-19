@@ -123,6 +123,9 @@ export const query = graphql`
 export default AcademyCategoryPage;
 
 export const Head = ({
+  pageContext: {
+    currentPage,
+  },
   data: {
     curiosityCategory: {
       slug,
@@ -137,5 +140,6 @@ export const Head = ({
     title={title}
     description={description}
     url={`/pl/akademia/kategoria/${slug.current}`}
+    pagination={currentPage > 1 ? currentPage : undefined}
   />
 )
