@@ -1,0 +1,240 @@
+[[redirects]]
+        from = "/"
+        to = "/pl"
+        status = 301
+        force = false
+[[redirects]]
+        from = "/projekty/dwa-slowa/"
+        to = "/pl/portfolio"
+        status = 301
+        force = false
+[[redirects]]
+        from = "/projekty/brygida-helbig/"
+        to = "/pl/portfolio"
+        status = 301
+        force = false
+[[redirects]]
+        from = "/projekty/"
+        to = "/pl/portfolio"
+        status = 301
+        force = false
+[[redirects]]
+        from = "/oferta/"
+        to = "/pl"
+        status = 301
+        force = false
+[[redirects]]
+        from = "/projekty/9m13/"
+        to = "/pl/portfolio"
+        status = 301
+        force = false
+[[redirects]]
+        from = "/kontakt/"
+        to = "/pl/kontakt"
+        status = 301
+        force = false
+[[redirects]]
+        from = "/blog/jak-rozmawiac-z-tworcami-stron-internetowych/"
+        to = "/pl/blog"
+        status = 301
+        force = false
+[[redirects]]
+        from = "/projekty/centrum-korekty/"
+        to = "/pl/portfolio"
+        status = 301
+        force = false
+[[redirects]]
+        from = "/faq/"
+        to = "/pl"
+        status = 301
+        force = false
+[[redirects]]
+        from = "/blog/strony-internetowe-na-lata/"
+        to = "/pl/blog"
+        status = 301
+        force = false
+[[redirects]]
+        from = "/blog/"
+        to = "/pl/blog"
+        status = 301
+        force = false
+[[redirects]]
+        from = "/projekty/wloski-od-zera/"
+        to = "/pl/portfolio"
+        status = 301
+        force = false
+[[redirects]]
+        from = "/polityka-prywatnosci/"
+        to = "/pl/polityka-prywatnosci"
+        status = 301
+        force = false
+[[redirects]]
+        from = "/o-nas/"
+        to = "/pl/zespol"
+        status = 301
+        force = false
+[[redirects]]
+        from = "/onas"
+        to = "/pl/zespol"
+        status = 301
+        force = false
+[[redirects]]
+        from = "/blog/strona-internetowa-czy-media-spolecznosciowe/"
+        to = "/pl/blog"
+        status = 301
+        force = false
+[[redirects]]
+        from = "/projekty/altwork/"
+        to = "/pl/portfolio"
+        status = 301
+        force = false
+[[redirects]]
+        from = "/projekty/cargem/"
+        to = "/pl/portfolio"
+        status = 301
+        force = false
+[[redirects]]
+        from = "/projekty/justyna-holosyniuk/"
+        to = "/pl/portfolio"
+        status = 301
+        force = false
+[[redirects]]
+        from = "/projekty/xminer/"
+        to = "/pl/portfolio"
+        status = 301
+        force = false
+[[redirects]]
+        from = "/blog/jak-zdobyc-pierwszego-klienta/"
+        to = "/pl/blog"
+        status = 301
+        force = false
+[[redirects]]
+        from = "/blog/3-sposoby-na-rozpoznawalnosc-twojej-marki/"
+        to = "/pl/blog"
+        status = 301
+        force = false
+[[redirects]]
+        from = "/blog/jak-zdobyc-pierwszego-klienta/mailtokuba@kryptonum.eu"
+        to = "/pl/blog"
+        status = 301
+        force = false
+[[redirects]]
+        from = "/page-data/blog/jak-zdobyc-pierwszego-klienta/mailtokuba@kryptonum.eu/page-data.json"
+        to = "/pl/blog"
+        status = 301
+        force = false
+[[redirects]]
+        from = "/projekty/dwa-slowa"
+        to = "/pl/portfolio"
+        status = 301
+        force = false
+[[redirects]]
+        from = "/projekty/brygida-helbig"
+        to = "/pl/portfolio"
+        status = 301
+        force = false
+[[redirects]]
+        from = "/projekty"
+        to = "/pl/portfolio"
+        status = 301
+        force = false
+[[redirects]]
+        from = "/oferta"
+        to = "/pl"
+        status = 301
+        force = false
+[[redirects]]
+        from = "/projekty/9m13"
+        to = "/pl/portfolio"
+        status = 301
+        force = false
+[[redirects]]
+        from = "/portfolio"
+        to = "/pl/portfolio"
+        status = 301
+        force = false
+[[redirects]]
+        from = "/blog/jak-rozmawiac-z-tworcami-stron-internetowych"
+        to = "/pl/blog"
+        status = 301
+        force = false
+[[redirects]]
+        from = "/projekty/centrum-korekty"
+        to = "/pl/portfolio"
+        status = 301
+        force = false
+[[redirects]]
+        from = "/faq"
+        to = "/pl"
+        status = 301
+        force = false
+[[redirects]]
+        from = "/blog/strony-internetowe-na-lata"
+        to = "/pl/blog"
+        status = 301
+        force = false
+[[redirects]]
+        from = "/blog"
+        to = "/pl/blog"
+        status = 301
+        force = false
+[[redirects]]
+        from = "/projekty/wloski-od-zera"
+        to = "/pl/portfolio"
+        status = 301
+        force = false
+[[redirects]]
+        from = "/polityka-prywatnosci"
+        to = "/pl/polityka-prywatnosci"
+        status = 301
+        force = false
+[[redirects]]
+        from = "/o-nas"
+        to = "/pl/zespol"
+        status = 301
+        force = false
+[[redirects]]
+        from = "/blog/strona-internetowa-czy-media-spolecznosciowe"
+        to = "/pl/blog"
+        status = 301
+        force = false
+[[redirects]]
+        from = "/projekty/altwork"
+        to = "/pl/portfolio"
+        status = 301
+        force = false
+[[redirects]]
+        from = "/projekty/cargem"
+        to = "/pl/portfolio"
+        status = 301
+        force = false
+[[redirects]]
+        from = "/projekty/justyna-holosyniuk"
+        to = "/pl/portfolio"
+        status = 301
+        force = false
+[[redirects]]
+        from = "/projekty/xminer"
+        to = "/pl/portfolio"
+        status = 301
+        force = false
+[[redirects]]
+        from = "/blog/jak-zdobyc-pierwszego-klienta"
+        to = "/pl/blog"
+        status = 301
+        force = false
+[[redirects]]
+        from = "/blog/3-sposoby-na-rozpoznawalnosc-twojej-marki"
+        to = "/pl/blog"
+        status = 301
+        force = false
+[[redirects]]
+        from = "/sitemap-index.xml"
+        to = "/pl/sitemap-index.xml"
+        status = 301
+        force = false
+[[redirects]]
+        from = "/sitemap-0.xml"
+        to = "/pl/sitemap-0.xml"
+        status = 301
+        force = false

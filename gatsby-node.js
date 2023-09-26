@@ -1,19 +1,24 @@
 const redirects = require("./redirects.json")
 const path = require("path");
+const fs = require('fs')
 require("dotenv").config({
   path: `.env`,
 })
 
-exports.createPages = async ({ actions, graphql }) => {
-  const { createRedirect, createPage } = actions;
-  redirects.forEach(redirect =>
-    createRedirect({
-      fromPath: redirect.fromPath,
-      toPath: redirect.toPath,
-      isPermanent: redirect.isPermanent || false
-    })
-  )
+exports.onPostBuild = async () => {
+    const redirectConfig = redirects.map(redirect => (
+      `[[redirects]]
+        from = "${redirect.fromPath}"
+        to = "${redirect.toPath}"
+        status = ${redirect.isPermanent ? 301 : 302}
+        force = ${redirect.force || false}`
+    ));
+  
+    fs.writeFileSync('netlify.toml', redirectConfig.join('\n'));
+  };
 
+exports.createPages = async ({ actions, graphql }) => {
+  const { createPage } = actions;
   // Blog and pagination
 
   const { data: { allSanityBlogEntries } } = await graphql(`
