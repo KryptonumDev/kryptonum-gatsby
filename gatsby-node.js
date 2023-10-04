@@ -605,7 +605,6 @@ exports.createPages = async ({
       allSanityLocationPage {
         nodes {
           id
-          name
           slug {
             current
           }
@@ -613,18 +612,12 @@ exports.createPages = async ({
       }
     }
   `);
-  allSanityLocationPage.nodes.forEach(({ id, name, slug: { current } }) => {
+  allSanityLocationPage.nodes.forEach(({ id, slug: { current } }) => {
     createPage({
       path: `/pl/${current}`,
       component: path.resolve('./src/templates/location-page.js'),
       context: {
         id: id,
-        breadcrumbs: [
-          {
-            name: name,
-            link: `/pl/${current}`
-          }
-        ]
       }
     });
   })
