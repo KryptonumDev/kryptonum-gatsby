@@ -10,7 +10,9 @@ import { Clamp } from '../../utils/functions';
 import { Quote } from "../atoms/Icons";
 import Button from "../atoms/Button";
 
-const Testimonials = () => {
+const Testimonials = ({
+  heading,
+}) => {
   const { testimonials } = useStaticQuery(graphql`
     query {
       testimonials: allSanityTestimonials(limit: 3) {
@@ -41,7 +43,7 @@ const Testimonials = () => {
 
   return (
     <Wrapper>
-      <DecorativeHeading type="h2">Zobacz, co mówią o nas **klienci**:</DecorativeHeading>
+      <DecorativeHeading type="h2">{heading || 'Zobacz, co mówią o nas **klienci**:'}</DecorativeHeading>
       <Swiper
         className="slider"
         ref={swiperRef}
@@ -97,8 +99,8 @@ const Wrapper = styled.section`
     font-size: ${Clamp(18, 28, 28)};
   }
   display: grid;
-  grid-template-columns: 1fr 3fr;
-  gap: ${Clamp(16, 32, 32, 'px')} ${Clamp(64, 64, 142, 'px')};
+  grid-template-columns: 1fr 3.5fr;
+  gap: ${Clamp(16, 32, 32, 'px')} ${Clamp(64, 64, 82, 'px')};
   align-items: center;
   .slider {
     width: calc(100% - var(--pageMargin));
