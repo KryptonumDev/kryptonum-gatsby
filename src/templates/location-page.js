@@ -4,16 +4,26 @@ import { SEO } from "../components/global/Seo";
 import CtaSection from "../components/sections/CtaSection";
 import ImageShowcase from "../components/sections/ImageShowcase";
 import Team from "../components/sections/Team";
+import Testimonials from "../components/sections/Testimonials";
+import Hero from "../components/sections/LocationPage/Hero";
 
 const LocationPage = ({
   data: {
     page: {
+      hero_Heading,
+      hero_Subheading,
+      hero_List,
       content,
     },
   }
 }) => {
   return (
     <>
+      <Hero data={{
+        hero_Heading,
+        hero_Subheading,
+        hero_List,
+      }} />
       {content.map((component, i) => {
         switch (component._type) {
           case 'ctaSection':
@@ -33,6 +43,13 @@ const LocationPage = ({
                 cta={component?.cta}
               />
             );
+          case 'LatestTestimonials':
+            return (
+              <Testimonials
+                key={i}
+                heading={component?.heading}
+              />
+            );
           default:
             break;
         }
@@ -44,6 +61,9 @@ const LocationPage = ({
 export const query = graphql`
   query($id: String!) {
     page: sanityLocationPage(id: {eq: $id}) {
+      hero_Heading
+      hero_Subheading
+      hero_List
       content {
         ... on SanityCtaSection {
           _type
@@ -83,6 +103,10 @@ export const query = graphql`
             href
             text
           }
+        }
+        ... on SanityLatestTestimonials {
+          _type
+          heading
         }
       }
     }
