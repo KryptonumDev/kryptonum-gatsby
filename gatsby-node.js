@@ -6,21 +6,21 @@ require("dotenv").config({
 })
 
 exports.onPostBuild = async () => {
-    const redirectConfig = redirects.map(redirect => (
-      `[[redirects]]
-        from = "${redirect.fromPath}"
-        to = "${redirect.toPath}"
-        status = ${redirect.isPermanent ? 301 : 302}
-        force = ${redirect.force || false}`
-    ));
-  
-    fs.writeFileSync('netlify.toml', redirectConfig.join('\n'));
-  };
+  const redirectConfig = redirects.map(redirect => (
+    `[[redirects]]
+      from = "${redirect.fromPath}"
+      to = "${redirect.toPath}"
+      status = ${redirect.isPermanent ? 301 : 302}
+      force = ${redirect.force || false}`
+  ));
+  fs.writeFileSync('netlify.toml', redirectConfig.join('\n'));
+};
 
-exports.createPages = async ({ actions, graphql }) => {
-  const { createPage } = actions;
+exports.createPages = async ({
+  actions: { createPage },
+  graphql
+}) => {
   // Blog and pagination
-
   const { data: { allSanityBlogEntries } } = await graphql(`
     query {
       allSanityBlogEntries {
@@ -31,7 +31,6 @@ exports.createPages = async ({ actions, graphql }) => {
 
   for (let i = 1; i < Math.ceil(allSanityBlogEntries.totalCount / process.env.GATSBY_PAGE_ITEM_COUNT); i++) {
     let page = i + 1
-
     createPage({
       path: `/pl/blog/${page}`,
       component: path.resolve('./src/templates/blog-archive.js'),
@@ -50,7 +49,6 @@ exports.createPages = async ({ actions, graphql }) => {
       }
     });
   }
-
   createPage({
     path: '/pl/blog',
     component: path.resolve('./src/templates/blog-archive.js'),
@@ -70,8 +68,12 @@ exports.createPages = async ({ actions, graphql }) => {
   });
 
   // Blog categories and pagination
-
-  const { data: { allSanityBlogEntries: { nodes: blogPosts }, allSanityBlogCategories: { nodes: blogCategories } } } = await graphql(`
+  const {
+    data: {
+      allSanityBlogEntries: { nodes: blogPosts },
+      allSanityBlogCategories: { nodes: blogCategories }
+    }
+  } = await graphql(`
     query {
       allSanityBlogEntries {
         nodes {
@@ -99,8 +101,11 @@ exports.createPages = async ({ actions, graphql }) => {
     }
   `);
 
-  blogCategories.forEach(({ name, id, slug: { current: slug } }) => {
-
+  blogCategories.forEach(({
+    name,
+    id,
+    slug: { current: slug }
+  }) => {
     const postsCount = blogPosts.filter(({ categories }) => categories.some(({ slug: { current: categorySlug } }) => categorySlug === slug)).length
 
     for (let i = 1; i < Math.ceil(postsCount / process.env.GATSBY_PAGE_ITEM_COUNT); i++) {
@@ -335,8 +340,6 @@ exports.createPages = async ({ actions, graphql }) => {
   })
 
   // Create pages
-
-
   createPage({
     path: `/pl/web-development`,
     component: path.resolve('./src/templates/web-development.js'),
@@ -577,7 +580,6 @@ exports.createPages = async ({ actions, graphql }) => {
       }
     }
   `);
-
   allSanityTeamMember.nodes.forEach(({ id, name, slug: { current } }) => {
     createPage({
       path: `/pl/zespol/${current}`,
@@ -592,6 +594,35 @@ exports.createPages = async ({ actions, graphql }) => {
           {
             name: name,
             link: `/pl/zespol/${current}`
+          }
+        ]
+      }
+    });
+  })
+
+  const { data: { allSanityLocationPage } } = await graphql(`
+    query {
+      allSanityLocationPage {
+        nodes {
+          id
+          name
+          slug {
+            current
+          }
+        }
+      }
+    }
+  `);
+  allSanityLocationPage.nodes.forEach(({ id, name, slug: { current } }) => {
+    createPage({
+      path: `/pl/${current}`,
+      component: path.resolve('./src/templates/location-page.js'),
+      context: {
+        id: id,
+        breadcrumbs: [
+          {
+            name: name,
+            link: `/pl/${current}`
           }
         ]
       }

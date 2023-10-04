@@ -202,7 +202,7 @@ export const Head = ({
   data: { page: { seo: {
     title,
     description
-  } } }
+  }}}
 }) => (
   <SEO
     title={title}
