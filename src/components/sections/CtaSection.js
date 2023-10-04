@@ -11,10 +11,9 @@ const CtaSection = ({
     cta,
     img
   },
-  lighter=false
 }) => {
   return (
-    <Wrapper className='ctaSection' data-lighter={lighter}>
+    <Wrapper className='ctaSection'>
       <header>
         <DecorativeHeading type="h2">{heading}</DecorativeHeading>
         <Button theme={cta.theme} to={cta.href}>{cta.text}</Button>
@@ -24,26 +23,24 @@ const CtaSection = ({
         alt={img.asset.altText || ''}
         className="img"
         objectFit="contain"
+        objectPosition='bottom center'
       />
     </Wrapper>
   );
 }
 
 const Wrapper = styled.section`
-  background-color: var(--neutral-900);
-  &[data-lighter="true"]{
-    border: 1px solid var(--neutral-700, #5B5F67);
-    background-color: var(--neutral-950);
-  }
+  border: 1px solid var(--neutral-700, #5B5F67);
+  background-color: var(--neutral-950);
   display: grid;
   align-items: center;
   grid-template-columns: 1fr 1fr;
   gap: 32px;
-  padding: ${Clamp(24, 48, 72, "px")} ${Clamp(16, 32, 72, "px")};
+  padding: ${Clamp(24, 72, 72, "px")} ${Clamp(16, 72, 72, "px")};
   border-radius: 2px;
   h2 {
-    font-size: ${Clamp(28, 40, 48)};
-    margin-bottom: ${Clamp(40, 40, 48, "px")};
+    font-size: ${Clamp(18, 28, 28)};
+    margin-bottom: 32px;
   }
   position: relative;
   margin-top: 55px;
@@ -54,24 +51,18 @@ const Wrapper = styled.section`
     width: 50%;
     height: calc(100% + 55px);
   }
-  @media (max-width: 1289px){
+  @media (max-width: 1199px){
     grid-template-columns: 1fr;
-    margin-top: min(80%, 300px);
+    margin-top: min(80vw, 300px);
     .img {
       right: 50%;
-      top: 0px;
-     
+      top: -1px;
       transform: translate(50%, -100%);
       bottom: unset;
       max-width: 80%;
       width: 100%;
       height: unset;
       max-height: 300px;
-    }
-    &[data-lighter="true"]{
-      .img {
-        top: -1px;
-      }
     }
   }
   @media (max-width: 767px){

@@ -1,65 +1,70 @@
 import * as React from "react"
 import { graphql } from "gatsby";
 import { SEO } from "../components/global/Seo";
-import Hero from "../components/sections/TeamMember/Hero";
+import CtaSection from "../components/sections/CtaSection";
+import ImageShowcase from "../components/sections/ImageShowcase";
 
 const LocationPage = ({
   data: {
     page: {
-      name,
-      cryptonym,
-      img,
+      content,
     },
   }
 }) => {
   return (
     <>
-      <Hero name={name} cryptonym={cryptonym} img={img} />
+      {content.map((component, i) => {
+        switch (component._type) {
+          case 'ctaSection':
+            return (
+              <CtaSection key={i} data={component} />
+            );
+          case 'ImageShowcase':
+            return (
+              <ImageShowcase key={i} data={component} />
+            );
+          default:
+            break;
+        }
+      })}
     </>
   );
 }
 
 export const query = graphql`
   query($id: String!) {
-    page: sanityTeamMember(id: {eq: $id}) {
-      _id
-      name
-      cryptonym
-      slug {
-        current
-      }
-      img {
-        asset {
-          altText
-          gatsbyImageData(placeholder: BLURRED, width: 356, height: 356)
+    page: sanityLocationPage(id: {eq: $id}) {
+      content {
+        ... on SanityCtaSection {
+          _type
+          heading
+          cta {
+            theme
+            text
+            href
+          }
+          img {
+            asset {
+              altText
+              gatsbyImageData(placeholder: BLURRED, width: 700)
+            }
+          }
         }
-      }
-      bio
-      skills
-      tools {
-        name
-        img {
-          asset {
-            altText
-            gatsbyImageData(placeholder: BLURRED, width: 152, height: 152)
+        ... on SanityImageShowcase {
+          _type
+          images {
+            asset {
+              altText
+              gatsbyImageData(placeholder: BLURRED)
+            }
+          }
+          cta {
+            theme
+            href
+            text
           }
         }
       }
-      benefits
-      links {
-        href
-        text
-        img {
-          asset {
-            altText
-            gatsbyImageData(placeholder: NONE, width: 56, height: 56)
-          }
-        }
-      }
-      afterWork
-      hobbies
-      inspirations
-      email
     }
   }
 `
@@ -67,15 +72,12 @@ export const query = graphql`
 export const Head = ({
   data: { page: {
     slug,
-    seo: {
-      title,
-      description
-    }
+    seo
   }}
 }) => (
   <SEO
-    title={title}
-    description={description}
+    title={seo?.title}
+    description={seo?.description}
     url={`/pl/${slug?.current}`}
   />
 )

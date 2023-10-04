@@ -4,7 +4,13 @@ import { ArrowTopRight } from "./Icons";
 import styled from "styled-components";
 import { Clamp } from "../../utils/functions";
 
-const Button = ({theme = 'secondary', children, to, className, ...props}) => {
+const Button = ({ data, theme = 'secondary', children, to, className, ...props }) => {
+  if (data) {
+    theme = data.theme;
+    to = data.href;
+    children = data.text;
+  }
+  
   const isExternal = to && to.startsWith('https://');
   return (
     <>
@@ -48,7 +54,7 @@ const Button = ({theme = 'secondary', children, to, className, ...props}) => {
 }
 
 const StyledAnchor = styled.a`
-  font-size: ${Clamp(15, 22, 22)};
+  font-size: ${Clamp(16, 18, 18)};
   display: inline-flex;
   align-items: center;
   justify-content: center;

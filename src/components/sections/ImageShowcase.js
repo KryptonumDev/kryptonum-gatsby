@@ -1,8 +1,10 @@
 import { GatsbyImage } from 'gatsby-plugin-image';
 import React from 'react';
 import styled from 'styled-components';
+import Button from '../atoms/Button';
+import { Clamp } from '../../utils/functions';
 
-const Showcase = ({ data: { images } }) => {
+const ImageShowcase = ({ data: { images, cta } }) => {
   return (
     <Wrapper>
       {images.map((image, i) => (
@@ -13,6 +15,9 @@ const Showcase = ({ data: { images } }) => {
           key={i}
         />
       ))}
+      {cta && (
+        <Button data={cta} />
+      )}
     </Wrapper>
   );
 };
@@ -40,6 +45,10 @@ const Wrapper = styled.section`
       }
     }
   }
+  text-align: center;
+  .cta {
+    margin-top: ${Clamp(32, 48, 48, 'px')}
+  }
 `
 
-export default Showcase;
+export default ImageShowcase;

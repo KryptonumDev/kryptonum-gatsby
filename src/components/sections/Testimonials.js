@@ -98,13 +98,13 @@ const Wrapper = styled.section`
   }
   display: grid;
   grid-template-columns: 1fr 3fr;
-  gap: ${Clamp(16, 32, 32, 'px')} ${Clamp(82, 82, 142, 'px')};
+  gap: ${Clamp(16, 32, 32, 'px')} ${Clamp(64, 64, 142, 'px')};
   align-items: center;
   .slider {
     width: calc(100% - var(--pageMargin));
     min-width: 0;
     border-left: 1px solid var(--neutral-700);
-    padding: ${Clamp(32, 72, 72, 'px')} 0 ${Clamp(32, 72, 72, 'px')} ${Clamp(82, 82, 122, 'px')};
+    padding: ${Clamp(32, 72, 72, 'px')} 0 ${Clamp(32, 72, 72, 'px')} ${Clamp(64, 64, 122, 'px')};
     margin-right: calc(var(--pageMargin) * -1);
     padding-right: var(--pageMargin);
     .slide {

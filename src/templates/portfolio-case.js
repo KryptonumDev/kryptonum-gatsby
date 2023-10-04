@@ -7,13 +7,13 @@ import CtaSection from "../components/sections/CtaSection";
 import Participated from "../components/sections/CaseStudies/Participated";
 import Text from "../components/sections/CaseStudies/Text";
 import Image from "../components/sections/CaseStudies/Image";
-import Showcase from "../components/sections/CaseStudies/Showcase";
 import Logo from "../components/sections/CaseStudies/Logo";
 import { Clamp } from "../utils/functions";
 import Stylescape from "../components/sections/CaseStudies/Stylescape";
 import Feautures from "../components/sections/CaseStudies/Feautures";
 import Testimonial from "../components/sections/CaseStudies/Testimonial";
 import Slider from "../components/sections/CaseStudies/Slider";
+import ImageShowcase from "../components/sections/ImageShowcase";
 
 const CaseStudyPage = ({
   data: {
@@ -53,9 +53,9 @@ const CaseStudyPage = ({
             return (
               <Image key={i} data={component} />
             );
-          case 'caseStudy_Showcase':
+          case 'ImageShowcase':
             return (
-              <Showcase key={i} data={component} />
+              <ImageShowcase key={i} data={component} />
             );
           case 'caseStudy_Logo':
             return (
@@ -71,7 +71,7 @@ const CaseStudyPage = ({
             );
           case 'ctaSection':
             return (
-              <CtaSection key={i} data={component} lighter={true} />
+              <CtaSection key={i} data={component} />
             );
           case 'testimonials':
             return (
@@ -149,13 +149,18 @@ export const query = graphql`
             }
           }
         }
-        ... on SanityCaseStudyShowcase {
+        ... on SanityImageShowcase {
           _type
           images {
             asset {
               altText
               gatsbyImageData(placeholder: BLURRED)
             }
+          }
+          cta {
+            theme
+            href
+            text
           }
         }
         ... on SanityCaseStudyLogo {
