@@ -19,7 +19,7 @@ const Team = ({ heading, paragraph, cta }) => {
           img {
             asset {
               altText
-              gatsbyImageData(placeholder: BLURRED, width: 156)
+              gatsbyImageData(placeholder: BLURRED, width: 128)
             }
           }
           cryptonym
@@ -57,19 +57,29 @@ const Team = ({ heading, paragraph, cta }) => {
 
 const Wrapper = styled.section`
   h2 {
+    font-size: ${Clamp(18, 28, 28)};
     margin: 0 auto ${Clamp(28, 48, 72, "px")};
   }
   .wrapper {
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
     gap: 32px;
+    @media (max-width: 1189px){
+      grid-template-columns: 1fr 1fr;
+      gap: 32px 24px;
+    }
+    @media (max-width: 699px){
+      grid-template-columns: 1fr;
+      gap: 28px;
+    }
     a {
       display: grid;
       grid-template-columns: auto 1fr;
-      gap: 16px;
+      gap: 8px;
       align-items: center;
       .img {
-        width: 156px;
+        width: 128px;
+        height: 128px;
         img {
           transform-origin: bottom;
           transition: transform .5s var(--easing);
@@ -82,45 +92,30 @@ const Wrapper = styled.section`
       }
       .info {
         h3 {
-          font-size: ${Clamp(20, 32, 30)};
+          font-size: ${Clamp(18, 18, 20)};
         }
         p {
-          font-size: ${Clamp(16, 22, 22)};
+          font-size: 1rem;
         }
       }
     }
   }
   .copy {
     text-align: center;
-    max-width: 858px;
+    max-width: 633px;
     margin: 0 auto;
     margin-top: ${Clamp(28, 48, 48, 'px')};
     p {
-      font-size: ${Clamp(20, 32, 30)};
+      font-size: ${Clamp(16, 18, 18)};
       &:not(:last-of-type){
-        margin-bottom: ${Clamp(16,32,32, "px")};
+        margin-bottom: ${Clamp(16, 16, 24, "px")};
       }
     }
     a {
-      margin-top: ${Clamp(28, 48, 48, 'px')};
-    }
-  }
-  @media (max-width: 1189px){
-    .wrapper {
-      grid-template-columns: 1fr 1fr;
-      gap: 32px 24px;
-      a {
-        .img {
-          width: 128px;
-        }
-      }
+      margin-top: ${Clamp(28, 32, 32, 'px')};
     }
   }
   @media (max-width: 699px){
-    .wrapper {
-      grid-template-columns: 1fr;
-      gap: 28px;
-    }
     h2 {
       margin-left: 0;
     }

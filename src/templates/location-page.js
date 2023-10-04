@@ -3,6 +3,7 @@ import { graphql } from "gatsby";
 import { SEO } from "../components/global/Seo";
 import CtaSection from "../components/sections/CtaSection";
 import ImageShowcase from "../components/sections/ImageShowcase";
+import Team from "../components/sections/Team";
 
 const LocationPage = ({
   data: {
@@ -22,6 +23,15 @@ const LocationPage = ({
           case 'ImageShowcase':
             return (
               <ImageShowcase key={i} data={component} />
+            );
+          case 'TeamSection':
+            return (
+              <Team
+                key={i}
+                heading={component?.heading}
+                paragraph={component?.paragraph}
+                cta={component?.cta}
+              />
             );
           default:
             break;
@@ -58,6 +68,16 @@ export const query = graphql`
               gatsbyImageData(placeholder: BLURRED)
             }
           }
+          cta {
+            theme
+            href
+            text
+          }
+        }
+        ... on SanityTeamSection {
+          _type
+          heading
+          paragraph
           cta {
             theme
             href
