@@ -23,7 +23,7 @@ const TilesComponent = ({ data: { heading, list } }) => {
                 className='img'
               />
             )}
-            <ReactMarkdown className="title">{description}</ReactMarkdown>
+            <ReactMarkdown className="description">{description}</ReactMarkdown>
           </div>
         ))}
       </div>
@@ -78,7 +78,14 @@ const Wrapper = styled.section`
         background-color: var(--neutral-900);
       }
       .title {
+        font-size: ${Clamp(18, 28, 28)};
+        margin-bottom: ${Clamp(24, 24, 32, 'px')};
+      }
+      .description {
         font-size: ${Clamp(16, 18, 18)};
+        p:not(:last-child){
+          margin-bottom: 12px;
+        }
       }
       @media (max-width: 549px){
         display: flex;

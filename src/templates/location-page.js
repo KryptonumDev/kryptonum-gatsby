@@ -12,6 +12,7 @@ import TextComponent from "../components/sections/TextComponent";
 import ImageComponent from "../components/sections/ImageComponent";
 import TilesComponent from "../components/sections/TilesComponent";
 import CenteredHeading from "../components/sections/CenteredHeading";
+import TextColumnComponent from "../components/sections/TextColumnComponent";
 
 const LocationPage = ({
   data: {
@@ -64,6 +65,10 @@ const LocationPage = ({
           case 'TextComponent':
             return (
               <TextComponent key={i} data={component} />
+            );
+          case 'TextColumnComponent':
+            return (
+              <TextColumnComponent key={i} data={component} />
             );
           case 'ImageComponent':
             return (
@@ -161,6 +166,11 @@ export const query = graphql`
             title
             description
           }
+        }
+        ... on SanityTextColumnComponent {
+          _type
+          heading
+          items: blocks
         }
         ... on SanityImageComponent {
           _type

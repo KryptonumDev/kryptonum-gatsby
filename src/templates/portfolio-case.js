@@ -8,12 +8,12 @@ import Participated from "../components/sections/CaseStudies/Participated";
 import Logo from "../components/sections/CaseStudies/Logo";
 import { Clamp } from "../utils/functions";
 import Stylescape from "../components/sections/CaseStudies/Stylescape";
-import Feautures from "../components/sections/TilesComponent";
 import Testimonial from "../components/sections/CaseStudies/Testimonial";
 import Slider from "../components/sections/CaseStudies/Slider";
 import ImageShowcase from "../components/sections/ImageShowcase";
 import TextComponent from "../components/sections/TextComponent";
 import ImageComponent from "../components/sections/ImageComponent";
+import Feautures from "../components/sections/CaseStudies/Feautures";
 
 const CaseStudyPage = ({
   data: {
