@@ -6,6 +6,9 @@ import ImageShowcase from "../components/sections/ImageShowcase";
 import Team from "../components/sections/Team";
 import Testimonials from "../components/sections/Testimonials";
 import Hero from "../components/sections/LocationPage/Hero";
+import CaseStudies from "../components/sections/CaseStudies";
+import SimpleCtaSection from "../components/sections/SimpleCtaSection";
+import TextComponent from "../components/sections/TextComponent";
 
 const LocationPage = ({
   data: {
@@ -26,6 +29,10 @@ const LocationPage = ({
       }} />
       {content.map((component, i) => {
         switch (component._type) {
+          case 'CaseStudies':
+            return (
+              <CaseStudies key={i} heading={component?.heading} eagerLoading={true} />
+            );
           case 'ctaSection':
             return (
               <CtaSection key={i} data={component} />
@@ -45,10 +52,15 @@ const LocationPage = ({
             );
           case 'LatestTestimonials':
             return (
-              <Testimonials
-                key={i}
-                heading={component?.heading}
-              />
+              <Testimonials key={i} heading={component?.heading} />
+            );
+          case 'simpleCtaSection':
+            return (
+              <SimpleCtaSection key={i} data={component} />
+            );
+          case 'TextComponent':
+            return (
+              <TextComponent key={i} data={component} />
             );
           default:
             break;
@@ -65,6 +77,10 @@ export const query = graphql`
       hero_Subheading
       hero_List
       content {
+        ... on SanityCaseStudies {
+          _type
+          heading
+        }
         ... on SanityCtaSection {
           _type
           heading
@@ -107,6 +123,29 @@ export const query = graphql`
         ... on SanityLatestTestimonials {
           _type
           heading
+        }
+        ... on SanitySimpleCtaSection {
+          _type
+          heading
+          cta {
+            theme
+            href
+            text
+          }
+        }
+         ... on SanityTextComponent {
+          _type
+          heading
+          blocks {
+            icon {
+              asset {
+                altText
+                gatsbyImageData(placeholder: BLURRED, width: 106, height: 106)
+              }
+            }
+            title
+            description
+          }
         }
       }
     }

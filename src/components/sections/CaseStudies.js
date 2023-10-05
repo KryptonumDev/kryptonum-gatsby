@@ -6,7 +6,7 @@ import Button from "../atoms/Button";
 import DecorativeHeading from "../atoms/DecorativeHeading";
 import { Clamp } from "../../utils/functions";
 
-const CaseStudies = ({ data, heading, eagerLoading }) => {
+const CaseStudies = ({ data, heading, eagerLoading=false }) => {
   let { caseStudies } = useStaticQuery(graphql`
     query {
       caseStudies: allSanityCaseStudyEntries(limit: 3) {
@@ -31,7 +31,9 @@ const CaseStudies = ({ data, heading, eagerLoading }) => {
   return (
     <Wrapper>
       {heading && (
-        <DecorativeHeading type="h2">{heading}</DecorativeHeading>
+        <header>
+          <DecorativeHeading type="h2">{heading}</DecorativeHeading>
+        </header>
       )}
       <div className="wrapper">
         {caseStudies.nodes.map((caseStudy, i) => (
@@ -46,6 +48,7 @@ const CaseStudies = ({ data, heading, eagerLoading }) => {
             <Button
               to={`/pl/portfolio/${caseStudy.slug.current}`}
               aria-label={`Sprawdź projekt ${caseStudy.name}`}
+              theme="primary"
             >
               Sprawdź projekt
             </Button>
@@ -53,15 +56,20 @@ const CaseStudies = ({ data, heading, eagerLoading }) => {
         ))}
       </div>
       {!data && (
-        <Button theme="primary" to="/pl/portfolio">Wszystkie projekty</Button>
+        <Button theme="secondary" to="/pl/portfolio">Wszystkie projekty</Button>
       )}
     </Wrapper>
   );
 }
 
 const Wrapper = styled.section`
+  header {
+    max-width: calc(846rem/16);
+    margin: 0 auto;
+  }
   h2 {
     margin: 0 auto ${Clamp(28, 72, 72)};
+    font-size: ${Clamp(18, 28, 28)};
     text-align: left;
   }
   > a {
@@ -75,6 +83,7 @@ const Wrapper = styled.section`
       top: 0;
       max-height: 100vh;
       max-height: 100dvh;
+      background-image: linear-gradient(rgba(0,0,0,0), rgba(0,0,0,.6), rgba(0,0,0,0));
       .img {
         width: 100%;
         height: 100%;
@@ -84,9 +93,6 @@ const Wrapper = styled.section`
         left: 50%;
         top: 50%;
         transform: translate(-50%,-50%);
-        background-image: linear-gradient(rgba(0,0,0,0), rgba(0,0,0,.6), rgba(0,0,0,0));
-        width: 100%;
-        padding: 50% 0;
       }
     }
   }

@@ -15,7 +15,7 @@ const ImageShowcase = ({ data: { images, cta } }) => {
           key={i}
         />
       ))}
-      {cta && (
+      {cta?.href && (
         <Button data={cta} />
       )}
     </Wrapper>

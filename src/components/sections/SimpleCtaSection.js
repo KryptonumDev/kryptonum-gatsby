@@ -8,16 +8,18 @@ const SimpleCtaSection = ({ data: { heading, cta } }) => {
   return (
     <Wrapper className="simpleCtaSection">
       <DecorativeHeading type="h2" decoration={false}>{heading}</DecorativeHeading>
-      <Button theme={cta.theme} to={cta.href}>{cta.text}</Button>
+      {cta.href && (
+        <Button theme={cta.theme} to={cta.href}>{cta.text}</Button>
+      )}
     </Wrapper>
   );
 }
 
 const Wrapper = styled.section`
   h2 {
-    max-width: ${1280/16}rem;
+    max-width: ${800/16}rem;
     margin: 0 auto ${Clamp(32, 40, 48, "px")};
-    font-size: ${Clamp(28, 46, 60)};
+    font-size: ${Clamp(18, 28, 28)};
   }
   text-align: center;
   justify-content: center;

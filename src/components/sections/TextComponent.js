@@ -1,12 +1,12 @@
 import React from 'react';
 import ReactMarkdown from 'react-markdown';
 import styled from 'styled-components';
-import DecorativeHeading from '../../atoms/DecorativeHeading';
-import { Clamp } from '../../../utils/functions';
+import DecorativeHeading from '../atoms/DecorativeHeading';
+import { Clamp } from '../../utils/functions';
 import { GatsbyImage } from 'gatsby-plugin-image';
-import Button from '../../atoms/Button';
+import Button from '../atoms/Button';
 
-const Participated = ({ data: { heading, blocks } }) => {
+const TextComponent = ({ data: { heading, blocks } }) => {
   return (
     <Wrapper>
       <DecorativeHeading type="h2">{heading}</DecorativeHeading>
@@ -39,7 +39,8 @@ const Participated = ({ data: { heading, blocks } }) => {
 const Wrapper = styled.section`
   h2 {
     width: calc(50% - ${Clamp(12, 16, 16, 'px')});
-    font-size: ${Clamp(22, 28, 28)};
+    font-size: ${Clamp(18, 28, 28)};
+    margin-bottom: ${Clamp(28, 64, 82, 'px')};
   }
   .wrapper {
     .item {
@@ -125,4 +126,4 @@ const BulletListIcon = () => (
   </svg>
 )
 
-export default Participated;
+export default TextComponent;
