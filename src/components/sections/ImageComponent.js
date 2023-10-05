@@ -1,9 +1,9 @@
-import { GatsbyImage } from 'gatsby-plugin-image';
 import React from 'react';
+import { GatsbyImage } from 'gatsby-plugin-image';
 import styled from 'styled-components';
-import { Clamp } from '../../../utils/functions';
+import { Clamp } from '../../utils/functions';
 
-const Image = ({ data: { isMockup, img } }) => {
+const ImageComponent = ({ data: { isMockup, img } }) => {
   return (
     <Wrapper className={isMockup ? 'mockup' : ''}>
       {isMockup && (
@@ -63,4 +63,4 @@ const MockupFrame = () => (
   </svg>
 )
 
-export default Image;
+export default ImageComponent;

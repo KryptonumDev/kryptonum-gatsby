@@ -9,6 +9,8 @@ import Hero from "../components/sections/LocationPage/Hero";
 import CaseStudies from "../components/sections/CaseStudies";
 import SimpleCtaSection from "../components/sections/SimpleCtaSection";
 import TextComponent from "../components/sections/TextComponent";
+import ImageComponent from "../components/sections/ImageComponent";
+import TilesComponent from "../components/sections/TilesComponent";
 
 const LocationPage = ({
   data: {
@@ -61,6 +63,14 @@ const LocationPage = ({
           case 'TextComponent':
             return (
               <TextComponent key={i} data={component} />
+            );
+          case 'ImageComponent':
+            return (
+              <ImageComponent key={i} data={component} />
+            );
+          case 'TilesComponent':
+            return (
+              <TilesComponent key={i} data={component} />
             );
           default:
             break;
@@ -133,7 +143,7 @@ export const query = graphql`
             text
           }
         }
-         ... on SanityTextComponent {
+        ... on SanityTextComponent {
           _type
           heading
           blocks {
@@ -141,6 +151,30 @@ export const query = graphql`
               asset {
                 altText
                 gatsbyImageData(placeholder: BLURRED, width: 106, height: 106)
+              }
+            }
+            title
+            description
+          }
+        }
+        ... on SanityImageComponent {
+          _type
+          isMockup
+          img {
+            asset {
+              altText
+              gatsbyImageData(placeholder: BLURRED)
+            }
+          }
+        }
+        ... on SanityTilesComponent {
+          _type
+          heading
+          list {
+            icon {
+              asset {
+                altText
+                gatsbyImageData(placeholder: BLURRED)
               }
             }
             title

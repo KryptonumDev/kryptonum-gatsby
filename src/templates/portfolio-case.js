@@ -5,15 +5,15 @@ import { SEO } from "../components/global/Seo";
 import Hero from "../components/sections/CaseStudies/Hero";
 import CtaSection from "../components/sections/CtaSection";
 import Participated from "../components/sections/CaseStudies/Participated";
-import Image from "../components/sections/CaseStudies/Image";
 import Logo from "../components/sections/CaseStudies/Logo";
 import { Clamp } from "../utils/functions";
 import Stylescape from "../components/sections/CaseStudies/Stylescape";
-import Feautures from "../components/sections/CaseStudies/Feautures";
+import Feautures from "../components/sections/TilesComponent";
 import Testimonial from "../components/sections/CaseStudies/Testimonial";
 import Slider from "../components/sections/CaseStudies/Slider";
 import ImageShowcase from "../components/sections/ImageShowcase";
 import TextComponent from "../components/sections/TextComponent";
+import ImageComponent from "../components/sections/ImageComponent";
 
 const CaseStudyPage = ({
   data: {
@@ -51,7 +51,7 @@ const CaseStudyPage = ({
             );
           case 'caseStudy_Image':
             return (
-              <Image key={i} data={component} />
+              <ImageComponent key={i} data={component} />
             );
           case 'ImageShowcase':
             return (

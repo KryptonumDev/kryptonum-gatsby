@@ -73,41 +73,31 @@ const Wrapper = styled.section`
     text-align: left;
   }
   > a {
-    margin-top: 48px;
+    margin-top: ${Clamp(24, 48, 48, 'px')};
   }
   text-align: center;
-  @media (min-width: 500px){
-    .caseStudy {
-      overflow: hidden;
+  .caseStudy {
+    position: relative;
+    overflow: hidden;
+    .cta {
+      position: absolute;
+      left: 50%;
+      top: 50%;
+      transform: translate(-50%,-50%);
+      max-width: 80%;
+    }
+    @media (max-width: 1189px){
+      margin: 0 calc(var(--pageMargin) * -1);
+    }
+    @media (min-width: 500px){
       position: sticky;
       top: 0;
       max-height: 100vh;
       max-height: 100dvh;
-      background-image: linear-gradient(rgba(0,0,0,0), rgba(0,0,0,.6), rgba(0,0,0,0));
-      .img {
-        width: 100%;
-        height: 100%;
-      }
-      .cta {
-        position: absolute;
-        left: 50%;
-        top: 50%;
-        transform: translate(-50%,-50%);
-      }
     }
-  }
-  @media (max-width: 1189px){
-    .caseStudy {
-      margin: 0 calc(var(--pageMargin) * -1);
-    }
-  }
-  @media (max-width: 499px){
-    .caseStudy {
+    @media (max-width: 499px){
       &:not(:last-child){
         margin-bottom: 48px;
-      }
-      .cta {
-        margin-top: 24px;
       }
     }
   }
