@@ -13,6 +13,7 @@ import ImageComponent from "../components/sections/ImageComponent";
 import TilesComponent from "../components/sections/TilesComponent";
 import CenteredHeading from "../components/sections/CenteredHeading";
 import TextColumnComponent from "../components/sections/TextColumnComponent";
+import TitleDescriptionAndImageArray from "../components/sections/TitleDescriptionAndImageArray";
 
 const LocationPage = ({
   data: {
@@ -81,6 +82,10 @@ const LocationPage = ({
           case 'CenteredHeading':
             return (
               <CenteredHeading key={i} data={component} />
+            );
+          case 'titleDescriptionAndImg_Array':
+            return (
+              <TitleDescriptionAndImageArray key={i} data={component} />
             );
           default:
             break;
@@ -200,6 +205,19 @@ export const query = graphql`
           _type
           heading
           paragraph
+        }
+        ... on SanityTitleDescriptionAndImgArray {
+          _type
+          blocks {
+            title
+            description
+            img {
+              asset {
+                altText
+                gatsbyImageData(placeholder: BLURRED)
+              }
+            }
+          }
         }
       }
     }
