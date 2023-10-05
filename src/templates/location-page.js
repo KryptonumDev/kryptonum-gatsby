@@ -14,6 +14,7 @@ import TilesComponent from "../components/sections/TilesComponent";
 import CenteredHeading from "../components/sections/CenteredHeading";
 import TextColumnComponent from "../components/sections/TextColumnComponent";
 import TitleDescriptionAndImageArray from "../components/sections/TitleDescriptionAndImageArray";
+import Process from "../components/sections/Process";
 
 const LocationPage = ({
   data: {
@@ -86,6 +87,10 @@ const LocationPage = ({
           case 'titleDescriptionAndImg_Array':
             return (
               <TitleDescriptionAndImageArray key={i} data={component} />
+            );
+          case 'Process':
+            return (
+              <Process key={i} data={component} />
             );
           default:
             break;
@@ -217,6 +222,14 @@ export const query = graphql`
                 gatsbyImageData(placeholder: BLURRED)
               }
             }
+          }
+        }
+        ... on SanityProcess {
+          _type
+          heading
+          blocks {
+            title
+            description
           }
         }
       }
