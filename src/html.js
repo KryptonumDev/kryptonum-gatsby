@@ -1,6 +1,8 @@
 import React from "react"
 import PropTypes from "prop-types"
 
+const isProd = process.env.NODE_ENV === "production"
+
 export default function HTML(props) {
   return (
     <html {...props.htmlAttributes}>
@@ -12,7 +14,9 @@ export default function HTML(props) {
           content="width=device-width, initial-scale=1, shrink-to-fit=no"
         />
         {props.headComponents}
-        <script src="https://cdn.usefathom.com/script.js" data-spa="auto" data-site="PUUZZITA" defer></script>
+        {isProd && (
+          <script src="https://cdn.usefathom.com/script.js" data-spa="auto" data-site="PUUZZITA" defer></script>
+        )}
       </head>
       <body {...props.bodyAttributes}>
         {props.preBodyComponents}
