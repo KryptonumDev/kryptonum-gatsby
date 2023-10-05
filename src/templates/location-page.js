@@ -11,6 +11,7 @@ import SimpleCtaSection from "../components/sections/SimpleCtaSection";
 import TextComponent from "../components/sections/TextComponent";
 import ImageComponent from "../components/sections/ImageComponent";
 import TilesComponent from "../components/sections/TilesComponent";
+import CenteredHeading from "../components/sections/CenteredHeading";
 
 const LocationPage = ({
   data: {
@@ -71,6 +72,10 @@ const LocationPage = ({
           case 'TilesComponent':
             return (
               <TilesComponent key={i} data={component} />
+            );
+          case 'CenteredHeading':
+            return (
+              <CenteredHeading key={i} data={component} />
             );
           default:
             break;
@@ -180,6 +185,11 @@ export const query = graphql`
             title
             description
           }
+        }
+        ... on SanityCenteredHeading {
+          _type
+          heading
+          paragraph
         }
       }
     }
