@@ -238,5 +238,55 @@
     "fromPath": "/sitemap-0.xml",
     "toPath": "/pl/sitemap-0.xml",
     "isPermanent": true
+  },
+  {
+    "fromPath": "/pl/akademia/najwazniejsze-trendy-technologiczne",
+    "toPath": "/pl/akademia/jak-wybrac-technologie-projektowania-stron-www",
+    "isPermanent": true
+  },
+  {
+    "fromPath": "/blog/cargem",
+    "toPath": "/pl/portfolio",
+    "isPermanent": true
+  },
+  {
+    "fromPath": "/blog/brygida-helbig",
+    "toPath": "/pl/portfolio",
+    "isPermanent": true
+  },
+  {
+    "fromPath": "/blog/dwa-slowa",
+    "toPath": "/pl/portfolio",
+    "isPermanent": true
+  },
+  {
+    "fromPath": "/blog/9m13",
+    "toPath": "/pl/portfolio",
+    "isPermanent": true
+  },
+  {
+    "fromPath": "/blog/xminer",
+    "toPath": "/pl/portfolio",
+    "isPermanent": true
+  },
+  {
+    "fromPath": "/blog/wloski-od-zera",
+    "toPath": "/pl/portfolio",
+    "isPermanent": true
+  },
+  {
+    "fromPath": "/blog/altwork",
+    "toPath": "/pl/portfolio",
+    "isPermanent": true
+  },
+  {
+    "fromPath": "/blog/centrum-korekty",
+    "toPath": "/pl/portfolio",
+    "isPermanent": true
+  },
+  {
+    "fromPath": "/blog/justyna-holosyniuk",
+    "toPath": "/pl/portfolio",
+    "isPermanent": true
   }
 ]
