@@ -25,6 +25,7 @@ const LocationPage = ({
       hero_Heading,
       hero_Subheading,
       hero_List,
+      hero_Cta,
       content,
     },
   }
@@ -35,6 +36,7 @@ const LocationPage = ({
         hero_Heading,
         hero_Subheading,
         hero_List,
+        hero_Cta,
       }} />
       {content.map((component, i) => {
         switch (component._type) {
@@ -121,6 +123,11 @@ export const query = graphql`
       hero_Heading
       hero_Subheading
       hero_List
+      hero_Cta {
+        theme
+        text
+        href
+      }
       content {
         ... on SanityCaseStudies {
           _type

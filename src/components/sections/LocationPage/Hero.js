@@ -2,12 +2,14 @@ import React from "react";
 import styled from "styled-components";
 import DecorativeHeading from "../../atoms/DecorativeHeading";
 import { Clamp } from '../../../utils/functions';
+import Button from "../../atoms/Button";
 
 const Hero = ({
   data: {
     hero_Heading,
     hero_Subheading,
     hero_List,
+    hero_Cta,
   }
 }) => {
   return (
@@ -20,6 +22,7 @@ const Hero = ({
             <li key={i}>{item}</li>
           ))}
         </ol>
+        <Button data={hero_Cta} />
       </div>
     </Wrapper>
   );
@@ -39,9 +42,6 @@ const Wrapper = styled.section`
   }
   gap: ${Clamp(48, 72, 72, 'px')} ${Clamp(72, 72, 144, 'px')};
   ol {
-    @media (min-width: 600px){
-      margin-left: ${Clamp(32, 32, 82, 'px')};
-    }
     font-size: ${Clamp(16, 18, 18)};
     counter-reset: counter;
     li {
@@ -62,6 +62,9 @@ const Wrapper = styled.section`
         content: "/0" counter(counter);
       }
     }
+  }
+  .cta {
+    margin-top: ${Clamp(24, 24, 32, 'px')};
   }
 `
 
