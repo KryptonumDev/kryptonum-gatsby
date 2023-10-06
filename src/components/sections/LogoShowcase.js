@@ -72,7 +72,7 @@ const Wrapper = styled.section`
         text-align: center;
         width: 100%;
         .logo {
-          max-width: 500px;
+          max-width: 400px;
           max-height: 200px;
         }
       }
