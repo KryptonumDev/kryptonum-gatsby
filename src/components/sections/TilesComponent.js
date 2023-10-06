@@ -13,7 +13,7 @@ const TilesComponent = ({ data: { heading, list } }) => {
       </header>
       <div className="wrapper">
         {list.map(({ icon, title, description }, i) => (
-          <div className="item" key={i}>
+          <div className={`item${icon ? ' isIcon' : ''}`} key={i}>
             {title ? (
               <ReactMarkdown className="title">{title}</ReactMarkdown>
             ) : (
@@ -87,13 +87,15 @@ const Wrapper = styled.section`
           margin-bottom: 12px;
         }
       }
-      @media (max-width: 549px){
-        display: flex;
-        align-items: center;
-        gap: 16px;
-        .img {
-          margin: 0;
-          flex-shrink: 0;
+      &.isIcon {
+        @media (max-width: 549px){
+          display: flex;
+          align-items: center;
+          gap: 16px;
+          .img {
+            margin: 0;
+            flex-shrink: 0;
+          }
         }
       }
     }

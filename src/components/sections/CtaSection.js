@@ -37,6 +37,10 @@ const Wrapper = styled.section`
   grid-template-columns: 1fr 1fr;
   gap: 32px;
   padding: ${Clamp(24, 72, 72, "px")} ${Clamp(16, 72, 72, "px")};
+  @media (max-width: 499px){
+    padding-left: var(--pageMargin);
+    padding-right: var(--pageMargin);
+  }
   border-radius: 2px;
   h2 {
     font-size: ${Clamp(18, 28, 28)};
