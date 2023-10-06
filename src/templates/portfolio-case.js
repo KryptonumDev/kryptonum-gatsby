@@ -5,7 +5,6 @@ import { SEO } from "../components/global/Seo";
 import Hero from "../components/sections/CaseStudies/Hero";
 import CtaSection from "../components/sections/CtaSection";
 import Participated from "../components/sections/CaseStudies/Participated";
-import Logo from "../components/sections/CaseStudies/Logo";
 import { Clamp } from "../utils/functions";
 import Stylescape from "../components/sections/CaseStudies/Stylescape";
 import Testimonial from "../components/sections/CaseStudies/Testimonial";
@@ -14,6 +13,7 @@ import ImageShowcase from "../components/sections/ImageShowcase";
 import TextComponent from "../components/sections/TextComponent";
 import ImageComponent from "../components/sections/ImageComponent";
 import Feautures from "../components/sections/CaseStudies/Feautures";
+import LogoShowcase from "../components/sections/LogoShowcase";
 
 const CaseStudyPage = ({
   data: {
@@ -57,9 +57,9 @@ const CaseStudyPage = ({
             return (
               <ImageShowcase key={i} data={component} />
             );
-          case 'caseStudy_Logo':
+          case 'LogoShowcase':
             return (
-              <Logo key={i} data={component} />
+              <LogoShowcase key={i} data={component} />
             );
           case 'caseStudy_Stylescape':
             return (
@@ -163,7 +163,7 @@ export const query = graphql`
             text
           }
         }
-        ... on SanityCaseStudyLogo {
+        ... on SanityLogoShowcase {
           _type
           heading
           paragraph

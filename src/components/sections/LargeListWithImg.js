@@ -77,7 +77,8 @@ const Wrapper = styled.section`
         left: 0;
         top: 0;
         background: linear-gradient(rgba(0,0,0,0), rgba(0,0,0,.8), var(--neutral-950));
-        transition: transform .8s;
+        transition: transform .6s;
+        pointer-events: none;
       }
       &:not(.hide):before {
         transform: translateY(100%);

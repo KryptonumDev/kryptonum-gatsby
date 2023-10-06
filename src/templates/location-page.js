@@ -16,6 +16,7 @@ import TextColumnComponent from "../components/sections/TextColumnComponent";
 import TitleDescriptionAndImageArray from "../components/sections/TitleDescriptionAndImageArray";
 import Process from "../components/sections/Process";
 import LargeListWithImg from "../components/sections/LargeListWithImg";
+import LogoShowcase from "../components/sections/LogoShowcase";
 
 const LocationPage = ({
   data: {
@@ -96,6 +97,10 @@ const LocationPage = ({
           case 'LargeList':
             return (
               <LargeListWithImg key={i} data={component} />
+            );
+          case 'LogoShowcase':
+            return (
+              <LogoShowcase key={i} data={component} />
             );
           default:
             break;
@@ -249,6 +254,20 @@ export const query = graphql`
           list {
             title
             description
+          }
+        }
+        ... on SanityLogoShowcase {
+          _type
+          heading
+          paragraph
+          proposals {
+            title
+            img {
+              asset {
+                altText
+                gatsbyImageData(placeholder: BLURRED)
+              }
+            }
           }
         }
       }
