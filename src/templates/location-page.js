@@ -15,6 +15,7 @@ import CenteredHeading from "../components/sections/CenteredHeading";
 import TextColumnComponent from "../components/sections/TextColumnComponent";
 import TitleDescriptionAndImageArray from "../components/sections/TitleDescriptionAndImageArray";
 import Process from "../components/sections/Process";
+import LargeListWithImg from "../components/sections/LargeListWithImg";
 
 const LocationPage = ({
   data: {
@@ -91,6 +92,10 @@ const LocationPage = ({
           case 'Process':
             return (
               <Process key={i} data={component} />
+            );
+          case 'LargeList':
+            return (
+              <LargeListWithImg key={i} data={component} />
             );
           default:
             break;
@@ -228,6 +233,20 @@ export const query = graphql`
           _type
           heading
           blocks {
+            title
+            description
+          }
+        }
+        ... on SanityLargeList {
+          _type
+          heading
+          img {
+            asset {
+              altText
+              gatsbyImageData(placeholder: BLURRED)
+            }
+          }
+          list {
             title
             description
           }
