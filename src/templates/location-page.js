@@ -17,6 +17,7 @@ import TitleDescriptionAndImageArray from "../components/sections/TitleDescripti
 import Process from "../components/sections/Process";
 import LargeListWithImg from "../components/sections/LargeListWithImg";
 import LogoShowcase from "../components/sections/LogoShowcase";
+import GridFloatingImg from "../components/sections/GridFloatingImg";
 
 const LocationPage = ({
   data: {
@@ -101,6 +102,10 @@ const LocationPage = ({
           case 'LogoShowcase':
             return (
               <LogoShowcase key={i} data={component} />
+            );
+          case 'GridFloatingImg':
+            return (
+              <GridFloatingImg key={i} data={component} />
             );
           default:
             break;
@@ -268,6 +273,21 @@ export const query = graphql`
                 gatsbyImageData(placeholder: BLURRED)
               }
             }
+          }
+        }
+        ... on SanityGridFloatingImg {
+          _type
+          heading
+          list {
+            title
+            description
+            img {
+              asset {
+                altText
+                gatsbyImageData(placeholder: BLURRED, width: 320)
+              }
+            }
+            href
           }
         }
       }

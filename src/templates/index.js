@@ -2,13 +2,13 @@ import * as React from "react"
 import { graphql } from "gatsby"
 import { SEO } from "../components/global/Seo";
 import Hero from "../components/sections/Homepage/Hero";
-import Services from "../components/sections/Homepage/Services";
 import Creativity from "../components/sections/Homepage/Creativity";
 import Roadmap from "../components/sections/Roadmap";
 import Team from "../components/sections/Team";
 import Testimonials from "../components/sections/Testimonials";
 import FourGrid from "../components/sections/Homepage/FourGrid";
 import LatestBlogEntries from "../components/sections/LatestBlogEntries";
+import GridFloatingImg from "../components/sections/GridFloatingImg";
 
 const IndexPage = ({
   data: {
@@ -16,8 +16,7 @@ const IndexPage = ({
       hero_Heading,
       hero_Subheading,
       hero_Cta,
-      services_Heading,
-      services_List,
+      services,
       conquest_Heading,
       conquest_Claim,
       conquest_Paragraph,
@@ -38,10 +37,6 @@ const IndexPage = ({
       team_Text,
       team_Cta,
     },
-    webDevelopment,
-    workshop,
-    agency,
-    graphicsAndDesign,
   },
 }) => {
   return (
@@ -51,14 +46,7 @@ const IndexPage = ({
         hero_Subheading,
         hero_Cta,
       }} />
-      <Services data={{
-        services_Heading,
-        services_List,
-        webDevelopment,
-        workshop,
-        agency,
-        graphicsAndDesign,
-      }} />
+      <GridFloatingImg data={services} />
       <FourGrid
         heading={conquest_Heading}
         claim={conquest_Claim}
@@ -106,11 +94,19 @@ export const query = graphql`
         href
       }
       # Services
-      services_Heading
-      services_List {
-        title
-        description
-        href
+      services: GridFloatingImg {
+        heading
+        list {
+          title
+          description
+          img {
+            asset {
+              altText
+              gatsbyImageData(placeholder: BLURRED, width: 320)
+            }
+          }
+          href
+        }
       }
       # Conquest
       conquest_Heading
@@ -159,38 +155,6 @@ export const query = graphql`
       seo {
         title
         description
-      }
-    }
-    webDevelopment: sanityWebDevelopment {
-      hero_Img {
-        asset {
-          altText
-          gatsbyImageData(placeholder: BLURRED, width: 200, height: 200)
-        }
-      }
-    }
-    workshop: sanityWorkshop {
-      hero_Img {
-        asset {
-          altText
-          gatsbyImageData(placeholder: BLURRED, width: 200, height: 200)
-        }
-      }
-    }
-    agency: sanityAgency {
-      hero_Img {
-        asset {
-          altText
-          gatsbyImageData(placeholder: BLURRED, width: 200, height: 200)
-        }
-      }
-    }
-    graphicsAndDesign: sanityGraphicsDesign {
-      hero_Img {
-        asset {
-          altText
-          gatsbyImageData(placeholder: BLURRED, width: 200, height: 200)
-        }
       }
     }
   }
