@@ -298,6 +298,10 @@ export const query = graphql`
           }
         }
       }
+      seo {
+        title
+        description
+      }
     }
   }
 `
