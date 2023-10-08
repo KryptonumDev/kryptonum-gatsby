@@ -128,6 +128,9 @@ export const query = graphql`
         text
         href
       }
+      slug {
+        current
+      }
       content {
         ... on SanityCaseStudies {
           _type
