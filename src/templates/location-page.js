@@ -13,11 +13,11 @@ import ImageComponent from "../components/sections/ImageComponent";
 import TilesComponent from "../components/sections/TilesComponent";
 import CenteredHeading from "../components/sections/CenteredHeading";
 import TextColumnComponent from "../components/sections/TextColumnComponent";
-import TitleDescriptionAndImageArray from "../components/sections/TitleDescriptionAndImageArray";
 import Process from "../components/sections/Process";
 import LargeListWithImg from "../components/sections/LargeListWithImg";
 import LogoShowcase from "../components/sections/LogoShowcase";
 import GridFloatingImg from "../components/sections/GridFloatingImg";
+import ListWithOverflowIcon from "../components/sections/ListWithOverflowIcon";
 
 const LocationPage = ({
   data: {
@@ -41,17 +41,11 @@ const LocationPage = ({
       {content.map((component, i) => {
         switch (component._type) {
           case 'CaseStudies':
-            return (
-              <CaseStudies key={i} heading={component?.heading} eagerLoading={true} />
-            );
+            return <CaseStudies key={i} heading={component?.heading} eagerLoading={true} />
           case 'ctaSection':
-            return (
-              <CtaSection key={i} data={component} />
-            );
+            return <CtaSection key={i} data={component} />
           case 'ImageShowcase':
-            return (
-              <ImageShowcase key={i} data={component} />
-            );
+            return <ImageShowcase key={i} data={component} />
           case 'TeamSection':
             return (
               <Team
@@ -62,53 +56,29 @@ const LocationPage = ({
               />
             );
           case 'LatestTestimonials':
-            return (
-              <Testimonials key={i} heading={component?.heading} />
-            );
+            return <Testimonials key={i} heading={component?.heading} />
           case 'simpleCtaSection':
-            return (
-              <SimpleCtaSection key={i} data={component} />
-            );
+            return <SimpleCtaSection key={i} data={component} />
           case 'TextComponent':
-            return (
-              <TextComponent key={i} data={component} />
-            );
+            return <TextComponent key={i} data={component} />
           case 'TextColumnComponent':
-            return (
-              <TextColumnComponent key={i} data={component} />
-            );
+            return <TextColumnComponent key={i} data={component} />
           case 'ImageComponent':
-            return (
-              <ImageComponent key={i} data={component} />
-            );
+            return <ImageComponent key={i} data={component} />
           case 'TilesComponent':
-            return (
-              <TilesComponent key={i} data={component} />
-            );
+            return <TilesComponent key={i} data={component} />
           case 'CenteredHeading':
-            return (
-              <CenteredHeading key={i} data={component} />
-            );
-          case 'titleDescriptionAndImg_Array':
-            return (
-              <TitleDescriptionAndImageArray key={i} data={component} />
-            );
+            return <CenteredHeading key={i} data={component} />
+          case 'ListWithOverflowIcon_Array':
+            return <ListWithOverflowIcon key={i} data={component} />
           case 'Process':
-            return (
-              <Process key={i} data={component} />
-            );
+            return <Process key={i} data={component} />
           case 'LargeList':
-            return (
-              <LargeListWithImg key={i} data={component} />
-            );
+            return <LargeListWithImg key={i} data={component} />
           case 'LogoShowcase':
-            return (
-              <LogoShowcase key={i} data={component} />
-            );
+            return <LogoShowcase key={i} data={component} />
           case 'GridFloatingImg':
-            return (
-              <GridFloatingImg key={i} data={component} />
-            );
+            return <GridFloatingImg key={i} data={component} />
           default:
             break;
         }
@@ -236,9 +206,15 @@ export const query = graphql`
           heading
           paragraph
         }
-        ... on SanityTitleDescriptionAndImgArray {
+        ... on SanityListWithOverflowIconArray {
           _type
           blocks {
+            icon {
+              asset {
+                altText
+                gatsbyImageData(placeholder: BLURRED)
+              }
+            }
             title
             description
             img {

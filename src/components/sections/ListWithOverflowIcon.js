@@ -4,17 +4,24 @@ import styled from 'styled-components';
 import { Clamp } from '../../utils/functions';
 import { GatsbyImage } from 'gatsby-plugin-image';
 
-const TitleDescriptionAndImageArray = ({ data: { blocks } }) => {
+const ListWithOverflowIcon = ({ data: { blocks } }) => {
   return (
     <Wrapper>
-      {blocks.map(({ title, description, img }, i) => (
-        <div className="item" key={i}>
+      {blocks.map(({ icon, title, description, img }, i) => (
+        <div className="item" key={i} data-isImg={Boolean(img)}>
           <GatsbyImage
-            image={img.asset.gatsbyImageData}
-            alt={img.asset.altText || ''}
+            image={icon.asset.gatsbyImageData}
+            alt={icon.asset.altText || ''}
             className="icon"
           />
           <ReactMarkdown className="title" components={{ 'p': 'h2' }}>{title}</ReactMarkdown>
+          {img && (
+            <GatsbyImage
+              image={img.asset.gatsbyImageData}
+              alt={img.asset.altText || ''}
+              className="img"
+            />
+          )}
           <ReactMarkdown className="description">{description}</ReactMarkdown>
         </div>
       ))}
@@ -36,6 +43,12 @@ const Wrapper = styled.section`
       .icon {
         grid-column: 3/1;
       }
+      &[data-isImg="true"]{
+        .title {
+          max-width: 50%;
+          grid-column: 3/1;
+        }
+      }
     }
     .icon {
       margin: 0 auto;
@@ -55,10 +68,10 @@ const Wrapper = styled.section`
     .description {
       font-size: ${Clamp(16, 18, 18)};
       p:not(:last-child){
-        margin-bottom: 32px;
+        margin-bottom: 16px;
       }
     }
   }
 `
 
-export default TitleDescriptionAndImageArray;
+export default ListWithOverflowIcon;
