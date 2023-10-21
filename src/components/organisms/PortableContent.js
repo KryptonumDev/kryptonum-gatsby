@@ -11,10 +11,11 @@ import UnorderedList from "./portableText/UnorderedList";
 import Tiles from "./portableText/Tiles";
 import QuickForm from "../sections/QuickForm";
 import SimpleGridList2Columns from "./portableText/SimpleGridList2Columns";
+import SimpleGridImage2Columns from "./portableText/SimpleGridImage2Columns";
 
 const sanityConfig = {projectId: process.env.GATSBY_SANITY_PROJECT_ID, dataset: process.env.GATSBY_SANITY_DATASET}
 
-const ImageComponent = ({ value }) => {
+export const ImageComponent = ({ value }) => {
   const gatsbyImageData = getGatsbyImageData(value.asset?._ref, { maxWidth: 1024 }, sanityConfig);
   return (
     <GatsbyImage image={gatsbyImageData} alt={value.altText || ''} className="img" />
@@ -33,7 +34,8 @@ const components = {
       return <UnorderedList data={newArray} />
     },
     blog_Tiles: ({ value: { array } }) => <Tiles data={array} />,
-    SimpleGridList2Columns: ({ value: { list } }) => <SimpleGridList2Columns list={list} />
+    SimpleGridList2Columns: ({ value: { list } }) => <SimpleGridList2Columns list={list} />,
+    SimpleGridImage2Columns: ({ value: { list } }) => <SimpleGridImage2Columns list={list} />,
   },
   block: {
     h2: ({ value }) => <DecorativeHeading type="h2" id={slugify(toPlainText(value))}>{portableTextToMarkdown(value)}</DecorativeHeading>,
