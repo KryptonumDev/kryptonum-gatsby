@@ -50,12 +50,6 @@ export default function SixthStep({ prevData, setData, setStep }) {
         register={register('privacy-policy', { required: true })}
         errors={errors}
       />
-      <Checkbox
-        text='Zapisuję się do newslettera'
-        name='newsletter'
-        register={register('newsletter')}
-        errors={errors}
-      />
       <Button theme="primary">Wyślij formularz?</Button>
     </Wrapper>
   )

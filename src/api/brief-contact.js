@@ -8,8 +8,8 @@ export default async function handler(req, res) {
   res.setHeader('Access-Control-Allow-Origin', 'https://kryptonum.eu');
   if(req.method === `POST`){
     sgMail.send({
-      to: 'michal@kryptonum.eu',
       from: 'michal@kryptonum.eu',
+      to: 'michal@kryptonum.eu',
       subject: 'Brief kontaktowy - kryptonum.eu',
       text: 'Wiadomość z briefu kontaktowego.',
       replyTo: `${req.body.Client['e-mail']}`,
@@ -71,38 +71,13 @@ export default async function handler(req, res) {
             <p>Dodatkowe informacje: ${req.body['Additional']['Additional information'] || 'Brak'}</p>
             <p>Data spotkania: ${req.body['Date']['date'] || 'Nieokreślona'}</p>
             <p>Zgoda na politykę prywatności: ${req.body['Date']['privacy-policy'] ? 'Tak' : 'Nie'}</p>
-            <p>Zgona na newsletter: ${req.body['Date']['newsletter'] ? 'Tak' : 'Nie'}</p>
           </div>
         </div
       </div>
       `,
     })
     .then(() => {
-      // sgMail.send({
-      //   to: req.body.mail,
-      //   from: 'kryptonumstudio@gmail.com',
-      //   subject: 'Kryptonum Studio - Formularz kontaktowy',
-      //   text: 'Dziękujemy za kontakt, odpowiemy najszybciej jak to możliwe.',
-      //   html: `
-      //   <div>
-      //     <div>
-      //       <p>Dziękujemy za kontakt, odpowiemy najszybciej jak to możliwe.</p>
-      //       <p>Tutaj jest kopia twojej wiadomości:</p>
-      //       <p><b>Telefon:</b> ${req.body.phone}</p>
-      //       <p><b>Email:</b> ${req.body.mail}</p>
-      //       <p><b>Wiadomość:</b> ${req.body.message}</p>
-      //     </div
-      //   </div>
-      //   `,
-      // })
-      // .then(() => {
       res.status(200).json({ success: true })
-      // })
-      // .catch(() => {
-      //   res.status(400).send({
-      //     statusMSG: 'Błąd wysyłania wiadomości do ciebie'
-      //   });
-      // })
     })
     .catch(() => {
       res.status(400).json({ success: false })

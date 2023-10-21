@@ -48,8 +48,10 @@ const Wrapper = styled.form`
 
   .radio-group{
     display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 20px;
+    gap: 12px ${Clamp(12, 20, 20, 'px')};
     margin-bottom: 40px;
+    @media (min-width: 500px){
+      grid-template-columns: 1fr 1fr;
+    }
   }
 `

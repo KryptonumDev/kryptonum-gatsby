@@ -2,6 +2,7 @@ import { Link } from "gatsby"
 import React from "react"
 import styled from "styled-components"
 import { Error } from "../atoms/Icons"
+import { Clamp } from "../../utils/functions"
 
 export const Checkbox = ({ icon, text, name, register, errors, error }) => (
   <Wrapper className={errors[name] ? 'errored' : ''}>
@@ -25,7 +26,7 @@ const Wrapper = styled.label`
   position: relative;
   display: flex;
   gap: 12px;
-  padding: 20px 22px;
+  padding: 16px ${Clamp(8, 16, 20, 'px')};
   background: var(--neutral-900);
   border: 1px solid var(--neutral-800);
   border-radius: 2px;
@@ -73,11 +74,11 @@ const Wrapper = styled.label`
   }
   .checkbox{
     border: 2px solid var(--neutral-200);
-    width: 30px;
-    height: 30px;
+    width: ${Clamp(28, 28, 32, 'px')};
+    height: ${Clamp(28, 28, 32, 'px')};
     border-radius: 2px;
     position: relative;
-    min-width: 30px;
+    flex-shrink: 0;
     &::after{
       content: '';
       position: absolute;
@@ -85,9 +86,9 @@ const Wrapper = styled.label`
       left: 50%;
       transform: translate(-50%, -50%) scale(0);
       transition:  transform .3s var(--easing);
-      width: 16px;
-      height: 16px;
-      border-radius: 2px;
+      width: 62%;
+      height: 62%;
+      border-radius: 1px;
       background-color: var(--neutral-200);
     }
   }

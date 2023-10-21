@@ -9,7 +9,6 @@ import Loader from "../components/atoms/Loader";
 import ErrorSend from "../components/sections/ExtendedContactError";
 
 const BriefPage = ({ data }) => {
-
   const [step, setStep] = useState(0)
   const [formData, setFormData] = useState({})
   const [startTime, setStartTime] = useState(null)
