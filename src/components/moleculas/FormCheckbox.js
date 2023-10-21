@@ -1,4 +1,3 @@
-import { Link } from "gatsby"
 import React from "react"
 import styled from "styled-components"
 import { Error } from "../atoms/Icons"
@@ -11,7 +10,7 @@ export const Checkbox = ({ icon, text, name, register, errors, error }) => (
     {text ? (
       <p dangerouslySetInnerHTML={{ __html: text }} />
       ) : (
-      <p>Zgadzam się na <Link to="/pl/polityka-prywatnosci">przetwarzanie moich danych</Link></p>
+      <p>Zgadzam się na <a href="/pl/polityka-prywatnosci" target="_blank" rel="noopener">przetwarzanie moich danych</a></p>
     )}
     {icon}
     {error && (
