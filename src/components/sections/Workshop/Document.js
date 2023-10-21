@@ -86,7 +86,7 @@ const Wrapper = styled.section`
         display: block;
         margin-top: 24px;
       }
-      &:nth-child(-n+9)::after {
+      &:nth-child(-n+10)::after {
         content: "0" counter(counter) ".";
       }
     }

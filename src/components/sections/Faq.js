@@ -330,7 +330,7 @@ const Wrapper = styled.section`
   counter-reset: counter;
   details {
     counter-increment: counter;
-    &:nth-child(-n+9) summary p::before {
+    &:nth-child(-n+10) summary p::before {
       content: "/0" counter(counter);
     }
     summary {

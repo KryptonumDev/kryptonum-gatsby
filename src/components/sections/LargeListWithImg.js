@@ -108,7 +108,7 @@ const Wrapper = styled.section`
           font-size: ${Clamp(16, 18, 18)};
         }
       }
-      &:nth-child(-n+9) h3::before {
+      &:nth-child(-n+10) h3::before {
         content: "/0" counter(counter);
       }
       .description {

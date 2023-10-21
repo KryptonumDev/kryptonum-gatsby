@@ -74,7 +74,7 @@ const Wrapper = styled.section`
       &:nth-child(even) span::before {
         order: 1;
       }
-      &:nth-child(-n+9) span::before {
+      &:nth-child(-n+10) span::before {
         content: "/0" counter(counter);
       }
     }

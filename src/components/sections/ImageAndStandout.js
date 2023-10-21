@@ -57,7 +57,7 @@ const Wrapper = styled.section`
           justify-content: center;
           align-items: center;
         }
-        &:nth-child(-n+9)::before {
+        &:nth-child(-n+10)::before {
           content: "0" counter(counter);
         }
       }

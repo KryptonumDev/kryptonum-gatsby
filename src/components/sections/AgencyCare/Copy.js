@@ -108,7 +108,7 @@ const Wrapper = styled.section`
           display: block;
         }
       }
-      &:nth-child(-n+9) p::before {
+      &:nth-child(-n+10) p::before {
         content: "/0" counter(counter);
       }
       &:nth-child(odd){

@@ -127,7 +127,7 @@ const Wrapper = styled.section`
         margin-right: ${Clamp(8, 16, 16, "px")};
       }
     }
-    &:nth-child(-n+9) .title::before {
+    &:nth-child(-n+10) .title::before {
       content: "/0" counter(counter);
     }
     .description {
@@ -151,7 +151,7 @@ const Wrapper = styled.section`
           margin-right: 16px;
         }
       }
-      &:nth-child(-n+9) .title::before {
+      &:nth-child(-n+10) .title::before {
         content: "/0" counter(counter);
       }
       .description {

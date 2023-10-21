@@ -75,7 +75,7 @@ const Wrapper = styled.ol`
       margin: 0;
       padding-left: ${Clamp(8+54, 16+54, 16+54, 'px')};
     }
-    &:nth-child(-n+9) .title::before {
+    &:nth-child(-n+10) .title::before {
       content: "0" counter(counter);
     }
     position: relative;
@@ -83,10 +83,10 @@ const Wrapper = styled.ol`
       &::before, &::after {
         content: '';
         width: 4px;
-        height: calc(100% + 24px);
+        height: calc(100% + 51px);
         position: absolute;
         left: 25px;
-        top: 0;
+        top: 27px;
         z-index: -1;
       }
       &::before {

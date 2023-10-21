@@ -109,7 +109,7 @@ const Wrapper = styled.section`
           transition: stroke .4s;
         }
       }
-      &:nth-child(-n+9) h3::before {
+      &:nth-child(-n+10) h3::before {
         content: "/0" counter(counter);
       }
       .description {

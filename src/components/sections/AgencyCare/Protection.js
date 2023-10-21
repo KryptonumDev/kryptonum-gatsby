@@ -64,7 +64,7 @@ const Wrapper = styled.section`
         margin-bottom: 16px;
         display: block;
       }
-      &:nth-child(-n+9)::before {
+      &:nth-child(-n+10)::before {
         content: "/0" counter(counter);
       }
     }

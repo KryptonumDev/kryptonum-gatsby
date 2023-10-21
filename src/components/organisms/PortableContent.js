@@ -126,7 +126,7 @@ const Wrapper = styled.section`
         content: counter(counter) ".";
         display: inline-block;
       }
-      &:nth-child(-n+9)::before {
+      &:nth-child(-n+10)::before {
         content: "0" counter(counter) ".";
       }
     }

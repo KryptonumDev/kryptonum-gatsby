@@ -92,7 +92,7 @@ const Wrapper = styled.section`
           margin-left: -64px;
         }
       }
-      &:nth-child(-n+9) .title::before {
+      &:nth-child(-n+10) .title::before {
         content: "/0" counter(counter);
       }
     }

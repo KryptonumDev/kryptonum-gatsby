@@ -139,7 +139,7 @@ const Wrapper = styled.section`
           margin-top: .2em;
         }
       }
-      &:nth-child(-n+9) h3::before {
+      &:nth-child(-n+10) h3::before {
         content: "/0" counter(counter);
       }
       p {

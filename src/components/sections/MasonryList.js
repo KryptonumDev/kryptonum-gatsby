@@ -66,7 +66,7 @@ const Wrapper = styled.section`
         margin-bottom: ${Clamp(16, 32, 32, 'px')};
         display: block;
       }
-      &:nth-child(-n+9)::before {
+      &:nth-child(-n+10)::before {
         content: "/0" counter(counter);
       }
     }

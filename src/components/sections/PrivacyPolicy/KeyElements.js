@@ -41,7 +41,7 @@ const Wrapper = styled.section`
         display: inline-block;
         margin-bottom: ${Clamp(12, 16, 24, 'px')};
       }
-      &:nth-child(-n+9)::before {
+      &:nth-child(-n+10)::before {
         content: "/0" counter(counter);
       }
     }
