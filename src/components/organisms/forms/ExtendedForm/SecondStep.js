@@ -6,6 +6,7 @@ import { Label } from "../../../moleculas/FormInput"
 import { Radio } from "../../../moleculas/FormRadio"
 import { SmallError, Plus } from "../../../atoms/Icons"
 import { AnimatePresence, motion } from "framer-motion"
+import { Clamp } from "../../../../utils/functions"
 
 export default function SecondStep({ prevData, setData, setStep }) {
   const {
@@ -65,8 +66,8 @@ export default function SecondStep({ prevData, setData, setStep }) {
         errors={errors}
       />
       <AnimatePresence mode="wait">
-        {links?.slice(1)?.map((el, index) => (
-          <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }}>
+        {links?.slice(1)?.map((_, index) => (
+          <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} key={index}>
             <Label
               title='Link (opcjonalne)'
               name={'additional link №' + (2 + index)}
@@ -114,10 +115,12 @@ const Wrapper = styled.form`
     max-width: 400px;
   }
 
-  .radio-group{
+  .radio-group {
     display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 20px;
+    gap: 12px ${Clamp(12, 20, 20, 'px')};
+    @media (min-width: 500px){
+      grid-template-columns: 1fr 1fr;
+    }
     max-width: 740px;
     width: 100%;
     margin-bottom: 32px;
