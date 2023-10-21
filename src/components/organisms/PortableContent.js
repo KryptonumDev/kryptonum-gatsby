@@ -16,9 +16,9 @@ import SimpleGridImage2Columns from "./portableText/SimpleGridImage2Columns";
 const sanityConfig = {projectId: process.env.GATSBY_SANITY_PROJECT_ID, dataset: process.env.GATSBY_SANITY_DATASET}
 
 export const ImageComponent = ({ value }) => {
-  const gatsbyImageData = getGatsbyImageData(value.asset?._ref, { maxWidth: 1024 }, sanityConfig);
+  const gatsbyImageData = getGatsbyImageData(value?.asset._ref, { maxWidth: 1024 }, sanityConfig);
   return (
-    <GatsbyImage image={gatsbyImageData} alt={value.altText || ''} className="img" />
+    <GatsbyImage image={gatsbyImageData} alt={value?.altText || ''} className="img" />
   )
 }
 
@@ -106,9 +106,11 @@ const Wrapper = styled.section`
   a {
     text-decoration: underline;
   }
-  ul.portableList, ol.portableList {
+  ul, ol {
     list-style-type: none;
     margin: 24px 0;
+  }
+  ul.portableList, ol.portableList {
     display: grid;
     grid-template-columns: 1fr;
     row-gap: 16px;
