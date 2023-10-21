@@ -3,7 +3,7 @@ import styled from "styled-components"
 import { Link } from "gatsby"
 
 
-export default function Pagination({ currentPage, itemCount, urlBasis }) {
+export default function Pagination({ currentPage, itemCount, urlBasis, urlID='' }) {
   const pagesCount = useMemo(() => {
     return (Math.ceil(itemCount / Number(process.env.GATSBY_PAGE_ITEM_COUNT)))
   }, [itemCount])
@@ -27,8 +27,8 @@ export default function Pagination({ currentPage, itemCount, urlBasis }) {
         disabled
         className='arrow'
         to={currentPage >= 3
-          ? `${urlBasis}/${currentPage - 1}`
-          : `${urlBasis}`}
+          ? `${urlBasis}/${currentPage - 1}${urlID}`
+          : `${urlBasis}${urlID}`}
       >
         <svg width="33" height="32" viewBox="0 0 33 32" fill="none" xmlns="http://www.w3.org/2000/svg">
           <path d="M20.75 24L12.75 16L20.75 8" stroke="#EFF0F3" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
@@ -37,12 +37,13 @@ export default function Pagination({ currentPage, itemCount, urlBasis }) {
       <div className="center">
         {pagesCount < 6 ? (
           <>
-            {buttons.map(el => (
+            {buttons.map((el, i) => (
               <Button
+                key={i}
                 active={currentPage === el}
                 to={el >= 2
-                  ? `${urlBasis}/${el}`
-                  : `${urlBasis}`}
+                  ? `${urlBasis}/${el}${urlID}`
+                  : `${urlBasis}${urlID}`}
               >
                 {el}
               </Button>
@@ -51,7 +52,7 @@ export default function Pagination({ currentPage, itemCount, urlBasis }) {
         ) : (
           <>
             {currentPage > 3
-              && <Button to={`${urlBasis}`} >
+              && <Button to={`${urlBasis}${urlID}`} >
                 {1}
               </Button>
             }
@@ -65,9 +66,10 @@ export default function Pagination({ currentPage, itemCount, urlBasis }) {
               if (currentPage < 4 && index < 6) { // first 4 pages
                 return (
                   <Button
+                    key={index}
                     to={el >= 2
-                      ? `${urlBasis}/${el}`
-                      : `${urlBasis}`}
+                      ? `${urlBasis}/${el}${urlID}`
+                      : `${urlBasis}${urlID}`}
                     active={currentPage === el}
                   >
                     {el}
@@ -76,14 +78,20 @@ export default function Pagination({ currentPage, itemCount, urlBasis }) {
               }
               if (currentPage > pagesCount - 3 && index > pagesCount - 7) { // last 4 pages
                 return (
-                  <Button to={`${urlBasis}/${el}`} active={currentPage === el}>
+                  <Button
+                    key={index}
+                    to={`${urlBasis}/${el}${urlID}`} active={currentPage === el}
+                  >
                     {el}
                   </Button>
                 )
               }
               if (index >= currentPage - 3 && index <= currentPage + 1) { // all othher pages
                 return (
-                  <Button to={`${urlBasis}/${el}`} active={currentPage === el}>
+                  <Button
+                    key={index}
+                    to={`${urlBasis}/${el}${urlID}`} active={currentPage === el}
+                  >
                     {el}
                   </Button>
                 )
@@ -98,7 +106,7 @@ export default function Pagination({ currentPage, itemCount, urlBasis }) {
             }
             {(currentPage === 1 || pagesCount - currentPage > 2)
               && (
-                <Button to={`${urlBasis}/${pagesCount}`}>
+                <Button to={`${urlBasis}/${pagesCount}${urlID}`}>
                   {pagesCount}
                 </Button>
               )}
@@ -111,8 +119,8 @@ export default function Pagination({ currentPage, itemCount, urlBasis }) {
         className='arrow'
         to={
           currentPage < pagesCount
-            ? `${urlBasis}/${currentPage + 1}`
-            : `${urlBasis}/${pagesCount}`}
+            ? `${urlBasis}/${currentPage + 1}${urlID}`
+            : `${urlBasis}/${pagesCount}${urlID}`}
       >
         <svg width="33" height="32" viewBox="0 0 33 32" fill="none" xmlns="http://www.w3.org/2000/svg">
           <path d="M12.75 24L20.75 16L12.75 8" stroke="#EFF0F3" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />

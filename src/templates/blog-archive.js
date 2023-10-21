@@ -23,13 +23,11 @@ const BlogPage = ({
 }) => {
   return (
     <>
-      {currentPage === 1 && (
-        <HeroTwoColumns
-          heading={hero_Heading}
-          paragraph={hero_Paragraph}
-          img={hero_Img}
-        />
-      )}
+      <HeroTwoColumns
+        heading={currentPage === 1 ? hero_Heading : `**Blog** - strona ${currentPage}`}
+        paragraph={hero_Paragraph}
+        img={currentPage === 1 ? hero_Img : null}
+      />
       <Categories
         categorySlug="/pl/blog/"
         categories={blogCategories}

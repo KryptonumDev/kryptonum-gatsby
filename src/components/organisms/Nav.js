@@ -422,7 +422,6 @@ const Nav = ({
 }
 
 const Wrapper = styled.nav`
-  --nav-height: 94px;
   .skipToMainContent {
     background-color: var(--neutral-950);
     opacity: 0;

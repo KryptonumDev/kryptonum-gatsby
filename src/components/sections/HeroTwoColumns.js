@@ -11,7 +11,9 @@ const HeroTwoColumns = ({ heading, paragraph, cta, img }) => {
     <Wrapper>
       <header>
         <DecorativeHeading className="heading">{heading}</DecorativeHeading>
-        <ReactMarkdown className="paragraph">{paragraph}</ReactMarkdown>
+        {paragraph && (
+          <ReactMarkdown className="paragraph">{paragraph}</ReactMarkdown>
+        )}
         {cta?.text && (
           <Button theme={cta.theme} to={cta.href}>{cta.text}</Button>
         )}
@@ -34,10 +36,8 @@ const Wrapper = styled.section`
   gap: 32px;
   header {
     max-width: ${684/16}rem;
-    .heading {
-      margin-bottom: ${Clamp(28, 32, 32, "px")};
-    }
     .paragraph {
+      margin-top: ${Clamp(28, 32, 32, "px")};
       font-size: ${Clamp(20, 32, 30)};
       p:not(:last-of-type){
         margin-bottom: 1rem;

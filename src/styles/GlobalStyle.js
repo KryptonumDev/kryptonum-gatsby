@@ -22,12 +22,16 @@ const GlobalStyle = createGlobalStyle`
     --neutral-950: #010104;
     --primary-400: #2DD282;
     --error-400: #EE6470;
+    --nav-height: 94px;
     --gradient: linear-gradient(90deg, #90F4E8, #2DD282);
     --easing: cubic-bezier(0.23,1,0.32,1);
   }
   body.scrollLock {
     overflow: hidden;
     touch-action: none;
+  }
+  html {
+    scroll-padding-top: var(--nav-height);
   }
   body {
     min-width: 320px;

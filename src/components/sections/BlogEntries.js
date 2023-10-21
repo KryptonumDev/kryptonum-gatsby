@@ -7,14 +7,14 @@ import BlogEntry from "../organisms/BlogEntry";
 
 const BlogEntries = ({ urlBasis, totalCount, blogEntries, page, heading }) => {
   return (
-    <Wrapper>
+    <Wrapper id='wpisy'>
       <DecorativeHeading type="h2">{`${heading || `**Najświeższe** artykuły`} (${totalCount})`}</DecorativeHeading>
       <div className="wrapper">
         {blogEntries.nodes.map((entry, i) => (
           <BlogEntry data={entry} key={i} />
         ))}
       </div>
-      <Pagination currentPage={page} itemCount={totalCount} urlBasis={urlBasis} />
+      <Pagination currentPage={page} itemCount={totalCount} urlBasis={urlBasis} urlID='#wpisy' />
     </Wrapper>
   );
 }
