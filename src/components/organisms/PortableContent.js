@@ -10,6 +10,7 @@ import OrderedList from "./portableText/OrderedList";
 import UnorderedList from "./portableText/UnorderedList";
 import Tiles from "./portableText/Tiles";
 import QuickForm from "../sections/QuickForm";
+import SimpleGridList2Columns from "./portableText/SimpleGridList2Columns";
 
 const sanityConfig = {projectId: process.env.GATSBY_SANITY_PROJECT_ID, dataset: process.env.GATSBY_SANITY_DATASET}
 
@@ -31,7 +32,8 @@ const components = {
       });
       return <UnorderedList data={newArray} />
     },
-    blog_Tiles: ({ value: { array } }) => <Tiles data={array} />
+    blog_Tiles: ({ value: { array } }) => <Tiles data={array} />,
+    SimpleGridList2Columns: ({ value: { list } }) => <SimpleGridList2Columns list={list} />
   },
   block: {
     h2: ({ value }) => <DecorativeHeading type="h2" id={slugify(toPlainText(value))}>{portableTextToMarkdown(value)}</DecorativeHeading>,
@@ -40,6 +42,10 @@ const components = {
   },
   listItem : {
     bullet: ({ children }) => <li><Star /><span>{children}</span></li>,
+  },
+  list: {
+    bullet: ({ children }) => <ul className="portableList">{children}</ul>,
+    number: ({ children }) => <ol className="portableList">{children}</ol>,
   },
   marks: {
     link: ({value, children}) => {
@@ -98,14 +104,14 @@ const Wrapper = styled.section`
   a {
     text-decoration: underline;
   }
-  ul, ol {
+  ul.portableList, ol.portableList {
     list-style-type: none;
     margin: 24px 0;
     display: grid;
     grid-template-columns: 1fr;
     row-gap: 16px;
   }
-  ul:not(.unorderedList) {
+  ul.portableList {
     li {
       display: grid;
       column-gap: 8px;
@@ -115,7 +121,7 @@ const Wrapper = styled.section`
       }
     }
   }
-  ol:not(.orderedList) {
+  ol.portableList {
     counter-reset: counter;
     li {
       display: grid;
