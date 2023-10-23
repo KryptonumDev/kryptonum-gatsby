@@ -13,13 +13,14 @@ import QuickForm from "../sections/QuickForm";
 import SimpleGridList2Columns from "./portableText/SimpleGridList2Columns";
 import SimpleGridImage2Columns from "./portableText/SimpleGridImage2Columns";
 import TabSection from "./portableText/TabSection";
+import DetailedGrid from "./portableText/DetailedGrid";
 
 const sanityConfig = {projectId: process.env.GATSBY_SANITY_PROJECT_ID, dataset: process.env.GATSBY_SANITY_DATASET}
 
-export const ImageComponent = ({ value }) => {
+export const ImageComponent = ({ value, ...props }) => {
   const gatsbyImageData = getGatsbyImageData(value?.asset._ref, { maxWidth: 1024 }, sanityConfig);
   return (
-    <GatsbyImage image={gatsbyImageData} alt={value?.altText || ''} className="img" />
+    <GatsbyImage image={gatsbyImageData} alt={value?.altText || ''} className="img" {...props} />
   )
 }
 
@@ -38,6 +39,7 @@ const components = {
     SimpleGridList2Columns: ({ value: { list } }) => <SimpleGridList2Columns list={list} />,
     SimpleGridImage2Columns: ({ value: { list } }) => <SimpleGridImage2Columns list={list} />,
     TabSection: ({ value: { blocks } }) => <TabSection blocks={blocks} />,
+    DetailedGrid: ({ value: { blocks } }) => <DetailedGrid blocks={blocks} />,
   },
   block: {
     h2: ({ value }) => <DecorativeHeading type="h2" id={slugify(toPlainText(value))}>{portableTextToMarkdown(value)}</DecorativeHeading>,
@@ -75,9 +77,9 @@ const Wrapper = styled.section`
     margin-top: ${Clamp(16, 24, 32, 'px')};
   }
   p.largeParagraph {
-    font-size: ${Clamp(16, 30, 30)};
+    font-size: ${Clamp(16, 24, 30)};
   }
-  font-size: ${Clamp(16, 22, 22)};
+  font-size: ${Clamp(16, 18, 18)};
   > h2 {
     &:not(:first-child) {
       margin-top: ${Clamp(48, 72, 96, 'px')};
