@@ -40,6 +40,7 @@ const Wrapper = styled.section`
     gap: 32px;
     @media (min-width: 800px){
       grid-template-columns: 1fr 1fr;
+      align-items: flex-start;
       .icon {
         grid-column: 3/1;
       }
