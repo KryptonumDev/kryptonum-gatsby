@@ -12,6 +12,7 @@ import Tiles from "./portableText/Tiles";
 import QuickForm from "../sections/QuickForm";
 import SimpleGridList2Columns from "./portableText/SimpleGridList2Columns";
 import SimpleGridImage2Columns from "./portableText/SimpleGridImage2Columns";
+import TabSection from "./portableText/TabSection";
 
 const sanityConfig = {projectId: process.env.GATSBY_SANITY_PROJECT_ID, dataset: process.env.GATSBY_SANITY_DATASET}
 
@@ -36,6 +37,7 @@ const components = {
     blog_Tiles: ({ value: { array } }) => <Tiles data={array} />,
     SimpleGridList2Columns: ({ value: { list } }) => <SimpleGridList2Columns list={list} />,
     SimpleGridImage2Columns: ({ value: { list } }) => <SimpleGridImage2Columns list={list} />,
+    TabSection: ({ value: { blocks } }) => <TabSection blocks={blocks} />,
   },
   block: {
     h2: ({ value }) => <DecorativeHeading type="h2" id={slugify(toPlainText(value))}>{portableTextToMarkdown(value)}</DecorativeHeading>,
