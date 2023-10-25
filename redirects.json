@@ -288,5 +288,25 @@
     "fromPath": "/blog/justyna-holosyniuk",
     "toPath": "/pl/portfolio",
     "isPermanent": true
+  },
+  {
+    "fromPath": "/pl/web-development-strony-internetowe",
+    "toPath": "/pl/web-development/strony-internetowe",
+    "isPermanent": true
+  },
+  {
+    "fromPath": "/pl/web-development-aplikacje-internetowe",
+    "toPath": "/pl/web-development/aplikacje-internetowe",
+    "isPermanent": true
+  },
+  {
+    "fromPath": "/pl/web-development-sklepy-internetowe",
+    "toPath": "/pl/web-development/sklepy-internetowe",
+    "isPermanent": true
+  },
+  {
+    "fromPath": "/pl/blog/czym-sa",
+    "toPath": "/pl/blog",
+    "isPermanent": true
   }
 ]

@@ -169,11 +169,12 @@ export const Head = ({
   data: { page: { seo: {
     title,
     description
-  }}}
+  }}},
+  location: { pathname }
 }) => (
   <SEO
     title={title}
     description={description}
-    url='/pl/web-development-aplikacje-internetowe'
+    url={pathname}
   />
 )

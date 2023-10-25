@@ -8,12 +8,16 @@ import CtaSection from '../components/sections/CtaSection';
 import Attitude from "../components/sections/Team/Attitude";
 import SmallCtaSection from "../components/sections/Team/SmallCtaSection";
 import LatestCuriosityEntries from "../components/sections/LatestCuriosityEntries";
+import Decode from "../components/sections/Team/Decode";
 
 const TeamPage = ({
   data: { page : {
     hero_Heading,
     hero_Paragraph,
     hero_Column,
+    decode_Heading,
+    decode_Hint,
+    decode_List,
     smallCta_Heading,
     smallCta_Cta,
     smallCta_Heading2,
@@ -38,6 +42,11 @@ const TeamPage = ({
         hero_Paragraph,
         hero_Column,
       }} />
+      {/* <Decode data={{
+        decode_Heading,
+        decode_Hint,
+        decode_List,
+      }} /> */}
       <SmallCtaSection data={{
         smallCta_Heading,
         smallCta_Cta,
@@ -71,6 +80,13 @@ export const query = graphql`
       hero_Heading
       hero_Paragraph
       hero_Column {
+        title
+        description
+      }
+      # Decode
+      decode_Heading
+      decode_Hint
+      decode_List {
         title
         description
       }

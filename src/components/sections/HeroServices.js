@@ -38,7 +38,7 @@ const HeroServices = ({
             }}
           >{hero_Annotation}</ReactMarkdown>
         )}
-        <ReactMarkdown className="paragraph">{hero_Paragraph}</ReactMarkdown>
+        <ReactMarkdown className="paragraph" components={{ 'p': 'h2' }}>{hero_Paragraph}</ReactMarkdown>
         <ReactMarkdown className="secondParagraph">{hero_SecondParagraph}</ReactMarkdown>
       </div>
       {hero_Nav && (
@@ -86,6 +86,9 @@ const Wrapper = styled.section`
     }
     .paragraph {
       font-size: ${Clamp(22, 32, 30)};
+      h2 {
+        font-size: inherit;
+      }
     }
     .secondParagraph {
       font-size: ${Clamp(16, 22, 22)};

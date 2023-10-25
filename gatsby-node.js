@@ -1,9 +1,7 @@
-const redirects = require("./redirects.json")
+const redirects = require("./redirects.json");
 const path = require("path");
-const fs = require('fs')
-require("dotenv").config({
-  path: `.env`,
-})
+const fs = require('fs');
+require("dotenv").config({ path: `.env` });
 
 exports.onPostBuild = async () => {
   const redirectConfig = redirects.map(redirect => (
@@ -354,7 +352,7 @@ exports.createPages = async ({
   });
 
   createPage({
-    path: `/pl/web-development-strony-internetowe`,
+    path: `/pl/web-development/strony-internetowe`,
     component: path.resolve('./src/templates/web-development-strony-internetowe.js'),
     context: {
       breadcrumbs: [
@@ -364,14 +362,14 @@ exports.createPages = async ({
         },
         {
           name: 'Strony internetowe',
-          link: '/pl/web-development-strony-internetowe'
+          link: '/pl/web-development/strony-internetowe'
         }
       ]
     }
   });
 
   createPage({
-    path: `/pl/web-development-sklepy-internetowe`,
+    path: `/pl/web-development/sklepy-internetowe`,
     component: path.resolve('./src/templates/web-development-sklepy-internetowe.js'),
     context: {
       breadcrumbs: [
@@ -381,14 +379,14 @@ exports.createPages = async ({
         },
         {
           name: 'Sklepy internetowe',
-          link: '/pl/web-development-sklepy-internetowe'
+          link: '/pl/web-development/sklepy-internetowe'
         }
       ]
     }
   });
 
   createPage({
-    path: `/pl/web-development-aplikacje-internetowe`,
+    path: `/pl/web-development/aplikacje-internetowe`,
     component: path.resolve('./src/templates/web-development-aplikacje-internetowe.js'),
     context: {
       breadcrumbs: [
@@ -398,7 +396,7 @@ exports.createPages = async ({
         },
         {
           name: 'Aplikacje internetowe',
-          link: '/pl/web-development-aplikacje-internetowe'
+          link: '/pl/web-development/aplikacje-internetowe'
         }
       ]
     }

@@ -156,9 +156,9 @@ const Nav = ({
                     <li>
                       <h3><Link to="/pl/web-development" onClick={(e) => handleNavLinks(e)}>Web Development</Link></h3>
                       <ul className="navList3">
-                        <li><Link to="/pl/web-development-strony-internetowe" onClick={(e) => handleNavLinks(e)}>Strony internetowe</Link></li>
-                        <li><Link to="/pl/web-development-aplikacje-internetowe" onClick={(e) => handleNavLinks(e)}>Aplikacje internetowe</Link></li>
-                        <li><Link to="/pl/web-development-sklepy-internetowe" onClick={(e) => handleNavLinks(e)}>Sklepy internetowe</Link></li>
+                        <li><Link to="/pl/web-development/strony-internetowe" onClick={(e) => handleNavLinks(e)}>Strony internetowe</Link></li>
+                        <li><Link to="/pl/web-development/aplikacje-internetowe" onClick={(e) => handleNavLinks(e)}>Aplikacje internetowe</Link></li>
+                        <li><Link to="/pl/web-development/sklepy-internetowe" onClick={(e) => handleNavLinks(e)}>Sklepy internetowe</Link></li>
                       </ul>
                     </li>
                     <li>

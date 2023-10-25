@@ -114,9 +114,9 @@ export default function Grid({
           />
           <span>Web Development</span>
         </Link>
-        <Link className="med-link" to='/pl/web-development-aplikacje-internetowe'>Aplikacje internetowe</Link>
-        <Link className="med-link" to='/pl/web-development-sklepy-internetowe'>Sklepy internetowe</Link>
-        <Link className="med-link" to='/pl/web-development-strony-internetowe'>Strony internetowe</Link>
+        <Link className="med-link" to='/pl/web-development/aplikacje-internetowe'>Aplikacje internetowe</Link>
+        <Link className="med-link" to='/pl/web-development/sklepy-internetowe'>Sklepy internetowe</Link>
+        <Link className="med-link" to='/pl/web-development/strony-internetowe'>Strony internetowe</Link>
       </div>
       <div>
         <Link className="big-link" to='/pl/grafika-design'>

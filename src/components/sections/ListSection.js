@@ -42,7 +42,7 @@ const ListSection = ({ heading, list, paragraph, secondParagraph, title }) => {
         {!secondParagraph && (
           <DecorativeHeading type="h2" className="heading">{heading}</DecorativeHeading>
         )}
-        <ReactMarkdown className="paragraph">{paragraph}</ReactMarkdown>
+        <ReactMarkdown className="paragraph" components={{ p: 'h3'}}>{paragraph}</ReactMarkdown>
         {secondParagraph && (
           <ReactMarkdown className="paragraph2">{secondParagraph}</ReactMarkdown>
         )}
@@ -75,6 +75,9 @@ const Wrapper = styled.section`
     margin-bottom: ${Clamp(28, 64, 64, 'px')};
     .paragraph {
       font-size: ${Clamp(20, 32, 30)};
+      h3 {
+        font-size: inherit;
+      }
     }
     .paragraph2 {
       font-size: ${Clamp(16, 22, 22)};
