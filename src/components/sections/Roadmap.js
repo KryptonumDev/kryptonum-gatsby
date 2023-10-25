@@ -3,6 +3,7 @@ import styled from "styled-components";
 import DecorativeHeading from "../atoms/DecorativeHeading";
 import { Clamp } from "../../utils/functions";
 import Button from '../atoms/Button';
+import ReactMarkdown from "react-markdown";
 
 const Roadmap = ({heading, list, cta}) => {
   const roadmapRef = useRef();
@@ -39,10 +40,10 @@ const Roadmap = ({heading, list, cta}) => {
         <DecorativeHeading type="h2">{heading}</DecorativeHeading>
         <div className="line"></div>
         <div className="roadmap">
-          {list.map((item, i) => (
+          {list.map(({ title, description }, i) => (
             <div className="roadmap-item" key={i}>
-              <h3>{item.title}</h3>
-              <p>{item.description}</p>
+              <ReactMarkdown className="title" components={{ 'p': 'h3' }}>{title}</ReactMarkdown>
+              <ReactMarkdown className="description">{description}</ReactMarkdown>
               {(i+1 === list.length && cta?.text) && (
                 <Button to={cta.href} theme={cta.theme}>
                   {cta.text}
@@ -95,7 +96,7 @@ const Wrapper = styled.section`
       flex-shrink: 0;
       width: calc(100% / 2.1);
       position: relative;
-      padding-top: 2rem;
+      padding-top: ${Clamp(40, 40, 48, 'px')};
       padding-right: 1rem;
       counter-increment: counter;
       &:not(:last-child){
@@ -125,31 +126,39 @@ const Wrapper = styled.section`
       &:last-child {
         width: calc(100% - (100% / 2.1) - 32px);
       }
-      h3 {
-        font-size: ${Clamp(20, 32, 30)};
+      .title {
+        h3 {
+          font-size: ${Clamp(16, 18, 18)};
+        }
         margin-bottom: ${Clamp(8, 16, 16, "px")};
         display: grid;
         grid-template-columns: 40px 1fr;
         gap: ${Clamp(8, 16, 16, "px")};
-        align-items: center;
+        align-items: baseline;
         &::before {
           content: "/" counter(counter);
           display: inline-block;
-          font-size: 1rem;
-          margin-top: .2em;
+          font-size: 1em;
+          margin-bottom: .2em;
         }
       }
-      &:nth-child(-n+10) h3::before {
+      &:nth-child(-n+9) .title::before {
         content: "/0" counter(counter);
       }
-      p {
+      .description {
         padding-left: ${Clamp(8+40, 16+40, 16+40, "px")};
-        font-size: ${Clamp(16, 22, 22)};
+        font-size: ${Clamp(14, 16, 16)};
       }
       .cta {
         margin-top: 2rem;
         margin-left: ${Clamp(8+40, 16+40, 16+40, "px")};
+      }
+      a {
         pointer-events: auto;
+      }
+      p a,
+      h3 a {
+        text-decoration: underline;
       }
     }
   }
