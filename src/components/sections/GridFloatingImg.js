@@ -8,8 +8,8 @@ import ReactMarkdown from "react-markdown";
 import { motion, useMotionValue, useSpring } from "framer-motion";
 
 const options = {
-  damping: 20,
-  stiffness: 80,
+  damping: 50,
+  stiffness: 300,
 }
 
 const GridFloatingImg = ({
@@ -58,10 +58,10 @@ const GridFloatingImg = ({
                 className="cover"
               />
             </motion.div>
-            <h3>
+            <h2>
               <span>{title}</span>
               <Arrow />
-            </h3>
+            </h2>
             <ReactMarkdown className="description">{description}</ReactMarkdown>
           </Link>
         ))}
@@ -91,7 +91,7 @@ const Wrapper = styled.section`
     position: relative;
     .item {
       counter-increment: counter;
-      h3 {
+      h2 {
         font-size: ${Clamp(18, 28, 28, 'px')};
         margin-bottom: ${Clamp(12, 16, 32, 'px')};
         display: flex;
@@ -109,7 +109,7 @@ const Wrapper = styled.section`
           transition: stroke .4s;
         }
       }
-      &:nth-child(-n+10) h3::before {
+      &:nth-child(-n+10) h2::before {
         content: "/0" counter(counter);
       }
       .description {
