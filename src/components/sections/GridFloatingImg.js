@@ -1,7 +1,7 @@
 import React, { useEffect, useRef } from "react";
 import styled from "styled-components";
 import DecorativeHeading from "../atoms/DecorativeHeading";
-import { Clamp } from "../../utils/functions";
+import { Clamp, removeMarkdown } from "../../utils/functions";
 import { Link } from "gatsby";
 import { GatsbyImage } from "gatsby-plugin-image";
 import ReactMarkdown from "react-markdown";
@@ -26,8 +26,8 @@ const GridFloatingImg = ({
   }
 
   const handleMouseMove = (e) => {
-    const x = e.clientX - wrapper.current.getBoundingClientRect().left;
-    const y = e.clientY - wrapper.current.getBoundingClientRect().top;
+    const x = e.offsetX;
+    const y = e.offsetY;
     mouse.x.set(x);
     mouse.y.set(y);
   }
@@ -44,7 +44,8 @@ const GridFloatingImg = ({
       </header>
       <div className="wrapper" ref={wrapper}>
         {list.map(({ title, description, img, href }, i) => (
-          <Link to={href} className="item" key={i}>
+          <div className="item" key={i}>
+            <Link to={href} aria-label={removeMarkdown(title)} className='link' />
             <motion.div
               style={{
                 left: mouse.x,
@@ -63,7 +64,7 @@ const GridFloatingImg = ({
               <Arrow />
             </h2>
             <ReactMarkdown className="description">{description}</ReactMarkdown>
-          </Link>
+          </div>
         ))}
       </div>
     </Wrapper>
@@ -90,6 +91,14 @@ const Wrapper = styled.section`
     counter-reset: counter;
     position: relative;
     .item {
+      position: relative;
+      > .link {
+        position: absolute;
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 100%;
+      }
       counter-increment: counter;
       h2 {
         font-size: ${Clamp(18, 28, 28, 'px')};
@@ -114,6 +123,13 @@ const Wrapper = styled.section`
       }
       .description {
         font-size: ${Clamp(16, 18, 18)};
+        a {
+          z-index: 2;
+          position: relative;
+          &:hover {
+            text-decoration: underline;
+          }
+        }
       }
       &:not(:hover) {
         svg {
@@ -126,7 +142,7 @@ const Wrapper = styled.section`
       }
       .img {
         position: absolute;
-        z-index: 2;
+        z-index: 3;
         left: 0;
         top: 0;
         pointer-events: none;
