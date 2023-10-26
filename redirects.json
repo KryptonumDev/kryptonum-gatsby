@@ -308,5 +308,15 @@
     "fromPath": "/pl/blog/czym-sa",
     "toPath": "/pl/blog",
     "isPermanent": true
+  },
+  {
+    "fromPath": "/pl/akademia/rozwoj-technologii-blockchain-nft-i-kryptowalut",
+    "toPath": "/pl/akademia",
+    "isPermanent": true
+  },
+  {
+    "fromPath": "/pl/akademia/cyberataki-przyklady-i-rodzaje-atakow-hakerskich-cyberbezpieczenstwo",
+    "toPath": "/pl/akademia",
+    "isPermanent": true
   }
 ]
